@@ -1,0 +1,33 @@
+.footer-container {
+  display: flex;
+  height: 288px;
+  background-color: #ddd8e4;
+  padding: 110px 35px 101px 35px;
+  .left-section {
+    margin-right: 126.3px;
+  }
+  .middle-section {
+    width: 590px;
+    margin-right: 201px;
+    p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #2e2e2e;
+    }
+  }
+  .right-section {
+    h6 {
+      font-size: 22px;
+      font-weight: bold;
+      line-height: 1.18;
+      color: #2e2e2e;
+    }
+    .logos-container {
+      display: flex;
+      img {
+        width: 30px;
+        margin: 0 8px 0 0;
+      }
+    }
+  }
+}
