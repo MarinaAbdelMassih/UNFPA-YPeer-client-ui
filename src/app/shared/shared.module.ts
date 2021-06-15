@@ -6,6 +6,9 @@ import { PageTopBannerComponent } from './components/page-top-banner/page-top-ba
 
 @NgModule({
   declarations: [PageTopBannerComponent],
+  exports: [
+    PageTopBannerComponent
+  ],
   imports: [
     CommonModule
   ]

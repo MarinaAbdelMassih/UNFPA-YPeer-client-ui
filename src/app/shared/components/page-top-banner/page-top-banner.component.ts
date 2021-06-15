@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SliderQuery} from "../../queries/slider.query";
+import {DataHandlerService} from "../../services/data-handler.service";
 
 @Component({
   selector: 'app-page-top-banner',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageTopBannerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataHandlerService: DataHandlerService) { }
 
   ngOnInit() {
+    this.dataHandlerService.getDefaultPageData(SliderQuery, 'slider-info', res => console.log(res)).subscribe(data => console.log(data))
   }
 
 }
