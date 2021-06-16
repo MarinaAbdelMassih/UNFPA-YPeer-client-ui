@@ -1,2 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+.ypeer-btn {
+  color: white;
+  padding: 13px 25px;
+  font-size: 16px;
+}
+.btn-full-color {
+  background-color: #673bb8;
+  border: none;
+}
+.btn-outlined {
+  background: transparent;
+  border: solid 2px #ffffff;
+}
