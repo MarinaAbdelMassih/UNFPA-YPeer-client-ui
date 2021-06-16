@@ -6,6 +6,7 @@ import { FooterSocialComponent } from './components/footer/components/footer-soc
 import { SubFooterComponent } from './components/sub-footer/sub-footer.component';
 import { SubFooterMenuComponent } from './components/sub-footer/components/sub-footer-menu/sub-footer-menu.component';
 import {SharedModule} from '../shared/shared.module';
+import {RouterModule} from '@angular/router';
 
 
 
@@ -17,7 +18,8 @@ import {SharedModule} from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ]
 })
 export class CoreModule { }
