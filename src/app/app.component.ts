@@ -38,4 +38,8 @@ export class AppComponent implements OnInit, OnDestroy {
       this.languageSubscription.unsubscribe();
     }
   }
+
+  changeLang(){
+    this.languageService.updateLang(this.isArabic ? 'en' : 'ar');
+  }
 }
