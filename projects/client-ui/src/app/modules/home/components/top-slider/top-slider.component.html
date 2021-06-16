@@ -1,0 +1,20 @@
+<ngx-slick-carousel #bannersSlickModal="slick-carousel" [config]="bannerConfig">
+  <div class="slider-container" ngxSlickItem *ngFor="let slide of slides">
+    <div class="slider-item">
+      <div class="banner-image">
+        <img src="{{ slide.image }}" alt="">
+      </div>
+      <div class="banner-overlay">
+        <div class="container">
+          <div class="text-container">
+            <div class="head-line">HeadLine</div>
+            <div class="sub-title">Subtitle</div>
+            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</div>
+          </div>
+        </div>
+      </div>
+      <button class="slider-button btn-next" (click)="next()"><img src="assets/img/arrow-right.png" alt=""></button>
+      <button class="slider-button btn-prev" (click)="prev()"><img src="assets/img/arrow-left.png"></button>
+    </div>
+  </div>
+</ngx-slick-carousel>

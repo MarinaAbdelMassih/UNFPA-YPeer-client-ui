@@ -1,0 +1,47 @@
+.slider-container {
+  max-height: 500px;
+  .slider-item {
+    img {
+      width: 100%;
+    }
+    .banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      .text-container {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin-top: 100px;
+        color: white;
+        .head-line {
+          font-size: 80px;
+          font-weight: bold;
+          margin-bottom: 21px;
+        }
+        .sub-title {
+          font-size: 28px;
+          font-weight: bold;
+          margin-bottom: 12px;
+        }
+        .text {
+          font-size: 22px;
+        }
+      }
+    }
+    .slider-button {
+      background: transparent;
+      border: none;
+      position: absolute;
+      top: 50%;
+      cursor: pointer;
+    }
+    .btn-next {
+      right: 60px;
+    }
+    .btn-prev {
+      left: 20px;
+    }
+  }
+}
