@@ -7,6 +7,9 @@ import { TranslateLocalDirective } from './directives/translate-local.directive'
 
 @NgModule({
   declarations: [PageTopBannerComponent, TranslateLocalDirective],
+  exports: [
+    TranslateLocalDirective
+  ],
   imports: [
     CommonModule
   ]

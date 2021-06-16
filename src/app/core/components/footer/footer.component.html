@@ -4,10 +4,13 @@
       <img src="assets/images/ypeer-logo-footer.png" alt="footer-logo">
     </div>
     <div class="middle-section footer-inner-section">
-      <p><strong>Y-PEER</strong> is a groundbreaking and comprehensive network of more than 500 non-profit organizations and governmental institutions; its membership includes thousands of young people who work in the many areas surrounding sexual and reproductive health.</p>
+      <p>
+        <strong [translateLocal]="{EN: 'Y-PEER ', AR: 'لوريم ايبسوم '}"></strong>
+        <span [translateLocal]="{EN: 'is a groundbreaking and comprehensive network of more than 500 non-profit organizations and governmental institutions; its membership includes thousands of young people who work in the many areas surrounding sexual and reproductive health.', AR: 'دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور.'}"></span>
+      </p>
     </div>
     <div class="right-section footer-inner-section">
-      <h6>Follow Us</h6>
+      <h6 [translateLocal]="{EN: 'Follow Us', AR: 'تابعونا'}"></h6>
       <app-footer-social></app-footer-social>
     </div>
   </div>

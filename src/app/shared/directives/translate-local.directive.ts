@@ -3,7 +3,7 @@ import {LanguageService} from '../services/language.service';
 import {Subscription} from 'rxjs';
 
 @Directive({
-  selector: '[appTranslateLocal]'
+  selector: '[translateLocal]'
 })
 export class TranslateLocalDirective implements OnInit, OnDestroy, OnChanges {
 
