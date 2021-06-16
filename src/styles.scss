@@ -5,6 +5,7 @@
   color: white;
   padding: 13px 25px;
   font-size: 16px;
+  height: 50px;
 }
 .btn-full-color {
   background-color: #673bb8;
@@ -14,4 +15,12 @@
   background: transparent;
   border: solid 2px #673bb8;
   color: #673bb8;
+}
+
+.divider {
+  color: #ff7900;
+  opacity: 1;
+  width: 60px;
+  margin: auto;
+  height: 6px !important;
 }
