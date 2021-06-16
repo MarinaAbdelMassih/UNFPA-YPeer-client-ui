@@ -1,10 +1,12 @@
 export const SliderQuery = `{
-  homeSliderItem(id: "40Cn7XgbRYcQoM8HRC8iBB"){
-    id
-    headLineEn
-    headLineAr
-    image {
-      url
+  homeSlider(id: "2u7HqLcuXVEtTukg3tA7hU"){
+    title
+    slidesCollection{
+      items {
+      sys {
+      id
       }
-    }
+      }
+      }
+   }
 }`;

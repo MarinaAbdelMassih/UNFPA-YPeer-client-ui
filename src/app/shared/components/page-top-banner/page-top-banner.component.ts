@@ -12,7 +12,7 @@ export class PageTopBannerComponent implements OnInit {
   constructor(private dataHandlerService: DataHandlerService) { }
 
   ngOnInit() {
-    this.dataHandlerService.getDefaultPageData(SliderQuery, 'slider-info', res => console.log(res)).subscribe(data => console.log(data))
+    this.dataHandlerService.getDefaultPageData(SliderQuery, 'slider-info', res => console.log(res)).subscribe()
   }
 
 }
