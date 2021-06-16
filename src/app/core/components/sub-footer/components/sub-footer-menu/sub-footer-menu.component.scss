@@ -1,0 +1,14 @@
+.sub-footer-menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  li {
+    margin-right: 8px;
+    font-size: 13px;
+    color: #2e2e2e;
+    line-height: 1.15;
+    a {
+      cursor: pointer;
+    }
+  }
+}
