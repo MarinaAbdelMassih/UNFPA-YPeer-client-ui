@@ -1,0 +1,18 @@
+<ngx-slick-carousel #testimonialsSlickModal="slick-carousel" [config]="testimonialsConfig">
+  <div class="slider-container" ngxSlickItem *ngFor="let slide of slides">
+    <div class="slider-item">
+      <div class="banner-image">
+        <img src="{{ slide.image }}" alt="">
+      </div>
+      <div class="banner-overlay">
+        <div class="container">
+          <div class="text-container">
+            <div class="text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."</div>
+            <div class="author"> - Menna Mohamed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ngx-slick-carousel>
