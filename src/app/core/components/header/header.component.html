@@ -1,1 +1,55 @@
-<p>header works!</p>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="assets/images/ypeer-logo-header.png" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="mr-auto"></div>
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" [translateLocal]="{AR: 'دورات تدريبية', EN: 'courses'}"><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="mediaDropdown" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false" [translateLocal]="{AR: 'وسائل اعلام', EN: 'media'}">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="mediaDropdown">
+          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'عنصر وسائل اعلام', EN: 'media item'}">Action</a>
+          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'عنصر وسائل اعلام', EN: 'media item'}">Action</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="resourcesDropdown" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false" [translateLocal]="{AR: 'موارد', EN: 'resources'}">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="resourcesDropdown">
+          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'عنصر موارد', EN: 'resources item'}">Action</a>
+          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'عنصر موارد', EN: 'resources item'}">Action</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" [translateLocal]="{AR: 'عنا', EN: 'about'}"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" [translateLocal]="{AR: 'اتصل بنا', EN: 'contact'}"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="search-icon fa fa-search"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <button class="language-button" [translateLocal]="{AR: 'AR', EN: 'EN'}"></button>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#">
+          <button class="ypeer-btn btn-full-color" [translateLocal]="{AR: 'اشترك معنا', EN: 'Join Us'}"></button>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
