@@ -6,14 +6,17 @@ import { HomeComponent } from './home.component';
 import { TopSliderComponent } from './components/top-slider/top-slider.component';
 import {SlickCarouselModule} from "ngx-slick-carousel";
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
+import { OurStoryComponent } from './components/our-story/our-story.component';
+import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 
 
 @NgModule({
-  declarations: [HomeComponent, TopSliderComponent, TestimonialsComponent],
+  declarations: [HomeComponent, TopSliderComponent, TestimonialsComponent, OurStoryComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    SharedModule
   ]
 })
 export class HomeModule { }
