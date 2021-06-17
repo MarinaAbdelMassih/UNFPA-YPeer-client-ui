@@ -39,7 +39,4 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  changeLang(){
-    this.languageService.updateLang(this.isArabic ? 'en' : 'ar');
-  }
 }

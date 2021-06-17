@@ -40,9 +40,9 @@
           <i class="search-icon fa fa-search"></i>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <button class="language-button" [translateLocal]="{AR: 'AR', EN: 'EN'}"></button>
+      <li class="nav-item" (click)="changeLang()">
+        <a class="nav-link" role="button">
+          <button  class="language-button" [translateLocal]="{AR: 'AR', EN: 'EN'}"></button>
         </a>
       </li>
       <li class="nav-item">
