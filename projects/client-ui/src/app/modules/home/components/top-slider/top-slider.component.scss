@@ -75,10 +75,6 @@
           .ypeer-btn {
             margin: 30px 15px 0 0 !important;
           }
-          .btn-outlined {
-            border-color: #673bb8;
-            color: #673bb8;
-          }
         }
       }
     }
@@ -98,5 +94,12 @@
 @media (min-width: 426px) and (max-width: 768px){
   .slider-button {
     top: 130px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .btn-outlined {
+    border-color: white;
+    color: white;
   }
 }

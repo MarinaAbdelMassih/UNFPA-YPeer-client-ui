@@ -8,10 +8,11 @@ import {SlickCarouselModule} from "ngx-slick-carousel";
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { OurStoryComponent } from './components/our-story/our-story.component';
 import {SharedModule} from '../../../../../../src/app/shared/shared.module';
+import { WhatNextComponent } from './components/what-next/what-next.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, TopSliderComponent, TestimonialsComponent, OurStoryComponent],
+  declarations: [HomeComponent, TopSliderComponent, TestimonialsComponent, OurStoryComponent, WhatNextComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
