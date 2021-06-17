@@ -1,0 +1,17 @@
+<div class="latest-section">
+  <h1 class="latest-title"  [translateLocal]="{EN: 'Latest From Y-Peer', AR: 'آخر الأخبار عن Y-Peer'}"></h1>
+  <div class="title-hr"></div>
+<!--  <ngx-slick-carousel #bannersSlick="slick-carousel" [config]="bannerConfig">-->
+  <div class="latest-cards-container">
+    <app-image-description-card *ngFor="let latestSection of latestSections"
+                                [imageSrc]="latestSection.imgSrc" [type]="latestSection.type"
+                                [title]="latestSection.title" [date]="latestSection.date"
+                                [description]="latestSection.description" (moreClicked)="openDetailsPage()">
+    </app-image-description-card>
+  </div>
+<!--    <button class="slider-button btn-next" (click)="next()"><img src="assets/img/arrow-right.png" alt=""></button>-->
+<!--    <button class="slider-button btn-prev" (click)="prev()"><img src="assets/img/arrow-left.png"></button>-->
+<!--  </ngx-slick-carousel>-->
+</div>
+
+
