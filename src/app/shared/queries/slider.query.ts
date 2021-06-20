@@ -3,9 +3,7 @@ export const SliderQuery = `{
     title
     slidesCollection{
       items {
-      sys {
-      id
-      }
+      headLineEn
       }
       }
    }
