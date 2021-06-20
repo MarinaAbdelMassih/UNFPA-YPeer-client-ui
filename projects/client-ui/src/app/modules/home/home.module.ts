@@ -10,10 +10,12 @@ import { OurStoryComponent } from './components/our-story/our-story.component';
 import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import { WhatNextComponent } from './components/what-next/what-next.component';
 import {CoreModule} from "../../../../../../src/app/core/core.module";
+import { DiscoverMoreComponent } from './components/discover-more/discover-more.component';
+import { DiscoverMoreCardComponent } from './components/discover-more/components/discover-more-card/discover-more-card.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, TopSliderComponent, TestimonialsComponent, OurStoryComponent, WhatNextComponent],
+  declarations: [HomeComponent, TopSliderComponent, TestimonialsComponent, OurStoryComponent, WhatNextComponent, DiscoverMoreComponent, DiscoverMoreCardComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
