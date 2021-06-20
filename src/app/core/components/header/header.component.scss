@@ -7,11 +7,18 @@
   text-transform: uppercase;
 }
 
+.nav-link:hover {
+  border-bottom: 4px solid #ff7900 !important;
+}
+
 .dropdown-item {
   font-size: 14px;
   color: #2e2e2e !important;
 }
 
+.lang-link:hover {
+  border: none !important;
+}
 .language-button {
   font-size: 12px;
   font-weight: bold;
