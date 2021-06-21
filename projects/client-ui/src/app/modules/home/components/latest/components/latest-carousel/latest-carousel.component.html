@@ -1,0 +1,11 @@
+<ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
+      <app-image-description-card ngxSlickItem *ngFor="let latestSection of latestSections" [imageSrc]="latestSection.imgSrc" [type]="latestSection.type"
+                                  [title]="latestSection.title" [date]="latestSection.date"
+                                  [description]="latestSection.description">
+      </app-image-description-card>
+</ngx-slick-carousel>
+<div class="buttons-container">
+  <button class="slider-button btn-next" (click)="next()"><img src="assets/images/icons/arrow-right-gray.png" alt=""></button>
+  <button class="slider-button btn-prev" (click)="prev()"><img src="assets/images/icons/arrow-left-gray.png"></button>
+</div>
+
