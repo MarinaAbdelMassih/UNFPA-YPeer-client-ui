@@ -13,6 +13,12 @@ export class LatestCarouselComponent implements OnInit {
     "cssEase": 'linear', "dots": false,"autoplay": false, "autoplaySpeed": 2000, infinite: false,
     "responsive": [
       {
+        breakpoint: 1025,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
         breakpoint: 992,
         settings: {
           slidesToShow: 1

@@ -1,5 +1,6 @@
 .slider-container {
   .slider-item {
+    margin: 85px auto;
     .banner-image {
       img {
         width: 100%;
@@ -14,7 +15,7 @@
       .text-container {
         display: flex;
         flex-direction: column;
-        margin-top: 170px;
+        margin-top: 220px;
         color: white;
         text-align: center;
         .text {
@@ -22,6 +23,7 @@
         }
         .author {
           font-size: 24px;
+          margin-top: 38px;
         }
       }
     }
@@ -42,7 +44,7 @@
         .text-container {
           width: 100%;
           margin-top: 50px;
-          color: black;
+          color: #2e2e2e;
         }
       }
     }
@@ -59,12 +61,12 @@
 }
 @media (max-width: 426px) {
   ::ng-deep .slick-dots {
-    top: 100px;
+    top: 186px;
   }
 }
 
 ::ng-deep .slick-dots {
-  bottom: 130px;
+  bottom: 210px;
   li{
     button:before {
       font-size: 20px;

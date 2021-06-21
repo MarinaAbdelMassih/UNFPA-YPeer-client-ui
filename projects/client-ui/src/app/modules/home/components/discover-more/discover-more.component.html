@@ -1,2 +1,9 @@
- <app-discover-more-card [data]="item" *ngFor="let item of items"></app-discover-more-card>
+<div class="discover-more-container">
+  <div class="container">
+    <div class="head-text" [translateLocal]="{AR: 'ماذا بعد؟', EN: 'Discover More About Y-PEER'}"></div>
+    <hr class="divider">
+  </div>
+  <app-discover-more-card [data]="item" *ngFor="let item of items"></app-discover-more-card>
+</div>
+
 
