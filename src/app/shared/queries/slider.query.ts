@@ -3,8 +3,17 @@ export const SliderQuery = `{
     title
     slidesCollection{
       items {
-      headLineEn
-      }
+        id
+        headLineEn
+        headLineAr
+        subtitleEn
+        subtitleAr
+        textEn
+        textAr
+        image{
+            url
+          }
+        }
       }
    }
 }`;

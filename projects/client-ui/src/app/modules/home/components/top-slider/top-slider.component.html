@@ -1,4 +1,4 @@
-<ngx-slick-carousel #bannersSlickModal="slick-carousel" [config]="bannerConfig">
+<ngx-slick-carousel #bannersSlickModal="slick-carousel" [config]="bannerConfig" *ngIf="slides">
   <div class="slider-container" ngxSlickItem *ngFor="let slide of slides">
     <div class="slider-item">
       <div class="banner-image">
@@ -7,12 +7,12 @@
       <div class="banner-overlay">
         <div class="container">
           <div class="text-container">
-            <div class="head-line">HeadLine</div>
-            <div class="sub-title">Subtitle</div>
-            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</div>
+            <div class="head-line" [translateLocal]="slide.headTitle"></div>
+            <div class="sub-title" [translateLocal]="slide.subtitle"></div>
+            <div class="text" [translateLocal]="slide.text"></div>
             <div class="slider-buttons-container">
-              <button class="ypeer-btn btn-outlined">Discover More</button>
-              <button class="ypeer-btn btn-full-color">Join The Program</button>
+              <button class="ypeer-btn btn-outlined" [translateLocal]="{AR: 'اكتشف اكثر', EN: 'Discover More'}"></button>
+              <button class="ypeer-btn btn-full-color" [translateLocal]="{AR: 'انضم للبرنامج', EN: 'Join The Program'}"></button>
             </div>
           </div>
         </div>
