@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiscoverMoreComponent implements OnInit {
 
-  items =[{img: 'assets/images/discover-more-news.png', title: 'News'}, {img: 'assets/images/discover-more-news.png', title: 'Stories'}];
+  items =[{img: 'assets/images/discover-more-news.png', title: 'News'},
+    {img: 'assets/images/discover-more-news.png', title: 'Stories'},
+    {img: 'assets/images/discover-more-news.png', title: 'Stories'},
+    {img: 'assets/images/discover-more-news.png', title: 'Stories'},
+    {img: 'assets/images/discover-more-news.png', title: 'Stories'}
+    ];
   constructor() { }
 
   ngOnInit() {
