@@ -1,0 +1,26 @@
+.latest-section {
+  margin-top: 62px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 56px;
+  .latest-title {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.19;
+    text-align: center;
+    color: #232323;
+    margin-bottom: 19px;
+  }
+  .title-hr {
+    width: 45px;
+    height: 6px;
+    background-color: #ff7900;
+    margin-bottom: 73px;
+  }
+  .latest-cards-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

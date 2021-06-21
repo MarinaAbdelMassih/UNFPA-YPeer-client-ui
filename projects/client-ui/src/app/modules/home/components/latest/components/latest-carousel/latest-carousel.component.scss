@@ -1,0 +1,27 @@
+.buttons-container {
+  position: relative;
+  .slider-button {
+    background: transparent;
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    bottom: 600px;
+  }
+  .btn-next {
+    right: 46px;
+  }
+  .btn-prev {
+    right: 84px;
+  }
+}
+
+[dir = rtl] .buttons-container {
+  .btn-prev {
+    left: 46px;
+    right: auto;
+  }
+  .btn-next {
+    left: 84px;
+    right: auto;
+  }
+}
