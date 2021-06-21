@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-latest-carousel',
@@ -50,7 +51,7 @@ export class LatestCarouselComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -61,6 +62,10 @@ export class LatestCarouselComponent implements OnInit {
 
   prev() {
     this.slickModal.slickPrev();
+  }
+
+  openDetailsPage(): void {
+    this.router.navigate(['']);
   }
 
 }

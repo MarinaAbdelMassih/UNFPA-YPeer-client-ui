@@ -10,10 +10,11 @@ import { OurStoryComponent } from './components/our-story/our-story.component';
 import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import { WhatNextComponent } from './components/what-next/what-next.component';
 import {LatestComponent} from './components/latest/latest.component';
+import { LatestCarouselComponent } from './components/latest/components/latest-carousel/latest-carousel.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, TopSliderComponent, TestimonialsComponent, OurStoryComponent, WhatNextComponent, LatestComponent],
+  declarations: [HomeComponent, TopSliderComponent, TestimonialsComponent, OurStoryComponent, WhatNextComponent, LatestComponent, LatestCarouselComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

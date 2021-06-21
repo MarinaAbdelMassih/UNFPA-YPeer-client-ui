@@ -23,14 +23,3 @@
     width: 100%;
   }
 }
-
-@media (max-width: 1330px) {
-  .latest-section {
-    .latest-cards-container {
-      flex-direction: column;
-      app-image-description-card {
-        margin-bottom: 50px;
-      }
-    }
-  }
-}
