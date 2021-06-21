@@ -12,10 +12,12 @@ import { WhatNextComponent } from './components/what-next/what-next.component';
 import {LatestComponent} from './components/latest/latest.component';
 import { LatestCarouselComponent } from './components/latest/components/latest-carousel/latest-carousel.component';
 import {CoreModule} from "../../../../../../src/app/core/core.module";
+import { DiscoverMoreComponent } from './components/discover-more/discover-more.component';
+import { DiscoverMoreCardComponent } from './components/discover-more/components/discover-more-card/discover-more-card.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, TopSliderComponent, TestimonialsComponent, OurStoryComponent, WhatNextComponent, LatestComponent, LatestCarouselComponent],
+  declarations: [HomeComponent, TopSliderComponent, TestimonialsComponent, OurStoryComponent, WhatNextComponent, LatestComponent, LatestCarouselComponent, DiscoverMoreComponent, DiscoverMoreCardComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
