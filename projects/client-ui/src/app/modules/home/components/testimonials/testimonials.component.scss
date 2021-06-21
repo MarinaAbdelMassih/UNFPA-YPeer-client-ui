@@ -81,3 +81,7 @@
     }
   }
 }
+
+::ng-deep .slick-list {
+  max-height: 800px;
+}

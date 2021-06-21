@@ -1,10 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-latest-carousel',
   templateUrl: './latest-carousel.component.html',
-  styleUrls: ['./latest-carousel.component.scss']
+  styleUrls: ['./latest-carousel.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LatestCarouselComponent implements OnInit {
 

@@ -13,5 +13,15 @@
   .btn-prev {
     right: 84px;
   }
+}
 
+[dir = rtl] .buttons-container {
+  .btn-prev {
+    left: 46px;
+    right: auto;
+  }
+  .btn-next {
+    left: 84px;
+    right: auto;
+  }
 }
