@@ -1,5 +1,6 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {LanguageService} from "../../../../../../../../src/app/shared/services/language.service";
+import {testimonialItem} from "../../../../../../../../src/app/shared/models/home.model";
 
 @Component({
   selector: 'app-testimonials',
@@ -9,7 +10,7 @@ import {LanguageService} from "../../../../../../../../src/app/shared/services/l
 export class TestimonialsComponent implements OnInit, AfterViewInit {
 
   isArabic: boolean = this.langService.getIsArabic();
-  slides = [{text: 'first image', image: '/assets/images/testimonials.png'}, {text: 'second image', image: '/assets/images/image2.png'}];
+  @Input() testimonialsSlides: testimonialItem[];
   @ViewChild('testimonialsSlickModal', {static: false}) slickModal;
 
   testimonialsConfig: any = {"slidesToShow": 1, "rtl": this.isArabic, "slidesToScroll": 1,"arrows": false, "fade": true,
@@ -21,7 +22,7 @@ export class TestimonialsComponent implements OnInit, AfterViewInit {
   }
 
   private reinitSlick(){
-    if(this.slides){
+    if(this.testimonialsSlides){
       this.slickModal.unslick();
       this.testimonialsConfig.rtl = this.isArabic;
       this.slickModal.initSlick();

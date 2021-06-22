@@ -3,10 +3,10 @@
     <img [src]="imageSrc" alt="latest from ypeer">
   </div>
   <div class="description-container">
-    <h3 class="type" [translateLocal]="{EN: type.en, AR: type.ar}"></h3>
-    <h2 class="title" [translateLocal]="{EN: title.en, AR: title.ar}"></h2>
-    <h3 class="date" [translateLocal]="{EN: date.en, AR: date.ar}"></h3>
-    <p class="description" [translateLocal]="{EN: description.en, AR: description.ar}"></p>
+    <h3 class="type" [translateLocal]="type"></h3>
+    <h2 class="title" [translateLocal]="title"></h2>
+    <h3 class="date" [translateLocal]="date"></h3>
+    <p class="description" [translateLocal]="description"></p>
     <div class="more">
       <img src="assets/images/icons/more-icon.png" alt="more" (click)="clickMore()">
     </div>

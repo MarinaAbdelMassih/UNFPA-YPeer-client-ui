@@ -1,5 +1,5 @@
 <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
-      <app-image-description-card ngxSlickItem *ngFor="let latestSection of latestSections" [imageSrc]="latestSection.imgSrc" [type]="latestSection.type"
+      <app-image-description-card ngxSlickItem *ngFor="let latestSection of latestSections" [imageSrc]="latestSection.image" [type]="latestSection.label"
                                   [title]="latestSection.title" [date]="latestSection.date"
                                   [description]="latestSection.description" (moreClicked)="openDetailsPage()">
       </app-image-description-card>

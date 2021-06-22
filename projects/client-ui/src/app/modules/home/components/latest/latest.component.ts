@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {latestCardItem} from "../../../../../../../../src/app/shared/models/home.model";
 
 @Component({
   selector: 'app-latest',
@@ -7,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LatestComponent implements OnInit {
 
+  @Input() latestSections: latestCardItem[];
   constructor() { }
 
   ngOnInit() {

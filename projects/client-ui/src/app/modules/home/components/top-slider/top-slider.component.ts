@@ -1,8 +1,6 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {SliderResolverService} from "../../../../../../../../src/app/shared/services/slider-resolver.service";
-import {Subscription} from "rxjs";
-import {sliderContent, sliderItem} from "../../../../../../../../src/app/shared/models/slider.model";
+import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {LanguageService} from "../../../../../../../../src/app/shared/services/language.service";
+import {sliderItem} from "../../../../../../../../src/app/shared/models/home.model";
 
 @Component({
   selector: 'app-top-slider',
@@ -12,21 +10,14 @@ import {LanguageService} from "../../../../../../../../src/app/shared/services/l
 export class TopSliderComponent implements OnInit, AfterViewInit {
 
   isArabic: boolean = this.langService.getIsArabic();
-  slides: sliderItem[];
+  @Input() slides: sliderItem[];
   @ViewChild('bannersSlickModal', {static: false}) slickModal;
   bannerConfig: any = {"slidesToShow": 1, "rtl": this.isArabic, "slidesToScroll": 1,"arrows": false, "fade": true,
     "cssEase": 'linear', "dots": false,"autoplay": false, "autoplaySpeed": 2000};
 
-  private subscriptions: Subscription[] = [];
-
-  constructor(private sliderResolver: SliderResolverService, private langService: LanguageService) { }
+  constructor(private langService: LanguageService) { }
 
   ngOnInit() {
-    let slidesSub = this.sliderResolver.resolve().subscribe((slidesData: sliderContent) => {
-      this.slides = slidesData.slides;
-    });
-
-    this.subscriptions.push(slidesSub);
     }
 
   ngAfterViewInit(): void {

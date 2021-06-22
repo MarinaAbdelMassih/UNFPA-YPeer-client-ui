@@ -20,7 +20,7 @@ export class ImageDescriptionCardComponent implements OnInit {
   }
 
   clickMore(): void {
-    this.moreClicked.emit(this.type.en);
+    this.moreClicked.emit(this.type.EN);
   }
 
 }
