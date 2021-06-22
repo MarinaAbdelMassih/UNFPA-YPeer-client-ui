@@ -1,4 +1,4 @@
 export interface TranslationModel {
-  en: string,
-  ar: string
+  AR: string,
+  EN: string
 }
