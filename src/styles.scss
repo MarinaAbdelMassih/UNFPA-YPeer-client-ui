@@ -33,3 +33,12 @@
 [dir = rtl] body {
   text-align: right;
 }
+@font-face {
+  font-family: TradeGothic;
+  font-display: block;
+  src: url(assets/fonts/Trade-Gothic-LT.ttf) format("truetype")
+}
+
+a, button, h1, h2, h3, h4, h5, h6, p, div, span {
+  font-family: 'TradeGothic', sans-serif;
+}
