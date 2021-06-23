@@ -17,8 +17,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     let homeSub = this.homeResolver.resolve().subscribe((homeData: homeContent) => {
-      this.homeData = homeData;
-      console.log(homeData)
+      this.homeData = undefined;
+      setTimeout(() => {
+        this.homeData = homeData;
+        console.log(homeData)
+      }, 200)
+
     });
 
     this.subscriptions.push(homeSub);
