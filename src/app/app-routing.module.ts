@@ -9,6 +9,12 @@ const routes: Routes = [
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/home/home.module').then(mod => mod.HomeModule),
   },
+
+  {
+    path: 'media',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/media/media.module').then(mod => mod.MediaModule),
+  }
 ];
 
 @NgModule({

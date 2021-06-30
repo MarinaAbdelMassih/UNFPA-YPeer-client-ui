@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {MediaComponent} from './media.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: 'media', component: MediaComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
