@@ -1,0 +1,24 @@
+.mat-expansion-panel {
+  background-color: #f0f0f0;
+  margin-top: 4px;
+  box-shadow: none;
+}
+.mat-expansion-panel-header {
+  color: #232323;
+  font-family: 'TradeGothic', sans-serif;
+  font-weight: bold;
+  height: 40px !important;
+
+  .mat-expansion-panel-header-title {
+    font-size: 16px;
+    line-height: 1.81;
+  }
+
+  .mat-expansion-panel-header-description {
+    flex-grow: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-right: 0;
+    align-items: center;
+  }
+}
