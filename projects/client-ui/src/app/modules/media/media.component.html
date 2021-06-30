@@ -1,1 +1,16 @@
-<p>media works!</p>
+<app-page-top-banner [imageSrc]="'assets/images/media-banner.png'"></app-page-top-banner>
+<div class="media-page-content">
+  <div class="media-list">
+    <app-media-list [latestSections]="mediaList"></app-media-list>
+  </div>
+  <div class="categories-and-tags">
+    <div class="categories-list">
+      <h2>CATEGORIES</h2>
+      <app-media-categories [categoriesList]="categoriesList"></app-media-categories>
+    </div>
+    <div class="tags-list">
+      <h2>TAGS</h2>
+      <app-media-tags [tagsList]="tagsList"></app-media-tags>
+    </div>
+  </div>
+</div>

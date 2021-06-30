@@ -3,18 +3,25 @@ import { CommonModule } from '@angular/common';
 import { PageTopBannerComponent } from './components/page-top-banner/page-top-banner.component';
 import { TranslateLocalDirective } from './directives/translate-local.directive';
 import { ImageDescriptionCardComponent } from './components/image-description-card/image-description-card.component';
+import { CategoryItemComponent } from './components/category-item/category-item.component';
+import {MatExpansionModule, MatIconModule} from '@angular/material';
+import { TagItemComponent } from './components/tag-item/tag-item.component';
 
 
 
 @NgModule({
-  declarations: [PageTopBannerComponent, TranslateLocalDirective, ImageDescriptionCardComponent],
+  declarations: [PageTopBannerComponent, TranslateLocalDirective, ImageDescriptionCardComponent, CategoryItemComponent, TagItemComponent],
   exports: [
     TranslateLocalDirective,
     ImageDescriptionCardComponent,
-    PageTopBannerComponent
+    PageTopBannerComponent,
+    CategoryItemComponent,
+    TagItemComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatExpansionModule,
+    MatIconModule
   ]
 })
 export class SharedModule { }
