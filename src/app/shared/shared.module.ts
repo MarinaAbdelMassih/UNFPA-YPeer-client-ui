@@ -8,10 +8,11 @@ import { ImageDescriptionCardComponent } from './components/image-description-ca
 
 @NgModule({
   declarations: [PageTopBannerComponent, TranslateLocalDirective, ImageDescriptionCardComponent],
-    exports: [
-        TranslateLocalDirective,
-        ImageDescriptionCardComponent
-    ],
+  exports: [
+    TranslateLocalDirective,
+    ImageDescriptionCardComponent,
+    PageTopBannerComponent
+  ],
   imports: [
     CommonModule
   ]
