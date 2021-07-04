@@ -19,3 +19,35 @@
     }
   }
 }
+
+@media (max-width: 850px) {
+  .media-page-content {
+    .categories-and-tags {
+      padding-left: 5px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .media-page-content {
+    flex-direction: column;
+    align-items: center;
+    .media-list {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+    .categories-and-tags {
+      width: 60%;
+      padding: 0;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .media-page-content {
+    .categories-and-tags {
+      width: 90%;
+    }
+  }
+}
