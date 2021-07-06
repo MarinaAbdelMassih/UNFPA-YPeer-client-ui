@@ -2,13 +2,16 @@
   <div class="image-container">
     <img [src]="imageSrc" alt="latest from ypeer">
   </div>
-  <div class="description-container">
-    <h3 class="type" [translateLocal]="type"></h3>
+  <div class="description-container" [ngStyle]="{'height': resources ? '365px' : '344px' }">
+    <h3 class="type" [ngStyle]="{'width': resources ? '114px' : '54px' }" [translateLocal]="type"></h3>
     <h2 class="title" [translateLocal]="title"></h2>
     <h3 class="date" [translateLocal]="date"></h3>
     <p class="description" [translateLocal]="description"></p>
     <div class="more">
       <img src="assets/images/icons/more-icon.png" alt="more" (click)="clickMore()">
+    </div>
+    <div *ngIf="buttonAppear">
+    <button class="ypeer-btn btn-outlined" [translateLocal]="{EN: 'View PDF', AR: 'عرض ملف PDF'}"></button>
     </div>
   </div>
 </div>

@@ -1,0 +1,16 @@
+<app-page-top-banner [imageSrc]="'assets/images/resources-banner.png'"></app-page-top-banner>
+<div class="resources-page-content">
+  <div class="resources-list">
+    <app-resources-list [latestResources]="resourcesList"></app-resources-list>
+  </div>
+  <div class="categories-and-tags">
+    <div class="categories-list">
+      <h2>CATEGORIES</h2>
+      <app-resources-categories [categoriesList]="categoriesList"></app-resources-categories>
+    </div>
+    <div class="tags-list">
+      <h2>TAGS</h2>
+      <app-resources-tags [tagsList]="tagsList"></app-resources-tags>
+    </div>
+  </div>
+</div>

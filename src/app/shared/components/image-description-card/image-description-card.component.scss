@@ -3,15 +3,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .description-container {
     width: 359px;
-    height: 344px;
+    //height: 344px;
     padding: 20px 22px 19px 20px;
     object-fit: contain;
     background-color: #ffffff;
     margin-top: -26px;
+
     .type {
-      width: 54px;
+      //width: 54px;
       height: 28px;
       display: flex;
       justify-content: center;
@@ -22,6 +24,7 @@
       color: #FFFFFF;
       margin-bottom: 15px;
     }
+
     .title {
       font-size: 22px;
       font-weight: bold;
@@ -29,21 +32,38 @@
       color: #232323;
       margin-bottom: 20px;
     }
+
     .date {
       font-size: 12px;
       line-height: 1.25;
       color: #929292;
       margin-bottom: 25px;
     }
+
     .description {
       font-size: 16px;
       line-height: 1.5;
       color: #232323;
       margin-bottom: 20px;
     }
+
+    .ypeer-btn {
+      width: 171px;
+      height: 46px;
+      color: #FFFFFF;
+      background-color: #5a3f99;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'TradeGothic', sans-serif;
+      font-size: 16px;
+      margin-top: 15px;
+    }
+
     .more {
       display: flex;
       justify-content: flex-end;
+
       img {
         cursor: pointer;
       }
