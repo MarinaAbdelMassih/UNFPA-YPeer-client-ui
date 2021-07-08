@@ -1,0 +1,16 @@
+<app-page-top-banner [imageSrc]="'assets/images/events-banner.png'"></app-page-top-banner>
+<div class="news-page-content">
+  <div class="news-list">
+    <app-news-list [newsLists]="newsList"></app-news-list>
+  </div>
+  <div class="categories-and-tags">
+    <div class="categories-list">
+<!--            <h2>CATEGORIES</h2>-->
+      <app-news-categories [categoriesList]="categoriesList"></app-news-categories>
+    </div>
+    <div class="tags-list">
+      <h2>TAGS</h2>
+      <app-news-tags [tagsList]="tagsList"></app-news-tags>
+    </div>
+  </div>
+</div>
