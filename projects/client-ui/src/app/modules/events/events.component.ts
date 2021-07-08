@@ -9,7 +9,7 @@ export class EventsComponent implements OnInit {
   eventsList = [
     {
       id: 1,
-      label: {EN: 'events', AR: 'الأحداث'},
+      label: {EN: 'Events', AR: 'الأحداث'},
       title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
       description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
       date: {EN: 'Jan 12, 2021', AR: ''},
@@ -17,7 +17,7 @@ export class EventsComponent implements OnInit {
     },
     {
       id: 2,
-      label: {EN: 'events', AR: 'الأحداث'},
+      label: {EN: 'Events', AR: 'الأحداث'},
       title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
       description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
       date: {EN: 'Jan 12, 2021', AR: ''},
@@ -25,7 +25,7 @@ export class EventsComponent implements OnInit {
     },
     {
       id: 3,
-      label: {EN: 'events', AR: 'الأحداث'},
+      label: {EN: 'Events', AR: 'الأحداث'},
       title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
       description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
       date: {EN: 'Jan 12, 2021', AR: ''},
@@ -33,7 +33,7 @@ export class EventsComponent implements OnInit {
     },
     {
       id: 4,
-      label: {EN: 'events', AR: 'الأحداث'},
+      label: {EN: 'Events', AR: 'الأحداث'},
       title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
       description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
       date: {EN: 'Jan 12, 2021', AR: ''},
@@ -41,7 +41,7 @@ export class EventsComponent implements OnInit {
     },
     {
       id: 5,
-      label: {EN: 'events', AR: 'الأحداث'},
+      label: {EN: 'Events', AR: 'الأحداث'},
       title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
       description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
       date: {EN: 'Jan 12, 2021', AR: ''},
@@ -49,7 +49,7 @@ export class EventsComponent implements OnInit {
     },
     {
       id: 6,
-      label: {EN: 'events', AR: 'الأحداث'},
+      label: {EN: 'Events', AR: 'الأحداث'},
       title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
       description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
       date: {EN: 'Jan 12, 2021', AR: ''},
@@ -57,7 +57,7 @@ export class EventsComponent implements OnInit {
     },
     {
       id: 7,
-      label: {EN: 'events', AR: 'الأحداث'},
+      label: {EN: 'Events', AR: 'الأحداث'},
       title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
       description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
       date: {EN: 'Jan 12, 2021', AR: ''},
@@ -65,7 +65,7 @@ export class EventsComponent implements OnInit {
     },
     {
       id: 8,
-      label: {EN: 'events', AR: 'الأحداث'},
+      label: {EN: 'Events', AR: 'الأحداث'},
       title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
       description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
       date: {EN: 'Jan 12, 2021', AR: ''},
