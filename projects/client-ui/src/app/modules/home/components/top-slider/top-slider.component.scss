@@ -1,4 +1,5 @@
 .slider-container {
+  margin-top: 77px;
   .slider-item {
     .banner-image {
       img {
@@ -42,11 +43,11 @@
       background: transparent;
       border: none;
       position: absolute;
-      top: 50%;
+      top: 46%;
       cursor: pointer;
     }
     .btn-next {
-      right: 60px;
+      right: 10px;
     }
     .btn-prev {
       left: 20px;
