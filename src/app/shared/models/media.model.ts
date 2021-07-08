@@ -23,7 +23,7 @@ export class MediaModel implements mediaContent{
 
   constructor(mediaData: any) {
     this.mediaList = MediaModel.setMediaList(mediaData.mediaListCollection.items);
-    this.tags = MediaModel.setTags(mediaData.tagsCollection.items);
+    this.tags = MediaModel.setTags(mediaData.mediaTagsCollection.items);
   }
 
   private static setMediaList(mediaListItems: any[]): mediaListItem[]{
@@ -43,7 +43,7 @@ export class MediaModel implements mediaContent{
     return tags.map((tag) => {
       return {
         id: tag.id,
-        name: tag.name
+        name: {AR: tag.nameAr, EN: tag.nameEn}
     }
     });
   }
