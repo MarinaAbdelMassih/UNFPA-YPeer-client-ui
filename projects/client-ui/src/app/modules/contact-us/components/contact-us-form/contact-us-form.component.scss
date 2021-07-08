@@ -1,0 +1,67 @@
+.form-container {
+  padding-top: 104px;
+  padding-left: 68px;
+
+  h3 {
+    margin-bottom: 41px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #2e2e2e;
+  }
+  h5 {
+    font-size: 11px;
+    color: #2e2e2e;
+  }
+
+  input, mat-select, textarea {
+    width: 547px;
+    //width: 100%;
+    height: 46px;
+    padding: 15px;
+    opacity: 0.8;
+    border: solid 1px #a4a4a4;
+    background-color: #ffffff;
+    margin-bottom: 12px;
+
+    &::placeholder, ::ng-deep.mat-select-placeholder {
+      font-size: 14px;
+      color: #b1b1b1;
+    }
+  }
+
+  textarea {
+    height: 100%;
+  }
+
+  .radio-button-container {
+    display: flex;
+    margin-bottom: 23px;
+
+    p {
+      font-size: 14px;
+      color: #2e2e2e;
+      padding-right: 63px;
+    }
+
+    ::ng-deep.mat-radio-label-content {
+      padding-right: 35px;
+    }
+    ::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+      border-color: #5a3f99;
+    }
+
+     ::ng-deep.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+
+      background-color: #5a3f99;
+    }
+  }
+  button {
+    font-size: 16px;
+    text-align: center;
+    color: #ffffff;
+    width: 171px;
+    height: 46px;
+    background-color: #5a3f99;
+    border: 1px solid transparent;
+  }
+}

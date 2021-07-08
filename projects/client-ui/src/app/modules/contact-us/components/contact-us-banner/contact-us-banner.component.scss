@@ -1,0 +1,47 @@
+.banner-container {
+  //width: 100%;
+  height: 718px;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  .banner-details {
+    width: 601px;
+    height: 277px;
+    background-color: #FFFFFF;
+    opacity: 0.8;
+    padding: 48px 53px;
+    margin-bottom: 68px;
+
+    h3 {
+      font-family: 'TradeGothic', sans-serif;
+      font-size: 30px;
+      font-weight: bold;
+      color: #2e2e2e;
+      padding-bottom: 39px;
+      margin-bottom: 0;
+    }
+
+    p {
+      font-family: 'TradeGothic', sans-serif;
+      font-size: 16px;
+      color: #2e2e2e;
+      padding-bottom: 49px;
+      margin-bottom: 0;
+    }
+
+  }
+}
+
+@media (max-width: 991px) {
+  //.banner-container {
+  //  width: 100%;
+  //}
+}
+
+//@media (min-width: 426px) and (max-width: 1250px) {
+//  .banner-container {
+//    width: 100%;
+//  }
+//}
