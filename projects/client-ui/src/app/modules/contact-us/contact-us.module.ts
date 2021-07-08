@@ -6,7 +6,7 @@ import { ContactUsComponent } from './contact-us.component';
 import { ContactUsBannerComponent } from './components/contact-us-banner/contact-us-banner.component';
 import { ContactUsFormComponent } from './components/contact-us-form/contact-us-form.component';
 import {CoreModule} from '../../../../../../src/app/core/core.module';
-import {MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule} from '@angular/material';
+import {MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule} from '@angular/material';
 
 
 @NgModule({
@@ -18,7 +18,8 @@ import {MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule} fro
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCheckboxModule
   ]
 })
 export class ContactUsModule { }
