@@ -3,26 +3,26 @@
   <form class="contact-form">
     <div class="input-name">
       <div class="input-title ">
-        <mat-select placeholder="title">
+        <mat-select [translateLocal]="{EN: 'Title', AR: 'اللقب'}">
           <mat-option *ngFor="let title of titles" [value]="title.value">
             {{title.viewValue}}
           </mat-option>
         </mat-select>
       </div>
-      <input matInput placeholder="First Name" class="input-fName">
-<!--      [translatePlaceholderLocal]="{AR:'الإسم الاول', EN:'First Name'}"-->
-      <input matInput placeholder="Last Name" class="input-lName">
+      <input matInput class="input-fName" [translatePlaceholderLocal]="{AR:'الإسم الاول', EN:'First Name'}"
+      >
+      <input matInput class="input-lName" [translatePlaceholderLocal]="{AR:'الإسم العائلة', EN:'Last Name'}">
     </div>
-    <input matInput placeholder="Email" class="email">
-    <input matInput placeholder="Subject" class="subject">
+    <input matInput placeholder="" class="email"  [translatePlaceholderLocal]="{AR:'البريد الإلكترونى', EN:'Email'}">
+    <input matInput placeholder="Subject" class="subject"  [translatePlaceholderLocal]="{AR:'موضوع الرسالة', EN:'Subject'}">
     <div>
-      <mat-select placeholder="Select an option" class="select-option">
+      <mat-select [translateLocal]="{AR:'اختر', EN:'Select an option'}" class="select-option">
         <mat-option *ngFor="let option of options" [value]="option.value">
           {{option.viewValue}}
         </mat-option>
       </mat-select>
     </div>
-    <textarea matInput placeholder="Your Message" rows="4" class="mb-0"></textarea>
+    <textarea matInput  [translatePlaceholderLocal]="{AR:'الرسالة', EN:'Your Message'}" placeholder="" rows="4" class="mb-0"></textarea>
     <div class="radio-button-container">
       <p [translateLocal]="{EN: 'Do you require a response?', AR: 'هل تتوقع رد على الرسالة!'}"></p>
       <mat-radio-group aria-label="Select an option">
