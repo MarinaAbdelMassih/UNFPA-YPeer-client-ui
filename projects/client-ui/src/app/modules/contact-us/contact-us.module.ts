@@ -7,6 +7,7 @@ import { ContactUsBannerComponent } from './components/contact-us-banner/contact
 import { ContactUsFormComponent } from './components/contact-us-form/contact-us-form.component';
 import {CoreModule} from '../../../../../../src/app/core/core.module';
 import {MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule} from '@angular/material';
+import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule, M
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    SharedModule
   ]
 })
 export class ContactUsModule { }

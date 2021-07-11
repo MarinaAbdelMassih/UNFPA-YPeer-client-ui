@@ -24,7 +24,6 @@
   .input-title {
     //width: 99px;
     width: 20%;
-    margin-right: 29px;
   }
 
   .input-fName, .input-lName {
@@ -32,6 +31,10 @@
     width: 40%;
     margin-right: 30px;
 
+  }
+
+  .input-fName {
+    margin-left: 29px;
   }
 
   .input-lName {
@@ -58,14 +61,16 @@
   .select-option {
     margin-bottom: 10px;
   }
+
   .subject {
     margin-bottom: 11px;
   }
 
-  .email{
+  .email {
     margin-bottom: 12px;
   }
-  .input-name{
+
+  .input-name {
     display: flex;
     margin-bottom: 11px;
   }
@@ -78,6 +83,16 @@
     height: 100%;
   }
 
+  .robot-container {
+    width: 287px;
+    height: 69px;
+    border: solid 1px #e7e7e7;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
   .radio-button-container {
     display: flex;
     margin-bottom: 23px;
@@ -87,13 +102,11 @@
     p {
       font-size: 14px;
       color: #2e2e2e;
-      padding-right: 63px;
+      //padding-right: 63px;
       margin-bottom: 0;
     }
 
-    ::ng-deep.mat-radio-label-content {
-      padding-right: 35px;
-    }
+
 
     ::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
       border-color: #5a3f99;
@@ -104,6 +117,7 @@
       background-color: #5a3f99;
     }
   }
+
   ::ng-deep.mat-checkbox-layout {
     margin-bottom: 0;
   }
@@ -129,6 +143,34 @@
     .contact-form {
       width: 90%;
       margin: auto;
+    }
+  }
+}
+
+
+::ng-deep {
+  [dir="ltr"] {
+    .form-container {
+      .radio-button-container {
+        p {
+          padding-right: 63px;
+        }
+        ::ng-deep.mat-radio-label-content {
+          padding-right: 35px;
+        }
+      }
+    }
+  }
+  [dir="rtl"] {
+    .form-container {
+      .radio-button-container {
+        p {
+          padding-left: 63px;
+        }
+        ::ng-deep.mat-radio-label-content {
+          padding-left: 35px;
+        }
+      }
     }
   }
 }
