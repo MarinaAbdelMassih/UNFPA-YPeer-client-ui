@@ -17,13 +17,13 @@ export interface tag {
   name: {AR: string, EN: string};
 }
 
-export class resourcesModel implements resourcesContent{
+export class ResourcesModel implements resourcesContent{
   resourcesList: resourcesListItem[];
   tags: tag[];
 
   constructor(resourcesData: any) {
-    this.resourcesList = resourcesModel.setResourcesList(resourcesData.resourcesListCollection.items);
-    this.tags = resourcesModel.setTags(resourcesData.resourcesTagsCollection.items);
+    this.resourcesList = ResourcesModel.setResourcesList(resourcesData.resourcesListCollection.items);
+    this.tags = ResourcesModel.setTags(resourcesData.resourcesTagsCollection.items);
   }
 
   private static setResourcesList(resourcesListItems: any[]): resourcesListItem[]{
