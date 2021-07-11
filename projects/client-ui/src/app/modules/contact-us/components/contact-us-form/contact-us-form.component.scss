@@ -104,6 +104,9 @@
       background-color: #5a3f99;
     }
   }
+  ::ng-deep.mat-checkbox-layout {
+    margin-bottom: 0;
+  }
 
   button {
     font-size: 16px;
