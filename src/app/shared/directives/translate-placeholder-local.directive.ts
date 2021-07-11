@@ -3,11 +3,11 @@ import {Subscription} from 'rxjs';
 import {LanguageService} from '../services/language.service';
 
 @Directive({
-  selector: '[appTranslatePlaceholderLocal]'
+  selector: '[translatePlaceholderLocal]'
 })
 export class TranslatePlaceholderLocalDirective implements OnInit, OnDestroy {
-  @Input('translatePlaceholderLocal') translateLocalObject: { AR: string, EN: string };
 
+  @Input('translatePlaceholderLocal') translateLocalObject: { AR: string, EN: string };
   private subscribe: Subscription;
 
   constructor(private el: ElementRef, private languageService: LanguageService) {
