@@ -57,10 +57,12 @@
       color: #b1b1b1;
     }
   }
+
   .mat-select {
     font-size: 14px;
     color: #b1b1b1;
   }
+
   .select-option {
     margin-bottom: 10px;
   }
@@ -110,7 +112,6 @@
     }
 
 
-
     ::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
       border-color: #5a3f99;
     }
@@ -154,22 +155,27 @@
 ::ng-deep {
   [dir="ltr"] {
     .form-container {
+      font-family: 'TradeGothic', sans-serif;
       .radio-button-container {
         p {
           padding-right: 63px;
         }
+
         ::ng-deep.mat-radio-label-content {
           padding-right: 35px;
         }
       }
     }
   }
+
   [dir="rtl"] {
     .form-container {
+      font-family: 'SegoeUI', sans-serif;
       .radio-button-container {
         p {
           padding-left: 63px;
         }
+
         ::ng-deep.mat-radio-label-content {
           padding-left: 35px;
         }
