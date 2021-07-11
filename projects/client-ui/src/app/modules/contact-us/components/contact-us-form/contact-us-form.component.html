@@ -1,23 +1,29 @@
 <div class="form-container">
   <h3>Leave Us a Message</h3>
-
   <form class="contact-form">
-    <div class="d-flex">
-      <input matInput placeholder="Email" class="input-title ">
+    <div class="input-name">
+      <div  class="input-title ">
+        <mat-select placeholder="Title">
+          <mat-option *ngFor="let title of titles" [value]="title.value">
+            {{title.viewValue}}
+          </mat-option>
+        </mat-select>
+      </div>
+<!--      <input matInput placeholder="Title">-->
       <input matInput placeholder="First Name" class="input-fName">
-      <input matInput placeholder="Last Name" class="input-lName ">
+      <input matInput placeholder="Last Name" class="input-lName">
 
     </div>
-    <input matInput placeholder="Email">
-    <input matInput placeholder="Subject">
+    <input matInput placeholder="Email" class="email">
+    <input matInput placeholder="Subject" class="subject">
     <div>
-      <mat-select placeholder="Select an option">
+      <mat-select placeholder="Select an option" class="select-option">
         <mat-option *ngFor="let option of options" [value]="option.value">
           {{option.viewValue}}
         </mat-option>
       </mat-select>
     </div>
-    <textarea matInput placeholder="Your Message" rows="4"></textarea>
+    <textarea matInput placeholder="Your Message" rows="4" class="mb-0"></textarea>
     <div class="radio-button-container">
       <p>Do you require a response?</p>
       <mat-radio-group aria-label="Select an option">
