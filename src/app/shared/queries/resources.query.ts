@@ -17,7 +17,7 @@ export const ResourcesQuery = `{
         }
       }
     }
-    mediaTagsCollection {
+    resourcesTagsCollection {
       items {
         id
         nameAr
