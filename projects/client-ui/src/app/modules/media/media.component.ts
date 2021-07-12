@@ -17,7 +17,7 @@ export class MediaComponent implements OnInit {
     {title: 'News' , count: 50, hideToggle: true},
     {title: 'Events' , count: 23, hideToggle: true},
     {title: 'Stories' , count: 18, hideToggle: true},
-    {title: 'Year', hideToggle: false},
+    {title: 'Year', hideToggle: false, yearsList: [2018, 2019, 2020,2021,2022]},
   ];
 
   constructor(private mediaResolverService: MediaResolverService) { }

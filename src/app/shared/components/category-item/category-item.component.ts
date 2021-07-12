@@ -9,10 +9,12 @@ export class CategoryItemComponent implements OnInit {
   @Input() hideToggle: boolean;
   @Input() title: string;
   @Input() count: number;
+  @Input() yearsList: [];
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.yearsList)
   }
 
 }
