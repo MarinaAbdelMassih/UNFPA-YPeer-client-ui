@@ -1,7 +1,7 @@
 export const ResourcesQuery = `{
   resources(id: "235ganKFtCNMU9TEgbvcMQ"){
   title
-    mediaListCollection {
+    resourcesListCollection {
       items {
         id
         labelEn
@@ -17,7 +17,7 @@ export const ResourcesQuery = `{
         }
       }
     }
-    mediaTagsCollection {
+    resourcesTagsCollection {
       items {
         id
         nameAr
