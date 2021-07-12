@@ -1,7 +1,7 @@
 <app-page-top-banner [imageSrc]="'assets/images/resources-banner.png'"></app-page-top-banner>
 <div class="resources-page-content">
   <div class="resources-list">
-    <app-resources-list [latestResources]="resourcesList"></app-resources-list>
+    <app-resources-list *ngIf="resourcesData" [latestResources]="resourcesData.resourcesList"></app-resources-list>
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">
@@ -10,7 +10,7 @@
     </div>
     <div class="tags-list">
       <h2>TAGS</h2>
-      <app-resources-tags [tagsList]="tagsList"></app-resources-tags>
+      <app-resources-tags *ngIf="resourcesData" [tagsList]="resourcesData.tags"></app-resources-tags>
     </div>
   </div>
 </div>
