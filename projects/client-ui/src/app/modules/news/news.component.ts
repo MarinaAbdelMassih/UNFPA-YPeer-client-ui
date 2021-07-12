@@ -74,8 +74,7 @@ export class NewsComponent implements OnInit {
   ];
 
   categoriesList = [
-    {title: 'Previous News', count: 50, hideToggle: true},
-    {title: 'Upcoming News', count: 23, hideToggle: true},
+    {title: 'Year', hideToggle: false},
   ];
 
   tagsList = [
