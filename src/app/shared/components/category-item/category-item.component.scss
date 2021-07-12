@@ -22,3 +22,18 @@
     align-items: center;
   }
 }
+
+.mat-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  .mat-list-item {
+    cursor: pointer;
+    height: 35px;
+    width: 71px;
+    border-radius: 20px;
+  }
+  .mat-list-item:hover {
+    background-color: #c1c1c1;
+  }
+}

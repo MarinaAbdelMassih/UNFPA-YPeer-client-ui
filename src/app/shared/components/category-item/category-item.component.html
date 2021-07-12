@@ -7,5 +7,7 @@
         {{count}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <ng-content></ng-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let year of yearsList">{{year}}</mat-list-item>
+    </mat-list>
   </mat-expansion-panel>
