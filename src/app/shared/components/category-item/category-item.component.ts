@@ -14,7 +14,6 @@ export class CategoryItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.yearsList)
   }
 
 }
