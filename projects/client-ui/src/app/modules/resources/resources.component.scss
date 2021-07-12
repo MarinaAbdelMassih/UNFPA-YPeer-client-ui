@@ -10,7 +10,6 @@
     .categories-list, .tags-list {
       margin-bottom: 43px;
       h2 {
-        font-family: 'TradeGothic', sans-serif;
         font-size: 22px;
         color: #232323;
         font-weight: bold;
@@ -48,6 +47,15 @@
   .resources-page-content {
     .categories-and-tags {
       width: 90%;
+    }
+  }
+}
+
+[dir = rtl] {
+  .resources-page-content {
+    .categories-and-tags {
+      padding-right: 45px;
+      padding-left: unset;
     }
   }
 }

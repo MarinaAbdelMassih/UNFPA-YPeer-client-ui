@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ResourcesResolverService} from '../../../../../../src/app/shared/services/resources-resolver.service';
 import {resourcesContent} from '../../../../../../src/app/shared/models/resources.model';
 import {Subscription} from 'rxjs';
@@ -6,7 +6,9 @@ import {Subscription} from 'rxjs';
 @Component({
   selector: 'app-resources',
   templateUrl: './resources.component.html',
-  styleUrls: ['./resources.component.scss']
+  styleUrls: ['./resources.component.scss'],
+  encapsulation: ViewEncapsulation.None
+
 })
 export class ResourcesComponent implements OnInit {
 
