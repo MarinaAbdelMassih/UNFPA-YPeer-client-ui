@@ -14,6 +14,12 @@ const routes: Routes = [
     path: 'media',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/media/media.module').then(mod => mod.MediaModule),
+  },
+
+  {
+    path: 'trainings',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/trainings/trainings.module').then(mod => mod.TrainingsModule),
   }
 ];
 
