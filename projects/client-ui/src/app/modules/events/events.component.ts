@@ -74,7 +74,7 @@ export class EventsComponent implements OnInit {
   ];
 
   categoriesList = [
-    {title: 'Previous Events', count: 50, hideToggle: true},
+    {title:  'Previous Events', count: 50, hideToggle: true},
     {title: 'Upcoming Events', count: 23, hideToggle: true},
   ];
 
