@@ -32,7 +32,6 @@ export class MediaComponent implements OnInit {
       this.mediaData = undefined;
       setTimeout(() => {
         this.mediaData = mediaData;
-        console.log(mediaData)
       }, 200)
 
     });
