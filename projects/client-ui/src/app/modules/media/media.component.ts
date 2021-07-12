@@ -1,43 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {mediaContent} from '../../../../../../src/app/shared/models/media.model';
+import {MediaResolverService} from '../../../../../../src/app/shared/services/media-resolver.service';
 
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
-  styleUrls: ['./media.component.scss']
+  styleUrls: ['./media.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MediaComponent implements OnInit {
-  mediaList = [
-    {id: 1, label: {EN: 'News', AR: 'أخبار'}, title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''}, description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ', AR: ''}, date: {EN: '', AR: ''}, image: './assets/images/latest-1.png' },
-    {id: 2, label: {EN: 'News', AR: 'أخبار'}, title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''}, description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ', AR: ''}, date: {EN: '', AR: ''}, image: './assets/images/latest-1.png' },
-    {id: 3, label: {EN: 'News', AR: 'أخبار'}, title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''}, description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ', AR: ''}, date: {EN: '', AR: ''}, image: './assets/images/latest-1.png' },
-    {id: 4, label: {EN: 'News', AR: 'أخبار'}, title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''}, description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ', AR: ''}, date: {EN: '', AR: ''}, image: './assets/images/latest-1.png' },
-    {id: 5, label: {EN: 'News', AR: 'أخبار'}, title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''}, description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ', AR: ''}, date: {EN: '', AR: ''}, image: './assets/images/latest-1.png' },
-    {id: 6, label: {EN: 'News', AR: 'أخبار'}, title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''}, description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ', AR: ''}, date: {EN: '', AR: ''}, image: './assets/images/latest-1.png' },
-    {id: 7, label: {EN: 'News', AR: 'أخبار'}, title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''}, description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ', AR: ''}, date: {EN: '', AR: ''}, image: './assets/images/latest-1.png' },
-    {id: 8, label: {EN: 'News', AR: 'أخبار'}, title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''}, description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ', AR: ''}, date: {EN: '', AR: ''}, image: './assets/images/latest-1.png' },
-    {id: 9, label: {EN: 'News', AR: 'أخبار'}, title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''}, description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ', AR: ''}, date: {EN: '', AR: ''}, image: './assets/images/latest-1.png' },
-    {id: 10, label: {EN: 'News', AR: 'أخبار'}, title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''}, description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ', AR: ''}, date: {EN: '', AR: ''}, image: './assets/images/latest-1.png' }
-  ];
+
+  private subscriptions: Subscription[] = [];
+  mediaData: mediaContent;
 
   categoriesList = [
     {title: 'News' , count: 50, hideToggle: true},
     {title: 'Events' , count: 23, hideToggle: true},
     {title: 'Stories' , count: 18, hideToggle: true},
-    {title: 'Year', hideToggle: false},
+    {title: 'Year', hideToggle: false, yearsList: [2018, 2019, 2020,2021,2022]},
   ];
 
-  tagsList = [
-    {id: 1, name: {EN: 'productive health', AR: ''}},
-    {id: 2, name: {EN: 'sexual health', AR: ''}},
-    {id: 3, name: {EN: 'maternal health', AR: ''}},
-    {id: 4, name: {EN: 'gender-based violence', AR: ''}},
-    {id: 5, name: {EN: 'family planning', AR: ''}},
-  ];
-
-
-  constructor() { }
+  constructor(private mediaResolverService: MediaResolverService) { }
 
   ngOnInit() {
+    this.getMediaData();
+  }
+
+  getMediaData(): void {
+    let mediaSub = this.mediaResolverService.resolve().subscribe((mediaData: mediaContent) => {
+      this.mediaData = undefined;
+      setTimeout(() => {
+        this.mediaData = mediaData;
+        console.log(mediaData)
+      }, 200)
+
+    });
+    this.subscriptions.push(mediaSub);
   }
 
 }

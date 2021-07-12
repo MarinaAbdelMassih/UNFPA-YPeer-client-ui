@@ -18,14 +18,18 @@
         margin-top: 100px;
         color: white;
         .head-line {
-          font-size: 80px;
-          font-weight: bold;
           margin-bottom: 21px;
+          h1 {
+            font-size: 80px;
+            font-weight: bold;
+          }
         }
         .sub-title {
-          font-size: 28px;
-          font-weight: bold;
           margin-bottom: 12px;
+          h2 {
+            font-size: 28px;
+            font-weight: bold;
+          }
         }
         .text {
           font-size: 22px;
@@ -42,11 +46,11 @@
       background: transparent;
       border: none;
       position: absolute;
-      top: 50%;
+      top: 46%;
       cursor: pointer;
     }
     .btn-next {
-      right: 60px;
+      right: 10px;
     }
     .btn-prev {
       left: 20px;

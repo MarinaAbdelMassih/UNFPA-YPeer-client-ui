@@ -39,8 +39,58 @@
   src: url(assets/fonts/Trade-Gothic-LT.ttf) format("truetype")
 }
 
-a, button, h1, h2, h3, h4, h5, h6, p, div, span {
-  font-family: 'TradeGothic', sans-serif;
+@font-face {
+  font-family: DroidKufiBold;
+  font-display: block;
+  src: url(assets/fonts/DroidKufi-Bold.ttf) format("truetype")
+}
+
+@font-face {
+  font-family: DroidKufiRegular;
+  font-display: block;
+  src: url(assets/fonts/DroidKufi-Regular.ttf) format("truetype")
+}
+
+@font-face {
+  font-family: SegoeUI;
+  font-display: block;
+  src: url(assets/fonts/SegoeUI.ttf) format("truetype")
+}
+
+@font-face {
+  font-family: SegoeUIBold;
+  font-display: block;
+  src: url(assets/fonts/SegoeUI-Bold.ttf) format("truetype")
+}
+
+@font-face {
+  font-family: SegoeUIBoldItalic;
+  font-display: block;
+  src: url(assets/fonts/SegoeUI-Bold-Italic.ttf) format("truetype")
+}
+
+@font-face {
+  font-family: SegoeUIItalic;
+  font-display: block;
+  src: url(assets/fonts/SegoeUI-Italic.ttf) format("truetype")
+}
+
+* {
+  [dir="ltr"] {
+    a, button, h1, h2, h3, h4, h5, h6, p, div, span {
+      font-family: 'TradeGothic', sans-serif;
+    }
+  }
+
+  [dir="rtl"] {
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'DroidKufiBold', sans-serif;
+    }
+
+    a, button, p, div, span {
+      font-family: 'SegoeUI', sans-serif;
+    }
+  }
 }
 
 html, body { height: 100%; }
