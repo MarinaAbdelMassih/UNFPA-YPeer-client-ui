@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {mediaContent} from '../../../../../../src/app/shared/models/media.model';
 import {MediaResolverService} from '../../../../../../src/app/shared/services/media-resolver.service';
@@ -6,7 +6,8 @@ import {MediaResolverService} from '../../../../../../src/app/shared/services/me
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
-  styleUrls: ['./media.component.scss']
+  styleUrls: ['./media.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MediaComponent implements OnInit {
 
