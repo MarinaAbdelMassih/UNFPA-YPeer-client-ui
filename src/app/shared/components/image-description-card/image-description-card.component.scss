@@ -3,6 +3,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .image-container {
+    img {
+      width: 100%;
+    }
+  }
   .description-container {
     width: 359px;
     height: 344px;
@@ -11,7 +16,7 @@
     background-color: #ffffff;
     margin-top: -26px;
     .type {
-      width: 54px;
+      width: max-content;
       height: 28px;
       display: flex;
       justify-content: center;
@@ -21,6 +26,7 @@
       line-height: 1.25;
       color: #FFFFFF;
       margin-bottom: 15px;
+      padding: 13px;
     }
     .title {
       font-size: 22px;
@@ -47,6 +53,21 @@
       img {
         cursor: pointer;
       }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .card-container {
+    .image-container {
+      display: flex;
+      justify-content: center;
+      img {
+        width: 90%;
+      }
+    }
+    .description-container {
+      width: 80%;
     }
   }
 }
