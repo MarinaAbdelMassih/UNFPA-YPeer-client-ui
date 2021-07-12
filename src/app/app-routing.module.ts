@@ -20,6 +20,12 @@ const routes: Routes = [
     path: 'resources',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/resources/resources.module').then(mod => mod.ResourcesModule),
+  },
+
+  {
+    path: 'events',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/events/events.module').then(mod => mod.EventsModule),
   }
 ];
 
