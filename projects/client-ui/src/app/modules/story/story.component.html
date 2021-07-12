@@ -6,12 +6,12 @@
   <div class="categories-and-tags">
     <div class="categories-list">
       <div class="d-flex justify-content-between">
-        <h2>CATEGORIES</h2>
-        <a>clear</a>
+        <h2  [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>
+        <a [translateLocal]="{EN: 'clear', AR: 'مسح'}"></a>
       </div>      <app-story-categories [categoriesList]="categoriesList"></app-story-categories>
     </div>
     <div class="tags-list">
-      <h2>TAGS</h2>
+      <h2 [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>
       <app-story-tags [tagsList]="tagsList"></app-story-tags>
     </div>
   </div>
