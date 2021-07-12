@@ -12,6 +12,7 @@ export class ImageDescriptionCardComponent implements OnInit {
   @Input() title: TranslationModel;
   @Input() date: TranslationModel;
   @Input() description: TranslationModel;
+  @Input() publications: boolean;
   @Output() moreClicked: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
