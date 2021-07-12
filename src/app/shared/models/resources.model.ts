@@ -23,7 +23,7 @@ export class ResourcesModel implements resourcesContent{
 
   constructor(resourcesData: any) {
     this.resourcesList = ResourcesModel.setResourcesList(resourcesData.resourcesListCollection.items);
-    this.tags = ResourcesModel.setTags(resourcesData.resourcesTagsCollection.items);
+    this.tags = ResourcesModel.setTags(resourcesData.mediaTagsCollection.items);
   }
 
   private static setResourcesList(resourcesListItems: any[]): resourcesListItem[]{
