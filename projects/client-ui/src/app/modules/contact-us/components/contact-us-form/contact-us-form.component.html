@@ -3,7 +3,7 @@
   <form class="contact-form">
     <div class="input-name">
       <div class="input-title ">
-        <mat-select [translateLocal]="{EN: 'Title', AR: 'اللقب'}">
+        <mat-select [translateLocal]="{EN: 'Title', AR: 'اللقب'}" class="title-select">
           <mat-option *ngFor="let title of titles" [value]="title.value">
             {{title.viewValue}}
           </mat-option>

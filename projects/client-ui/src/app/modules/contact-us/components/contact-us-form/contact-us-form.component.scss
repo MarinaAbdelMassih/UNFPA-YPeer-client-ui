@@ -156,6 +156,15 @@
   [dir="ltr"] {
     .form-container {
       font-family: 'TradeGothic', sans-serif;
+
+      h5, input, mat-select, textarea {
+        font-family: 'TradeGothic', sans-serif;
+      }
+      .input-fName , .input-lName ,.title-select {
+        font-family: 'TradeGothic', sans-serif;
+      }
+
+
       .radio-button-container {
         p {
           padding-right: 63px;
@@ -171,6 +180,14 @@
   [dir="rtl"] {
     .form-container {
       font-family: 'SegoeUI', sans-serif;
+
+      h5, input, mat-select, textarea {
+        font-family: 'SegoeUI', sans-serif;
+      }
+      .input-fName , .input-lName , .title-select{
+        font-family: 'TradeGothic', sans-serif;
+      }
+
       .radio-button-container {
         p {
           padding-left: 63px;
