@@ -5,12 +5,12 @@
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">
-      <h2>CATEGORIES</h2>
+      <h2 [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>
       <app-media-categories [categoriesList]="categoriesList"></app-media-categories>
     </div>
     <div class="tags-list">
-      <h2>TAGS</h2>
-      <app-media-tags *ngIf="mediaData" [tagsList]="mediaData.tags"></app-media-tags>
+      <h2 *ngIf="mediaData" [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>
+      <app-media-tags  *ngIf="mediaData" [tagsList]="mediaData.tags"></app-media-tags>
     </div>
   </div>
 </div>
