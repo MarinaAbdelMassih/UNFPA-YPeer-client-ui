@@ -74,8 +74,7 @@ export class StoryComponent implements OnInit {
   ];
 
   categoriesList = [
-    {title: 'Previous Story', count: 50, hideToggle: true},
-    {title: 'Upcoming Story', count: 23, hideToggle: true},
+    {title: 'Year', hideToggle: false},
   ];
 
   tagsList = [
