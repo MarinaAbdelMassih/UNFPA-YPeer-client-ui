@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {newsContent} from '../../../../../../src/app/shared/models/news.model';
 import {NewsResolverService} from '../../../../../../src/app/shared/services/news-resolver.service';
+import {CategoryModel} from '../../../../../../src/app/shared/models/category.model';
 
 @Component({
   selector: 'app-news',
@@ -14,8 +15,8 @@ export class NewsComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   newsData: newsContent;
 
-  categoriesList = [
-    {title: 'Year', hideToggle: false, yearsList: [2018, 2019, 2020,2021,2022]},
+  categoriesList: CategoryModel[] = [
+    {title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [2018, 2019, 2020,2021,2022]},
   ];
 
   constructor(private newsResolverService: NewsResolverService) { }
