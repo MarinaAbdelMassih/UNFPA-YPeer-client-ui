@@ -11,7 +11,7 @@ export class CategoryItemComponent implements OnInit {
   @Input() hideToggle: boolean;
   @Input() title: TranslationModel;
   @Input() count: number;
-  @Input() yearsList: [];
+  @Input() yearsList: number[];
   @Input() url: string;
 
   constructor(private router: Router) { }
