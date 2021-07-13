@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-story',
-  templateUrl: './story.component.html',
-  styleUrls: ['./story.component.scss']
+  templateUrl: './stories.component.html',
+  styleUrls: ['./stories.component.scss']
 })
-export class StoryComponent implements OnInit {
+export class StoriesComponent implements OnInit {
   storyList = [
     {
       id: 1,

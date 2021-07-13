@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {StoryComponent} from './story.component';
+import {StoriesComponent} from './stories.component';
 
 
 const routes: Routes = [
   {
-    path: '', pathMatch: 'full', component: StoryComponent
+    path: '', pathMatch: 'full', component: StoriesComponent
   }
 ];
 
@@ -13,5 +13,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class StoryRoutingModule {
+export class StoriesRoutingModule {
 }

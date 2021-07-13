@@ -2,10 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-story-categories',
-  templateUrl: './story-categories.component.html',
-  styleUrls: ['./story-categories.component.scss']
+  templateUrl: './stories-categories.component.html',
+  styleUrls: ['./stories-categories.component.scss']
 })
-export class StoryCategoriesComponent implements OnInit {
+export class StoriesCategoriesComponent implements OnInit {
   @Input() categoriesList;
   constructor() { }
 
