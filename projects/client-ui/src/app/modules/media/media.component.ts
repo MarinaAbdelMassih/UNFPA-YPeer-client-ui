@@ -38,4 +38,15 @@ export class MediaComponent implements OnInit {
     this.subscriptions.push(mediaSub);
   }
 
+  filterByTag(tagLabel) {
+    let mediaFilterSub = this.mediaResolverService.getFilteredData(tagLabel).subscribe((mediaFilteredData: mediaContent) => {
+      this.mediaData = undefined;
+      setTimeout(() => {
+        this.mediaData = mediaFilteredData;
+      }, 200)
+
+    });
+    this.subscriptions.push(mediaFilterSub);
+  }
+
 }

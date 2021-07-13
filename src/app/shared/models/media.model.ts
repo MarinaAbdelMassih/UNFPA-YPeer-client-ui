@@ -15,6 +15,7 @@ export interface mediaListItem {
 export interface tag {
   id: number;
   name: {AR: string, EN: string};
+  label: string;
 }
 
 export class MediaModel implements mediaContent{
@@ -43,6 +44,7 @@ export class MediaModel implements mediaContent{
     return tags.map((tag) => {
       return {
         id: tag.id,
+        label: tag.label,
         name: {AR: tag.nameAr, EN: tag.nameEn}
     }
     });
