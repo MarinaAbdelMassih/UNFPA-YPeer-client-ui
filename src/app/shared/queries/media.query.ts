@@ -12,6 +12,7 @@ export const MediaQuery = `{
         descriptionAr
         dateEn
         dateAr
+        tagLabel
         image {
           url
         }
@@ -22,7 +23,40 @@ export const MediaQuery = `{
         id
         nameAr
         nameEn
+        label
       }
     }
   }
 }`;
+
+export const MediaTagsQuery = (tagLabel: string) => {
+  return `{
+  mediaListCollection(where: {
+    tagLabel: "${tagLabel}"
+  }){
+   items {
+        id
+        labelEn
+        labelAr
+        titleEn
+        titleAr
+        descriptionEn
+        descriptionAr
+        dateEn
+        dateAr
+        tagLabel
+        image {
+          url
+        }
+      }
+  }
+   mediaTagsCollection {
+      items {
+        id
+        nameAr
+        nameEn
+        label
+      }
+    }
+}`;
+};

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {mediaContent, MediaModel} from '../models/media.model';
 import {Observable} from 'rxjs';
 import {DataHandlerService} from './data-handler.service';
-import {MediaQuery} from '../queries/media.query';
+import {MediaQuery, MediaTagsQuery} from '../queries/media.query';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,19 @@ export class MediaResolverService {
           subscriber.next(this.mediaData);
         },() => subscriber.next(null));
       }
+    });
+  }
+
+  getFilteredData(tagLabel): Observable<mediaContent> {
+    let result;
+    return new Observable<mediaContent> (subscriber=> {
+        this.dataHandlerService.getRemoteDataWithoutSave(MediaTagsQuery(tagLabel), (res) => {
+           result = res;
+        }).then(() => {
+          this.mediaData = new MediaModel({title: 'Media', mediaListCollection: result.data.mediaListCollection,
+            mediaTagsCollection: result.data.mediaTagsCollection});
+          subscriber.next(this.mediaData);
+        },() => subscriber.next(null));
     });
   }
 }
