@@ -1,4 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {newsContent} from '../../../../../../src/app/shared/models/news.model';
+import {NewsResolverService} from '../../../../../../src/app/shared/services/news-resolver.service';
 
 @Component({
   selector: 'app-news',
@@ -7,88 +10,29 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class NewsComponent implements OnInit {
-  newsList = [
-    {
-      id: 1,
-      label: {EN: 'News', AR: 'الأحداث'},
-      title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
-      description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
-      date: {EN: 'Jan 12, 2021', AR: ''},
-      image: './assets/images/latest-1.png'
-    },
-    {
-      id: 2,
-      label: {EN: 'News', AR: 'الأحداث'},
-      title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
-      description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
-      date: {EN: 'Jan 12, 2021', AR: ''},
-      image: './assets/images/latest-2.png'
-    },
-    {
-      id: 3,
-      label: {EN: 'News', AR: 'الأحداث'},
-      title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
-      description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
-      date: {EN: 'Jan 12, 2021', AR: ''},
-      image: './assets/images/latest-1.png'
-    },
-    {
-      id: 4,
-      label: {EN: 'News', AR: 'الأحداث'},
-      title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
-      description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
-      date: {EN: 'Jan 12, 2021', AR: ''},
-      image: './assets/images/latest-2.png'
-    },
-    {
-      id: 5,
-      label: {EN: 'News', AR: 'الأحداث'},
-      title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
-      description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
-      date: {EN: 'Jan 12, 2021', AR: ''},
-      image: './assets/images/latest-1.png'
-    },
-    {
-      id: 6,
-      label: {EN: 'News', AR: 'الأحداث'},
-      title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
-      description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
-      date: {EN: 'Jan 12, 2021', AR: ''},
-      image: './assets/images/latest-2.png'
-    },
-    {
-      id: 7,
-      label: {EN: 'News', AR: 'الأحداث'},
-      title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
-      description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
-      date: {EN: 'Jan 12, 2021', AR: ''},
-      image: './assets/images/latest-1.png'
-    },
-    {
-      id: 8,
-      label: {EN: 'News', AR: 'الأحداث'},
-      title: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite', AR: ''},
-      description: {EN: 'Lorem ipsum dolor sit amet, consecrated advising elite, sed do emus temper incident ut labor ', AR: ''},
-      date: {EN: 'Jan 12, 2021', AR: ''},
-      image: './assets/images/latest-2.png'
-    }
-  ];
+
+  private subscriptions: Subscription[] = [];
+  newsData: newsContent;
 
   categoriesList = [
     {title: 'Year', hideToggle: false, yearsList: [2018, 2019, 2020,2021,2022]},
   ];
 
-  tagsList = [
-    {id: 1, name: {EN: 'productive health', AR: 'صحة منتجة'}},
-    {id: 2, name: {EN: 'sexual health', AR: 'الصحة الجنسية'}},
-    {id: 3, name: {EN: 'maternal health', AR: 'الصحه الذهنيه'}},
-    {id: 4, name: {EN: 'gender-based violence', AR: 'العنف القائم على النوع الاجتماعي'}},
-    {id: 5, name: {EN: 'family planning', AR: 'خطة العائلة'}},
-  ];
-
-  constructor() { }
+  constructor(private newsResolverService: NewsResolverService) { }
 
   ngOnInit() {
+    this.getNewsData();
+  }
+
+  getNewsData(): void {
+    let newsSub = this.newsResolverService.resolve().subscribe((newsData: newsContent) => {
+      this.newsData = undefined;
+      setTimeout(() => {
+        this.newsData = newsData;
+      }, 200)
+
+    });
+    this.subscriptions.push(newsSub);
   }
 
 }
