@@ -20,6 +20,12 @@ const routes: Routes = [
     path: 'resources',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/resources/resources.module').then(mod => mod.ResourcesModule),
+  },
+
+  {
+    path: 'contactUs',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/contact-us/contact-us.module').then(mod => mod.ContactUsModule),
   }
 ];
 
