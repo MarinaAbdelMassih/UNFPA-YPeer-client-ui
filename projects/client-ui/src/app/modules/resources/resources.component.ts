@@ -33,7 +33,6 @@ export class ResourcesComponent implements OnInit {
       this.resourcesData = undefined;
       setTimeout(() => {
         this.resourcesData = resourcesData;
-        console.log(resourcesData)
       }, 200)
 
     });

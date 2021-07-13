@@ -31,7 +31,6 @@ export class EventsComponent implements OnInit {
       this.eventsData = undefined;
       setTimeout(() => {
         this.eventsData = eventsData;
-        console.log(eventsData);
       }, 200)
 
     });
