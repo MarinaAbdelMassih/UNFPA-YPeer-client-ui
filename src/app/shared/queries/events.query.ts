@@ -1,5 +1,5 @@
 export const EventsQuery = `{
-  events(id: "235ganKFtCNMU9TEgbvcMQ"){
+  events(id: "2LKmVhrKWdUCkBcgJMD4KU"){
   title
     eventsListCollection {
       items {
