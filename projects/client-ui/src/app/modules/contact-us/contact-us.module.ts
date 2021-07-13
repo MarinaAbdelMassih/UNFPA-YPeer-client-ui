@@ -8,6 +8,7 @@ import { ContactUsFormComponent } from './components/contact-us-form/contact-us-
 import {CoreModule} from '../../../../../../src/app/core/core.module';
 import {MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule} from '@angular/material';
 import {SharedModule} from '../../../../../../src/app/shared/shared.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {SharedModule} from '../../../../../../src/app/shared/shared.module';
     MatSelectModule,
     MatRadioModule,
     MatCheckboxModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class ContactUsModule { }
