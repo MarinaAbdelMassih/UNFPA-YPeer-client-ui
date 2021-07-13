@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import * as events from 'events';
 
 @Component({
   selector: 'app-contact-us-form',
@@ -24,7 +25,6 @@ export class ContactUsFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.submitContactForm();
     this.contactForm = this.fb.group({
       titles: ['', [Validators.required]],
       fName: ['', [Validators.required, Validators.maxLength(10)]],
@@ -33,6 +33,8 @@ export class ContactUsFormComponent implements OnInit {
       subject: ['', [Validators.required, Validators.maxLength(25)]],
       options: ['', [Validators.required]],
       massage: ['', [Validators.required, Validators.maxLength(50)]],
+      response: ['', [Validators.required]],
+      robotOr: ['', [Validators.required]],
     });
   }
 
@@ -41,6 +43,10 @@ export class ContactUsFormComponent implements OnInit {
   }
 
   changeOption(e) {
+    console.log(e.target.value);
+  }
+
+  changeResponse(e) {
     console.log(e.target.value);
   }
 }
