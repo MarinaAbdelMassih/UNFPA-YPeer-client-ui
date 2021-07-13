@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {CategoryModel} from '../../../../../../../../src/app/shared/models/category.model';
 
 @Component({
   selector: 'app-resources-categories',
@@ -6,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./resources-categories.component.scss']
 })
 export class ResourcesCategoriesComponent implements OnInit {
-  @Input() categoriesList;
+  @Input() categoriesList: CategoryModel[];
 
   constructor() {
   }

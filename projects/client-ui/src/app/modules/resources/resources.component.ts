@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ResourcesResolverService} from '../../../../../../src/app/shared/services/resources-resolver.service';
 import {resourcesContent} from '../../../../../../src/app/shared/models/resources.model';
 import {Subscription} from 'rxjs';
+import {CategoryModel} from '../../../../../../src/app/shared/models/category.model';
 
 @Component({
   selector: 'app-resources',
@@ -15,10 +16,10 @@ export class ResourcesComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   resourcesData: resourcesContent;
 
-  categoriesList = [
-    {title: 'Training Manuals', count: 50, hideToggle: true},
-    {title: 'Publications', count: 23, hideToggle: true},
-    {title: 'Year', hideToggle: false, yearsList: [2018, 2019, 2020,2021,2022]},
+  categoriesList: CategoryModel[] = [
+    {title: {EN: 'Training Manuals', AR: 'دليل التدريب'}, count: 50, hideToggle: true},
+    {title: {EN: 'Publications', AR: 'المنشورات'}, count: 23, hideToggle: true},
+    {title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [2018, 2019, 2020,2021,2022]},
   ];
 
   constructor(private resourcesResolverService: ResourcesResolverService) {
