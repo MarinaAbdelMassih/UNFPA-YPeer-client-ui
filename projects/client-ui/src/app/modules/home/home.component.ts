@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
       this.homeData = undefined;
       setTimeout(() => {
         this.homeData = homeData;
-        console.log(homeData)
       }, 200)
 
     });
