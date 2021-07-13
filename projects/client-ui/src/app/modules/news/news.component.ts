@@ -74,7 +74,7 @@ export class NewsComponent implements OnInit {
   ];
 
   categoriesList = [
-    {title: 'Year', hideToggle: false},
+    {title: 'Year', hideToggle: false, yearsList: [2018, 2019, 2020,2021,2022]},
   ];
 
   tagsList = [
