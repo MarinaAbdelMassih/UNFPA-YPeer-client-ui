@@ -23,9 +23,21 @@ const routes: Routes = [
   },
 
   {
-    path: 'contactUs',
+    path: 'events',
     pathMatch: 'full',
-    loadChildren: () => import('../../projects/client-ui/src/app/modules/contact-us/contact-us.module').then(mod => mod.ContactUsModule),
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/events/events.module').then(mod => mod.EventsModule),
+  },
+
+  {
+    path: 'news',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/news/news.module').then(mod => mod.NewsModule),
+  },
+
+  {
+    path: 'stories',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/stories/stories.module').then(mod => mod.StoriesModule),
   }
 ];
 

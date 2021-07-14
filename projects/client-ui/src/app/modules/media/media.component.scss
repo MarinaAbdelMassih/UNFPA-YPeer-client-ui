@@ -3,6 +3,7 @@
   padding: 56px 46px 72px 46px;
   .media-list {
     width: 70%;
+    padding: 0 25px;
   }
   .categories-and-tags {
     width: 30%;
@@ -14,6 +15,14 @@
         color: #232323;
         font-weight: bold;
         margin-bottom: 28px;
+      }
+      a {
+        font-size: 12px;
+        line-height: 1.75;
+        color: #673bb8;
+        text-decoration: underline;
+        height: max-content;
+        cursor: pointer;
       }
     }
   }

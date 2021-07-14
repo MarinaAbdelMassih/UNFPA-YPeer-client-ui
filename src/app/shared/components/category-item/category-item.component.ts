@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {TranslationModel} from '../../models/translation.model';
 
 @Component({
   selector: 'app-category-item',
@@ -7,13 +9,20 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CategoryItemComponent implements OnInit {
   @Input() hideToggle: boolean;
-  @Input() title: string;
+  @Input() title: TranslationModel;
   @Input() count: number;
-  @Input() yearsList: [];
+  @Input() yearsList: number[];
+  @Input() url: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  goToSelectedPage(): void {
+    if (this.url) {
+      this.router.navigate([this.url]);
+    }
   }
 
 }

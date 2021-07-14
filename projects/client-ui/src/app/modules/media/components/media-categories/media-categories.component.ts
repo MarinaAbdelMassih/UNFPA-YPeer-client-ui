@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {CategoryModel} from '../../../../../../../../src/app/shared/models/category.model';
 
 @Component({
   selector: 'app-media-categories',
@@ -7,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class MediaCategoriesComponent implements OnInit {
 
-  @Input() categoriesList;
+  @Input() categoriesList: CategoryModel[];
 
   constructor() { }
 

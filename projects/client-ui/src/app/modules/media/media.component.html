@@ -5,7 +5,10 @@
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">
-      <h2 [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>
+      <div class="d-flex justify-content-between">
+        <h2 [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>
+        <a [translateLocal]="{EN: 'clear', AR: 'مسح'}"></a>
+      </div>
       <app-media-categories [categoriesList]="categoriesList"></app-media-categories>
     </div>
     <div class="tags-list">
