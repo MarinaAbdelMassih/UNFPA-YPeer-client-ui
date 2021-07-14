@@ -1,18 +1,22 @@
 .story-section {
   display: flex;
+
   .story-container {
     padding: 79px 83px 112px 78px;
+
     .story-title {
       font-size: 32px;
       color: #2e2e2e;
       font-weight: bold;
       line-height: 1.19;
     }
+
     .story-sub-title {
       font-size: 16px;
       color: #2e2e2e;
       line-height: 1.19;
     }
+
     .title-hr {
       width: 45px;
       height: 6px;
@@ -20,11 +24,13 @@
       margin-top: 23px;
       margin-bottom: 30px;
     }
+
     .story-script {
       font-size: 16px;
       color: #2e2e2e;
       line-height: 1.5;
     }
+
     .ypeer-btn-purple {
       margin-top: 70px;
     }
@@ -36,6 +42,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     .story-container {
       display: flex;
       flex-direction: column;
@@ -53,3 +60,4 @@
     }
   }
 }
+
