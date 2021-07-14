@@ -60,3 +60,34 @@ export const MediaTagsQuery = (tagLabel: string) => {
     }
 }`;
 };
+
+export const MediaPageQuery = (skip: number, limit: number) => {
+  return `{
+  mediaListCollection (skip: ${skip}, limit: ${limit}, order: id_ASC){
+   items {
+        id
+        labelEn
+        labelAr
+        titleEn
+        titleAr
+        descriptionEn
+        descriptionAr
+        dateEn
+        dateAr
+        tagLabel
+        image {
+          url
+        }
+      }
+      total
+  }
+   mediaTagsCollection {
+      items {
+        id
+        nameAr
+        nameEn
+        label
+      }
+    }
+}`;
+};

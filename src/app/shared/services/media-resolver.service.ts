@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {mediaContent, MediaModel} from '../models/media.model';
 import {Observable} from 'rxjs';
 import {DataHandlerService} from './data-handler.service';
-import {MediaQuery, MediaTagsQuery} from '../queries/media.query';
+import {MediaPageQuery, MediaQuery, MediaTagsQuery} from '../queries/media.query';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ import {MediaQuery, MediaTagsQuery} from '../queries/media.query';
 export class MediaResolverService {
 
   private mediaData: mediaContent;
+
   constructor(private dataHandlerService: DataHandlerService) { }
 
   resolve(): Observable<mediaContent> {
@@ -37,6 +38,19 @@ export class MediaResolverService {
             mediaTagsCollection: result.data.mediaTagsCollection});
           subscriber.next(this.mediaData);
         },() => subscriber.next(null));
+    });
+  }
+
+  getPageData(skip: number, limit: number): Observable<mediaContent> {
+    let result;
+    return new Observable<mediaContent> (subscriber=> {
+      this.dataHandlerService.getRemoteDataWithoutSave(MediaPageQuery(skip, limit), (res) => {
+        result = res;
+      }).then(() => {
+        this.mediaData = new MediaModel({title: 'Media', mediaListCollection: result.data.mediaListCollection,
+          mediaTagsCollection: result.data.mediaTagsCollection});
+        subscriber.next(this.mediaData);
+      },() => subscriber.next(null));
     });
   }
 }

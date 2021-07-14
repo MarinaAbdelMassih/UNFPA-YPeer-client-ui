@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {mediaContent} from '../../../../../../src/app/shared/models/media.model';
+import {mediaContent, mediaListItem} from '../../../../../../src/app/shared/models/media.model';
 import {MediaResolverService} from '../../../../../../src/app/shared/services/media-resolver.service';
 
 @Component({
@@ -13,6 +13,8 @@ export class MediaComponent implements OnInit {
 
   private subscriptions: Subscription[] = [];
   mediaData: mediaContent;
+  mediaList: mediaListItem[] = [];
+  showLoadMore: boolean =true;
 
   categoriesList = [
     {title: 'News' , count: 50, hideToggle: true},
@@ -28,25 +30,35 @@ export class MediaComponent implements OnInit {
   }
 
   getMediaData(): void {
-    let mediaSub = this.mediaResolverService.resolve().subscribe((mediaData: mediaContent) => {
+    let mediaSub = this.mediaResolverService.getPageData(this.mediaList.length, 2).subscribe((mediaData: mediaContent) => {
       this.mediaData = undefined;
       setTimeout(() => {
         this.mediaData = mediaData;
+        this.mediaList = this.mediaList.concat(mediaData.mediaList);
+        this.showLoadMore = this.mediaList.length < this.mediaData.mediaListTotal;
       }, 200)
 
     });
     this.subscriptions.push(mediaSub);
   }
 
+
   filterByTag(tagLabel) {
     let mediaFilterSub = this.mediaResolverService.getFilteredData(tagLabel).subscribe((mediaFilteredData: mediaContent) => {
       this.mediaData = undefined;
       setTimeout(() => {
         this.mediaData = mediaFilteredData;
+        this.mediaList = mediaFilteredData.mediaList;
+        this.showLoadMore = false;
       }, 200)
 
     });
     this.subscriptions.push(mediaFilterSub);
+  }
+
+  clearData() {
+    this.mediaList = [];
+    this.getMediaData();
   }
 
 }
