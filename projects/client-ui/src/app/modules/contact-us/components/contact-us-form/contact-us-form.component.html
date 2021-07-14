@@ -2,14 +2,14 @@
   <h3 [translateLocal]="{EN: 'Leave Us a Message', AR: 'اترك لنا رسالة'}"></h3>
   <form class="contact-form" [formGroup]="contactForm" (ngSubmit)='submitContactForm()'>
     <div class="first-inputs-row ">
-      <div class="w-20">
-        <mat-select formControlName="titles" placeholder="title" class="title-select">
+      <div class="mat-select-container w-20">
+        <mat-select formControlName="titles"  [translatePlaceholderLocal]="{AR:'اللقب', EN:'title'}"  class="title-select">
           <mat-option *ngFor="let title of titles" [value]="title.name">
             {{title.name}}
           </mat-option>
         </mat-select>
       </div>
-      <div class="w-40">
+      <div class="input-container w-40">
         <input matInput class="input-fName" type="text" name="fName" formControlName="fName"
                [translatePlaceholderLocal]="{AR:'الإسم الاول', EN:'First Name'}">
 
@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <div class="w-40">
+      <div class="input-container w-40">
         <input matInput class="input-fName" type="text" name="lName" formControlName="lName"
                [translatePlaceholderLocal]="{AR:'الإسم الاخير', EN:'Last Name'}">
 
@@ -37,37 +37,7 @@
         </div>
       </div>
     </div>
-
-    <!--          <div>-->
-    <!--            <input matInput class="input-lName" type="text" name="lName" formControlName="lName"-->
-    <!--                               [translatePlaceholderLocal]="{AR:'الإسم الاخير', EN:'Last Name'}" >-->
-    <!--          </div>-->
-    <!--          <div class="error-label">-->
-    <!--          <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"-->
-    <!--                  *ngIf="contactForm.get('lName').touched && contactForm.get('lName').errors?.required">-->
-    <!--          </span>-->
-    <!--            <div class="text-danger" [translateLocal]="{AR: 'اسم الاخير خاطئ',EN: 'Invalid Last Name'}"-->
-    <!--                               *ngIf="contactForm.get('lName').hasError('pattern')">-->
-    <!--            </div>-->
-    <!--          </div>-->
-
-
-    <!--          <div class="">-->
-    <!--            <input matInput class="input-fName" type="text" name="fName" formControlName="fName"-->
-    <!--                   [translatePlaceholderLocal]="{AR:'الإسم الاخير', EN:'Last Name'}" >-->
-    <!--          </div>-->
-    <!--          <div class="error-label">-->
-    <!--            <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"-->
-    <!--                  *ngIf="contactForm.get('lName').touched && contactForm.get('lName').errors?.required">-->
-    <!--            </span>-->
-    <!--            <div class="text-danger" [translateLocal]="{AR: 'اسم الاخير خاطئ',EN: 'Invalid Last Name'}"-->
-    <!--                 *ngIf="contactForm.get('lName').hasError('pattern')">-->
-    <!--            </div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-
-    <!--    start -->
-    <div>
+    <div class="input-container">
       <input matInput type="email" name="email" formControlName="email" class="email"
              [translatePlaceholderLocal]="{AR:'البريد الإلكترونى', EN:'Email'}">
     </div>
@@ -79,8 +49,7 @@
            *ngIf="contactForm.get('email').touched && contactForm.get('email').errors?.email">
       </div>
     </div>
-
-    <div>
+    <div class="input-container">
       <input matInput
              type="text" name="subject" formControlName="subject"
              placeholder="Subject"
@@ -95,16 +64,14 @@
            *ngIf="contactForm.get('subject').hasError('pattern')">
       </div>
     </div>
-
-    <div class="">
-      <mat-select placeholder="select an option" class="select-option" (change)="changeOption($event)">
+    <div class="mat-select-container">
+      <mat-select [translatePlaceholderLocal]="{AR:'اختر', EN:'select an option'}"  class="select-option" (change)="changeOption($event)">
         <mat-option *ngFor="let option of options" [value]="option.value">
           {{option.viewValue}}
         </mat-option>
       </mat-select>
     </div>
-
-    <div>
+    <div class="input-container">
       <textarea matInput
                 type="text" name="massage" formControlName="massage"
                 [translatePlaceholderLocal]="{AR:'الرسالة', EN:'Your Message'}"
@@ -117,10 +84,6 @@
         </span>
       </div>
     </div>
-
-    <!--end-->
-
-
     <div class="radio-button-container">
       <p [translateLocal]="{EN: 'Do you require a response?', AR: 'هل تتوقع رد على الرسالة!'}"></p>
       <mat-radio-group aria-label="Select an option" formControlName="response">
