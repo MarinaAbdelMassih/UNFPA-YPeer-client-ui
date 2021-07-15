@@ -16,7 +16,7 @@
     background-color: #ffffff;
     margin-top: -26px;
     .type {
-      width: 54px;
+      width: max-content;
       height: 28px;
       display: flex;
       justify-content: center;
@@ -26,6 +26,7 @@
       line-height: 1.25;
       color: #FFFFFF;
       margin-bottom: 15px;
+      padding: 13px;
     }
     .title {
       font-size: 22px;

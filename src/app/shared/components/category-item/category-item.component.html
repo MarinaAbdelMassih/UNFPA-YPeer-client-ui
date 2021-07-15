@@ -1,11 +1,12 @@
-  <mat-expansion-panel [hideToggle]="hideToggle" [disabled]="hideToggle">
+  <mat-expansion-panel [hideToggle]="hideToggle" [disabled]="hideToggle" (click)="goToSelectedPage()">
     <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{title}}
+      <mat-panel-title [translateLocal]="title">
       </mat-panel-title>
       <mat-panel-description *ngIf="count">
         {{count}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <ng-content></ng-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let year of yearsList">{{year}}</mat-list-item>
+    </mat-list>
   </mat-expansion-panel>
