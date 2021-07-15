@@ -3,7 +3,7 @@
   <form class="contact-form" [formGroup]="contactForm" (ngSubmit)='submitContactForm()'>
     <div class="first-inputs-row ">
       <div class="mat-select-container w-20">
-        <mat-select formControlName="titles" class="title-select" [placeholder]="isArabic ? 'اللقب' : 'Title'">
+        <mat-select formControlName="titles" class="title-select" [placeholder]="isArabic ? 'الوظيفة' : 'Title'">
           <mat-option *ngFor="let title of titles" [value]="title.name">
             {{title.name}}
           </mat-option>
@@ -11,13 +11,13 @@
       </div>
       <div class="input-container w-40">
         <input matInput class="input-fName" type="text" name="fName" formControlName="fName"
-               [placeholder]="isArabic ? 'الإسم الاول' : 'First Name'">
+               [placeholder]="isArabic ? 'الاسم الأول ' : 'First Name'">
 
         <div class="error-label">
           <div class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
                *ngIf="contactForm.get('fName').touched && contactForm.get('fName').errors?.required">
           </div>
-          <div class="text-danger" [translateLocal]="{AR: 'اسم الاول خاطئ',EN: 'Invalid First Name'}"
+          <div class="text-danger" [translateLocal]="{AR: 'الاسم الأول خاطئ',EN: 'Invalid First Name'}"
                *ngIf="contactForm.get('fName').hasError('pattern')">
           </div>
         </div>
@@ -25,13 +25,13 @@
 
       <div class="input-container w-40">
         <input matInput class="input-fName" type="text" name="lName" formControlName="lName"
-               [placeholder]="isArabic ? 'الإسم الاخير' : 'Last Name'">
+               [placeholder]="isArabic ? 'الاسم الأخير' : 'Last Name'">
 
         <div class="error-label">
                 <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
                       *ngIf="contactForm.get('lName').touched && contactForm.get('lName').errors?.required">
                 </span>
-          <div class="text-danger" [translateLocal]="{AR: 'اسم الاخير خاطئ',EN: 'Invalid Last Name'}"
+          <div class="text-danger" [translateLocal]="{AR: 'الاسم الأخير خاطئ',EN: 'Invalid Last Name'}"
                *ngIf="contactForm.get('lName').hasError('pattern')">
           </div>
         </div>
@@ -39,26 +39,26 @@
     </div>
     <div class="input-container">
       <input matInput type="email" name="email" formControlName="email" class="email"
-             [placeholder]="isArabic ? 'البريد الإلكترونى' : 'Email'">
+             [placeholder]="isArabic ? 'البريد الالكتروني ' : 'Email'">
     </div>
     <div class="error-label">
           <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
                 *ngIf="contactForm.get('email').touched && contactForm.get('email').errors?.required">
           </span>
-      <div class="text-danger" [translateLocal]="{AR: 'بريد الكتروني خاطئ',EN: 'Invalid Email'}"
+      <div class="text-danger" [translateLocal]="{AR: 'البريد الالكتروني  خاطئ',EN: 'Invalid Email'}"
            *ngIf="contactForm.get('email').touched && contactForm.get('email').errors?.email">
       </div>
     </div>
     <div class="input-container">
       <input matInput
              type="text" name="subject" formControlName="subject" class="subject"
-             [placeholder]="isArabic ? 'الموضوع' : 'Subject'">
+             [placeholder]="isArabic ? 'عنوان الرسالة' : 'Subject'">
     </div>
     <div class="error-label">
           <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
                 *ngIf="contactForm.get('subject').touched && contactForm.get('subject').errors?.required">
           </span>
-      <div class="text-danger" [translateLocal]="{AR: ' الموضوع خاطئ',EN: 'Invalid subject '}"
+      <div class="text-danger" [translateLocal]="{AR: ' عنوان الرسالة خاطئ',EN: 'Invalid subject '}"
            *ngIf="contactForm.get('subject').hasError('pattern')">
       </div>
     </div>
@@ -71,7 +71,7 @@
     </div>
     <div class="input-container">
       <textarea matInput type="text" name="massage" formControlName="massage"
-                [placeholder]="isArabic ? 'الرسالة' : 'Your Message'" rows="4" class="mb-0">
+                [placeholder]="isArabic ? ' الرسالة' : 'Your Message'" rows="4" class="mb-0">
       </textarea>
       <div class="error-label">
         <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
