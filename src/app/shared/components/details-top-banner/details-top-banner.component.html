@@ -1,6 +1,6 @@
-<div class="details-banner" *ngFor="let detailBanner of detailsBanner" [ngStyle]="{'background-image': 'url(' + detailBanner.img + ')'}" >
+<div class="details-banner" [ngStyle]="{'background-image': 'url(' + detailsImageBanner + ')'}" >
  <div class="details-banner-container">
-  <h3 [translateLocal]="detailBanner.title"> </h3>
-  <p [translateLocal]="detailBanner.label"></p>
+  <h3 [translateLocal]="title"> </h3>
+  <p [translateLocal]="label"></p>
  </div>
 </div>
