@@ -1,5 +1,5 @@
-<app-page-top-banner [imageSrc]="'assets/images/news-banner.png'"></app-page-top-banner>
-<!--<app-details-top-banner [detailsImageBanner]="'assets/images/details-banner.png'" [title]="{EN: 'CATEGORIES', AR: 'التصنيفات'}" [label]="{EN: 'news', AR: ''}" ></app-details-top-banner>-->
+<!--<app-page-top-banner [imageSrc]="'assets/images/news-banner.png'"></app-page-top-banner>-->
+<app-details-top-banner [detailsImageBanner]="'assets/images/details-banner.png'" [title]="{EN: 'CATEGORIES', AR: 'التصنيفات'}" [label]="{EN: 'news', AR: ''}" ></app-details-top-banner>
 <div class="news-page-content">
   <div class="news-list">
     <app-news-list *ngIf="newsData" [newsLists]="newsData.newsList"></app-news-list>
