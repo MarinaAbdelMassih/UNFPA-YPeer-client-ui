@@ -19,12 +19,12 @@ export class NewsComponent implements OnInit {
     {title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [2018, 2019, 2020, 2021, 2022]},
   ];
 
-  detailsDataBanner = [{
-    img: './assets/images/details-banner.png',
-    title: {EN: 'Event Title (Long Long Title) Lorem Ipsum Dolor Sit Amet ', AR: ''},
-    label: {EN: 'Events', AR: 'الاحداث'},
-  }
-  ];
+  // detailsDataBanner = [{
+  //   img: './assets/images/details-banner.png',
+  //   title: {EN: 'Event Title (Long Long Title) Lorem Ipsum Dolor Sit Amet ', AR: ''},
+  //   label: {EN: 'Events', AR: 'الاحداث'},
+  // }
+  // ];
 
   constructor(private newsResolverService: NewsResolverService) {
   }

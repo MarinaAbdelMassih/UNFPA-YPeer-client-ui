@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./details-top-banner.component.scss']
 })
 export class DetailsTopBannerComponent implements OnInit {
-  @Input() data;
+  @Input() detailsBanner;
 
   constructor() {
   }
