@@ -31,9 +31,8 @@ export const MediaQuery = `{
 
 export const MediaTagsQuery = (tagLabel: string) => {
   return `{
-  mediaListCollection(where: {
-    tagLabel: "${tagLabel}"
-  }){
+  mediaListCollection(where: { tagLabel: "${tagLabel}"})
+  {
    items {
         id
         labelEn
@@ -45,6 +44,38 @@ export const MediaTagsQuery = (tagLabel: string) => {
         dateEn
         dateAr
         tagLabel
+        image {
+          url
+        }
+      }
+  }
+   mediaTagsCollection {
+      items {
+        id
+        nameAr
+        nameEn
+        label
+      }
+    }
+}`;
+};
+
+export const MediaYearsQuery = (year: number) => {
+  return `{
+  mediaListCollection (where: { year: ${year}})
+  {
+   items {
+        id
+        labelEn
+        labelAr
+        titleEn
+        titleAr
+        descriptionEn
+        descriptionAr
+        dateEn
+        dateAr
+        tagLabel
+        year
         image {
           url
         }
@@ -75,6 +106,7 @@ export const MediaPageQuery = (skip: number, limit: number) => {
         dateEn
         dateAr
         tagLabel
+        year
         image {
           url
         }

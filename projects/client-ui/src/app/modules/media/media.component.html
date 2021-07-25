@@ -9,7 +9,7 @@
         <h2 [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>
         <a (click)="clearData()" [translateLocal]="{EN: 'clear', AR: 'مسح'}"></a>
       </div>
-      <app-media-categories [categoriesList]="categoriesList"></app-media-categories>
+      <app-media-categories [categoriesList]="categoriesList" (yearClicked)="filterByYear($event)"></app-media-categories>
     </div>
     <div class="tags-list">
       <h2 *ngIf="mediaData" [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>

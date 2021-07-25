@@ -56,6 +56,19 @@ export class MediaComponent implements OnInit {
     this.subscriptions.push(mediaFilterSub);
   }
 
+  filterByYear(year) {
+    let mediaFilterSub = this.mediaResolverService.getFilteredDataByYear(year).subscribe((mediaFilteredData: mediaContent) => {
+      this.mediaData = undefined;
+      setTimeout(() => {
+        this.mediaData = mediaFilteredData;
+        this.mediaList = mediaFilteredData.mediaList;
+        this.showLoadMore = false;
+      }, 200)
+
+    });
+    this.subscriptions.push(mediaFilterSub);
+  }
+
   clearData() {
     this.mediaList = [];
     this.getMediaData();

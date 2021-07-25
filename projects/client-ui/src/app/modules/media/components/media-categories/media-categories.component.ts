@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-media-categories',
@@ -8,10 +8,15 @@ import {Component, Input, OnInit} from '@angular/core';
 export class MediaCategoriesComponent implements OnInit {
 
   @Input() categoriesList;
+  @Output() yearClicked: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  yearFilterClicked(year){
+    this.yearClicked.emit(year);
   }
 
 }
