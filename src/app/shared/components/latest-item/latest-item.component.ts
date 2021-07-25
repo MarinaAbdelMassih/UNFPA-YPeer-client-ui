@@ -6,7 +6,9 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./latest-item.component.scss']
 })
 export class LatestItemComponent implements OnInit {
-  @Input() latestItems;
+  @Input() image;
+  @Input() description;
+  @Input() date;
 
   constructor() { }
 

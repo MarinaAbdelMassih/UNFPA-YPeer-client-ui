@@ -1,4 +1,7 @@
 <app-page-top-banner [imageSrc]="'assets/images/news-banner.png'"></app-page-top-banner>
+<!--<app-latest-item [image]="'assets/images/news-banner.png'"-->
+<!--                 [description]="{EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ', AR: ''}"-->
+<!--                 [date]="{EN: 'Jan 12, 2021', AR: ''}"></app-latest-item>-->
 <div class="news-page-content">
   <div class="news-list">
     <app-news-list *ngIf="newsData" [newsLists]="newsData.newsList"></app-news-list>
