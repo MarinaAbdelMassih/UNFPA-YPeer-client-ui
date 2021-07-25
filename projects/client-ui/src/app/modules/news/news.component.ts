@@ -15,7 +15,13 @@ export class NewsComponent implements OnInit {
   newsData: newsContent;
 
   categoriesList = [
-    {title: 'Year', hideToggle: false, yearsList: [2018, 2019, 2020,2021,2022]},
+    {title: 'Year', hideToggle: false, yearsList: [
+        {year: 2018, selected: false},
+        {year: 2019, selected: false},
+        {year: 2020, selected: false},
+        {year: 2021, selected: false},
+        {year: 2022, selected: false}
+      ]},
   ];
 
   constructor(private newsResolverService: NewsResolverService) { }

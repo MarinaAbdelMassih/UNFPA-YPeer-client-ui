@@ -22,7 +22,13 @@ export class MediaComponent implements OnInit {
     {title: 'News' , count: 50, hideToggle: true},
     {title: 'Events' , count: 23, hideToggle: true},
     {title: 'Stories' , count: 18, hideToggle: true},
-    {title: 'Year', hideToggle: false, yearsList: [2018, 2019, 2020,2021,2022]},
+    {title: 'Year', hideToggle: false, yearsList: [
+        {year: 2018, selected: false},
+        {year: 2019, selected: false},
+        {year: 2020, selected: false},
+        {year: 2021, selected: false},
+        {year: 2022, selected: false}
+      ]},
   ];
 
   constructor(private mediaResolverService: MediaResolverService) { }
@@ -65,12 +71,12 @@ export class MediaComponent implements OnInit {
   }
 
   filterByYear(year) {
-    this.selectedYear = year;
+    this.selectedYear = year.year;
     if (this.selectedTag) {
       this.filterByYearAndTag(this.selectedYear, this.selectedTag);
     }
     else {
-      let mediaFilterSub = this.mediaResolverService.getFilteredDataByYear(year).subscribe((mediaFilteredData: mediaContent) => {
+      let mediaFilterSub = this.mediaResolverService.getFilteredDataByYear(year.year).subscribe((mediaFilteredData: mediaContent) => {
         this.mediaData = undefined;
         setTimeout(() => {
           this.mediaData = mediaFilteredData;
@@ -97,6 +103,7 @@ export class MediaComponent implements OnInit {
   }
 
   clearData() {
+    this.categoriesList[3].yearsList.map(year => year.selected = false);
     this.selectedYear = this.selectedTag = null;
     this.mediaList = [];
     this.getMediaData();

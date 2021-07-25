@@ -9,7 +9,7 @@ export class CategoryItemComponent implements OnInit {
   @Input() hideToggle: boolean;
   @Input() title: string;
   @Input() count: number;
-  @Input() yearsList: [];
+  @Input() yearsList: [{year: null, selected: false}];
   @Output() yearClicked: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
@@ -18,7 +18,9 @@ export class CategoryItemComponent implements OnInit {
   }
 
   yearFilterClicked(year){
+    this.yearsList.map(year => year.selected = false);
     this.yearClicked.emit(year);
+    year.selected = true;
   }
 
 }
