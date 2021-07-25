@@ -16,10 +16,13 @@ export class NewsComponent implements OnInit {
   newsData: newsContent;
 
   categoriesList: CategoryModel[] = [
-    {title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [2018, 2019, 2020,2021,2022]},
+    {title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [2018, 2019, 2020, 2021, 2022]},
   ];
 
-  constructor(private newsResolverService: NewsResolverService) { }
+  data = [];
+
+  constructor(private newsResolverService: NewsResolverService) {
+  }
 
   ngOnInit() {
     this.getNewsData();
@@ -30,7 +33,7 @@ export class NewsComponent implements OnInit {
       this.newsData = undefined;
       setTimeout(() => {
         this.newsData = newsData;
-      }, 200)
+      }, 200);
 
     });
     this.subscriptions.push(newsSub);
