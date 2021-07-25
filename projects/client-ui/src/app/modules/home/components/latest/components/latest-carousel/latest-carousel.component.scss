@@ -25,3 +25,33 @@
     right: auto;
   }
 }
+
+@media (max-width: 500px) {
+  .buttons-container {
+    .slider-button {
+      bottom: 570px;
+    }
+    .btn-next {
+      right: 10%;
+    }
+    .btn-prev {
+      right: 20%;
+    }
+  }
+}
+
+@media (max-width: 370px) {
+  .buttons-container {
+    .slider-button {
+      bottom: 550px;
+    }
+  }
+}
+
+@media (max-width: 330px) {
+  .buttons-container {
+    .slider-button {
+      bottom: 520px;
+    }
+  }
+}
