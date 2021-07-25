@@ -52,6 +52,7 @@ export class MediaComponent implements OnInit {
 
 
   filterByTag(tag) {
+    this.mediaResolverService.selectedTag.next(tag);
     this.selectedTag = tag.label;
     if (this.selectedYear) {
       this.filterByYearAndTag(this.selectedYear, this.selectedTag);
@@ -63,6 +64,9 @@ export class MediaComponent implements OnInit {
           this.mediaData = mediaFilteredData;
           this.mediaList = mediaFilteredData.mediaList;
           this.showLoadMore = false;
+          if(this.mediaResolverService.selectedTag.getValue()) {
+            this.mediaData.tags.find(tag => tag.id == this.mediaResolverService.selectedTag.getValue().id).selected = true;
+          }
         }, 200)
 
       });
@@ -96,6 +100,9 @@ export class MediaComponent implements OnInit {
         this.mediaData = mediaFilteredData;
         this.mediaList = mediaFilteredData.mediaList;
         this.showLoadMore = false;
+        if(this.mediaResolverService.selectedTag.getValue()) {
+          this.mediaData.tags.find(tag => tag.id == this.mediaResolverService.selectedTag.getValue().id).selected = true;
+        }
       }, 200)
 
     });

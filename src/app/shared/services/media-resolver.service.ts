@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {mediaContent, MediaModel} from '../models/media.model';
-import {Observable} from 'rxjs';
+import {mediaContent, MediaModel, tag} from '../models/media.model';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {DataHandlerService} from './data-handler.service';
 import {
   MediaPageQuery,
@@ -16,6 +16,7 @@ import {
 export class MediaResolverService {
 
   private mediaData: mediaContent;
+  selectedTag: BehaviorSubject<tag> = new BehaviorSubject<tag>(null);
 
   constructor(private dataHandlerService: DataHandlerService) { }
 
