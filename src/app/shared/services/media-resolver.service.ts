@@ -2,7 +2,13 @@ import { Injectable } from '@angular/core';
 import {mediaContent, MediaModel} from '../models/media.model';
 import {Observable} from 'rxjs';
 import {DataHandlerService} from './data-handler.service';
-import {MediaPageQuery, MediaQuery, MediaTagsQuery, MediaYearsQuery} from '../queries/media.query';
+import {
+  MediaPageQuery,
+  MediaQuery,
+  MediaTagsQuery,
+  MediaYearsAndTagsQuery,
+  MediaYearsQuery
+} from '../queries/media.query';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +51,19 @@ export class MediaResolverService {
     let result;
     return new Observable<mediaContent> (subscriber=> {
       this.dataHandlerService.getRemoteDataWithoutSave(MediaYearsQuery(year), (res) => {
+        result = res;
+      }).then(() => {
+        this.mediaData = new MediaModel({title: 'Media', mediaListCollection: result.data.mediaListCollection,
+          mediaTagsCollection: result.data.mediaTagsCollection});
+        subscriber.next(this.mediaData);
+      },() => subscriber.next(null));
+    });
+  }
+
+  getFilteredDataByYearAndTags(year, tag): Observable<mediaContent> {
+    let result;
+    return new Observable<mediaContent> (subscriber=> {
+      this.dataHandlerService.getRemoteDataWithoutSave(MediaYearsAndTagsQuery(year, tag), (res) => {
         result = res;
       }).then(() => {
         this.mediaData = new MediaModel({title: 'Media', mediaListCollection: result.data.mediaListCollection,

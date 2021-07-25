@@ -92,6 +92,40 @@ export const MediaYearsQuery = (year: number) => {
 }`;
 };
 
+export const MediaYearsAndTagsQuery = (year: number, tagLabel: string) => {
+  return `{
+  mediaListCollection (where:{
+  AND: [ {year: ${year}}, {tagLabel: "${tagLabel}"} ]
+  })
+  {
+   items {
+        id
+        labelEn
+        labelAr
+        titleEn
+        titleAr
+        descriptionEn
+        descriptionAr
+        dateEn
+        dateAr
+        tagLabel
+        year
+        image {
+          url
+        }
+      }
+  }
+   mediaTagsCollection {
+      items {
+        id
+        nameAr
+        nameEn
+        label
+      }
+    }
+}`;
+};
+
 export const MediaPageQuery = (skip: number, limit: number) => {
   return `{
   mediaListCollection (skip: ${skip}, limit: ${limit}, order: id_ASC){

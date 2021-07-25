@@ -15,6 +15,8 @@ export class MediaComponent implements OnInit {
   mediaData: mediaContent;
   mediaList: mediaListItem[] = [];
   showLoadMore: boolean =true;
+  selectedTag: string;
+  selectedYear: number;
 
   categoriesList = [
     {title: 'News' , count: 50, hideToggle: true},
@@ -44,20 +46,45 @@ export class MediaComponent implements OnInit {
 
 
   filterByTag(tagLabel) {
-    let mediaFilterSub = this.mediaResolverService.getFilteredData(tagLabel).subscribe((mediaFilteredData: mediaContent) => {
-      this.mediaData = undefined;
-      setTimeout(() => {
-        this.mediaData = mediaFilteredData;
-        this.mediaList = mediaFilteredData.mediaList;
-        this.showLoadMore = false;
-      }, 200)
+    this.selectedTag = tagLabel;
+    if (this.selectedYear) {
+      this.filterByYearAndTag(this.selectedYear, this.selectedTag);
+    }
+    else {
+      let mediaFilterSub = this.mediaResolverService.getFilteredData(tagLabel).subscribe((mediaFilteredData: mediaContent) => {
+        this.mediaData = undefined;
+        setTimeout(() => {
+          this.mediaData = mediaFilteredData;
+          this.mediaList = mediaFilteredData.mediaList;
+          this.showLoadMore = false;
+        }, 200)
 
-    });
-    this.subscriptions.push(mediaFilterSub);
+      });
+      this.subscriptions.push(mediaFilterSub);
+    }
   }
 
   filterByYear(year) {
-    let mediaFilterSub = this.mediaResolverService.getFilteredDataByYear(year).subscribe((mediaFilteredData: mediaContent) => {
+    this.selectedYear = year;
+    if (this.selectedTag) {
+      this.filterByYearAndTag(this.selectedYear, this.selectedTag);
+    }
+    else {
+      let mediaFilterSub = this.mediaResolverService.getFilteredDataByYear(year).subscribe((mediaFilteredData: mediaContent) => {
+        this.mediaData = undefined;
+        setTimeout(() => {
+          this.mediaData = mediaFilteredData;
+          this.mediaList = mediaFilteredData.mediaList;
+          this.showLoadMore = false;
+        }, 200)
+
+      });
+      this.subscriptions.push(mediaFilterSub);
+    }
+  }
+
+  filterByYearAndTag(year, tag) {
+    let mediaFilterSub = this.mediaResolverService.getFilteredDataByYearAndTags(year, tag).subscribe((mediaFilteredData: mediaContent) => {
       this.mediaData = undefined;
       setTimeout(() => {
         this.mediaData = mediaFilteredData;
@@ -70,6 +97,7 @@ export class MediaComponent implements OnInit {
   }
 
   clearData() {
+    this.selectedYear = this.selectedTag = null;
     this.mediaList = [];
     this.getMediaData();
   }
