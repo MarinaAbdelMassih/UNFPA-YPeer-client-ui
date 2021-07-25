@@ -17,6 +17,7 @@ export interface tag {
   id: number;
   name: {AR: string, EN: string};
   label: string;
+  selected?: boolean;
 }
 
 export class MediaModel implements mediaContent{

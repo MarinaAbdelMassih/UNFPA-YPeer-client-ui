@@ -51,13 +51,13 @@ export class MediaComponent implements OnInit {
   }
 
 
-  filterByTag(tagLabel) {
-    this.selectedTag = tagLabel;
+  filterByTag(tag) {
+    this.selectedTag = tag.label;
     if (this.selectedYear) {
       this.filterByYearAndTag(this.selectedYear, this.selectedTag);
     }
     else {
-      let mediaFilterSub = this.mediaResolverService.getFilteredData(tagLabel).subscribe((mediaFilteredData: mediaContent) => {
+      let mediaFilterSub = this.mediaResolverService.getFilteredData(tag.label).subscribe((mediaFilteredData: mediaContent) => {
         this.mediaData = undefined;
         setTimeout(() => {
           this.mediaData = mediaFilteredData;

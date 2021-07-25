@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TranslationModel} from '../../models/translation.model';
+import {tag} from "../../models/media.model";
 
 @Component({
   selector: 'app-tag-item',
@@ -7,8 +8,7 @@ import {TranslationModel} from '../../models/translation.model';
   styleUrls: ['./tag-item.component.scss']
 })
 export class TagItemComponent implements OnInit {
-  @Input() tagName : TranslationModel;
-  @Input() tagLabel : string;
+  @Input() tag : tag;
   @Output() tagClicked: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
@@ -17,7 +17,7 @@ export class TagItemComponent implements OnInit {
   }
 
   tagFilterClicked() {
-    this.tagClicked.emit(this.tagLabel);
+    this.tagClicked.emit(this.tag.label);
   }
 
 
