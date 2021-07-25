@@ -3,11 +3,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .image-container {
     img {
       width: 100%;
     }
   }
+
   .description-container {
     width: 359px;
     height: 344px;
@@ -15,6 +17,7 @@
     object-fit: contain;
     background-color: #ffffff;
     margin-top: -26px;
+
     .type {
       width: max-content;
       height: 28px;
@@ -28,6 +31,7 @@
       margin-bottom: 15px;
       padding: 13px;
     }
+
     .title {
       font-size: 22px;
       font-weight: bold;
@@ -35,21 +39,25 @@
       color: #232323;
       margin-bottom: 20px;
     }
+
     .date {
       font-size: 12px;
       line-height: 1.25;
       color: #929292;
       margin-bottom: 25px;
     }
+
     .description {
       font-size: 16px;
       line-height: 1.5;
       color: #232323;
       margin-bottom: 20px;
     }
+
     .more {
       display: flex;
       justify-content: flex-end;
+
       img {
         cursor: pointer;
       }
@@ -62,12 +70,26 @@
     .image-container {
       display: flex;
       justify-content: center;
+
       img {
         width: 90%;
       }
     }
+
     .description-container {
       width: 80%;
+    }
+  }
+}
+
+::ng-deep {
+  [dir="rtl"] {
+    .card-container {
+      .description-container {
+        p {
+          font-family: 'TradeGothic', sans-serif;
+        }
+      }
     }
   }
 }

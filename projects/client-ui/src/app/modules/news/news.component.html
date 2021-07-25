@@ -1,0 +1,19 @@
+<app-page-top-banner [imageSrc]="'assets/images/news-banner.png'"></app-page-top-banner>
+<div class="news-page-content">
+  <div class="news-list">
+    <app-news-list *ngIf="newsData" [newsLists]="newsData.newsList"></app-news-list>
+  </div>
+  <div class="categories-and-tags">
+    <div class="categories-list">
+      <div class="d-flex justify-content-between">
+        <h2 [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>
+        <a [translateLocal]="{EN: 'clear', AR: 'مسح'}"></a>
+      </div>
+      <app-news-categories [categoriesList]="categoriesList"></app-news-categories>
+    </div>
+    <div class="tags-list">
+      <h2 *ngIf="newsData" [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>
+      <app-news-tags *ngIf="newsData" [tagsList]="newsData.tags"></app-news-tags>
+    </div>
+  </div>
+</div>

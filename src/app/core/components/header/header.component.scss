@@ -31,4 +31,12 @@
 .ypeer-btn {
   padding: 4px 25px;
   height: 38px;
+  font-size: 14px;
+}
+
+[dir = rtl] {
+  .nav-link {
+    font-size: 14px;
+    font-family: 'DroidKufiBold';
+  }
 }

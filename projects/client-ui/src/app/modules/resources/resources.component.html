@@ -1,0 +1,19 @@
+<app-page-top-banner [imageSrc]="'assets/images/resources-banner.png'"></app-page-top-banner>
+<div class="resources-page-content">
+  <div class="resources-list">
+    <app-resources-list *ngIf="resourcesData" [latestResources]="resourcesData.resourcesList"></app-resources-list>
+  </div>
+  <div class="categories-and-tags">
+    <div class="categories-list">
+      <div class="d-flex justify-content-between">
+        <h2 [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>
+        <a [translateLocal]="{EN: 'clear', AR: 'مسح'}"></a>
+      </div>
+      <app-resources-categories [categoriesList]="categoriesList"></app-resources-categories>
+    </div>
+    <div class="tags-list">
+      <h2  *ngIf="resourcesData" [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>
+      <app-resources-tags *ngIf="resourcesData" [tagsList]="resourcesData.tags"></app-resources-tags>
+    </div>
+  </div>
+</div>

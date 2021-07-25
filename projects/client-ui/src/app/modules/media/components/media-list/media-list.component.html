@@ -1,0 +1,10 @@
+<div class="list-container">
+  <app-image-description-card *ngFor="let latestSection of latestSections | slice:0:6;"
+                              [imageSrc]="latestSection.image" [type]="latestSection.label"
+                              [title]="latestSection.title" [date]="latestSection.date"
+                              [description]="latestSection.description">
+  </app-image-description-card>
+</div>
+<div class="btn-container">
+  <button class="ypeer-btn btn-outlined" [translateLocal]="{EN: 'Load More', AR: 'المزيد'}"></button>
+</div>
