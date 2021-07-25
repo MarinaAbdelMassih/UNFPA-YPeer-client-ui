@@ -1,0 +1,7 @@
+<div class="latest-item" *ngFor="let latestItem of latestItems">
+  <img [src]='latestItem.img' alt="latest-item-image">
+  <div class="description-container">
+    <h5 [translateLocal]="latestItem.description"></h5>
+    <p [translateLocal]="latestItem.date"></p>
+  </div>
+</div>
