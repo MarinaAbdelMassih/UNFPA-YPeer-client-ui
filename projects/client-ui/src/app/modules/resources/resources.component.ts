@@ -19,7 +19,13 @@ export class ResourcesComponent implements OnInit {
   categoriesList: CategoryModel[] = [
     {title: {EN: 'Training Manuals', AR: 'دليل التدريب'}, count: 50, hideToggle: true},
     {title: {EN: 'Publications', AR: 'المنشورات'}, count: 23, hideToggle: true},
-    {title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [2018, 2019, 2020,2021,2022]},
+    {title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [
+        {year: 2018, selected: false},
+        {year: 2019, selected: false},
+        {year: 2020, selected: false},
+        {year: 2021, selected: false},
+        {year: 2022, selected: false}
+      ]},
   ];
 
   constructor(private resourcesResolverService: ResourcesResolverService) {

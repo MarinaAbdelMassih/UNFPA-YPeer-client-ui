@@ -1,2 +1,2 @@
-<div class="tag">#<span [translateLocal]="tagName"></span></div>
+<div [ngStyle] = "tag.selected ? {'background-color': '#c1c1c1'}: {}" (click)="tagFilterClicked()" class="tag">#<span [translateLocal]="tag.name"></span></div>
 

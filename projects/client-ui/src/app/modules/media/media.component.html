@@ -1,19 +1,19 @@
 <app-page-top-banner [imageSrc]="'assets/images/media-banner.png'"></app-page-top-banner>
 <div class="media-page-content">
   <div class="media-list">
-    <app-media-list *ngIf="mediaData" [latestSections]="mediaData.mediaList"></app-media-list>
+    <app-media-list *ngIf="mediaData" [latestSections]="mediaList" [showLoadMoreButton]="showLoadMore" (loadMoreClicked)="getMediaData()"></app-media-list>
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">
       <div class="d-flex justify-content-between">
         <h2 [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>
-        <a [translateLocal]="{EN: 'clear', AR: 'مسح'}"></a>
+        <a (click)="clearData()" [translateLocal]="{EN: 'clear', AR: 'مسح'}"></a>
       </div>
-      <app-media-categories [categoriesList]="categoriesList"></app-media-categories>
+      <app-media-categories [categoriesList]="categoriesList" (yearClicked)="filterByYear($event)"></app-media-categories>
     </div>
     <div class="tags-list">
       <h2 *ngIf="mediaData" [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>
-      <app-media-tags  *ngIf="mediaData" [tagsList]="mediaData.tags"></app-media-tags>
+      <app-media-tags (tagClicked)="filterByTag($event)"  *ngIf="mediaData" [tagsList]="mediaData.tags"></app-media-tags>
     </div>
   </div>
 </div>

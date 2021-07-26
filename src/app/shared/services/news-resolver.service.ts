@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {newsContent, NewsModel} from '../models/news.model';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {DataHandlerService} from './data-handler.service';
-import {NewsQuery} from '../queries/news.query';
+import {NewsPageQuery, NewsQuery, NewsTagsQuery, NewsYearsAndTagsQuery, NewsYearsQuery} from '../queries/news.query';
+import {tag} from "../models/media.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ import {NewsQuery} from '../queries/news.query';
 export class NewsResolverService {
 
   private newsData: newsContent;
+  selectedNewsTag: BehaviorSubject<tag> = new BehaviorSubject<tag>(null);
+
   constructor(private dataHandlerService: DataHandlerService) { }
 
   resolve(): Observable<newsContent> {
@@ -24,6 +27,58 @@ export class NewsResolverService {
           subscriber.next(this.newsData);
         },() => subscriber.next(null));
       }
+    });
+  }
+
+  getFilteredDataByTag(filter): Observable<newsContent> {
+    let result;
+    return new Observable<newsContent> (subscriber=> {
+      this.dataHandlerService.getRemoteDataWithoutSave(NewsTagsQuery(filter), (res) => {
+        result = res;
+      }).then(() => {
+        this.newsData = new NewsModel({title: 'News', newsListCollection: result.data.newsListCollection,
+          newsTagsCollection: result.data.newsTagsCollection});
+        subscriber.next(this.newsData);
+      },() => subscriber.next(null));
+    });
+  }
+
+  getFilteredDataByYear(year): Observable<newsContent> {
+    let result;
+    return new Observable<newsContent> (subscriber=> {
+      this.dataHandlerService.getRemoteDataWithoutSave(NewsYearsQuery(year), (res) => {
+        result = res;
+      }).then(() => {
+        this.newsData = new NewsModel({title: 'News', newsListCollection: result.data.newsListCollection,
+          newsTagsCollection: result.data.newsTagsCollection});
+        subscriber.next(this.newsData);
+      },() => subscriber.next(null));
+    });
+  }
+
+  getFilteredDataByYearAndTags(year, tag): Observable<newsContent> {
+    let result;
+    return new Observable<newsContent> (subscriber=> {
+      this.dataHandlerService.getRemoteDataWithoutSave(NewsYearsAndTagsQuery(year, tag), (res) => {
+        result = res;
+      }).then(() => {
+        this.newsData = new NewsModel({title: 'News', newsListCollection: result.data.newsListCollection,
+          newsTagsCollection: result.data.newsTagsCollection});
+        subscriber.next(this.newsData);
+      },() => subscriber.next(null));
+    });
+  }
+
+  getPageData(skip: number, limit: number): Observable<newsContent> {
+    let result;
+    return new Observable<newsContent> (subscriber=> {
+      this.dataHandlerService.getRemoteDataWithoutSave(NewsPageQuery(skip, limit), (res) => {
+        result = res;
+      }).then(() => {
+        this.newsData = new NewsModel({title: 'News', newsListCollection: result.data.newsListCollection,
+          newsTagsCollection: result.data.newsTagsCollection});
+        subscriber.next(this.newsData);
+      },() => subscriber.next(null));
     });
   }
 }

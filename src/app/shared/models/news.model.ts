@@ -1,6 +1,7 @@
 export interface newsContent {
   newsList: newsListItem[];
   tags: tag[];
+  newsListTotal?: number;
 }
 
 export interface newsListItem {
@@ -15,6 +16,7 @@ export interface newsListItem {
 export interface tag {
   id: number;
   name: {AR: string, EN: string};
+  selected?: boolean;
 }
 
 export class NewsModel implements newsContent{
