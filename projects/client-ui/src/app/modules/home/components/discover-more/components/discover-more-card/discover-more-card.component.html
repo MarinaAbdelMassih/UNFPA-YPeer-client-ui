@@ -1,7 +1,11 @@
 <div class="card-container" [ngStyle]="{'background-image': 'url(' + data.img + ')'}">
-  <h1 class="card-title" >
+  <div class="overlay">
+  <h1 class="card-title">
     <a href="{{data.link}}" target="_blank" [translateLocal]="data.title">
-
     </a>
   </h1>
+  </div>
 </div>
+
+<!--<div class="overlay">-->
+<!--</div>-->
