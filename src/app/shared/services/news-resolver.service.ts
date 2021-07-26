@@ -36,8 +36,8 @@ export class NewsResolverService {
       this.dataHandlerService.getRemoteDataWithoutSave(NewsTagsQuery(filter), (res) => {
         result = res;
       }).then(() => {
-        this.newsData = new NewsModel({title: 'News', newsListCollection: result.data.newsListCollection,
-          newsTagsCollection: result.data.newsTagsCollection});
+        this.newsData = new NewsModel({title: 'News', newsListCollection: result.data.newsListItemCollection,
+          newsTagsCollection: result.data.newsTagItemCollection});
         subscriber.next(this.newsData);
       },() => subscriber.next(null));
     });
@@ -49,8 +49,8 @@ export class NewsResolverService {
       this.dataHandlerService.getRemoteDataWithoutSave(NewsYearsQuery(year), (res) => {
         result = res;
       }).then(() => {
-        this.newsData = new NewsModel({title: 'News', newsListCollection: result.data.newsListCollection,
-          newsTagsCollection: result.data.newsTagsCollection});
+        this.newsData = new NewsModel({title: 'News', newsListCollection: result.data.newsListItemCollection,
+          newsTagsCollection: result.data.newsTagItemCollection});
         subscriber.next(this.newsData);
       },() => subscriber.next(null));
     });
@@ -62,8 +62,8 @@ export class NewsResolverService {
       this.dataHandlerService.getRemoteDataWithoutSave(NewsYearsAndTagsQuery(year, tag), (res) => {
         result = res;
       }).then(() => {
-        this.newsData = new NewsModel({title: 'News', newsListCollection: result.data.newsListCollection,
-          newsTagsCollection: result.data.newsTagsCollection});
+        this.newsData = new NewsModel({title: 'News', newsListCollection: result.data.newsListItemCollection,
+          newsTagsCollection: result.data.newsTagItemCollection});
         subscriber.next(this.newsData);
       },() => subscriber.next(null));
     });
@@ -75,8 +75,8 @@ export class NewsResolverService {
       this.dataHandlerService.getRemoteDataWithoutSave(NewsPageQuery(skip, limit), (res) => {
         result = res;
       }).then(() => {
-        this.newsData = new NewsModel({title: 'News', newsListCollection: result.data.newsListCollection,
-          newsTagsCollection: result.data.newsTagsCollection});
+        this.newsData = new NewsModel({title: 'News', newsListCollection: result.data.newsListItemCollection,
+          newsTagsCollection: result.data.newsTagItemCollection});
         subscriber.next(this.newsData);
       },() => subscriber.next(null));
     });

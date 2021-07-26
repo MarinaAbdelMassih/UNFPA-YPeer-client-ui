@@ -1,7 +1,7 @@
 <app-page-top-banner [imageSrc]="'assets/images/news-banner.png'"></app-page-top-banner>
 <div class="news-page-content">
   <div class="news-list">
-    <app-news-list *ngIf="newsData" [newsLists]="newsData.newsList" [showLoadMoreButton]="showLoadMore" (loadMoreClicked)="getNewsData()"></app-news-list>
+    <app-news-list *ngIf="newsData" [newsLists]="newsList" [showLoadMoreButton]="showLoadMore" (loadMoreClicked)="getNewsData()"></app-news-list>
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">

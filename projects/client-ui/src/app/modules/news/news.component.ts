@@ -108,7 +108,7 @@ export class NewsComponent implements OnInit {
 
   clearData() {
     // @ts-ignore
-    this.categoriesList[3].yearsList.map(year => year.selected = false);
+    this.categoriesList[0].yearsList.map(year => year.selected = false);
     this.selectedYear = this.selectedTag = null;
     this.newsList = [];
     this.getNewsData();

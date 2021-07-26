@@ -29,7 +29,7 @@ export const NewsQuery = `{
 
 export const NewsTagsQuery = (tagLabel: string) => {
   return `{
-  newsListCollection(where: { tagLabel: "${tagLabel}"})
+  newsListItemCollection(where: { tagLabel: "${tagLabel}"})
   {
    items {
         id
@@ -47,7 +47,7 @@ export const NewsTagsQuery = (tagLabel: string) => {
         }
       }
   }
-   newsTagsCollection {
+   newsTagItemCollection {
       items {
         id
         nameAr
@@ -60,7 +60,7 @@ export const NewsTagsQuery = (tagLabel: string) => {
 
 export const NewsYearsQuery = (year: number) => {
   return `{
-  newsListCollection (where: { year: ${year}})
+  newsListItemCollection (where: { year: ${year}})
   {
    items {
         id
@@ -79,7 +79,7 @@ export const NewsYearsQuery = (year: number) => {
         }
       }
   }
-   newsTagsCollection {
+   newsTagItemCollection {
       items {
         id
         nameAr
@@ -92,7 +92,7 @@ export const NewsYearsQuery = (year: number) => {
 
 export const NewsYearsAndTagsQuery = (year: number, tagLabel: string) => {
   return `{
-  newsListCollection (where:{
+  newsListItemCollection (where:{
   AND: [ {year: ${year}}, {tagLabel: "${tagLabel}"} ]
   })
   {
@@ -113,7 +113,7 @@ export const NewsYearsAndTagsQuery = (year: number, tagLabel: string) => {
         }
       }
   }
-   newsTagsCollection {
+   newsTagItemCollection {
       items {
         id
         nameAr
@@ -126,7 +126,7 @@ export const NewsYearsAndTagsQuery = (year: number, tagLabel: string) => {
 
 export const NewsPageQuery = (skip: number, limit: number) => {
   return `{
-  newsListCollection (skip: ${skip}, limit: ${limit}, order: id_ASC){
+  newsListItemCollection (skip: ${skip}, limit: ${limit}, order: id_ASC){
    items {
         id
         labelEn
@@ -145,7 +145,7 @@ export const NewsPageQuery = (skip: number, limit: number) => {
       }
       total
   }
-   newsTagsCollection {
+   newsTagItemCollection {
       items {
         id
         nameAr
