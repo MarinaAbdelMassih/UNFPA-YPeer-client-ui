@@ -16,9 +16,9 @@
            aria-haspopup="true" aria-expanded="false" [translateLocal]="{AR: 'وسائل اعلام', EN: 'media'}">
         </a>
         <div class="dropdown-menu" aria-labelledby="mediaDropdown">
-          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'الأخبار', EN: 'news'}">Action</a>
-          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'الأحداث', EN: 'events'}">Action</a>
-          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'القصص', EN: 'stories'}">Action</a>
+          <a class="dropdown-item" [routerLink]="'/news'" [translateLocal]="{AR: 'الأخبار', EN: 'news'}">news</a>
+          <a class="dropdown-item" [routerLink]="'/events'" [translateLocal]="{AR: 'الأحداث', EN: 'events'}">events</a>
+          <a class="dropdown-item" [routerLink]="'/stories'" [translateLocal]="{AR: 'القصص', EN: 'stories'}">stories</a>
         </div>
       </li>
       <li class="nav-item dropdown" [routerLink]="'/resources'">
@@ -26,8 +26,8 @@
            aria-haspopup="true" aria-expanded="false" [translateLocal]="{AR: 'موارد', EN: 'resources'}">
         </a>
         <div class="dropdown-menu" aria-labelledby="resourcesDropdown">
-          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'دليل التدريب', EN: 'training manuals'}">Action</a>
-          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'المنشورات', EN: 'publications'}">Action</a>
+          <a class="dropdown-item" [routerLink]="'/trainings'"  [translateLocal]="{AR: 'دليل التدريب', EN: 'training manuals'}"></a>
+          <a class="dropdown-item" [routerLink]="'/publications'"  [translateLocal]="{AR: 'المنشورات', EN: 'publications'}"></a>
         </div>
       </li>
       <li class="nav-item">
