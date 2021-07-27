@@ -37,20 +37,20 @@
       font-weight: bold;
       line-height: 1.36;
       color: #232323;
-      margin-bottom: 20px;
+      margin-bottom: 9px;
     }
 
     .date {
       font-size: 12px;
       line-height: 1.25;
       color: #929292;
-      margin-bottom: 25px;
     }
 
     .description {
       font-size: 16px;
       line-height: 1.5;
       color: #232323;
+      margin-top: 25px;
       margin-bottom: 20px;
     }
 
@@ -82,14 +82,14 @@
   }
 }
 
-::ng-deep {
-  [dir="rtl"] {
-    .card-container {
-      .description-container {
-        p {
-          font-family: 'TradeGothic', sans-serif;
-        }
-      }
-    }
-  }
-}
+//::ng-deep {
+//  [dir="rtl"] {
+//    .card-container {
+//      .description-container {
+//        p {
+//          font-family: 'TradeGothic', sans-serif;
+//        }
+//      }
+//    }
+//  }
+//}
