@@ -17,6 +17,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'publications',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/publications/publications.module').then(mod => mod.PublicationsModule),
+  },
+
+  {
     path: 'resources',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/resources/resources.module').then(mod => mod.ResourcesModule),
