@@ -16,10 +16,11 @@ export class StoriesComponent implements OnInit {
   storiesData: storiesContent;
 
   categoriesList: CategoryModel[] = [
-    {title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [2018, 2019, 2020,2021,2022]},
+    {title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [2018, 2019, 2020, 2021, 2022]},
   ];
 
-  constructor(private storiesResolverService: StoriesResolverService) { }
+  constructor(private storiesResolverService: StoriesResolverService) {
+  }
 
   ngOnInit() {
     this.getStoriesData();
@@ -30,7 +31,7 @@ export class StoriesComponent implements OnInit {
       this.storiesData = undefined;
       setTimeout(() => {
         this.storiesData = storiesData;
-      }, 200)
+      }, 200);
 
     });
     this.subscriptions.push(storiesSub);
