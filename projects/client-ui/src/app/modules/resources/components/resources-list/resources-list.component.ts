@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-resources-list',
@@ -7,10 +7,16 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ResourcesListComponent implements OnInit {
   @Input() latestResources;
+  @Output() loadMoreClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() showLoadMoreButton: boolean;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  loadMoreData() {
+    this.loadMoreClicked.emit(true);
   }
 
 }
