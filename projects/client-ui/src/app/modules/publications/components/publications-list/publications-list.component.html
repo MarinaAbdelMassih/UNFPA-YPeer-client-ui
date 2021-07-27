@@ -6,5 +6,5 @@
   </app-image-description-card>
 </div>
 <div class="btn-container">
-  <button class="ypeer-btn btn-outlined" [translateLocal]="{EN: 'Load More', AR: 'المزيد'}"></button>
+  <button *ngIf="showLoadMoreButton" (click)="loadMoreData()" class="ypeer-btn btn-outlined" [translateLocal]="{EN: 'Load More', AR: 'المزيد'}"></button>
 </div>

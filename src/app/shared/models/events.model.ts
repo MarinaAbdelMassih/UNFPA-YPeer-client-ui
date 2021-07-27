@@ -1,6 +1,7 @@
 export interface eventsContent {
   eventsList: eventsListItem[];
   tags: tag[];
+  eventsListTotal?: number;
 }
 
 export interface eventsListItem {

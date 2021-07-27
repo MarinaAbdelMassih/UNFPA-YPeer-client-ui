@@ -1,6 +1,7 @@
 export interface storiesContent {
   storiesList: storiesListItem[];
   tags: tag[];
+  storiesListTotal?: number;
 }
 
 export interface storiesListItem {

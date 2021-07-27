@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {eventsContent, eventsListItem} from '../../../../../../src/app/shared/models/events.model';
 
 @Component({
   selector: 'app-publications',

@@ -19,8 +19,8 @@ export class ResourcesComponent implements OnInit {
   resourcesData: resourcesContent;
 
   categoriesList: CategoryModel[] = [
-    {title: {EN: 'Training Manuals', AR: 'دليل التدريب'}, count: 50, hideToggle: true, url: 'trainings'},
-    {title: {EN: 'Publications', AR: 'المنشورات'}, count: 23, hideToggle: true, url: 'publications'},
+    {title: {EN: 'Training Manuals', AR: 'دليل التدريب'}, count: 50, hideToggle: true},
+    {title: {EN: 'Publications', AR: 'المنشورات'}, count: 23, hideToggle: true},
     {
       title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [
         {year: 2018, selected: false},

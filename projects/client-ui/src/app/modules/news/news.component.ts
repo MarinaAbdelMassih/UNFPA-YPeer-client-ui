@@ -15,7 +15,7 @@ export class NewsComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   newsData: newsContent;
   newsList: newsListItem[] = [];
-  showLoadMore: boolean =true;
+  showLoadMore = true;
   selectedTag: string;
   selectedYear: number;
 

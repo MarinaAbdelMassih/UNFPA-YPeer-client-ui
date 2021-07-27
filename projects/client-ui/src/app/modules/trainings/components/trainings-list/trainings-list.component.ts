@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-trainings-list',
@@ -7,9 +7,15 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TrainingsListComponent implements OnInit {
   @Input() trainingsLists;
-  constructor() { }
+  @Output() loadMoreClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() showLoadMoreButton: boolean;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
-
+  loadMoreData() {
+    this.loadMoreClicked.emit(true);
+  }
 }
