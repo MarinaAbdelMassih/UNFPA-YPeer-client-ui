@@ -82,14 +82,14 @@
   }
 }
 
-::ng-deep {
-  [dir="rtl"] {
-    .card-container {
-      .description-container {
-        p {
-          font-family: 'TradeGothic', sans-serif;
-        }
-      }
-    }
-  }
-}
+//::ng-deep {
+//  [dir="rtl"] {
+//    .card-container {
+//      .description-container {
+//        p {
+//          font-family: 'TradeGothic', sans-serif;
+//        }
+//      }
+//    }
+//  }
+//}
