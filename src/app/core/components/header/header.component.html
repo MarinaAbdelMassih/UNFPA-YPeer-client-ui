@@ -2,7 +2,13 @@
   <a class="navbar-brand" href="#">
     <img src="assets/images/ypeer-logo-header.png" alt="">
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -30,8 +36,8 @@
           <a class="dropdown-item" [routerLink]="'/publications'"  [translateLocal]="{AR: 'المنشورات', EN: 'publications'}"></a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" [translateLocal]="{AR: 'عنا', EN: 'about'}"></a>
+      <li class="nav-item" >
+        <a class="nav-link" [routerLink]="'aboutUs'" [translateLocal]="{AR: 'عنا', EN: 'about'}"></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="'contactUs'" [translateLocal]="{AR: 'اتصل بنا', EN: 'contact'}"></a>
@@ -43,7 +49,7 @@
       </li>
       <li class="nav-item" (click)="changeLang()">
         <a class="nav-link lang-link" role="button">
-          <button  class="language-button" [translateLocal]="{AR: 'EN', EN: 'AR'}"></button>
+          <button class="language-button" [translateLocal]="{AR: 'EN', EN: 'AR'}"></button>
         </a>
       </li>
       <li class="nav-item">

@@ -47,6 +47,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'aboutUs',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/about-us/about-us.module').then(mod => mod.AboutUsModule),
+  },
+
+  {
     path: 'contactUs',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/contact-us/contact-us.module').then(mod => mod.ContactUsModule),
