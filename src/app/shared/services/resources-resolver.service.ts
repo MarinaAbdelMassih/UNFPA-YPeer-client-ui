@@ -3,6 +3,7 @@ import {resourcesContent, ResourcesModel} from '../models/resources.model';
 import {DataHandlerService} from './data-handler.service';
 import {Observable} from 'rxjs';
 import {ResourcesQuery} from '../queries/resources.query';
+import {MediaPageQuery} from '../queries/media.query';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,19 @@ export class ResourcesResolverService {
           subscriber.next(this.resourcesData);
         },() => subscriber.next(null));
       }
+    });
+  }
+
+  getPageData(skip: number, limit: number): Observable<resourcesContent> {
+    let result;
+    return new Observable<resourcesContent> (subscriber=> {
+      this.dataHandlerService.getRemoteDataWithoutSave(MediaPageQuery(skip, limit), (res) => {
+        result = res;
+      }).then(() => {
+        this.resourcesData = new ResourcesModel({title: 'resource', resourcesListCollection: result.data.resourcesListCollection,
+          mediaTagsCollection: result.data.mediaTagsCollection});
+        subscriber.next(this.resourcesData);
+      },() => subscriber.next(null));
     });
   }
 }

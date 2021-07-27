@@ -1,7 +1,7 @@
 <app-page-top-banner [imageSrc]="'assets/images/resources-banner.png'"></app-page-top-banner>
 <div class="resources-page-content">
   <div class="resources-list">
-    <app-resources-list *ngIf="resourcesData" [latestResources]="resourcesData.resourcesList"></app-resources-list>
+    <app-resources-list *ngIf="resourcesData" [latestResources]="resourcesData.resourcesList" [showLoadMoreButton]="showLoadMore" (loadMoreClicked)="getResourcesData()"></app-resources-list>
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">

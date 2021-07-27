@@ -1,6 +1,7 @@
 export interface resourcesContent {
   resourcesList: resourcesListItem[];
   tags: tag[];
+  resourcesListTotal?: number;
 }
 
 export interface resourcesListItem {
