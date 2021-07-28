@@ -7,13 +7,15 @@ import { NewsDetailsCategoriesComponent } from './components/news-details-catego
 import { NewsDetailsLatestComponent } from './components/news-details-latest/news-details-latest.component';
 import { NewsDetailsMightLikeComponent } from './components/news-details-might-like/news-details-might-like.component';
 import { NewsDetailsStoryComponent } from './components/news-details-story/news-details-story.component';
+import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [NewsDetailsComponent, NewsDetailsCategoriesComponent, NewsDetailsLatestComponent, NewsDetailsMightLikeComponent, NewsDetailsStoryComponent],
   imports: [
     CommonModule,
-    NewsDetailsRoutingModule
+    NewsDetailsRoutingModule,
+    SharedModule
   ]
 })
 export class NewsDetailsModule { }

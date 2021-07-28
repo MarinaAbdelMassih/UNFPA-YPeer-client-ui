@@ -1,1 +1,20 @@
-<p>news-details works!</p>
+<app-details-top-banner [detailsImageBanner]="'assets/images/details-banner.png'"
+                        [label]="{EN: 'Events', AR: 'الاحداث'}"
+                        [title]="{EN: 'Event Title (Long Long Title) Lorem Ipsum Dolor Sit Amet', AR: 'الاحداث'}"></app-details-top-banner>
+<div class="news-details-page-content">
+  <div class="news-details-story">
+    <app-news-details-story></app-news-details-story>
+  </div>
+  <div class="categories-and-tags">
+    <div class="categories-list">
+      <div class="d-flex justify-content-between">
+        <h2 [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>
+      </div>
+      <!--      <app-news-categories ></app-news-categories>-->
+    </div>
+    <div class="tags-list">
+      <h2 [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>
+      <!--      <app-news-tags ></app-news-tags>-->
+    </div>
+  </div>
+</div>
