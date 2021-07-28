@@ -41,9 +41,13 @@
 [dir = rtl] {
   .nav-link {
     font-size: 14px;
-    font-family: 'DroidKufiBold';
+    font-family: 'DroidKufiBold', sans-serif;
   }
   .dropdown-menu {
     text-align: right;
   }
+}
+
+.nav-item:hover>.dropdown-menu {
+  display: block;
 }
