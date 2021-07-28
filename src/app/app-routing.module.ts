@@ -17,6 +17,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'publications',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/publications/publications.module').then(mod => mod.PublicationsModule),
+  },
+
+  {
     path: 'resources',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/resources/resources.module').then(mod => mod.ResourcesModule),
@@ -44,6 +50,23 @@ const routes: Routes = [
     path: 'news-details',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/news-details/news-details.module').then(mod => mod.NewsDetailsModule),
+  },
+
+  {
+    path: 'aboutUs',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/about-us/about-us.module').then(mod => mod.AboutUsModule),
+  },
+
+  {
+    path: 'contactUs',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/contact-us/contact-us.module').then(mod => mod.ContactUsModule),
+  },
+  {
+    path: 'trainings',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/trainings/trainings.module').then(mod => mod.TrainingsModule),
   }
 ];
 

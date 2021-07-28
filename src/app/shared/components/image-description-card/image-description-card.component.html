@@ -3,7 +3,7 @@
     <img [src]="imageSrc" alt="latest from ypeer">
   </div>
   <div class="description-container">
-    <span class="type" [translateLocal]="type"></span>
+    <span class="type" [ngStyle]="{'width': publications ? '114px' : '54px' }" [translateLocal]="type"></span>
     <h2 class="title" [translateLocal]="title"></h2>
     <span class="date" [translateLocal]="date"></span>
     <p class="description" [translateLocal]="description"></p>

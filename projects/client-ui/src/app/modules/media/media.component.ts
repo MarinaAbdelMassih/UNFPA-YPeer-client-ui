@@ -15,24 +15,27 @@ export class MediaComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   mediaData: mediaContent;
   mediaList: mediaListItem[] = [];
-  showLoadMore: boolean =true;
+  showLoadMore = true;
   selectedTag: string;
   selectedYear: number;
 
   categoriesList: CategoryModel[] = [
-    {title: {EN: 'News', AR: 'الأخبار'} , count: 50, hideToggle: true, url: 'news'},
-    {title: {EN: 'Events', AR: 'الأحداث'} , count: 23, hideToggle: true, url: 'events'},
-    {title: {EN: 'Stories', AR: 'القصص'} , count: 18, hideToggle: true, url: 'stories'},
-    {title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [
+    {title: {EN: 'News', AR: 'الأخبار'}, count: 50, hideToggle: true, url: 'news'},
+    {title: {EN: 'Events', AR: 'الأحداث'}, count: 23, hideToggle: true, url: 'events'},
+    {title: {EN: 'Stories', AR: 'القصص'}, count: 18, hideToggle: true, url: 'stories'},
+    {
+      title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [
         {year: 2018, selected: false},
         {year: 2019, selected: false},
         {year: 2020, selected: false},
         {year: 2021, selected: false},
         {year: 2022, selected: false}
-      ]},
+      ]
+    },
   ];
 
-  constructor(private mediaResolverService: MediaResolverService) { }
+  constructor(private mediaResolverService: MediaResolverService) {
+  }
 
   ngOnInit() {
     this.getMediaData();
@@ -45,7 +48,7 @@ export class MediaComponent implements OnInit {
         this.mediaData = mediaData;
         this.mediaList = this.mediaList.concat(mediaData.mediaList);
         this.showLoadMore = this.mediaList.length < this.mediaData.mediaListTotal;
-      }, 200)
+      }, 200);
 
     });
     this.subscriptions.push(mediaSub);
@@ -57,18 +60,17 @@ export class MediaComponent implements OnInit {
     this.selectedTag = tag.label;
     if (this.selectedYear) {
       this.filterByYearAndTag(this.selectedYear, this.selectedTag);
-    }
-    else {
+    } else {
       let mediaFilterSub = this.mediaResolverService.getFilteredData(tag.label).subscribe((mediaFilteredData: mediaContent) => {
         this.mediaData = undefined;
         setTimeout(() => {
           this.mediaData = mediaFilteredData;
           this.mediaList = mediaFilteredData.mediaList;
           this.showLoadMore = false;
-          if(this.mediaResolverService.selectedTag.getValue()) {
+          if (this.mediaResolverService.selectedTag.getValue()) {
             this.mediaData.tags.find(tag => tag.id == this.mediaResolverService.selectedTag.getValue().id).selected = true;
           }
-        }, 200)
+        }, 200);
 
       });
       this.subscriptions.push(mediaFilterSub);
@@ -79,15 +81,14 @@ export class MediaComponent implements OnInit {
     this.selectedYear = year.year;
     if (this.selectedTag) {
       this.filterByYearAndTag(this.selectedYear, this.selectedTag);
-    }
-    else {
+    } else {
       let mediaFilterSub = this.mediaResolverService.getFilteredDataByYear(year.year).subscribe((mediaFilteredData: mediaContent) => {
         this.mediaData = undefined;
         setTimeout(() => {
           this.mediaData = mediaFilteredData;
           this.mediaList = mediaFilteredData.mediaList;
           this.showLoadMore = false;
-        }, 200)
+        }, 200);
 
       });
       this.subscriptions.push(mediaFilterSub);
@@ -101,10 +102,10 @@ export class MediaComponent implements OnInit {
         this.mediaData = mediaFilteredData;
         this.mediaList = mediaFilteredData.mediaList;
         this.showLoadMore = false;
-        if(this.mediaResolverService.selectedTag.getValue()) {
+        if (this.mediaResolverService.selectedTag.getValue()) {
           this.mediaData.tags.find(tag => tag.id == this.mediaResolverService.selectedTag.getValue().id).selected = true;
         }
-      }, 200)
+      }, 200);
 
     });
     this.subscriptions.push(mediaFilterSub);

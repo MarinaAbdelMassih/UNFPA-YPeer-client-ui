@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageTopBannerComponent } from './components/page-top-banner/page-top-banner.component';
 import { TranslateLocalDirective } from './directives/translate-local.directive';
+import { TranslatePlaceholderLocalDirective } from './directives/translate-placeholder-local.directive';
 import { ImageDescriptionCardComponent } from './components/image-description-card/image-description-card.component';
 import { CategoryItemComponent } from './components/category-item/category-item.component';
 import {MatExpansionModule, MatIconModule, MatListModule} from '@angular/material';
@@ -16,6 +17,7 @@ import { MightLikeItemComponent } from './components/might-like-item/might-like-
   declarations: [
     PageTopBannerComponent,
     TranslateLocalDirective,
+    TranslatePlaceholderLocalDirective,
     ImageDescriptionCardComponent,
     CategoryItemComponent,
     TagItemComponent,
@@ -25,6 +27,7 @@ import { MightLikeItemComponent } from './components/might-like-item/might-like-
   ],
   exports: [
     TranslateLocalDirective,
+    TranslatePlaceholderLocalDirective,
     ImageDescriptionCardComponent,
     PageTopBannerComponent,
     CategoryItemComponent,
