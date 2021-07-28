@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {TranslationModel} from "../../../../../../../../src/app/shared/models/translation.model";
 
 @Component({
   selector: 'app-resources-tags',
@@ -7,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ResourcesTagsComponent implements OnInit {
   @Input() tagsList;
+  @Output() tagClicked: EventEmitter<TranslationModel> = new EventEmitter<TranslationModel>();
 
   constructor() {
   }
@@ -14,4 +16,7 @@ export class ResourcesTagsComponent implements OnInit {
   ngOnInit() {
   }
 
+  tagFilterClicked(tag) {
+    this.tagClicked.emit(tag);
+  }
 }

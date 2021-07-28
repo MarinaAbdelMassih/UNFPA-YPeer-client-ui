@@ -1,19 +1,19 @@
 <app-page-top-banner [imageSrc]="'assets/images/stories-banner.png'"></app-page-top-banner>
 <div class="story-page-content">
   <div class="story-list">
-    <app-story-list *ngIf="storiesData" [storyLists]="storiesData.storiesList"></app-story-list>
+    <app-story-list *ngIf="storiesData" [storyLists]="storiesList" [showLoadMoreButton]="showLoadMore" (loadMoreClicked)="getStoriesData()"></app-story-list>
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">
       <div class="d-flex justify-content-between">
         <h2  [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>
-        <a [translateLocal]="{EN: 'clear', AR: 'مسح'}"></a>
+        <a (click)="clearData()" [translateLocal]="{EN: 'clear', AR: 'مسح'}"></a>
       </div>
-      <app-story-categories [categoriesList]="categoriesList"></app-story-categories>
+      <app-story-categories [categoriesList]="categoriesList" (yearClicked)="filterByYear($event)"></app-story-categories>
     </div>
     <div class="tags-list">
       <h2 *ngIf="storiesData" [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>
-      <app-story-tags *ngIf="storiesData" [tagsList]="storiesData.tags"></app-story-tags>
+      <app-story-tags *ngIf="storiesData" [tagsList]="storiesData.tags" (tagClicked)="filterByTag($event)"></app-story-tags>
     </div>
   </div>
 </div>

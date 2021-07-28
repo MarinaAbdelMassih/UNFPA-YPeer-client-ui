@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
 import {resourcesContent, ResourcesModel} from '../models/resources.model';
 import {DataHandlerService} from './data-handler.service';
-import {Observable} from 'rxjs';
-import {ResourcesQuery} from '../queries/resources.query';
-import {MediaPageQuery} from '../queries/media.query';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {
+  ResourcesPageQuery,
+  ResourcesQuery,
+  ResourcesTagsQuery,
+  ResourcesYearsAndTagsQuery,
+  ResourcesYearsQuery
+} from '../queries/resources.query';
+import {tag} from "../models/media.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResourcesResolverService {
 
-  private resourcesData : resourcesContent
+  private resourcesData : resourcesContent;
+  selectedResourcesTag: BehaviorSubject<tag> = new BehaviorSubject<tag>(null);
   constructor(private dataHandlerService: DataHandlerService) { }
 
   resolve(): Observable<resourcesContent> {
@@ -28,14 +35,53 @@ export class ResourcesResolverService {
     });
   }
 
+  getFilteredDataByTag(filter): Observable<resourcesContent> {
+    let result;
+    return new Observable<resourcesContent> (subscriber=> {
+      this.dataHandlerService.getRemoteDataWithoutSave(ResourcesTagsQuery(filter), (res) => {
+        result = res;
+      }).then(() => {
+        this.resourcesData = new ResourcesModel({title: 'Resources', resourcesListCollection: result.data.resourcesListItemCollection,
+          resourcesTagsCollection: result.data.resourcesTagItemCollection});
+        subscriber.next(this.resourcesData);
+      },() => subscriber.next(null));
+    });
+  }
+
+  getFilteredDataByYear(year): Observable<resourcesContent> {
+    let result;
+    return new Observable<resourcesContent> (subscriber=> {
+      this.dataHandlerService.getRemoteDataWithoutSave(ResourcesYearsQuery(year), (res) => {
+        result = res;
+      }).then(() => {
+        this.resourcesData = new ResourcesModel({title: 'Resources', resourcesListCollection: result.data.resourcesListItemCollection,
+          resourcesTagsCollection: result.data.resourcesTagItemCollection});
+        subscriber.next(this.resourcesData);
+      },() => subscriber.next(null));
+    });
+  }
+
+  getFilteredDataByYearAndTags(year, tag): Observable<resourcesContent> {
+    let result;
+    return new Observable<resourcesContent> (subscriber=> {
+      this.dataHandlerService.getRemoteDataWithoutSave(ResourcesYearsAndTagsQuery(year, tag), (res) => {
+        result = res;
+      }).then(() => {
+        this.resourcesData = new ResourcesModel({title: 'Resources', resourcesListCollection: result.data.resourcesListItemCollection,
+          resourcesTagsCollection: result.data.resourcesTagItemCollection});
+        subscriber.next(this.resourcesData);
+      },() => subscriber.next(null));
+    });
+  }
+
   getPageData(skip: number, limit: number): Observable<resourcesContent> {
     let result;
     return new Observable<resourcesContent> (subscriber=> {
-      this.dataHandlerService.getRemoteDataWithoutSave(MediaPageQuery(skip, limit), (res) => {
+      this.dataHandlerService.getRemoteDataWithoutSave(ResourcesPageQuery(skip, limit), (res) => {
         result = res;
       }).then(() => {
-        this.resourcesData = new ResourcesModel({title: 'resource', resourcesListCollection: result.data.resourcesListCollection,
-          mediaTagsCollection: result.data.mediaTagsCollection});
+        this.resourcesData = new ResourcesModel({title: 'Resources', resourcesListCollection: result.data.resourcesListItemCollection,
+          resourcesTagsCollection: result.data.resourcesTagItemCollection});
         subscriber.next(this.resourcesData);
       },() => subscriber.next(null));
     });

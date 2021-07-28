@@ -26,6 +26,10 @@
   background: transparent;
   border-left: 2px solid #2e2e2e;
   padding-left: 8px;
+  @media(max-width: 768px) {
+    border-left: 0;
+    padding-left: 0;
+  }
 }
 
 .ypeer-btn {
@@ -38,5 +42,8 @@
   .nav-link {
     font-size: 14px;
     font-family: 'DroidKufiBold';
+  }
+  .dropdown-menu {
+    text-align: right;
   }
 }

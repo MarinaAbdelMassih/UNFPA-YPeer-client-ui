@@ -10,12 +10,13 @@ export class ResourcesListComponent implements OnInit {
   @Output() loadMoreClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() showLoadMoreButton: boolean;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
   }
+
   loadMoreData() {
     this.loadMoreClicked.emit(true);
   }
+
 }

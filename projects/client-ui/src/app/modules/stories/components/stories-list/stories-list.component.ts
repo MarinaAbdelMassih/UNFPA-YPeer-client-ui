@@ -9,14 +9,13 @@ export class StoriesListComponent implements OnInit {
   @Input() storyLists;
   @Output() loadMoreClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() showLoadMoreButton: boolean;
-
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
   }
+
   loadMoreData() {
     this.loadMoreClicked.emit(true);
   }
-}
 
+}

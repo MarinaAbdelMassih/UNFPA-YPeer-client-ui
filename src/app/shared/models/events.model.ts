@@ -16,15 +16,19 @@ export interface eventsListItem {
 export interface tag {
   id: number;
   name: {AR: string, EN: string};
+  label: string;
+  selected?: boolean;
 }
 
 export class EventsModel implements eventsContent{
   eventsList: eventsListItem[];
   tags: tag[];
+  eventsListTotal?: number;
 
   constructor(eventsData: any) {
     this.eventsList = EventsModel.setEventsList(eventsData.eventsListCollection.items);
     this.tags = EventsModel.setTags(eventsData.eventsTagsCollection.items);
+    this.eventsListTotal = eventsData.eventsListCollection.total;
   }
 
   private static setEventsList(eventsListItems: any[]): eventsListItem[]{
@@ -44,7 +48,8 @@ export class EventsModel implements eventsContent{
     return tags.map((tag) => {
       return {
         id: tag.id,
-        name: {AR: tag.nameAr, EN: tag.nameEn}
+        name: {AR: tag.nameAr, EN: tag.nameEn},
+        label: tag.label
       }
     });
   }

@@ -16,15 +16,18 @@ export interface storiesListItem {
 export interface tag {
   id: number;
   name: {AR: string, EN: string};
+  selected?: boolean;
 }
 
 export class StoriesModel implements storiesContent{
   storiesList: storiesListItem[];
   tags: tag[];
+  storiesListTotal?: number;
 
   constructor(storiesData: any) {
     this.storiesList = StoriesModel.setStoriesList(storiesData.storiesListCollection.items);
     this.tags = StoriesModel.setTags(storiesData.storiesTagsCollection.items);
+    this.storiesListTotal = storiesData.storiesListCollection.total;
   }
 
   private static setStoriesList(storiesListItems: any[]): storiesListItem[]{
@@ -44,7 +47,8 @@ export class StoriesModel implements storiesContent{
     return tags.map((tag) => {
       return {
         id: tag.id,
-        name: {AR: tag.nameAr, EN: tag.nameEn}
+        name: {AR: tag.nameAr, EN: tag.nameEn},
+        label: tag.label
       }
     });
   }

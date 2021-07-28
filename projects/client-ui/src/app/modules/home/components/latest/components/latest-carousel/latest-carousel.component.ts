@@ -1,6 +1,7 @@
-import {Component, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Router} from "@angular/router";
 import {latestCardItem} from "../../../../../../../../../../src/app/shared/models/home.model";
+import {LanguageService} from '../../../../../../../../../../src/app/shared/services/language.service';
 
 @Component({
   selector: 'app-latest-carousel',
@@ -8,8 +9,8 @@ import {latestCardItem} from "../../../../../../../../../../src/app/shared/model
   styleUrls: ['./latest-carousel.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class LatestCarouselComponent implements OnInit {
-
+export class LatestCarouselComponent implements OnInit, AfterViewInit {
+  @Input() latestSections: latestCardItem[];
   @ViewChild('latestSlickModal', {static: false}) slickModal;
   latestConfig: any = {"slidesToShow": 3, "rtl": false, "slidesToScroll": 1,"arrows": false, "fade": false,
     "cssEase": 'linear', "dots": false,"autoplay": false, "autoplaySpeed": 2000, infinite: false,
@@ -27,12 +28,19 @@ export class LatestCarouselComponent implements OnInit {
         }
       }
     ]};
+  isArabic: boolean = this.languageService.getIsArabic();
 
-  @Input() latestSections: latestCardItem[];
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, private languageService: LanguageService) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    this.reInitSlick();
+    this.languageService.isArabic.subscribe(isArabic => {
+      this.isArabic = isArabic;
+      this.reInitSlick();
+    });
   }
 
   next() {
@@ -41,6 +49,14 @@ export class LatestCarouselComponent implements OnInit {
 
   prev() {
     this.slickModal.slickPrev();
+  }
+
+  private reInitSlick(): void {
+    if (this.latestSections) {
+      this.slickModal.unslick();
+      this.latestConfig.rtl = this.isArabic;
+      this.slickModal.initSlick();
+    }
   }
 
   openDetailsPage(): void {

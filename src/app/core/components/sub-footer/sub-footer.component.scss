@@ -73,3 +73,27 @@
     }
   }
 }
+
+[dir = rtl] {
+  .sub-footer-container {
+    .right-section {
+      .powered-by {
+        direction: ltr;
+        span {
+          margin-right: 0;
+          margin-left: 95.9px;
+        }
+
+        img {
+          margin-right: 0;
+          margin-left: 15.9px;
+        }
+      }
+      .rights {
+        direction: ltr;
+      }
+    }
+  }
+}
+
+

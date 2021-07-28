@@ -12,24 +12,24 @@ import {CategoryModel} from '../../../../../../src/app/shared/models/category.mo
 
 })
 export class ResourcesComponent implements OnInit {
-  resourcesList: resourcesListItem[] = [];
-  private subscriptions: Subscription[] = [];
-  showLoadMore = true;
 
+  private subscriptions: Subscription[] = [];
   resourcesData: resourcesContent;
+  resourcesList: resourcesListItem[] = [];
+  showLoadMore: boolean =true;
+  selectedTag: string;
+  selectedYear: number;
 
   categoriesList: CategoryModel[] = [
     {title: {EN: 'Training Manuals', AR: 'دليل التدريب'}, count: 50, hideToggle: true},
     {title: {EN: 'Publications', AR: 'المنشورات'}, count: 23, hideToggle: true},
-    {
-      title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [
+    {title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [
         {year: 2018, selected: false},
         {year: 2019, selected: false},
         {year: 2020, selected: false},
         {year: 2021, selected: false},
         {year: 2022, selected: false}
-      ]
-    },
+      ]},
   ];
 
   constructor(private resourcesResolverService: ResourcesResolverService) {
@@ -45,10 +45,76 @@ export class ResourcesComponent implements OnInit {
       setTimeout(() => {
         this.resourcesData = resourcesData;
         this.resourcesList = this.resourcesList.concat(resourcesData.resourcesList);
-      this.showLoadMore = this.resourcesList.length < this.resourcesData.resourcesListTotal;
-      }, 200);
+        this.showLoadMore = this.resourcesList.length < this.resourcesData.resourcesListTotal;
+      }, 200)
 
     });
     this.subscriptions.push(resourcesSub);
   }
+
+  filterByTag(tag) {
+    this.resourcesResolverService.selectedResourcesTag.next(tag);
+    this.selectedTag = tag.label;
+    if (this.selectedYear) {
+      this.filterByYearAndTag(this.selectedYear, this.selectedTag);
+    }
+    else {
+      let resourcesFilterSub = this.resourcesResolverService.getFilteredDataByTag(tag.label).subscribe((resourcesFilteredData: resourcesContent) => {
+        this.resourcesData = undefined;
+        setTimeout(() => {
+          this.resourcesData = resourcesFilteredData;
+          this.resourcesList = resourcesFilteredData.resourcesList;
+          this.showLoadMore = false;
+          if(this.resourcesResolverService.selectedResourcesTag.getValue()) {
+            this.resourcesData.tags.find(tag => tag.id == this.resourcesResolverService.selectedResourcesTag.getValue().id).selected = true;
+          }
+        }, 200)
+
+      });
+      this.subscriptions.push(resourcesFilterSub);
+    }
+  }
+
+  filterByYear(year) {
+    this.selectedYear = year.year;
+    if (this.selectedTag) {
+      this.filterByYearAndTag(this.selectedYear, this.selectedTag);
+    }
+    else {
+      let resourcesFilterSub = this.resourcesResolverService.getFilteredDataByYear(year.year).subscribe((resourcesFilteredData: resourcesContent) => {
+        this.resourcesData = undefined;
+        setTimeout(() => {
+          this.resourcesData = resourcesFilteredData;
+          this.resourcesList = resourcesFilteredData.resourcesList;
+          this.showLoadMore = false;
+        }, 200)
+      });
+      this.subscriptions.push(resourcesFilterSub);
+    }
+  }
+
+  filterByYearAndTag(year, tag) {
+    let resourcesFilterSub = this.resourcesResolverService.getFilteredDataByYearAndTags(year, tag).subscribe((resourcesFilteredData: resourcesContent) => {
+      this.resourcesData = undefined;
+      setTimeout(() => {
+        this.resourcesData = resourcesFilteredData;
+        this.resourcesList = resourcesFilteredData.resourcesList;
+        this.showLoadMore = false;
+        if(this.resourcesResolverService.selectedResourcesTag.getValue()) {
+          this.resourcesData.tags.find(tag => tag.id == this.resourcesResolverService.selectedResourcesTag.getValue().id).selected = true;
+        }
+      }, 200)
+
+    });
+    this.subscriptions.push(resourcesFilterSub);
+  }
+
+  clearData() {
+    // @ts-ignore
+    this.categoriesList[2].yearsList.map(year => year.selected = false);
+    this.selectedYear = this.selectedTag = null;
+    this.resourcesList = [];
+    this.getResourcesData();
+  }
+
 }

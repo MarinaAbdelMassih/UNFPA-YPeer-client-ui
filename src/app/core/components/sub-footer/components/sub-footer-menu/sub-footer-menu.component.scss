@@ -9,6 +9,17 @@
     line-height: 1.15;
     a {
       cursor: pointer;
+      text-decoration: none;
+      color: #2e2e2e;
+    }
+  }
+}
+
+[dir = rtl] {
+  .sub-footer-menu {
+    li {
+      margin-right: 0;
+      margin-left: 8px;
     }
   }
 }
