@@ -1,1 +1,11 @@
-<p>news-details-might-like works!</p>
+<div class="news-details-might-like">
+  <p>You Might Also Like</p>
+  <div class="might-like-container">
+    <app-might-like-item *ngFor="let cardDetail of cardDetails" [title]="cardDetail.title" [type]="cardDetail.type"
+                         [description]="cardDetail.description "
+                         [imageSrc]="cardDetail.img"
+                         [resources]=" "
+                         [buttonAppear]=""></app-might-like-item>
+
+  </div>
+</div>

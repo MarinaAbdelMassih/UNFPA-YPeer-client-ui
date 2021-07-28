@@ -8,14 +8,19 @@ import { NewsDetailsLatestComponent } from './components/news-details-latest/new
 import { NewsDetailsMightLikeComponent } from './components/news-details-might-like/news-details-might-like.component';
 import { NewsDetailsStoryComponent } from './components/news-details-story/news-details-story.component';
 import {SharedModule} from '../../../../../../src/app/shared/shared.module';
+import {NewsModule} from '../news/news.module';
+import { NewsDetailsTagsComponent } from './components/news-details-tags/news-details-tags.component';
+import {CoreModule} from '../../../../../../src/app/core/core.module';
 
 
 @NgModule({
-  declarations: [NewsDetailsComponent, NewsDetailsCategoriesComponent, NewsDetailsLatestComponent, NewsDetailsMightLikeComponent, NewsDetailsStoryComponent],
+  declarations: [NewsDetailsComponent, NewsDetailsCategoriesComponent, NewsDetailsLatestComponent, NewsDetailsMightLikeComponent, NewsDetailsStoryComponent, NewsDetailsTagsComponent],
   imports: [
     CommonModule,
     NewsDetailsRoutingModule,
-    SharedModule
+    SharedModule,
+    NewsModule,
+    CoreModule
   ]
 })
 export class NewsDetailsModule { }

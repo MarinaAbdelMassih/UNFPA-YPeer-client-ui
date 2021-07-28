@@ -1,0 +1,17 @@
+.news-details-might-like {
+  .might-like-container {
+    display: flex;
+    justify-content: space-between;
+    @media(max-width: 991px) {
+      flex-direction: column;
+    }
+  }
+
+  p {
+    font-size: 32px;
+    font-weight: bold;
+    color: #232323;
+    padding: 31px 0 32px 0;
+    margin-bottom: 0;
+  }
+}

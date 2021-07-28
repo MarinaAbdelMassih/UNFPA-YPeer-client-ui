@@ -11,19 +11,23 @@
     padding-left: 127px;
     width: 100%;
     @media (max-width: 1400px) {
-      padding-top: 359px;
+      padding-top: 313px;
     }
     @media (max-width: 991px) {
-      padding-top: 259px;
+      padding-top: 218px;
     }
     @media (max-width: 700px) {
       padding-top: 130px;
     }
     @media (max-width: 500px) {
       padding-top: 100px;
+      padding-right: 100px;
+      padding-left: 100px;
     }
     @media (max-width: 320px) {
       padding-top: 120px;
+      padding-right: 90px;
+      padding-left: 90px;
     }
 
     h3 {
@@ -32,8 +36,24 @@
       color: #ffffff;
       width: 100%;
       margin-bottom: 20px;
-      @media (max-width: 320px) {
+      @media (max-width: 1400px) {
+        font-size: 30px;
+      }
+      @media (max-width: 991px) {
         font-size: 20px;
+      }
+      @media (max-width: 700px) {
+        font-size: 20px;
+      }
+      @media (max-width: 500px) {
+        font-size: 16px;
+      }
+      @media (max-width: 400px)  {
+        font-size: 13px;
+        //margin-bottom: 10px;
+      }
+      @media (max-width: 320px)  {
+        font-size: 10px;
         margin-bottom: 10px;
       }
     }

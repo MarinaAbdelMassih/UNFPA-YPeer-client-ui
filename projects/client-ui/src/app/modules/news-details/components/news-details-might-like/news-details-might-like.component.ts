@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-news-details-might-like',
@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-details-might-like.component.scss']
 })
 export class NewsDetailsMightLikeComponent implements OnInit {
+  @Input() cardDetails;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

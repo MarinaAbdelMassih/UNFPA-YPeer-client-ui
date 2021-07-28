@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-news-details-latest',
@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-details-latest.component.scss']
 })
 export class NewsDetailsLatestComponent implements OnInit {
+  @Input() latestItems;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

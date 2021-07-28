@@ -1,1 +1,7 @@
-<p>news-details-latest works!</p>
+<div class="news-details-latest">
+  <p>Latest News</p>
+  <app-latest-item *ngFor="let latestItem of latestItems"
+                   [description]="latestItem.newsDescription"
+                   [date]="latestItem.newsDate"
+                   [image]=" latestItem.newsImage"></app-latest-item>
+</div>
