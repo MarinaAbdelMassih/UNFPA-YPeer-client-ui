@@ -38,6 +38,12 @@ const routes: Routes = [
     path: 'stories',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/stories/stories.module').then(mod => mod.StoriesModule),
+  },
+
+  {
+    path: 'news-details',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/news-details/news-details.module').then(mod => mod.NewsDetailsModule),
   }
 ];
 
