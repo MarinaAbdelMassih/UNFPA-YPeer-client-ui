@@ -86,4 +86,5 @@ export class MediaResolverService {
       },() => subscriber.next(null));
     });
   }
+
 }
