@@ -1,0 +1,13 @@
+<div class="might-like-item">
+  <div class="image-container">
+    <img [src]="imageSrc" alt="might-like-item">
+  </div>
+  <div class="description-container">
+    <span class="type" [translateLocal]="type"></span>
+    <h2 class="title" [translateLocal]="title"></h2>
+    <p class="description" [translateLocal]="description"></p>
+    <div class="more">
+      <img src="assets/images/icons/more-icon.png" alt="more" (click)="clickMore()">
+    </div>
+  </div>
+</div>
