@@ -15,9 +15,6 @@ export class EventsListComponent implements OnInit {
 
   ngOnInit() {
   }
-  loadMoreData() {
-    this.loadMoreClicked.emit(true);
-  }
 
   loadMoreData() {
     this.loadMoreClicked.emit(true);
