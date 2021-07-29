@@ -47,7 +47,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'news-details',
+    path: 'news-details/:id',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/news-details/news-details.module').then(mod => mod.NewsDetailsModule),
   },

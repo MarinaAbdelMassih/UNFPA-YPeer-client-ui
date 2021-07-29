@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryModel} from '../../../../../../src/app/shared/models/category.model';
+import {newsContent, newsListItem} from '../../../../../../src/app/shared/models/news.model';
+import {NewsResolverService} from '../../../../../../src/app/shared/services/news-resolver.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-news-details',
@@ -11,24 +14,6 @@ export class NewsDetailsComponent implements OnInit {
     {
       description: {
         EN: 'Lorem ipsum dolor sit amet, ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'Events', AR: ''},
-    },
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'Events', AR: ''},
-    },
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
         AR: ''
       },
       img: 'assets/images/might-like.png',
@@ -93,11 +78,25 @@ export class NewsDetailsComponent implements OnInit {
       newsImage: 'assets/images/might-like.png'
     }
   ];
+  index;
+  newsList: newsListItem[] = [];
+  newsData: newsContent;
+  newsDataDetails;
 
-  constructor() {
+  constructor(private newsResolverService: NewsResolverService, public activatedRoute: ActivatedRoute) {
+    this.index = activatedRoute.snapshot.paramMap.get('id');
+    console.log('index is', this.index);
   }
 
   ngOnInit() {
+    this.getNewsData();
   }
 
+  getNewsData(): void {
+    let newsSub = this.newsResolverService.resolve().subscribe((newsData: newsContent) => {
+      this.newsData = newsData[this.index];
+      this.newsDataDetails = newsData.newsList[this.index];
+      console.log('news', newsData.newsList[this.index]);
+    });
+  }
 }
