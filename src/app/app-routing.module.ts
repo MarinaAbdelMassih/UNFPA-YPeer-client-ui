@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
 
 const routes: Routes = [
@@ -38,11 +38,37 @@ const routes: Routes = [
     path: 'stories',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/stories/stories.module').then(mod => mod.StoriesModule),
-  }
+  },
+
+  // {
+  //   path: 'publications',
+  //   pathMatch: 'full',
+  //   loadChildren: () => import('../../projects/client-ui/src/app/modules/publications/publications.module').then(mod => mod.PublicationsModule),
+  // },
+
+  // {
+  //   path: 'trainings',
+  //   pathMatch: 'full',
+  //   loadChildren: () => import('../../projects/client-ui/src/app/modules/trainings/trainings.module').then(mod => mod.TrainingsModule),
+  // }
+
+  {
+    path: 'about-us',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/about-us/about-us.module').then(mod => mod.AboutUsModule),
+  },
+
+  // {
+  //   path: 'contactUs',
+  //   pathMatch: 'full',
+  //   loadChildren: () => import('../../projects/client-ui/src/app/modules/contact-us/contact-us.module').then(mod => mod.ContactUsModule),
+  // },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

@@ -1,0 +1,19 @@
+<app-page-top-banner [imageSrc]="'assets/images/publications-banner.png'"></app-page-top-banner>
+<div class="publications-page-content">
+  <div class="publications-list">
+    <app-publications-list [publicationsLists]="publicationsList"></app-publications-list>
+  </div>
+  <div class="categories-and-tags">
+    <div class="categories-list">
+      <div class="d-flex justify-content-between">
+        <h2 [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>
+        <a [translateLocal]="{EN: 'clear', AR: 'مسح'}"></a>
+      </div>
+      <app-publications-categories [categoriesList]="categoriesList"></app-publications-categories>
+    </div>
+    <div class="tags-list">
+      <h2 [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>
+      <app-publications-tags [tagsList]="tagsList"></app-publications-tags>
+    </div>
+  </div>
+</div>

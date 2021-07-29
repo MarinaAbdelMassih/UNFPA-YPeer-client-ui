@@ -60,6 +60,14 @@
   }
 }
 
+@media (max-width: 500px) {
+  .news-page-content {
+    .news-list {
+      padding: 0;
+    }
+  }
+}
+
 [dir = rtl] {
   .news-page-content {
     .categories-and-tags {

@@ -1,0 +1,19 @@
+<app-page-top-banner [imageSrc]="'assets/images/training-banner.png'"></app-page-top-banner>
+<div class="trainings-page-content">
+  <div class="trainings-list">
+    <app-trainings-list [trainingsLists]="trainingsList"></app-trainings-list>
+  </div>
+  <div class="categories-and-tags">
+    <div class="categories-list">
+      <div class="d-flex justify-content-between">
+        <h2  [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>
+        <a [translateLocal]="{EN: 'clear', AR: 'مسح'}"></a>
+      </div>
+      <app-trainings-categories [categoriesList]="categoriesList"></app-trainings-categories>
+    </div>
+    <div class="tags-list">
+      <h2 [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>
+      <app-trainings-tags [tagsList]="tagsList"></app-trainings-tags>
+    </div>
+  </div>
+</div>

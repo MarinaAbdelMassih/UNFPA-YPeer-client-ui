@@ -1,8 +1,14 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" [routerLink]="'/home'">
     <img src="assets/images/ypeer-logo-header.png" alt="">
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -11,30 +17,30 @@
       <li class="nav-item active">
         <a class="nav-link" href="#" [translateLocal]="{AR: 'دورات تدريبية', EN: 'courses'}"><span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item dropdown" [routerLink]="'/media'">
-        <a class="nav-link dropdown-toggle" id="mediaDropdown" role="button" data-toggle="dropdown"
+      <li class="nav-item dropdown" >
+        <a class="nav-link dropdown-toggle" id="mediaDropdown" role="button" data-toggle="dropdown" [routerLink]="'/media'"
            aria-haspopup="true" aria-expanded="false" [translateLocal]="{AR: 'وسائل اعلام', EN: 'media'}">
         </a>
         <div class="dropdown-menu" aria-labelledby="mediaDropdown">
-          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'الأخبار', EN: 'news'}">Action</a>
-          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'الأحداث', EN: 'events'}">Action</a>
-          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'القصص', EN: 'stories'}">Action</a>
+          <a class="dropdown-item" [routerLink]="'/news'" [translateLocal]="{AR: 'الأخبار', EN: 'News'}"></a>
+          <a class="dropdown-item" [routerLink]="'/events'" [translateLocal]="{AR: 'الأحداث', EN: 'Events'}"></a>
+          <a class="dropdown-item" [routerLink]="'/stories'" [translateLocal]="{AR: 'القصص', EN: 'Stories'}"></a>
         </div>
       </li>
-      <li class="nav-item dropdown" [routerLink]="'/resources'">
-        <a class="nav-link dropdown-toggle" id="resourcesDropdown" role="button" data-toggle="dropdown"
+      <li class="nav-item dropdown" >
+        <a class="nav-link dropdown-toggle" id="resourcesDropdown" role="button" data-toggle="dropdown" [routerLink]="'/resources'"
            aria-haspopup="true" aria-expanded="false" [translateLocal]="{AR: 'موارد', EN: 'resources'}">
         </a>
         <div class="dropdown-menu" aria-labelledby="resourcesDropdown">
-          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'دليل التدريب', EN: 'training manuals'}">Action</a>
-          <a class="dropdown-item" href="#" [translateLocal]="{AR: 'المنشورات', EN: 'publications'}">Action</a>
+          <a class="dropdown-item" [routerLink]="'/trainings'"  [translateLocal]="{AR: 'دليل التدريب', EN: 'Training manuals'}"></a>
+          <a class="dropdown-item" [routerLink]="'/publications'"  [translateLocal]="{AR: 'المنشورات', EN: 'Publications'}"></a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" [translateLocal]="{AR: 'عنا', EN: 'about'}"></a>
+      <li class="nav-item" >
+        <a class="nav-link" [routerLink]="'/about-us'" [translateLocal]="{AR: 'من نحن', EN: 'about'}"></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" [translateLocal]="{AR: 'اتصل بنا', EN: 'contact'}"></a>
+        <a class="nav-link" [routerLink]="" [translateLocal]="{AR: 'اتصل بنا', EN: 'contact'}"></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
@@ -43,7 +49,7 @@
       </li>
       <li class="nav-item" (click)="changeLang()">
         <a class="nav-link lang-link" role="button">
-          <button  class="language-button" [translateLocal]="{AR: 'EN', EN: 'AR'}"></button>
+          <button class="language-button" [translateLocal]="{AR: 'EN', EN: 'AR'}"></button>
         </a>
       </li>
       <li class="nav-item">

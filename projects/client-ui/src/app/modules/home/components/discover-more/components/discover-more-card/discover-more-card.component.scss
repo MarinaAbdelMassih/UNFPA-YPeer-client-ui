@@ -3,16 +3,32 @@
   height: 273px;
   display: inline-block;
   background-size: cover;
+
+  .overlay {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+  }
+
   .card-title {
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
+
     text-align: center;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
+
+  }
+
+  a {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
     margin-top: 106px;
   }
 }
@@ -23,7 +39,7 @@
   }
 }
 
-@media (min-width: 426px) and (max-width: 1250px){
+@media (min-width: 426px) and (max-width: 1250px) {
   .card-container {
     width: 33.33%;
   }
