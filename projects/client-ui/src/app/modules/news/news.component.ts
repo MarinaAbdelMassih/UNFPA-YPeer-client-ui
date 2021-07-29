@@ -36,7 +36,7 @@ export class NewsComponent implements OnInit {
   }
 
   getNewsData(): void {
-    let newsSub = this.newsResolverService.getPageData(this.newsList.length, 2).subscribe((newsData: newsContent) => {
+    let newsSub = this.newsResolverService.getPageData(this.newsList.length, 6).subscribe((newsData: newsContent) => {
       this.newsData = undefined;
       setTimeout(() => {
         this.newsData = newsData;
