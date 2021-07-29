@@ -8,6 +8,7 @@ import { CategoryItemComponent } from './components/category-item/category-item.
 import {MatExpansionModule, MatIconModule, MatListModule} from '@angular/material';
 import { TagItemComponent } from './components/tag-item/tag-item.component';
 import { DetailsTopBannerComponent } from './components/details-top-banner/details-top-banner.component';
+import { InstructorCardComponent} from './components/instructor-card/instructor-card.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { DetailsTopBannerComponent } from './components/details-top-banner/detai
     ImageDescriptionCardComponent,
     CategoryItemComponent,
     TagItemComponent,
-    DetailsTopBannerComponent
+    DetailsTopBannerComponent,
+    InstructorCardComponent
   ],
   exports: [
     TranslateLocalDirective,
@@ -27,7 +29,8 @@ import { DetailsTopBannerComponent } from './components/details-top-banner/detai
     PageTopBannerComponent,
     CategoryItemComponent,
     TagItemComponent,
-    DetailsTopBannerComponent
+    DetailsTopBannerComponent,
+    InstructorCardComponent
   ],
     imports: [
         CommonModule,
