@@ -9,13 +9,19 @@ import { EventDetailsMightLikeComponent } from './components/event-details-might
 import { EventDetailsStoryComponent } from './components/event-details-story/event-details-story.component';
 import { EventDetailsTagsComponent } from './components/event-details-tags/event-details-tags.component';
 import { EventDetailsPhotosComponent } from './components/event-details-photos/event-details-photos.component';
+import {SharedModule} from '../../../../../../src/app/shared/shared.module';
+import {SlickCarouselModule} from 'ngx-slick-carousel';
+import {CoreModule} from '../../../../../../src/app/core/core.module';
 
 
 @NgModule({
   declarations: [EventDetailsComponent, EventDetailsCategoriesComponent, EventDetailsLatestComponent, EventDetailsMightLikeComponent, EventDetailsStoryComponent, EventDetailsTagsComponent, EventDetailsPhotosComponent],
   imports: [
     CommonModule,
-    EventDetailsRoutingModule
+    EventDetailsRoutingModule,
+    SharedModule,
+    SlickCarouselModule,
+    CoreModule
   ]
 })
 export class EventDetailsModule { }

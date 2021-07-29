@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-event-details-tags',
@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event-details-tags.component.scss']
 })
 export class EventDetailsTagsComponent implements OnInit {
+  @Input() tagsList;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

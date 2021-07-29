@@ -66,21 +66,3 @@ export class NewsDetailsMightLikeComponent implements OnInit {
 
 }
 
-//
-// current = 0;
-//
-//   constructor() {
-//   }
-//
-//   ngOnInit() {
-//   }
-//
-//   next(current: number): void {
-//     this.current = current + 1;
-//   }
-//
-//   prev(current: number): void {
-//     this.current = current - 1;
-//   }
-
-// }

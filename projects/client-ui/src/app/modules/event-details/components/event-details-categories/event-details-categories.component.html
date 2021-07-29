@@ -1,1 +1,4 @@
-<p>event-details-categories works!</p>
+<app-category-item *ngFor="let category of categoriesList" [hideToggle]="category.hideToggle"
+                   [title]="category.title" [count]="category.count" [yearsList]="category.yearsList"
+                   >
+</app-category-item>
