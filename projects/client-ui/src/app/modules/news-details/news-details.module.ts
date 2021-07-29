@@ -11,6 +11,7 @@ import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import {NewsModule} from '../news/news.module';
 import { NewsDetailsTagsComponent } from './components/news-details-tags/news-details-tags.component';
 import {CoreModule} from '../../../../../../src/app/core/core.module';
+import {SlickCarouselModule} from 'ngx-slick-carousel';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {CoreModule} from '../../../../../../src/app/core/core.module';
     NewsDetailsRoutingModule,
     SharedModule,
     NewsModule,
-    CoreModule
+    CoreModule,
+    SlickCarouselModule
   ]
 })
 export class NewsDetailsModule { }

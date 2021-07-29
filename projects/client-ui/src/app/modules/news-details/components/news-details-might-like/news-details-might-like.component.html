@@ -2,25 +2,20 @@
   <div class="d-flex justify-content-between align-items-center">
     <p>You Might Also Like</p>
     <div class="buttons-container">
-      <button class="slider-button btn-prev" (click)="prev(current)"><img src="assets/images/icons/arrow-left-gray.png">
+      <button class="slider-button btn-prev" (click)="prev()"><img src="assets/images/icons/arrow-left-gray.png" alt="">
       </button>
-      <button class="slider-button btn-next" (click)="next(current)"><img src="assets/images/icons/arrow-right-gray.png"
-                                                                          alt="">
-      </button>
+      <button class="slider-button btn-next" (click)="next()"><img src="assets/images/icons/arrow-right-gray.png"
+                                                                   alt=""></button>
     </div>
   </div>
-<!--  it's not working properly, it should be carousel just like the one in latest-carousel-component-->
-<!--  and if you have so much inputs for one item you can pass the card itself and deal with it like an object it's much better than pass -->
-<!--  each property like title, type, image and so on.-->
-  <div class="might-like-container">
-    <app-might-like-item *ngFor="let cardDetail of cardDetails |slice :current:current + 3;let current = index;"
+  <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
+    <app-might-like-item ngxSlickItem *ngFor="let cardDetail of cardDetails"
                          [title]="cardDetail.title"
                          [type]="cardDetail.type"
                          [description]="cardDetail.description "
-                         [imageSrc]="cardDetail.img"
-                         [resources]=" "
-                         [buttonAppear]=""></app-might-like-item>
-
-  </div>
+                         [imageSrc]="cardDetail.img" (moreClicked)="openDetailsPage()">
+    </app-might-like-item>
+  </ngx-slick-carousel>
 
 </div>
+

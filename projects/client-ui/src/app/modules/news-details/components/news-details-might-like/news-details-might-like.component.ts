@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Router} from '@angular/router';
+import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 
 @Component({
   selector: 'app-news-details-might-like',
@@ -7,20 +9,78 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class NewsDetailsMightLikeComponent implements OnInit {
   @Input() cardDetails;
-  current = 0;
+  @ViewChild('latestSlickModal', {static: false}) slickModal;
+  latestConfig: any = {
+    slidesToShow: 3, rtl: false, slidesToScroll: 1, arrows: false, fade: false,
+    cssEase: 'linear', dots: false, autoplay: false, autoplaySpeed: 2000, infinite: false,
+    responsive: [
+      {
+        breakpoint: 1025,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  };
+  isArabic: boolean = this.languageService.getIsArabic();
 
-  constructor() {
+  constructor(private router: Router, private languageService: LanguageService) {
   }
 
   ngOnInit() {
   }
 
-  next(current: number): void {
-    this.current = current + 1;
+  ngAfterViewInit() {
+    this.reInitSlick();
+    this.languageService.isArabic.subscribe(isArabic => {
+      this.isArabic = isArabic;
+      this.reInitSlick();
+    });
   }
 
-  prev(current: number): void {
-    this.current = current - 1;
+  next() {
+    this.slickModal.slickNext();
+  }
+
+  prev() {
+    this.slickModal.slickPrev();
+  }
+
+  private reInitSlick(): void {
+    if (this.cardDetails) {
+      this.slickModal.unslick();
+      this.latestConfig.rtl = this.isArabic;
+      this.slickModal.initSlick();
+    }
+  }
+
+  openDetailsPage(): void {
+    this.router.navigate(['']);
   }
 
 }
+
+//
+// current = 0;
+//
+//   constructor() {
+//   }
+//
+//   ngOnInit() {
+//   }
+//
+//   next(current: number): void {
+//     this.current = current + 1;
+//   }
+//
+//   prev(current: number): void {
+//     this.current = current - 1;
+//   }
+
+// }
