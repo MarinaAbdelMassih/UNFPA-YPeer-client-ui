@@ -34,7 +34,16 @@ export class NewsDetailsComponent implements OnInit {
       img: 'assets/images/might-like.png',
       title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
       type: {EN: 'Events', AR: ''},
-    }
+    },
+    // {
+    //   description: {
+    //     EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
+    //     AR: ''
+    //   },
+    //   img: 'assets/images/might-like.png',
+    //   title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
+    //   type: {EN: 'Events', AR: ''},
+    // }
   ];
 
   categoriesList: CategoryModel[] = [
