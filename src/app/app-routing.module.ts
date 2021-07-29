@@ -53,6 +53,12 @@ const routes: Routes = [
   // }
 
   {
+    path: 'course-catalog',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/course-catalog/course-catalog.module').then(mod => mod.CourseCatalogModule),
+  },
+
+  {
     path: 'about-us',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/about-us/about-us.module').then(mod => mod.AboutUsModule),
