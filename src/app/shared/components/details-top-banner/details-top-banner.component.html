@@ -1,8 +1,8 @@
 <div class="details-banner"  >
-  <img [src]="detailsImageBanner" alt="detailsImageBanner">
+  <img *ngIf="detailsImageBanner" [src]="detailsImageBanner" alt="detailsImageBanner">
  <div class="details-banner-container">
-  <h3 [translateLocal]="title"> </h3>
-  <p [translateLocal]="label"></p>
+  <h3 *ngIf="title" [translateLocal]="title"></h3>
+  <p *ngIf="label" [translateLocal]="label"></p>
  </div>
 </div>
 
