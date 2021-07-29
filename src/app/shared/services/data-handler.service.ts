@@ -70,6 +70,17 @@ export class DataHandlerService {
     });
   }
 
+  public getRemoteDataWithoutSave(query: string, processData: Function): Promise<any> {
+    return new Promise<any>(resolve => {
+      this.contentfulService.getQuery(query).then(data => {
+        resolve(data);
+      }).catch(() => resolve(null));
+    }).then((responseData) => {
+      let data = processData(responseData);
+      return data;
+    });
+  }
+
   public getDefaultPageData(query: string, table: string, processData: Function): Observable<any> {
     return new Observable<any>(subscriber => {
       this.getDataAfterIDBInitialized(table).then(data => {

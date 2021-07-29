@@ -4,6 +4,6 @@ export interface CategoryModel {
   title: TranslationModel,
   count?: number,
   hideToggle?: boolean,
-  yearsList?: number[],
+  yearsList?: Object[],
   url?: string;
 }

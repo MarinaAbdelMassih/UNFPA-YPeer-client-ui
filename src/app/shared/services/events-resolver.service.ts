@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
 import {eventsContent, EventsModel} from '../models/events.model';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {DataHandlerService} from './data-handler.service';
-import {EventsQuery} from '../queries/events.query';
+import {
+  EventsPageQuery,
+  EventsQuery,
+  EventsTagsQuery
+} from '../queries/events.query';
+import {tag} from "../models/media.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +15,8 @@ import {EventsQuery} from '../queries/events.query';
 export class EventsResolverService {
 
   private eventsData: eventsContent;
+  selectedEventsTag: BehaviorSubject<tag> = new BehaviorSubject<tag>(null);
+
   constructor(private dataHandlerService: DataHandlerService) { }
 
   resolve(): Observable<eventsContent> {
@@ -24,6 +31,32 @@ export class EventsResolverService {
           subscriber.next(this.eventsData);
         },() => subscriber.next(null));
       }
+    });
+  }
+
+  getFilteredDataByTag(filter): Observable<eventsContent> {
+    let result;
+    return new Observable<eventsContent> (subscriber=> {
+      this.dataHandlerService.getRemoteDataWithoutSave(EventsTagsQuery(filter), (res) => {
+        result = res;
+      }).then(() => {
+        this.eventsData = new EventsModel({title: 'Events', eventsListCollection: result.data.eventsListItemCollection,
+          eventsTagsCollection: result.data.eventsTagItemCollection});
+        subscriber.next(this.eventsData);
+      },() => subscriber.next(null));
+    });
+  }
+
+  getPageData(skip: number, limit: number): Observable<eventsContent> {
+    let result;
+    return new Observable<eventsContent> (subscriber=> {
+      this.dataHandlerService.getRemoteDataWithoutSave(EventsPageQuery(skip, limit), (res) => {
+        result = res;
+      }).then(() => {
+        this.eventsData = new EventsModel({title: 'Events', eventsListCollection: result.data.eventsListItemCollection,
+          eventsTagsCollection: result.data.eventsTagItemCollection});
+        subscriber.next(this.eventsData);
+      },() => subscriber.next(null));
     });
   }
 }

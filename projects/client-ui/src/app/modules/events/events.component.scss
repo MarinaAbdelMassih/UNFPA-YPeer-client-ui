@@ -11,10 +11,19 @@
     .categories-list, .tags-list {
       margin-bottom: 43px;
       h2 {
+        font-family: 'TradeGothic', sans-serif;
         font-size: 22px;
         color: #232323;
         font-weight: bold;
         margin-bottom: 28px;
+      }
+      a {
+        font-size: 12px;
+        line-height: 1.75;
+        color: #673bb8;
+        text-decoration: underline;
+        height: max-content;
+        cursor: pointer;
       }
     }
   }
@@ -48,6 +57,14 @@
   .events-page-content {
     .categories-and-tags {
       width: 90%;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .events-page-content {
+    .events-list {
+      padding: 0;
     }
   }
 }

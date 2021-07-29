@@ -1,6 +1,7 @@
 export interface newsContent {
   newsList: newsListItem[];
   tags: tag[];
+  newsListTotal?: number;
 }
 
 export interface newsListItem {
@@ -15,15 +16,18 @@ export interface newsListItem {
 export interface tag {
   id: number;
   name: {AR: string, EN: string};
+  selected?: boolean;
 }
 
 export class NewsModel implements newsContent{
   newsList: newsListItem[];
   tags: tag[];
+  newsListTotal?: number;
 
   constructor(newsData: any) {
     this.newsList = NewsModel.setNewsList(newsData.newsListCollection.items);
     this.tags = NewsModel.setTags(newsData.newsTagsCollection.items);
+    this.newsListTotal = newsData.newsListCollection.total;
   }
 
   private static setNewsList(newsListItems: any[]): newsListItem[]{
@@ -43,6 +47,7 @@ export class NewsModel implements newsContent{
     return tags.map((tag) => {
       return {
         id: tag.id,
+        label: tag.label,
         name: {AR: tag.nameAr, EN: tag.nameEn}
       }
     });

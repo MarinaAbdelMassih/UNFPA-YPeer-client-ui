@@ -11,7 +11,7 @@ export const environment = {
   idb: {
     version: 1,
     name: 'y-peer',
-    tables: ['home']
+    tables: ['home', 'media']
   }
 };
 
