@@ -1,7 +1,7 @@
-export const PublicationsQuery = `{
-  publications(id: "3mkhbBr9NllE2W8hnvbKG4"){
+export const TrainingsQuery = `{
+  trainings(id: "6gjUdKMmgJUEtPFIoWGjW5"){
   title
-    publicationsListCollection {
+    trainingsListCollection {
       items {
         id
         labelEn
@@ -17,7 +17,7 @@ export const PublicationsQuery = `{
         }
       }
     }
-    publicationsTagsCollection {
+    trainingsTagsCollection {
       items {
         id
         nameAr
@@ -27,9 +27,9 @@ export const PublicationsQuery = `{
   }
 }`;
 
-export const PublicationsTagsQuery = (tagLabel: string) => {
+export const TrainingsTagsQuery = (tagLabel: string) => {
   return `{
-  publicationsListItemCollection(where: { tagLabel: "${tagLabel}"})
+  trainingsListItemCollection(where: { tagLabel: "${tagLabel}"})
   {
    items {
         id
@@ -47,7 +47,7 @@ export const PublicationsTagsQuery = (tagLabel: string) => {
         }
       }
   }
-   publicationsTagItemCollection {
+   trainingsTagItemCollection {
       items {
         id
         nameAr
@@ -58,9 +58,9 @@ export const PublicationsTagsQuery = (tagLabel: string) => {
 }`;
 };
 
-export const PublicationsYearsQuery = (year: number) => {
+export const TrainingsYearsQuery = (year: number) => {
   return `{
-  publicationsListItemCollection (where: { year: ${year}})
+  trainingsListItemCollection (where: { year: ${year}})
   {
    items {
         id
@@ -79,7 +79,7 @@ export const PublicationsYearsQuery = (year: number) => {
         }
       }
   }
-   publicationsTagItemCollection {
+   trainingsTagItemCollection {
       items {
         id
         nameAr
@@ -90,9 +90,9 @@ export const PublicationsYearsQuery = (year: number) => {
 }`;
 };
 
-export const PublicationsYearsAndTagsQuery = (year: number, tagLabel: string) => {
+export const TrainingsYearsAndTagsQuery = (year: number, tagLabel: string) => {
   return `{
-  publicationsListItemCollection (where:{
+  trainingsListItemCollection (where:{
   AND: [ {year: ${year}}, {tagLabel: "${tagLabel}"} ]
   })
   {
@@ -113,7 +113,7 @@ export const PublicationsYearsAndTagsQuery = (year: number, tagLabel: string) =>
         }
       }
   }
-   publicationsTagItemCollection {
+   trainingsTagItemCollection {
       items {
         id
         nameAr
@@ -124,9 +124,9 @@ export const PublicationsYearsAndTagsQuery = (year: number, tagLabel: string) =>
 }`;
 };
 
-export const PublicationsPageQuery = (skip: number, limit: number) => {
+export const TrainingsPageQuery = (skip: number, limit: number) => {
   return `{
-  publicationsListItemCollection (skip: ${skip}, limit: ${limit}, order: id_ASC){
+  trainingsListItemCollection (skip: ${skip}, limit: ${limit}, order: id_ASC){
    items {
         id
         labelEn
@@ -145,7 +145,7 @@ export const PublicationsPageQuery = (skip: number, limit: number) => {
       }
       total
   }
-   publicationsTagItemCollection {
+   trainingsTagItemCollection {
       items {
         id
         nameAr
