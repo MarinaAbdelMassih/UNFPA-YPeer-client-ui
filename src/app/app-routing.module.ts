@@ -67,6 +67,11 @@ const routes: Routes = [
     path: 'trainings',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/trainings/trainings.module').then(mod => mod.TrainingsModule),
+  },
+  {
+    path: 'event-details',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/event-details/event-details.module').then(mod => mod.EventDetailsModule),
   }
 ];
 
