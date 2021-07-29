@@ -10,6 +10,7 @@ export class DetailsTopBannerComponent implements OnInit {
   @Input() detailsImageBanner: string;
   @Input() label: TranslationModel;
   @Input() title: TranslationModel;
+  @Input() titleFontSize: number;
 
   constructor() {
   }
