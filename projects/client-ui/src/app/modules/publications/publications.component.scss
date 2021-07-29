@@ -3,6 +3,7 @@
   padding: 56px 46px 72px 46px;
   .publications-list {
     width: 70%;
+    padding: 0 25px;
   }
   .categories-and-tags {
     width: 30%;
@@ -21,6 +22,8 @@
         line-height: 1.75;
         color: #673bb8;
         text-decoration: underline;
+        height: max-content;
+        cursor: pointer;
       }
     }
   }
@@ -54,6 +57,23 @@
   .publications-page-content {
     .categories-and-tags {
       width: 90%;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .publications-page-content {
+    .publications-list {
+      padding: 0;
+    }
+  }
+}
+
+[dir = rtl] {
+  .publications-page-content {
+    .categories-and-tags {
+      padding-right: 45px;
+      padding-left: unset;
     }
   }
 }
