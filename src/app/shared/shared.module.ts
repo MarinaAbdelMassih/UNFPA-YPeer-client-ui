@@ -7,18 +7,34 @@ import { ImageDescriptionCardComponent } from './components/image-description-ca
 import { CategoryItemComponent } from './components/category-item/category-item.component';
 import {MatExpansionModule, MatIconModule, MatListModule} from '@angular/material';
 import { TagItemComponent } from './components/tag-item/tag-item.component';
+import { DetailsTopBannerComponent } from './components/details-top-banner/details-top-banner.component';
+import { LatestItemComponent } from './components/latest-item/latest-item.component';
+import { MightLikeItemComponent } from './components/might-like-item/might-like-item.component';
 
 
 
 @NgModule({
-  declarations: [PageTopBannerComponent, TranslateLocalDirective, TranslatePlaceholderLocalDirective, ImageDescriptionCardComponent, CategoryItemComponent, TagItemComponent],
+  declarations: [
+    PageTopBannerComponent,
+    TranslateLocalDirective,
+    TranslatePlaceholderLocalDirective,
+    ImageDescriptionCardComponent,
+    CategoryItemComponent,
+    TagItemComponent,
+    DetailsTopBannerComponent,
+    LatestItemComponent,
+    MightLikeItemComponent
+  ],
   exports: [
     TranslateLocalDirective,
     TranslatePlaceholderLocalDirective,
     ImageDescriptionCardComponent,
     PageTopBannerComponent,
     CategoryItemComponent,
-    TagItemComponent
+    TagItemComponent,
+    DetailsTopBannerComponent,
+    LatestItemComponent,
+    MightLikeItemComponent
   ],
     imports: [
         CommonModule,
