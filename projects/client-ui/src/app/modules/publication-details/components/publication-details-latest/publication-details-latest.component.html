@@ -1,0 +1,7 @@
+<div class="publication-details-latest">
+  <p>Latest Publications</p>
+  <app-latest-item *ngFor="let latestItem of latestItems"
+                   [description]="latestItem.publicationDescription"
+                   [date]="latestItem.publicationDate"
+                   [image]=" latestItem.publicationImage"></app-latest-item>
+</div>

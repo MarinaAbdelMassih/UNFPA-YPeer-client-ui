@@ -72,6 +72,11 @@ const routes: Routes = [
     path: 'event-details/:id',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/event-details/event-details.module').then(mod => mod.EventDetailsModule),
+  },
+  {
+    path: 'publication-details',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/publication-details/publication-details.module').then(mod => mod.PublicationDetailsModule),
   }
 ];
 
