@@ -8,13 +8,19 @@ import { StoryDetailsLatestComponent } from './components/story-details-latest/s
 import { StoryDetailsMightLikeComponent } from './components/story-details-might-like/story-details-might-like.component';
 import { StoryDetailsTagsComponent } from './components/story-details-tags/story-details-tags.component';
 import { StoryDetailsSectionComponent } from './components/story-details-section/story-details-section.component';
+import {SharedModule} from '../../../../../../src/app/shared/shared.module';
+import {SlickCarouselModule} from 'ngx-slick-carousel';
+import {CoreModule} from '../../../../../../src/app/core/core.module';
 
 
 @NgModule({
   declarations: [StoryDetailsComponent, StoryDetailsCategoriesComponent, StoryDetailsLatestComponent, StoryDetailsMightLikeComponent, StoryDetailsTagsComponent, StoryDetailsSectionComponent],
   imports: [
     CommonModule,
-    StoryDetailsRoutingModule
+    StoryDetailsRoutingModule,
+    SharedModule,
+    SlickCarouselModule,
+    CoreModule
   ]
 })
 export class StoryDetailsModule { }

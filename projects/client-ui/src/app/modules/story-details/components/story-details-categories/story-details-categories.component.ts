@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-story-details-categories',
@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./story-details-categories.component.scss']
 })
 export class StoryDetailsCategoriesComponent implements OnInit {
+  @Input() categoriesList;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
