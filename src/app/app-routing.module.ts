@@ -47,6 +47,17 @@ const routes: Routes = [
   },
 
   {
+    path: 'publications',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/publications/publications.module').then(mod => mod.PublicationsModule),
+  },
+
+  {
+    path: 'trainings',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/trainings/trainings.module').then(mod => mod.TrainingsModule),
+  },
+  {
     path: 'news-details/:id',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/news-details/news-details.module').then(mod => mod.NewsDetailsModule),

@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {CategoryModel} from "../../../../../../../../src/app/shared/models/category.model";
 
 @Component({
   selector: 'app-trainings-categories',
@@ -6,10 +7,15 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./trainings-categories.component.scss']
 })
 export class TrainingsCategoriesComponent implements OnInit {
-  @Input() categoriesList;
+  @Input() categoriesList: CategoryModel[];
+  @Output() yearClicked: EventEmitter<number> = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit() {
+  }
+
+  yearFilterClicked(year){
+    this.yearClicked.emit(year);
   }
 
 }
