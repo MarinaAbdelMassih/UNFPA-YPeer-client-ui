@@ -1,5 +1,5 @@
 <div class="list-container">
-  <app-image-description-card *ngFor="let trainingsList of trainingsLists | slice:0:6;"
+  <app-image-description-card *ngFor="let trainingsList of trainingsLists"
                               [imageSrc]="trainingsList.image" [type]="trainingsList.label"
                               [title]="trainingsList.title" [date]="trainingsList.date"
                               [description]="trainingsList.description">

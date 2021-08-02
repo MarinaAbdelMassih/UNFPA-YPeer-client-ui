@@ -1,5 +1,5 @@
 <div class="list-container">
-  <app-image-description-card *ngFor="let latestSection of latestSections | slice:0:6;"
+  <app-image-description-card *ngFor="let latestSection of latestSections"
                               [imageSrc]="latestSection.image" [type]="latestSection.label"
                               [title]="latestSection.title" [date]="latestSection.date"
                               [description]="latestSection.description">
