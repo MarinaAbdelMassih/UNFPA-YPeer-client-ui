@@ -5,7 +5,7 @@
 <div class="news-details-page-content">
   <div class="news-details-story">
     <app-news-details-story *ngIf="newsDetailsData" [detailsData]="newsDetailsData"></app-news-details-story>
-    <app-news-details-might-like [cardDetails]="cardDetails"></app-news-details-might-like>
+    <app-news-details-might-like [cardDetails]="relatedNews"></app-news-details-might-like>
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">

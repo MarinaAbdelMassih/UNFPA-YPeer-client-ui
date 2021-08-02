@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {CategoryModel} from "../../../../../../../../src/app/shared/models/category.model";
 
 @Component({
   selector: 'app-news-details-categories',
@@ -6,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./news-details-categories.component.scss']
 })
 export class NewsDetailsCategoriesComponent implements OnInit {
-  @Input() categoriesList;
+  @Input() categoriesList: CategoryModel[];
 
   constructor() {
   }

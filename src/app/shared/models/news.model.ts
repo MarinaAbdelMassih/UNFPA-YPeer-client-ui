@@ -39,10 +39,10 @@ export class NewsModel implements newsContent{
   newsDetailsItem?: newsDetailsItem[];
 
   constructor(newsData: any) {
-    newsData.newsListCollection.total? this.newsList = NewsModel.setNewsList(newsData.newsListCollection.items): null;
+    this.newsList = NewsModel.setNewsList(newsData.newsListCollection.items);
     this.tags = NewsModel.setTags(newsData.newsTagsCollection.items);
-    newsData.newsListCollection.total? this.newsListTotal = newsData.newsListCollection.total: null;
-    !(newsData.newsListCollection.total) ?this.newsDetailsItem = NewsModel.setNewsItem(newsData.newsListCollection.items): null;
+   this.newsListTotal = newsData.newsListCollection.total;
+   this.newsDetailsItem = NewsModel.setNewsItem(newsData.newsListCollection.items);
   }
 
   private static setNewsList(newsListItems: any[]): newsListItem[]{
@@ -53,15 +53,7 @@ export class NewsModel implements newsContent{
         title : {AR: newsListItem.titleAr, EN: newsListItem.titleEn},
         description : {AR: newsListItem.descriptionAr, EN: newsListItem.descriptionEn},
         date : {AR: newsListItem.dateAr, EN: newsListItem.dateEn},
-        image: newsListItem.image.url,
-
-        // detailsDesc1 : {AR: newsListItem.detailsDescriptionAr1, EN: newsListItem.detailsDescriptionEn1},
-        // detailsDesc2 : {AR: newsListItem.detailsDescriptionAr2, EN: newsListItem.detailsDescriptionEn2},
-        // ourStory1 : {AR: newsListItem.ourStoryAr1, EN: newsListItem.ourStoryEn1},
-        // ourStory2 : {AR: newsListItem.ourStoryAr2, EN: newsListItem.ourStoryEn2},
-        // ourStory3 : {AR: newsListItem.ourStoryAr3, EN: newsListItem.ourStoryEn3},
-        // ourStory4 : {AR: newsListItem.ourStoryAr4, EN: newsListItem.ourStoryEn4},
-        // ourStoryImage: newsListItem.ourStoryImage.url,
+        image: newsListItem.image ? newsListItem.image.url: null,
       }
     });
   }
@@ -77,7 +69,7 @@ export class NewsModel implements newsContent{
         ourStory2 : {AR: newsItem.ourStoryAr2, EN: newsItem.ourStoryEn2},
         ourStory3 : {AR: newsItem.ourStoryAr3, EN: newsItem.ourStoryEn3},
         ourStory4 : {AR: newsItem.ourStoryAr4, EN: newsItem.ourStoryEn4},
-        ourStoryImage: newsItem.ourStoryImage.url
+        ourStoryImage: newsItem.ourStoryImage? newsItem.ourStoryImage.url: null
       }
     });
   }
