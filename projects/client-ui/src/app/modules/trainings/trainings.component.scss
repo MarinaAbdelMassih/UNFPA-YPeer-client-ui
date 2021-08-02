@@ -3,6 +3,7 @@
   padding: 56px 46px 72px 46px;
   .trainings-list {
     width: 70%;
+    padding: 0 25px;
   }
   .categories-and-tags {
     width: 30%;
@@ -10,6 +11,7 @@
     .categories-list, .tags-list {
       margin-bottom: 43px;
       h2 {
+        font-family: 'TradeGothic', sans-serif;
         font-size: 22px;
         color: #232323;
         font-weight: bold;
@@ -20,6 +22,8 @@
         line-height: 1.75;
         color: #673bb8;
         text-decoration: underline;
+        height: max-content;
+        cursor: pointer;
       }
     }
   }
@@ -53,6 +57,23 @@
   .trainings-page-content {
     .categories-and-tags {
       width: 90%;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .trainings-page-content {
+    .trainings-list {
+      padding: 0;
+    }
+  }
+}
+
+[dir = rtl] {
+  .trainings-page-content {
+    .categories-and-tags {
+      padding-right: 45px;
+      padding-left: unset;
     }
   }
 }

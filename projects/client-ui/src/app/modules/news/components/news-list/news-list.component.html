@@ -1,5 +1,5 @@
 <div class="list-container" >
-  <div *ngFor="let newsList of newsLists | slice:0:6;let i = index;">
+  <div *ngFor="let newsList of newsLists;let i = index;">
   <a [routerLink]='["/news-details", i]'>
   <app-image-description-card
                               [imageSrc]="newsList.image" [type]="newsList.label"

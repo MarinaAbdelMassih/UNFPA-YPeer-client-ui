@@ -36,7 +36,7 @@ export class StoriesComponent implements OnInit {
   }
 
   getStoriesData(): void {
-    let storiesSub = this.storiesResolverService.getPageData(this.storiesList.length, 2).subscribe((storiesData: storiesContent) => {
+    let storiesSub = this.storiesResolverService.getPageData(this.storiesList.length, 6).subscribe((storiesData: storiesContent) => {
       this.storiesData = undefined;
       setTimeout(() => {
         this.storiesData = storiesData;

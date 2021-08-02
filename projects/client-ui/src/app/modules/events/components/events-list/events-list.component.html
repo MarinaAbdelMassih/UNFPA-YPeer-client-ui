@@ -1,5 +1,5 @@
 <div class="list-container">
-  <div *ngFor="let eventsList of eventsLists | slice:0:6;let i = index;">
+  <div *ngFor="let eventsList of eventsLists;let i = index;">
     <a [routerLink]='["/event-details", i]'>
       <app-image-description-card
         [imageSrc]="eventsList.image" [type]="eventsList.label"

@@ -40,7 +40,7 @@ export class ResourcesComponent implements OnInit {
   }
 
   getResourcesData(): void {
-    let resourcesSub = this.resourcesResolverService.getPageData(this.resourcesList.length, 2).subscribe((resourcesData: resourcesContent) => {
+    let resourcesSub = this.resourcesResolverService.getPageData(this.resourcesList.length, 6).subscribe((resourcesData: resourcesContent) => {
       this.resourcesData = undefined;
       setTimeout(() => {
         this.resourcesData = resourcesData;
