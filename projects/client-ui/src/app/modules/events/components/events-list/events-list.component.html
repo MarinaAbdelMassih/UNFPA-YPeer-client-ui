@@ -1,10 +1,17 @@
 <div class="list-container">
-  <app-image-description-card *ngFor="let eventsList of eventsLists | slice:0:6;"
-                              [imageSrc]="eventsList.image" [type]="eventsList.label"
-                              [title]="eventsList.title" [date]="eventsList.date"
-                              [description]="eventsList.description">
-  </app-image-description-card>
+  <div *ngFor="let eventsList of eventsLists | slice:0:6;let i = index;">
+    <a [routerLink]='["/event-details", i]'>
+      <app-image-description-card
+        [imageSrc]="eventsList.image" [type]="eventsList.label"
+        [title]="eventsList.title" [date]="eventsList.date"
+        [description]="eventsList.description">
+      </app-image-description-card>
+    </a>
+  </div>
 </div>
 <div class="btn-container">
-  <button *ngIf="showLoadMoreButton" (click)="loadMoreData()" class="ypeer-btn btn-outlined" [translateLocal]="{EN: 'Load More', AR: 'المزيد'}"></button>
+  <button *ngIf="showLoadMoreButton"
+          (click)="loadMoreData()"
+          class="ypeer-btn btn-outlined"
+          [translateLocal]="{EN: 'Load More', AR: 'المزيد'}"></button>
 </div>

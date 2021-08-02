@@ -1,4 +1,4 @@
 <div class="tags-container">
-  <app-tag-item *ngFor="let tag of tagsList" [tag]="tag" (tagClicked)="tagFilterClicked($event)"></app-tag-item>
+  <app-tag-item *ngFor="let tag of tagsList" [tag]="tag.name"></app-tag-item>
 </div>
 

@@ -11,6 +11,10 @@ import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 
 @NgModule({
   declarations: [NewsComponent, NewsCategoriesComponent, NewsListComponent, NewsTagsComponent],
+  exports: [
+    NewsCategoriesComponent,
+    NewsTagsComponent
+  ],
   imports: [
     CommonModule,
     NewsRoutingModule,
