@@ -1,15 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryModel} from '../../../../../../src/app/shared/models/category.model';
 import {ActivatedRoute} from '@angular/router';
-import {PublicationsResolverService} from '../../../../../../src/app/shared/services/publications-resolver.service';
-import {publicationsContent, publicationsListItem} from '../../../../../../src/app/shared/models/publications.model';
+import {trainingsContent, trainingsListItem} from '../../../../../../src/app/shared/models/trainings.model';
+import {trainingsResolverService} from '../../../../../../src/app/shared/services/trainings-resolver.service';
 
 @Component({
-  selector: 'app-publication-details',
-  templateUrl: './publication-details.component.html',
-  styleUrls: ['./publication-details.component.scss']
+  selector: 'app-training-details',
+  templateUrl: './training-details.component.html',
+  styleUrls: ['./training-details.component.scss']
 })
-export class PublicationDetailsComponent implements OnInit {
+export class TrainingDetailsComponent implements OnInit {
+
+
   cardDetails = [
     {
       description: {
@@ -70,42 +72,42 @@ export class PublicationDetailsComponent implements OnInit {
     {id: 4, name: {EN: 'gender-based violence', AR: 'العنف القائم على النوع الاجتماعي'}},
     {id: 5, name: {EN: 'family planning', AR: 'خطة العائلة'}},
   ];
-  publicationLatest = [
+  trainingLatest = [
     {
-      publicationDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      publicationDate: {EN: 'Jan 12, 2021', AR: ''},
-      publicationImage: 'assets/images/might-like.png'
+      trainingDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
+      trainingDate: {EN: 'Jan 12, 2021', AR: ''},
+      trainingImage: 'assets/images/might-like.png'
     },
     {
-      publicationDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      publicationDate: {EN: 'Jan 12, 2021', AR: ''},
-      publicationImage: 'assets/images/might-like.png'
+      trainingDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
+      trainingDate: {EN: 'Jan 12, 2021', AR: ''},
+      trainingImage: 'assets/images/might-like.png'
     },
     {
-      publicationDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      publicationDate: {EN: 'Jan 12, 2021', AR: ''},
-      publicationImage: 'assets/images/might-like.png'
+      trainingDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
+      trainingDate: {EN: 'Jan 12, 2021', AR: ''},
+      trainingImage: 'assets/images/might-like.png'
     }
   ];
-  publicationsList: publicationsListItem[] = [];
-  publicationsData: publicationsContent;
-  publicationsDataDetails;
+  trainingsList: trainingsListItem[] = [];
+  trainingsData: trainingsContent;
+  trainingsDataDetails;
   index;
 
-  constructor(private publicationsResolverService: PublicationsResolverService, public activatedRoute: ActivatedRoute) {
+  constructor(private TrainingsResolverService: trainingsResolverService, public activatedRoute: ActivatedRoute) {
     this.index = activatedRoute.snapshot.paramMap.get('id');
     console.log('index is', this.index);
   }
 
   ngOnInit() {
-    this.getPublicationData();
+    this.getTrainingsData();
   }
 
-  getPublicationData(): void {
-    let newsSub = this.publicationsResolverService.resolve().subscribe((publicationsData: publicationsContent) => {
-      this.publicationsData = publicationsData[this.index];
-      this.publicationsDataDetails = publicationsData.publicationsList[this.index];
-      console.log('publication', publicationsData.publicationsList);
+  getTrainingsData(): void {
+    let newsSub = this.TrainingsResolverService.resolve().subscribe((trainingsData: trainingsContent) => {
+      this.trainingsData = trainingsData[this.index];
+      this.trainingsDataDetails = trainingsData.trainingsList[this.index];
+      console.log('publication', trainingsData.trainingsList);
     });
   }
 }
