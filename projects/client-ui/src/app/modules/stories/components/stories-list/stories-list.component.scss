@@ -2,6 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
 }
 
 .btn-container {
