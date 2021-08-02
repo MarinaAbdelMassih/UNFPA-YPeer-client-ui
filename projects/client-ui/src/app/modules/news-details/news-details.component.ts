@@ -104,7 +104,7 @@ export class NewsDetailsComponent implements OnInit {
   }
 
   getNewsDetailsData(): void {
-    let newsSub = this.newsResolverService.getPageDetails(1).subscribe((newsData: newsContent) => {
+    let newsSub = this.newsResolverService.getPageDetails(this.index).subscribe((newsData: newsContent) => {
       this.newsDetailsData = undefined;
       setTimeout(() => {
         this.newsDetailsData = newsData.newsDetailsItem[0];
