@@ -60,6 +60,14 @@
   }
 }
 
+@media (max-width: 500px) {
+  .story-page-content {
+    .story-list {
+      padding: 0;
+    }
+  }
+}
+
 [dir = rtl] {
   .story-page-content {
     .categories-and-tags {

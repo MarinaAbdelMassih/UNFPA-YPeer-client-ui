@@ -55,7 +55,7 @@ export class MediaComponent implements OnInit {
   }
 
   getMediaData(): void {
-    let mediaSub = this.mediaResolverService.getPageData(this.mediaList.length, 2).subscribe((mediaData: mediaContent) => {
+    let mediaSub = this.mediaResolverService.getPageData(this.mediaList.length, 6).subscribe((mediaData: mediaContent) => {
       this.mediaData = undefined;
       setTimeout(() => {
         this.mediaData = mediaData;
