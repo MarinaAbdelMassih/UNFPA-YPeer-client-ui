@@ -155,3 +155,37 @@ export const NewsPageQuery = (skip: number, limit: number) => {
     }
 }`;
 };
+export const NewsDetailsQuery = (id: number) => {
+  return `{
+ newsListItemCollection(where:{id: ${id}}){
+    items{
+      dateEn
+      dateAr
+      detailsDescriptionEn1
+      detailsDescriptionAr1
+      detailsDescriptionEn2
+      detailsDescriptionAr2
+      ourStoryEn1
+      ourStoryAr1
+      ourStoryEn2
+      ourStoryAr2
+      ourStoryEn3
+      ourStoryAr3
+      ourStoryEn4
+      ourStoryAr4
+      ourStoryImage{
+        url
+      }
+    
+    }
+  }
+  newsTagItemCollection{
+    items{
+      id
+      nameEn
+      nameAr
+      label
+    }
+  }
+}`;
+};

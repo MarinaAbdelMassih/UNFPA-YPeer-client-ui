@@ -10,7 +10,14 @@ export interface newsListItem {
   title: {AR: string, EN: string};
   description: {AR: string, EN: string};
   date: {AR: string, EN: string};
+  detailsDesc1?: {AR: string, EN: string};
+  detailsDesc2?: {AR: string, EN: string};
+  ourStory1?: {AR: string, EN: string};
+  ourStory2?: {AR: string, EN: string};
+  ourStory3?: {AR: string, EN: string};
+  ourStory4?: {AR: string, EN: string};
   image: string;
+  ourStoryImage?: string;
 }
 
 export interface tag {
@@ -38,7 +45,14 @@ export class NewsModel implements newsContent{
         title : {AR: newsListItem.titleAr, EN: newsListItem.titleEn},
         description : {AR: newsListItem.descriptionAr, EN: newsListItem.descriptionEn},
         date : {AR: newsListItem.dateAr, EN: newsListItem.dateEn},
-        image: newsListItem.image.url
+        detailsDesc1 : {AR: newsListItem.detailsDescriptionAr1, EN: newsListItem.detailsDescriptionEn1},
+        detailsDesc2 : {AR: newsListItem.detailsDescriptionAr2, EN: newsListItem.detailsDescriptionEn2},
+        ourStory1 : {AR: newsListItem.ourStoryAr1, EN: newsListItem.ourStoryEn1},
+        ourStory2 : {AR: newsListItem.ourStoryAr2, EN: newsListItem.ourStoryEn2},
+        ourStory3 : {AR: newsListItem.ourStoryAr3, EN: newsListItem.ourStoryEn3},
+        ourStory4 : {AR: newsListItem.ourStoryAr4, EN: newsListItem.ourStoryEn4},
+        image: newsListItem.image.url,
+        ourStoryImage: newsListItem.ourStoryImage.url,
       }
     });
   }
