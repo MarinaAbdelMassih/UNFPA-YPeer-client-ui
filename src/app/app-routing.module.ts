@@ -77,6 +77,11 @@ const routes: Routes = [
     path: 'publication-details',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/publication-details/publication-details.module').then(mod => mod.PublicationDetailsModule),
+  },
+  {
+    path: 'story-details/:id',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/story-details/story-details.module').then(mod => mod.StoryDetailsModule),
   }
 ];
 
