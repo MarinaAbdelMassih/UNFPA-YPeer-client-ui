@@ -16,6 +16,7 @@ export const NewsQuery = `{
           url
         }
       }
+      total
     }
     newsTagsCollection {
       items {
@@ -46,6 +47,7 @@ export const NewsTagsQuery = (tagLabel: string) => {
           url
         }
       }
+      total
   }
    newsTagItemCollection {
       items {
@@ -78,6 +80,7 @@ export const NewsYearsQuery = (year: number) => {
           url
         }
       }
+      total
   }
    newsTagItemCollection {
       items {
@@ -112,6 +115,7 @@ export const NewsYearsAndTagsQuery = (year: number, tagLabel: string) => {
           url
         }
       }
+      total
   }
    newsTagItemCollection {
       items {
@@ -159,6 +163,7 @@ export const NewsDetailsQuery = (id: number) => {
   return `{
  newsListItemCollection(where:{id: ${id}}){
     items{
+      id
       dateEn
       dateAr
       detailsDescriptionEn1

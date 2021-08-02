@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {newsDetailsItem} from "../../../../../../../../src/app/shared/models/news.model";
 
 @Component({
   selector: 'app-news-details-story',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsDetailsStoryComponent implements OnInit {
 
+  @Input() detailsData: newsDetailsItem;
   constructor() { }
 
   ngOnInit() {

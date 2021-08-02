@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryModel} from '../../../../../../src/app/shared/models/category.model';
-import {newsContent, newsListItem} from '../../../../../../src/app/shared/models/news.model';
+import {newsContent, newsDetailsItem, newsListItem} from '../../../../../../src/app/shared/models/news.model';
 import {NewsResolverService} from '../../../../../../src/app/shared/services/news-resolver.service';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from "rxjs";
@@ -82,35 +82,32 @@ export class NewsDetailsComponent implements OnInit {
     }
   ];
   index;
-  newsList: newsListItem[] = [];
-  newsData: newsContent;
-  newsDataDetails;
-  news2:any;
+  newsDetailsData:newsDetailsItem;
+  newsBasicData: newsListItem;
 
   constructor(private newsResolverService: NewsResolverService, public activatedRoute: ActivatedRoute) {
     this.index = activatedRoute.snapshot.paramMap.get('id');
-    console.log('index is', this.index);
   }
 
   ngOnInit() {
     this.getNewsDetailsData();
-    this.getNewsData();
+    this.getNewsData()
   }
+
 
   getNewsData(): void {
     let newsSub = this.newsResolverService.resolve().subscribe((newsData: newsContent) => {
-      this.newsData = newsData[this.index];
-      this.newsDataDetails = newsData.newsList[this.index];
-      console.log('news', newsData.newsList[this.index]);
+      this.newsBasicData = newsData[this.index];
+      this.newsBasicData = newsData.newsList[this.index];
     });
+    this.subscriptions.push(newsSub);
   }
 
   getNewsDetailsData(): void {
     let newsSub = this.newsResolverService.getPageDetails(1).subscribe((newsData: newsContent) => {
-      this.newsData = undefined;
+      this.newsDetailsData = undefined;
       setTimeout(() => {
-        this.news2 = newsData;
-        console.log(newsData)
+        this.newsDetailsData = newsData.newsDetailsItem[0];
       }, 200)
 
     });
