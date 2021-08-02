@@ -20,7 +20,7 @@ export class TrainingDetailsComponent implements OnInit {
       },
       img: 'assets/images/might-like.png',
       title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'publication', AR: ''},
+      type: {EN: 'training', AR: ''},
     },
     {
       description: {
@@ -29,7 +29,7 @@ export class TrainingDetailsComponent implements OnInit {
       },
       img: 'assets/images/might-like.png',
       title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'publication', AR: ''},
+      type: {EN: 'training', AR: ''},
     },
     {
       description: {
@@ -38,7 +38,7 @@ export class TrainingDetailsComponent implements OnInit {
       },
       img: 'assets/images/might-like.png',
       title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'publication', AR: ''},
+      type: {EN: 'training', AR: ''},
     },
     {
       description: {
@@ -47,7 +47,7 @@ export class TrainingDetailsComponent implements OnInit {
       },
       img: 'assets/images/might-like.png',
       title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'publication', AR: ''},
+      type: {EN: 'training', AR: ''},
     }
   ];
 
