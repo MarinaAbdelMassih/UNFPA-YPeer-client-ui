@@ -17,21 +17,13 @@ export interface eventsListItem {
 
 export interface eventsDetailsItem {
   id?: number;
-  dateAr?: string;
-  dateEn?: string;
-  detailsDescriptionAr1?: string;
-  detailsDescriptionEn1?: string;
-  detailsDescriptionAr2?: string;
-  detailsDescriptionEn2?: string;
-
-  ourStoryAr1?: string;
-  ourStoryAr2?: string;
-  ourStoryAr3?: string;
-  ourStoryAr4?: string;
-  ourStoryEn1?: string;
-  ourStoryEn2?: string;
-  ourStoryEn3?: string;
-  ourStoryEn4?: string;
+  date?: { AR: string, EN: string };
+  detailsDesc1?: { AR: string, EN: string };
+  detailsDesc2?: { AR: string, EN: string };
+  ourStory1?: { AR: string, EN: string };
+  ourStory2?: { AR: string, EN: string };
+  ourStory3?: { AR: string, EN: string };
+  ourStory4?: { AR: string, EN: string };
   ourStoryImage?: string;
 }
 
