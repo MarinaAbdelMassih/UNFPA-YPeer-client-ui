@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryModel} from '../../../../../../src/app/shared/models/category.model';
-import {newsContent, newsListItem} from '../../../../../../src/app/shared/models/news.model';
-import {NewsResolverService} from '../../../../../../src/app/shared/services/news-resolver.service';
 import {ActivatedRoute} from '@angular/router';
-import {eventsContent, eventsListItem} from '../../../../../../src/app/shared/models/events.model';
+import {eventsContent, eventsDetailsItem, eventsListItem} from '../../../../../../src/app/shared/models/events.model';
 import {EventsResolverService} from '../../../../../../src/app/shared/services/events-resolver.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-event-details',
@@ -12,6 +11,7 @@ import {EventsResolverService} from '../../../../../../src/app/shared/services/e
   styleUrls: ['./event-details.component.scss']
 })
 export class EventDetailsComponent implements OnInit {
+  private subscriptions: Subscription[] = [];
 
   cardDetails = [
     {
@@ -53,9 +53,9 @@ export class EventDetailsComponent implements OnInit {
   ];
 
   categoriesList: CategoryModel[] = [
-    {title: {EN: 'News', AR: 'الأخبار'}, count: 50, hideToggle: true, url: 'news'},
-    {title: {EN: 'Events', AR: 'الأحداث'}, count: 23, hideToggle: true, url: 'events'},
-    {title: {EN: 'Stories', AR: 'القصص'}, count: 18, hideToggle: true, url: 'stories'},
+    {title: {EN: 'News', AR: 'الأخبار'}, count: 50, hideToggle: true},
+    {title: {EN: 'Events', AR: 'الأحداث'}, count: 23, hideToggle: true},
+    {title: {EN: 'Stories', AR: 'القصص'}, count: 18, hideToggle: true},
     {
       title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [
         {year: 2018, selected: false},
@@ -92,26 +92,36 @@ export class EventDetailsComponent implements OnInit {
   ];
   eventPhotos = ['assets/images/events-details-photos.png', 'assets/images/events-details-photos.png', 'assets/images/events-details-photos.png', 'assets/images/events-details-photos.png'];
   index;
-  eventsData: eventsContent;
-  eventsList: eventsListItem[] = [];
-  eventsDataDetails;
+  eventsDetailsData: eventsDetailsItem;
+  eventsBasicData: eventsListItem;
 
   constructor(private eventsResolverService: EventsResolverService, public activatedRoute: ActivatedRoute) {
     this.index = activatedRoute.snapshot.paramMap.get('id');
-    console.log('index is', this.index);
   }
 
   ngOnInit() {
     this.getEventsData();
+    this.getEventsDetailsData();
   }
 
   getEventsData(): void {
     let eventsSub = this.eventsResolverService.resolve().subscribe((eventsData: eventsContent) => {
-      this.eventsData = eventsData[this.index];
-      this.eventsDataDetails = eventsData.eventsList[this.index];
-      console.log('events', eventsData.eventsList);
+      this.eventsBasicData = eventsData[this.index];
+      this.eventsBasicData = eventsData.eventsList[this.index];
     });
+    this.subscriptions.push(eventsSub);
+  }
 
+  getEventsDetailsData(): void {
+    let eventsSub = this.eventsResolverService.getPageDetails(this.index).subscribe((eventsData: eventsContent) => {
+      this.eventsDetailsData = undefined;
+      setTimeout(() => {
+        this.eventsDetailsData = eventsData.eventsDetailsItem[0];
+        console.log('eventsDetailsData', this.eventsDetailsData );
+
+      }, 200);
+
+    });
+    this.subscriptions.push(eventsSub);
   }
 }
-

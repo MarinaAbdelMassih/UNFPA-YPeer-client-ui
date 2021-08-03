@@ -3,11 +3,22 @@ import {eventsContent, EventsModel} from '../models/events.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {DataHandlerService} from './data-handler.service';
 import {
+  EventsDetailsQuery,
   EventsPageQuery,
   EventsQuery,
   EventsTagsQuery
 } from '../queries/events.query';
 import {tag} from "../models/media.model";
+import {newsContent, NewsModel} from '../models/news.model';
+import {NewsDetailsQuery} from '../queries/news.query';
+
+
+// NewsDetailsQuery,
+//   NewsPageQuery,
+//   NewsQuery,
+//   NewsTagsQuery,
+//   NewsYearsAndTagsQuery,
+//   NewsYearsQuery
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +68,20 @@ export class EventsResolverService {
           eventsTagsCollection: result.data.eventsTagItemCollection});
         subscriber.next(this.eventsData);
       },() => subscriber.next(null));
+    });
+  }
+  getPageDetails(id: number): Observable<eventsContent> {
+    let result;
+    return new Observable<eventsContent>(subscriber => {
+      this.dataHandlerService.getRemoteDataWithoutSave(EventsDetailsQuery(id), (res) => {
+        result = res;
+      }).then(() => {
+        this.eventsData = new EventsModel({
+          title: 'Events', eventsListCollection: result.data.eventsListItemCollection,
+          eventsTagsCollection: result.data.eventsTagItemCollection
+        });
+        subscriber.next(this.eventsData);
+      }, () => subscriber.next(null));
     });
   }
 }

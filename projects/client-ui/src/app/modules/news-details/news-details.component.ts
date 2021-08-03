@@ -82,7 +82,7 @@ export class NewsDetailsComponent implements OnInit {
     }
   ];
   index;
-  newsDetailsData:newsDetailsItem;
+  newsDetailsData: newsDetailsItem;
   newsBasicData: newsListItem;
 
   constructor(private newsResolverService: NewsResolverService, public activatedRoute: ActivatedRoute) {
@@ -91,7 +91,7 @@ export class NewsDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getNewsDetailsData();
-    this.getNewsData()
+    this.getNewsData();
   }
 
 
@@ -108,6 +108,7 @@ export class NewsDetailsComponent implements OnInit {
       this.newsDetailsData = undefined;
       setTimeout(() => {
         this.newsDetailsData = newsData.newsDetailsItem[0];
+        console.log( this.newsDetailsData);
       }, 200)
 
     });
