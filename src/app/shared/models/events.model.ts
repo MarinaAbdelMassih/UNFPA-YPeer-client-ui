@@ -38,11 +38,13 @@ export class EventsModel implements eventsContent {
   eventsList: eventsListItem[];
   tags: tag[];
   eventsListTotal?: number;
+  eventsDetailsItem?: eventsDetailsItem[];
 
   constructor(eventsData: any) {
     this.eventsList = EventsModel.setEventsList(eventsData.eventsListCollection.items);
     this.tags = EventsModel.setTags(eventsData.eventsTagsCollection.items);
     this.eventsListTotal = eventsData.eventsListCollection.total;
+    this.eventsDetailsItem = EventsModel.setEventsItem(eventsData.eventsListCollection.items)
   }
 
   private static setEventsList(eventsListItems: any[]): eventsListItem[] {
@@ -53,7 +55,7 @@ export class EventsModel implements eventsContent {
         title: {AR: eventsListItem.titleAr, EN: eventsListItem.titleEn},
         description: {AR: eventsListItem.descriptionAr, EN: eventsListItem.descriptionEn},
         date: {AR: eventsListItem.dateAr, EN: eventsListItem.dateEn},
-        image: eventsListItem.image.url
+        image: eventsListItem.image ? eventsListItem.image.url: null
       };
     });
   }
@@ -69,7 +71,7 @@ export class EventsModel implements eventsContent {
         ourStory2: {AR: eventsItem.ourStoryAr2, EN: eventsItem.ourStoryEn2},
         ourStory3: {AR: eventsItem.ourStoryAr3, EN: eventsItem.ourStoryEn3},
         ourStory4: {AR: eventsItem.ourStoryAr4, EN: eventsItem.ourStoryEn4},
-        ourStoryImage: eventsItem.ourStoryImage.url
+        ourStoryImage: eventsItem.ourStoryImage ? eventsItem.ourStoryImage.url: null
       };
     });
   }

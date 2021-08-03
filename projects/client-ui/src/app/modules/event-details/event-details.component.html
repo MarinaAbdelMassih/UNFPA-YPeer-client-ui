@@ -1,9 +1,9 @@
-<app-details-top-banner  [detailsImageBanner]="eventsBasicData.image"
+<app-details-top-banner *ngIf="eventsBasicData"  [detailsImageBanner]="eventsBasicData.image"
                         [label]="{EN: eventsBasicData.label.EN, AR: eventsBasicData.label.AR}"
                         [title]="{EN: eventsBasicData.title.EN, AR: eventsBasicData.title.AR}"></app-details-top-banner>
 <div class="event-details-page-content">
   <div class="event-details-story">
-    <app-event-details-story [detailsData]="eventsDetailsData"></app-event-details-story>
+    <app-event-details-story *ngIf="eventsDetailsData" [detailsData]="eventsDetailsData"></app-event-details-story>
     <app-event-details-photos [photos]="eventPhotos"></app-event-details-photos>
     <app-event-details-might-like [cardDetails]="cardDetails"></app-event-details-might-like>
   </div>

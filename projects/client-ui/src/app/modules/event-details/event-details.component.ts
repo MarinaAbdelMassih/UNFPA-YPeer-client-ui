@@ -105,8 +105,7 @@ export class EventDetailsComponent implements OnInit {
 
   getEventsData(): void {
     let eventsSub = this.eventsResolverService.resolve().subscribe((eventsData: eventsContent) => {
-      this.eventsBasicData = eventsData[this.index];
-      this.eventsBasicData = eventsData.eventsList[this.index];
+      this.eventsBasicData = eventsData.eventsList[(this.index-1)];
     });
     this.subscriptions.push(eventsSub);
   }
