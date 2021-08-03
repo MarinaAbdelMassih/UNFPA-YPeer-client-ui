@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryModel} from '../../../../../../src/app/shared/models/category.model';
-import {newsContent, newsDetailsItem, newsListItem} from '../../../../../../src/app/shared/models/news.model';
+import {newsContent, newsDetailsItem, newsListItem, tag} from '../../../../../../src/app/shared/models/news.model';
 import {NewsResolverService} from '../../../../../../src/app/shared/services/news-resolver.service';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from "rxjs";

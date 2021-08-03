@@ -5,12 +5,12 @@
   <div class="event-details-story">
     <app-event-details-story *ngIf="eventsDetailsData" [detailsData]="eventsDetailsData"></app-event-details-story>
     <app-event-details-photos [photos]="eventPhotos"></app-event-details-photos>
-    <app-event-details-might-like [cardDetails]="cardDetails"></app-event-details-might-like>
+    <app-event-details-might-like [cardDetails]="relatedEvents"></app-event-details-might-like>
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">
       <div class="social-icons-container">
-        <p>Share</p>
+        <p [translateLocal]="{EN: 'Share', AR: 'مشاركة'}"></p>
         <app-footer-social></app-footer-social>
       </div>
       <div class="d-flex justify-content-between">
