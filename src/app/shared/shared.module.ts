@@ -10,6 +10,7 @@ import { TagItemComponent } from './components/tag-item/tag-item.component';
 import { DetailsTopBannerComponent } from './components/details-top-banner/details-top-banner.component';
 import { LatestItemComponent } from './components/latest-item/latest-item.component';
 import { MightLikeItemComponent } from './components/might-like-item/might-like-item.component';
+import {SafePipe} from "./pipes/safePipe";
 
 
 
@@ -23,7 +24,8 @@ import { MightLikeItemComponent } from './components/might-like-item/might-like-
     TagItemComponent,
     DetailsTopBannerComponent,
     LatestItemComponent,
-    MightLikeItemComponent
+    MightLikeItemComponent,
+    SafePipe
   ],
   exports: [
     TranslateLocalDirective,
@@ -34,7 +36,8 @@ import { MightLikeItemComponent } from './components/might-like-item/might-like-
     TagItemComponent,
     DetailsTopBannerComponent,
     LatestItemComponent,
-    MightLikeItemComponent
+    MightLikeItemComponent,
+    SafePipe
   ],
     imports: [
         CommonModule,

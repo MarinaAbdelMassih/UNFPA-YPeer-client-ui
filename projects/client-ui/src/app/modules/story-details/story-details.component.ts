@@ -57,7 +57,6 @@ export class StoryDetailsComponent implements OnInit {
 
   constructor(private storiesResolverService: StoriesResolverService, public activatedRoute: ActivatedRoute) {
     this.index = activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.index)
   }
 
   ngOnInit() {
@@ -70,7 +69,6 @@ export class StoryDetailsComponent implements OnInit {
       this.tagsList = storiesData.tags;
       this.relatedStories = storiesData.storiesList.filter(item => item.id != this.index);
       this.storiesBasicData = storiesData.storiesList[(this.index-1)];
-      console.log(this.storiesBasicData)
     });
     this.subscriptions.push(storiesSub);
   }

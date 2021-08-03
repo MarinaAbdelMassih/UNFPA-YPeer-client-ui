@@ -1,7 +1,9 @@
 <div class="story-details-story">
   <p class="story-date" [translateLocal]="detailsData.date"></p>
 
-  <img src="assets/images/story-details-photo.png" alt="story-image">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe allowfullscreen="" [src]="detailsData.detailsVideo | safe"></iframe>
+  </div>
 
   <p class="description-part-five" [translateLocal]="detailsData.videoDesc1"></p>
 
