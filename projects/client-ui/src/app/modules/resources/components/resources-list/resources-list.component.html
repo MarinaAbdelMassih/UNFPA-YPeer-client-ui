@@ -1,6 +1,6 @@
 <div class="list-container">
 
-  <app-image-description-card *ngFor="let latestResource of latestResources | slice:0:6;"
+  <app-image-description-card *ngFor="let latestResource of latestResources"
                               [imageSrc]="latestResource.image" [type]="latestResource.label"
                               [title]="latestResource.title" [date]="latestResource.date"
                               [description]="latestResource.description" [buttonAppear]="true" [resources]="true">
