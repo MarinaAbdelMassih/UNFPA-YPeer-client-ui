@@ -10,6 +10,8 @@
     <div class="more">
       <img src="assets/images/icons/more-icon.png" alt="more" (click)="clickMore()">
     </div>
-    <button class="btn ypeer-btn-purple">View PDF</button>
+    <a *ngIf="resources && resourceFile" [href]="resourceFile" target="_blank">
+      <button class="btn ypeer-btn-purple">View PDF</button>
+    </a>
   </div>
 </div>
