@@ -11,8 +11,8 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./event-details.component.scss']
 })
 export class EventDetailsComponent implements OnInit {
-  private subscriptions: Subscription[] = [];
 
+  private subscriptions: Subscription[] = [];
   cardDetails = [
     {
       description: {
@@ -51,7 +51,6 @@ export class EventDetailsComponent implements OnInit {
       type: {EN: 'Events', AR: ''},
     }
   ];
-
   categoriesList: CategoryModel[] = [
     {title: {EN: 'News', AR: 'الأخبار'}, count: 50, hideToggle: true},
     {title: {EN: 'Events', AR: 'الأحداث'}, count: 23, hideToggle: true},
@@ -117,10 +116,8 @@ export class EventDetailsComponent implements OnInit {
       this.eventsDetailsData = undefined;
       setTimeout(() => {
         this.eventsDetailsData = eventsData.eventsDetailsItem[0];
-        console.log('eventsDetailsData', this.eventsDetailsData );
-
+        console.log(this.eventsDetailsData);
       }, 200);
-
     });
     this.subscriptions.push(eventsSub);
   }

@@ -42,7 +42,6 @@ export class NewsDetailsComponent implements OnInit {
       type: {EN: 'Events', AR: ''},
     }
   ];
-
   categoriesList: CategoryModel[] = [
     {title: {EN: 'News', AR: 'الأخبار'}, count: 50, hideToggle: true, url: 'news'},
     {title: {EN: 'Events', AR: 'الأحداث'}, count: 23, hideToggle: true, url: 'events'},
@@ -85,6 +84,7 @@ export class NewsDetailsComponent implements OnInit {
   newsDetailsData: newsDetailsItem;
   newsBasicData: newsListItem;
 
+
   constructor(private newsResolverService: NewsResolverService, public activatedRoute: ActivatedRoute) {
     this.index = activatedRoute.snapshot.paramMap.get('id');
   }
@@ -99,6 +99,7 @@ export class NewsDetailsComponent implements OnInit {
     let newsSub = this.newsResolverService.resolve().subscribe((newsData: newsContent) => {
       this.newsBasicData = newsData[this.index];
       this.newsBasicData = newsData.newsList[this.index];
+      console.log( this.newsBasicData);
     });
     this.subscriptions.push(newsSub);
   }
@@ -110,7 +111,6 @@ export class NewsDetailsComponent implements OnInit {
         this.newsDetailsData = newsData.newsDetailsItem[0];
         console.log( this.newsDetailsData);
       }, 200)
-
     });
     this.subscriptions.push(newsSub);
   }
