@@ -1,10 +1,10 @@
-<app-details-top-banner [detailsImageBanner]="storiesDataDetails.image"
-                        [label]="{EN: storiesDataDetails.label.EN, AR: storiesDataDetails.label.AR}"
-                        [title]="{EN: storiesDataDetails.title.EN, AR: storiesDataDetails.title.AR}"></app-details-top-banner>
+<app-details-top-banner *ngIf="storiesBasicData" [detailsImageBanner]="storiesBasicData.image"
+                        [label]="{EN: storiesBasicData.label.EN, AR: storiesBasicData.label.AR}"
+                        [title]="{EN: storiesBasicData.title.EN, AR: storiesBasicData.title.AR}"></app-details-top-banner>
 <div class="story-details-page-content">
   <div class="story-details-story">
-    <app-story-details-section></app-story-details-section>
-    <app-story-details-might-like [cardDetails]="cardDetails"></app-story-details-might-like>
+    <app-story-details-section *ngIf="storiesDetailsData" [detailsData]="storiesDetailsData"></app-story-details-section>
+    <app-story-details-might-like [cardDetails]="relatedStories"></app-story-details-might-like>
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">

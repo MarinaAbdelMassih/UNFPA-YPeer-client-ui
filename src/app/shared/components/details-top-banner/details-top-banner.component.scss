@@ -63,12 +63,13 @@
       font-weight: bold;
       text-align: center;
       color: #ffffff;
-      width: 56px;
+      max-width: max-content;
       height: 28px;
       background-color: #ff7900;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 5px 8px;
     }
   }
 }

@@ -155,3 +155,36 @@ export const StoriesPageQuery = (skip: number, limit: number) => {
     }
 }`;
 };
+
+export const StoriesDetailsQuery = (id: number) => {
+  return `{
+ storiesListItemCollection(where:{id: ${id}}){
+    items{
+      id
+      dateEn
+      dateAr
+      videoDescEn1
+      videoDescAr1
+      videoDescEn2
+      videoDescAr2
+      paragraphEn1
+      paragraphAr1
+      paragraphEn2
+      paragraphAr2
+      paragraphEn3
+      paragraphAr3
+      paragraphEn4
+      paragraphAr4
+      detailsVideo
+    }
+  }
+  storiesTagItemCollection{
+    items{
+      id
+      nameEn
+      nameAr
+      label
+    }
+  }
+}`;
+};

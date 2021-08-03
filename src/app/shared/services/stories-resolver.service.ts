@@ -3,6 +3,7 @@ import {storiesContent, StoriesModel} from '../models/stories.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {DataHandlerService} from './data-handler.service';
 import {
+  StoriesDetailsQuery,
   StoriesPageQuery,
   StoriesQuery,
   StoriesTagsQuery,
@@ -85,6 +86,21 @@ export class StoriesResolverService {
           storiesTagsCollection: result.data.storiesTagItemCollection});
         subscriber.next(this.storiesData);
       },() => subscriber.next(null));
+    });
+  }
+
+  getPageDetails(id: number): Observable<storiesContent> {
+    let result;
+    return new Observable<storiesContent>(subscriber => {
+      this.dataHandlerService.getRemoteDataWithoutSave(StoriesDetailsQuery(id), (res) => {
+        result = res;
+      }).then(() => {
+        this.storiesData = new StoriesModel({
+          title: 'Stories', storiesListCollection: result.data.storiesListItemCollection,
+          storiesTagsCollection: result.data.storiesTagItemCollection
+        });
+        subscriber.next(this.storiesData);
+      }, () => subscriber.next(null));
     });
   }
 }

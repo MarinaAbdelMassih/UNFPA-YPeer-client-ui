@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CategoryModel} from '../../../../../../src/app/shared/models/category.model';
-import {eventsContent, eventsListItem} from '../../../../../../src/app/shared/models/events.model';
-import {EventsResolverService} from '../../../../../../src/app/shared/services/events-resolver.service';
 import {ActivatedRoute} from '@angular/router';
+import {PublicationsResolverService} from '../../../../../../src/app/shared/services/publications-resolver.service';
+import {publicationsContent, publicationsListItem} from '../../../../../../src/app/shared/models/publications.model';
 
 @Component({
   selector: 'app-publication-details',
@@ -10,8 +10,6 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./publication-details.component.scss']
 })
 export class PublicationDetailsComponent implements OnInit {
-
-
   cardDetails = [
     {
       description: {
@@ -89,15 +87,27 @@ export class PublicationDetailsComponent implements OnInit {
       publicationImage: 'assets/images/might-like.png'
     }
   ];
+  publicationsList: publicationsListItem[] = [];
+  publicationsData: publicationsContent;
+  publicationsDataDetails;
   index;
 
-  constructor(public activatedRoute: ActivatedRoute) {
+  constructor(private publicationsResolverService: PublicationsResolverService, public activatedRoute: ActivatedRoute) {
     this.index = activatedRoute.snapshot.paramMap.get('id');
     console.log('index is', this.index);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getPublicationData();
+  }
 
+  getPublicationData(): void {
+    let newsSub = this.publicationsResolverService.resolve().subscribe((publicationsData: publicationsContent) => {
+      this.publicationsData = publicationsData[this.index];
+      this.publicationsDataDetails = publicationsData.publicationsList[this.index];
+      console.log('publication', publicationsData.publicationsList);
+    });
+  }
 }
 
 

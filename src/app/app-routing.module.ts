@@ -85,14 +85,19 @@ const routes: Routes = [
     loadChildren: () => import('../../projects/client-ui/src/app/modules/event-details/event-details.module').then(mod => mod.EventDetailsModule),
   },
   {
-    path: 'publication-details',
+    path: 'story-details/:id',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/story-details/story-details.module').then(mod => mod.StoryDetailsModule),
+  },
+  {
+    path: 'publication-details/:id',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/publication-details/publication-details.module').then(mod => mod.PublicationDetailsModule),
   },
   {
-    path: 'story-details/:id',
+    path: 'training-details/:id',
     pathMatch: 'full',
-    loadChildren: () => import('../../projects/client-ui/src/app/modules/story-details/story-details.module').then(mod => mod.StoryDetailsModule),
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/training-details/training-details.module').then(mod => mod.TrainingDetailsModule),
   }
 ];
 

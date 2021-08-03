@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {storiesListItem} from "../../../../../../../../src/app/shared/models/stories.model";
 
 @Component({
   selector: 'app-story-list',
@@ -6,7 +7,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./stories-list.component.scss']
 })
 export class StoriesListComponent implements OnInit {
-  @Input() storyLists;
+  @Input() storyLists: storiesListItem[];
   @Output() loadMoreClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() showLoadMoreButton: boolean;
   constructor() { }

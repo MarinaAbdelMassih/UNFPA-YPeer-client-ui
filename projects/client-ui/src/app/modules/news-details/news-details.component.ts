@@ -13,35 +13,8 @@ import {Subscription} from "rxjs";
 export class NewsDetailsComponent implements OnInit {
 
   private subscriptions: Subscription[] = [];
-  cardDetails = [
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'Events', AR: ''},
-    },
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'Events', AR: ''},
-    },
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'Events', AR: ''},
-    }
-  ];
+  relatedNews: newsListItem[];
+
   categoriesList: CategoryModel[] = [
     {title: {EN: 'News', AR: 'الأخبار'}, count: 50, hideToggle: true, url: 'news'},
     {title: {EN: 'Events', AR: 'الأحداث'}, count: 23, hideToggle: true, url: 'events'},
@@ -56,13 +29,7 @@ export class NewsDetailsComponent implements OnInit {
       ]
     },
   ];
-  tagsList = [
-    {id: 1, name: {EN: 'productive health', AR: 'صحة منتجة'}},
-    {id: 2, name: {EN: 'sexual health', AR: 'الصحة الجنسية'}},
-    {id: 3, name: {EN: 'maternal health', AR: 'الصحه الذهنيه'}},
-    {id: 4, name: {EN: 'gender-based violence', AR: 'العنف القائم على النوع الاجتماعي'}},
-    {id: 5, name: {EN: 'family planning', AR: 'خطة العائلة'}},
-  ];
+  tagsList: tag[];
   newsLatest = [
     {
       newsDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
@@ -81,9 +48,8 @@ export class NewsDetailsComponent implements OnInit {
     }
   ];
   index;
-  newsDetailsData: newsDetailsItem;
+  newsDetailsData:newsDetailsItem;
   newsBasicData: newsListItem;
-
 
   constructor(private newsResolverService: NewsResolverService, public activatedRoute: ActivatedRoute) {
     this.index = activatedRoute.snapshot.paramMap.get('id');
@@ -91,15 +57,15 @@ export class NewsDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getNewsDetailsData();
-    this.getNewsData();
+    this.getNewsData()
   }
 
 
   getNewsData(): void {
     let newsSub = this.newsResolverService.resolve().subscribe((newsData: newsContent) => {
-      this.newsBasicData = newsData[this.index];
-      this.newsBasicData = newsData.newsList[this.index];
-      console.log( this.newsBasicData);
+      this.tagsList = newsData.tags;
+      this.relatedNews = newsData.newsList.filter(item => item.id != this.index);
+      this.newsBasicData = newsData.newsList[(this.index-1)];
     });
     this.subscriptions.push(newsSub);
   }
@@ -109,8 +75,8 @@ export class NewsDetailsComponent implements OnInit {
       this.newsDetailsData = undefined;
       setTimeout(() => {
         this.newsDetailsData = newsData.newsDetailsItem[0];
-        console.log( this.newsDetailsData);
       }, 200)
+
     });
     this.subscriptions.push(newsSub);
   }
