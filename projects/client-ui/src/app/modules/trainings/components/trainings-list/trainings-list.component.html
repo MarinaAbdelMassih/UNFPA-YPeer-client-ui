@@ -1,9 +1,13 @@
 <div class="list-container">
-  <app-image-description-card *ngFor="let trainingsList of trainingsLists"
+  <div *ngFor="let trainingsList of trainingsLists;let i = index;">
+    <a [routerLink]='["/training-details", i]'>
+  <app-image-description-card
                               [imageSrc]="trainingsList.image" [type]="trainingsList.label"
                               [title]="trainingsList.title" [date]="trainingsList.date"
                               [description]="trainingsList.description">
   </app-image-description-card>
+    </a>
+  </div>
 </div>
 <div class="btn-container">
   <button  *ngIf="showLoadMoreButton" (click)="loadMoreData()" class="ypeer-btn btn-outlined" [translateLocal]="{EN: 'Load More', AR: 'المزيد'}"></button>

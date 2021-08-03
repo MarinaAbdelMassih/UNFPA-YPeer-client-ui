@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Subscription} from "rxjs";
-import {trainingsContent, trainingsListItem} from "../../../../../../src/app/shared/models/trainings.model";
-import {CategoryModel} from "../../../../../../src/app/shared/models/category.model";
-import {trainingsResolverService} from "../../../../../../src/app/shared/services/trainings-resolver.service";
+import {Subscription} from 'rxjs';
+import {trainingsContent, trainingsListItem} from '../../../../../../src/app/shared/models/trainings.model';
+import {CategoryModel} from '../../../../../../src/app/shared/models/category.model';
+import {trainingsResolverService} from '../../../../../../src/app/shared/services/trainings-resolver.service';
 
 @Component({
   selector: 'app-trainings',
