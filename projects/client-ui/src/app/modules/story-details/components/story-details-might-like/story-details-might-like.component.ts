@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
+import {storiesListItem} from "../../../../../../../../src/app/shared/models/stories.model";
 
 @Component({
   selector: 'app-story-details-might-like',
@@ -9,7 +10,7 @@ import {LanguageService} from '../../../../../../../../src/app/shared/services/l
 })
 export class StoryDetailsMightLikeComponent implements OnInit {
 
-  @Input() cardDetails;
+  @Input() cardDetails: storiesListItem[];
   @ViewChild('latestSlickModal', {static: false}) slickModal;
   latestConfig: any = {
     slidesToShow: 3, rtl: false, slidesToScroll: 1, arrows: false, fade: false,
