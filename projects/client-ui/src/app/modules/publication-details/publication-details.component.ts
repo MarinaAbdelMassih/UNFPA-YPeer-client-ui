@@ -5,7 +5,7 @@ import {PublicationsResolverService} from '../../../../../../src/app/shared/serv
 import {
   publicationsContent,
   publicationsDetailsItem,
-  publicationsListItem , tag
+  publicationsListItem, tag
 } from '../../../../../../src/app/shared/models/publications.model';
 import {Subscription} from 'rxjs';
 
@@ -68,7 +68,7 @@ export class PublicationDetailsComponent implements OnInit {
       this.relatedPublications = publicationsData.publicationsList.filter(item => item.id != this.index);
       // this.publicationsBasicData = publicationsData.publicationsList[(this.index - 1)];
       this.publicationsBasicData = publicationsData.publicationsList.filter(item => item.id == this.index)[0];
-      console.log(this.relatedPublications);
+      console.log('might ', this.relatedPublications);
       console.log(this.publicationsBasicData);
     });
     this.subscriptions.push(publicationsSub);
@@ -79,7 +79,7 @@ export class PublicationDetailsComponent implements OnInit {
       this.publicationsDetailsData = undefined;
       setTimeout(() => {
         this.publicationsDetailsData = publicationsData.publicationsDetailsItem[0];
-        console.log('publication',  this.publicationsDetailsData);
+        console.log('publication', this.publicationsDetailsData);
       }, 200);
     });
     this.subscriptions.push(publicationsSub);

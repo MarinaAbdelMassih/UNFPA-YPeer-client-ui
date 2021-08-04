@@ -180,7 +180,7 @@ export const  PublicationsDetailsQuery = (id: number) => {
       paragraphAr4
     }
   }
-  newsTagItemCollection{
+  publicationsTagItemCollection{
     items{
       id
       nameEn
