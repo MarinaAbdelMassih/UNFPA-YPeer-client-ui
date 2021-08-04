@@ -31,7 +31,7 @@ export class EventsComponent implements OnInit {
   }
 
   getEventsData(): void {
-    let eventsSub = this.eventsResolverService.getPageData(this.eventsList.length, 2).subscribe((eventsData: eventsContent) => {
+    let eventsSub = this.eventsResolverService.getPageData(this.eventsList.length, 6).subscribe((eventsData: eventsContent) => {
       this.eventsData = undefined;
       setTimeout(() => {
         this.eventsData = eventsData;
