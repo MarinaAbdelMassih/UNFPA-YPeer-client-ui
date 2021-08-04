@@ -7,6 +7,7 @@ import {TranslationModel} from '../../models/translation.model';
   styleUrls: ['./might-like-item.component.scss']
 })
 export class MightLikeItemComponent implements OnInit {
+  @Input() cardId: number;
   @Input() imageSrc: string;
   @Input() type: TranslationModel;
   @Input() title: TranslationModel;
