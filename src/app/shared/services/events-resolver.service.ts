@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {eventsContent, EventsModel} from '../models/events.model';
+import {eventsContent, EventsModel , tag} from '../models/events.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {DataHandlerService} from './data-handler.service';
 import {
@@ -8,17 +8,7 @@ import {
   EventsQuery,
   EventsTagsQuery
 } from '../queries/events.query';
-import {tag} from "../models/media.model";
-import {newsContent, NewsModel} from '../models/news.model';
-import {NewsDetailsQuery} from '../queries/news.query';
 
-
-// NewsDetailsQuery,
-//   NewsPageQuery,
-//   NewsQuery,
-//   NewsTagsQuery,
-//   NewsYearsAndTagsQuery,
-//   NewsYearsQuery
 
 @Injectable({
   providedIn: 'root'

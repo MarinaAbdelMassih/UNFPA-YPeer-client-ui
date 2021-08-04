@@ -104,7 +104,7 @@ export class PublicationsResolverService {
         result = res;
       }).then(() => {
         this.publicationsData = new PublicationsModel({
-          title: 'News', publicationsListCollection: result.data.publicationsListItemCollection,
+          title: 'Publications', publicationsListCollection: result.data.publicationsListItemCollection,
           publicationsTagsCollection: result.data.publicationsTagItemCollection
         });
         subscriber.next(this.publicationsData);

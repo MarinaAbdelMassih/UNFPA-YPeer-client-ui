@@ -3,7 +3,6 @@ export interface publicationsContent {
   tags: tag[];
   publicationsListTotal?: number;
   publicationsDetailsItem?: publicationsDetailsItem[];
-
 }
 
 export interface publicationsListItem {

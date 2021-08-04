@@ -16,6 +16,7 @@ export const PublicationsQuery = `{
           url
         }
       }
+      total
     }
     publicationsTagsCollection {
       items {
@@ -46,6 +47,7 @@ export const PublicationsTagsQuery = (tagLabel: string) => {
           url
         }
       }
+      total
   }
    publicationsTagItemCollection {
       items {
@@ -78,6 +80,7 @@ export const PublicationsYearsQuery = (year: number) => {
           url
         }
       }
+      total
   }
    publicationsTagItemCollection {
       items {
@@ -112,6 +115,7 @@ export const PublicationsYearsAndTagsQuery = (year: number, tagLabel: string) =>
           url
         }
       }
+      total
   }
    publicationsTagItemCollection {
       items {
@@ -165,7 +169,7 @@ export const  PublicationsDetailsQuery = (id: number) => {
       detailsDescrptionEn1
       detailsDescrptionAr1
       detailsDescrptionEn2
-      detailsDescrptionAr2
+     detailsDescrptionAr2
       paragraphEn1
       paragraphAr1
       paragraphEn2

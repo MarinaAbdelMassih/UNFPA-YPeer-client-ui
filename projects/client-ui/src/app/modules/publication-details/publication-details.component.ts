@@ -5,10 +5,9 @@ import {PublicationsResolverService} from '../../../../../../src/app/shared/serv
 import {
   publicationsContent,
   publicationsDetailsItem,
-  publicationsListItem
+  publicationsListItem , tag
 } from '../../../../../../src/app/shared/models/publications.model';
 import {Subscription} from 'rxjs';
-import {newsContent, newsDetailsItem, newsListItem, tag} from '../../../../../../src/app/shared/models/news.model';
 
 @Component({
   selector: 'app-publication-details',
@@ -19,46 +18,6 @@ export class PublicationDetailsComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   relatedPublications: publicationsListItem[];
   tagsList: tag[];
-
-  cardDetails = [
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'publication', AR: ''},
-    },
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'publication', AR: ''},
-    },
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'publication', AR: ''},
-    },
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'publication', AR: ''},
-    }
-  ];
-
   categoriesList: CategoryModel[] = [
     {title: {EN: 'News', AR: 'الأخبار'}, count: 50, hideToggle: true, url: 'news'},
     {title: {EN: 'Events', AR: 'الأحداث'}, count: 23, hideToggle: true, url: 'events'},
@@ -73,13 +32,6 @@ export class PublicationDetailsComponent implements OnInit {
       ]
     },
   ];
-  // tagsList = [
-  //   {id: 1, name: {EN: 'productive health', AR: 'صحة منتجة'}},
-  //   {id: 2, name: {EN: 'sexual health', AR: 'الصحة الجنسية'}},
-  //   {id: 3, name: {EN: 'maternal health', AR: 'الصحه الذهنيه'}},
-  //   {id: 4, name: {EN: 'gender-based violence', AR: 'العنف القائم على النوع الاجتماعي'}},
-  //   {id: 5, name: {EN: 'family planning', AR: 'خطة العائلة'}},
-  // ];
   publicationLatest = [
     {
       publicationDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
@@ -103,7 +55,6 @@ export class PublicationDetailsComponent implements OnInit {
 
   constructor(private publicationsResolverService: PublicationsResolverService, public activatedRoute: ActivatedRoute) {
     this.index = activatedRoute.snapshot.paramMap.get('id');
-    console.log('index is', this.index);
   }
 
   ngOnInit() {
@@ -115,7 +66,10 @@ export class PublicationDetailsComponent implements OnInit {
     let publicationsSub = this.publicationsResolverService.resolve().subscribe((publicationsData: publicationsContent) => {
       this.tagsList = publicationsData.tags;
       this.relatedPublications = publicationsData.publicationsList.filter(item => item.id != this.index);
-      this.publicationsBasicData = publicationsData.publicationsList[(this.index - 1)];
+      // this.publicationsBasicData = publicationsData.publicationsList[(this.index - 1)];
+      this.publicationsBasicData = publicationsData.publicationsList.filter(item => item.id == this.index)[0];
+      console.log(this.relatedPublications);
+      console.log(this.publicationsBasicData);
     });
     this.subscriptions.push(publicationsSub);
   }
@@ -126,9 +80,7 @@ export class PublicationDetailsComponent implements OnInit {
       setTimeout(() => {
         this.publicationsDetailsData = publicationsData.publicationsDetailsItem[0];
         console.log('publication',  this.publicationsDetailsData);
-
       }, 200);
-
     });
     this.subscriptions.push(publicationsSub);
   }
