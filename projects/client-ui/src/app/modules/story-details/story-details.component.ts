@@ -34,23 +34,7 @@ export class StoryDetailsComponent implements OnInit {
     },
   ];
   tagsList: tag[];
-  storyLatest = [
-    {
-      storyDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      storyDate: {EN: 'Jan 12, 2021', AR: ''},
-      storyImage: 'assets/images/might-like.png'
-    },
-    {
-      storyDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      storyDate: {EN: 'Jan 12, 2021', AR: ''},
-      storyImage: 'assets/images/might-like.png'
-    },
-    {
-      storyDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      storyDate: {EN: 'Jan 12, 2021', AR: ''},
-      storyImage: 'assets/images/might-like.png'
-    }
-  ];
+  latestStories: storiesListItem[];
   index;
   storiesDetailsData: storiesDetailsItem;
   storiesBasicData: storiesListItem;
@@ -68,7 +52,12 @@ export class StoryDetailsComponent implements OnInit {
     let storiesSub = this.storiesResolverService.resolve().subscribe((storiesData: storiesContent) => {
       this.tagsList = storiesData.tags;
       this.relatedStories = storiesData.storiesList.filter(item => item.id != this.index);
-      this.storiesBasicData = storiesData.storiesList[(this.index-1)];
+      this.storiesBasicData = storiesData.storiesList.filter(item => item.id == this.index)[0];
+      this.relatedStories = storiesData.storiesList.filter(item => (item.tagLabel == this.storiesBasicData.tagLabel
+        && item.id != this.index));
+
+      storiesData.storiesList.map(item => item.storyDate = new Date(item.storyDate));
+      this.latestStories = storiesData.storiesList.sort((a,b) => (b.storyDate - a.storyDate));
     });
     this.subscriptions.push(storiesSub);
   }

@@ -1,7 +1,7 @@
-<div class="story-details-latest">
+<div class="story-details-latest" *ngIf="latestItems && latestItems.length">
   <p>Latest Stories</p>
-  <app-latest-item *ngFor="let latestItem of latestItems"
-                   [description]="latestItem.storyDescription"
-                   [date]="latestItem.storyDate"
-                   [image]=" latestItem.storyImage"></app-latest-item>
+  <app-latest-item *ngFor="let latestItem of latestItems | slice:0:4;"
+                   [description]="latestItem.title"
+                   [date]="latestItem.date"
+                   [image]=" latestItem.image"></app-latest-item>
 </div>

@@ -12,6 +12,8 @@ export const StoriesQuery = `{
         descriptionAr
         dateEn
         dateAr
+        tagLabel
+        date
         image {
           url
         }
