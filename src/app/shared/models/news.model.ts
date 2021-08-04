@@ -13,6 +13,7 @@ export interface newsListItem {
   date: {AR: string, EN: string};
   image: string;
   tagLabel?: string;
+  newsDate?: any;
 }
 
 export interface newsDetailsItem {
@@ -55,7 +56,8 @@ export class NewsModel implements newsContent{
         description : {AR: newsListItem.descriptionAr, EN: newsListItem.descriptionEn},
         date : {AR: newsListItem.dateAr, EN: newsListItem.dateEn},
         image: newsListItem.image ? newsListItem.image.url: null,
-        tagLabel: newsListItem.tagLabel
+        tagLabel: newsListItem.tagLabel,
+        newsDate: newsListItem.date
       }
     });
   }
