@@ -11,6 +11,7 @@ import { DetailsTopBannerComponent } from './components/details-top-banner/detai
 import { LatestItemComponent } from './components/latest-item/latest-item.component';
 import { MightLikeItemComponent } from './components/might-like-item/might-like-item.component';
 import {SafePipe} from "./pipes/safePipe";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -39,11 +40,12 @@ import {SafePipe} from "./pipes/safePipe";
     MightLikeItemComponent,
     SafePipe
   ],
-    imports: [
-        CommonModule,
-        MatExpansionModule,
-        MatIconModule,
-        MatListModule
-    ]
+  imports: [
+    CommonModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatListModule,
+    RouterModule
+  ]
 })
 export class SharedModule { }

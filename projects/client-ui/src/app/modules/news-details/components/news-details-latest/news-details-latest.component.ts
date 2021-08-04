@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {newsListItem} from "../../../../../../../../src/app/shared/models/news.model";
 
 @Component({
   selector: 'app-news-details-latest',
@@ -6,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./news-details-latest.component.scss']
 })
 export class NewsDetailsLatestComponent implements OnInit {
-  @Input() latestItems;
+  @Input() latestItems: newsListItem[];
 
   constructor() {
   }

@@ -30,23 +30,7 @@ export class NewsDetailsComponent implements OnInit {
     },
   ];
   tagsList: tag[];
-  newsLatest = [
-    {
-      newsDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      newsDate: {EN: 'Jan 12, 2021', AR: ''},
-      newsImage: 'assets/images/might-like.png'
-    },
-    {
-      newsDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      newsDate: {EN: 'Jan 12, 2021', AR: ''},
-      newsImage: 'assets/images/might-like.png'
-    },
-    {
-      newsDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      newsDate: {EN: 'Jan 12, 2021', AR: ''},
-      newsImage: 'assets/images/might-like.png'
-    }
-  ];
+  latestNews: newsListItem[];
   index;
   newsDetailsData: newsDetailsItem;
   newsBasicData: newsListItem;
@@ -64,8 +48,12 @@ export class NewsDetailsComponent implements OnInit {
   getNewsData(): void {
     let newsSub = this.newsResolverService.resolve().subscribe((newsData: newsContent) => {
       this.tagsList = newsData.tags;
-      this.relatedNews = newsData.newsList.filter(item => item.id != this.index);
-      this.newsBasicData = newsData.newsList[(this.index-1)];
+      this.newsBasicData = newsData.newsList.filter(item => item.id == this.index)[0];
+      this.relatedNews = newsData.newsList.filter(item => (item.tagLabel == this.newsBasicData.tagLabel
+      && item.id != this.index));
+
+      newsData.newsList.map(item => item.newsDate = new Date(item.newsDate));
+      this.latestNews = newsData.newsList.sort((a,b) => (b.newsDate - a.newsDate));
     });
     this.subscriptions.push(newsSub);
   }

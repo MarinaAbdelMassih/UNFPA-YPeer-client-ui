@@ -12,6 +12,8 @@ export const NewsQuery = `{
         descriptionAr
         dateEn
         dateAr
+        tagLabel
+        newsDate
         image {
           url
         }
