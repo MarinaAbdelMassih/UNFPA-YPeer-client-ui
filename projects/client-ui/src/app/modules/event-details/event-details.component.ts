@@ -63,7 +63,6 @@ export class EventDetailsComponent implements OnInit {
       this.eventsDetailsData = undefined;
       setTimeout(() => {
         this.eventsDetailsData = eventsData.eventsDetailsItem[0];
-        console.log(this.eventsDetailsData);
       }, 200);
     });
     this.subscriptions.push(eventsSub);

@@ -9,16 +9,6 @@ import {
   EventsTagsQuery
 } from '../queries/events.query';
 import {tag} from "../models/media.model";
-import {newsContent, NewsModel} from '../models/news.model';
-import {NewsDetailsQuery} from '../queries/news.query';
-
-
-// NewsDetailsQuery,
-//   NewsPageQuery,
-//   NewsQuery,
-//   NewsTagsQuery,
-//   NewsYearsAndTagsQuery,
-//   NewsYearsQuery
 
 @Injectable({
   providedIn: 'root'
@@ -32,16 +22,12 @@ export class EventsResolverService {
 
   resolve(): Observable<eventsContent> {
     return new Observable<eventsContent> (subscriber=> {
-      if (this.eventsData) {
-        subscriber.next(this.eventsData);
-      } else {
         this.dataHandlerService.getDefaultPageData(EventsQuery, 'events', (res) => {
           return new EventsModel(res.data.events);
         }).subscribe((eventsData: eventsContent) => {
           this.eventsData = eventsData;
           subscriber.next(this.eventsData);
         },() => subscriber.next(null));
-      }
     });
   }
 
