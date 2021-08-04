@@ -18,6 +18,7 @@ export const EventsQuery = `{
           url
         }
       }
+       total
     }
     eventsTagsCollection {
       items {
@@ -48,6 +49,7 @@ export const EventsTagsQuery = (tagLabel: string) => {
           url
         }
       }
+     total
   }
    eventsTagItemCollection {
       items {
@@ -89,5 +91,41 @@ export const EventsPageQuery = (skip: number, limit: number) => {
         label
       }
     }
+}`;
+};
+
+export const EventsDetailsQuery = (id: number) => {
+  return `{
+ eventsListItemCollection(where:{id: ${id}}){
+    items{
+      id
+      dateEn
+      dateAr
+      detailsDescriptionEn1
+      detailsDescriptionAr1
+      detailsDescriptionEn2
+      detailsDescriptionAr2
+      ourStoryEn1
+      ourStoryAr1
+      ourStoryEn2
+      ourStoryAr2
+      ourStoryEn3
+      ourStoryAr3
+      ourStoryEn4
+      ourStoryAr4
+      ourStoryImage{
+        url
+      }
+
+    }
+  }
+  eventsTagItemCollection{
+    items{
+      id
+      nameEn
+      nameAr
+      label
+    }
+  }
 }`;
 };

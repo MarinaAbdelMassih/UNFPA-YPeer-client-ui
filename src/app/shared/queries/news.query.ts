@@ -183,6 +183,7 @@ export const NewsDetailsQuery = (id: number) => {
       ourStoryImage{
         url
       }
+
     }
   }
   newsTagItemCollection{
