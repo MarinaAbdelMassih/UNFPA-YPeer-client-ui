@@ -48,7 +48,7 @@ export class NewsDetailsComponent implements OnInit {
     }
   ];
   index;
-  newsDetailsData:newsDetailsItem;
+  newsDetailsData: newsDetailsItem;
   newsBasicData: newsListItem;
 
   constructor(private newsResolverService: NewsResolverService, public activatedRoute: ActivatedRoute) {

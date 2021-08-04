@@ -1,6 +1,6 @@
 <div class="list-container">
-  <div *ngFor="let publicationsList of publicationsLists;let i = index;">
-    <a [routerLink]='["/publication-details", i]'>
+  <div *ngFor="let publicationsList of publicationsLists;">
+    <a [routerLink]='["/publication-details", publicationsList.id]'>
   <app-image-description-card
                               [imageSrc]="publicationsList.image" [type]="publicationsList.label"
                               [title]="publicationsList.title" [date]="publicationsList.date"

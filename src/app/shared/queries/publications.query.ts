@@ -155,3 +155,34 @@ export const PublicationsPageQuery = (skip: number, limit: number) => {
     }
 }`;
 };
+export const  PublicationsDetailsQuery = (id: number) => {
+  return `{
+ publicationsListItemCollection(where:{id: ${id}}){
+    items{
+       id
+      dateEn
+      dateAr
+      detailsDescrptionEn1
+      detailsDescrptionAr1
+      detailsDescrptionEn2
+      detailsDescrptionAr2
+      paragraphEn1
+      paragraphAr1
+      paragraphEn2
+      paragraphAr2
+      paragraphEn3
+      paragraphAr3
+      paragraphEn4
+      paragraphAr4
+    }
+  }
+  newsTagItemCollection{
+    items{
+      id
+      nameEn
+      nameAr
+      label
+    }
+  }
+}`;
+};

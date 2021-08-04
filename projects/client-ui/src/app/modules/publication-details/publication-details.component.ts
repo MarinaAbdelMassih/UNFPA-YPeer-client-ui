@@ -2,7 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {CategoryModel} from '../../../../../../src/app/shared/models/category.model';
 import {ActivatedRoute} from '@angular/router';
 import {PublicationsResolverService} from '../../../../../../src/app/shared/services/publications-resolver.service';
-import {publicationsContent, publicationsListItem} from '../../../../../../src/app/shared/models/publications.model';
+import {
+  publicationsContent,
+  publicationsDetailsItem,
+  publicationsListItem
+} from '../../../../../../src/app/shared/models/publications.model';
+import {Subscription} from 'rxjs';
+import {newsContent, newsDetailsItem, newsListItem, tag} from '../../../../../../src/app/shared/models/news.model';
 
 @Component({
   selector: 'app-publication-details',
@@ -10,6 +16,10 @@ import {publicationsContent, publicationsListItem} from '../../../../../../src/a
   styleUrls: ['./publication-details.component.scss']
 })
 export class PublicationDetailsComponent implements OnInit {
+  private subscriptions: Subscription[] = [];
+  relatedPublications: publicationsListItem[];
+  tagsList: tag[];
+
   cardDetails = [
     {
       description: {
@@ -63,13 +73,13 @@ export class PublicationDetailsComponent implements OnInit {
       ]
     },
   ];
-  tagsList = [
-    {id: 1, name: {EN: 'productive health', AR: 'صحة منتجة'}},
-    {id: 2, name: {EN: 'sexual health', AR: 'الصحة الجنسية'}},
-    {id: 3, name: {EN: 'maternal health', AR: 'الصحه الذهنيه'}},
-    {id: 4, name: {EN: 'gender-based violence', AR: 'العنف القائم على النوع الاجتماعي'}},
-    {id: 5, name: {EN: 'family planning', AR: 'خطة العائلة'}},
-  ];
+  // tagsList = [
+  //   {id: 1, name: {EN: 'productive health', AR: 'صحة منتجة'}},
+  //   {id: 2, name: {EN: 'sexual health', AR: 'الصحة الجنسية'}},
+  //   {id: 3, name: {EN: 'maternal health', AR: 'الصحه الذهنيه'}},
+  //   {id: 4, name: {EN: 'gender-based violence', AR: 'العنف القائم على النوع الاجتماعي'}},
+  //   {id: 5, name: {EN: 'family planning', AR: 'خطة العائلة'}},
+  // ];
   publicationLatest = [
     {
       publicationDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
@@ -87,10 +97,9 @@ export class PublicationDetailsComponent implements OnInit {
       publicationImage: 'assets/images/might-like.png'
     }
   ];
-  publicationsList: publicationsListItem[] = [];
-  publicationsData: publicationsContent;
-  publicationsDataDetails;
   index;
+  publicationsDetailsData: publicationsDetailsItem;
+  publicationsBasicData: publicationsListItem;
 
   constructor(private publicationsResolverService: PublicationsResolverService, public activatedRoute: ActivatedRoute) {
     this.index = activatedRoute.snapshot.paramMap.get('id');
@@ -99,15 +108,27 @@ export class PublicationDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getPublicationData();
+    this.getPublicationDetailsData();
   }
 
   getPublicationData(): void {
-    let newsSub = this.publicationsResolverService.resolve().subscribe((publicationsData: publicationsContent) => {
-      this.publicationsData = publicationsData[this.index];
-      this.publicationsDataDetails = publicationsData.publicationsList[this.index];
-      console.log('publication', publicationsData.publicationsList);
+    let publicationsSub = this.publicationsResolverService.resolve().subscribe((publicationsData: publicationsContent) => {
+      this.tagsList = publicationsData.tags;
+      this.relatedPublications = publicationsData.publicationsList.filter(item => item.id != this.index);
+      this.publicationsBasicData = publicationsData.publicationsList[(this.index - 1)];
+      // console.log('publication', publicationsData.publicationsList);
     });
+    this.subscriptions.push(publicationsSub);
+  }
+
+  getPublicationDetailsData(): void {
+    let publicationsSub = this.publicationsResolverService.getPageDetails(this.index).subscribe((publicationsData: publicationsContent) => {
+      this.publicationsDetailsData = undefined;
+      setTimeout(() => {
+        this.publicationsDetailsData = publicationsData.publicationsDetailsItem[0];
+      }, 200);
+
+    });
+    this.subscriptions.push(publicationsSub);
   }
 }
-
-
