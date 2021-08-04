@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
+import {eventsListItem} from "../../../../../../../../src/app/shared/models/events.model";
 
 @Component({
   selector: 'app-event-details-might-like',
@@ -9,7 +10,7 @@ import {LanguageService} from '../../../../../../../../src/app/shared/services/l
 })
 export class EventDetailsMightLikeComponent implements OnInit {
 
-  @Input() cardDetails;
+  @Input() cardDetails: eventsListItem[];
   @ViewChild('latestSlickModal', {static: false}) slickModal;
   latestConfig: any = {
     slidesToShow: 3, rtl: false, slidesToScroll: 1, arrows: false, fade: false,
@@ -54,7 +55,7 @@ export class EventDetailsMightLikeComponent implements OnInit {
   }
 
   private reInitSlick(): void {
-    if (this.cardDetails) {
+    if (this.cardDetails && this.cardDetails.length) {
       this.slickModal.unslick();
       this.latestConfig.rtl = this.isArabic;
       this.slickModal.initSlick();

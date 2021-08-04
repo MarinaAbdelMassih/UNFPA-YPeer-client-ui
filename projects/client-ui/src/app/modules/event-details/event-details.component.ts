@@ -30,23 +30,7 @@ export class EventDetailsComponent implements OnInit {
     },
   ];
   tagsList: tag[];
-  eventLatest = [
-    {
-      eventDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      eventDate: {EN: 'Jan 12, 2021', AR: ''},
-      eventImage: 'assets/images/might-like.png'
-    },
-    {
-      eventDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      eventDate: {EN: 'Jan 12, 2021', AR: ''},
-      eventImage: 'assets/images/might-like.png'
-    },
-    {
-      eventDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      eventDate: {EN: 'Jan 12, 2021', AR: ''},
-      eventImage: 'assets/images/might-like.png'
-    }
-  ];
+  latestEvents: eventsListItem[];
   eventPhotos = ['assets/images/events-details-photos.png', 'assets/images/events-details-photos.png', 'assets/images/events-details-photos.png', 'assets/images/events-details-photos.png'];
   index;
   eventsDetailsData: eventsDetailsItem;
@@ -65,8 +49,11 @@ export class EventDetailsComponent implements OnInit {
     let eventsSub = this.eventsResolverService.resolve().subscribe((eventsData: eventsContent) => {
       this.tagsList = eventsData.tags;
       this.eventsBasicData = eventsData.eventsList.filter(item => item.id == this.index)[0];
-      this.relatedEvents = eventsData.eventsList.filter(item => item.id != this.index);
-      console.log( this.relatedEvents);
+      this.relatedEvents = eventsData.eventsList.filter(item => (item.tagLabel == this.eventsBasicData.tagLabel
+        && item.id != this.index));
+
+      eventsData.eventsList.map(item => item.eventDate = new Date(item.eventDate));
+      this.latestEvents = eventsData.eventsList.sort((a,b) => (b.eventDate - a.eventDate));
     });
     this.subscriptions.push(eventsSub);
   }
