@@ -10,6 +10,7 @@
   </div>
   <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
     <app-might-like-item ngxSlickItem *ngFor="let cardDetail of cardDetails"
+                         [cardId]="cardDetail.id"
                          [title]="cardDetail.title"
                          [type]="cardDetail.label"
                          [description]="cardDetail.description "
