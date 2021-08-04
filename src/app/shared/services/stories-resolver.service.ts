@@ -24,16 +24,12 @@ export class StoriesResolverService {
 
   resolve(): Observable<storiesContent> {
     return new Observable<storiesContent> (subscriber=> {
-      if (this.storiesData) {
-        subscriber.next(this.storiesData);
-      } else {
         this.dataHandlerService.getDefaultPageData(StoriesQuery, 'stories', (res) => {
           return new StoriesModel(res.data.stories);
         }).subscribe((storiesData: storiesContent) => {
           this.storiesData = storiesData;
           subscriber.next(this.storiesData);
         },() => subscriber.next(null));
-      }
     });
   }
 

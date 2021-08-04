@@ -24,16 +24,12 @@ export class NewsResolverService {
 
   resolve(): Observable<newsContent> {
     return new Observable<newsContent>(subscriber => {
-      if (this.newsData) {
-        subscriber.next(this.newsData);
-      } else {
         this.dataHandlerService.getDefaultPageData(NewsQuery, 'news', (res) => {
           return new NewsModel(res.data.news);
         }).subscribe((newsData: newsContent) => {
           this.newsData = newsData;
           subscriber.next(this.newsData);
         }, () => subscriber.next(null));
-      }
     });
   }
 

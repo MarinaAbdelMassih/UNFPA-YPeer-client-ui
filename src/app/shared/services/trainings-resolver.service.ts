@@ -23,16 +23,12 @@ export class trainingsResolverService {
 
   resolve(): Observable<trainingsContent> {
     return new Observable<trainingsContent>(subscriber => {
-      if (this.trainingsData) {
-        subscriber.next(this.trainingsData);
-      } else {
         this.dataHandlerService.getDefaultPageData(TrainingsQuery, 'trainings', (res) => {
           return new TrainingsModel(res.data.trainings);
         }).subscribe((trainingsData: trainingsContent) => {
           this.trainingsData = trainingsData;
           subscriber.next(this.trainingsData);
         }, () => subscriber.next(null));
-      }
     });
   }
 

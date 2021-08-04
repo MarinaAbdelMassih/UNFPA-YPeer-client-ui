@@ -23,16 +23,12 @@ export class PublicationsResolverService {
 
   resolve(): Observable<publicationsContent> {
     return new Observable<publicationsContent>(subscriber => {
-      if (this.publicationsData) {
-        subscriber.next(this.publicationsData);
-      } else {
         this.dataHandlerService.getDefaultPageData(PublicationsQuery, 'publications', (res) => {
           return new PublicationsModel(res.data.publications);
         }).subscribe((publicationsData: publicationsContent) => {
           this.publicationsData = publicationsData;
           subscriber.next(this.publicationsData);
         }, () => subscriber.next(null));
-      }
     });
   }
 
