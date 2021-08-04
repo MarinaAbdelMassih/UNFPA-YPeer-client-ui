@@ -49,14 +49,26 @@ export class PublicationDetailsComponent implements OnInit {
   getPublicationData(): void {
     let publicationsSub = this.publicationsResolverService.resolve().subscribe((publicationsData: publicationsContent) => {
       this.tagsList = publicationsData.tags;
-      this.relatedPublications = publicationsData.publicationsList.filter(item => (item.tagLabel == this.publicationsBasicData.tagLabel && item.id != this.index));
       this.publicationsBasicData = publicationsData.publicationsList.filter(item => item.id == this.index)[0];
-      console.log('might ', this.relatedPublications);
+      this.relatedPublications = publicationsData.publicationsList.filter(item => (item.tagLabel == this.publicationsBasicData.tagLabel
+        && item.id != this.index));
+      publicationsData.publicationsList.map(item => item.publicationsDate = new Date(item.publicationsDate));
+      this.latestPublication = publicationsData.publicationsList.sort((a,b) => (b.publicationsDate - a.publicationsDate));
+
+      console.log('latestPublication ',  this.latestPublication);
+      console.log('might like ', this.relatedPublications);
       console.log(this.publicationsBasicData);
     });
     this.subscriptions.push(publicationsSub);
   }
 
+  // this.tagsList = newsData.tags;
+  // this.newsBasicData = newsData.newsList.filter(item => item.id == this.index)[0];
+  // this.relatedNews = newsData.newsList.filter(item => (item.tagLabel == this.newsBasicData.tagLabel
+  //   && item.id != this.index));
+  //
+  // newsData.newsList.map(item => item.newsDate = new Date(item.newsDate));
+  // this.latestNews = newsData.newsList.sort((a,b) => (b.newsDate - a.newsDate));
   getPublicationDetailsData(): void {
     let publicationsSub = this.publicationsResolverService.getPageDetails(this.index).subscribe((publicationsData: publicationsContent) => {
       this.publicationsDetailsData = undefined;
