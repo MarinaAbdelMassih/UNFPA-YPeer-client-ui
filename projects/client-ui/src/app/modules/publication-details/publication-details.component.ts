@@ -116,7 +116,6 @@ export class PublicationDetailsComponent implements OnInit {
       this.tagsList = publicationsData.tags;
       this.relatedPublications = publicationsData.publicationsList.filter(item => item.id != this.index);
       this.publicationsBasicData = publicationsData.publicationsList[(this.index - 1)];
-      // console.log('publication', publicationsData.publicationsList);
     });
     this.subscriptions.push(publicationsSub);
   }
@@ -126,6 +125,8 @@ export class PublicationDetailsComponent implements OnInit {
       this.publicationsDetailsData = undefined;
       setTimeout(() => {
         this.publicationsDetailsData = publicationsData.publicationsDetailsItem[0];
+        console.log('publication',  this.publicationsDetailsData);
+
       }, 200);
 
     });

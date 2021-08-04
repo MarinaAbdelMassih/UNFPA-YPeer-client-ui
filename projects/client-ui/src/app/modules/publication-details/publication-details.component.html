@@ -3,6 +3,7 @@
                         [title]="{EN: publicationsBasicData.title.EN, AR: publicationsBasicData.title.AR}"></app-details-top-banner>
 <div class="publication-details-page-content">
   <div class="publication-details-story">
+    {{publicationsDetailsData|json}}
     <app-publication-details-section *ngIf="publicationsDetailsData" [detailsData]="publicationsDetailsData"></app-publication-details-section>
     <app-publication-details-might-like [cardDetails]="relatedPublications"></app-publication-details-might-like>
   </div>

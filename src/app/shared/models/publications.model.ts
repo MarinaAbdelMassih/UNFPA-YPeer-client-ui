@@ -44,7 +44,6 @@ export class PublicationsModel implements publicationsContent {
     this.tags = PublicationsModel.setTags(publicationsData.publicationsTagsCollection.items);
     this.publicationsListTotal = publicationsData.publicationsListCollection.total;
     this.publicationsDetailsItem = PublicationsModel.setPublicationsItem(publicationsData.publicationsListCollection.items);
-
   }
 
   private static setPublicationsItem(publicationsItem: any[]): publicationsDetailsItem[] {
@@ -70,7 +69,8 @@ export class PublicationsModel implements publicationsContent {
         title: {AR: publicationsListItem.titleAr, EN: publicationsListItem.titleEn},
         description: {AR: publicationsListItem.descriptionAr, EN: publicationsListItem.descriptionEn},
         date: {AR: publicationsListItem.dateAr, EN: publicationsListItem.dateEn},
-        image: publicationsListItem.image.url
+        image: publicationsListItem.image ? publicationsListItem.image.url : null
+
       };
     });
   }
