@@ -12,6 +12,8 @@ export const PublicationsQuery = `{
         descriptionAr
         dateEn
         dateAr
+        tagLabel
+        date
         image {
           url
         }
@@ -159,7 +161,7 @@ export const PublicationsPageQuery = (skip: number, limit: number) => {
     }
 }`;
 };
-export const  PublicationsDetailsQuery = (id: number) => {
+export const PublicationsDetailsQuery = (id: number) => {
   return `{
  publicationsListItemCollection(where:{id: ${id}}){
     items{
