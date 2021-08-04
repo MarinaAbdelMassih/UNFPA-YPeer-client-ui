@@ -57,7 +57,7 @@ export class NewsModel implements newsContent{
         date : {AR: newsListItem.dateAr, EN: newsListItem.dateEn},
         image: newsListItem.image ? newsListItem.image.url: null,
         tagLabel: newsListItem.tagLabel,
-        newsDate: newsListItem.date
+        newsDate: newsListItem.newsDate
       }
     });
   }

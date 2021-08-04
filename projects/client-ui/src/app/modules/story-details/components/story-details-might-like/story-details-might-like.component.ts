@@ -55,7 +55,7 @@ export class StoryDetailsMightLikeComponent implements OnInit {
   }
 
   private reInitSlick(): void {
-    if (this.cardDetails) {
+    if (this.cardDetails && this.cardDetails.length) {
       this.slickModal.unslick();
       this.latestConfig.rtl = this.isArabic;
       this.slickModal.initSlick();
