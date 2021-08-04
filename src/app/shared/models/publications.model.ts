@@ -13,7 +13,7 @@ export interface publicationsListItem {
   date: { AR: string, EN: string };
   image: string;
   tagLabel?: string;
-  publicationsDate?: any;
+  publicationDate?: any;
 }
 
 export interface publicationsDetailsItem {
@@ -72,7 +72,7 @@ export class PublicationsModel implements publicationsContent {
         date: {AR: publicationsListItem.dateAr, EN: publicationsListItem.dateEn},
         image: publicationsListItem.image ? publicationsListItem.image.url : null,
         tagLabel: publicationsListItem.tagLabel,
-        publicationsDate: publicationsListItem.date
+        publicationDate: publicationsListItem.publicationDate
       };
     });
   }

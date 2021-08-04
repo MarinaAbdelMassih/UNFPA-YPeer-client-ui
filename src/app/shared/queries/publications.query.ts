@@ -13,7 +13,7 @@ export const PublicationsQuery = `{
         dateEn
         dateAr
         tagLabel
-        date
+        publicationDate
         image {
           url
         }

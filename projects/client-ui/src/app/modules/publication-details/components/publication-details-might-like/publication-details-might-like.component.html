@@ -12,9 +12,9 @@
     <app-might-like-item ngxSlickItem *ngFor="let cardDetail of cardDetails"
                          [cardId]="cardDetail.id"
                          [title]="cardDetail.title"
-                         [type]="cardDetail.type"
+                         [type]="cardDetail.label"
                          [description]="cardDetail.description "
-                         [imageSrc]="cardDetail.img" (moreClicked)="openDetailsPage()">
+                         [imageSrc]="cardDetail.image" (moreClicked)="openDetailsPage()">
     </app-might-like-item>
   </ngx-slick-carousel>
 
