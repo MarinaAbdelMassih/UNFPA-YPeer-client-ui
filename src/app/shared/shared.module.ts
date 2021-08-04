@@ -9,6 +9,7 @@ import {MatExpansionModule, MatIconModule, MatListModule} from '@angular/materia
 import { TagItemComponent } from './components/tag-item/tag-item.component';
 import { DetailsTopBannerComponent } from './components/details-top-banner/details-top-banner.component';
 import { InstructorCardComponent} from './components/instructor-card/instructor-card.component';
+import { CourseCardComponent } from './components/course-card/course-card.component';
 
 
 @NgModule({
@@ -20,18 +21,20 @@ import { InstructorCardComponent} from './components/instructor-card/instructor-
     CategoryItemComponent,
     TagItemComponent,
     DetailsTopBannerComponent,
-    InstructorCardComponent
+    InstructorCardComponent,
+    CourseCardComponent
   ],
-  exports: [
-    TranslateLocalDirective,
-    TranslatePlaceholderLocalDirective,
-    ImageDescriptionCardComponent,
-    PageTopBannerComponent,
-    CategoryItemComponent,
-    TagItemComponent,
-    DetailsTopBannerComponent,
-    InstructorCardComponent
-  ],
+    exports: [
+        TranslateLocalDirective,
+        TranslatePlaceholderLocalDirective,
+        ImageDescriptionCardComponent,
+        PageTopBannerComponent,
+        CategoryItemComponent,
+        TagItemComponent,
+        DetailsTopBannerComponent,
+        InstructorCardComponent,
+        CourseCardComponent
+    ],
     imports: [
         CommonModule,
         MatExpansionModule,

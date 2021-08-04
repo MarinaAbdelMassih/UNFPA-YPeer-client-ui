@@ -1,0 +1,22 @@
+.courses-container {
+  padding: 0 140px 46px;
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #232323;
+    margin-bottom: 47px;
+    text-align: center;
+  }
+  p {
+    text-align: left;
+  }
+}
+.courses-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 55px;
+  justify-content: space-between;
+  app-course-card {
+    margin-bottom: 30px;
+  }
+}
