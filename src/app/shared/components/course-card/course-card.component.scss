@@ -40,3 +40,33 @@
   cursor: pointer;
 }
 
+@media (max-width: 650px) {
+  .course-card {
+    width: 95%;
+    height: auto;
+    margin: auto;
+    .course-card-overlay {
+      .course-description {
+        padding: 20px;
+        h1 {
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .course-card {
+    .course-card-overlay {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      .course-description {
+        p {
+          display: none;
+        }
+      }
+    }
+  }
+}

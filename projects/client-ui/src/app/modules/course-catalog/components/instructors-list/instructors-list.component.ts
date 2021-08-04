@@ -16,7 +16,7 @@ export class InstructorsListComponent implements OnInit, AfterViewInit {
       {
         breakpoint: 1025,
         settings: {
-          slidesToShow: 2
+          slidesToShow: 1
         }
       },
       {
@@ -31,25 +31,25 @@ export class InstructorsListComponent implements OnInit, AfterViewInit {
   instructorsList = [
     {
       image: 'assets/images/instructor-1.png',
-      name: {EN: 'Asmaa Elrosasy', AR: 'أسماء الرصاصى'},
+      name: {EN: 'Asmaa Elrosasy1', AR: 'أسماء الرصاصى'},
       title: {EN: 'Title', AR: 'عنوان'},
       description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...', AR: 'أسماء الرصاصى'}
     },
     {
       image: 'assets/images/instructor-1.png',
-      name: {EN: 'Asmaa Elrosasy', AR: 'أسماء الرصاصى'},
+      name: {EN: 'Asmaa Elrosasy2', AR: 'أسماء الرصاصى'},
       title: {EN: 'Title', AR: 'عنوان'},
       description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...', AR: 'أسماء الرصاصى'}
     },
     {
       image: 'assets/images/instructor-1.png',
-      name: {EN: 'Asmaa Elrosasy', AR: 'أسماء الرصاصى'},
+      name: {EN: 'Asmaa Elrosasy3', AR: 'أسماء الرصاصى'},
       title: {EN: 'Title', AR: 'عنوان'},
       description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...', AR: 'أسماء الرصاصى'}
     },
     {
       image: 'assets/images/instructor-1.png',
-      name: {EN: 'Asmaa Elrosasy', AR: 'أسماء الرصاصى'},
+      name: {EN: 'Asmaa Elrosasy4', AR: 'أسماء الرصاصى'},
       title: {EN: 'Title', AR: 'عنوان'},
       description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...', AR: 'أسماء الرصاصى'}
     }

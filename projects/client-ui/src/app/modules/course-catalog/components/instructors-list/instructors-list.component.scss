@@ -6,10 +6,6 @@
     color: #232323;
     margin-bottom: 15px;
   }
-  .instructor-list {
-    display: flex;
-    justify-content: space-between;
-  }
 }
 .enroll-button {
   text-align: center;
@@ -47,6 +43,16 @@
   }
 }
 
+@media (max-width: 991px) and (min-width: 510px) {
+  .instructor-list-container {
+    .slick-initialized .slick-slide {
+      display: flex;
+      justify-content: space-between;
+      width: auto !important;
+    }
+  }
+}
+
 @media (max-width: 474px) {
   .buttons-container {
     .slider-button {
@@ -62,12 +68,4 @@
     }
   }
 }
-
-//@media (max-width: 355px) {
-//  .buttons-container {
-//    .slider-button {
-//      bottom: 195px;
-//    }
-//  }
-//}
 
