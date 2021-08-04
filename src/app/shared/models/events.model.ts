@@ -11,6 +11,8 @@ export interface eventsListItem {
   description: {AR: string, EN: string};
   date: {AR: string, EN: string};
   image: string;
+  tagLabel?: string;
+  eventDate?: any;
 }
 
 export interface tag {
@@ -39,7 +41,9 @@ export class EventsModel implements eventsContent{
         title : {AR: eventsListItem.titleAr, EN: eventsListItem.titleEn},
         description : {AR: eventsListItem.descriptionAr, EN: eventsListItem.descriptionEn},
         date : {AR: eventsListItem.dateAr, EN: eventsListItem.dateEn},
-        image: eventsListItem.image.url
+        image: eventsListItem.image.url,
+        tagLabel: eventsListItem.tagLabel,
+        eventDate: eventsListItem.eventDate
       }
     });
   }

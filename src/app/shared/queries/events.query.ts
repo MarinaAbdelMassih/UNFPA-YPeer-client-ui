@@ -12,6 +12,8 @@ export const EventsQuery = `{
         descriptionAr
         dateEn
         dateAr
+        tagLabel
+        eventDate
         image {
           url
         }
