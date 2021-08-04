@@ -64,10 +64,9 @@ export class NewsDetailsComponent implements OnInit {
   getNewsData(): void {
     let newsSub = this.newsResolverService.resolve().subscribe((newsData: newsContent) => {
       this.tagsList = newsData.tags;
-      this.relatedNews = newsData.newsList.filter(item => (item.tagLabel == 'family'
-      ));
-      console.log(this.relatedNews)
       this.newsBasicData = newsData.newsList.filter(item => item.id == this.index)[0];
+      this.relatedNews = newsData.newsList.filter(item => (item.tagLabel == this.newsBasicData.tagLabel
+      && item.id != this.index));
     });
     this.subscriptions.push(newsSub);
   }
