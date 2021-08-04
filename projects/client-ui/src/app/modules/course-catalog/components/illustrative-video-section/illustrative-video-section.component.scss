@@ -4,6 +4,7 @@
   .media-container {
     position: relative;
     width: 50%;
+    height: fit-content;
     img {
       display: block;
       width: 100%;
@@ -52,11 +53,13 @@
     align-items: center;
     text-align: center;
     .media-container {
+      width: 90%;
       img {
         max-width: 100%;
       }
     }
     .illustration-container {
+      width: 90%;
       padding: 50px;
     }
   }
