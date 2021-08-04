@@ -30,23 +30,7 @@ export class TrainingDetailsComponent implements OnInit {
     },
   ];
 
-  trainingLatest = [
-    {
-      trainingDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      trainingDate: {EN: 'Jan 12, 2021', AR: ''},
-      trainingImage: 'assets/images/might-like.png'
-    },
-    {
-      trainingDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      trainingDate: {EN: 'Jan 12, 2021', AR: ''},
-      trainingImage: 'assets/images/might-like.png'
-    },
-    {
-      trainingDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      trainingDate: {EN: 'Jan 12, 2021', AR: ''},
-      trainingImage: 'assets/images/might-like.png'
-    }
-  ];
+  latestTraining: trainingsListItem[];
   trainingsDetailsData: trainingsDetailsItem;
   trainingsBasicData: trainingsListItem;
   index;
@@ -64,10 +48,11 @@ export class TrainingDetailsComponent implements OnInit {
   getTrainingsData(): void {
     let trainingsSub = this.TrainingsResolverService.resolve().subscribe((trainingsData: trainingsContent) => {
       this.tagsList = trainingsData.tags;
-      this.relatedTrainings = trainingsData.trainingsList.filter(item => item.id != this.index);
       this.trainingsBasicData = trainingsData.trainingsList.filter(item => item.id == this.index)[0];
-      console.log( this.relatedTrainings );
-      console.log( this.trainingsBasicData );
+      this.relatedTrainings = trainingsData.trainingsList.filter(item => (item.tagLabel == this.trainingsBasicData.tagLabel
+        && item.id != this.index));
+      trainingsData.trainingsList.map(item => item.trainingDate = new Date(item.trainingDate));
+      this.latestTraining = trainingsData.trainingsList.sort((a, b) => (b.trainingDate - a.trainingDate));
     });
     this.subscriptions.push(trainingsSub);
   }
@@ -78,8 +63,6 @@ export class TrainingDetailsComponent implements OnInit {
       this.trainingsDetailsData = undefined;
       setTimeout(() => {
         this.trainingsDetailsData = trainingsData.trainingsDetailsItem[0];
-        console.log( this.trainingsDetailsData );
-
       }, 200);
     });
     this.subscriptions.push(trainingsSub);

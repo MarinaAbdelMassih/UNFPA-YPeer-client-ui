@@ -13,6 +13,8 @@ export interface trainingsListItem {
   description: {AR: string, EN: string};
   date: {AR: string, EN: string};
   image: string;
+  tagLabel?: string;
+  trainingDate?: any;
 }
 
 
@@ -72,7 +74,10 @@ export class TrainingsModel implements trainingsContent{
         title : {AR: trainingsListItem.titleAr, EN: trainingsListItem.titleEn},
         description : {AR: trainingsListItem.descriptionAr, EN: trainingsListItem.descriptionEn},
         date : {AR: trainingsListItem.dateAr, EN: trainingsListItem.dateEn},
-        image: trainingsListItem.image ? trainingsListItem.image.url : null
+        image: trainingsListItem.image ? trainingsListItem.image.url : null,
+        tagLabel: trainingsListItem.tagLabel,
+       trainingDate: trainingsListItem.trainingDate
+
       }
     });
   }

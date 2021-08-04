@@ -12,6 +12,8 @@ export const TrainingsQuery = `{
         descriptionAr
         dateEn
         dateAr
+        tagLabel
+        trainingDate
         image {
           url
         }
