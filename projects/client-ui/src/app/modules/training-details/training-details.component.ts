@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryModel} from '../../../../../../src/app/shared/models/category.model';
 import {ActivatedRoute} from '@angular/router';
-import {trainingsContent, trainingsListItem} from '../../../../../../src/app/shared/models/trainings.model';
+import {tag, trainingsContent, trainingsDetailsItem, trainingsListItem} from '../../../../../../src/app/shared/models/trainings.model';
 import {trainingsResolverService} from '../../../../../../src/app/shared/services/trainings-resolver.service';
+import {Subscription} from 'rxjs';
+
 
 @Component({
   selector: 'app-training-details',
@@ -10,47 +12,9 @@ import {trainingsResolverService} from '../../../../../../src/app/shared/service
   styleUrls: ['./training-details.component.scss']
 })
 export class TrainingDetailsComponent implements OnInit {
-
-
-  cardDetails = [
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'training', AR: ''},
-    },
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'training', AR: ''},
-    },
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'training', AR: ''},
-    },
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'training', AR: ''},
-    }
-  ];
-
+  private subscriptions: Subscription[] = [];
+  relatedTrainings: trainingsListItem[];
+  tagsList: tag[];
   categoriesList: CategoryModel[] = [
     {title: {EN: 'News', AR: 'الأخبار'}, count: 50, hideToggle: true, url: 'news'},
     {title: {EN: 'Events', AR: 'الأحداث'}, count: 23, hideToggle: true, url: 'events'},
@@ -65,13 +29,7 @@ export class TrainingDetailsComponent implements OnInit {
       ]
     },
   ];
-  tagsList = [
-    {id: 1, name: {EN: 'productive health', AR: 'صحة منتجة'}},
-    {id: 2, name: {EN: 'sexual health', AR: 'الصحة الجنسية'}},
-    {id: 3, name: {EN: 'maternal health', AR: 'الصحه الذهنيه'}},
-    {id: 4, name: {EN: 'gender-based violence', AR: 'العنف القائم على النوع الاجتماعي'}},
-    {id: 5, name: {EN: 'family planning', AR: 'خطة العائلة'}},
-  ];
+
   trainingLatest = [
     {
       trainingDescription: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
@@ -89,9 +47,8 @@ export class TrainingDetailsComponent implements OnInit {
       trainingImage: 'assets/images/might-like.png'
     }
   ];
-  trainingsList: trainingsListItem[] = [];
-  trainingsData: trainingsContent;
-  trainingsDataDetails;
+  trainingsDetailsData: trainingsDetailsItem;
+  trainingsBasicData: trainingsListItem;
   index;
 
   constructor(private TrainingsResolverService: trainingsResolverService, public activatedRoute: ActivatedRoute) {
@@ -101,15 +58,31 @@ export class TrainingDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getTrainingsData();
+    this.getTrainingDetailsData();
   }
 
   getTrainingsData(): void {
-    let newsSub = this.TrainingsResolverService.resolve().subscribe((trainingsData: trainingsContent) => {
-      this.trainingsData = trainingsData[this.index];
-      this.trainingsDataDetails = trainingsData.trainingsList[this.index];
-      console.log('publication', trainingsData.trainingsList);
+    let trainingsSub = this.TrainingsResolverService.resolve().subscribe((trainingsData: trainingsContent) => {
+      this.tagsList = trainingsData.tags;
+      this.relatedTrainings = trainingsData.trainingsList.filter(item => item.id != this.index);
+      this.trainingsBasicData = trainingsData.trainingsList.filter(item => item.id == this.index)[0];
+      console.log( this.relatedTrainings );
+      console.log( this.trainingsBasicData );
     });
+    this.subscriptions.push(trainingsSub);
+  }
+
+
+  getTrainingDetailsData(): void {
+    let trainingsSub = this.TrainingsResolverService.getPageDetails(this.index).subscribe((trainingsData: trainingsContent) => {
+      this.trainingsDetailsData = undefined;
+      setTimeout(() => {
+        this.trainingsDetailsData = trainingsData.trainingsDetailsItem[0];
+        console.log( this.trainingsDetailsData );
+
+      }, 200);
+    });
+    this.subscriptions.push(trainingsSub);
   }
 }
-
 

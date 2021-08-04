@@ -1,10 +1,10 @@
-<app-details-top-banner [detailsImageBanner]="trainingsDataDetails.image"
-                        [label]="{EN: trainingsDataDetails.label.EN, AR: trainingsDataDetails.label.AR}"
-                        [title]="{EN: trainingsDataDetails.title.EN, AR: trainingsDataDetails.title.AR}"></app-details-top-banner>
+<app-details-top-banner  *ngIf="trainingsBasicData" [detailsImageBanner]="trainingsBasicData.image"
+                        [label]="{EN: trainingsBasicData.label.EN, AR: trainingsBasicData.label.AR}"
+                        [title]="{EN: trainingsBasicData.title.EN, AR: trainingsBasicData.title.AR}"></app-details-top-banner>
 <div class="training-details-page-content">
   <div class="training-details-story">
-    <app-training-details-section></app-training-details-section>
-    <app-training-details-might-like [cardDetails]="cardDetails"></app-training-details-might-like>
+    <app-training-details-section *ngIf="trainingsDetailsData" [detailsData]="trainingsDetailsData" ></app-training-details-section>
+    <app-training-details-might-like [cardDetails]="relatedTrainings"></app-training-details-might-like>
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">

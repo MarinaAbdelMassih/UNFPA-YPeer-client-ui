@@ -16,6 +16,7 @@ export const TrainingsQuery = `{
           url
         }
       }
+      total
     }
     trainingsTagsCollection {
       items {
@@ -46,6 +47,7 @@ export const TrainingsTagsQuery = (tagLabel: string) => {
           url
         }
       }
+      total
   }
    trainingsTagItemCollection {
       items {
@@ -78,6 +80,7 @@ export const TrainingsYearsQuery = (year: number) => {
           url
         }
       }
+      total
   }
    trainingsTagItemCollection {
       items {
@@ -112,6 +115,7 @@ export const TrainingsYearsAndTagsQuery = (year: number, tagLabel: string) => {
           url
         }
       }
+      total
   }
    trainingsTagItemCollection {
       items {
@@ -153,5 +157,36 @@ export const TrainingsPageQuery = (skip: number, limit: number) => {
         label
       }
     }
+}`;
+};
+export const TrainingsDetailsQuery = (id: number) => {
+  return `{
+ trainingsListItemCollection(where:{id: ${id}}){
+    items{
+       id
+      dateEn
+      dateAr
+      detailsDescrptionEn1
+      detailsDescrptionAr1
+      detailsDescrptionEn2
+     detailsDescrptionAr2
+      paragraphEn1
+      paragraphAr1
+      paragraphEn2
+      paragraphAr2
+      paragraphEn3
+      paragraphAr3
+      paragraphEn4
+      paragraphAr4
+    }
+  }
+  trainingsTagItemCollection{
+    items{
+      id
+      nameEn
+      nameAr
+      label
+    }
+  }
 }`;
 };
