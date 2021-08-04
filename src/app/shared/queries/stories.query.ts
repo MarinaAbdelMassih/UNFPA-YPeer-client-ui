@@ -13,7 +13,7 @@ export const StoriesQuery = `{
         dateEn
         dateAr
         tagLabel
-        date
+        storyDate
         image {
           url
         }
