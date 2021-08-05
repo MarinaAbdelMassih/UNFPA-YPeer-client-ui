@@ -32,16 +32,16 @@ export class CourseCatalogModel implements courseCatalogContent {
   advancedCoursesList: advancedCourse[];
 
   constructor(courseCatalogData: any) {
-    this.illustrativeData = CourseCatalogModel.setIllustrativeSection(courseCatalogData.illustrativeDataCollection);
+    this.illustrativeData = CourseCatalogModel.setIllustrativeList(courseCatalogData.illustrativeList);
     this.instructorsList = CourseCatalogModel.setInstructorsList(courseCatalogData.instructorsListCollection.items);
     this.advancedCoursesList = CourseCatalogModel.setAdvancedCoursesList(courseCatalogData.advancedCoursesListCollection.items)
   }
 
-  private static setIllustrativeSection(illustrativeData: any): illustrative {
+  private static setIllustrativeList(illustrativeData: any): illustrative {
       return {
         title: {AR: illustrativeData.titleAr, EN: illustrativeData.titleEn},
-        description: {AR: illustrativeData.descriptionAr, EN: illustrativeData.descriptionEn},
         date: {AR: illustrativeData.dateAr, EN: illustrativeData.dateEn},
+        description: {AR: illustrativeData.descriptionAr, EN: illustrativeData.descriptionEn},
         image: illustrativeData.image.url
       };
   }

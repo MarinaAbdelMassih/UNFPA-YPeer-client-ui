@@ -1,7 +1,7 @@
 export const CourseCatalogQuery = `{
   courseCatalog(id: "3JK5lgH4mndTZDBngafIgl"){
     title
-    illustrativeDataCollection {
+    illustrativeList {
       titleEn
       titleAr
       dateEn
