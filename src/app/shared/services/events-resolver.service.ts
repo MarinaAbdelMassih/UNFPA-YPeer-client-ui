@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {eventsContent, EventsModel} from '../models/events.model';
+import {eventsContent, EventsModel , tag} from '../models/events.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {DataHandlerService} from './data-handler.service';
 import {
@@ -8,7 +8,7 @@ import {
   EventsQuery,
   EventsTagsQuery
 } from '../queries/events.query';
-import {tag} from "../models/media.model";
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,12 +22,16 @@ export class EventsResolverService {
 
   resolve(): Observable<eventsContent> {
     return new Observable<eventsContent> (subscriber=> {
+      if (this.eventsData) {
+        subscriber.next(this.eventsData);
+      } else {
         this.dataHandlerService.getDefaultPageData(EventsQuery, 'events', (res) => {
           return new EventsModel(res.data.events);
         }).subscribe((eventsData: eventsContent) => {
           this.eventsData = eventsData;
           subscriber.next(this.eventsData);
         },() => subscriber.next(null));
+      }
     });
   }
 

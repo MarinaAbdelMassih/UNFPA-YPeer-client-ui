@@ -3,12 +3,14 @@ import {publicationsContent, PublicationsModel, tag} from '../models/publication
 import {BehaviorSubject, Observable} from 'rxjs';
 import {DataHandlerService} from './data-handler.service';
 import {
+  PublicationsDetailsQuery,
   PublicationsPageQuery,
   PublicationsQuery,
   PublicationsTagsQuery,
   PublicationsYearsAndTagsQuery,
   PublicationsYearsQuery
 } from '../queries/publications.query';
+
 
 @Injectable({
   providedIn: 'root'
@@ -85,6 +87,20 @@ export class PublicationsResolverService {
       }).then(() => {
         this.publicationsData = new PublicationsModel({
           title: 'publications', publicationsListCollection: result.data.publicationsListItemCollection,
+          publicationsTagsCollection: result.data.publicationsTagItemCollection
+        });
+        subscriber.next(this.publicationsData);
+      }, () => subscriber.next(null));
+    });
+  }
+  getPageDetails(id: number): Observable<publicationsContent> {
+    let result;
+    return new Observable<publicationsContent>(subscriber => {
+      this.dataHandlerService.getRemoteDataWithoutSave(PublicationsDetailsQuery(id), (res) => {
+        result = res;
+      }).then(() => {
+        this.publicationsData = new PublicationsModel({
+          title: 'Publications', publicationsListCollection: result.data.publicationsListItemCollection,
           publicationsTagsCollection: result.data.publicationsTagItemCollection
         });
         subscriber.next(this.publicationsData);

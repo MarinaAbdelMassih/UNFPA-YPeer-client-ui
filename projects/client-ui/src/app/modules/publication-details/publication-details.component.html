@@ -1,10 +1,10 @@
-<app-details-top-banner [detailsImageBanner]="publicationsDataDetails.image"
-                        [label]="{EN: publicationsDataDetails.label.EN, AR: publicationsDataDetails.label.AR}"
-                        [title]="{EN: publicationsDataDetails.title.EN, AR: publicationsDataDetails.title.AR}"></app-details-top-banner>
+<app-details-top-banner  *ngIf="publicationsBasicData" [detailsImageBanner]="publicationsBasicData.image"
+                        [label]="{EN: publicationsBasicData.label.EN, AR: publicationsBasicData.label.AR}"
+                        [title]="{EN: publicationsBasicData.title.EN, AR: publicationsBasicData.title.AR}"></app-details-top-banner>
 <div class="publication-details-page-content">
   <div class="publication-details-story">
-    <app-publication-details-section></app-publication-details-section>
-    <app-publication-details-might-like [cardDetails]="cardDetails"></app-publication-details-might-like>
+    <app-publication-details-section *ngIf="publicationsDetailsData" [detailsData]="publicationsDetailsData"></app-publication-details-section>
+    <app-publication-details-might-like [cardDetails]="relatedPublications"></app-publication-details-might-like>
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">

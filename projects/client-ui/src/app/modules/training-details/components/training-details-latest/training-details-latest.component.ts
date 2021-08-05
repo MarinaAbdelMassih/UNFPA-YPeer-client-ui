@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {trainingsListItem} from '../../../../../../../../src/app/shared/models/trainings.model';
 
 @Component({
   selector: 'app-training-details-latest',
@@ -6,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./training-details-latest.component.scss']
 })
 export class TrainingDetailsLatestComponent implements OnInit {
-  @Input() latestItems;
+  @Input() latestItems: trainingsListItem[];
 
   constructor() { }
 

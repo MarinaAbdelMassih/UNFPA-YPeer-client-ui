@@ -3,6 +3,7 @@ import {trainingsContent, tag, TrainingsModel} from '../models/trainings.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {DataHandlerService} from './data-handler.service';
 import {
+  TrainingsDetailsQuery,
   TrainingsPageQuery,
   TrainingsQuery,
   TrainingsTagsQuery,
@@ -85,6 +86,21 @@ export class trainingsResolverService {
       }).then(() => {
         this.trainingsData = new TrainingsModel({
           title: 'trainings', trainingsListCollection: result.data.trainingsListItemCollection,
+          trainingsTagsCollection: result.data.trainingsTagItemCollection
+        });
+        subscriber.next(this.trainingsData);
+      }, () => subscriber.next(null));
+    });
+  }
+
+  getPageDetails(id: number): Observable<trainingsContent> {
+    let result;
+    return new Observable<trainingsContent>(subscriber => {
+      this.dataHandlerService.getRemoteDataWithoutSave(TrainingsDetailsQuery(id), (res) => {
+        result = res;
+      }).then(() => {
+        this.trainingsData = new TrainingsModel({
+          title: 'Trainings', trainingsListCollection: result.data.trainingsListItemCollection,
           trainingsTagsCollection: result.data.trainingsTagItemCollection
         });
         subscriber.next(this.trainingsData);

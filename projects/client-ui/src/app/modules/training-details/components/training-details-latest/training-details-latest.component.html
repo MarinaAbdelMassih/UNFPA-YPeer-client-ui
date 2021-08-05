@@ -1,7 +1,8 @@
-<div class="Training-details-latest">
+<div class="Training-details-latest" *ngIf="latestItems && latestItems.length">
   <p>Latest Trainings</p>
-  <app-latest-item *ngFor="let latestItem of latestItems"
-                   [description]="latestItem.trainingDescription"
-                   [date]="latestItem.trainingDate"
-                   [image]=" latestItem.trainingImage"></app-latest-item>
+  <app-latest-item *ngFor="let latestItem of latestItems| slice:0:4;"
+                   [description]="latestItem.title"
+                   [date]="latestItem.date"
+                   [image]=" latestItem.image"></app-latest-item>
 </div>
+

@@ -2,7 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {CategoryModel} from '../../../../../../src/app/shared/models/category.model';
 import {ActivatedRoute} from '@angular/router';
 import {PublicationsResolverService} from '../../../../../../src/app/shared/services/publications-resolver.service';
-import {publicationsContent, publicationsListItem} from '../../../../../../src/app/shared/models/publications.model';
+import {
+  publicationsContent,
+  publicationsDetailsItem,
+  publicationsListItem, tag
+} from '../../../../../../src/app/shared/models/publications.model';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-publication-details',
@@ -10,45 +15,9 @@ import {publicationsContent, publicationsListItem} from '../../../../../../src/a
   styleUrls: ['./publication-details.component.scss']
 })
 export class PublicationDetailsComponent implements OnInit {
-  cardDetails = [
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'publication', AR: ''},
-    },
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'publication', AR: ''},
-    },
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'publication', AR: ''},
-    },
-    {
-      description: {
-        EN: 'Lorem ipsum dolor sit amet, dolore magna aliqua. Ut enim ad minim veniam, quis...',
-        AR: ''
-      },
-      img: 'assets/images/might-like.png',
-      title: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', AR: ''},
-      type: {EN: 'publication', AR: ''},
-    }
-  ];
-
+  private subscriptions: Subscription[] = [];
+  relatedPublications: publicationsListItem[];
+  tagsList: tag[];
   categoriesList: CategoryModel[] = [
     {title: {EN: 'News', AR: 'الأخبار'}, count: 50, hideToggle: true, url: 'news'},
     {title: {EN: 'Events', AR: 'الأحداث'}, count: 23, hideToggle: true, url: 'events'},
@@ -62,13 +31,6 @@ export class PublicationDetailsComponent implements OnInit {
         {year: 2022, selected: false}
       ]
     },
-  ];
-  tagsList = [
-    {id: 1, name: {EN: 'productive health', AR: 'صحة منتجة'}},
-    {id: 2, name: {EN: 'sexual health', AR: 'الصحة الجنسية'}},
-    {id: 3, name: {EN: 'maternal health', AR: 'الصحه الذهنيه'}},
-    {id: 4, name: {EN: 'gender-based violence', AR: 'العنف القائم على النوع الاجتماعي'}},
-    {id: 5, name: {EN: 'family planning', AR: 'خطة العائلة'}},
   ];
   publicationLatest = [
     {
@@ -87,27 +49,39 @@ export class PublicationDetailsComponent implements OnInit {
       publicationImage: 'assets/images/might-like.png'
     }
   ];
-  publicationsList: publicationsListItem[] = [];
-  publicationsData: publicationsContent;
-  publicationsDataDetails;
   index;
+  publicationsDetailsData: publicationsDetailsItem;
+  publicationsBasicData: publicationsListItem;
 
   constructor(private publicationsResolverService: PublicationsResolverService, public activatedRoute: ActivatedRoute) {
     this.index = activatedRoute.snapshot.paramMap.get('id');
-    console.log('index is', this.index);
   }
 
   ngOnInit() {
     this.getPublicationData();
+    this.getPublicationDetailsData();
   }
 
   getPublicationData(): void {
-    let newsSub = this.publicationsResolverService.resolve().subscribe((publicationsData: publicationsContent) => {
-      this.publicationsData = publicationsData[this.index];
-      this.publicationsDataDetails = publicationsData.publicationsList[this.index];
-      console.log('publication', publicationsData.publicationsList);
+    let publicationsSub = this.publicationsResolverService.resolve().subscribe((publicationsData: publicationsContent) => {
+      this.tagsList = publicationsData.tags;
+      this.relatedPublications = publicationsData.publicationsList.filter(item => item.id != this.index);
+      // this.publicationsBasicData = publicationsData.publicationsList[(this.index - 1)];
+      this.publicationsBasicData = publicationsData.publicationsList.filter(item => item.id == this.index)[0];
+      console.log('might ', this.relatedPublications);
+      console.log(this.publicationsBasicData);
     });
+    this.subscriptions.push(publicationsSub);
+  }
+
+  getPublicationDetailsData(): void {
+    let publicationsSub = this.publicationsResolverService.getPageDetails(this.index).subscribe((publicationsData: publicationsContent) => {
+      this.publicationsDetailsData = undefined;
+      setTimeout(() => {
+        this.publicationsDetailsData = publicationsData.publicationsDetailsItem[0];
+        console.log('publication', this.publicationsDetailsData);
+      }, 200);
+    });
+    this.subscriptions.push(publicationsSub);
   }
 }
-
-

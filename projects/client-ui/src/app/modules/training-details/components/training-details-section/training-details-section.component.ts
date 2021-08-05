@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {trainingsDetailsItem} from '../../../../../../../../src/app/shared/models/trainings.model';
 
 @Component({
   selector: 'app-training-details-section',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./training-details-section.component.scss']
 })
 export class TrainingDetailsSectionComponent implements OnInit {
+  @Input() detailsData: trainingsDetailsItem;
 
   constructor() { }
 

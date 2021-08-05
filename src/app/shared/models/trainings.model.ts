@@ -2,6 +2,8 @@ export interface trainingsContent {
   trainingsList: trainingsListItem[];
   tags: tag[];
   trainingsListTotal?: number;
+  trainingsDetailsItem?: trainingsDetailsItem[];
+
 }
 
 export interface trainingsListItem {
@@ -11,7 +13,23 @@ export interface trainingsListItem {
   description: {AR: string, EN: string};
   date: {AR: string, EN: string};
   image: string;
+  tagLabel?: string;
+  trainingDate?: any;
 }
+
+
+export interface trainingsDetailsItem {
+  id?: number;
+  date?: { AR: string, EN: string };
+  detailsDescrption1?: { AR: string, EN: string };
+  detailsDescrption2?: { AR: string, EN: string };
+  paragraph1?: { AR: string, EN: string };
+  paragraph2?: { AR: string, EN: string };
+  paragraph3?: { AR: string, EN: string };
+  paragraph4?: { AR: string, EN: string };
+}
+
+
 
 export interface tag {
   id: number;
@@ -23,11 +41,29 @@ export class TrainingsModel implements trainingsContent{
   trainingsList: trainingsListItem[];
   tags: tag[];
   trainingsListTotal?: number;
+  trainingsDetailsItem?: trainingsDetailsItem[];
+
 
   constructor(trainingsData: any) {
     this.trainingsList = TrainingsModel.setTrainingsList(trainingsData.trainingsListCollection.items);
     this.tags = TrainingsModel.setTags(trainingsData.trainingsTagsCollection.items);
     this.trainingsListTotal = trainingsData.trainingsListCollection.total;
+    this.trainingsDetailsItem = TrainingsModel.setTrainingsItem(trainingsData.trainingsListCollection.items);
+
+  }
+  private static setTrainingsItem(trainingsItem: any[]): trainingsDetailsItem[] {
+    return trainingsItem.map((trainingsItem) => {
+      return {
+        id: trainingsItem.id,
+        date: {AR: trainingsItem.dateAr, EN: trainingsItem.dateEn},
+        detailsDescrption1: {AR: trainingsItem.detailsDescrptionAr1, EN: trainingsItem.detailsDescrptionEn1},
+        detailsDescrption2: {AR: trainingsItem.detailsDescrptionAr2, EN: trainingsItem.detailsDescrptionEn2},
+        paragraph1: {AR: trainingsItem.paragraphAr1, EN: trainingsItem.paragraphEn1},
+        paragraph2: {AR: trainingsItem.paragraphAr2, EN: trainingsItem.paragraphEn2},
+        paragraph3: {AR: trainingsItem.paragraphAr3, EN: trainingsItem.paragraphEn3},
+        paragraph4: {AR: trainingsItem.paragraphAr4, EN: trainingsItem.paragraphEn4},
+      };
+    });
   }
 
   private static setTrainingsList(trainingsListItems: any[]): trainingsListItem[]{
@@ -38,7 +74,10 @@ export class TrainingsModel implements trainingsContent{
         title : {AR: trainingsListItem.titleAr, EN: trainingsListItem.titleEn},
         description : {AR: trainingsListItem.descriptionAr, EN: trainingsListItem.descriptionEn},
         date : {AR: trainingsListItem.dateAr, EN: trainingsListItem.dateEn},
-        image: trainingsListItem.image.url
+        image: trainingsListItem.image ? trainingsListItem.image.url : null,
+        tagLabel: trainingsListItem.tagLabel,
+       trainingDate: trainingsListItem.trainingDate
+
       }
     });
   }
