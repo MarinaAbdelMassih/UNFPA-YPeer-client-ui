@@ -3,7 +3,7 @@
   <p [translateLocal]="{EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.', AR: ''}"></p>
 </div>
 <div class="courses-list" *ngIf="coursesList">
-  <app-course-card *ngFor="let course of coursesList" [imageSrc]="course.image" [title]="course.title"
+  <app-course-card *ngFor="let course of coursesList" [imageSrc]="course.image" [title]="course.name"
                    [description]="course.description">
   </app-course-card>
 </div>

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TranslationModel} from '../../../../../../../../src/app/shared/models/translation.model';
+import {illustrative} from '../../../../../../../../src/app/shared/models/course-catalog.model';
 
 @Component({
   selector: 'app-illustrative-video-section',
@@ -8,10 +8,7 @@ import {TranslationModel} from '../../../../../../../../src/app/shared/models/tr
 })
 export class IllustrativeVideoSectionComponent implements OnInit {
 
-  @Input() imageSrc: string;
-  @Input() title: TranslationModel;
-  @Input() subTitle: TranslationModel;
-  @Input() description: TranslationModel;
+  @Input() illustrativeData: illustrative;
 
   constructor() { }
 

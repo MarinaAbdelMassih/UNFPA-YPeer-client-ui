@@ -1,13 +1,13 @@
-<div class="illustrative-container">
+<div class="illustrative-container" *ngIf="illustrativeData">
   <div class="media-container">
-    <img [src]="imageSrc" alt="video-image" class="media-image">
+    <img [src]="illustrativeData.image" alt="video-image" class="media-image">
     <div class="overlay">
         <img src="assets/images/icons/play-arrow.png" alt="play-icon" class="play-icon">
     </div>
   </div>
   <div class="illustration-container">
-    <h1 [translateLocal]="title"></h1>
-    <span [translateLocal]="subTitle"></span>
-    <p [translateLocal]="description"></p>
+    <h1 [translateLocal]="illustrativeData.title"></h1>
+    <span [translateLocal]="illustrativeData.date"></span>
+    <p [translateLocal]="illustrativeData.description"></p>
   </div>
 </div>

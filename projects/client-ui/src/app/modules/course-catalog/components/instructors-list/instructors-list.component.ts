@@ -1,5 +1,6 @@
-import {AfterViewInit, Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
+import {instructor} from '../../../../../../../../src/app/shared/models/course-catalog.model';
 
 @Component({
   selector: 'app-instructors-list',
@@ -28,32 +29,7 @@ export class InstructorsListComponent implements OnInit, AfterViewInit {
     ]};
   isArabic: boolean = this.languageService.getIsArabic();
 
-  instructorsList = [
-    {
-      image: 'assets/images/instructor-1.png',
-      name: {EN: 'Asmaa Elrosasy1', AR: 'أسماء الرصاصى'},
-      title: {EN: 'Title', AR: 'عنوان'},
-      description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...', AR: 'أسماء الرصاصى'}
-    },
-    {
-      image: 'assets/images/instructor-1.png',
-      name: {EN: 'Asmaa Elrosasy2', AR: 'أسماء الرصاصى'},
-      title: {EN: 'Title', AR: 'عنوان'},
-      description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...', AR: 'أسماء الرصاصى'}
-    },
-    {
-      image: 'assets/images/instructor-1.png',
-      name: {EN: 'Asmaa Elrosasy3', AR: 'أسماء الرصاصى'},
-      title: {EN: 'Title', AR: 'عنوان'},
-      description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...', AR: 'أسماء الرصاصى'}
-    },
-    {
-      image: 'assets/images/instructor-1.png',
-      name: {EN: 'Asmaa Elrosasy4', AR: 'أسماء الرصاصى'},
-      title: {EN: 'Title', AR: 'عنوان'},
-      description: {EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...', AR: 'أسماء الرصاصى'}
-    }
-    ];
+  @Input() instructorsList: instructor[];
 
   constructor(private languageService: LanguageService) { }
 
