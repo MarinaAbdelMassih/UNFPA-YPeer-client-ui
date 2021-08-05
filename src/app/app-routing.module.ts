@@ -58,6 +58,17 @@ const routes: Routes = [
     loadChildren: () => import('../../projects/client-ui/src/app/modules/about-us/about-us.module').then(mod => mod.AboutUsModule),
   },
 
+  {
+    path: 'viewer',
+    children: [
+      {path: '', pathMatch: 'full', redirectTo: '/home'},
+      {
+        path: ':courseId',
+        pathMatch: 'full',
+        loadChildren: () => import('../../projects/course-viewer/src/app/course-viewer.module').then(mod => mod.CourseViewerModule),
+      }
+    ],
+  },
   // {
   //   path: 'contactUs',
   //   pathMatch: 'full',
