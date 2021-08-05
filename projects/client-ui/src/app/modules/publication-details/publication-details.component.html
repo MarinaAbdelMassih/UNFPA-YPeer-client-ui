@@ -11,7 +11,7 @@
       <div class="social-icons-container">
         <p [translateLocal]="{EN: 'Share', AR: 'مشاركة'}"></p>
         <app-footer-social></app-footer-social>
-        <button [translateLocal]="{EN: 'Download', AR: 'تنزيل'}"></button>
+        <button [translateLocal]="{EN: 'Download', AR: 'تنزيل'}" (click)="downloadPdf()"></button>
       </div>
       <div class="d-flex justify-content-between">
         <h2  [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>

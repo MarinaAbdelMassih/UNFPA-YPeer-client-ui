@@ -9,6 +9,9 @@ import {
 } from '../../../../../../src/app/shared/models/publications.model';
 import {Subscription} from 'rxjs';
 
+declare var require: any;
+const FileSaver = require('file-saver');
+
 @Component({
   selector: 'app-publication-details',
   templateUrl: './publication-details.component.html',
@@ -53,9 +56,9 @@ export class PublicationDetailsComponent implements OnInit {
       this.relatedPublications = publicationsData.publicationsList.filter(item => (item.tagLabel == this.publicationsBasicData.tagLabel
         && item.id != this.index));
       publicationsData.publicationsList.map(item => item.publicationDate = new Date(item.publicationDate));
-      this.latestPublication = publicationsData.publicationsList.sort((a,b) => (b.publicationDate - a.publicationDate));
+      this.latestPublication = publicationsData.publicationsList.sort((a, b) => (b.publicationDate - a.publicationDate));
 
-      console.log('latestPublication ',  this.latestPublication);
+      console.log('latestPublication ', this.latestPublication);
       console.log('might like ', this.relatedPublications);
       console.log(this.publicationsBasicData);
     });
@@ -78,5 +81,11 @@ export class PublicationDetailsComponent implements OnInit {
       }, 200);
     });
     this.subscriptions.push(publicationsSub);
+  }
+
+  downloadPdf() {
+    const pdfUrl = 'assets/images/test.pdf';
+    const pdfName = 'ybeer-file';
+    FileSaver.saveAs(pdfUrl, pdfName);
   }
 }

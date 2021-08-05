@@ -5,6 +5,8 @@ import {tag, trainingsContent, trainingsDetailsItem, trainingsListItem} from '..
 import {trainingsResolverService} from '../../../../../../src/app/shared/services/trainings-resolver.service';
 import {Subscription} from 'rxjs';
 
+declare var require: any;
+const FileSaver = require('file-saver');
 
 @Component({
   selector: 'app-training-details',
@@ -66,6 +68,12 @@ export class TrainingDetailsComponent implements OnInit {
       }, 200);
     });
     this.subscriptions.push(trainingsSub);
+  }
+
+  downloadPdf() {
+    const pdfUrl = 'assets/images/test.pdf';
+    const pdfName = 'ybeer-file';
+    FileSaver.saveAs(pdfUrl, pdfName);
   }
 }
 
