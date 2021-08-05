@@ -4,6 +4,10 @@
 
 export const environment = {
   production: false,
+  serviceURI: 'https://doroos-moe-restapistg.almentor.net/api',
+  courseId: 0,
+  drmURI: '',
+  deployUrl: '',
   contentful: {
     spaceId: 'jvvejk00zh2l',
     token: 'SjOnnb-PwRJ45RxLrkygZq__Tcum2HeCje-ZxqgO0c0'

@@ -7,6 +7,7 @@ import { ImageDescriptionCardComponent } from './components/image-description-ca
 import { CategoryItemComponent } from './components/category-item/category-item.component';
 import {MatExpansionModule, MatIconModule, MatListModule} from '@angular/material';
 import { TagItemComponent } from './components/tag-item/tag-item.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -18,13 +19,15 @@ import { TagItemComponent } from './components/tag-item/tag-item.component';
     ImageDescriptionCardComponent,
     PageTopBannerComponent,
     CategoryItemComponent,
-    TagItemComponent
+    TagItemComponent,
+    MatDialogModule
   ],
     imports: [
         CommonModule,
         MatExpansionModule,
         MatIconModule,
-        MatListModule
+        MatListModule,
+        MatDialogModule
     ]
 })
 export class SharedModule { }
