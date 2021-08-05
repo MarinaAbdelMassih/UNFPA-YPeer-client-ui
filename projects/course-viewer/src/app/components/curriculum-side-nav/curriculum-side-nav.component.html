@@ -1,0 +1,13 @@
+<mat-drawer-container dir="{{dir}}">
+  <mat-drawer #curriculumSide [opened]="true" fxFill mode="{{isMobile ? 'over' : 'side'}}" position="start"
+              fxLayout="column"
+              fxFlex.xs="85%" fxFlex.sm="50%" fxFlex.md="40%" fxFlex.lg="30%" fxFlex.xl="20%">
+    <div class="mat-drawer-inner-container" fxLayout="column">
+      <div class="sections">
+        <app-section-item *ngFor="let section of sections" [section]="section"
+                                 (selected)="onSelected()"></app-section-item>
+      </div>
+    </div>
+  </mat-drawer>
+  <ng-content></ng-content>
+</mat-drawer-container>

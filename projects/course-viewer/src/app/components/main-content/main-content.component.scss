@@ -1,0 +1,9 @@
+.main{
+  .video-container{
+    display: none;
+  }
+  ::ng-deep app-video{
+    flex: 1 1 100%;
+    height: 100%;
+  }
+}

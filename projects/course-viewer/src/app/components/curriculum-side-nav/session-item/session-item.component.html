@@ -1,0 +1,25 @@
+<div class="session" *ngIf="session?.type == 0">
+  <mat-expansion-panel expanded="true" class="lecture mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <mat-panel-title [translateLocal]="session?.titleLocal"></mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="stuff">
+      <mat-list role="list">
+        <mat-divider></mat-divider>
+        <app-stuff-item *ngFor="let stuff of session?.lectureStuff" [stuff]="stuff" [lecture]="session"
+                               [section]="section" (selected)="onSelect()"></app-stuff-item>
+      </mat-list>
+    </div>
+  </mat-expansion-panel>
+  <mat-divider></mat-divider>
+</div>
+<div class="session" *ngIf="session?.type == 1">
+  <mat-list role="list" class=" session-quiz">
+    <mat-list-item role="listitem" [class.selected-quiz]="session?.isSelected">
+      <mat-icon mat-list-icon svgIcon="viewer_assessment"></mat-icon>
+      <mat-icon *ngIf="session?.finished" mat-list-icon color="primary">check_circle</mat-icon>
+      <h4 mat-line [translateLocal]="session?.titleLocal"></h4>
+    </mat-list-item>
+  </mat-list>
+  <mat-divider></mat-divider>
+</div>

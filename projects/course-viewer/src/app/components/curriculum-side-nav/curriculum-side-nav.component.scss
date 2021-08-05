@@ -1,0 +1,31 @@
+app-curriculum-side-nav{
+  .mat-drawer.mat-drawer-side {
+    border: none !important;
+  }
+
+  .mat-drawer-container {
+    height: calc(100vh - 64px - 52px);
+
+    .mat-drawer-content {
+      width: 100%;
+    }
+  }
+
+  .mat-icon {
+    &.mat-primary {
+      color: black !important;
+      background: transparent !important;
+    }
+  }
+}
+
+[dir="rtl"]{
+  app-curriculum-side-nav{
+    mat-icon {
+      transform: scaleX(1);
+      -moz-transform: scaleX(1);
+      -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
+    }
+  }
+}

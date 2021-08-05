@@ -1,0 +1,44 @@
+.stuff{
+  mat-list{
+    mat-list-item{
+      cursor: pointer;
+      &:hover{
+        background-color: #3b4249;
+        color: #ffffff !important;
+
+        .mat-list-text {
+          h4 {
+            color: #ffffff !important;
+          }
+        }
+
+        transition: background-color 200ms ease-in;
+      }
+
+      &.selected-stuff {
+        background-color: #3b4249;
+        color: #ffffff !important;
+
+        .mat-list-text {
+          h4 {
+            color: #ffffff !important;
+          }
+        }
+
+        &:hover {
+          background-color: #3b4249;
+          color: #ffffff !important;
+        }
+      }
+      .mat-list-text{
+        flex-direction: row !important;
+        h4{
+          color: black;
+        }
+      }
+      mat-progress-bar{
+        padding-bottom: 20px !important;
+      }
+    }
+  }
+}
