@@ -12,6 +12,8 @@ export interface publicationsListItem {
   description: { AR: string, EN: string };
   date: { AR: string, EN: string };
   image: string;
+  tagLabel?: string;
+  publicationDate?: any;
 }
 
 export interface publicationsDetailsItem {
@@ -68,8 +70,9 @@ export class PublicationsModel implements publicationsContent {
         title: {AR: publicationsListItem.titleAr, EN: publicationsListItem.titleEn},
         description: {AR: publicationsListItem.descriptionAr, EN: publicationsListItem.descriptionEn},
         date: {AR: publicationsListItem.dateAr, EN: publicationsListItem.dateEn},
-        image: publicationsListItem.image ? publicationsListItem.image.url : null
-
+        image: publicationsListItem.image ? publicationsListItem.image.url : null,
+        tagLabel: publicationsListItem.tagLabel,
+        publicationDate: publicationsListItem.publicationDate
       };
     });
   }
