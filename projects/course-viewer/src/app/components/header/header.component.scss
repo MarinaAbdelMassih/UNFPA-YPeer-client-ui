@@ -1,0 +1,47 @@
+.course-viewer-header{
+  height: 64px;
+  mat-toolbar {
+    background-color: transparent;
+    .mat-toolbar-row {
+      button.exit-button {
+        text-decoration: underline;
+        color: #673bb8 !important;
+        background: transparent;
+        border: none;
+        font-size: 12px;
+      }
+      padding: 0;
+      button.mat-flat-button {
+        background-color: transparent !important;
+        color: #000 !important;
+
+        mat-icon {
+          background-color: transparent !important;
+          color: #000 !important;
+        }
+
+        &.curriculum-btn {
+          background: transparent !important;
+          border-radius: 0;
+          width: auto !important;
+          padding-left: 23px;
+          padding-right: 23px;
+
+          mat-icon {
+            color: #000000 !important;
+          }
+        }
+        min-width: 0 !important;
+      }
+      .logo{
+        width: auto;
+        height: 60px;
+        object-fit: contain;
+        cursor: pointer;
+        &:hover, &:focus{
+          outline: none;
+        }
+      }
+    }
+  }
+}
