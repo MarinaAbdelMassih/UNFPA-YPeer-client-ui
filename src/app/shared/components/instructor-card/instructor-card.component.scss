@@ -1,0 +1,26 @@
+.instructor-card-container {
+  display: flex;
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  .instructor-description-container {
+    padding-left: 16px;
+    max-width: 300px;
+    .name {
+      font-size: 16px;
+      font-weight: bold;
+      color: #232323;
+      margin-bottom: 7px;
+    }
+    .title {
+      font-size: 14px;
+      color: #5e5e5e;
+      margin-bottom: 12px;
+    }
+    .description {
+      font-size: 14px;
+      color: #232323;
+    }
+  }
+}

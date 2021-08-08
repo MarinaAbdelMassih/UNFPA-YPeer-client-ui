@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {TranslationModel} from '../../models/translation.model';
 
 @Component({
   selector: 'app-details-top-banner',
@@ -6,9 +7,10 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./details-top-banner.component.scss']
 })
 export class DetailsTopBannerComponent implements OnInit {
-  @Input() detailsImageBanner;
-  @Input() label;
-  @Input() title;
+  @Input() detailsImageBanner: string;
+  @Input() label: TranslationModel;
+  @Input() title: TranslationModel;
+  @Input() titleFontSize: number;
 
   constructor() {
   }

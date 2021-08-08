@@ -1,5 +1,43 @@
 .banner {
+  display: flex;
+  position: relative;
   img {
     width:100%
+  }
+  .banner-text {
+    position: absolute;
+    top: 53%;
+    left: 9%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 88px;
+    font-weight: bold;
+    text-align: left;
+    color: #ffffff;
+  }
+}
+
+@media (max-width: 1200px) {
+  .banner {
+    .banner-text {
+      font-size: 65px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    .banner-text {
+      font-size: 50px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .banner {
+    .banner-text {
+      font-size: 25px;
+    }
   }
 }

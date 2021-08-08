@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {TranslationModel} from '../../models/translation.model';
 
 @Component({
   selector: 'app-page-top-banner',
@@ -7,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PageTopBannerComponent implements OnInit {
   @Input() imageSrc: string;
+  @Input() title: TranslationModel;
 
   constructor() { }
 

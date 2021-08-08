@@ -1,0 +1,71 @@
+.instructor-list-container {
+  padding: 0 55px;
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #232323;
+    margin-bottom: 15px;
+  }
+}
+.enroll-button {
+  text-align: center;
+  margin-top: 60px;
+  button {
+    width: 200px;
+    height: 46px;
+    font-size: 16px;
+  }
+}
+.buttons-container {
+  position: relative;
+  .slider-button {
+    background: transparent;
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    bottom: 130px;
+  }
+  .btn-next {
+    right: 46px;
+  }
+  .btn-prev {
+    right: 84px;
+  }
+}
+[dir = rtl] .buttons-container {
+  .btn-prev {
+    left: 46px;
+    right: auto;
+  }
+  .btn-next {
+    left: 84px;
+    right: auto;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 510px) {
+  .instructor-list-container {
+    .slick-initialized .slick-slide {
+      display: flex;
+      justify-content: space-between;
+      width: auto !important;
+    }
+  }
+}
+
+@media (max-width: 474px) {
+  .buttons-container {
+    .slider-button {
+      bottom: 150px;
+    }
+  }
+}
+
+@media (max-width: 398px) {
+  .buttons-container {
+    .slider-button {
+      bottom: 175px;
+    }
+  }
+}
+
