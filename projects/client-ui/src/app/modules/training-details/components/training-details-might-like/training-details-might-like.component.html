@@ -9,13 +9,17 @@
     </div>
   </div>
   <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
-    <app-might-like-item ngxSlickItem *ngFor="let cardDetail of cardDetails"
+    <div *ngFor="let cardDetail of cardDetails">
+      <a [routerLink]='["/training-details", cardDetail.id]'>
+    <app-might-like-item ngxSlickItem
                          [cardId]="cardDetail.id"
                          [title]="cardDetail.title"
                          [type]="cardDetail.label"
                          [description]="cardDetail.description "
                          [imageSrc]="cardDetail.image" (moreClicked)="openDetailsPage()">
     </app-might-like-item>
+      </a>
+    </div>
   </ngx-slick-carousel>
 
 </div>
