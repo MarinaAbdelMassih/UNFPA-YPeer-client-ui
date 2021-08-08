@@ -98,7 +98,12 @@ const routes: Routes = [
     path: 'training-details/:id',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/training-details/training-details.module').then(mod => mod.TrainingDetailsModule),
-  }
+  },
+  {
+    path: 'course-catalog',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/course-catalog/course-catalog.module').then(mod => mod.CourseCatalogModule),
+  },
 ];
 
 @NgModule({

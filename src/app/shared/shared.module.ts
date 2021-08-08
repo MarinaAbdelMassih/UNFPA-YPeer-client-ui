@@ -10,6 +10,8 @@ import { TagItemComponent } from './components/tag-item/tag-item.component';
 import { DetailsTopBannerComponent } from './components/details-top-banner/details-top-banner.component';
 import { LatestItemComponent } from './components/latest-item/latest-item.component';
 import { MightLikeItemComponent } from './components/might-like-item/might-like-item.component';
+import { InstructorCardComponent }from'./components/instructor-card/instructor-card.component';
+import { CourseCardComponent }from'./components/course-card/course-card.component';
 import {SafePipe} from "./pipes/safePipe";
 import {RouterModule} from "@angular/router";
 
@@ -25,6 +27,8 @@ import {RouterModule} from "@angular/router";
     TagItemComponent,
     DetailsTopBannerComponent,
     LatestItemComponent,
+    InstructorCardComponent,
+    CourseCardComponent,
     MightLikeItemComponent,
     SafePipe
   ],
@@ -38,6 +42,8 @@ import {RouterModule} from "@angular/router";
     DetailsTopBannerComponent,
     LatestItemComponent,
     MightLikeItemComponent,
+    CourseCardComponent,
+    InstructorCardComponent,
     SafePipe
   ],
   imports: [
