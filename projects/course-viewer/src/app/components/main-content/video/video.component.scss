@@ -38,12 +38,12 @@ $mobile-point-x: 320px;
   transform: $transform;
 }
 
-.video-player-container {
+::ng-deep .video-player-container {
   div {
     width: 100%;
     height: 100%;
 
-    div {
+    ::ng-deep div {
       padding-top: unset !important;
     }
 
