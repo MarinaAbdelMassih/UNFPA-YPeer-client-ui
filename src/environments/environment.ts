@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serviceURI: 'https://doroos-moe-restapistg.almentor.net/api',
+  serviceURI: 'https://y-peer-stg-orchestration.almentor.net/api/',
   courseId: 0,
   drmURI: 'https://stg-drm-doroos.almentor.net/',
   deployUrl: '',
