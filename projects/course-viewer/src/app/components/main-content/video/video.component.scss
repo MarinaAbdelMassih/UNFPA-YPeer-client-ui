@@ -39,6 +39,9 @@ $mobile-point-x: 320px;
 }
 
 ::ng-deep .video-player-container {
+  .vjs-overlay-background {
+    display: none;
+  }
   div {
     width: 100%;
     height: 100%;
