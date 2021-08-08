@@ -27,6 +27,7 @@ export interface eventsDetailsItem {
   ourStory3?: { AR: string, EN: string };
   ourStory4?: { AR: string, EN: string };
   ourStoryImage?: string;
+  detailsBannerImage?: string;
 }
 
 export interface tag {
@@ -75,7 +76,8 @@ export class EventsModel implements eventsContent {
         ourStory2: {AR: eventsItem.ourStoryAr2, EN: eventsItem.ourStoryEn2},
         ourStory3: {AR: eventsItem.ourStoryAr3, EN: eventsItem.ourStoryEn3},
         ourStory4: {AR: eventsItem.ourStoryAr4, EN: eventsItem.ourStoryEn4},
-        ourStoryImage: eventsItem.ourStoryImage ? eventsItem.ourStoryImage.url: null
+        ourStoryImage: eventsItem.ourStoryImage ? eventsItem.ourStoryImage.url: null,
+        detailsBannerImage: eventsItem.detailsBannerImage ? eventsItem.detailsBannerImage.url : null
       };
     });
   }

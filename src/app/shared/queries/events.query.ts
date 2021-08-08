@@ -116,7 +116,9 @@ export const EventsDetailsQuery = (id: number) => {
       ourStoryImage{
         url
       }
-
+      detailsBannerImage{
+      url
+      }
     }
   }
   eventsTagItemCollection{
