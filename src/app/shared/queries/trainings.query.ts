@@ -180,6 +180,9 @@ export const TrainingsDetailsQuery = (id: number) => {
       paragraphAr3
       paragraphEn4
       paragraphAr4
+      detailsBannerImage{
+      url
+      }
     }
   }
   trainingsTagItemCollection{

@@ -1,4 +1,5 @@
-<app-details-top-banner  *ngIf="trainingsBasicData" [detailsImageBanner]="trainingsBasicData.image"
+<app-details-top-banner  *ngIf="trainingsBasicData && trainingsDetailsData"
+                         [detailsImageBanner]="trainingsDetailsData.detailsBannerImage"
                         [label]="{EN: trainingsBasicData.label.EN, AR: trainingsBasicData.label.AR}"
                         [title]="{EN: trainingsBasicData.title.EN, AR: trainingsBasicData.title.AR}"></app-details-top-banner>
 <div class="training-details-page-content">
