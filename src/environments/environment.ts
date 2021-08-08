@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   serviceURI: 'https://doroos-moe-restapistg.almentor.net/api',
   courseId: 0,
-  drmURI: '',
+  drmURI: 'https://stg-drm-doroos.almentor.net/',
   deployUrl: '',
   contentful: {
     spaceId: 'jvvejk00zh2l',
