@@ -6,7 +6,6 @@
     mat-card-header{
       overflow: hidden;
       min-height: 70px !important;
-      background-color: #EFEFEF !important;
 
       .mat-card-header-text {
         margin: 0;
@@ -32,11 +31,11 @@
         color: #ffffff !important;
 
         h3 {
-          color: #000000 !important;
+          color: #2e2e2e !important;
           margin: 0;
           padding: 0;
           font-weight: 600;
-          font-size: 1.2em;
+          font-size: 32px;
         }
       }
     }
