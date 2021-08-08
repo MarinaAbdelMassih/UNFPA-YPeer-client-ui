@@ -25,6 +25,7 @@ export interface publicationsDetailsItem {
   paragraph2?: { AR: string, EN: string };
   paragraph3?: { AR: string, EN: string };
   paragraph4?: { AR: string, EN: string };
+  detailsBannerImage?: string;
 }
 
 export interface tag {
@@ -58,6 +59,7 @@ export class PublicationsModel implements publicationsContent {
         paragraph2: {AR: publicationsItem.paragraphAr2, EN: publicationsItem.paragraphEn2},
         paragraph3: {AR: publicationsItem.paragraphAr3, EN: publicationsItem.paragraphEn3},
         paragraph4: {AR: publicationsItem.paragraphAr4, EN: publicationsItem.paragraphEn4},
+        detailsBannerImage: publicationsItem.detailsBannerImage ? publicationsItem.detailsBannerImage.url : null
       };
     });
   }

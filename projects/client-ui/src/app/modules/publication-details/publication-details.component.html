@@ -1,6 +1,8 @@
-<app-details-top-banner  *ngIf="publicationsBasicData" [detailsImageBanner]="publicationsBasicData.image"
+<app-details-top-banner  *ngIf="publicationsBasicData && publicationsDetailsData"
+                         [detailsImageBanner]="publicationsDetailsData.detailsBannerImage"
                         [label]="{EN: publicationsBasicData.label.EN, AR: publicationsBasicData.label.AR}"
-                        [title]="{EN: publicationsBasicData.title.EN, AR: publicationsBasicData.title.AR}"></app-details-top-banner>
+                        [title]="{EN: publicationsBasicData.title.EN, AR: publicationsBasicData.title.AR}">
+</app-details-top-banner>
 <div class="publication-details-page-content">
   <div class="publication-details-story">
     <app-publication-details-section *ngIf="publicationsDetailsData" [detailsData]="publicationsDetailsData"></app-publication-details-section>
