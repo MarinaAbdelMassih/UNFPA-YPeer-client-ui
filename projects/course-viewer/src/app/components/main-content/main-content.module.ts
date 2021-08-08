@@ -14,6 +14,8 @@ import {FlexModule} from "@angular/flex-layout";
   imports: [
     CommonModule,
     FlexModule
-  ]
+  ],
+
+  entryComponents: [VideoComponent]
 })
 export class MainContentModule { }
