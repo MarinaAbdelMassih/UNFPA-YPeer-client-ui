@@ -26,6 +26,7 @@ export interface storiesDetailsItem {
   paragraph3?: {AR: string, EN: string};
   paragraph4?: {AR: string, EN: string};
   detailsVideo?: string;
+  detailsBannerImage?: string;
 }
 
 export interface tag {
@@ -73,7 +74,8 @@ export class StoriesModel implements storiesContent{
         paragraph2 : {AR: storiesItem.paragraphAr2, EN: storiesItem.paragraphEn2},
         paragraph3 : {AR: storiesItem.paragraphAr3, EN: storiesItem.paragraphEn3},
         paragraph4 : {AR: storiesItem.paragraphAr4, EN: storiesItem.paragraphEn4},
-        detailsVideo: storiesItem.detailsVideo
+        detailsVideo: storiesItem.detailsVideo,
+        detailsBannerImage: storiesItem.detailsBannerImage ? storiesItem.detailsBannerImage.url : null
       }
     });
   }

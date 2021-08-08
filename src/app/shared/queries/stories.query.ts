@@ -178,6 +178,9 @@ export const StoriesDetailsQuery = (id: number) => {
       paragraphEn4
       paragraphAr4
       detailsVideo
+      detailsBannerImage{
+      url
+      }
     }
   }
   storiesTagItemCollection{
