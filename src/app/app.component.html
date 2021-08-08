@@ -1,6 +1,6 @@
-<!--<app-header></app-header>-->
+<app-header *ngIf="!isCourseViewer"></app-header>
 <div class="page-wrapper">
   <router-outlet></router-outlet>
 </div>
-<!--<app-footer></app-footer>-->
-<!--<app-sub-footer></app-sub-footer>-->
+<app-footer *ngIf="!isCourseViewer"></app-footer>
+<app-sub-footer *ngIf="!isCourseViewer"></app-sub-footer>
