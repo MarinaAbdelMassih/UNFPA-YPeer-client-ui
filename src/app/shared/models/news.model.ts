@@ -26,6 +26,7 @@ export interface newsDetailsItem {
   ourStory3?: {AR: string, EN: string};
   ourStory4?: {AR: string, EN: string};
   ourStoryImage?: string;
+  detailsBannerImage?: string;
 }
 
 export interface tag {
@@ -73,7 +74,8 @@ export class NewsModel implements newsContent{
         ourStory2 : {AR: newsItem.ourStoryAr2, EN: newsItem.ourStoryEn2},
         ourStory3 : {AR: newsItem.ourStoryAr3, EN: newsItem.ourStoryEn3},
         ourStory4 : {AR: newsItem.ourStoryAr4, EN: newsItem.ourStoryEn4},
-        ourStoryImage: newsItem.ourStoryImage? newsItem.ourStoryImage.url: null
+        ourStoryImage: newsItem.ourStoryImage? newsItem.ourStoryImage.url: null,
+        detailsBannerImage: newsItem.detailsBannerImage? newsItem.detailsBannerImage.url: null
       }
     });
   }

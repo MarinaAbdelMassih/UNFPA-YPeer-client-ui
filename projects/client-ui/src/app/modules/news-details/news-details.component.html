@@ -1,7 +1,9 @@
 <!--label and title not static, you should get them from the card that you opened details from-->
-<app-details-top-banner *ngIf="newsBasicData" [detailsImageBanner]="newsBasicData.image"
+<app-details-top-banner *ngIf="newsBasicData && newsDetailsData"
+                        [detailsImageBanner]="newsDetailsData.detailsBannerImage"
                         [label]="{EN: newsBasicData.label.EN, AR: newsBasicData.label.AR}"
-                        [title]="{EN: newsBasicData.title.EN, AR: newsBasicData.title.AR}"></app-details-top-banner>
+                        [title]="{EN: newsBasicData.title.EN, AR: newsBasicData.title.AR}">
+</app-details-top-banner>
 <div class="news-details-page-content">
   <div class="news-details-story">
     <app-news-details-story *ngIf="newsDetailsData" [detailsData]="newsDetailsData"></app-news-details-story>
