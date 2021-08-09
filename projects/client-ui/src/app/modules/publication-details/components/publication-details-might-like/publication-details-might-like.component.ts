@@ -36,6 +36,9 @@ export class PublicationDetailsMightLikeComponent implements OnInit {
 
   ngOnInit() {
   }
+  reloadCurrentPage() {
+    window.location.reload();
+  }
 
   ngAfterViewInit() {
     this.reInitSlick();

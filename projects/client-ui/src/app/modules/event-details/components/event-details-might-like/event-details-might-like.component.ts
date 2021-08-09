@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
-import {eventsListItem} from "../../../../../../../../src/app/shared/models/events.model";
+import {eventsListItem} from '../../../../../../../../src/app/shared/models/events.model';
 
 @Component({
   selector: 'app-event-details-might-like',
@@ -36,6 +36,10 @@ export class EventDetailsMightLikeComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  reloadCurrentPage() {
+    window.location.reload();
   }
 
   ngAfterViewInit() {

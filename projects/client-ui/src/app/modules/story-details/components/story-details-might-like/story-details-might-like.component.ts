@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
-import {storiesListItem} from "../../../../../../../../src/app/shared/models/stories.model";
+import {storiesListItem} from '../../../../../../../../src/app/shared/models/stories.model';
 
 @Component({
   selector: 'app-story-details-might-like',
@@ -36,6 +36,10 @@ export class StoryDetailsMightLikeComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  reloadCurrentPage() {
+    window.location.reload();
   }
 
   ngAfterViewInit() {
