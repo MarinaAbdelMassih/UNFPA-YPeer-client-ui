@@ -9,9 +9,14 @@ import {publicationsListItem} from '../../../../../../../../src/app/shared/model
 export class PublicationDetailsLatestComponent implements OnInit {
   @Input() latestItems: publicationsListItem[];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  reloadCurrentPage() {
+    window.location.reload();
   }
 
 }
