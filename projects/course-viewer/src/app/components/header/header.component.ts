@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import { Location } from '@angular/common'
@@ -12,7 +12,15 @@ import {SideComponentsControlsService} from "../../../../../../src/app/shared/se
 export class HeaderComponent implements OnInit, OnDestroy {
 
   isCurriculumOpen: boolean = true;
+  isMobile: boolean = false;
+  size: number;
   openSub: Subscription;
+
+  @HostListener("window:resize", ['$event'])
+  private onResize(event) {
+    this.size = event.target.innerWidth;
+    this.isMobile = this.size <= 600;
+  }
 
   constructor(private sideComponentsControlsService: SideComponentsControlsService, private location: Location,
               private route: ActivatedRoute) { }
@@ -21,6 +29,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.sideComponentsControlsService.isCurriculumOpen.subscribe(isOpened => {
       this.isCurriculumOpen = isOpened;
     });
+    this.size = window.innerWidth;
+    this.isMobile = this.size <= 600;
   }
 
   ngOnDestroy(): void {
