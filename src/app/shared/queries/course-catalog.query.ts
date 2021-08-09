@@ -8,6 +8,7 @@ export const CourseCatalogQuery = `{
       dateAr
       descriptionEn
       descriptionAr
+      introductoryVideo
       image {
         url
       }

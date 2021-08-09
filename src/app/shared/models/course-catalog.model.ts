@@ -9,6 +9,7 @@ export interface illustrative {
   date: { AR: string, EN: string };
   description: { AR: string, EN: string };
   image: string;
+  introductoryVideo: string;
 }
 
 export interface instructor {
@@ -42,7 +43,8 @@ export class CourseCatalogModel implements courseCatalogContent {
         title: {AR: illustrativeData.titleAr, EN: illustrativeData.titleEn},
         date: {AR: illustrativeData.dateAr, EN: illustrativeData.dateEn},
         description: {AR: illustrativeData.descriptionAr, EN: illustrativeData.descriptionEn},
-        image: illustrativeData.image.url
+        image: illustrativeData.image.url,
+        introductoryVideo: illustrativeData.introductoryVideo
       };
   }
 

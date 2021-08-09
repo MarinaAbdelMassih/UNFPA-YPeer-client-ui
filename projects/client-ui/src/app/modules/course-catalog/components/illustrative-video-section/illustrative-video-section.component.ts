@@ -9,10 +9,15 @@ import {illustrative} from '../../../../../../../../src/app/shared/models/course
 export class IllustrativeVideoSectionComponent implements OnInit {
 
   @Input() illustrativeData: illustrative;
+  videoPlayed: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  playTheVideo(videoPlayed: boolean): void {
+    this.videoPlayed = videoPlayed;
   }
 
 }
