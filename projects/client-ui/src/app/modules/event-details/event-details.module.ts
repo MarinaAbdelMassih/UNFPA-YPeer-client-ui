@@ -12,10 +12,11 @@ import { EventDetailsPhotosComponent } from './components/event-details-photos/e
 import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {CoreModule} from '../../../../../../src/app/core/core.module';
+import { EventDetailsViewImageComponent } from './components/event-details-view-image/event-details-view-image.component';
 
 
 @NgModule({
-  declarations: [EventDetailsComponent, EventDetailsCategoriesComponent, EventDetailsLatestComponent, EventDetailsMightLikeComponent, EventDetailsStoryComponent, EventDetailsTagsComponent, EventDetailsPhotosComponent],
+  declarations: [EventDetailsComponent, EventDetailsCategoriesComponent, EventDetailsLatestComponent, EventDetailsMightLikeComponent, EventDetailsStoryComponent, EventDetailsTagsComponent, EventDetailsPhotosComponent, EventDetailsViewImageComponent],
   imports: [
     CommonModule,
     EventDetailsRoutingModule,
