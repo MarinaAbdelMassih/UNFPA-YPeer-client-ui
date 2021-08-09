@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {eventsListItem} from "../../../../../../../../src/app/shared/models/events.model";
+import {eventsListItem} from '../../../../../../../../src/app/shared/models/events.model';
 
 @Component({
   selector: 'app-event-details-latest',
@@ -9,9 +9,15 @@ import {eventsListItem} from "../../../../../../../../src/app/shared/models/even
 export class EventDetailsLatestComponent implements OnInit {
   @Input() latestItems: eventsListItem[];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
+
+  reloadCurrentPage() {
+    window.location.reload();
+  }
+
 
 }

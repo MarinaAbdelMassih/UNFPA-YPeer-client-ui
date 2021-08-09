@@ -1,7 +1,11 @@
 <div class="story-details-latest" *ngIf="latestItems && latestItems.length">
   <p>Latest Stories</p>
-  <app-latest-item *ngFor="let latestItem of latestItems | slice:0:4;"
-                   [description]="latestItem.title"
-                   [date]="latestItem.date"
-                   [image]=" latestItem.image"></app-latest-item>
+  <div *ngFor="let latestItem of latestItems | slice:0:4;" (click)="reloadCurrentPage()">
+    <a [routerLink]='["/story-details", latestItem.id]'>
+      <app-latest-item
+        [description]="latestItem.title"
+        [date]="latestItem.date"
+        [image]=" latestItem.image"></app-latest-item>
+    </a>
+  </div>
 </div>

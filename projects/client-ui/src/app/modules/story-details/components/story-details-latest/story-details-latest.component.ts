@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {storiesListItem} from "../../../../../../../../src/app/shared/models/stories.model";
+import {storiesListItem} from '../../../../../../../../src/app/shared/models/stories.model';
 
 @Component({
   selector: 'app-story-details-latest',
@@ -9,9 +9,13 @@ import {storiesListItem} from "../../../../../../../../src/app/shared/models/sto
 export class StoryDetailsLatestComponent implements OnInit {
   @Input() latestItems: storiesListItem[];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  reloadCurrentPage() {
+    window.location.reload();
+  }
 }

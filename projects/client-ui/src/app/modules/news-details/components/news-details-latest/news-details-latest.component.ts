@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {newsListItem} from "../../../../../../../../src/app/shared/models/news.model";
+import {newsListItem} from '../../../../../../../../src/app/shared/models/news.model';
 
 @Component({
   selector: 'app-news-details-latest',
@@ -15,4 +15,7 @@ export class NewsDetailsLatestComponent implements OnInit {
   ngOnInit() {
   }
 
+  reloadCurrentPage() {
+    window.location.reload();
+  }
 }

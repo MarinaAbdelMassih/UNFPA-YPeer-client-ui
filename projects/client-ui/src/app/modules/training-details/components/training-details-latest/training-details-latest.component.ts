@@ -9,9 +9,13 @@ import {trainingsListItem} from '../../../../../../../../src/app/shared/models/t
 export class TrainingDetailsLatestComponent implements OnInit {
   @Input() latestItems: trainingsListItem[];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  reloadCurrentPage() {
+    window.location.reload();
+  }
 }
