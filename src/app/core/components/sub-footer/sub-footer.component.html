@@ -1,6 +1,6 @@
 <div class="sub-footer-section">
-  <div class="sub-footer-container">
-    <div class="left-section footer-inner-section">
+  <div class="sub-footer-container" [ngStyle] = "showLinks ? {'justify-content': 'space-between'}: {'justify-content': 'flex-end'}">
+    <div *ngIf="showLinks" class="left-section footer-inner-section">
       <app-sub-footer-menu></app-sub-footer-menu>
     </div>
     <div class="right-section footer-inner-section">

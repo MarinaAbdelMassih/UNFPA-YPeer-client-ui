@@ -4,6 +4,7 @@
 
 .mat-drawer-container {
   height: calc(100vh - 64px - 52px);
+  margin-bottom: 95px;
 
   ::ng-deep .mat-drawer-content {
     width: 100%;

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-sub-footer',
@@ -8,6 +8,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class SubFooterComponent implements OnInit {
 
+  @Input() showLinks: boolean = true;
   constructor() { }
 
   ngOnInit() {

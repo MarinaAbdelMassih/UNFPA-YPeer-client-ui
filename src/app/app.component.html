@@ -3,4 +3,4 @@
   <router-outlet></router-outlet>
 </div>
 <app-footer *ngIf="!isCourseViewer"></app-footer>
-<app-sub-footer *ngIf="!isCourseViewer"></app-sub-footer>
+<app-sub-footer [showLinks]="!isCourseViewer"></app-sub-footer>
