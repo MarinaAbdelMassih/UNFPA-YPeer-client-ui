@@ -2,6 +2,7 @@
   <mat-list-item [title]="stuff.titleLocal.AR" role="listitem" (click)="onClick()" [class.selected-stuff]="stuff?.isSelected">
 <!--    <mat-icon mat-list-icon svgIcon="viewer_video"></mat-icon>-->
     <mat-icon *ngIf="stuff.finished" mat-list-icon>check_circle</mat-icon>
+    <mat-icon class="empty-circle-icon" *ngIf="!stuff.finished" mat-list-icon>circle</mat-icon>
     <h4 mat-line [translateLocal]="stuff?.titleLocal"></h4>
   </mat-list-item>
   <!--  <mat-progress-bar mode="determinate" color="primary" [value]="50" ></mat-progress-bar>-->

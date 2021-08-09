@@ -7,7 +7,7 @@
       overflow: hidden;
       min-height: 70px !important;
 
-      .mat-card-header-text {
+      ::ng-deep.mat-card-header-text {
         margin: 0;
         width: 0;
         height: 0;

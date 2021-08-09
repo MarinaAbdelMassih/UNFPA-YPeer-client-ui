@@ -13,9 +13,10 @@
       font-weight: 600 !important;
       background-color: #f0f0f0;
       font-family: "DroidKufiBold", sans-serif;
+      height: 55px !important;
     }
 
-    .mat-expansion-panel-body {
+    ::ng-deep.mat-expansion-panel-body {
       padding: 0;
     }
   }
