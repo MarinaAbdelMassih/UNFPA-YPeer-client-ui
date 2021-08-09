@@ -14,6 +14,7 @@ export interface publicationsListItem {
   image: string;
   tagLabel?: string;
   publicationDate?: any;
+  detailsLatestImage?: string;
 }
 
 export interface publicationsDetailsItem {
@@ -74,7 +75,8 @@ export class PublicationsModel implements publicationsContent {
         date: {AR: publicationsListItem.dateAr, EN: publicationsListItem.dateEn},
         image: publicationsListItem.image ? publicationsListItem.image.url : null,
         tagLabel: publicationsListItem.tagLabel,
-        publicationDate: publicationsListItem.publicationDate
+        publicationDate: publicationsListItem.publicationDate,
+        detailsLatestImage: publicationsListItem.detailsLatestImage ? publicationsListItem.detailsLatestImage.url : null
       };
     });
   }

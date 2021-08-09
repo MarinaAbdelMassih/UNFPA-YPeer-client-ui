@@ -17,6 +17,9 @@ export const PublicationsQuery = `{
         image {
           url
         }
+        detailsLatestImage {
+        url
+        }
       }
       total
     }
