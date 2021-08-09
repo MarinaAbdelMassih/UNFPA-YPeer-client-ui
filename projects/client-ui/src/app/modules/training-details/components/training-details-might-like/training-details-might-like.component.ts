@@ -37,6 +37,10 @@ export class TrainingDetailsMightLikeComponent implements OnInit {
   ngOnInit() {
   }
 
+  reloadCurrentPage() {
+    window.location.reload();
+  }
+
   ngAfterViewInit() {
     this.reInitSlick();
     this.languageService.isArabic.subscribe(isArabic => {

@@ -9,7 +9,7 @@
     </div>
   </div>
   <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
-    <div *ngFor="let cardDetail of cardDetails">
+    <div *ngFor="let cardDetail of cardDetails" (click)="reloadCurrentPage()">
       <a [routerLink]='["/publication-details", cardDetail.id]'>
     <app-might-like-item ngxSlickItem
                          [cardId]="cardDetail.id"

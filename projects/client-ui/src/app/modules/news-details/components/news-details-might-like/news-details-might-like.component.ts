@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
-import {newsListItem} from "../../../../../../../../src/app/shared/models/news.model";
+import {newsListItem} from '../../../../../../../../src/app/shared/models/news.model';
 
 @Component({
   selector: 'app-news-details-might-like',
@@ -35,6 +35,10 @@ export class NewsDetailsMightLikeComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  reloadCurrentPage() {
+    window.location.reload();
   }
 
   ngAfterViewInit() {
