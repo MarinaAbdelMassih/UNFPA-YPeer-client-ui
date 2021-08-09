@@ -14,6 +14,7 @@ export interface newsListItem {
   image: string;
   tagLabel?: string;
   newsDate?: any;
+  detailsLatestImage?: string;
 }
 
 export interface newsDetailsItem {
@@ -58,7 +59,8 @@ export class NewsModel implements newsContent{
         date : {AR: newsListItem.dateAr, EN: newsListItem.dateEn},
         image: newsListItem.image ? newsListItem.image.url: null,
         tagLabel: newsListItem.tagLabel,
-        newsDate: newsListItem.newsDate
+        newsDate: newsListItem.newsDate,
+        detailsLatestImage: newsListItem.detailsLatestImage ? newsListItem.detailsLatestImage.url : null
       }
     });
   }

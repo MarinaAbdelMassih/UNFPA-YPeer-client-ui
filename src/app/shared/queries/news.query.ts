@@ -17,6 +17,9 @@ export const NewsQuery = `{
         image {
           url
         }
+        detailsLatestImage {
+        url
+        }
       }
       total
     }
