@@ -17,6 +17,9 @@ export const EventsQuery = `{
         image {
           url
         }
+        detailsLatestImage {
+        url
+        }
       }
        total
     }

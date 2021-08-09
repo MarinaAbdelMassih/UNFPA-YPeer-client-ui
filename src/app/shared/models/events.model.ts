@@ -15,6 +15,7 @@ export interface eventsListItem {
   image: string;
   tagLabel?: string;
   eventDate?: any;
+  detailsLatestImage?: string;
 }
 
 export interface eventsDetailsItem {
@@ -60,7 +61,8 @@ export class EventsModel implements eventsContent {
         date: {AR: eventsListItem.dateAr, EN: eventsListItem.dateEn},
         image: eventsListItem.image ? eventsListItem.image.url: null,
         tagLabel: eventsListItem.tagLabel,
-        eventDate: eventsListItem.eventDate
+        eventDate: eventsListItem.eventDate,
+        detailsLatestImage: eventsListItem.detailsLatestImage ? eventsListItem.detailsLatestImage.url : null
       };
     });
   }
