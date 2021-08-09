@@ -17,6 +17,9 @@ export const StoriesQuery = `{
         image {
           url
         }
+        detailsLatestImage {
+        url
+        }
       }
     }
     storiesTagsCollection {

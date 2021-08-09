@@ -14,6 +14,7 @@ export interface storiesListItem {
   image: string;
   tagLabel?: string;
   storyDate?: any;
+  detailsLatestImage?: string;
 }
 
 export interface storiesDetailsItem {
@@ -58,7 +59,8 @@ export class StoriesModel implements storiesContent{
         date : {AR: storiesListItem.dateAr, EN: storiesListItem.dateEn},
         image: storiesListItem.image ? storiesListItem.image.url: null,
         tagLabel: storiesListItem.tagLabel,
-        storyDate: storiesListItem.storyDate
+        storyDate: storiesListItem.storyDate,
+        detailsLatestImage: storiesListItem.detailsLatestImage ? storiesListItem.detailsLatestImage.url : null
       }
     });
   }
