@@ -1,10 +1,6 @@
 <div class="course-viewer-header">
   <mat-toolbar fxFlex="100" fxLayout="row">
     <mat-toolbar-row fxFlex="100" fxFill fxLayout="row" fxLayoutAlign="start">
-      <span style="margin: 15px" fxFlexAlign="center" fxFlex="100" fxLayoutAlign="start" fxLayout="row">
-      <img src="assets/images/ypeer-logo-header.png"
-           class="logo" routerLink="/home" alt="hesas-logo">
-    </span>
       <div class="tool-box" *ngIf="isMobile"
            fxLayout="row" fxLayoutAlign="start" fxFlexAlign="center">
         <button fxFill fxFlex="'50px'" class="curriculum-btn" (click)="toggleCurriculumDrawer()"
@@ -12,11 +8,15 @@
           <mat-icon  color="accent">list</mat-icon>
         </button>
       </div>
+      <span style="margin: 15px" fxFlexAlign="center" fxFlex="100" fxLayoutAlign="start" fxLayout="row">
+      <img src="assets/images/ypeer-logo-header.png"
+           class="logo" routerLink="/home" alt="hesas-logo">
+    </span>
       <div class="exit" fxFlex.xs="15%" fxFlex.sm="15%" fxFlex.md="20%" fxFlex.lg="20%" fxFlex.xl="20%"
            fxFlexAlign="center" fxLayoutAlign="center" fxLayout="row">
         <button (click)="closeCourseViewer()" class="exit-button">
-          <span fxHide.sm fxHide.xs [translateLocal]="{AR: 'الخروج من الفيديو', EN: 'Exit Course'}"></span>
-          <!--          <mat-icon color="accent">exit_to_app</mat-icon>-->
+          <span *ngIf="!isMobile" fxHide.sm fxHide.xs [translateLocal]="{AR: 'الخروج من الفيديو', EN: 'Exit Course'}"></span>
+          <mat-icon style="line-height: 2.5" *ngIf="isMobile">exit_to_app</mat-icon>
         </button>
       </div>
     </mat-toolbar-row>
