@@ -15,6 +15,7 @@ export interface trainingsListItem {
   image: string;
   tagLabel?: string;
   trainingDate?: any;
+  detailsLatestImage?: string;
 }
 
 
@@ -78,7 +79,8 @@ export class TrainingsModel implements trainingsContent{
         date : {AR: trainingsListItem.dateAr, EN: trainingsListItem.dateEn},
         image: trainingsListItem.image ? trainingsListItem.image.url : null,
         tagLabel: trainingsListItem.tagLabel,
-       trainingDate: trainingsListItem.trainingDate
+        trainingDate: trainingsListItem.trainingDate,
+        detailsLatestImage: trainingsListItem.detailsLatestImage ? trainingsListItem.detailsLatestImage.url : null
 
       }
     });

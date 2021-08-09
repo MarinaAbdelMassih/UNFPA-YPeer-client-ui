@@ -17,6 +17,9 @@ export const TrainingsQuery = `{
         image {
           url
         }
+        detailsLatestImage {
+        url
+        }
       }
       total
     }
