@@ -17,10 +17,12 @@ export class EventsComponent implements OnInit {
   eventsList: eventsListItem[] = [];
   showLoadMore: boolean =true;
   selectedTag: string;
+  upcomingEvents: eventsListItem[] = [];
+  previousEvents: eventsListItem[] = [];
 
   categoriesList: CategoryModel[] = [
-    {title: {EN: 'Previous Events', AR: 'الأحداث السابقه'}, count: 50, hideToggle: true},
-    {title: {EN: 'Upcoming Events', AR: 'الأحداث القادمه'}, count: 23, hideToggle: true},
+    {title: {EN: 'Previous Events', AR: 'الأحداث السابقه'}, count: 0, hideToggle: true, label: 'previous'},
+    {title: {EN: 'Upcoming Events', AR: 'الأحداث القادمه'}, count: 0, hideToggle: true, label: 'upcoming'},
   ];
 
   constructor(private eventsResolverService: EventsResolverService) {
@@ -28,6 +30,7 @@ export class EventsComponent implements OnInit {
 
   ngOnInit() {
     this.getEventsData();
+    this.getUpcomingAndPreviousEvents();
   }
 
   getEventsData(): void {
@@ -68,19 +71,27 @@ export class EventsComponent implements OnInit {
     this.getEventsData();
   }
 
-  getSelectedEventsList() {
+  getUpcomingAndPreviousEvents() {
     let eventsSub = this.eventsResolverService.resolve().subscribe((eventsData: eventsContent) => {
-      console.log(eventsData)
       this.eventsData = undefined;
       setTimeout(() => {
-        // this.eventsData = eventsData;
-        // this.eventsList = this.eventsList.concat(eventsData.eventsList);
-        // this.showLoadMore = this.eventsList.length < this.eventsData.eventsListTotal;
+        eventsData.eventsList.map(item => item.eventDate = new Date(item.eventDate));
+        let currentDate = new Date();
+        eventsData.eventsList.map((item) => (item.eventDate >= currentDate ? this.upcomingEvents.push(item)
+          : this.previousEvents.push(item)));
+        this.categoriesList[0].count = this.previousEvents.length;
+        this.categoriesList[1].count = this.upcomingEvents.length;
       }, 200)
 
     });
     this.subscriptions.push(eventsSub);
-    console.log(1)
+  }
+  getSelectedEventsList(event) {
+    if(event.label == 'upcoming')
+      this.eventsList = this.upcomingEvents;
+    else if (event.label == 'previous')
+      this.eventsList = this.previousEvents;
+    this.showLoadMore = false;
   }
 
 }

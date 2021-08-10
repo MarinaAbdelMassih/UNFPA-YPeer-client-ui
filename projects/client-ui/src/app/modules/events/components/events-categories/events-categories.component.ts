@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {CategoryModel} from "../../../../../../../../src/app/shared/models/category.model";
 
 @Component({
   selector: 'app-events-categories',
@@ -6,12 +7,17 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./events-categories.component.scss']
 })
 export class EventsCategoriesComponent implements OnInit {
-  @Input() categoriesList;
+  @Input() categoriesList: CategoryModel[];
+  @Output() eventFilterClicked: EventEmitter<CategoryModel> = new EventEmitter();
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  filterEvents(event) {
+    this.eventFilterClicked.emit(event)
   }
 
 }

@@ -6,4 +6,5 @@ export interface CategoryModel {
   hideToggle?: boolean,
   yearsList?: Object[],
   url?: string;
+  label?: string;
 }

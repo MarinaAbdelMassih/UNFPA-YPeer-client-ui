@@ -22,16 +22,12 @@ export class EventsResolverService {
 
   resolve(): Observable<eventsContent> {
     return new Observable<eventsContent> (subscriber=> {
-      if (this.eventsData) {
-        subscriber.next(this.eventsData);
-      } else {
         this.dataHandlerService.getDefaultPageData(EventsQuery, 'events', (res) => {
           return new EventsModel(res.data.events);
         }).subscribe((eventsData: eventsContent) => {
           this.eventsData = eventsData;
           subscriber.next(this.eventsData);
         },() => subscriber.next(null));
-      }
     });
   }
 

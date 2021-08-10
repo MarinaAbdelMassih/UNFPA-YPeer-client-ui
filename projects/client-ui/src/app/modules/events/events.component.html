@@ -5,7 +5,7 @@
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">
-      <app-events-categories (click)="getSelectedEventsList()" [categoriesList]="categoriesList"></app-events-categories>
+      <app-events-categories (eventFilterClicked)="getSelectedEventsList($event)" [categoriesList]="categoriesList"></app-events-categories>
     </div>
     <div class="tags-list">
       <h2 *ngIf="eventsData" [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>
