@@ -22,9 +22,11 @@ import {EventDetailsViewImageComponent} from './components/event-details-view-im
     EventDetailsRoutingModule,
     SharedModule,
     SlickCarouselModule,
-    CoreModule
+    CoreModule,
   ],
-  entryComponents: [EventDetailsViewImageComponent]
+  exports: [
+    EventDetailsViewImageComponent
+  ]
 })
 export class EventDetailsModule {
 }
