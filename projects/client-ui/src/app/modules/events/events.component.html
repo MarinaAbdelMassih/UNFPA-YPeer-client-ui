@@ -1,11 +1,11 @@
 <app-page-top-banner [imageSrc]="'assets/images/events-banner.png'"></app-page-top-banner>
 <div class="events-page-content">
   <div class="events-list">
-    <app-events-list *ngIf="eventsData" [eventsLists]="eventsData.eventsList"></app-events-list>
+    <app-events-list *ngIf="eventsList" [eventsLists]="eventsList" (loadMoreClicked)="getEventsData()" [showLoadMoreButton]="showLoadMore" ></app-events-list>
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">
-      <app-events-categories [categoriesList]="categoriesList"></app-events-categories>
+      <app-events-categories (click)="getSelectedEventsList()" [categoriesList]="categoriesList"></app-events-categories>
     </div>
     <div class="tags-list">
       <h2 *ngIf="eventsData" [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>

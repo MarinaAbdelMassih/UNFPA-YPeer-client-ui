@@ -68,4 +68,19 @@ export class EventsComponent implements OnInit {
     this.getEventsData();
   }
 
+  getSelectedEventsList() {
+    let eventsSub = this.eventsResolverService.resolve().subscribe((eventsData: eventsContent) => {
+      console.log(eventsData)
+      this.eventsData = undefined;
+      setTimeout(() => {
+        // this.eventsData = eventsData;
+        // this.eventsList = this.eventsList.concat(eventsData.eventsList);
+        // this.showLoadMore = this.eventsList.length < this.eventsData.eventsListTotal;
+      }, 200)
+
+    });
+    this.subscriptions.push(eventsSub);
+    console.log(1)
+  }
+
 }
