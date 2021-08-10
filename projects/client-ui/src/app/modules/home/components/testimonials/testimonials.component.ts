@@ -14,7 +14,7 @@ export class TestimonialsComponent implements OnInit, AfterViewInit {
   @ViewChild('testimonialsSlickModal', {static: false}) slickModal;
 
   testimonialsConfig: any = {"slidesToShow": 1, "rtl": this.isArabic, "slidesToScroll": 1,"arrows": false, "fade": true,
-    "cssEase": 'linear', "dots": true,"autoplay": false, "autoplaySpeed": 2000};
+    "cssEase": 'linear', "dots": true,"autoplay": true, "autoplaySpeed": 10000};
 
   constructor(private langService: LanguageService) { }
 
