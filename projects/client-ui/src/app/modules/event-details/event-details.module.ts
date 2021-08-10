@@ -12,16 +12,18 @@ import { EventDetailsPhotosComponent } from './components/event-details-photos/e
 import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {CoreModule} from '../../../../../../src/app/core/core.module';
+import {NewsDetailsModule} from '../news-details/news-details.module';
 
 
 @NgModule({
   declarations: [EventDetailsComponent, EventDetailsCategoriesComponent, EventDetailsLatestComponent, EventDetailsMightLikeComponent, EventDetailsStoryComponent, EventDetailsTagsComponent, EventDetailsPhotosComponent],
-  imports: [
-    CommonModule,
-    EventDetailsRoutingModule,
-    SharedModule,
-    SlickCarouselModule,
-    CoreModule
-  ]
+    imports: [
+        CommonModule,
+        EventDetailsRoutingModule,
+        SharedModule,
+        SlickCarouselModule,
+        CoreModule,
+        NewsDetailsModule
+    ]
 })
 export class EventDetailsModule { }
