@@ -29,6 +29,7 @@ export interface eventsDetailsItem {
   ourStory4?: { AR: string, EN: string };
   ourStoryImage?: string;
   detailsBannerImage?: string;
+  galleryImages?: [];
 }
 
 export interface tag {
@@ -79,7 +80,8 @@ export class EventsModel implements eventsContent {
         ourStory3: {AR: eventsItem.ourStoryAr3, EN: eventsItem.ourStoryEn3},
         ourStory4: {AR: eventsItem.ourStoryAr4, EN: eventsItem.ourStoryEn4},
         ourStoryImage: eventsItem.ourStoryImage ? eventsItem.ourStoryImage.url: null,
-        detailsBannerImage: eventsItem.detailsBannerImage ? eventsItem.detailsBannerImage.url : null
+        detailsBannerImage: eventsItem.detailsBannerImage ? eventsItem.detailsBannerImage.url : null,
+        galleryImages:eventsItem.galleryImagesCollection ? eventsItem.galleryImagesCollection.items.map(image => image.url): null
       };
     });
   }
