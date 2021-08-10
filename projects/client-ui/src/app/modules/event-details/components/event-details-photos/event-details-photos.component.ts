@@ -1,6 +1,8 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
+import {MatDialog} from '@angular/material';
+import {EventDetailsViewImageComponent} from '../event-details-view-image/event-details-view-image.component';
 
 @Component({
   selector: 'app-event-details-photos',
@@ -30,10 +32,18 @@ export class EventDetailsPhotosComponent implements OnInit {
   };
   isArabic: boolean = this.languageService.getIsArabic();
 
-  constructor(private router: Router, private languageService: LanguageService) {
+  constructor(private router: Router, private languageService: LanguageService, public dialog: MatDialog) {
   }
 
   ngOnInit() {
+  }
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(EventDetailsViewImageComponent, {
+      width: '70%',
+    });
+
   }
 
   ngAfterViewInit() {
