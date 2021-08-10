@@ -12,17 +12,23 @@ import {NewsModule} from '../news/news.module';
 import { NewsDetailsTagsComponent } from './components/news-details-tags/news-details-tags.component';
 import {CoreModule} from '../../../../../../src/app/core/core.module';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
+import {SocialShareComponent} from '../../../../../../src/app/shared/components/social-share/social-share.component';
+import {ShareModule} from '@ngx-share/core';
 
 
 @NgModule({
-  declarations: [NewsDetailsComponent, NewsDetailsCategoriesComponent, NewsDetailsLatestComponent, NewsDetailsMightLikeComponent, NewsDetailsStoryComponent, NewsDetailsTagsComponent],
+  declarations: [NewsDetailsComponent, NewsDetailsCategoriesComponent, NewsDetailsLatestComponent, NewsDetailsMightLikeComponent, NewsDetailsStoryComponent, NewsDetailsTagsComponent, SocialShareComponent],
+  exports: [
+    SocialShareComponent
+  ],
   imports: [
     CommonModule,
     NewsDetailsRoutingModule,
     SharedModule,
     NewsModule,
     CoreModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    ShareModule
   ]
 })
 export class NewsDetailsModule { }

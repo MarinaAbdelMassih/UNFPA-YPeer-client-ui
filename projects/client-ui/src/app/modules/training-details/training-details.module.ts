@@ -11,6 +11,7 @@ import {SlickCarouselModule} from 'ngx-slick-carousel';
 import { TrainingDetailsTagsComponent } from './components/training-details-tags/training-details-tags.component';
 import { TrainingDetailsSectionComponent } from './components/training-details-section/training-details-section.component';
 import {CoreModule} from '../../../../../../src/app/core/core.module';
+import {NewsDetailsModule} from '../news-details/news-details.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {CoreModule} from '../../../../../../src/app/core/core.module';
     TrainingDetailsRoutingModule,
     SharedModule,
     SlickCarouselModule,
-    CoreModule
+    CoreModule,
+    NewsDetailsModule
   ]
 })
 export class TrainingDetailsModule { }

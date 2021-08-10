@@ -11,16 +11,18 @@ import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {CoreModule} from '../../../../../../src/app/core/core.module';
 import { PublicationDetailsSectionComponent } from './components/publication-details-section/publication-details-section.component';
 import { PublicationDetailsTagsComponent } from './components/publication-details-tags/publication-details-tags.component';
+import {NewsDetailsModule} from '../news-details/news-details.module';
 
 
 @NgModule({
   declarations: [PublicationDetailsComponent, PublicationDetailsCategoriesComponent, PublicationDetailsLatestComponent, PublicationDetailsMightLikeComponent,PublicationDetailsSectionComponent, PublicationDetailsTagsComponent],
-  imports: [
-    CommonModule,
-    PublicationDetailsRoutingModule,
-    SharedModule,
-    SlickCarouselModule,
-    CoreModule
-  ]
+    imports: [
+        CommonModule,
+        PublicationDetailsRoutingModule,
+        SharedModule,
+        SlickCarouselModule,
+        CoreModule,
+        NewsDetailsModule
+    ]
 })
 export class PublicationDetailsModule { }
