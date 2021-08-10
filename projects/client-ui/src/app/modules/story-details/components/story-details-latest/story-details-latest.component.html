@@ -1,5 +1,5 @@
 <div class="story-details-latest" *ngIf="latestItems && latestItems.length">
-  <p>Latest Stories</p>
+  <p>LATEST STORIES</p>
   <div *ngFor="let latestItem of latestItems | slice:0:4;" (click)="reloadCurrentPage()">
     <a [routerLink]='["/story-details", latestItem.id]'>
       <app-latest-item
