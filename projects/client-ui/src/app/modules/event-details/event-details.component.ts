@@ -31,7 +31,8 @@ export class EventDetailsComponent implements OnInit {
   ];
   tagsList: tag[];
   latestEvents: eventsListItem[];
-  eventPhotos = ['assets/images/events-details-photos.png', 'assets/images/events-details-photos.png', 'assets/images/events-details-photos.png', 'assets/images/events-details-photos.png'];
+  eventPhotos: eventsDetailsItem;
+  // eventPhotos = ['assets/images/events-details-photos.png', 'assets/images/events-details-photos.png', 'assets/images/events-details-photos.png', 'assets/images/events-details-photos.png'];
   index;
   eventsDetailsData: eventsDetailsItem;
   eventsBasicData: eventsListItem;
@@ -53,7 +54,7 @@ export class EventDetailsComponent implements OnInit {
         && item.id != this.index));
 
       eventsData.eventsList.map(item => item.eventDate = new Date(item.eventDate));
-      this.latestEvents = eventsData.eventsList.sort((a,b) => (b.eventDate - a.eventDate));
+      this.latestEvents = eventsData.eventsList.sort((a, b) => (b.eventDate - a.eventDate));
     });
     this.subscriptions.push(eventsSub);
   }

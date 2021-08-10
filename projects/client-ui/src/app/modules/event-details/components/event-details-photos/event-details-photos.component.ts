@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {MatDialog} from '@angular/material';
@@ -11,6 +11,7 @@ import {EventDetailsViewImageComponent} from '../event-details-view-image/event-
 })
 export class EventDetailsPhotosComponent implements OnInit {
   @Input() photos;
+  @Output() sendPhoto = new EventEmitter();
   @ViewChild('latestSlickModal', {static: false}) slickModal;
   latestConfig: any = {
     slidesToShow: 3, rtl: false, slidesToScroll: 1, arrows: false, fade: false,
@@ -38,10 +39,13 @@ export class EventDetailsPhotosComponent implements OnInit {
   ngOnInit() {
   }
 
+  valueChanged() {
+    this.sendPhoto.emit(this.photos);
+  }
 
-  openDialog(): void {
+  openDialog(photos, i): void {
     const dialogRef = this.dialog.open(EventDetailsViewImageComponent, {
-      width: '80%',
+      width: '80%', data: photos = this.photos
     });
 
   }

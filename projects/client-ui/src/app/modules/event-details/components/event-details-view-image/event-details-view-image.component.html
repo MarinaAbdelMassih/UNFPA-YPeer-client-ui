@@ -1,16 +1,21 @@
 <div class="photo-number-container">
-  <h3>2 / 6</h3>
+  <h3>2 / 6</h3> {{album.length}}
   <img (click)="close()" src="assets/images/icons/close.png" alt="image-arrow-left" class="close-img">
 </div>
 <div class="view-image">
-  <img (click)="prev(current)" src="assets/images/icons/arrow-left-image.png" alt="image-arrow-left" class="arrow-img">
-  <div *ngFor="let image of album |slice :current:  current+1 ;let current = index;">
-    <img class="w-100" [src]="image.src" (click)="open(current)"/>
+  <a [ngStyle]="{'display':current < album.length ?  'block' : 'none'  }" (click)="prev(current)">
+    <img src="assets/images/icons/arrow-left-image.png" alt="image-arrow-left" class="arrow-img">
+  </a>
+  <div *ngFor="let image of album |slice :current:  current+1 ;let current = index;" >
+    <img class="w-100" [src]="image"/>
   </div>
-  <img (click)="next(current)"
-       src='assets/images/icons/arrow-right-image.png'
-       alt="image-arrow-right"
-       class="arrow-img">
+  <a [ngStyle]="{'display':current < album.length ?  'block' : 'none'  }" (click)="next(current)">
+    <img
+      src='assets/images/icons/arrow-right-image.png'
+      alt="image-arrow-right"
+      class="arrow-img">
+  </a>
+
 </div>
 <div class="photo-caption-container">
   <h3>Photo Caption</h3>
