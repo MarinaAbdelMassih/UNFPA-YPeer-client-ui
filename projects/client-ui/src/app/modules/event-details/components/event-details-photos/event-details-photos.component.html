@@ -9,8 +9,9 @@
     </div>
   </div>
   <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
-    <div ngxSlickItem *ngFor="let photo of photos; let i = index;">
-      <img (click)="openDialog(photos , i);" [src]="photo" alt="event-details-photo" class="img-slider">
+    <div ngxSlickItem *ngFor="let photo of photos; let indexNow = index;">
+      <img (click)="openDialog(photos ,indexNow);" [src]="photo" alt="event-details-photo" class="img-slider">
+      {{indexNow}}
     </div>
   </ngx-slick-carousel>
 

@@ -9,26 +9,8 @@ import {Lightbox} from 'ngx-lightbox';
 })
 export class EventDetailsViewImageComponent implements OnInit {
   current = 0;
-  // album: any = [];
-  hidden = false;
 
-  constructor(private dialog: MatDialog, private lightbox: Lightbox, @Inject(MAT_DIALOG_DATA) public album: any ) {
-    // this.album.push({
-    //   src: this.album,
-    //   thumb: this.album
-    // });
-    // this.album.push({
-    //   src: 'assets/images/our-story-image.png',
-    //   thumb: 'assets/images/our-story-image.png'
-    // });
-    // this.album.push({
-    //   src: 'assets/images/view-image-event-details.png',
-    //   thumb: 'assets/images/view-image-event-details.png'
-    // });
-    // this.album.push({
-    //   src: 'assets/images/our-story-image.png',
-    //   thumb: 'assets/images/our-story-image.png'
-    // });
+  constructor(private dialog: MatDialog, private lightbox: Lightbox, @Inject(MAT_DIALOG_DATA) public album: any) {
   }
 
   ngOnInit() {
@@ -39,37 +21,21 @@ export class EventDetailsViewImageComponent implements OnInit {
     console.log('photo', this.album);
   }
 
-  open(index: number): void {
-    this.lightbox.open(this.album, index);
-    console.log(index);
-  }
-
   close() {
     this.dialog.closeAll();
   }
 
   next(current: number): void {
     this.current = current + 1;
+    if (this.current == this.album.length) {
+      this.current = 0;
+    }
   }
 
   prev(current: number): void {
     this.current = current - 1;
+    if (this.current < 0) {
+      this.current = this.album.length - 1;
+    }
   }
-
-  // next(current: number): void {
-  //   if (this.current >= 0) {
-  //     this.current = current + 1;
-  //   }
-  //   // } else if (this.current == this.album.length) {
-  //   //   this.current = current - this.album.length;
-  //   // }
-  // }
-
-  // prev(current: number): void {
-  //   if (this.current > 0) {
-  //     this.current = current - 1;
-  //   } else if (this.current <= 0) {
-  //     this.current = current + this.album.length;
-  //   }
-  // }
 }
