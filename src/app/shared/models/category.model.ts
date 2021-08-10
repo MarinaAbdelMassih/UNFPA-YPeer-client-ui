@@ -7,4 +7,5 @@ export interface CategoryModel {
   yearsList?: Object[],
   url?: string;
   label?: string;
+  selected?: boolean;
 }

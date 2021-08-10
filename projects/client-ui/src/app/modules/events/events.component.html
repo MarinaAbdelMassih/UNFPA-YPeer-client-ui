@@ -5,11 +5,14 @@
   </div>
   <div class="categories-and-tags">
     <div class="categories-list">
+      <div class="d-flex justify-content-end">
+        <a (click)="clearData()" [translateLocal]="{EN: 'clear', AR: 'مسح'}"></a>
+      </div>
       <app-events-categories (eventFilterClicked)="getSelectedEventsList($event)" [categoriesList]="categoriesList"></app-events-categories>
     </div>
     <div class="tags-list">
       <h2 *ngIf="eventsData" [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>
-      <app-events-tags *ngIf="eventsData" [tagsList]="eventsData.tags"></app-events-tags>
+      <app-events-tags (tagClicked)="filterByTag($event)"  *ngIf="eventsData" [tagsList]="eventsData.tags"></app-events-tags>
     </div>
   </div>
 </div>

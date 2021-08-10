@@ -1,4 +1,4 @@
 <app-category-item *ngFor="let category of categoriesList"
                    [hideToggle]="category.hideToggle" [title]="category.title" [count]="category.count"
-                   (click)="filterEvents(category)">
+                   (click)="filterEvents(category)" [selected]="category.selected">
 </app-category-item>

@@ -21,16 +21,16 @@ export class EventsComponent implements OnInit {
   previousEvents: eventsListItem[] = [];
 
   categoriesList: CategoryModel[] = [
-    {title: {EN: 'Previous Events', AR: 'الأحداث السابقه'}, count: 0, hideToggle: true, label: 'previous'},
-    {title: {EN: 'Upcoming Events', AR: 'الأحداث القادمه'}, count: 0, hideToggle: true, label: 'upcoming'},
+    {title: {EN: 'Previous Events', AR: 'الأحداث السابقه'}, count: 0, hideToggle: true, label: 'previous', selected: false},
+    {title: {EN: 'Upcoming Events', AR: 'الأحداث القادمه'}, count: 0, hideToggle: true, label: 'upcoming', selected: false},
   ];
 
   constructor(private eventsResolverService: EventsResolverService) {
   }
 
   ngOnInit() {
-    this.getEventsData();
     this.getUpcomingAndPreviousEvents();
+    this.getEventsData();
   }
 
   getEventsData(): void {
@@ -59,6 +59,7 @@ export class EventsComponent implements OnInit {
         if(this.eventsResolverService.selectedEventsTag.getValue()) {
           this.eventsData.tags.find(tag => tag.id == this.eventsResolverService.selectedEventsTag.getValue().id).selected = true;
         }
+        this.categoriesList.map(category => category.selected = false);
       }, 200)
 
     });
@@ -68,6 +69,7 @@ export class EventsComponent implements OnInit {
   clearData() {
     this.selectedTag = null;
     this.eventsList = [];
+    this.categoriesList.map(category => category.selected = false);
     this.getEventsData();
   }
 
@@ -86,12 +88,22 @@ export class EventsComponent implements OnInit {
     });
     this.subscriptions.push(eventsSub);
   }
+
   getSelectedEventsList(event) {
-    if(event.label == 'upcoming')
+    if(event.label == 'upcoming') {
       this.eventsList = this.upcomingEvents;
-    else if (event.label == 'previous')
+      this.categoriesList[0].selected = false;
+      this.categoriesList[1].selected = true;
+    }
+    else if (event.label == 'previous') {
       this.eventsList = this.previousEvents;
+      this.categoriesList[0].selected = true;
+      this.categoriesList[1].selected = false;
+    }
+
     this.showLoadMore = false;
+    this.eventsData.tags.map(tag => tag.selected = false);
+    this.selectedTag = null;
   }
 
 }
