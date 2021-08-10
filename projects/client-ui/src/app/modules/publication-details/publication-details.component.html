@@ -12,7 +12,7 @@
     <div class="categories-list">
       <div class="social-icons-container">
         <p [translateLocal]="{EN: 'Share', AR: 'مشاركة'}"></p>
-        <app-footer-social></app-footer-social>
+        <app-social-share [facebook]="true" [twitter]="true" [whatsapp]="true"></app-social-share>
         <button [translateLocal]="{EN: 'Download', AR: 'تنزيل'}" (click)="downloadPdf()"></button>
       </div>
       <div class="d-flex justify-content-between">
