@@ -39,7 +39,6 @@ export class TrainingDetailsComponent implements OnInit {
 
   constructor(private TrainingsResolverService: trainingsResolverService, public activatedRoute: ActivatedRoute) {
     this.index = activatedRoute.snapshot.paramMap.get('id');
-    console.log('index is', this.index);
   }
 
   ngOnInit() {
@@ -71,8 +70,8 @@ export class TrainingDetailsComponent implements OnInit {
   }
 
   downloadPdf() {
-    const pdfUrl = 'assets/images/test.pdf';
-    const pdfName = 'ybeer-file';
+    const pdfUrl = this.trainingsDetailsData.pdfFile;
+    const pdfName = 'file';
     FileSaver.saveAs(pdfUrl, pdfName);
   }
 }

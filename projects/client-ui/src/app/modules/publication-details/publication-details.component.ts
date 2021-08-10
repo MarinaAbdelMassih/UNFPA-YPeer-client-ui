@@ -57,35 +57,23 @@ export class PublicationDetailsComponent implements OnInit {
         && item.id != this.index));
       publicationsData.publicationsList.map(item => item.publicationDate = new Date(item.publicationDate));
       this.latestPublication = publicationsData.publicationsList.sort((a, b) => (b.publicationDate - a.publicationDate));
-
-      console.log('latestPublication ', this.latestPublication);
-      console.log('might like ', this.relatedPublications);
-      console.log(this.publicationsBasicData);
     });
     this.subscriptions.push(publicationsSub);
   }
 
-  // this.tagsList = newsData.tags;
-  // this.newsBasicData = newsData.newsList.filter(item => item.id == this.index)[0];
-  // this.relatedNews = newsData.newsList.filter(item => (item.tagLabel == this.newsBasicData.tagLabel
-  //   && item.id != this.index));
-  //
-  // newsData.newsList.map(item => item.newsDate = new Date(item.newsDate));
-  // this.latestNews = newsData.newsList.sort((a,b) => (b.newsDate - a.newsDate));
   getPublicationDetailsData(): void {
     let publicationsSub = this.publicationsResolverService.getPageDetails(this.index).subscribe((publicationsData: publicationsContent) => {
       this.publicationsDetailsData = undefined;
       setTimeout(() => {
         this.publicationsDetailsData = publicationsData.publicationsDetailsItem[0];
-        console.log('publication', this.publicationsDetailsData);
       }, 200);
     });
     this.subscriptions.push(publicationsSub);
   }
 
   downloadPdf() {
-    const pdfUrl = 'assets/images/test.pdf';
-    const pdfName = 'ybeer-file';
+    const pdfUrl = this.publicationsDetailsData.pdfFile;
+    const pdfName = 'file';
     FileSaver.saveAs(pdfUrl, pdfName);
   }
 }
