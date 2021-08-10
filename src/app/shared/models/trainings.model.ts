@@ -28,7 +28,8 @@ export interface trainingsDetailsItem {
   paragraph2?: { AR: string, EN: string };
   paragraph3?: { AR: string, EN: string };
   paragraph4?: { AR: string, EN: string };
-  detailsBannerImage?: string
+  detailsBannerImage?: string;
+  pdfFile?: string;
 }
 
 
@@ -64,7 +65,8 @@ export class TrainingsModel implements trainingsContent{
         paragraph2: {AR: trainingsItem.paragraphAr2, EN: trainingsItem.paragraphEn2},
         paragraph3: {AR: trainingsItem.paragraphAr3, EN: trainingsItem.paragraphEn3},
         paragraph4: {AR: trainingsItem.paragraphAr4, EN: trainingsItem.paragraphEn4},
-        detailsBannerImage: trainingsItem.detailsBannerImage ? trainingsItem.detailsBannerImage.url : null
+        detailsBannerImage: trainingsItem.detailsBannerImage ? trainingsItem.detailsBannerImage.url : null,
+        pdfFile: trainingsItem.file ? trainingsItem.file.url : null,
       };
     });
   }

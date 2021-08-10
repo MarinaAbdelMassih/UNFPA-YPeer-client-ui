@@ -186,6 +186,9 @@ export const TrainingsDetailsQuery = (id: number) => {
       detailsBannerImage{
       url
       }
+      file {
+       url
+       }
     }
   }
   trainingsTagItemCollection{
