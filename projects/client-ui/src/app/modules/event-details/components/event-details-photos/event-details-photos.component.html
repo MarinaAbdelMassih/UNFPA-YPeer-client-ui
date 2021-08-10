@@ -9,7 +9,7 @@
     </div>
   </div>
   <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
-    <div ngxSlickItem *ngFor="let photo of photos">
+    <div ngxSlickItem *ngFor="let photo of photos;">
       <img (click)="openDialog()" [src]="photo" alt="event-details-photo">
     </div>
 

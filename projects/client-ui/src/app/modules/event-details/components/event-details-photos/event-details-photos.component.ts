@@ -41,7 +41,7 @@ export class EventDetailsPhotosComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(EventDetailsViewImageComponent, {
-      width: '70%',
+      width: '80%',
     });
 
   }

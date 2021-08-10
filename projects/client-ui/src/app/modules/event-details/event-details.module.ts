@@ -13,6 +13,7 @@ import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {CoreModule} from '../../../../../../src/app/core/core.module';
 import {EventDetailsViewImageComponent} from './components/event-details-view-image/event-details-view-image.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {EventDetailsViewImageComponent} from './components/event-details-view-im
     SharedModule,
     SlickCarouselModule,
     CoreModule,
+    FormsModule,
   ],
   exports: [
     EventDetailsViewImageComponent
