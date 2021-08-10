@@ -12,10 +12,16 @@ export const PublicationsQuery = `{
         descriptionAr
         dateEn
         dateAr
+        tagLabel
+        publicationDate
         image {
           url
         }
+        detailsLatestImage {
+        url
+        }
       }
+      total
     }
     publicationsTagsCollection {
       items {
@@ -46,6 +52,7 @@ export const PublicationsTagsQuery = (tagLabel: string) => {
           url
         }
       }
+      total
   }
    publicationsTagItemCollection {
       items {
@@ -78,6 +85,7 @@ export const PublicationsYearsQuery = (year: number) => {
           url
         }
       }
+      total
   }
    publicationsTagItemCollection {
       items {
@@ -112,6 +120,7 @@ export const PublicationsYearsAndTagsQuery = (year: number, tagLabel: string) =>
           url
         }
       }
+      total
   }
    publicationsTagItemCollection {
       items {
@@ -153,5 +162,39 @@ export const PublicationsPageQuery = (skip: number, limit: number) => {
         label
       }
     }
+}`;
+};
+export const PublicationsDetailsQuery = (id: number) => {
+  return `{
+ publicationsListItemCollection(where:{id: ${id}}){
+    items{
+       id
+      dateEn
+      dateAr
+      detailsDescrptionEn1
+      detailsDescrptionAr1
+      detailsDescrptionEn2
+     detailsDescrptionAr2
+      paragraphEn1
+      paragraphAr1
+      paragraphEn2
+      paragraphAr2
+      paragraphEn3
+      paragraphAr3
+      paragraphEn4
+      paragraphAr4
+      detailsBannerImage{
+      url
+      }
+    }
+  }
+  publicationsTagItemCollection{
+    items{
+      id
+      nameEn
+      nameAr
+      label
+    }
+  }
 }`;
 };

@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {resourcesListItem} from "../../../../../../../../src/app/shared/models/resources.model";
 
 @Component({
   selector: 'app-resources-list',
@@ -6,7 +7,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./resources-list.component.scss']
 })
 export class ResourcesListComponent implements OnInit {
-  @Input() latestResources;
+  @Input() latestResources: resourcesListItem[];
   @Output() loadMoreClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() showLoadMoreButton: boolean;
 

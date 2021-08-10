@@ -15,6 +15,7 @@ export class ImageDescriptionCardComponent implements OnInit {
   @Input() publications: boolean;
   @Input() buttonAppear = false;
   @Input() resources = false;
+  @Input() resourceFile: string;
   @Output() moreClicked: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }

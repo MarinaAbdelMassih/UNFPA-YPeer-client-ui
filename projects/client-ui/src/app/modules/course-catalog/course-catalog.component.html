@@ -1,0 +1,26 @@
+<div class="page-container">
+
+  <app-page-top-banner [imageSrc]="'assets/images/course-catalog-top-banner.png'"
+                       [title]="{EN: 'COURSE CATALOG', AR: 'الدورات التدريبية'}">
+  </app-page-top-banner>
+
+  <div class="illustrative-video-section" *ngIf="courseCatalogData">
+    <app-illustrative-video-section [illustrativeData]="courseCatalogData.illustrativeData"></app-illustrative-video-section>
+  </div>
+
+  <div class="instructors-section" *ngIf="courseCatalogData">
+    <app-instructors-list [instructorsList]="courseCatalogData.instructorsList"></app-instructors-list>
+  </div>
+
+  <div class="advanced-courses-section" *ngIf="courseCatalogData">
+    <app-advanced-courses-section [coursesList]="courseCatalogData.advancedCoursesList"></app-advanced-courses-section>
+  </div>
+
+  <div class="introductory-courses-section">
+    <h1 [translateLocal]="{EN: 'JOIN THE INTRODUCTORY COURSE', AR: 'انضم إلى الدورة التمهيدية'}"></h1>
+    <div class="enroll-button">
+      <button class="ypeer-btn btn-full-color" [translateLocal]="{EN: 'Enroll Now', AR: 'اشترك الان'}"></button>
+    </div>
+  </div>
+
+</div>

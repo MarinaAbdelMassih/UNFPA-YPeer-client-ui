@@ -1,0 +1,25 @@
+<div class="event-details-might-like" *ngIf="cardDetails && cardDetails.length">
+  <div class="d-flex justify-content-between align-items-center">
+    <p>You Might Also Like</p>
+    <div class="buttons-container">
+      <button class="slider-button btn-prev" (click)="prev()"><img src="assets/images/icons/arrow-left-gray.png" alt="">
+      </button>
+      <button class="slider-button btn-next" (click)="next()"><img src="assets/images/icons/arrow-right-gray.png"
+                                                                   alt=""></button>
+    </div>
+  </div>
+  <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
+    <div *ngFor="let cardDetail of cardDetails" (click)="reloadCurrentPage()">
+      <a [routerLink]='["/event-details", cardDetail.id]'>
+    <app-might-like-item ngxSlickItem
+                         [title]="cardDetail.title"
+                         [type]="cardDetail.label"
+                         [description]="cardDetail.description "
+                         [imageSrc]="cardDetail.image" (moreClicked)="openDetailsPage()">
+    </app-might-like-item>
+      </a>
+    </div>
+  </ngx-slick-carousel>
+
+</div>
+

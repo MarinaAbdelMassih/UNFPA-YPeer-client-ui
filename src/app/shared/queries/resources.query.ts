@@ -15,6 +15,9 @@ export const ResourcesQuery = `{
         image {
           url
         }
+        file {
+        url
+        }
       }
     }
     resourcesTagsCollection {
@@ -44,6 +47,9 @@ export const ResourcesTagsQuery = (tagLabel: string) => {
         tagLabel
         image {
           url
+        }
+        file {
+        url
         }
       }
   }
@@ -76,6 +82,9 @@ export const ResourcesYearsQuery = (year: number) => {
         year
         image {
           url
+        }
+        file {
+        url
         }
       }
   }
@@ -111,6 +120,9 @@ export const ResourcesYearsAndTagsQuery = (year: number, tagLabel: string) => {
         image {
           url
         }
+        file {
+        url
+        }
       }
   }
    resourcesTagItemCollection {
@@ -141,6 +153,9 @@ export const ResourcesPageQuery = (skip: number, limit: number) => {
         year
         image {
           url
+        }
+        file {
+        url
         }
       }
       total

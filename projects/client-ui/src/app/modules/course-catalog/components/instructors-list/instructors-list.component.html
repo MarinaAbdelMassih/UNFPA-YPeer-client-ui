@@ -1,0 +1,18 @@
+<div class="instructor-list-container">
+  <h2 [translateLocal]="{EN: 'INSTRUCTORS', AR: 'المدربين'}"></h2>
+  <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig" class="instructor-list">
+    <app-instructor-card ngxSlickItem *ngFor="let instructor of instructorsList" [imageSrc]="instructor.image"
+                         [instructorName]="instructor.name" [instructorTitle]="instructor.title"
+                         [instructorDescription]="instructor.description">
+    </app-instructor-card>
+  </ngx-slick-carousel>
+</div>
+
+<div class="buttons-container" *ngIf="instructorsList.length > 3">
+  <button class="slider-button btn-next" (click)="next()"><img src="assets/images/icons/arrow-right-black.png" alt="arrow-right"></button>
+  <button class="slider-button btn-prev" (click)="prev()"><img src="assets/images/icons/arrow-left-black.png" alt="arrow-left"></button>
+</div>
+
+<div class="enroll-button">
+  <button class="ypeer-btn btn-full-color" [translateLocal]="{EN: 'Enroll Now', AR: 'اشترك الان'}"></button>
+</div>

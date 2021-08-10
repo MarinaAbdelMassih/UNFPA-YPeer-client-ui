@@ -1,0 +1,28 @@
+<app-details-top-banner *ngIf="eventsBasicData && eventsDetailsData"
+                        [detailsImageBanner]="eventsDetailsData.detailsBannerImage"
+                        [label]="{EN: eventsBasicData.label.EN, AR: eventsBasicData.label.AR}"
+                        [title]="{EN: eventsBasicData.title.EN, AR: eventsBasicData.title.AR}"></app-details-top-banner>
+<div class="event-details-page-content">
+  <div class="event-details-story">
+    <app-event-details-story *ngIf="eventsDetailsData" [detailsData]="eventsDetailsData"></app-event-details-story>
+    <app-event-details-photos [photos]="eventPhotos"></app-event-details-photos>
+    <app-event-details-might-like [cardDetails]="relatedEvents"></app-event-details-might-like>
+  </div>
+  <div class="categories-and-tags">
+    <div class="categories-list">
+      <div class="social-icons-container">
+        <p [translateLocal]="{EN: 'Share', AR: 'مشاركة'}"></p>
+        <app-footer-social></app-footer-social>
+      </div>
+      <div class="d-flex justify-content-between">
+        <h2 [translateLocal]="{EN: 'CATEGORIES', AR: 'التصنيفات'}"></h2>
+      </div>
+      <app-event-details-categories [categoriesList]="categoriesList"></app-event-details-categories>
+    </div>
+    <app-event-details-latest [latestItems]="latestEvents"></app-event-details-latest>
+    <div class="tags-list">
+      <h2 [translateLocal]="{EN: 'TAGS', AR: 'العلامات'}"></h2>
+      <app-event-details-tags [tagsList]="tagsList"></app-event-details-tags>
+    </div>
+  </div>
+</div>

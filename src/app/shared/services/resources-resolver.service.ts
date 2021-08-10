@@ -22,16 +22,12 @@ export class ResourcesResolverService {
 
   resolve(): Observable<resourcesContent> {
     return new Observable<resourcesContent> (subscriber=> {
-      if (this.resourcesData) {
-        subscriber.next(this.resourcesData);
-      } else {
         this.dataHandlerService.getDefaultPageData(ResourcesQuery, 'resources', (res) => {
           return new ResourcesModel(res.data.resources);
         }).subscribe((resourcesData: resourcesContent) => {
           this.resourcesData = resourcesData;
           subscriber.next(this.resourcesData);
         },() => subscriber.next(null));
-      }
     });
   }
 
