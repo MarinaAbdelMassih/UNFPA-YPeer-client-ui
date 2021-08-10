@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-social-share',
@@ -7,19 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SocialShareComponent implements OnInit {
 
-  socialLinks: any = [
-    {
-      link: "javascript:void(0);",
-      type: "facebook",
-    },
-    {
-      link: "javascript:void(0);",
-      type: "twitter",
-    },
-    {
-      link: "javascript:void(0);",
-      type: "whatsapp",
-    }];
+  @Input() facebook: boolean;
+  @Input() twitter: boolean;
+  @Input() instagram: boolean;
+  @Input() youtube: boolean;
+  @Input() messenger: boolean;
+  @Input() whatsapp: boolean;
 
   constructor() { }
 

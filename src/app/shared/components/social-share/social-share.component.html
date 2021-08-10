@@ -1,28 +1,32 @@
-<div class="logos-container">
-  <a href="https://www.facebook.com/YPeerEgypt/" target="_blank">
-    <img src="assets/images/icons/FB-icon-grey.png" alt="fb-icon">
-  </a>
-  <a href="https://twitter.com/YPEER_EGYPT" target="_blank">
-    <img src="assets/images/icons/twitter-icon-grey.png" alt="twitter-icon">
-  </a>
-  <a href="https://www.instagram.com/ypeeregypt/" target="_blank">
-    <img src="assets/images/icons/instagram-icon-grey.png" alt="instagram-icon">
-  </a>
-  <a href="https://www.linkedin.com/in/y-peer-egypt" target="_blank">
-    <img src="assets/images/icons/youtube-icon-grey.png" alt="youtube-icon">
-  </a>
-  <a href="https://www.linkedin.com/in/y-peer-egypt" target="_blank">
-    <img src="assets/images/icons/messenger-icon-grey.png" alt="messenger-icon">
-  </a>
-  <a href="https://www.linkedin.com/in/y-peer-egypt" target="_blank">
-    <img src="assets/images/icons/whatsapp-icon-grey.png" alt="whatsapp-icon">
-  </a>
-</div>
-
 <ul class="social-icon-list list-unstyled mb-0">
-  <li class="list-inline-item" [shareButton]="'facebook'">
+  <li *ngIf="facebook" class="list-inline-item" [shareButton]="'facebook'">
     <a href="javascript:void(0);">
       <img src="assets/images/icons/FB-icon-grey.png" alt="fb-icon">
     </a>
   </li>
+  <li *ngIf="twitter" class="list-inline-item" [shareButton]="'twitter'">
+    <a href="javascript:void(0);">
+      <img src="assets/images/icons/twitter-icon-grey.png" alt="twitter-icon">
+    </a>
+  </li>
+  <li *ngIf="whatsapp" class="list-inline-item" [shareButton]="'whatsapp'">
+    <a href="javascript:void(0);">
+      <img src="assets/images/icons/whatsapp-icon-grey.png" alt="whatsapp-icon">
+    </a>
+  </li>
+<!--  <li *ngIf="instagram" class="list-inline-item" [shareButton]="'instagram'">-->
+<!--    <a href="javascript:void(0);">-->
+<!--      <img src="assets/images/icons/instagram-icon-grey.png" alt="instagram-icon">-->
+<!--    </a>-->
+<!--  </li>-->
+<!--  <li *ngIf="youtube" class="list-inline-item" [shareButton]="'youtube'">-->
+<!--    <a href="javascript:void(0);">-->
+<!--      <img src="assets/images/icons/youtube-icon-grey.png" alt="youtube-icon">-->
+<!--    </a>-->
+<!--  </li>-->
+<!--  <li *ngIf="messenger" class="list-inline-item" [shareButton]="'messenger'">-->
+<!--    <a href="javascript:void(0);">-->
+<!--      <img src="assets/images/icons/messenger-icon-grey.png" alt="messenger-icon">-->
+<!--    </a>-->
+<!--  </li>-->
 </ul>
