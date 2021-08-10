@@ -14,7 +14,7 @@ export class EventDetailsMightLikeComponent implements OnInit {
   @ViewChild('latestSlickModal', {static: false}) slickModal;
   latestConfig: any = {
     slidesToShow: 3, rtl: false, slidesToScroll: 1, arrows: false, fade: false,
-    cssEase: 'linear', dots: false, autoplay: false, autoplaySpeed: 2000, infinite: false,
+    cssEase: 'linear', dots: false, autoplay: true, autoplaySpeed: 10000, infinite: false,
     responsive: [
       {
         breakpoint: 1025,
