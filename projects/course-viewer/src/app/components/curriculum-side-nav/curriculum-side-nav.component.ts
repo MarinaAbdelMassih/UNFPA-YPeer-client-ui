@@ -33,7 +33,7 @@ export class CurriculumSideNavComponent implements OnInit, AfterViewInit{
 
     let learnerSectionSub = this.learnerSectionDataService.learnerSections.subscribe((sections: ISection[]) => {
       this.sections = sections;
-      this.subs.push(learnerSectionSub);
+      //this.subs.push(learnerSectionSub);
     });
   }
 

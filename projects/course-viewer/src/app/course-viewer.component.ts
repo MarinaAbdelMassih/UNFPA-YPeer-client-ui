@@ -31,26 +31,26 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
               private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer,
               private courseViewerDataService: CourseViewerDataService,
               private location: Location) {
-    this.matIconRegistry.addSvgIcon(
-      `viewer_interactive`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/interactive-icon.svg`)
-    );
-    this.matIconRegistry.addSvgIcon(
-      `viewer_video`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/video-icon.svg`)
-    );
-    this.matIconRegistry.addSvgIcon(
-      `viewer_article`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/article-icon.svg`)
-    );
-    this.matIconRegistry.addSvgIcon(
-      `viewer_resource`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/resource-icon.svg`)
-    );
-    this.matIconRegistry.addSvgIcon(
-      `viewer_assessment`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/assessment.svg`)
-    );
+    // this.matIconRegistry.addSvgIcon(
+    //   `viewer_interactive`,
+    //   this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/interactive-icon.svg`)
+    // );
+    // this.matIconRegistry.addSvgIcon(
+    //   `viewer_video`,
+    //   this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/video-icon.svg`)
+    // );
+    // this.matIconRegistry.addSvgIcon(
+    //   `viewer_article`,
+    //   this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/article-icon.svg`)
+    // );
+    // this.matIconRegistry.addSvgIcon(
+    //   `viewer_resource`,
+    //   this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/resource-icon.svg`)
+    // );
+    // this.matIconRegistry.addSvgIcon(
+    //   `viewer_assessment`,
+    //   this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/assessment.svg`)
+    // );
 
     this.isArabic = this.langService.getIsArabic();
     //this.ngxService.start('init-course-viewer');
@@ -63,14 +63,19 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
       if (params.courseId) {
         this.courseId = params.courseId;
         this.learnerSectionService.setLearnerSections(this.courseId, true).then((data) => {
-          this.subjectId = data.course.subjectId;
-          if(params.isEnrolled) {
-            let isEnrolled = JSON.parse(params.isEnrolled);
-            this.location.replaceState('viewer/' + params.courseId)
-            if (!isEnrolled) {
-              //this.studentService.coursesEnrollment({courseId: this.courseId, subjectId: this.subjectId}).then();
-            }
-          }
+          this.learnerSectionService.learnerSections.next(data.sections);
+          this.learnerSectionService.getUserCurrentPosition(data.sections, this.courseId).then((position: ILocalPosition) => {
+            this.learnerSectionService.userCurrentPosition.next(position);
+            //this.ngxService.stop('init-course-viewer');
+          });
+          //this.subjectId = data.course.subjectId;
+          // if(params.isEnrolled) {
+          //   let isEnrolled = JSON.parse(params.isEnrolled);
+          //   this.location.replaceState('viewer/' + params.courseId)
+          //   if (!isEnrolled) {
+          //     //this.studentService.coursesEnrollment({courseId: this.courseId, subjectId: this.subjectId}).then();
+          //   }
+          // }
           // this.getSubjectInfoById(this.subjectId).then((subject) => {
           //
           //   this.hasProgress = this.studentService.userHasProgress({
@@ -78,24 +83,19 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
           //     schoolLanguages: subject.schoolLanguages,
           //     tracks: subject.tracks
           //   });
-          //   if(data.course.typeId == 2){
-          //     let userData = this.studentService.studentInfo.getValue();
-          //     this.hasProgress = this.hasProgress  && userData.isSubscribed;
-          //     if(!this.hasProgress)
-          //       this.router.navigate(['/home']);
-          //   }
-          //   this.courseViewerDataService.shouldSendProgress = this.hasProgress;
+          //   // if(data.course.typeId == 2){
+          //   //   let userData = this.studentService.studentInfo.getValue();
+          //   //   this.hasProgress = this.hasProgress  && userData.isSubscribed;
+          //   //   if(!this.hasProgress)
+          //   //     this.router.navigate(['/home']);
+          //   // }
+          //   //this.courseViewerDataService.shouldSendProgress = this.hasProgress;
           //
           //   this.loaded = true;
-          //   this.learnerSectionService.learnerSections.next(data.sections);
-          //   this.learnerSectionService.getUserCurrentPosition(data.sections, this.courseId).then((position: ILocalPosition) => {
-          //     this.learnerSectionService.userCurrentPosition.next(position);
-          //     //this.ngxService.stop('init-course-viewer');
-          //   });
           // });
 
         }).catch(() => {
-          this.router.navigate(['/home']);
+          //this.router.navigate(['/home']);
         });
       }
     });

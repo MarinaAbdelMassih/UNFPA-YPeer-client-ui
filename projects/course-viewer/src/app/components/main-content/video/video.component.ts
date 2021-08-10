@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {CurriculumControlService} from "../../../../../../../src/app/shared/services/course-viewer/curriculum-control.service";
 import {VideoInit} from "./videoInit";
 import brightcovePlayerLoader from '@brightcove/player-loader';
+import {environment} from "../../../../../../../src/environments/environment";
 
 @Component({
   selector: 'app-video',
