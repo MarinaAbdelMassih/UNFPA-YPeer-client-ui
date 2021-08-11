@@ -3,6 +3,17 @@ import {ResourcesResolverService} from '../../../../../../src/app/shared/service
 import {resourcesContent, resourcesListItem} from '../../../../../../src/app/shared/models/resources.model';
 import {Subscription} from 'rxjs';
 import {CategoryModel} from '../../../../../../src/app/shared/models/category.model';
+import {MediaResolverService} from '../../../../../../src/app/shared/services/media-resolver.service';
+import {NewsResolverService} from '../../../../../../src/app/shared/services/news-resolver.service';
+import {EventsResolverService} from '../../../../../../src/app/shared/services/events-resolver.service';
+import {newsContent} from '../../../../../../src/app/shared/models/news.model';
+import {eventsContent} from '../../../../../../src/app/shared/models/events.model';
+import {storiesContent} from '../../../../../../src/app/shared/models/stories.model';
+import {StoriesResolverService} from '../../../../../../src/app/shared/services/stories-resolver.service';
+import {PublicationsResolverService} from '../../../../../../src/app/shared/services/publications-resolver.service';
+import {trainingsResolverService} from '../../../../../../src/app/shared/services/trainings-resolver.service';
+import {trainingsContent} from '../../../../../../src/app/shared/models/trainings.model';
+import {publicationsContent} from '../../../../../../src/app/shared/models/publications.model';
 
 @Component({
   selector: 'app-resources',
@@ -19,10 +30,12 @@ export class ResourcesComponent implements OnInit {
   showLoadMore: boolean =true;
   selectedTag: string;
   selectedYear: number;
+  trainingCount: number;
+  publicationsCount: number;
 
   categoriesList: CategoryModel[] = [
-    {title: {EN: 'Training Manuals', AR: 'دليل التدريب'}, count: 50, hideToggle: true, url: 'trainings'},
-    {title: {EN: 'Publications', AR: 'المنشورات'}, count: 23, hideToggle: true, url: 'publications'},
+    {title: {EN: 'Training Manuals', AR: 'دليل التدريب'}, count: this.trainingCount, hideToggle: true, url: 'trainings'},
+    {title: {EN: 'Publications', AR: 'المنشورات'}, count: this.publicationsCount, hideToggle: true, url: 'publications'},
     {title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [
         {year: 2018, selected: false},
         {year: 2019, selected: false},
@@ -32,11 +45,14 @@ export class ResourcesComponent implements OnInit {
       ]},
   ];
 
-  constructor(private resourcesResolverService: ResourcesResolverService) {
+  constructor(private publicationsResolverService: PublicationsResolverService,
+              private trainingsResolverService: trainingsResolverService,
+              private resourcesResolverService: ResourcesResolverService) {
   }
 
   ngOnInit() {
     this.getResourcesData();
+    this.getCategoriesCount();
   }
 
   getResourcesData(): void {
@@ -50,6 +66,23 @@ export class ResourcesComponent implements OnInit {
 
     });
     this.subscriptions.push(resourcesSub);
+  }
+
+  getCategoriesCount(): void {
+    // trainings count
+    this.trainingsResolverService.getPageData(0, 0).subscribe((trainingsData: trainingsContent) => {
+      setTimeout(() => {
+        this.trainingCount = trainingsData.trainingsListTotal;
+        this.categoriesList.find(item => item.url == 'trainings').count = this.trainingCount;
+      }, 200)
+    });
+    // publications count
+    this.publicationsResolverService.getPageData(0, 0).subscribe((publicationsData: publicationsContent) => {
+      setTimeout(() => {
+        this.publicationsCount = publicationsData.publicationsListTotal;
+        this.categoriesList.find(item => item.url == 'publications').count = this.publicationsCount;
+      }, 200)
+    });
   }
 
   filterByTag(tag) {
