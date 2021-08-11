@@ -1,8 +1,10 @@
-.event-details-might-like {
+.event-details-photos {
   width: 100%;
   overflow: hidden;
+
   .buttons-container {
     position: relative;
+
     .slider-button {
       background: transparent;
       border: none;
@@ -11,13 +13,16 @@
       //bottom: 30px;
       padding: 31px 0 32px 0;
     }
+
     .btn-next {
       //right: 46px;
     }
+
     .btn-prev {
       //right: 84px;
     }
   }
+
   .might-like-container {
     display: flex;
     justify-content: space-between;
@@ -34,6 +39,12 @@
     margin-bottom: 0;
   }
 
+  .img-slider{
+    //margin-right: 15px;
+    width: 267px;
+    height: 267px;
+  }
+
 }
 
 [dir = rtl] .buttons-container {
@@ -41,6 +52,7 @@
     left: 46px;
     right: auto;
   }
+
   .btn-next {
     left: 84px;
     right: auto;
@@ -52,9 +64,11 @@
     .slider-button {
       bottom: 570px;
     }
+
     .btn-next {
       right: 10%;
     }
+
     .btn-prev {
       right: 20%;
     }
@@ -74,5 +88,16 @@
     .slider-button {
       bottom: 520px;
     }
+  }
+}
+
+::ng-deep {
+  .slick-track {
+    width: 100% !important;
+    display: flex;
+  }
+  .mat-dialog-container {
+   box-shadow: none;
+    background: none;
   }
 }
