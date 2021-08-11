@@ -4,6 +4,12 @@ import {ActivatedRoute} from '@angular/router';
 import {tag, trainingsContent, trainingsDetailsItem, trainingsListItem} from '../../../../../../src/app/shared/models/trainings.model';
 import {trainingsResolverService} from '../../../../../../src/app/shared/services/trainings-resolver.service';
 import {Subscription} from 'rxjs';
+import {StoriesResolverService} from '../../../../../../src/app/shared/services/stories-resolver.service';
+import {EventsResolverService} from '../../../../../../src/app/shared/services/events-resolver.service';
+import {NewsResolverService} from '../../../../../../src/app/shared/services/news-resolver.service';
+import {newsContent} from '../../../../../../src/app/shared/models/news.model';
+import {eventsContent} from '../../../../../../src/app/shared/models/events.model';
+import {storiesContent} from '../../../../../../src/app/shared/models/stories.model';
 
 declare var require: any;
 const FileSaver = require('file-saver');
@@ -16,11 +22,14 @@ const FileSaver = require('file-saver');
 export class TrainingDetailsComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   relatedTrainings: trainingsListItem[];
+  newsCount: number;
+  eventsCount: number;
+  storiesCount: number;
   tagsList: tag[];
   categoriesList: CategoryModel[] = [
-    {title: {EN: 'News', AR: 'الأخبار'}, count: 50, hideToggle: true, url: 'news'},
-    {title: {EN: 'Events', AR: 'الأحداث'}, count: 23, hideToggle: true, url: 'events'},
-    {title: {EN: 'Stories', AR: 'القصص'}, count: 18, hideToggle: true, url: 'stories'},
+    {title: {EN: 'News', AR: 'الأخبار'}, count: this.newsCount, hideToggle: true, url: 'news'},
+    {title: {EN: 'Events', AR: 'الأحداث'}, count: this.eventsCount, hideToggle: true, url: 'events'},
+    {title: {EN: 'Stories', AR: 'القصص'}, count: this.storiesCount, hideToggle: true, url: 'stories'},
     // {
     //   title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [
     //     {year: 2018, selected: false},
@@ -37,13 +46,18 @@ export class TrainingDetailsComponent implements OnInit {
   trainingsBasicData: trainingsListItem;
   index;
 
-  constructor(private TrainingsResolverService: trainingsResolverService, public activatedRoute: ActivatedRoute) {
+  constructor(private TrainingsResolverService: trainingsResolverService,
+              private storiesResolverService: StoriesResolverService,
+              private eventsResolverService: EventsResolverService,
+              private newsResolverService: NewsResolverService,
+              public activatedRoute: ActivatedRoute) {
     this.index = activatedRoute.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
     this.getTrainingsData();
     this.getTrainingDetailsData();
+    this.getCategoriesCount();
   }
 
   getTrainingsData(): void {
@@ -58,7 +72,6 @@ export class TrainingDetailsComponent implements OnInit {
     this.subscriptions.push(trainingsSub);
   }
 
-
   getTrainingDetailsData(): void {
     let trainingsSub = this.TrainingsResolverService.getPageDetails(this.index).subscribe((trainingsData: trainingsContent) => {
       this.trainingsDetailsData = undefined;
@@ -67,6 +80,30 @@ export class TrainingDetailsComponent implements OnInit {
       }, 200);
     });
     this.subscriptions.push(trainingsSub);
+  }
+
+  getCategoriesCount(): void {
+    // news count
+    this.newsResolverService.getPageData(0, 0).subscribe((newsData: newsContent) => {
+      setTimeout(() => {
+        this.newsCount = newsData.newsListTotal;
+        this.categoriesList.find(item => item.url == 'news').count = this.newsCount;
+      }, 200)
+    });
+    // events count
+    this.eventsResolverService.getPageData(0, 0).subscribe((eventsData: eventsContent) => {
+      setTimeout(() => {
+        this.eventsCount = eventsData.eventsListTotal;
+        this.categoriesList.find(item => item.url == 'events').count = this.eventsCount;
+      }, 200)
+    });
+    // stories count
+    this.storiesResolverService.getPageData(0, 0).subscribe((storiesData: storiesContent) => {
+      setTimeout(() => {
+        this.storiesCount = storiesData.storiesListTotal;
+        this.categoriesList.find(item => item.url == 'stories').count = this.storiesCount;
+      }, 200)
+    });
   }
 
   downloadPdf() {
