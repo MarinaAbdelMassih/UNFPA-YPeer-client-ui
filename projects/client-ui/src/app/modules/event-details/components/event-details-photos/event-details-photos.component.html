@@ -11,7 +11,6 @@
   <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
     <div ngxSlickItem *ngFor="let photo of photos; let indexNow = index;">
       <img (click)="openDialog(photos ,indexNow);" [src]="photo.image" alt="event-details-photo" class="img-slider">
-      {{indexNow}}
     </div>
   </ngx-slick-carousel>
 
