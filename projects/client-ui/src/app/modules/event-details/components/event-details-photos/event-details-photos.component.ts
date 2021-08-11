@@ -11,7 +11,7 @@ import {EventsResolverService} from "../../../../../../../../src/app/shared/serv
   styleUrls: ['./event-details-photos.component.scss']
 })
 export class EventDetailsPhotosComponent implements OnInit {
-  @Input() photos;
+  @Input() photos: [];
   @ViewChild('latestSlickModal', {static: false}) slickModal;
   latestConfig: any = {
     slidesToShow: 3, rtl: false, slidesToScroll: 1, arrows: false, fade: false,

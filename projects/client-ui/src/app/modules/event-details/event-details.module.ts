@@ -14,6 +14,7 @@ import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {CoreModule} from '../../../../../../src/app/core/core.module';
 import {EventDetailsViewImageComponent} from './components/event-details-view-image/event-details-view-image.component';
 import {FormsModule} from '@angular/forms';
+import {NewsDetailsModule} from "../news-details/news-details.module";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {FormsModule} from '@angular/forms';
     SlickCarouselModule,
     CoreModule,
     FormsModule,
+    NewsDetailsModule,
   ],
   exports: [
     EventDetailsViewImageComponent
