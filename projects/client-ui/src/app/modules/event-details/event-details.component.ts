@@ -16,9 +16,9 @@ export class EventDetailsComponent implements OnInit {
   relatedEvents: eventsListItem[];
 
   categoriesList: CategoryModel[] = [
-    {title: {EN: 'News', AR: 'الأخبار'}, count: 50, hideToggle: true},
-    {title: {EN: 'Events', AR: 'الأحداث'}, count: 23, hideToggle: true},
-    {title: {EN: 'Stories', AR: 'القصص'}, count: 18, hideToggle: true},
+    {title: {EN: 'News', AR: 'الأخبار'}, count: 50, hideToggle: true, url: 'news'},
+    {title: {EN: 'Events', AR: 'الأحداث'}, count: 23, hideToggle: true, url: 'events'},
+    {title: {EN: 'Stories', AR: 'القصص'}, count: 18, hideToggle: true, url: 'stories'},
     // {
     //   title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [
     //     {year: 2018, selected: false},
