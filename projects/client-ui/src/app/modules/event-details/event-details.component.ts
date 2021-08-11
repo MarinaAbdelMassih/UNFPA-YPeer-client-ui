@@ -19,15 +19,15 @@ export class EventDetailsComponent implements OnInit {
     {title: {EN: 'News', AR: 'الأخبار'}, count: 50, hideToggle: true},
     {title: {EN: 'Events', AR: 'الأحداث'}, count: 23, hideToggle: true},
     {title: {EN: 'Stories', AR: 'القصص'}, count: 18, hideToggle: true},
-    {
-      title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [
-        {year: 2018, selected: false},
-        {year: 2019, selected: false},
-        {year: 2020, selected: false},
-        {year: 2021, selected: false},
-        {year: 2022, selected: false}
-      ]
-    },
+    // {
+    //   title: {EN: 'Year', AR: 'السنه'}, hideToggle: false, yearsList: [
+    //     {year: 2018, selected: false},
+    //     {year: 2019, selected: false},
+    //     {year: 2020, selected: false},
+    //     {year: 2021, selected: false},
+    //     {year: 2022, selected: false}
+    //   ]
+    // },
   ];
   tagsList: tag[];
   latestEvents: eventsListItem[];
