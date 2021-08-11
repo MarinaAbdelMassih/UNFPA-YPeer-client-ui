@@ -1,7 +1,7 @@
 import {Component, Inject, Input, OnInit, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 import {Lightbox} from 'ngx-lightbox';
-import {EventsResolverService} from "../../../../../../../../src/app/shared/services/events-resolver.service";
+import {EventsResolverService} from '../../../../../../../../src/app/shared/services/events-resolver.service';
 
 @Component({
   selector: 'app-event-details-view-image',
@@ -16,17 +16,14 @@ export class EventDetailsViewImageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getPhotos();
     this.getCurrentPhotoAlbum();
   }
 
   getCurrentPhotoAlbum() {
     let currentIndex = this.eventsService.selectedGalleryImageIndex.getValue();
-    if (currentIndex)
-      this.current = currentIndex
-  }
-  getPhotos() {
-    console.log('photo', this.album);
+    if (currentIndex) {
+      this.current = currentIndex;
+    }
   }
 
   close() {

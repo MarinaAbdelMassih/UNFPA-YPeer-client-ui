@@ -12,7 +12,6 @@ import {EventsResolverService} from "../../../../../../../../src/app/shared/serv
 })
 export class EventDetailsPhotosComponent implements OnInit {
   @Input() photos;
-  @Output() sendPhoto = new EventEmitter();
   @ViewChild('latestSlickModal', {static: false}) slickModal;
   latestConfig: any = {
     slidesToShow: 3, rtl: false, slidesToScroll: 1, arrows: false, fade: false,
@@ -40,11 +39,6 @@ export class EventDetailsPhotosComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  valueChanged() {
-    this.sendPhoto.emit(this.photos);
-  }
-
   openDialog(photos, index): void {
     this.eventsService.selectedGalleryImageIndex.next(index);
     const dialogRef = this.dialog.open(EventDetailsViewImageComponent, {
