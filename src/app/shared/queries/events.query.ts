@@ -119,6 +119,7 @@ export const EventsDetailsQuery = (id: number) => {
       galleryImagesCollection {
         items {
           url
+          title
         }
       }
       ourStoryImage{

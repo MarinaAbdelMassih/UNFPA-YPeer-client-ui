@@ -6,8 +6,8 @@
   <a (click)="prev(current)">
     <img src="assets/images/icons/arrow-left-image.png" alt="image-arrow-left" class="arrow-img">
   </a>
-  <div *ngFor="let image of album |slice :current:  current+1 ;let current = index;" >
-    <img class="w-100" [src]="image"/>
+  <div *ngFor="let item of album |slice :current:  current+1 ;let current = index;" >
+    <img class="w-100" [src]="item.image"/>
   </div>
 
   <a (click)="next(current)">
@@ -19,5 +19,5 @@
 
 </div>
 <div class="photo-caption-container">
-  <h3>Photo Caption </h3>
+  <h3>{{album[current].title}}</h3>
 </div>
