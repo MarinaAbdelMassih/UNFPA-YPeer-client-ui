@@ -17,6 +17,7 @@ export class EventsResolverService {
 
   private eventsData: eventsContent;
   selectedEventsTag: BehaviorSubject<tag> = new BehaviorSubject<tag>(null);
+  selectedGalleryImageIndex: BehaviorSubject<number> = new BehaviorSubject<number>(null);
 
   constructor(private dataHandlerService: DataHandlerService) { }
 

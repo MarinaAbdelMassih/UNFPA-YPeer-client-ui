@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {MatDialog} from '@angular/material';
 import {EventDetailsViewImageComponent} from '../event-details-view-image/event-details-view-image.component';
+import {EventsResolverService} from "../../../../../../../../src/app/shared/services/events-resolver.service";
 
 @Component({
   selector: 'app-event-details-photos',
@@ -33,7 +34,8 @@ export class EventDetailsPhotosComponent implements OnInit {
   };
   isArabic: boolean = this.languageService.getIsArabic();
 
-  constructor(private router: Router, private languageService: LanguageService, public dialog: MatDialog) {
+  constructor(private router: Router, private languageService: LanguageService, public dialog: MatDialog,
+              private eventsService: EventsResolverService) {
   }
 
   ngOnInit() {
@@ -43,7 +45,8 @@ export class EventDetailsPhotosComponent implements OnInit {
     this.sendPhoto.emit(this.photos);
   }
 
-  openDialog(photos, i): void {
+  openDialog(photos, index): void {
+    this.eventsService.selectedGalleryImageIndex.next(index);
     const dialogRef = this.dialog.open(EventDetailsViewImageComponent, {
       width: '80%', data: photos = this.photos
     });
