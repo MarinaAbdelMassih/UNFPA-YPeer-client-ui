@@ -3,14 +3,14 @@
   <img (click)="close()" src="assets/images/icons/close.png" alt="image-arrow-left" class="close-img">
 </div>
 <div class="view-image">
-  <a [ngStyle]="{'display':current < album.length ?  'block' : 'none'  }" (click)="prev(current)">
+  <a (click)="prev(current)">
     <img src="assets/images/icons/arrow-left-image.png" alt="image-arrow-left" class="arrow-img">
-  </a> 
+  </a>
   <div *ngFor="let image of album |slice :current:  current+1 ;let current = index;" >
     <img class="w-100" [src]="image"/>
   </div>
 
-  <a [ngStyle]="{'display':current < album.length ?  'block' : 'none'  }" (click)="next(current)">
+  <a (click)="next(current)">
     <img
       src='assets/images/icons/arrow-right-image.png'
       alt="image-arrow-right"
