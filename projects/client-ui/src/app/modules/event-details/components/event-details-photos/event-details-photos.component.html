@@ -1,6 +1,6 @@
-<div class="event-details-might-like">
+<div class="event-details-photos" *ngIf="photos.length">
   <div class="d-flex justify-content-between align-items-center">
-    <p>Photos</p>
+    <p [translateLocal]="{EN:'PHOTOS',AR:'الصور'}"></p>
     <div class="buttons-container">
       <button class="slider-button btn-prev" (click)="prev()"><img src="assets/images/icons/arrow-left-gray.png" alt="">
       </button>
@@ -9,10 +9,9 @@
     </div>
   </div>
   <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
-    <div ngxSlickItem *ngFor="let photo of photos">
-      <img [src]="photo" alt="event-details-photo">
+    <div ngxSlickItem *ngFor="let photo of photos; let indexNow = index;">
+      <img (click)="openDialog(photos ,indexNow);" [src]="photo.image" alt="event-details-photo" class="img-slider">
     </div>
-
   </ngx-slick-carousel>
 
 </div>
