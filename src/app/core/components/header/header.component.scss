@@ -1,6 +1,14 @@
 .navbar {
   background-color: white !important;
+  @media (max-width: 500px) {
+    .navbar-brand {
+      img {
+        width: 170px;
+      }
+    }
+  }
 }
+
 .nav-link {
   font-size: 15px;
   color: #2e2e2e !important;
@@ -20,6 +28,7 @@
 .lang-link:hover {
   border: none !important;
 }
+
 .language-button {
   font-size: 12px;
   font-weight: bold;
@@ -44,11 +53,12 @@
     font-size: 14px;
     font-family: 'DroidKufiBold', sans-serif;
   }
+
   .dropdown-menu {
     text-align: right;
   }
 }
 
-.nav-item:hover>.dropdown-menu {
+.nav-item:hover > .dropdown-menu {
   display: block;
 }

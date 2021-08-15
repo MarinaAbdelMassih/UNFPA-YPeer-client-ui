@@ -52,6 +52,12 @@
       color: #232323;
       margin-top: 25px;
       margin-bottom: 20px;
+      @media (max-width: 500px) {
+        font-size: 13px;
+      }
+      @media (max-width: 320px) {
+        font-size: 10px;
+      }
     }
 
     .more {
