@@ -1,7 +1,5 @@
 <div class="news-details-latest" *ngIf="latestItems && latestItems.length">
-  <p>LATEST NEWS</p>
   <p [translateLocal]="{EN:'LATEST NEWS',AR:'أحدث الاخبار '}"></p>
-
   <div *ngFor="let latestItem of latestItems | slice:0:4;" (click)="reloadCurrentPage()">
     <a [routerLink]='["/news-details", latestItem.id]'>
       <app-latest-item
