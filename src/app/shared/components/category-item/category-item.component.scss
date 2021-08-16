@@ -12,6 +12,9 @@
   .mat-expansion-panel-header-title {
     font-size: 16px;
     line-height: 1.81;
+    @media(max-width: 768px) {
+      font-size: 13px;
+    }
   }
 
   .mat-expansion-panel-header-description {
