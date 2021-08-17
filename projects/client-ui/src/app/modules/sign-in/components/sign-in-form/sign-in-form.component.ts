@@ -1,0 +1,44 @@
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
+import {Subscription} from 'rxjs';
+
+@Component({
+  selector: 'app-sign-in-form',
+  templateUrl: './sign-in-form.component.html',
+  styleUrls: ['./sign-in-form.component.scss']
+})
+export class SignInFormComponent implements OnInit, OnDestroy {
+  signInForm: FormGroup;
+  isArabic: boolean;
+  emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
+  passwordPattern = '^(?=.*[A-Za-z])[a-zA-Z0-9!@#%~$&()-`.+,/\\"]{8,}$';
+  subscription: Subscription;
+
+  constructor(private fb: FormBuilder, private languageService: LanguageService) {
+  }
+
+  ngOnInit() {
+    this.signInForm = this.fb.group({
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      password: ['', [Validators.required, Validators.pattern(this.passwordPattern)]],
+      rememberMe: ['', [Validators.required]],
+    });
+  }
+
+  submitSignInForm() {
+    console.log('value', this.signInForm);
+  }
+
+  checkLanguage(): void {
+    this.subscription = this.languageService.isArabic.subscribe((isArabic: boolean) => {
+      this.isArabic = isArabic;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+}
