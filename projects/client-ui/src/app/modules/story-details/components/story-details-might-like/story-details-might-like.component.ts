@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {storiesListItem} from '../../../../../../../../src/app/shared/models/stories.model';
@@ -8,7 +8,7 @@ import {storiesListItem} from '../../../../../../../../src/app/shared/models/sto
   templateUrl: './story-details-might-like.component.html',
   styleUrls: ['./story-details-might-like.component.scss']
 })
-export class StoryDetailsMightLikeComponent implements OnInit {
+export class StoryDetailsMightLikeComponent implements OnInit, AfterViewInit {
 
   @Input() cardDetails: storiesListItem[];
   @ViewChild('latestSlickModal', {static: false}) slickModal;
