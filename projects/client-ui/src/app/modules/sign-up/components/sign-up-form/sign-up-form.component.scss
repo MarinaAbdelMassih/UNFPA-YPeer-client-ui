@@ -7,16 +7,96 @@
     text-align: center;
     padding-top: 32px;
     padding-bottom: 10px;
+    margin-bottom: 0;
   }
 
   .sign-up-form {
     padding: 0 40px;
+
     .sub-title {
       font-family: 'TradeGothic', sans-serif !important;
       font-size: 12px;
       font-style: italic;
       color: #2e2e2e;
-      padding-bottom: 16px;
+      margin-bottom: 0;
+    }
+
+    form {
+      p {
+        font-family: 'TradeGothic', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        color: #2e2e2e;
+        margin-bottom: 0;
+        padding-bottom: 16px;
+        margin-top: 16px;
+      }
+
+      ::ng-deep.mat-form-field-wrapper {
+        margin: 0;
+        padding: 0;
+      }
+
+      ::ng-deep.mat-form-field-infix {
+        padding: 19.12px 0;
+        border-top: 0 solid transparent;
+
+      }
+
+      ::ng-deep.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+        transform: translateY(14%);
+      }
+
+      mat-form-field {
+        background-color: #FFFFFF;
+        width: 402px;
+        //height: 52px;
+      }
+
+      ::placeholder {
+        font-family: 'TradeGothic', sans-serif;
+        font-size: 14px;
+        color: #818181;
+        display: flex;
+        align-items: center;
+      }
+
+      .note {
+        font-family: 'TradeGothic', sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #2e2e2e;
+        padding-bottom: 46px;
+        margin-bottom: 0;
+      }
+      button {
+        width: 402px;
+        height: 51px;
+        background-color: #5a3f99;
+        font-family: 'TradeGothic', sans-serif;
+        font-size: 16px;
+        text-align: center;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid transparent;
+        margin-bottom: 12px;
+      }
+      .no-account-text {
+        font-family: 'TradeGothic', sans-serif;
+        font-size: 14px;
+        color: #2e2e2e;
+        margin-top: 0;
+        padding-bottom: 32px;
+      }
+      .sign-in-link {
+        font-family: 'TradeGothic', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        color: #2e2e2e;
+        margin: 0 8px 32px;
+      }
     }
   }
 }

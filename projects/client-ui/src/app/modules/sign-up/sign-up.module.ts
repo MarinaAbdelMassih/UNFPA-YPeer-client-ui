@@ -4,13 +4,20 @@ import { CommonModule } from '@angular/common';
 import { SignUpRoutingModule } from './sign-up-routing.module';
 import { SignUpComponent } from './sign-up.component';
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
+import {MatInputModule, MatSelectModule} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
+import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [SignUpComponent, SignUpFormComponent],
   imports: [
     CommonModule,
-    SignUpRoutingModule
+    SignUpRoutingModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    SharedModule
   ]
 })
 export class SignUpModule { }

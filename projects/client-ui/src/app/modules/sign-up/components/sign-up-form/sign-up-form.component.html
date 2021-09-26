@@ -1,6 +1,81 @@
 <div class="sign-up-form-container">
-  <p class="title">JOIN US</p>
+  <p class="title" [translateLocal]="{EN: ' JOIN US', AR: 'انضم إلينا '}"></p>
   <div class="sign-up-form">
-    <p class="sub-title">* All fields are mandatory</p>
+    <p class="sub-title" [translateLocal]="{EN: ' * All fields are mandatory', AR: '* كل الحقول إلزامية '}"></p>
+    <form [formGroup]="signUpForm" (ngSubmit)='submitSignUpForm()'>
+      <div class="row">
+        <div class="col-md-6">
+          <p [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول '}"></p>
+          <mat-form-field appearance="outline">
+            <input matInput type="text" name="firstName" class="firstName"
+                   [placeholder]="isArabic ? 'اكتب اسمك الأول ' : 'Type in your first name'">
+          </mat-form-field>
+          <p>Email</p>
+          <mat-form-field appearance="outline">
+            <input matInput type="email" name="email" class="email"
+                   [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
+          </mat-form-field>
+          <p>Password</p>
+          <mat-form-field appearance="outline">
+            <input matInput type="password" name="password" class="password"
+                   [placeholder]="isArabic ? '******** ' : '********'">
+          </mat-form-field>
+          <p>Sex</p>
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="gender" formControlName="">
+              <mat-option *ngFor="let item of gender ;" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p>Marital Status</p>
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="status" formControlName="">
+              <mat-option *ngFor="let item of status ;" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p>Education Level</p>
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="select" formControlName="">
+              <mat-option *ngFor="let item of education ;" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <p>Last Name</p>
+          <mat-form-field appearance="outline">
+            <input matInput type="text" name="lastName" class="lastName"
+                   [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
+          </mat-form-field>
+          <p>Phone</p>
+          <mat-form-field appearance="outline">
+            <input matInput type="text" name="phone" class="phone"
+                   [placeholder]="isArabic ? 'اكتب رقم هاتفك ' : 'Type in your Phone Number'">
+          </mat-form-field>
+          <p>Retype Password</p>
+          <mat-form-field appearance="outline">
+            <input matInput type="password" name="passwordTwo" class="password"
+                   [placeholder]="isArabic ? '******** ' : '********'">
+          </mat-form-field>
+          <p>Governorate</p>
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Governorate" formControlName="">
+              <mat-option *ngFor="let item of Governorate ;" [value]="item">{{item}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p>Occupation</p>
+          <mat-form-field appearance="outline">
+            <input matInput type="text" name="occupation" class="occupation"
+                   [placeholder]="isArabic ? 'اكتب في مهنتك ' : 'Type in your occupation'">
+          </mat-form-field>
+        </div>
+        <p class="note">** We have limited seats; your application would be under assessment. We will notify you once your account is approved.</p>
+        <div class="d-flex justify-content-center ">
+          <button [translateLocal]="{EN: ' Submit', AR: 'إرسال '}"></button>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          <p class="no-account-text" [translateLocal]="{EN: 'Already have an account?', AR: 'ليس لديك حساب؟'}"></p>
+          <a class="sign-in-link" [translateLocal]="{EN: 'Sign In', AR: 'تسجيل الدخول'}"></a>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
