@@ -56,6 +56,7 @@
     line-height: 1.14;
     color: #2e2e2e;
   }
+
   .sign-up-link {
     font-size: 14px;
     font-weight: bold;
@@ -79,6 +80,13 @@
     margin-bottom: 0;
   }
 
+  .check-box-text {
+    font-size: 14px;
+    line-height: 1.14;
+    color: #2e2e2e;
+    margin-bottom: 0;
+  }
+
   input, mat-select, textarea {
     width: 402px;
     height: 52px;
@@ -86,7 +94,9 @@
     opacity: 0.8;
     border: solid 1px #a4a4a4;
     background-color: #ffffff;
-
+    @media (max-width: 991px) {
+      width: 100%;
+    }
 
     &::placeholder, ::ng-deep.mat-select-placeholder {
       font-size: 14px;
