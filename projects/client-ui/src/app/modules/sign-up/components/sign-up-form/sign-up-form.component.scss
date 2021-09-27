@@ -47,10 +47,20 @@
         transform: translateY(14%);
       }
 
+      .birthday-form {
+        width: 126px;
+        @media(max-width: 991px) {
+          width: 30%;
+        }
+      }
+
       mat-form-field {
         background-color: #FFFFFF;
         width: 402px;
         //height: 52px;
+        @media(max-width: 991px) {
+          width: 100%;
+        }
       }
 
       ::placeholder {
@@ -69,6 +79,7 @@
         padding-bottom: 46px;
         margin-bottom: 0;
       }
+
       button {
         width: 402px;
         height: 51px;
@@ -83,6 +94,7 @@
         border: 1px solid transparent;
         margin-bottom: 12px;
       }
+
       .no-account-text {
         font-family: 'TradeGothic', sans-serif;
         font-size: 14px;
@@ -90,6 +102,7 @@
         margin-top: 0;
         padding-bottom: 32px;
       }
+
       .sign-in-link {
         font-family: 'TradeGothic', sans-serif;
         font-size: 14px;
