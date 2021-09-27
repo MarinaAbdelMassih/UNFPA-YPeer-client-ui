@@ -5,7 +5,9 @@ import { UserProfileRoutingModule } from './user-profile-routing.module';
 import { UserProfileComponent } from './user-profile.component';
 import { UserProfileInfoComponent } from './components/user-profile-info/user-profile-info.component';
 import { UserProfileCoursesComponent } from './components/user-profile-courses/user-profile-courses.component';
-import {MatTabsModule} from '@angular/material';
+import {MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
+import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +15,12 @@ import {MatTabsModule} from '@angular/material';
   imports: [
     CommonModule,
     UserProfileRoutingModule,
-    MatTabsModule
+    MatTabsModule,
+    ReactiveFormsModule,
+    SharedModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class UserProfileModule { }

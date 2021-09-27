@@ -1,4 +1,6 @@
 .user-profile-info {
+  padding-right: 87px;
+  padding-left: 87px;
   .img-container {
     margin: auto;
     text-align: center;
@@ -8,6 +10,73 @@
       color: #2e2e2e;
       text-align: center;
       margin: 16px 0 53px;
+    }
+  }
+
+  form {
+    p {
+      font-family: 'TradeGothic', sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+      color: #2e2e2e;
+      margin-bottom: 0;
+      padding-bottom: 11px;
+      margin-top: 23px;
+    }
+
+    ::ng-deep.mat-form-field-wrapper {
+      margin: 0;
+      padding: 0;
+    }
+
+    ::ng-deep.mat-form-field-infix {
+      padding: 19.12px 0;
+      border-top: 0 solid transparent;
+
+    }
+
+    ::ng-deep.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+      transform: translateY(14%);
+    }
+
+    .birthday-form {
+      width: 183px;
+      @media(max-width: 991px) {
+        width: 30%;
+      }
+    }
+
+    mat-form-field {
+      background-color: #FFFFFF;
+      width: 579px;
+      //height: 52px;
+      @media(max-width: 991px) {
+        width: 100%;
+      }
+    }
+
+    ::placeholder {
+      font-family: 'TradeGothic', sans-serif;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #2e2e2e;
+    }
+
+    button {
+      width: 181px;
+      height: 46px;
+      background-color: #5a3f99;
+      font-family: 'TradeGothic', sans-serif;
+      font-size: 16px;
+      text-align: center;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid transparent;
+      margin-bottom: 78px;
+      margin-top: 26px;
     }
   }
 }
