@@ -1,0 +1,27 @@
+.user-profile {
+  ::ng-deep.mat-tab-label-container {
+    margin-left: 57px;
+  }
+
+  ::ng-deep.mat-tab-label .mat-tab-label-content {
+    font-family: 'TradeGothic', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 1.2;
+    color: #2e2e2e;
+    padding-right: 53px;
+    padding-left: 20px;
+  }
+
+  ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar {
+    width: 219px;
+    height: 4px;
+    background-color: #ff7900;
+  }
+
+  ::ng-deep.mat-tab-header, .mat-tab-nav-bar {
+    border-bottom: 1px solid transparent;
+    margin-bottom: 50px;
+    margin-top: 82.8px;
+  }
+}
