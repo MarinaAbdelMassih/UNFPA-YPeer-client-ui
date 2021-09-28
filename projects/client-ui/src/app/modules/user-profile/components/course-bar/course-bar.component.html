@@ -1,0 +1,30 @@
+<div class="course-bar">
+  <p class="name"> {{name ? name : 'Introductory Course Name'}}</p>
+  <div class="d-flex align-items-center">
+    <circle-progress
+      [percent]="percent ? percent : 10"
+      [radius]="10"
+      [outerStrokeWidth]="3"
+      [innerStrokeWidth]="3"
+      [outerStrokeColor]="'#707070'"
+      [innerStrokeColor]="'#fff'"
+      [animation]="true"
+      [animationDuration]="300"
+      [backgroundPadding]="-26"
+      [backgroundStrokeWidth]="0"
+      [space]="-3"
+      [subtitleFontSize]="'6'"
+      [unitsFontSize]="'6'"
+      [showSubtitle]="false"
+    ></circle-progress>
+
+    <p class="progress">Your Progress</p>
+  </div>
+  <p *ngIf="finished" class="score">Your Score: <span>{{score ? score : '85'}}%</span></p>
+  <button  *ngIf="!advanced" class="normal-btn">{{btnText ? btnText : 'View Certificate'}}</button>
+<!--  <button>{{finished ? 'View Certificate' : 'Resume Course'}}</button>-->
+  <button *ngIf="advanced" class="advanced-btn">Resume Course</button>
+</div>
+
+
+

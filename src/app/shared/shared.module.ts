@@ -14,6 +14,7 @@ import { InstructorCardComponent }from'./components/instructor-card/instructor-c
 import { CourseCardComponent }from'./components/course-card/course-card.component';
 import {SafePipe} from "./pipes/safePipe";
 import {RouterModule} from "@angular/router";
+import { ConfirmationPopUpComponent } from './components/confirmation-pop-up/confirmation-pop-up.component';
 
 
 
@@ -30,7 +31,8 @@ import {RouterModule} from "@angular/router";
     InstructorCardComponent,
     CourseCardComponent,
     MightLikeItemComponent,
-    SafePipe
+    SafePipe,
+    ConfirmationPopUpComponent
   ],
   exports: [
     TranslateLocalDirective,

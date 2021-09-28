@@ -1,1 +1,14 @@
-<p>user-profile-courses works!</p>
+<div class="user-profile-courses">
+  <a (click)="openDialoge()">
+    <app-course-bar [name]="'Introductory Course Name'"
+                    [btnText]="'watch course'"
+                    [score]="85"
+                    [percent]="20"
+                    [finished]="true"
+                    [advanced]="true"
+    ></app-course-bar>
+  </a>
+  <app-course-status [title]="'Thank You!'"
+                     [description]="'You have applied to the advanced course successfully. Stay tuned; we are preparing your advanced course.'"
+                     [showBtn]="false"></app-course-status>
+</div>

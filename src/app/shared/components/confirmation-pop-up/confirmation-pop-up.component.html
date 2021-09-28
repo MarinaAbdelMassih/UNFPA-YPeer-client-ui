@@ -1,0 +1,8 @@
+<div class="confirmation-pop-up">
+  <div class="d-flex justify-content-end">
+    <img (click)="close()" src="assets/images/close.png" alt="close">
+  </div>
+  <h3>Sorry!</h3>
+  <h6>You are not eligible to access the advanced course right now.</h6>
+  <p><a [routerLink]="'/contact-us'" (click)="close()" >Contact us</a> for support.</p>
+</div>
