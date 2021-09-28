@@ -79,7 +79,7 @@
               <mat-option *ngFor="let item of governorate ;" [value]="item">{{item}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <p [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول '}">Occupation</p>
+          <p [translateLocal]="{EN: 'occupation', AR: 'مهنة '}">Occupation</p>
           <mat-form-field appearance="outline">
             <input matInput type="text" name="occupation" class="occupation" formControlName="occupation"
                    [placeholder]="isArabic ? 'اكتب في مهنتك ' : 'Type in your occupation'">
