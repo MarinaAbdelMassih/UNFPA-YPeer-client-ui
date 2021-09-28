@@ -1,6 +1,9 @@
 .user-profile {
   ::ng-deep.mat-tab-label-container {
     margin-left: 57px;
+    @media(max-width: 991px) {
+      margin-left: 0;
+    }
   }
 
   ::ng-deep.mat-tab-label .mat-tab-label-content {
@@ -14,14 +17,14 @@
   }
 
   ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar {
-    width: 219px;
+    width: 219px !important;
     height: 4px;
     background-color: #ff7900;
   }
 
   ::ng-deep.mat-tab-header, .mat-tab-nav-bar {
     border-bottom: 1px solid transparent;
-    margin-bottom: 50px;
+    margin-bottom: 49px;
     margin-top: 82.8px;
   }
 }
