@@ -1,0 +1,35 @@
+.useful-links {
+  h4 {
+    font-family: 'TradeGothic', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #232323;
+    padding-top: 68px;
+    padding-bottom: 30px;
+    margin-bottom: 0;
+    @media(max-width: 991px) {
+      padding-top: 0;
+    }
+  }
+
+  .link-container {
+    display: flex;
+    align-items: center;
+
+    a {
+      font-family: 'TradeGothic', sans-serif;
+      font-size: 16px;
+      line-height: 1.81;
+      color: #3b3088;
+      text-decoration: underline;
+    }
+
+    .square {
+      width: 6px;
+      height: 6px;
+      background-color: #2e2e2e;
+      margin-right: 8.1px;
+      margin-left: 8.1px;
+    }
+  }
+}
