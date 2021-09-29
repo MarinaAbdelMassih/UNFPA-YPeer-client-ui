@@ -104,6 +104,11 @@ const routes: Routes = [
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/course-catalog/course-catalog.module').then(mod => mod.CourseCatalogModule),
   },
+  {
+    path: 'terms',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/terms-of-use/terms-of-use.module').then(mod => mod.TermsOfUseModule),
+  },
 ];
 
 @NgModule({
