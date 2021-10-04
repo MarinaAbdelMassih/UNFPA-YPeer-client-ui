@@ -10,7 +10,18 @@ export class SearchComponent implements OnInit {
   details = [{
     title: 'title',
     type: 'type',
-    description: 'productive health'
+    description: 'productive health',
+    img: 'assets/images/discover-more-events.png'
+  }, {
+    title: 'title',
+    type: 'type',
+    description: 'productive health',
+    img: 'assets/images/discover-more-events.png'
+  }, {
+    title: 'title',
+    type: 'type',
+    description: 'productive health',
+    img: 'assets/images/discover-more-events.png'
   }];
   pageNumbers: number[] = [];
 
