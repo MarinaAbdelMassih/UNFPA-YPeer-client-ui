@@ -1,13 +1,13 @@
 <div class="row result-item w-100">
   <div class="col-md-3">
-    <img src="assets/images/discover-more-events.png" alt="image">
+    <img src="assets/images/discover-more-events.png" alt="image" class="result-img">
   </div>
   <div class="col-md-9">
     <h2 class="title">{{title ? title:'Lorem ipsum dolor sit amet'}}</h2>
     <span class="type">{{type ? type : 'Stories'}}</span>
     <p class="description">{{description ? description :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu…'}}</p>
-<!--    <div class="tags-container">-->
-<!--      <app-tag-item *ngFor="let tag of tagsList" [tag]="tag"></app-tag-item>-->
-<!--    </div>-->
+    <div class="tags-container">
+      <app-tag-item *ngFor="let tag of tagsList" [tag]="tag"></app-tag-item>
+    </div>
   </div>
 </div>

@@ -6,10 +6,18 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  tags = {
-  };
+  tags = [{id: 1, name: {EN: 'productive health', AR: 'صحة منتجة'}}, {id: 2, name: {EN: 'productive', AR: ' منتجة'}}];
+  details = [{
+    title: {EN: 'title', AR: ''},
+    type: {EN: 'type', AR: ''},
+    description: {EN: 'productive health', AR: ''}
+  }];
+  pageNumbers: number[] = [];
 
   constructor() {
+    for (let i = 1; i < 5; i++) {
+      this.pageNumbers.push(i);
+    }
   }
 
   ngOnInit() {

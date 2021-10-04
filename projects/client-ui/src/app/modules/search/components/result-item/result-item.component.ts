@@ -10,6 +10,7 @@ export class ResultItemComponent implements OnInit {
   @Input() type: string;
   @Input() title: string;
   @Input() description: string;
+  // @Input() details = {};
   @Input() tagsList ;
 
   constructor() {
