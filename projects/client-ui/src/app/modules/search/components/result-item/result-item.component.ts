@@ -7,10 +7,10 @@ import {TranslationModel} from '../../../../../../../../src/app/shared/models/tr
   styleUrls: ['./result-item.component.scss']
 })
 export class ResultItemComponent implements OnInit {
-  @Input() type: string;
-  @Input() title: string;
-  @Input() description: string;
-  // @Input() details = {};
+  // @Input() type: string;
+  // @Input() title: string;
+  // @Input() description: string;
+   @Input() details = {};
   @Input() tagsList ;
 
   constructor() {

@@ -8,9 +8,9 @@ import {Component, OnInit} from '@angular/core';
 export class SearchComponent implements OnInit {
   tags = [{id: 1, name: {EN: 'productive health', AR: 'صحة منتجة'}}, {id: 2, name: {EN: 'productive', AR: ' منتجة'}}];
   details = [{
-    title: {EN: 'title', AR: ''},
-    type: {EN: 'type', AR: ''},
-    description: {EN: 'productive health', AR: ''}
+    title: 'title',
+    type: 'type',
+    description: 'productive health'
   }];
   pageNumbers: number[] = [];
 
