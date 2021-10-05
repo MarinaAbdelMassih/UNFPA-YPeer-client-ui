@@ -7,12 +7,19 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      @media(max-width: 991px) {
+        flex-direction: column;
+      }
 
       h3 {
         font-family: 'TradeGothic', sans-serif;
         font-size: 32px;
         font-weight: bold;
         color: #2e2e2e;
+        @media (max-width: 991px) {
+          font-size: 20px;
+          text-align: center;
+        }
       }
 
       p {
@@ -61,6 +68,15 @@
 
     .number-btn {
       width: 32px;
+    }
+    .active {
+      width: 32px;
+      height: 32px;
+      color: #ffffff;
+      background: #673bb8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 

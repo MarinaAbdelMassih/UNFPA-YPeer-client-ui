@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TranslationModel} from '../../../../../../../../src/app/shared/models/translation.model';
 
 @Component({
   selector: 'app-result-item',
@@ -10,8 +9,10 @@ export class ResultItemComponent implements OnInit {
   // @Input() type: string;
   // @Input() title: string;
   // @Input() description: string;
-   @Input() details = {};
-  @Input() tagsList ;
+  @Input() details = [];
+  @Input() tagsList;
+  @Input() start?;
+  @Input() end?;
 
   constructor() {
   }

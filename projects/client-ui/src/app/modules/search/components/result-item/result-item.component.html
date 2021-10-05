@@ -1,8 +1,8 @@
-<div class="row result-item w-100" *ngFor="let detail of details">
-  <div class="col-md-3">
+<div class="row result-item w-100" *ngFor="let detail of details | slice:start:end ; let i = index">
+  <div class="col-xl-3">
     <img [src]="detail.img" alt="image" class="result-img">
   </div>
-  <div class="col-md-9" >
+  <div class="col-xl-9" >
     <h2 class="title">{{detail.title}}</h2>
     <span class="type">{{detail.type }}</span>
     <p

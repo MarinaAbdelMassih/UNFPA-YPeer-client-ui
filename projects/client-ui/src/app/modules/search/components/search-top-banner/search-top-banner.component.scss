@@ -1,6 +1,11 @@
 .search-top-banner {
   display: flex;
   position: relative;
+  @media(max-width: 991px) {
+    display: initial;
+    text-align: center;
+  }
+
 
   img {
     width: 100%;
@@ -15,13 +20,15 @@
     position: absolute;
     top: 150px;
     left: 127px;
+    //@media(max-width: 991px) {
+    //  top: 10px;
+    //  left: 10px;
+    //}
     @media(max-width: 991px) {
-      top: 10px;
-      left: 10px;
-    }
-    @media(max-width: 415px) {
-      margin-top: 175px;
+      position: initial;
+      margin-top: 15px;
       top: 0;
+      text-align: center;
     }
 
 
@@ -34,6 +41,9 @@
       @media(max-width: 991px) {
         margin-bottom: 10px;
 
+      }
+      @media(max-width: 991px) {
+        color: #000000;
       }
     }
   }
@@ -48,9 +58,15 @@
       @media(max-width: 1350px) {
         width: 75%;
       }
+      //@media(max-width: 991px) {
+      //  width: 50%;
+      //  height: 40px;
+      //}
       @media(max-width: 991px) {
-        width: 50%;
+        margin: auto;
+        width: 70%;
         height: 40px;
+
       }
 
       form {
@@ -94,11 +110,17 @@
 
   .radio-btn-container {
     padding-top: 16px;
+    @media(max-width: 991px) {
+      padding-top: 60px;
+    }
 
     ::ng-deep.mat-radio-outer-circle {
       border: 2px solid #FFFFFF;
       width: 16px;
       height: 16px;
+      @media(max-width: 991px) {
+        border: 2px solid #000000;
+      }
     }
 
     ::ng-deep.mat-radio-inner-circle {
@@ -106,10 +128,14 @@
       left: -2px;
       position: absolute;
       top: -2px;
+
     }
 
     ::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
       border-color: #FFFFFF;
+      @media(max-width: 991px) {
+        border-color: #000000;
+      }
     }
 
     ::ng-deep.mat-radio-checked .mat-radio-inner-circle {
@@ -124,7 +150,10 @@
       margin-right: 4px;
       color: #FFFFFF;
       padding-left: 24px;
-
+      @media(max-width: 991px) {
+        color: #000000;
+        padding-left: 15px;
+      }
     }
 
     .first {
@@ -161,6 +190,16 @@
     .banner-text {
       p {
         font-size: 25px;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .search-top-banner {
+    .banner-text {
+      p {
+        margin-bottom: 30px;
       }
     }
   }
