@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FaqsResolverService} from '../../../../../../src/app/shared/services/faqs-resolver.service';
-import {faqsContent} from '../../../../../../src/app/shared/models/faqs.model';
+import {faqsContent, faqsListItem} from '../../../../../../src/app/shared/models/faqs.model';
 
 @Component({
   selector: 'app-faqs',
@@ -8,7 +8,7 @@ import {faqsContent} from '../../../../../../src/app/shared/models/faqs.model';
   styleUrls: ['./faqs.component.scss']
 })
 export class FaqsComponent implements OnInit {
-  faqsList;
+  faqsList: faqsListItem[];
   links;
 
   constructor(private faqsResolverService: FaqsResolverService) {
@@ -21,7 +21,10 @@ export class FaqsComponent implements OnInit {
   getFaqsData(): void {
     this.faqsResolverService.resolve().subscribe((faqsData: faqsContent) => {
       this.faqsList = faqsData.faqsList;
+      console.log(this.faqsList);
       this.links = faqsData.links;
+      console.log(this.links);
+
     });
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import { links} from '../../../../../../../../src/app/shared/models/faqs.model';
 
 @Component({
   selector: 'app-useful-links',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./useful-links.component.scss']
 })
 export class UsefulLinksComponent implements OnInit {
+  @Input() links: links[];
 
   constructor() { }
 

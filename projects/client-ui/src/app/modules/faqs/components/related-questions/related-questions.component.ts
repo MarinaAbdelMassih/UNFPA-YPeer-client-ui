@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {faqsListItem} from '../../../../../../../../src/app/shared/models/faqs.model';
 
 @Component({
   selector: 'app-related-questions',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./related-questions.component.scss']
 })
 export class RelatedQuestionsComponent implements OnInit {
-
-  constructor() { }
+  @Input() faqsLists: faqsListItem[];
+  constructor() {
+  }
 
   ngOnInit() {
   }
