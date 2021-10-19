@@ -2,7 +2,7 @@
   <h4 [translateLocal]="{EN:'Useful Links',AR:'روابط مفيدة'}"></h4>
   <div class="link-container" *ngFor="let link of  links">
     <div class="square"></div>
-    <a>
+    <a [href]="link.link">
       {{link.title}}
     </a>
   </div>
