@@ -7,7 +7,7 @@
         <div class="col-md-6">
           <p [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول '}"></p>
           <mat-form-field appearance="outline">
-            <input matInput type="text" name="firstName" class="firstName" formControlName="fName"
+            <input matInput type="text" name="firstName" class="firstName" formControlName="firstName"
                    [placeholder]="isArabic ? 'اكتب اسمك الأول ' : 'Type in your first name'">
           </mat-form-field>
           <p [translateLocal]="{EN: 'Email', AR: 'بريد الالكتروني '}"></p>
@@ -28,21 +28,21 @@
           </mat-form-field>
           <p  [translateLocal]="{EN: 'Marital Status', AR: 'الحالة الاجتماعية '}"></p>
           <mat-form-field appearance="outline">
-            <mat-select [placeholder]="isArabic ? 'الحالة' : 'status'" formControlName="status">
+            <mat-select [placeholder]="isArabic ? 'الحالة' : 'status'" formControlName="maritalStatus">
               <mat-option *ngFor="let item of status ;" [value]="item">{{item}}</mat-option>
             </mat-select>
           </mat-form-field>
           <p  [translateLocal]="{EN: 'Education Level', AR: 'مستوى التعليم'}"></p>
           <mat-form-field appearance="outline">
-            <mat-select [placeholder]="isArabic ? 'اختار ' : 'select'"  formControlName="education">
-              <mat-option *ngFor="let item of education ;" [value]="item">{{item}}</mat-option>
+            <mat-select [placeholder]="isArabic ? 'اختار ' : 'select'"  formControlName="educationalLevelId">
+              <mat-option *ngFor="let item of education ; let i=index;" [value]="i+1">{{item}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div class="col-md-6">
           <p  [translateLocal]="{EN: 'Last Name', AR: 'الاسم الأخير '}"> </p>
           <mat-form-field appearance="outline">
-            <input matInput type="text" name="lastName" class="lastName" formControlName="lName"
+            <input matInput type="text" name="lastName" class="lastName" formControlName="lastName"
                    [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
           </mat-form-field>
           <p  [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
@@ -55,6 +55,10 @@
             <input matInput type="password" name="passwordTwo" class="password" formControlName="rePassword"
                    [placeholder]="isArabic ? '******** ' : '********'">
           </mat-form-field>
+<!--          <div class="text-danger"-->
+<!--               *ngIf="signUpForm.get('rePassword').errors.MustMatch">-->
+<!--            Passwords must match.-->
+<!--          </div>-->
           <p  [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الولادة'}"></p>
           <div class="d-flex justify-content-between">
           <mat-form-field appearance="outline" class="birthday-form">
@@ -73,13 +77,13 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <p  [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول '}">Governorate</p>
+          <p  [translateLocal]="{EN: 'Governorate', AR: 'محافظة '}"></p>
           <mat-form-field appearance="outline">
-            <mat-select [placeholder]="isArabic ? 'محافظة ' : 'governorate'"  formControlName="governorate">
-              <mat-option *ngFor="let item of governorate ;" [value]="item">{{item}}</mat-option>
+            <mat-select [placeholder]="isArabic ? 'محافظة ' : 'governorate'"  formControlName="governorateId">
+              <mat-option *ngFor="let item of governorate ; let i=index;" [value]="i+1">{{item}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <p [translateLocal]="{EN: 'occupation', AR: 'مهنة '}">Occupation</p>
+          <p [translateLocal]="{EN: 'occupation', AR: 'مهنة '}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="text" name="occupation" class="occupation" formControlName="occupation"
                    [placeholder]="isArabic ? 'اكتب في مهنتك ' : 'Type in your occupation'">
