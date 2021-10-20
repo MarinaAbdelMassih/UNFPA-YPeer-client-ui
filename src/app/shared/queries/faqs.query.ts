@@ -3,8 +3,10 @@ export const faqsQuery = `{
  result
     faqItemCollection {
       items {
-      question
-      answer
+      questionEn
+      questionAr
+      answerEn
+      answerAr
        }
      }
      faqItemLinkCollection {

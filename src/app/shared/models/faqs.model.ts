@@ -4,8 +4,8 @@ export interface faqsContent {
 }
 
 export interface faqsListItem {
-  question: string;
-  answer: string;
+  question: {AR: string, EN: string};
+  answer: {AR: string, EN: string};
 }
 
 export interface links {
