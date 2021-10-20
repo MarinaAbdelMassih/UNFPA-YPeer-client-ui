@@ -4,8 +4,8 @@ export interface faqsContent {
 }
 
 export interface faqsListItem {
-  question: {AR: string, EN: string};
-  answer: {AR: string, EN: string};
+  question: { AR: string, EN: string };
+  answer: { AR: string, EN: string };
 }
 
 export interface links {
@@ -26,8 +26,8 @@ export class FaqsModel implements faqsContent {
   private static setFaqsList(faqsLists: any[]): faqsListItem[] {
     return faqsLists.map((faqsList) => {
       return {
-        question: faqsList.question,
-        answer: faqsList.answer,
+        question: {AR: faqsList.questionAr, EN: faqsList.questionEn},
+        answer: {AR: faqsList.answerAr, EN: faqsList.answerEn},
       };
     });
   }

@@ -3,12 +3,10 @@
   <mat-accordion *ngFor="let item of faqsLists | slice:0:3">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{item.question ? item.question : 'How to join the program?'}}
+        <mat-panel-title [translateLocal]="item.question">
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>
-        {{item.answer ? item.answer :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'}}
+      <p [translateLocal]="item.answer">
       </p>
 <!--      <p [translateLocal]="{EN:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.',AR:'أسئلة متعلقة بالبرنامج:'}"></p>-->
 <!--      <p [translateLocal]="{EN:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.',AR:'أسئلة متعلقة بالبرنامج:'}"></p>-->
@@ -56,12 +54,10 @@
     <mat-accordion *ngFor="let item of faqsLists | slice:3:7">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title >
-            {{item.question ? item.question : 'How to join the program?'}}
+          <mat-panel-title [translateLocal]="item.question">
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <p >
-          {{item.answer ? item.answer :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'}}
+        <p [translateLocal]="item.answer">
         </p>
 <!--        <p [translateLocal]="{EN:'Program Related Questions:',AR:'أسئلة متعلقة بالبرنامج:'}"></p>-->
 <!--        <p [translateLocal]="{EN:'Program Related Questions:',AR:'أسئلة متعلقة بالبرنامج:'}"></p>-->

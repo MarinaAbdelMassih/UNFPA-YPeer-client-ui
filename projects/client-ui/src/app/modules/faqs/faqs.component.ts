@@ -15,7 +15,7 @@ export class FaqsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getFaqsData();
+     this.getFaqsData();
   }
 
   getFaqsData(): void {
