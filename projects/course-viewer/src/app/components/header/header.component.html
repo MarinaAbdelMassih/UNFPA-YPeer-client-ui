@@ -11,9 +11,20 @@
       <span style="margin: 15px" fxFlexAlign="center" fxFlex="100" fxLayoutAlign="start" fxLayout="row">
       <img src="assets/images/ypeer-logo-header.png"
            class="logo" routerLink="/home" alt="hesas-logo">
+        <span class="course-name-separator"></span>
+        <span class="course-name">Introductory Course Name</span>
     </span>
-      <div class="exit" fxFlex.xs="15%" fxFlex.sm="15%" fxFlex.md="20%" fxFlex.lg="20%" fxFlex.xl="20%"
+      <div class="exit" fxFlex.xs="25%" fxFlex.sm="25%" fxFlex.md="30%" fxFlex.lg="30%" fxFlex.xl="30%"
            fxFlexAlign="center" fxLayoutAlign="center" fxLayout="row">
+        <circle-progress [percent]="30"
+                         [radius]="16"
+                         [outerStrokeWidth]="3"
+                         [innerStrokeWidth]="3"
+                         [outerStrokeColor]="'#5a3f99'"
+                         [innerStrokeColor]="'#f0f0f0'"
+                         [animation]="true"
+                         [animationDuration]="300" [space]="-3"></circle-progress>
+        <div class="progress-text">Your Progress</div>
         <button (click)="closeCourseViewer()" class="exit-button">
           <span *ngIf="!isMobile" fxHide.sm fxHide.xs [translateLocal]="{AR: 'الخروج من الفيديو', EN: 'Exit Course'}"></span>
           <mat-icon style="line-height: 2.5" *ngIf="isMobile">exit_to_app</mat-icon>

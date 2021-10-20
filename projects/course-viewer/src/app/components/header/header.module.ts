@@ -5,6 +5,7 @@ import {MatButtonModule, MatIconModule, MatToolbarModule} from "@angular/materia
 import {SharedModule} from "../../../../../../src/app/shared/shared.module";
 import {RouterModule} from "@angular/router";
 import {ExtendedModule, FlexModule} from "@angular/flex-layout";
+import {NgCircleProgressModule} from "ng-circle-progress";
 
 
 
@@ -21,7 +22,24 @@ import {ExtendedModule, FlexModule} from "@angular/flex-layout";
     SharedModule,
     RouterModule,
     FlexModule,
-    ExtendedModule
+    ExtendedModule,
+    NgCircleProgressModule.forRoot({
+      radius: 100,
+      space: -14,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 16,
+      showInnerStroke:true ,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#989393",
+      outerStrokeGradientStopColor: "#53a9ff",
+      animationDuration: 300,
+      titleFontSize:"10" ,
+      unitsFontSize:"10",
+      showSubtitle:false ,
+      percent: 50,
+      titleFontWeight: 'bold',
+      unitsFontWeight: 'bold'
+    }),
   ]
 })
 export class HeaderModule { }

@@ -11,6 +11,13 @@
         border: none;
         font-size: 12px;
       }
+      .progress-text {
+        color: #232323;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        margin: 0 40px 0 8px;
+      }
       padding: 0;
       button.mat-flat-button {
         background-color: transparent !important;
@@ -36,12 +43,24 @@
       }
       .logo{
         width: auto;
-        height: 60px;
         object-fit: contain;
         cursor: pointer;
         &:hover, &:focus{
           outline: none;
         }
+      }
+      .course-name-separator {
+        width: 2px;
+        height: 18px;
+        margin: 7px 35.9px 2px 50px;
+        background-color: #2e2e2e;
+      }
+      .course-name {
+        font-size: 18px;
+        font-weight: bold;
+        color: #2e2e2e;
+        font-family: TradeGothic, sans-serif;
+        text-transform: uppercase;
       }
     }
   }
