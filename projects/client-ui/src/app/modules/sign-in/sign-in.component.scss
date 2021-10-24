@@ -1,0 +1,89 @@
+.sign-in-container {
+  //background-color: #ffa50052;
+  background-image: url("src/assets/images/bg-sign-in.png");
+  background-size: cover;
+  height: 768px;
+  width: 100%;
+  margin: 0;
+
+  .sign-in {
+    display: flex;
+    justify-content: space-between;
+
+    img {
+      padding-top: 74px;
+    }
+
+    .form-container {
+      width: 490px;
+      height: 498px;
+      background-color: #FFFFFF;
+      margin-top: 135px;
+    }
+
+    .rights-reserved-text {
+      font-size: 11px;
+      line-height: 1.18;
+      color: #2e2e2e;
+      display: flex;
+      margin-top: 97px;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .sign-in-container {
+    .sign-in {
+      flex-direction: column;
+      img {
+        padding-left: 33.7px;
+      }
+      .form-container {
+        width: 70%;
+        height: auto;
+        margin: auto;
+      }
+      .rights-reserved-text {
+        margin-bottom: -27px;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  [dir="ltr"] {
+    .sign-in-container {
+      .sign-in {
+        img {
+          padding-left: 73.7px;
+        }
+
+        .form-container {
+          margin-right: 44px;
+        }
+
+        .rights-reserved-text {
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+
+  [dir="rtl"] {
+    .sign-in-container {
+      .sign-in {
+        img {
+          padding-right: 73.7px;
+        }
+
+        .form-container {
+          margin-left: 44px;
+        }
+
+        .rights-reserved-text {
+          justify-content: flex-start;
+        }
+      }
+    }
+  }
+}

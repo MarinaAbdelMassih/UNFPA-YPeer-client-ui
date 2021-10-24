@@ -1,0 +1,107 @@
+.sign-in-form-container {
+  padding-left: 44px;
+  padding-right: 44px;
+
+  h3 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.19;
+    color: #2e2e2e;
+    padding-top: 39px;
+    padding-bottom: 65px;
+    text-align: center;
+
+  }
+
+  .email {
+    margin-bottom: 13px;
+  }
+
+  .password {
+    margin-bottom: 17px;
+  }
+
+  button {
+    margin-top: 30px;
+    margin-bottom: 14px;
+    width: 402px;
+    height: 51px;
+    background-color: #5a3f99;
+    font-size: 16px;
+    line-height: 1.19;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+  }
+
+  .forgot-password-link {
+    font-size: 14px;
+    line-height: 1.14;
+    text-align: center;
+    color: #2e2e2e;
+    text-decoration: underline;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  //.input-container {
+  //  text-align: center;
+  //}
+  .no-account-text {
+    font-size: 14px;
+    line-height: 1.14;
+    color: #2e2e2e;
+  }
+
+  .sign-up-link {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.21;
+    color: #2e2e2e;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  ::ng-deep.mat-checkbox-layout .mat-checkbox-label {
+    font-size: 14px;
+    line-height: 1.14;
+    color: #2e2e2e;
+  }
+
+  ::ng-deep.mat-checkbox-frame {
+    border-color: #bebebe;
+  }
+
+  ::ng-deep label {
+    margin-bottom: 0;
+  }
+
+  .check-box-text {
+    font-size: 14px;
+    line-height: 1.14;
+    color: #2e2e2e;
+    margin-bottom: 0;
+  }
+
+  input, mat-select, textarea {
+    width: 402px;
+    height: 52px;
+    padding: 15px;
+    opacity: 0.8;
+    border: solid 1px #a4a4a4;
+    background-color: #ffffff;
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+
+    &::placeholder, ::ng-deep.mat-select-placeholder {
+      font-size: 14px;
+      color: #b1b1b1;
+    }
+  }
+
+}

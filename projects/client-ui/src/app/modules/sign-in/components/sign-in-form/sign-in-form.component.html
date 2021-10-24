@@ -1,0 +1,43 @@
+<div class="sign-in-form-container">
+  <h3 [translateLocal]="{EN: 'SIGN IN', AR: 'تسجيل الدخول'}"></h3>
+  <form class="contact-form" [formGroup]="signInForm" (ngSubmit)='submitSignInForm()'>
+    <div class="input-container">
+      <input matInput type="email" name="email" formControlName="email" class="email"
+             [placeholder]="isArabic ? 'البريد الالكتروني ' : 'Email'">
+    </div>
+    <div class="error-label">
+          <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
+                *ngIf="signInForm.get('email').touched && signInForm.get('email').errors?.required">
+          </span>
+      <div class="text-danger" [translateLocal]="{AR: 'البريد الالكتروني  خاطئ',EN: 'Invalid Email'}"
+           *ngIf="signInForm.get('email').touched && signInForm.get('email').errors?.email">
+      </div>
+    </div>
+
+    <div class="input-container">
+      <input matInput type="password" name="password" formControlName="password" class="password"
+             [placeholder]="isArabic ? 'كلمه السر' : 'Password'">
+    </div>
+    <div class="error-label">
+          <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
+                *ngIf="signInForm.get('password').touched && signInForm.get('password').errors?.required">
+          </span>
+      <div class="text-danger" [translateLocal]="{AR: 'كلمه السر خاطئ',EN: 'Invalid Password'}"
+           *ngIf="signInForm.get('password').touched && signInForm.get('password').errors?.password">
+      </div>
+    </div>
+
+    <mat-checkbox class="example-margin mb-0" formControlName="rememberMe"> <p class="check-box-text" [translateLocal]="{EN: 'Remember me', AR: 'تذكرنى'}"></p></mat-checkbox>
+    <br>
+    <div class="d-flex justify-content-center ">
+      <button [translateLocal]="{EN: 'SIGN IN', AR: 'تسجيل الدخول'}"></button>
+    </div>
+    <a class="forgot-password-link" [translateLocal]="{EN: 'Forgot password!', AR: 'هل نسيت كلمة السر!'}"></a>
+    <div class="d-flex justify-content-center">
+      <p class="no-account-text" [translateLocal]="{EN: 'Have no account?', AR: 'ليس لديك حساب؟'}"></p>
+      <a class="sign-up-link" [translateLocal]="{EN: 'Sign Up', AR: 'اشتراك'}"></a>
+    </div>
+
+  </form>
+
+</div>
