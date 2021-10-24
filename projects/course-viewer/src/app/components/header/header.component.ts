@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   openSub: Subscription;
 
   @HostListener("window:resize", ['$event'])
-  private onResize(event) {
+   onResize(event) {
     this.size = event.target.innerWidth;
     this.isMobile = this.size <= 768;
   }

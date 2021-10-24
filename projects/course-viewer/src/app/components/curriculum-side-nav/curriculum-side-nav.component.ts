@@ -22,7 +22,7 @@ export class CurriculumSideNavComponent implements OnInit, AfterViewInit{
   isMobile: boolean = false;
 
   @HostListener("window:resize", ['$event'])
-  private onResize(event) {
+   onResize(event) {
     this.size = event.target.innerWidth;
     this.isMobile = this.size <= 600;
   }

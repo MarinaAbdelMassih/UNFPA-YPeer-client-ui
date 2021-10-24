@@ -22,6 +22,8 @@ export interface ISession {
   prev: number,
   type: LectureType,
   titleLocal: { AR: string, EN: string },
+  isSelected?: boolean,
+  finished?: boolean,
 
   getNext(lectures: ISession[]): ISession,
   getPrev(lectures: ISession[]): ISession
