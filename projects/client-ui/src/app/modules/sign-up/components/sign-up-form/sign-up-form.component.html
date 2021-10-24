@@ -54,11 +54,11 @@
           <mat-form-field appearance="outline">
             <input matInput type="password" name="passwordTwo" class="password" formControlName="rePassword"
                    [placeholder]="isArabic ? '******** ' : '********'">
+
           </mat-form-field>
-<!--          <div class="text-danger"-->
-<!--               *ngIf="signUpForm.get('rePassword').errors.MustMatch">-->
-<!--            Passwords must match.-->
-<!--          </div>-->
+          <mat-error *ngIf="signUpForm.get('rePassword').errors?.MustMatch">
+            Passwords must match.
+          </mat-error>
           <p  [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الولادة'}"></p>
           <div class="d-flex justify-content-between">
           <mat-form-field appearance="outline" class="birthday-form">

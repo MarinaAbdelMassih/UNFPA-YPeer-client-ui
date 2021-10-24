@@ -26,25 +26,6 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
 
 
   constructor(private fb: FormBuilder, private languageService: LanguageService, private signUpService: SignUpService) {
-  }
-
-  ngOnInit() {
-    this.checkLanguage();
-    function MustMatch(controlName: string, matchingControlName: string) {
-      return (formGroup: FormGroup) => {
-        const control = formGroup.controls[controlName];
-        const matchingControl = formGroup.controls[matchingControlName];
-
-        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-          return;
-        }
-        if (control.value !== matchingControl.value) {
-          matchingControl.setErrors({ mustMatch: true });
-        } else {
-          matchingControl.setErrors(null);
-        }
-      };
-    }
     this.signUpForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
@@ -61,8 +42,12 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       governorateId: new FormControl('', Validators.required),
       occupation: new FormControl('', [Validators.required, Validators.maxLength(20)]),
     }, {
-      validator: MustMatch('password', 'rePassword')
+      validator: this.MustMatch('password', 'rePassword')
     });
+  }
+
+  ngOnInit() {
+    this.checkLanguage();
   }
 
   submitSignUpForm() {
@@ -94,7 +79,21 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   }
 
 
+   MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
 
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ MustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
