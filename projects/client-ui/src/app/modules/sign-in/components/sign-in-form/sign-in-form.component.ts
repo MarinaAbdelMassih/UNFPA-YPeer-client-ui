@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {Subscription} from 'rxjs';
+import {SignInService} from '../../../../../../../../src/app/shared/services/sign-in.service';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -15,7 +16,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   passwordPattern = '^(?=.*[A-Za-z])[a-zA-Z0-9!@#%~$&()-`.+,/\\"]{8,}$';
   subscription: Subscription;
 
-  constructor(private fb: FormBuilder, private languageService: LanguageService) {
+  constructor(private fb: FormBuilder, private languageService: LanguageService, private signInService: SignInService) {
   }
 
   ngOnInit() {
