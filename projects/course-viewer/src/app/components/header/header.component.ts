@@ -1,13 +1,14 @@
-import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
-import { Location } from '@angular/common'
+import {Location} from '@angular/common'
 import {SideComponentsControlsService} from "../../../../../../src/app/shared/services/course-viewer/side-components-controls.service";
 
 @Component({
   selector: 'course-viewer-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @HostListener("window:resize", ['$event'])
   private onResize(event) {
     this.size = event.target.innerWidth;
-    this.isMobile = this.size <= 600;
+    this.isMobile = this.size <= 768;
   }
 
   constructor(private sideComponentsControlsService: SideComponentsControlsService, private location: Location,
@@ -30,7 +31,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.isCurriculumOpen = isOpened;
     });
     this.size = window.innerWidth;
-    this.isMobile = this.size <= 600;
+    this.isMobile = this.size <= 768;
   }
 
   ngOnDestroy(): void {

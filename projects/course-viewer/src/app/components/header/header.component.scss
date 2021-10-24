@@ -52,10 +52,12 @@
       .course-name-separator {
         width: 2px;
         height: 18px;
-        margin: 7px 35.9px 2px 50px;
+        margin: 17px 35.9px 2px 50px;
         background-color: #2e2e2e;
       }
       .course-name {
+        display: flex;
+        align-items: center;
         font-size: 18px;
         font-weight: bold;
         color: #2e2e2e;
@@ -64,4 +66,40 @@
       }
     }
   }
+}
+
+[dir="rtl"] {
+  .progress-text {
+    margin: 0 8px 0 40px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .course-name-separator , .course-name, .progress-text , circle-progress {
+    display: none !important;
+  }
+  .logo {
+    width: 220px !important;
+  }
+  .section-title {
+    align-items: center !important;
+    h3 {
+      font-size: 30px !important;
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px){
+  .course-name-separator {
+    margin: 10px 26.9px 2px 28px !important;
+  }
+  .course-name {
+    font-size: 14px !important;
+  }
+  .logo {
+    width: 220px !important;
+  }
+  .progress-text {
+    margin: 0 12px 0 8px !important;
+  }
+
 }
