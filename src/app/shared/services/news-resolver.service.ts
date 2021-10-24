@@ -3,6 +3,7 @@ import {newsContent, NewsModel, tag} from '../models/news.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {DataHandlerService} from './data-handler.service';
 import {
+  NewsDetailsQuery,
   NewsPageQuery,
   NewsQuery,
   NewsTagsQuery,
@@ -23,16 +24,12 @@ export class NewsResolverService {
 
   resolve(): Observable<newsContent> {
     return new Observable<newsContent>(subscriber => {
-      if (this.newsData) {
-        subscriber.next(this.newsData);
-      } else {
         this.dataHandlerService.getDefaultPageData(NewsQuery, 'news', (res) => {
           return new NewsModel(res.data.news);
         }).subscribe((newsData: newsContent) => {
           this.newsData = newsData;
           subscriber.next(this.newsData);
         }, () => subscriber.next(null));
-      }
     });
   }
 
@@ -85,6 +82,21 @@ export class NewsResolverService {
     let result;
     return new Observable<newsContent>(subscriber => {
       this.dataHandlerService.getRemoteDataWithoutSave(NewsPageQuery(skip, limit), (res) => {
+        result = res;
+      }).then(() => {
+        this.newsData = new NewsModel({
+          title: 'News', newsListCollection: result.data.newsListItemCollection,
+          newsTagsCollection: result.data.newsTagItemCollection
+        });
+        subscriber.next(this.newsData);
+      }, () => subscriber.next(null));
+    });
+  }
+
+  getPageDetails(id: number): Observable<newsContent> {
+    let result;
+    return new Observable<newsContent>(subscriber => {
+      this.dataHandlerService.getRemoteDataWithoutSave(NewsDetailsQuery(id), (res) => {
         result = res;
       }).then(() => {
         this.newsData = new NewsModel({

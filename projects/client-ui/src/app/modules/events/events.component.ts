@@ -17,16 +17,19 @@ export class EventsComponent implements OnInit {
   eventsList: eventsListItem[] = [];
   showLoadMore: boolean =true;
   selectedTag: string;
+  upcomingEvents: eventsListItem[] = [];
+  previousEvents: eventsListItem[] = [];
 
   categoriesList: CategoryModel[] = [
-    {title: {EN: 'Previous Events', AR: 'الأحداث السابقه'}, count: 50, hideToggle: true},
-    {title: {EN: 'Upcoming Events', AR: 'الأحداث القادمه'}, count: 23, hideToggle: true},
+    {title: {EN: 'Previous Events', AR: 'الأحداث السابقه'}, count: 0, hideToggle: true, label: 'previous', selected: false},
+    {title: {EN: 'Upcoming Events', AR: 'الأحداث القادمه'}, count: 0, hideToggle: true, label: 'upcoming', selected: false},
   ];
 
   constructor(private eventsResolverService: EventsResolverService) {
   }
 
   ngOnInit() {
+    this.getUpcomingAndPreviousEvents();
     this.getEventsData();
   }
 
@@ -56,6 +59,7 @@ export class EventsComponent implements OnInit {
         if(this.eventsResolverService.selectedEventsTag.getValue()) {
           this.eventsData.tags.find(tag => tag.id == this.eventsResolverService.selectedEventsTag.getValue().id).selected = true;
         }
+        this.categoriesList.map(category => category.selected = false);
       }, 200)
 
     });
@@ -65,7 +69,41 @@ export class EventsComponent implements OnInit {
   clearData() {
     this.selectedTag = null;
     this.eventsList = [];
+    this.categoriesList.map(category => category.selected = false);
     this.getEventsData();
+  }
+
+  getUpcomingAndPreviousEvents() {
+    let eventsSub = this.eventsResolverService.resolve().subscribe((eventsData: eventsContent) => {
+      this.eventsData = undefined;
+      setTimeout(() => {
+        eventsData.eventsList.map(item => item.eventDate = new Date(item.eventDate));
+        let currentDate = new Date();
+        eventsData.eventsList.map((item) => (item.eventDate >= currentDate ? this.upcomingEvents.push(item)
+          : this.previousEvents.push(item)));
+        this.categoriesList[0].count = this.previousEvents.length;
+        this.categoriesList[1].count = this.upcomingEvents.length;
+      }, 200)
+
+    });
+    this.subscriptions.push(eventsSub);
+  }
+
+  getSelectedEventsList(event) {
+    if(event.label == 'upcoming') {
+      this.eventsList = this.upcomingEvents;
+      this.categoriesList[0].selected = false;
+      this.categoriesList[1].selected = true;
+    }
+    else if (event.label == 'previous') {
+      this.eventsList = this.previousEvents;
+      this.categoriesList[0].selected = true;
+      this.categoriesList[1].selected = false;
+    }
+
+    this.showLoadMore = false;
+    this.eventsData.tags.map(tag => tag.selected = false);
+    this.selectedTag = null;
   }
 
 }

@@ -1,0 +1,30 @@
+.instructors-section {
+  margin-top: 45px;
+}
+.advanced-courses-section {
+  margin-top: 118px;
+  margin-bottom: 90px;
+}
+.introductory-courses-section {
+  text-align: center;
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #232323;
+  }
+  .enroll-button {
+    margin-top: 60px;
+    margin-bottom: 143px;
+    button {
+      width: 200px;
+      height: 46px;
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .illustrative-video-section {
+    margin-top: 45px;
+  }
+}

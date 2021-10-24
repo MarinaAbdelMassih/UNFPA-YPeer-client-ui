@@ -1,0 +1,12 @@
+<div class="Training-details-latest" *ngIf="latestItems && latestItems.length">
+  <p [translateLocal]="{EN:'LATEST TRAININGS',AR:'أحدث التدريبات '}"></p>
+  <div *ngFor="let latestItem of latestItems| slice:0:4;" (click)="reloadCurrentPage()">
+    <a [routerLink]='["/training-details", latestItem.id]'>
+      <app-latest-item
+        [description]="latestItem.title"
+        [date]="latestItem.date"
+        [image]=" latestItem.detailsLatestImage"></app-latest-item>
+    </a>
+  </div>
+</div>
+

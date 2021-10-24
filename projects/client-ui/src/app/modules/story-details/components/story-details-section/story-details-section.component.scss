@@ -1,0 +1,38 @@
+.story-details-story {
+  .story-date {
+    font-size: 14px;
+    color: #929292;
+    margin-bottom: 27px;
+  }
+
+  .description-part-five{
+    margin-top: 30px;
+  }
+  .description-part-one, .description-part-three, .description-part-five, .description-part-two {
+    margin-bottom: 30px;
+  }
+
+  .description-part-four, .description-part-six {
+    margin-bottom: 0;
+  }
+
+  .description-part-one, .description-part-two, .description-part-three, .description-part-four, .description-part-five, .description-part-six {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #232323;
+  }
+
+  img {
+    width: 100%;
+    padding-bottom: 30px;
+  }
+
+  h3 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2e2e2e;
+    padding-top: 31px;
+    padding-bottom: 17px;
+    margin-bottom: 0;
+  }
+}

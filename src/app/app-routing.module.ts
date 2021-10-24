@@ -17,6 +17,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'publications',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/publications/publications.module').then(mod => mod.PublicationsModule),
+  },
+
+  {
     path: 'resources',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/resources/resources.module').then(mod => mod.ResourcesModule),
@@ -51,6 +57,11 @@ const routes: Routes = [
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/trainings/trainings.module').then(mod => mod.TrainingsModule),
   },
+  {
+    path: 'news-details/:id',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/news-details/news-details.module').then(mod => mod.NewsDetailsModule),
+  },
 
   {
     path: 'about-us',
@@ -58,6 +69,41 @@ const routes: Routes = [
     loadChildren: () => import('../../projects/client-ui/src/app/modules/about-us/about-us.module').then(mod => mod.AboutUsModule),
   },
 
+  {
+    path: 'contact-us',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/contact-us/contact-us.module').then(mod => mod.ContactUsModule),
+  },
+  {
+    path: 'trainings',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/trainings/trainings.module').then(mod => mod.TrainingsModule),
+  },
+  {
+    path: 'event-details/:id',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/event-details/event-details.module').then(mod => mod.EventDetailsModule),
+  },
+  {
+    path: 'story-details/:id',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/story-details/story-details.module').then(mod => mod.StoryDetailsModule),
+  },
+  {
+    path: 'publication-details/:id',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/publication-details/publication-details.module').then(mod => mod.PublicationDetailsModule),
+  },
+  {
+    path: 'training-details/:id',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/training-details/training-details.module').then(mod => mod.TrainingDetailsModule),
+  },
+  {
+    path: 'course-catalog',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/course-catalog/course-catalog.module').then(mod => mod.CourseCatalogModule),
+  },
   {
     path: 'viewer',
     children: [

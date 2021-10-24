@@ -1,0 +1,88 @@
+.publication-details-might-like {
+  width: 100%;
+  overflow: hidden;
+  .buttons-container {
+    position: relative;
+    .slider-button {
+      background: transparent;
+      border: none;
+      //position: absolute;
+      cursor: pointer;
+      //bottom: 30px;
+      padding: 31px 0 32px 0;
+    }
+    .btn-next {
+      //right: 46px;
+    }
+    .btn-prev {
+      //right: 84px;
+    }
+  }
+  .might-like-container {
+    display: flex;
+    justify-content: space-between;
+    @media(max-width: 991px) {
+      flex-direction: column;
+    }
+  }
+
+  p {
+    font-size: 32px;
+    font-weight: bold;
+    color: #232323;
+    padding: 46px 0 32px 0;
+    margin-bottom: 0;
+  }
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+}
+
+[dir = rtl] .buttons-container {
+  .btn-prev {
+    left: 46px;
+    right: auto;
+  }
+  .btn-next {
+    left: 84px;
+    right: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .buttons-container {
+    .slider-button {
+      bottom: 570px;
+    }
+    .btn-next {
+      right: 10%;
+    }
+    .btn-prev {
+      right: 20%;
+    }
+  }
+}
+
+@media (max-width: 370px) {
+  .buttons-container {
+    .slider-button {
+      bottom: 550px;
+    }
+  }
+}
+
+@media (max-width: 330px) {
+  .buttons-container {
+    .slider-button {
+      bottom: 520px;
+    }
+  }
+}
+
+::ng-deep {
+  .slick-track {
+    width: 100% !important;
+  }
+}

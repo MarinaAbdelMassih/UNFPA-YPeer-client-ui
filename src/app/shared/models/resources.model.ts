@@ -11,6 +11,7 @@ export interface resourcesListItem {
   description: {AR: string, EN: string};
   date: {AR: string, EN: string};
   image: string;
+  file: string;
 }
 
 export interface tag {
@@ -38,7 +39,8 @@ export class ResourcesModel implements resourcesContent{
         title : {AR: resourcesListItem.titleAr, EN: resourcesListItem.titleEn},
         description : {AR: resourcesListItem.descriptionAr, EN: resourcesListItem.descriptionEn},
         date : {AR: resourcesListItem.dateAr, EN: resourcesListItem.dateEn},
-        image: resourcesListItem.image.url
+        image: resourcesListItem.image.url,
+        file: resourcesListItem.file ? resourcesListItem.file.url: null
       }
     });
   }

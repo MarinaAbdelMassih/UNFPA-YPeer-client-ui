@@ -13,7 +13,7 @@ export class TopSliderComponent implements OnInit, AfterViewInit {
   @Input() slides: sliderItem[];
   @ViewChild('bannersSlickModal', {static: false}) slickModal;
   bannerConfig: any = {"slidesToShow": 1, "rtl": this.isArabic, "slidesToScroll": 1,"arrows": false, "fade": true,
-    "cssEase": 'linear', "dots": false,"autoplay": false, "autoplaySpeed": 2000};
+    "cssEase": 'linear', "dots": false,"autoplay": true, "autoplaySpeed": 10000};
 
   constructor(private langService: LanguageService) { }
 

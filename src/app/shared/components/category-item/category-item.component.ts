@@ -14,6 +14,7 @@ export class CategoryItemComponent implements OnInit {
   @Input() yearsList: [{year: null, selected: false}];
   @Output() yearClicked: EventEmitter<number> = new EventEmitter<number>();
   @Input() url: string;
+  @Input() selected: boolean;
 
   constructor(private router: Router) { }
 
@@ -29,6 +30,9 @@ export class CategoryItemComponent implements OnInit {
   goToSelectedPage(): void {
     if (this.url) {
       this.router.navigate([this.url]);
+    }
+    else if (this.selected) {
+      this.selected = true;
     }
   }
 

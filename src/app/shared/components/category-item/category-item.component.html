@@ -1,4 +1,4 @@
-  <mat-expansion-panel [hideToggle]="hideToggle" [disabled]="hideToggle" (click)="goToSelectedPage()">
+  <mat-expansion-panel [ngStyle] = "selected ? {'background-color': '#c1c1c1'}: {}" [hideToggle]="hideToggle" [disabled]="hideToggle" (click)="goToSelectedPage()">
     <mat-expansion-panel-header>
       <mat-panel-title [translateLocal]="title">
       </mat-panel-title>
