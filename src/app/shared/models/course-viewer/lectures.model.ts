@@ -4,7 +4,7 @@ import {
   IStuff,
   MaterialStuffModel,
   VideoStuffModel
-} from "./Stuff.model";
+} from "./stuff.model";
 import {ILOChild, LOChildType} from "./Backend/course.model";
 
 export enum LectureType {

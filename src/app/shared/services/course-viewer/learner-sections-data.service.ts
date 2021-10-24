@@ -3,7 +3,7 @@ import {BehaviorSubject} from "rxjs";
 import {ISection, SectionsModel} from "../../models/course-viewer/sections.model";
 import {IFinishedStuffes, ILocalPosition} from "../../models/course-viewer/common-data.model";
 import {IPosition, PositionModel} from "../../models/course-viewer/position.model";
-import {IStuff, StuffType} from "../../models/course-viewer/Stuff.model";
+import {IStuff, StuffType} from "../../models/course-viewer/stuff.model";
 import {ISession, LectureType} from "../../models/course-viewer/lectures.model";
 import {DetailsService} from "../details.service";
 import {ICourse} from "../../models/course-viewer/Backend/course.model";

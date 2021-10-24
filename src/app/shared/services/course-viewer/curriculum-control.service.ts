@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {LearnerSectionsDataService} from "./learner-sections-data.service";
 import {ISection} from "../../models/course-viewer/sections.model";
-import {IStuff, StuffType} from "../../models/course-viewer/Stuff.model";
+import {IStuff, StuffType} from "../../models/course-viewer/stuff.model";
 import {ISession, LectureType} from "../../models/course-viewer/lectures.model";
 import {Router} from "@angular/router";
 import {ILocalPosition} from "../../models/course-viewer/common-data.model";
