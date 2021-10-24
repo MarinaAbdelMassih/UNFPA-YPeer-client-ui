@@ -15,6 +15,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   passwordPattern = '^(?=.*[A-Za-z])[a-zA-Z0-9!@#%~$&()-`.+,/\\"]{8,}$';
   subscription: Subscription;
+  signInUserData: any;
 
   constructor(private fb: FormBuilder, private languageService: LanguageService, private signInService: SignInService) {
   }
@@ -28,7 +29,15 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   }
 
   submitSignInForm() {
-    console.log('value', this.signInForm);
+    console.log('value', this.signInForm.value);
+    this.signInUserData = {
+      email: this.signInForm.controls.email.value,
+      password: this.signInForm.controls.password.value,
+      authType: 'ALMENTOR',
+    };
+    this.signInService.signIn(this.signInUserData).then(data => {
+      console.log('signin', data);
+    });
   }
 
   checkLanguage(): void {
