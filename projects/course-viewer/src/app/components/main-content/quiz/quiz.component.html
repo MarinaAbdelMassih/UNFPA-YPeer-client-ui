@@ -2,4 +2,10 @@
   <div class="quiz-name">Introductory Course Assessment</div>
   <div class="questions-num">10 Questions</div>
   <button class="ypeer-btn-purple start-quiz-btn">Start Quiz</button>
+  <app-quiz-question [questions]="questions" [currentQuestion]="currentQuestion"></app-quiz-question>
+  <app-quiz-nav-bar [currentQuestionIndex]="currentQuestionIndex" [numberOfQuestions]="questions.length"
+                    (nextClicked)="getNextQuestion()" (previousClicked)="getPreviousQuestion()">
+  </app-quiz-nav-bar>
+
+
 </div>
