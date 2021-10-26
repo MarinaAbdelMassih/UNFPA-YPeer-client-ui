@@ -22,7 +22,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.signInForm = this.fb.group({
-      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.pattern(this.passwordPattern)]],
       rememberMe: ['', [Validators.required]],
     });
@@ -31,7 +31,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   submitSignInForm() {
     console.log('value', this.signInForm.value);
     this.signInUserData = {
-      email: this.signInForm.controls.email.value,
+      username: this.signInForm.controls.username.value,
       password: this.signInForm.controls.password.value,
       authType: 'ALMENTOR',
     };
