@@ -16,15 +16,18 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   passwordPattern = '^(?=.*[A-Za-z])[a-zA-Z0-9!@#%~$&()-`.+,/\\"]{8,}$';
   subscription: Subscription;
   signInUserData: any;
+  isChecked: boolean;
+
 
   constructor(private fb: FormBuilder, private languageService: LanguageService, private signInService: SignInService) {
   }
 
   ngOnInit() {
+    this.isChecked = localStorage.getItem('remember-me') == 'true';
     this.signInForm = this.fb.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.pattern(this.passwordPattern)]],
-      rememberMe: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      // rememberMe: ['', [Validators.required]],
     });
   }
 
@@ -39,7 +42,13 @@ export class SignInFormComponent implements OnInit, OnDestroy {
       console.log('signin', data);
     });
   }
-
+  toggleEditable(event) {
+    if ( event.target.checked ) {
+      localStorage.setItem('remember-me', 'true');
+    } else {
+      localStorage.setItem('remember-me', 'false');
+    }
+  }
   checkLanguage(): void {
     this.subscription = this.languageService.isArabic.subscribe((isArabic: boolean) => {
       this.isArabic = isArabic;

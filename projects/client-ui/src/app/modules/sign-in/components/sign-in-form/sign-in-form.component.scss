@@ -87,7 +87,17 @@
     margin-bottom: 0;
   }
 
-  input, mat-select, textarea {
+  .checkbox {
+    width: 18px;
+    height: 18px;
+    border: solid 1px #bebebe;
+    background-color: #fff;
+  }
+  label {
+    padding: 0 8px;
+  }
+
+  .email, .password, mat-select, textarea {
     width: 402px;
     height: 52px;
     padding: 15px;
