@@ -7,6 +7,15 @@ export const faqsQuery = `{
       questionAr
       answerEn
       answerAr
+      expanded
+       }
+     }
+      faqItemAccQuestionsCollection {
+      items {
+      questionEn
+      questionAr
+      answerEn
+      answerAr
        }
      }
      faqItemLinkCollection {

@@ -8,6 +8,8 @@ import {faqsListItem} from '../../../../../../../../src/app/shared/models/faqs.m
 })
 export class RelatedQuestionsComponent implements OnInit {
   @Input() faqsLists: faqsListItem[];
+  @Input() faqsAccLists: faqsListItem[];
+
   constructor() {
   }
 

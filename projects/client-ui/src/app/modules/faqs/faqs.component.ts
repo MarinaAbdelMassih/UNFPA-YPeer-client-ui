@@ -9,7 +9,9 @@ import {faqsContent, faqsListItem} from '../../../../../../src/app/shared/models
 })
 export class FaqsComponent implements OnInit {
   faqsList: faqsListItem[];
+  faqsAccList: faqsListItem[];
   links;
+
 
   constructor(private faqsResolverService: FaqsResolverService) {
   }
@@ -24,7 +26,7 @@ export class FaqsComponent implements OnInit {
       console.log(this.faqsList);
       this.links = faqsData.links;
       console.log(this.links);
-
+      this.faqsAccList = faqsData.faqsAccQuesList;
     });
   }
 }

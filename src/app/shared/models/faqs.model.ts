@@ -1,11 +1,13 @@
 export interface faqsContent {
   faqsList?: faqsListItem[];
+  faqsAccQuesList?: faqsListItem[];
   links: links[];
 }
 
 export interface faqsListItem {
   question: { AR: string, EN: string };
   answer: { AR: string, EN: string };
+  expanded: boolean;
 }
 
 export interface links {
@@ -15,12 +17,14 @@ export interface links {
 
 export class FaqsModel implements faqsContent {
   faqsList?: faqsListItem[];
+  faqsAccQuesList?: faqsListItem[];
   links: links[];
 
 
   constructor(faqsData: any) {
     this.faqsList = FaqsModel.setFaqsList(faqsData.faqItemCollection.items);
     this.links = FaqsModel.setFaqsLink(faqsData.faqItemLinkCollection.items);
+    this.faqsAccQuesList = FaqsModel.setFaqsAccList(faqsData.faqItemAccQuestionsCollection.items);
   }
 
   private static setFaqsList(faqsLists: any[]): faqsListItem[] {
@@ -28,6 +32,18 @@ export class FaqsModel implements faqsContent {
       return {
         question: {AR: faqsList.questionAr, EN: faqsList.questionEn},
         answer: {AR: faqsList.answerAr, EN: faqsList.answerEn},
+        expanded: faqsList.expanded
+      };
+    });
+  }
+
+  private static setFaqsAccList(faqsAccQuesList: any[]): faqsListItem[] {
+    return faqsAccQuesList.map((faqsList) => {
+      return {
+        question: {AR: faqsList.questionAr, EN: faqsList.questionEn},
+        answer: {AR: faqsList.answerAr, EN: faqsList.answerEn},
+        expanded: faqsList.expanded
+
       };
     });
   }
