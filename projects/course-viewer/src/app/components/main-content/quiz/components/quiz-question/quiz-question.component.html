@@ -1,10 +1,14 @@
 <div class="question-container">
   <div class="question-title">{{currentQuestion.title}}</div>
   <div class="question-body">{{currentQuestion.body}}</div>
-  <div class="true-false-answers">
+  <div *ngIf="currentQuestion.type == 'true&false'" class="true-false-answers">
     <mat-radio-group>
       <mat-radio-button value="true">True</mat-radio-button>
       <mat-radio-button value="false">False</mat-radio-button>
     </mat-radio-group>
+  </div>
+
+  <div *ngIf="currentQuestion.type == 'multiple'" class="multiple-answers">
+   <mat-checkbox *ngFor="let answer of currentQuestion.answers">{{answer}}</mat-checkbox>
   </div>
 </div>

@@ -11,13 +11,18 @@ export class QuizComponent implements OnInit {
   @Input() quiz: IStuff;
   currentQuestion;
   currentQuestionIndex;
-  questions = [{id:1, title: 'Question 1', body: 'question 1 body rrrrrrrr', type: 'true&false'}, {id:2, title: 'Question 2', body: 'question 2 body rrrrrrrr'}
-  ,{id:3, title: 'Question 3', body: 'question 3 body rrrrrrrr'}];
+  quizStarted = false;
+  questions = [{id:1, title: 'Question 1', body: 'question 1 body rrrrrrrr', type: 'true&false'}, {id:2, title: 'Question 2', body: 'question 2 body rrrrrrrr', type: 'multiple', answers: ['Answer 1' , 'Answer 2' , 'Answer 2']}
+  ,{id:3, title: 'Question 3', body: 'question 3 body rrrrrrrr', type: 'true&false'}];
   constructor() { }
 
   ngOnInit() {
     this.currentQuestion = this.questions[0];
     this.currentQuestionIndex = 0;
+  }
+
+  startQuiz(){
+    this.quizStarted = true;
   }
 
   getNextQuestion() {

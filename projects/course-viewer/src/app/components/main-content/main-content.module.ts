@@ -6,7 +6,7 @@ import {FlexModule} from "@angular/flex-layout";
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizNavBarComponent } from './quiz/components/quiz-nav-bar/quiz-nav-bar.component';
 import { QuizQuestionComponent } from './quiz/components/quiz-question/quiz-question.component';
-import {MatRadioModule} from "@angular/material";
+import {MatCheckboxModule, MatRadioModule} from "@angular/material";
 
 
 
@@ -18,7 +18,8 @@ import {MatRadioModule} from "@angular/material";
   imports: [
     CommonModule,
     FlexModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCheckboxModule
   ],
 
   entryComponents: [VideoComponent, QuizComponent]
