@@ -6,7 +6,7 @@
   </div>
 
   <div *ngIf="quizStarted" class="quiz-content">
-    <app-quiz-question [questions]="questions" [currentQuestion]="currentQuestion"></app-quiz-question>
+    <app-quiz-question [questions]="questions" [currentQuestion]="currentQuestion" (sendAnswer)="getAnswers()"></app-quiz-question>
     <app-quiz-nav-bar [currentQuestionIndex]="currentQuestionIndex" [numberOfQuestions]="questions.length"
                       (nextClicked)="getNextQuestion()" (previousClicked)="getPreviousQuestion()">
     </app-quiz-nav-bar>

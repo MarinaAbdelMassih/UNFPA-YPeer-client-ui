@@ -12,7 +12,7 @@ export class QuizComponent implements OnInit {
   currentQuestion;
   currentQuestionIndex;
   quizStarted = false;
-  questions = [{id:1, title: 'Question 1', body: 'question 1 body rrrrrrrr', type: 'true&false'}, {id:2, title: 'Question 2', body: 'question 2 body rrrrrrrr', type: 'multiple', answers: ['Answer 1' , 'Answer 2' , 'Answer 2']}
+  questions = [{id:1, title: 'Question 1', body: 'question 1 body rrrrrrrr', type: 'true&false', selectedAnswer: null}, {id:2, title: 'Question 2', body: 'question 2 body rrrrrrrr', type: 'multiple', answers: [{body: 'Answer 1', selected: false}, {body: 'Answer 2', selected: false}, {body: 'Answer 3', selected: false}]}
   ,{id:3, title: 'Question 3', body: 'question 3 body rrrrrrrr', type: 'true&false'}];
   constructor() { }
 
@@ -23,6 +23,10 @@ export class QuizComponent implements OnInit {
 
   startQuiz(){
     this.quizStarted = true;
+  }
+
+  getAnswers() {
+    console.log(this.questions)
   }
 
   getNextQuestion() {
