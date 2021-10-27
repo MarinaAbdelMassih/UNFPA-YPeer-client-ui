@@ -18,6 +18,7 @@ import {CommonModule} from "@angular/common";
 import { SessionItemComponent } from './components/curriculum-side-nav/session-item/session-item.component';
 import { StuffItemComponent } from './components/curriculum-side-nav/stuff-item/stuff-item.component';
 import {MainContentModule} from "./components/main-content/main-content.module";
+import { ResultPageComponent } from './components/result-page/result-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MainContentModule} from "./components/main-content/main-content.module";
     CurriculumSideNavComponent,
     SectionItemComponent,
     SessionItemComponent,
-    StuffItemComponent
+    StuffItemComponent,
+    ResultPageComponent
   ],
   imports: [
     CourseViewerRoutingModule,
