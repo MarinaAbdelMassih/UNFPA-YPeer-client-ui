@@ -25,4 +25,8 @@ export class QuizNavBarComponent implements OnInit {
     this.previousClicked.emit();
   }
 
+  FinishQuiz() {
+
+  }
+
 }
