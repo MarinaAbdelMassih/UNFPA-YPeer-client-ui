@@ -1,6 +1,7 @@
 .navbar {
   background-color: white !important;
 }
+
 .nav-link {
   font-size: 15px;
   color: #2e2e2e !important;
@@ -20,6 +21,7 @@
 .lang-link:hover {
   border: none !important;
 }
+
 .language-button {
   font-size: 12px;
   font-weight: bold;
@@ -30,6 +32,21 @@
   @media(max-width: 768px) {
     border-left: 0;
     padding-left: 0;
+  }
+
+}
+
+.user {
+  width: 108px;
+  height: 37px;
+  background-color: #673bb8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    color: #FFFFFF;
+    margin-bottom: 0;
   }
 }
 
@@ -44,11 +61,12 @@
     font-size: 14px;
     font-family: 'DroidKufiBold', sans-serif;
   }
+
   .dropdown-menu {
     text-align: right;
   }
 }
 
-.nav-item:hover>.dropdown-menu {
+.nav-item:hover > .dropdown-menu {
   display: block;
 }
