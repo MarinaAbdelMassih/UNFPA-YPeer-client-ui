@@ -8,19 +8,23 @@ import {SignUpService} from '../../../../../../../../src/app/shared/services/sig
 @Component({
   selector: 'app-sign-up-form',
   templateUrl: './sign-up-form.component.html',
-  styleUrls: ['./sign-up-form.component.scss']
+  styleUrls: ['./sign-up-form.component.scss'],
 })
 export class SignUpFormComponent implements OnInit, OnDestroy {
   signUpForm: FormGroup;
   isArabic: boolean;
   subscription: Subscription;
-  gender = ['male', 'female'];
-  status = ['single', 'married'];
-  education = ['primary', 'secondary'];
-  governorate = ['cairo', 'giza'];
-  days = [1, 2, 3, 4, 5];
-  months = ['jan', 'feb', 'mar'];
-  years = [2020, 2021];
+  // gender = ['male', 'female'];
+  gender: any;
+  // status = ['single', 'married'];
+  status: any;
+  // education = ['primary', 'secondary'];
+  education: any;
+  // governorate = ['cairo', 'giza'];
+  governorate: any;
+  // days = [1, 2, 3, 4, 5];
+  // months = ['jan', 'feb', 'mar'];
+  // years = [2020, 2021];
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   addUser: any;
 
@@ -30,15 +34,16 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
       password: new FormControl('', [Validators.required]),
+      birthDate: new FormControl('', Validators.required),
       gender: new FormControl('', Validators.required),
       maritalStatus: new FormControl('', Validators.required),
       educationalLevelId: new FormControl('', Validators.required),
       lastName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       phone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
       rePassword: new FormControl('', Validators.required),
-      days: new FormControl('', Validators.required),
-      months: new FormControl('', Validators.required),
-      years: new FormControl('', Validators.required),
+      // days: new FormControl('', Validators.required),
+      // months: new FormControl('', Validators.required),
+      // years: new FormControl('', Validators.required),
       governorateId: new FormControl('', Validators.required),
       occupation: new FormControl('', [Validators.required, Validators.maxLength(20)]),
     }, {
@@ -48,6 +53,23 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.checkLanguage();
+    this.signUpService.getGenders().then(data => {
+      this.gender = data;
+      console.log(this.gender);
+    });
+    this.signUpService.getMaritalStatus().then(data => {
+      this.status = data;
+      console.log(this.status);
+    });
+    this.signUpService.getEducationalLevels().then(data => {
+      this.education = data;
+      console.log(this.education);
+    });
+    this.signUpService.getGovernorates().then(data => {
+      this.governorate = data;
+      console.log(this.governorate);
+    });
+
   }
 
   submitSignUpForm() {
@@ -62,7 +84,8 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       educationalLevelId: this.signUpForm.controls.educationalLevelId.value,
       lastName: this.signUpForm.controls.lastName.value,
       phone: this.signUpForm.controls.phone.value,
-      birthDate: '1990-04-22',
+      birthDate: this.signUpForm.controls.birthDate.value.toLocaleDateString(),
+      // birthDate: '2020-2-10',
       governorateId: this.signUpForm.controls.governorateId.value,
       occupation: this.signUpForm.controls.occupation.value,
       authType: 'ALMENTOR',
@@ -79,7 +102,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   }
 
 
-   MustMatch(controlName: string, matchingControlName: string) {
+  MustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];
       const matchingControl = formGroup.controls[matchingControlName];
@@ -88,12 +111,14 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
         return;
       }
       if (control.value !== matchingControl.value) {
-        matchingControl.setErrors({ MustMatch: true });
+        matchingControl.setErrors({MustMatch: true});
       } else {
         matchingControl.setErrors(null);
       }
     };
   }
+
+
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();

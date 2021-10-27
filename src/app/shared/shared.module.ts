@@ -44,14 +44,14 @@ import {RouterModule} from "@angular/router";
     MightLikeItemComponent,
     CourseCardComponent,
     InstructorCardComponent,
-    SafePipe
+    SafePipe,
   ],
   imports: [
     CommonModule,
     MatExpansionModule,
     MatIconModule,
     MatListModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class SharedModule { }

@@ -7,6 +7,8 @@ import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.comp
 import {MatInputModule, MatSelectModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../../../../../../src/app/shared/shared.module';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 @NgModule({
@@ -17,7 +19,10 @@ import {SharedModule} from '../../../../../../src/app/shared/shared.module';
     MatInputModule,
     ReactiveFormsModule,
     MatSelectModule,
-    SharedModule
+    SharedModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+
   ]
 })
 export class SignUpModule { }

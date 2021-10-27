@@ -60,23 +60,29 @@
             Passwords must match.
           </mat-error>
           <p  [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الولادة'}"></p>
-          <div class="d-flex justify-content-between">
-          <mat-form-field appearance="outline" class="birthday-form">
-            <mat-select  [placeholder]="isArabic ? 'اليوم ' : 'days'"  formControlName="days">
-              <mat-option *ngFor="let item of days ;" [value]="item">{{item}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-            <mat-form-field appearance="outline" class="birthday-form">
-              <mat-select  [placeholder]="isArabic ? 'الشهر ' : 'months'"  formControlName="months">
-                <mat-option *ngFor="let item of months ;" [value]="item">{{item}}</mat-option>
-              </mat-select>
+            <mat-form-field  appearance="outline">
+              <input matInput [matDatepicker]="basicDatepicker" formControlName="birthDate">
+              <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
+              <mat-datepicker  #basicDatepicker></mat-datepicker>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="birthday-form">
-              <mat-select [placeholder]="isArabic ? 'السنه ' : 'years'" formControlName="years">
-                <mat-option *ngFor="let item of years ;" [value]="item">{{item}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
+
+          <!--          <div class="d-flex justify-content-between">-->
+<!--          <mat-form-field appearance="outline" class="birthday-form">-->
+<!--            <mat-select  [placeholder]="isArabic ? 'اليوم ' : 'days'"  formControlName="days">-->
+<!--              <mat-option *ngFor="let item of days ;" [value]="item">{{item}}</mat-option>-->
+<!--            </mat-select>-->
+<!--          </mat-form-field>-->
+<!--            <mat-form-field appearance="outline" class="birthday-form">-->
+<!--              <mat-select  [placeholder]="isArabic ? 'الشهر ' : 'months'"  formControlName="months">-->
+<!--                <mat-option *ngFor="let item of months ;" [value]="item">{{item}}</mat-option>-->
+<!--              </mat-select>-->
+<!--            </mat-form-field>-->
+<!--            <mat-form-field appearance="outline" class="birthday-form">-->
+<!--              <mat-select [placeholder]="isArabic ? 'السنه ' : 'years'" formControlName="years">-->
+<!--                <mat-option *ngFor="let item of years ;" [value]="item">{{item}}</mat-option>-->
+<!--              </mat-select>-->
+<!--            </mat-form-field>-->
+<!--          </div>-->
           <p  [translateLocal]="{EN: 'Governorate', AR: 'محافظة '}"></p>
           <mat-form-field appearance="outline">
             <mat-select [placeholder]="isArabic ? 'محافظة ' : 'governorate'"  formControlName="governorateId">
@@ -91,7 +97,7 @@
         </div>
         <p [translateLocal]="{EN: '** We have limited seats; your application would be under assessment. We will notify you once your account is approved.', AR: '** مقاعدنا محدودة. سيكون طلبك قيد التقييم. سنقوم بإخطارك بمجرد الموافقة على حسابك. '}" class="note"></p>
         <div class="d-flex justify-content-center ">
-          <button  [disabled]="!signUpForm.valid" (click)="submitSignUpForm()" [translateLocal]="{EN: ' Submit', AR: 'إرسال '}"></button>
+          <button [disabled]="!signUpForm.valid"   [ngClass]="{'disabled':!signUpForm.valid == true}"  (click)="submitSignUpForm()" [translateLocal]="{EN: ' Submit', AR: 'إرسال '}"></button>
         </div>
         <div class="d-flex justify-content-center align-items-center">
           <p class="no-account-text" [translateLocal]="{EN: 'Already have an account?', AR: 'ليس لديك حساب؟'}"></p>
