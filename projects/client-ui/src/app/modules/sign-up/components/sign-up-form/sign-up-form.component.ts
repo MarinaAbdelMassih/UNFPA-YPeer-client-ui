@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {IUserData} from "../../../../../../../../src/app/shared/models/user-data.interface";
 import {SignUpService} from '../../../../../../../../src/app/shared/services/sign-up.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up-form',
@@ -29,7 +30,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   addUser: any;
 
 
-  constructor(private fb: FormBuilder, private languageService: LanguageService, private signUpService: SignUpService) {
+  constructor(private fb: FormBuilder, private languageService: LanguageService, private signUpService: SignUpService, private router: Router) {
     this.signUpForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
@@ -92,6 +93,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
     };
     this.signUpService.signUp(this.addUser).then(data => {
       console.log('signUp', data);
+      this.router.navigate(['/welcome']);
     });
   }
 

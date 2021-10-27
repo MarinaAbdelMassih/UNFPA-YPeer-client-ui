@@ -61,7 +61,7 @@
           </mat-error>
           <p  [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الولادة'}"></p>
             <mat-form-field  appearance="outline">
-              <input matInput [matDatepicker]="basicDatepicker" formControlName="birthDate">
+              <input matInput [matDatepicker]="basicDatepicker" formControlName="birthDate"  [placeholder]="isArabic ? 'ادخل تاريخ الميلاد ' : 'enter your birthday'">
               <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
               <mat-datepicker  #basicDatepicker></mat-datepicker>
             </mat-form-field>
