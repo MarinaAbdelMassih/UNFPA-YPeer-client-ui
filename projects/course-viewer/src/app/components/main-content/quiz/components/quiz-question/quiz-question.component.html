@@ -1,10 +1,16 @@
 <div class="question-container">
-  <div class="question-title">{{currentQuestion.title}}</div>
+  <div class="question-title">
+    <span [translateLocal]="{EN: 'Question', AR: 'سؤال'}"></span> {{currentQuestionIndex + 1}}
+   </div>
   <div class="question-body">{{currentQuestion.body}}</div>
   <div *ngIf="currentQuestion.type == 'true&false'" class="true-false-answers">
     <mat-radio-group [value]="currentQuestion.selectedAnswer" >
-      <mat-radio-button (click)="sendAnswers('true')" value="true">True</mat-radio-button>
-      <mat-radio-button (click)="sendAnswers('false')" value="false">False</mat-radio-button>
+      <mat-radio-button (click)="sendAnswers('true')" value="true">
+        <span [translateLocal]="{EN: 'True', AR: 'صح'}"></span>
+      </mat-radio-button>
+      <mat-radio-button (click)="sendAnswers('false')" value="false">
+        <span [translateLocal]="{EN: 'False', AR: 'خطأ'}"></span>
+      </mat-radio-button>
     </mat-radio-group>
   </div>
 

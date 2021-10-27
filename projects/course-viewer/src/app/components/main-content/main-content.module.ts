@@ -7,6 +7,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { QuizNavBarComponent } from './quiz/components/quiz-nav-bar/quiz-nav-bar.component';
 import { QuizQuestionComponent } from './quiz/components/quiz-question/quiz-question.component';
 import {MatCheckboxModule, MatRadioModule} from "@angular/material";
+import {SharedModule} from "../../../../../../src/app/shared/shared.module";
 
 
 
@@ -19,7 +20,8 @@ import {MatCheckboxModule, MatRadioModule} from "@angular/material";
     CommonModule,
     FlexModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    SharedModule
   ],
 
   entryComponents: [VideoComponent, QuizComponent]

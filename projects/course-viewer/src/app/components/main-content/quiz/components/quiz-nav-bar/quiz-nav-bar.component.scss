@@ -61,3 +61,16 @@
     }
   }
 }
+
+[dir = rtl] {
+  .nav-container {
+    .buttons-container {
+      button {
+        &:first-of-type {
+          margin-right: auto;
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}

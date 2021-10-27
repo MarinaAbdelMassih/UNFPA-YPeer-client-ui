@@ -1,12 +1,16 @@
 <div class="quiz-page">
   <div *ngIf="!quizStarted" class="start-page">
-    <div class="quiz-name">Introductory Course Assessment</div>
-    <div class="questions-num">10 Questions</div>
-    <button class="ypeer-btn-purple start-quiz-btn" (click)="startQuiz()">Start Quiz</button>
+    <div class="quiz-name" [translateLocal]="{EN: 'Introductory Course Assessment', AR: 'امتحان الكورس التقديمي'}"></div>
+    <div class="questions-num">
+      {{questions.length}}
+      <span [translateLocal]="{EN: 'Questions', AR: 'اسئلة'}"></span>
+    </div>
+    <button class="ypeer-btn-purple start-quiz-btn" [translateLocal]="{EN: 'Start Quiz', AR: 'ابدأ الامتحان'}" (click)="startQuiz()"></button>
   </div>
 
   <div *ngIf="quizStarted" class="quiz-content">
-    <app-quiz-question [questions]="questions" [currentQuestion]="currentQuestion" (sendAnswer)="getAnswers()"></app-quiz-question>
+    <app-quiz-question [questions]="questions" [currentQuestion]="currentQuestion" [currentQuestionIndex]="currentQuestionIndex"
+                       (sendAnswer)="getAnswers()"></app-quiz-question>
     <app-quiz-nav-bar [currentQuestionIndex]="currentQuestionIndex" [numberOfQuestions]="questions.length"
                       (nextClicked)="getNextQuestion()" (previousClicked)="getPreviousQuestion()">
     </app-quiz-nav-bar>

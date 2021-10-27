@@ -1,9 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-quiz-nav-bar',
   templateUrl: './quiz-nav-bar.component.html',
-  styleUrls: ['./quiz-nav-bar.component.scss']
+  styleUrls: ['./quiz-nav-bar.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class QuizNavBarComponent implements OnInit {
 

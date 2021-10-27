@@ -1,7 +1,9 @@
 <div class="nav-container">
   <div class="questions-num">Question 2 of 10</div>
   <div class="buttons-container">
-    <button [disabled]="currentQuestionIndex == 0" class="ypeer-btn ypeer-btn-purple" (click)="previousButtonClicked()">Previous</button>
-    <button [disabled]="currentQuestionIndex == numberOfQuestions-1" class="ypeer-btn ypeer-btn-purple" (click)="nextButtonClicked()">Next</button>
+    <button class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'Previous', AR: 'السابق'}"
+            [disabled]="currentQuestionIndex == 0" (click)="previousButtonClicked()"></button>
+    <button class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'Next', AR: 'التالي'}"
+            [disabled]="currentQuestionIndex == numberOfQuestions-1" (click)="nextButtonClicked()"></button>
   </div>
 </div>
