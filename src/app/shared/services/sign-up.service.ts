@@ -29,9 +29,9 @@ export class SignUpService {
 
   getGovernorates(): Promise<any> {
     return this.customHttpClient.sendBackendRequest({
-      endpoint: 'auth/Governorates',
+      endpoint: 'auth/governorates',
       sender: 'Governorates',
-      receiver: 'Governorates',
+      receiver: 'governorates',
       body: {},
     });
   }

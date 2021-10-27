@@ -5,14 +5,15 @@ export interface IUserData {
   firstName: string;
   lastName: string;
   birthDate: string;
-  gender: string;
-  maritalStatus: string;
+  genderId: number;
+  maritalStatusId: number;
   governorateId: number;
   phone: string;
   educationalLevelId: number;
   occupation: string;
   authType: string;
 }
+
 
 
 
