@@ -23,7 +23,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.isChecked = localStorage.getItem('remember-me') == 'true';
+    this.isChecked = localStorage.getItem('remember-me') == 'false';
     this.signInForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
