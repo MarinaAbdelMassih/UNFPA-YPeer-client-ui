@@ -95,11 +95,17 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       authType: 'ALMENTOR',
     };
     this.signUpService.signUp(this.addUser).then((response: any) => {
-      console.log('signUp', response.data);
-      localStorage.setItem('username', response.data.firstName);
-      localStorage.setItem('uuid', response.data.uuid);
-      this.router.navigate(['/welcome']);
-    });
+        console.log('signUp', response.data);
+        if (response.success) {
+          localStorage.setItem('username', response.data.firstName);
+          localStorage.setItem('uuid', response.data.uuid);
+          this.router.navigate(['/welcome']);
+        }
+      },
+      (error) => {
+        window.alert(error);
+      }
+    );
   }
 
   checkLanguage(): void {

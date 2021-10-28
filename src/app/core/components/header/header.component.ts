@@ -21,7 +21,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.setDirectionBasedOnLanguage();
-    this.loginName = JSON.parse(localStorage.getItem('userData')).username;
+    if (localStorage.getItem('username')) {
+      this.loginName = localStorage.getItem('username');
+    }
   }
 
   setDirectionBasedOnLanguage(): void {
