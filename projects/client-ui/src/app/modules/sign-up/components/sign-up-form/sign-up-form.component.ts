@@ -28,6 +28,8 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   // years = [2020, 2021];
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   addUser: any;
+  birthday;
+  userDataLogin: any;
 
 
   constructor(private fb: FormBuilder, private languageService: LanguageService, private signUpService: SignUpService, private router: Router) {
@@ -75,6 +77,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
 
   submitSignUpForm() {
     console.log('value', this.signUpForm.value);
+    this.birthday = this.signUpForm.controls.birthDate.value.toLocaleDateString();
     this.addUser = {
       username: this.signUpForm.controls.firstName.value + ' ' + this.signUpForm.controls.lastName.value,
       firstName: this.signUpForm.controls.firstName.value,
@@ -85,14 +88,16 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       educationalLevelId: this.signUpForm.controls.educationalLevelId.value,
       lastName: this.signUpForm.controls.lastName.value,
       phone: this.signUpForm.controls.phone.value,
-      // birthDate: this.signUpForm.controls.birthDate.value.toLocaleDateString(),
+      // birthDate: this.birthday,
       birthDate: '2020-02-10',
       governorateId: this.signUpForm.controls.governorateId.value,
       occupation: this.signUpForm.controls.occupation.value,
       authType: 'ALMENTOR',
     };
-    this.signUpService.signUp(this.addUser).then(data => {
+    this.signUpService.signUp(this.addUser).then((data: any) => {
       console.log('signUp', data);
+      localStorage.setItem('username', JSON.stringify(data.username));
+      localStorage.setItem('uuid', JSON.stringify(data.uuid));
       this.router.navigate(['/welcome']);
     });
   }

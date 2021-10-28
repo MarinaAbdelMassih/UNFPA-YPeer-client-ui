@@ -14,11 +14,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   isArabic: boolean = false;
   private languageSubscription: Subscription;
+  loginName: any;
 
-  constructor(private languageService: LanguageService, @Inject(DOCUMENT) private document: Document, private router: Router) { }
+  constructor(private languageService: LanguageService, @Inject(DOCUMENT) private document: Document, private router: Router) {
+  }
 
   ngOnInit() {
     this.setDirectionBasedOnLanguage();
+    this.loginName = JSON.parse(localStorage.getItem('userData')).username;
   }
 
   setDirectionBasedOnLanguage(): void {
@@ -34,7 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
-  changeLang(){
+  changeLang() {
     this.languageService.updateLang(this.isArabic ? 'en' : 'ar');
   }
 
