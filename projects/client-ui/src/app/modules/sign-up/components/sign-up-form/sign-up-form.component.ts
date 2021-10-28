@@ -29,7 +29,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   addUser: any;
   birthday;
-  userDataLogin: any;
+  errorMsg: string;
 
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private signUpService: SignUpService, private router: Router) {
@@ -106,7 +106,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
         }
       },
       (error) => {
-        window.alert(error);
+        this.errorMsg = error.message;
       }
     );
   }
