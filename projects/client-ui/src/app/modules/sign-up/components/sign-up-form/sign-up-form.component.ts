@@ -94,10 +94,10 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       occupation: this.signUpForm.controls.occupation.value,
       authType: 'ALMENTOR',
     };
-    this.signUpService.signUp(this.addUser).then((data: any) => {
-      console.log('signUp', data);
-      localStorage.setItem('username', JSON.stringify(data.username));
-      localStorage.setItem('uuid', JSON.stringify(data.uuid));
+    this.signUpService.signUp(this.addUser).then((response: any) => {
+      console.log('signUp', response.data);
+      localStorage.setItem('username', response.data.firstName);
+      localStorage.setItem('uuid', response.data.uuid);
       this.router.navigate(['/welcome']);
     });
   }
