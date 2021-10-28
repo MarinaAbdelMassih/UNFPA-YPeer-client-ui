@@ -26,11 +26,6 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const userData = JSON.parse(localStorage.getItem('userData'));
     console.log(userData);
-    if (localStorage.getItem('remember-me') == 'true') {
-      localStorage.setItem('refresh-token', userData.data.refresh_token);
-    } else {
-      localStorage.setItem('user-token', userData.data.access_token);
-    }
     this.isChecked = localStorage.getItem('remember-me') == 'false';
     this.signInForm = this.fb.group({
       username: ['', [Validators.required]],
@@ -50,6 +45,11 @@ export class SignInFormComponent implements OnInit, OnDestroy {
     this.signInService.signIn(this.signInUserData).then(signInData => {
       console.log('signin', signInData);
       this.userLogin = localStorage.setItem('userData', JSON.stringify(signInData));
+      // if (localStorage.getItem('remember-me') == 'true') {
+      //   localStorage.setItem('refresh-token', signInData.refreshToken);
+      // } else {
+      //   localStorage.setItem('user-token', signInData.accessToken);
+      // }
     });
   }
 
