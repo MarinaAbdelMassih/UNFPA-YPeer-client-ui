@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {Subscription} from 'rxjs';
 import {SignInService} from '../../../../../../../../src/app/shared/services/sign-in.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -20,7 +21,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   userLogin: any;
 
 
-  constructor(private fb: FormBuilder, private languageService: LanguageService, private signInService: SignInService) {
+  constructor(private fb: FormBuilder, private languageService: LanguageService, private signInService: SignInService, private router: Router) {
   }
 
   ngOnInit() {
@@ -42,14 +43,13 @@ export class SignInFormComponent implements OnInit, OnDestroy {
       authType: 'ALMENTOR',
     };
 
-    this.signInService.signIn(this.signInUserData).then(signInData => {
-      console.log('signin', signInData);
-      this.userLogin = localStorage.setItem('userData', JSON.stringify(signInData));
-      // if (localStorage.getItem('remember-me') == 'true') {
-      //   localStorage.setItem('refresh-token', signInData.refreshToken);
-      // } else {
-      //   localStorage.setItem('user-token', signInData.accessToken);
-      // }
+    this.signInService.signIn(this.signInUserData).then((signInData: any) => {
+      console.log('signin', signInData.data);
+      if (localStorage.getItem('remember-me') == 'true') {
+        localStorage.setItem('refresh-token', signInData.data.refreshToken);
+      } else {
+        localStorage.setItem('user-token', signInData.data.accessToken);
+      }
     });
   }
 
@@ -61,7 +61,9 @@ export class SignInFormComponent implements OnInit, OnDestroy {
     }
   }
 
-  checkLanguage(): void {
+  checkLanguage()
+    :
+    void {
     this.subscription = this.languageService.isArabic.subscribe((isArabic: boolean) => {
       this.isArabic = isArabic;
     });
