@@ -86,7 +86,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       lastName: this.signUpForm.controls.lastName.value,
       phone: this.signUpForm.controls.phone.value,
       // birthDate: this.signUpForm.controls.birthDate.value.toLocaleDateString(),
-      birthDate: '2020-2-10',
+      birthDate: '2020-02-10',
       governorateId: this.signUpForm.controls.governorateId.value,
       occupation: this.signUpForm.controls.occupation.value,
       authType: 'ALMENTOR',
