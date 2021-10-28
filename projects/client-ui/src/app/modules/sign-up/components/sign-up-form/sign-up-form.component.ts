@@ -2,9 +2,9 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
-import {IUserData} from "../../../../../../../../src/app/shared/models/user-data.interface";
 import {SignUpService} from '../../../../../../../../src/app/shared/services/sign-up.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -32,7 +32,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   userDataLogin: any;
 
 
-  constructor(private fb: FormBuilder, private languageService: LanguageService, private signUpService: SignUpService, private router: Router) {
+  constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private signUpService: SignUpService, private router: Router) {
     this.signUpForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
@@ -75,9 +75,12 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
 
   }
 
+
   submitSignUpForm() {
     console.log('value', this.signUpForm.value);
     this.birthday = this.signUpForm.controls.birthDate.value.toLocaleDateString();
+    const latestDate = this.datepipe.transform(this.birthday, 'yyyy-MM-dd');
+    console.log(latestDate);
     this.addUser = {
       username: this.signUpForm.controls.firstName.value + ' ' + this.signUpForm.controls.lastName.value,
       firstName: this.signUpForm.controls.firstName.value,
@@ -89,7 +92,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       lastName: this.signUpForm.controls.lastName.value,
       phone: this.signUpForm.controls.phone.value,
       // birthDate: this.birthday,
-      birthDate: '2020-02-10',
+      birthDate: latestDate,
       governorateId: this.signUpForm.controls.governorateId.value,
       occupation: this.signUpForm.controls.occupation.value,
       authType: 'ALMENTOR',
