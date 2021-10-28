@@ -34,7 +34,7 @@
 <!--    <mat-checkbox class="example-margin mb-0" id="remember_me"  [checked]="isChecked" (change)="toggleEditable($event)" > <p class="check-box-text" [translateLocal]="{EN: 'Remember me', AR: 'تذكرنى'}"></p></mat-checkbox>-->
     <br>
     <div class="d-flex justify-content-center ">
-      <button [disabled]="!signInForm.valid" [translateLocal]="{EN: 'SIGN IN', AR: 'تسجيل الدخول'}"></button>
+      <button [disabled]="!signInForm.valid" [ngClass]="{'disabled':!signInForm.valid == true}"  [translateLocal]="{EN: 'SIGN IN', AR: 'تسجيل الدخول'}"></button>
     </div>
     <a class="forgot-password-link" [translateLocal]="{EN: 'Forgot password!', AR: 'هل نسيت كلمة السر!'}"></a>
     <div class="d-flex justify-content-center">

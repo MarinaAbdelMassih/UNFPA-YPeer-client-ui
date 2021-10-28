@@ -37,6 +37,10 @@
     border: 1px solid transparent;
   }
 
+  .disabled {
+    background: #5a5a5a;
+  }
+
   .forgot-password-link {
     font-size: 14px;
     line-height: 1.14;
@@ -93,6 +97,7 @@
     border: solid 1px #bebebe;
     background-color: #fff;
   }
+
   label {
     padding: 0 8px;
   }

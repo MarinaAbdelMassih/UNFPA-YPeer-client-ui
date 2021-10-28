@@ -17,12 +17,20 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   signInUserData: any;
   isChecked: boolean;
+  userLogin: any;
 
 
   constructor(private fb: FormBuilder, private languageService: LanguageService, private signInService: SignInService) {
   }
 
   ngOnInit() {
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    console.log(userData);
+    if (localStorage.getItem('remember-me') == 'true') {
+      localStorage.setItem('refresh-token', userData.data.refresh_token);
+    } else {
+      localStorage.setItem('user-token', userData.data.access_token);
+    }
     this.isChecked = localStorage.getItem('remember-me') == 'false';
     this.signInForm = this.fb.group({
       username: ['', [Validators.required]],
@@ -38,17 +46,21 @@ export class SignInFormComponent implements OnInit, OnDestroy {
       password: this.signInForm.controls.password.value,
       authType: 'ALMENTOR',
     };
-    this.signInService.signIn(this.signInUserData).then(data => {
-      console.log('signin', data);
+
+    this.signInService.signIn(this.signInUserData).then(signInData => {
+      console.log('signin', signInData);
+      this.userLogin = localStorage.setItem('userData', JSON.stringify(signInData));
     });
   }
+
   toggleEditable(event) {
-    if ( event.target.checked ) {
+    if (event.target.checked) {
       localStorage.setItem('remember-me', 'true');
     } else {
       localStorage.setItem('remember-me', 'false');
     }
   }
+
   checkLanguage(): void {
     this.subscription = this.languageService.isArabic.subscribe((isArabic: boolean) => {
       this.isArabic = isArabic;
