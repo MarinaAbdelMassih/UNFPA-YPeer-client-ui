@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {MyProfileService} from '../../../../../../../../src/app/shared/services/my-profile.service';
 import {IUserInfo} from '../../../../../../../../src/app/shared/models/my-profile.model';
+import {UserService} from "../../../../../../../../src/app/shared/services/user.service";
 
 @Component({
   selector: 'app-user-profile-info',
@@ -24,10 +25,10 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   userInfo: IUserInfo;
   updateDataInfo: any;
-  userId = 3;
+  userId;
   uuid;
 
-  constructor(private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService) {
+  constructor(private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService, private userService: UserService) {
     this.userProfileForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
@@ -45,13 +46,17 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.checkLanguage();
-    this.getUserInfoById();
+    // this.getUserInfoById();
     this.myProfileService.getGenders().then(data => {
       this.gender = data;
     });
     this.myProfileService.getEducationalLevels().then(data => {
       this.education = data;
     });
+    this.userId = localStorage.getItem('id');
+    console.log('id', this.userId);
+    this.uuid = localStorage.getItem('uuid');
+    console.log('uuid', this.uuid);
   }
 
   getUserInfoById() {

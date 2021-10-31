@@ -42,8 +42,9 @@ export class SignInFormComponent implements OnInit, OnDestroy {
       password: this.signInForm.controls.password.value,
       authType: 'ALMENTOR',
     };
-
     this.signInService.signIn(this.signInUserData).then((signInData: any) => {
+        localStorage.setItem('id', signInData.data.userId);
+        localStorage.setItem('uuid', signInData.data.uuid);
         if (signInData.success) {
           console.log('signin', signInData.data);
           if (localStorage.getItem('remember-me') == 'true') {
