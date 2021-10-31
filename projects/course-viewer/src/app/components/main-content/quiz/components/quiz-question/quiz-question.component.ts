@@ -17,8 +17,8 @@ export class QuizQuestionComponent implements OnInit {
   }
 
   sendAnswers(event, answer?){
-    if ( this.currentQuestion.type == 'multiple') {
-      answer.selected = event.checked;
+    if ( this.currentQuestion.type == 'MULTIPLE_CHOICE') {
+      answer.answered = event.checked;
       this.sendAnswer.emit(answer);
     }
     else if (this.currentQuestion.type == 'true&false') {

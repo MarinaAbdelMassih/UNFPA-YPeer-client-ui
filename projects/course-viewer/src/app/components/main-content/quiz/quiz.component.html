@@ -12,7 +12,7 @@
     <app-quiz-question [questions]="questions" [currentQuestion]="currentQuestion" [currentQuestionIndex]="currentQuestionIndex"
                        (sendAnswer)="getAnswers()"></app-quiz-question>
     <app-quiz-nav-bar [currentQuestionIndex]="currentQuestionIndex" [numberOfQuestions]="questions.length"
-                      (nextClicked)="getNextQuestion()" (previousClicked)="getPreviousQuestion()">
+                      (nextClicked)="getNextQuestion()" (previousClicked)="getPreviousQuestion()" (finishQuizClicked)="submitAnswers()">
     </app-quiz-nav-bar>
   </div>
 </div>

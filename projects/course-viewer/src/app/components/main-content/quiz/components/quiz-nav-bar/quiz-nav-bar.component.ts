@@ -10,6 +10,7 @@ export class QuizNavBarComponent implements OnInit {
 
   @Output() nextClicked: EventEmitter<boolean> = new EventEmitter();
   @Output() previousClicked: EventEmitter<boolean> = new EventEmitter();
+  @Output() finishQuizClicked: EventEmitter<boolean> = new EventEmitter();
   @Input() currentQuestionIndex;
   @Input() numberOfQuestions;
   constructor() { }
@@ -26,7 +27,7 @@ export class QuizNavBarComponent implements OnInit {
   }
 
   FinishQuiz() {
-
+    this.finishQuizClicked.emit();
   }
 
 }

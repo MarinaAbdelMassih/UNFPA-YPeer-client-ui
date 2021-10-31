@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IStuff} from "../../../../../../../src/app/shared/models/course-viewer/stuff.model";
+import {QuizService} from "../../../../../../../src/app/shared/services/quiz.service";
 
 @Component({
   selector: 'app-quiz',
@@ -14,13 +15,21 @@ export class QuizComponent implements OnInit {
   quizStarted = false;
   questions = [{id:1, title: 'Question 1', body: 'question 1 body rrrrrrrr', type: 'true&false', selectedAnswer: null}, {id:2, title: 'Question 2', body: 'question 2 body rrrrrrrr', type: 'multiple', answers: [{body: 'Answer 1', selected: false}, {body: 'Answer 2', selected: false}, {body: 'Answer 3', selected: false}]}
   ,{id:3, title: 'Question 3', body: 'question 3 body rrrrrrrr', type: 'true&false'}];
-  constructor() { }
+  constructor(private quizService: QuizService) { }
 
   ngOnInit() {
-    this.currentQuestion = this.questions[0];
-    this.currentQuestionIndex = 0;
+    this.initQuiz();
   }
 
+  initQuiz() {
+    this.quizService.getExamById('quiz', {userId: 1111, examId: this.quiz.id})
+      .then(quiz => {
+        console.log(quiz);
+        this.questions = quiz.questions;
+        this.currentQuestion = this.questions[0];
+        this.currentQuestionIndex = 0;
+      });
+  }
   startQuiz(){
     this.quizStarted = true;
   }
@@ -41,6 +50,15 @@ export class QuizComponent implements OnInit {
       this.currentQuestion = this.questions[this.currentQuestionIndex - 1];
       this.currentQuestionIndex = this.currentQuestionIndex - 1;
     }
+  }
+
+  submitAnswers() {
+    this.quizService.submitAnswers('quiz',{id: this.quiz.id, userId: 1111, questions: this.questions})
+      .then(data => {
+        console.log(data);
+        this.quizService.examIsFinished.next(true);
+        this.quizService.userScore.next(data.result.percentage)
+      })
   }
 
 }
