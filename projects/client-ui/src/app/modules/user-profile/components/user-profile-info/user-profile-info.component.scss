@@ -61,21 +61,21 @@
         transform: translateY(14%);
       }
 
-      .birthday-container {
-        display: flex;
-        justify-content: space-between;
-        width: 579px;
-        @media(max-width: 991px) {
-          width: 100%;
-        }
+      //.birthday-container {
+      //  display: flex;
+      //  justify-content: space-between;
+      //  //width: 579px;
+      //  @media(max-width: 991px) {
+      //    width: 100%;
+      //  }
 
-        .birthday-form {
-          width: 183px;
-          @media(max-width: 991px) {
-            width: 30%;
-          }
-        }
-      }
+        //.birthday-form {
+        //  width: 183px;
+        //  @media(max-width: 991px) {
+        //    width: 30%;
+        //  }
+        //}
+      //}
 
       mat-form-field {
         background-color: #FFFFFF;
@@ -94,20 +94,27 @@
         color: #2e2e2e;
       }
 
-      button {
-        width: 181px;
-        height: 46px;
-        background-color: #5a3f99;
-        font-family: 'TradeGothic', sans-serif;
-        font-size: 16px;
-        text-align: center;
-        color: #fff;
+      .btn-container {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid transparent;
-        margin-bottom: 78px;
-        margin-top: 26px;
+        justify-content: flex-end;
+        @media (max-width: 991px) {
+          justify-content: center;
+        }
+        button {
+          width: 181px;
+          height: 46px;
+          background-color: #5a3f99;
+          font-family: 'TradeGothic', sans-serif;
+          font-size: 16px;
+          text-align: center;
+          color: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid transparent;
+          margin-bottom: 78px;
+          margin-top: 26px;
+        }
       }
     }
   }

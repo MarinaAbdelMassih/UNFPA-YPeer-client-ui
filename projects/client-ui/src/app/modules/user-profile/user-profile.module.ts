@@ -11,7 +11,9 @@ import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import { CourseBarComponent } from './components/course-bar/course-bar.component';
 import { CourseStatusComponent } from './components/course-status/course-status.component';
 import {NgCircleProgressModule} from 'ng-circle-progress';
-import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
         MatInputModule,
         MatSelectModule,
         NgCircleProgressModule,
-        MatDatepickerModule
+      MatNativeDateModule,
+      MatDatepickerModule,
     ]
 })
 export class UserProfileModule { }

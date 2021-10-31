@@ -1,7 +1,7 @@
 <div class="user-profile-info">
   <div class="img-container">
     <img src="assets/images/profile-info.png" alt="profile-info">
-    <p>Upload Your Photo</p>
+    <p [translateLocal]="{EN: 'Upload Your Photo', AR: 'رفع صورتك '}"></p>
   </div>
   <form [formGroup]="userProfileForm">
     <div class="form-container d-flex justify-content-between">
@@ -21,7 +21,7 @@
         <mat-form-field appearance="outline">
           <input matInput [matDatepicker]="basicDatepicker"
                  formControlName="birthDate"
-                 [placeholder]="isArabic ? 'ادخل تاريخ الميلاد ' : 'enter your birthday'">
+                 [placeholder]="isArabic ? 'ادخل تاريخ الميلاد ' : 'your birthday'">
           <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
           <mat-datepicker #basicDatepicker></mat-datepicker>
         </mat-form-field>
@@ -71,7 +71,7 @@
           <input matInput type="text" name="occupation" class="occupation" formControlName="occupation"
                  [placeholder]="isArabic ? 'اكتب في مهنتك ' : 'Type in your occupation'">
         </mat-form-field>
-        <div class="d-flex justify-content-end ">
+        <div class="btn-container">
           <button [disabled]="!userProfileForm.valid"
                   (click)="submitUserProfileForm()"
                   [translateLocal]="{EN: ' Save', AR: 'حفظ '}"></button>
