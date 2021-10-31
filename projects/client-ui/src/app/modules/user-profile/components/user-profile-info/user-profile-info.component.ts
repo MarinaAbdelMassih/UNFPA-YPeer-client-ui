@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
+import {MyProfileService} from '../../../../../../../../src/app/shared/services/my-profile.service';
+import {IUserInfo} from "../../../../../../../../src/app/shared/models/my-profile.model";
 
 @Component({
   selector: 'app-user-profile-info',
@@ -18,9 +20,11 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   months = ['jan', 'feb', 'mar'];
   years = [2020, 2021];
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
+  userInfo: IUserInfo;
 
-  constructor(private fb: FormBuilder, private languageService: LanguageService) {
+  constructor(private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService) {
   }
+
   // id: number;
   // uuid: string;
   // username: string;
@@ -39,13 +43,26 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
       educationalLevelId: new FormControl('', Validators.required),
       lastName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       phone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
-      genderId:  new FormControl('', Validators.required),
+      genderId: new FormControl('', Validators.required),
       occupation: new FormControl('', [Validators.required, Validators.maxLength(20)]),
     });
   }
 
   submitUserProfileForm() {
     console.log('value', this.userProfileForm.value);
+    this.myProfileService.getUserInfo(3).then(data => {
+      this.userInfo = data;
+      this.userProfileForm.setValue({
+        firstName: this.userInfo.firstName ,
+        email: this.userInfo.email,
+        birthDate: this.userInfo.birthDate,
+        educationalLevelId: this.userInfo.educationalLevelId,
+        lastName: this.userInfo.lastName,
+        phone: this.userInfo.phone,
+        genderId: this.userInfo.genderId,
+        occupation: this.userInfo.occupation
+      });
+    });
   }
 
   checkLanguage(): void {

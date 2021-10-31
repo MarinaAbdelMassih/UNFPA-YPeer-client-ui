@@ -5,7 +5,7 @@ import {IUserInfo} from '../models/my-profile.model';
 @Injectable({
   providedIn: 'root'
 })
-export class SignUpService {
+export class MyProfileService {
   constructor(private customHttpClient: CustomHttpClientService) {
   }
 
@@ -17,6 +17,15 @@ export class SignUpService {
       body: {
         id: userId
       },
+    });
+  }
+
+  updateUserInfo(updateUser: IUserInfo): Promise<IUserInfo> {
+    return this.customHttpClient.sendBackendRequest({
+      endpoint: 'auth/updateUserInfo',
+      sender: 'updateUserInfo',
+      receiver: 'updateUserInfo',
+      body: updateUser
     });
   }
 }
