@@ -9,9 +9,9 @@
           <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
                 *ngIf="signInForm.get('username').touched && signInForm.get('username').errors?.required">
           </span>
-<!--      <div class="text-danger" [translateLocal]="{AR: 'البريد الالكتروني  خاطئ',EN: 'Invalid Email'}"-->
-<!--           *ngIf="signInForm.get('email').touched && signInForm.get('email').errors?.email">-->
-<!--      </div>-->
+      <!--      <div class="text-danger" [translateLocal]="{AR: 'البريد الالكتروني  خاطئ',EN: 'Invalid Email'}"-->
+      <!--           *ngIf="signInForm.get('email').touched && signInForm.get('email').errors?.email">-->
+      <!--      </div>-->
     </div>
 
     <div class="input-container">
@@ -31,10 +31,11 @@
       <label [translateLocal]="{EN: 'Remember me', AR: 'تذكرنى'}" class="form-check-label" for="remember_me">
       </label>
     </div>
-<!--    <mat-checkbox class="example-margin mb-0" id="remember_me"  [checked]="isChecked" (change)="toggleEditable($event)" > <p class="check-box-text" [translateLocal]="{EN: 'Remember me', AR: 'تذكرنى'}"></p></mat-checkbox>-->
+    <!--    <mat-checkbox class="example-margin mb-0" id="remember_me"  [checked]="isChecked" (change)="toggleEditable($event)" > <p class="check-box-text" [translateLocal]="{EN: 'Remember me', AR: 'تذكرنى'}"></p></mat-checkbox>-->
     <br>
     <div class="d-flex justify-content-center ">
-      <button [disabled]="!signInForm.valid" [ngClass]="{'disabled':!signInForm.valid == true}"  [translateLocal]="{EN: 'SIGN IN', AR: 'تسجيل الدخول'}"></button>
+      <button [disabled]="!signInForm.valid" [ngClass]="{'disabled':!signInForm.valid == true}"
+              [translateLocal]="{EN: 'SIGN IN', AR: 'تسجيل الدخول'}"></button>
     </div>
     <a class="forgot-password-link" [translateLocal]="{EN: 'Forgot password!', AR: 'هل نسيت كلمة السر!'}"></a>
     <div class="d-flex justify-content-center">
@@ -42,7 +43,7 @@
       <a class="sign-up-link" [translateLocal]="{EN: 'Sign Up', AR: 'اشتراك'}"></a>
     </div>
   </form>
-  <div>
-    <p class="alert alert-danger" *ngIf="errorMsg">{{errorMsg}}</p>
-  </div>
+</div>
+<div *ngIf="errorMsg">
+  <p class="alert alert-danger my-2">{{errorMsg}}</p>
 </div>
