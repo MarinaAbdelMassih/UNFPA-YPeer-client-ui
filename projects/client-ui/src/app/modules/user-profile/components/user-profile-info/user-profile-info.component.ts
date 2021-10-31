@@ -3,7 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {MyProfileService} from '../../../../../../../../src/app/shared/services/my-profile.service';
-import {IUserInfo} from "../../../../../../../../src/app/shared/models/my-profile.model";
+import {IUserInfo} from '../../../../../../../../src/app/shared/models/my-profile.model';
 
 @Component({
   selector: 'app-user-profile-info',
@@ -21,18 +21,11 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   years = [2020, 2021];
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   userInfo: IUserInfo;
+  updateDataInfo: any;
+  userId = 3;
+  uuid;
 
   constructor(private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService) {
-  }
-
-  // id: number;
-  // uuid: string;
-  // username: string;
-  // birthDate: string;
-
-
-  ngOnInit() {
-    this.checkLanguage();
     this.userProfileForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
@@ -48,12 +41,22 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     });
   }
 
-  submitUserProfileForm() {
-    console.log('value', this.userProfileForm.value);
-    this.myProfileService.getUserInfo(3).then(data => {
+  // id: number;
+  // uuid: string;
+  // username: string;
+  // birthDate: string;
+
+
+  ngOnInit() {
+    this.checkLanguage();
+    this.getUserInfoById();
+  }
+
+  getUserInfoById() {
+    this.myProfileService.getUserInfo(this.userId).then(data => {
       this.userInfo = data;
       this.userProfileForm.setValue({
-        firstName: this.userInfo.firstName ,
+        firstName: this.userInfo.firstName,
         email: this.userInfo.email,
         birthDate: this.userInfo.birthDate,
         educationalLevelId: this.userInfo.educationalLevelId,
@@ -65,7 +68,30 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     });
   }
 
-  checkLanguage(): void {
+
+  submitUserProfileForm() {
+    console.log('value', this.userProfileForm.value);
+    this.updateDataInfo = {
+      id: this.userId,
+      uuid: this.uuid,
+      username: this.userProfileForm.controls.firstName.value + ' ' + this.userProfileForm.controls.lastName.value,
+      firstName: this.userProfileForm.controls.firstName.value,
+      email: this.userProfileForm.controls.email.value,
+      birthDate: this.userProfileForm.controls.birthDate.value,
+      educationalLevelId: this.userProfileForm.controls.educationalLevelId.value,
+      lastName: this.userProfileForm.controls.lastName.value,
+      phone: this.userProfileForm.controls.phone.value,
+      genderId: this.userProfileForm.controls.genderId.value,
+      occupation: this.userProfileForm.controls.occupation.value
+    };
+    this.myProfileService.updateUserInfo(this.updateDataInfo).then(data => {
+      console.log(data);
+    });
+  }
+
+  checkLanguage()
+    :
+    void {
     this.subscription = this.languageService.isArabic.subscribe((isArabic: boolean) => {
       this.isArabic = isArabic;
     });
