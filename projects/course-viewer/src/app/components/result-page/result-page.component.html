@@ -1,4 +1,4 @@
-<div class="page-container" *ngIf="userStatus == 'successful'">
+<div class="page-container" *ngIf="score >= 75 && numberOfTrials >= 1">
   <div class="title" [translateLocal]="{EN: 'Congratulations',AR: 'مبروك'}"></div>
   <div class="msg">
     <span [translateLocal]="{EN: 'You have completed the introductory course successfully.\n'+
@@ -8,7 +8,7 @@
   <button class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'View Certificate',AR: 'اظهار الشهادة'}"></button>
 </div>
 
-<div class="page-container" *ngIf="userStatus == 'low-scored'">
+<div class="page-container" *ngIf="score < 75 && numberOfTrials >= 1">
   <img src="assets/images/icons/Path 85.png" alt="">
   <div class="title" [translateLocal]="{EN: 'Sorry!',AR: 'مبروك'}"></div>
   <div class="msg">
@@ -21,7 +21,7 @@
   <button class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'Retake Assessment',AR: 'اظهار الشهادة'}"></button>
 </div>
 
-<div class="page-container" *ngIf="userStatus == 'failed'">
+<div class="page-container" *ngIf="score < 75 && numberOfTrials == 0">
   <img src="assets/images/icons/Path 85.png" alt="">
   <div class="title" [translateLocal]="{EN: 'Sorry!',AR: 'مبروك'}"></div>
   <div class="msg">
