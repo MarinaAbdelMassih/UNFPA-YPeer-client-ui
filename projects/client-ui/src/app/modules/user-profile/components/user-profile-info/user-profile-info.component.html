@@ -25,27 +25,27 @@
           <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
           <mat-datepicker #basicDatepicker></mat-datepicker>
         </mat-form-field>
-<!--        <div class="birthday-container">-->
-<!--          <mat-form-field appearance="outline" class="birthday-form">-->
-<!--            <mat-select [placeholder]="isArabic ? 'اليوم ' : 'days'" formControlName="days">-->
-<!--              <mat-option *ngFor="let item of days ;" [value]="item">{{item}}</mat-option>-->
-<!--            </mat-select>-->
-<!--          </mat-form-field>-->
-<!--          <mat-form-field appearance="outline" class="birthday-form">-->
-<!--            <mat-select [placeholder]="isArabic ? 'الشهر ' : 'months'" formControlName="months">-->
-<!--              <mat-option *ngFor="let item of months ;" [value]="item">{{item}}</mat-option>-->
-<!--            </mat-select>-->
-<!--          </mat-form-field>-->
-<!--          <mat-form-field appearance="outline" class="birthday-form">-->
-<!--            <mat-select [placeholder]="isArabic ? 'السنه ' : 'years'" formControlName="years">-->
-<!--              <mat-option *ngFor="let item of years ;" [value]="item">{{item}}</mat-option>-->
-<!--            </mat-select>-->
-<!--          </mat-form-field>-->
-<!--        </div>-->
+        <!--        <div class="birthday-container">-->
+        <!--          <mat-form-field appearance="outline" class="birthday-form">-->
+        <!--            <mat-select [placeholder]="isArabic ? 'اليوم ' : 'days'" formControlName="days">-->
+        <!--              <mat-option *ngFor="let item of days ;" [value]="item">{{item}}</mat-option>-->
+        <!--            </mat-select>-->
+        <!--          </mat-form-field>-->
+        <!--          <mat-form-field appearance="outline" class="birthday-form">-->
+        <!--            <mat-select [placeholder]="isArabic ? 'الشهر ' : 'months'" formControlName="months">-->
+        <!--              <mat-option *ngFor="let item of months ;" [value]="item">{{item}}</mat-option>-->
+        <!--            </mat-select>-->
+        <!--          </mat-form-field>-->
+        <!--          <mat-form-field appearance="outline" class="birthday-form">-->
+        <!--            <mat-select [placeholder]="isArabic ? 'السنه ' : 'years'" formControlName="years">-->
+        <!--              <mat-option *ngFor="let item of years ;" [value]="item">{{item}}</mat-option>-->
+        <!--            </mat-select>-->
+        <!--          </mat-form-field>-->
+        <!--        </div>-->
         <p class="level" [translateLocal]="{EN: 'Education Level', AR: 'مستوى التعليم'}"></p>
         <mat-form-field appearance="outline">
           <mat-select [placeholder]="isArabic ? 'اختار ' : 'select'" formControlName="educationalLevelId">
-            <mat-option *ngFor="let item of education ;" [value]="item">{{item}}</mat-option>
+            <mat-option *ngFor="let item of education ;" [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -63,7 +63,8 @@
         <p class="sex" [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
         <mat-form-field appearance="outline">
           <mat-select [placeholder]="isArabic ? 'جنس' : 'gender'" formControlName="genderId">
-            <mat-option *ngFor="let item of gender ;" [value]="item">{{item}}</mat-option>
+            <mat-option *ngFor="let item of gender ;"
+                        [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
           </mat-select>
         </mat-form-field>
         <p class="occupation" [translateLocal]="{EN: 'occupation', AR: 'مهنة '}">Occupation</p>

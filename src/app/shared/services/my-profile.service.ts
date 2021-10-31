@@ -28,4 +28,23 @@ export class MyProfileService {
       body: updateUser
     });
   }
+
+  getEducationalLevels(): Promise<any> {
+    return this.customHttpClient.sendBackendRequest({
+      endpoint: 'auth/educationalLevels',
+      sender: 'educationalLevels',
+      receiver: 'educationalLevels',
+      body: {},
+    });
+  }
+
+
+  getGenders(): Promise<any> {
+    return this.customHttpClient.sendBackendRequest({
+      endpoint: 'auth/genders',
+      sender: 'genders',
+      receiver: 'genders',
+      body: {},
+    });
+  }
 }

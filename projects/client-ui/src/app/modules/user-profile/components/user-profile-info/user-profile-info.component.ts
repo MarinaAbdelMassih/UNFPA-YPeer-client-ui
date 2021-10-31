@@ -14,11 +14,13 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   userProfileForm: FormGroup;
   isArabic: boolean;
   subscription: Subscription;
-  gender = ['male', 'female'];
-  education = ['primary', 'secondary'];
-  days = [1, 2, 3, 4, 5];
-  months = ['jan', 'feb', 'mar'];
-  years = [2020, 2021];
+  // gender = ['male', 'female'];
+  gender;
+  education;
+  // education = ['primary', 'secondary'];
+  // days = [1, 2, 3, 4, 5];
+  // months = ['jan', 'feb', 'mar'];
+  // years = [2020, 2021];
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   userInfo: IUserInfo;
   updateDataInfo: any;
@@ -41,15 +43,15 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     });
   }
 
-  // id: number;
-  // uuid: string;
-  // username: string;
-  // birthDate: string;
-
-
   ngOnInit() {
     this.checkLanguage();
     this.getUserInfoById();
+    this.myProfileService.getGenders().then(data => {
+      this.gender = data;
+    });
+    this.myProfileService.getEducationalLevels().then(data => {
+      this.education = data;
+    });
   }
 
   getUserInfoById() {
