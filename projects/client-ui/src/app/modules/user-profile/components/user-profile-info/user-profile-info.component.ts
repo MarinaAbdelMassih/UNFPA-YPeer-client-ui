@@ -21,19 +21,24 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder, private languageService: LanguageService) {
   }
+  // id: number;
+  // uuid: string;
+  // username: string;
+  // birthDate: string;
+
 
   ngOnInit() {
     this.checkLanguage();
     this.userProfileForm = this.fb.group({
-      fName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
       days: new FormControl('', Validators.required),
       months: new FormControl('', Validators.required),
       years: new FormControl('', Validators.required),
-      education: new FormControl('', Validators.required),
-      lName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      educationalLevelId: new FormControl('', Validators.required),
+      lastName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       phone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
-      gender: new FormControl('', Validators.required),
+      genderId:  new FormControl('', Validators.required),
       occupation: new FormControl('', [Validators.required, Validators.maxLength(20)]),
     });
   }

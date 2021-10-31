@@ -8,7 +8,7 @@
       <div class="">
         <p class="fName" [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول '}"></p>
         <mat-form-field appearance="outline">
-          <input matInput type="text" name="firstName" class="firstName" formControlName="fName"
+          <input matInput type="text" name="firstName" class="firstName" formControlName="firstName"
                  [placeholder]="isArabic ? 'اكتب اسمك الأول ' : 'Type in your first name'">
         </mat-form-field>
         <p class="email" [translateLocal]="{EN: 'Email', AR: 'بريد الالكتروني '}"></p>
@@ -37,7 +37,7 @@
         </div>
         <p class="level" [translateLocal]="{EN: 'Education Level', AR: 'مستوى التعليم'}"></p>
         <mat-form-field appearance="outline">
-          <mat-select [placeholder]="isArabic ? 'اختار ' : 'select'" formControlName="education">
+          <mat-select [placeholder]="isArabic ? 'اختار ' : 'select'" formControlName="educationalLevelId">
             <mat-option *ngFor="let item of education ;" [value]="item">{{item}}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -45,7 +45,7 @@
       <div class="">
         <p class="lName" [translateLocal]="{EN: 'Last Name', AR: 'الاسم الأخير '}"></p>
         <mat-form-field appearance="outline">
-          <input matInput type="text" name="lastName" class="lastName" formControlName="lName"
+          <input matInput type="text" name="lastName" class="lastName" formControlName="lastName"
                  [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
         </mat-form-field>
         <p class="phone" [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
@@ -55,7 +55,7 @@
         </mat-form-field>
         <p class="sex" [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
         <mat-form-field appearance="outline">
-          <mat-select [placeholder]="isArabic ? 'جنس' : 'gender'" formControlName="gender">
+          <mat-select [placeholder]="isArabic ? 'جنس' : 'gender'" formControlName="genderId">
             <mat-option *ngFor="let item of gender ;" [value]="item">{{item}}</mat-option>
           </mat-select>
         </mat-form-field>
