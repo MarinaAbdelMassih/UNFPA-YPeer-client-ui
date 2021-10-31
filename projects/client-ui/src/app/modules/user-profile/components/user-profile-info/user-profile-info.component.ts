@@ -32,9 +32,10 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     this.userProfileForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
-      days: new FormControl('', Validators.required),
-      months: new FormControl('', Validators.required),
-      years: new FormControl('', Validators.required),
+      birthDate: new FormControl('', Validators.required),
+      // days: new FormControl('', Validators.required),
+      // months: new FormControl('', Validators.required),
+      // years: new FormControl('', Validators.required),
       educationalLevelId: new FormControl('', Validators.required),
       lastName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       phone: new FormControl('', [Validators.required, Validators.maxLength(11)]),

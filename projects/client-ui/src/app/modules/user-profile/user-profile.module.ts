@@ -11,20 +11,22 @@ import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import { CourseBarComponent } from './components/course-bar/course-bar.component';
 import { CourseStatusComponent } from './components/course-status/course-status.component';
 import {NgCircleProgressModule} from 'ng-circle-progress';
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 @NgModule({
   declarations: [UserProfileComponent, UserProfileInfoComponent, UserProfileCoursesComponent, CourseBarComponent, CourseStatusComponent],
-  imports: [
-    CommonModule,
-    UserProfileRoutingModule,
-    MatTabsModule,
-    ReactiveFormsModule,
-    SharedModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    NgCircleProgressModule
-  ]
+    imports: [
+        CommonModule,
+        UserProfileRoutingModule,
+        MatTabsModule,
+        ReactiveFormsModule,
+        SharedModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        NgCircleProgressModule,
+        MatDatepickerModule
+    ]
 })
 export class UserProfileModule { }
