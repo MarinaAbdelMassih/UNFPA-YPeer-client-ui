@@ -108,6 +108,11 @@ const routes: Routes = [
     path: 'profile',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/user-profile/user-profile.module').then(mod => mod.UserProfileModule),
+  },
+  {
+    path: 'signIn',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/sign-in/sign-in.module').then(mod => mod.SignInModule),
   }
 ];
 
