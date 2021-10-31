@@ -59,14 +59,15 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
             let stuff = current.stuff;
             this.currentTitle = this.isArabic ? stuff.titleLocal.AR : stuff.titleLocal.EN;
             if (stuff.type == StuffType.VIDEO) {
-              this.createComponent(QuizComponent);
-              (<QuizComponent>this.currentComponent.instance).quiz = stuff;
+              this.createComponent(VideoComponent);
+              (<VideoComponent>this.currentComponent.instance).video = stuff;
               // (<VideoComponent>this.currentComponent.instance).subjectId = this.subjectId;
             }
-            // else if (stuff.type == StuffType.QUIZ) {
-            //   this.createComponent(QuizComponent);
-            //   (<QuizComponent>this.currentComponent.instance).quiz = stuff;
-            // } else if (stuff.type == StuffType.MATERIAL) {
+            else if (stuff.type == StuffType.QUIZ) {
+              this.createComponent(QuizComponent);
+              (<QuizComponent>this.currentComponent.instance).quiz = stuff;
+            }
+            // else if (stuff.type == StuffType.MATERIAL) {
             //   this.setUserProgress(stuff);
             //   this.createComponent(MaterialComponent);
             //   (<MaterialComponent>this.currentComponent.instance).material = stuff;

@@ -51,5 +51,6 @@ export enum LOChildType {
   VIDEO,
   INTERACTIVE,
   RESOURCE,
-  ARTICLE
+  ARTICLE,
+  QUIZ
 }
