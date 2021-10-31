@@ -15,13 +15,9 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   signUpForm: FormGroup;
   isArabic: boolean;
   subscription: Subscription;
-  // gender = ['male', 'female'];
   gender: any;
-  // status = ['single', 'married'];
   status: any;
-  // education = ['primary', 'secondary'];
   education: any;
-  // governorate = ['cairo', 'giza'];
   governorate: any;
   // days = [1, 2, 3, 4, 5];
   // months = ['jan', 'feb', 'mar'];
@@ -58,29 +54,23 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
     this.checkLanguage();
     this.signUpService.getGenders().then(data => {
       this.gender = data;
-      console.log(this.gender);
     });
     this.signUpService.getMaritalStatus().then(data => {
       this.status = data;
-      console.log(this.status);
     });
     this.signUpService.getEducationalLevels().then(data => {
       this.education = data;
-      console.log(this.education);
     });
     this.signUpService.getGovernorates().then(data => {
       this.governorate = data;
-      console.log(this.governorate);
     });
 
   }
 
 
   submitSignUpForm() {
-    console.log('value', this.signUpForm.value);
     this.birthday = this.signUpForm.controls.birthDate.value.toLocaleDateString();
     const latestDate = this.datepipe.transform(this.birthday, 'yyyy-MM-dd');
-    console.log(latestDate);
     this.addUser = {
       username: this.signUpForm.controls.firstName.value + ' ' + this.signUpForm.controls.lastName.value,
       firstName: this.signUpForm.controls.firstName.value,
@@ -98,11 +88,13 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       authType: 'ALMENTOR',
     };
     this.signUpService.signUp(this.addUser).then((response: any) => {
-        console.log('signUp', response.data);
         if (response.success) {
           localStorage.setItem('username', response.data.firstName);
           localStorage.setItem('uuid', response.data.uuid);
           this.router.navigate(['/welcome']);
+        }
+        else {
+          this.errorMsg = response.error.message;
         }
       },
       (error) => {
