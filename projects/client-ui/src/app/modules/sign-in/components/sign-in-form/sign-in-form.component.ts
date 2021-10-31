@@ -19,7 +19,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   signInUserData: any;
   isChecked: boolean;
   userLogin: any;
-
+  errorMsg: string;
 
   constructor(private fb: FormBuilder, private languageService: LanguageService, private signInService: SignInService, private router: Router) {
   }
@@ -44,13 +44,21 @@ export class SignInFormComponent implements OnInit, OnDestroy {
     };
 
     this.signInService.signIn(this.signInUserData).then((signInData: any) => {
-      console.log('signin', signInData.data);
-      if (localStorage.getItem('remember-me') == 'true') {
-        localStorage.setItem('refresh-token', signInData.data.refreshToken);
-      } else {
-        localStorage.setItem('user-token', signInData.data.accessToken);
+        if (signInData.success) {
+          console.log('signin', signInData.data);
+          if (localStorage.getItem('remember-me') == 'true') {
+            localStorage.setItem('refresh-token', signInData.data.refreshToken);
+          } else {
+            localStorage.setItem('user-token', signInData.data.accessToken);
+          }
+        } else {
+          this.errorMsg = signInData.error.message;
+        }
+      },
+      (error) => {
+        this.errorMsg = error.message;
       }
-    });
+    );
   }
 
   toggleEditable(event) {

@@ -41,7 +41,8 @@
       <p class="no-account-text" [translateLocal]="{EN: 'Have no account?', AR: 'ليس لديك حساب؟'}"></p>
       <a class="sign-up-link" [translateLocal]="{EN: 'Sign Up', AR: 'اشتراك'}"></a>
     </div>
-
   </form>
-
+  <div>
+    <p class="alert alert-danger" *ngIf="errorMsg">{{errorMsg}}</p>
+  </div>
 </div>
