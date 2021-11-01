@@ -11,8 +11,8 @@ export class QuizNavBarComponent implements OnInit {
   @Output() nextClicked: EventEmitter<boolean> = new EventEmitter();
   @Output() previousClicked: EventEmitter<boolean> = new EventEmitter();
   @Output() finishQuizClicked: EventEmitter<boolean> = new EventEmitter();
-  @Input() currentQuestionIndex;
-  @Input() numberOfQuestions;
+  @Input() currentQuestionIndex: number;
+  @Input() numberOfQuestions: number;
   constructor() { }
 
   ngOnInit() {

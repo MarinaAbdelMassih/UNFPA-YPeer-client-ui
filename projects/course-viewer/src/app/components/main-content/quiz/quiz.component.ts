@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IStuff} from "../../../../../../../src/app/shared/models/course-viewer/stuff.model";
 import {QuizService} from "../../../../../../../src/app/shared/services/quiz.service";
+import {IQuestion} from "../../../../../../../src/app/shared/models/quiz.model";
 
 @Component({
   selector: 'app-quiz',
@@ -10,11 +11,10 @@ import {QuizService} from "../../../../../../../src/app/shared/services/quiz.ser
 export class QuizComponent implements OnInit {
 
   @Input() quiz: IStuff;
-  currentQuestion;
-  currentQuestionIndex;
+  currentQuestion: IQuestion;
+  currentQuestionIndex: number;
   quizStarted = false;
-  questions = [{id:1, title: 'Question 1', body: 'question 1 body rrrrrrrr', type: 'true&false', selectedAnswer: null}, {id:2, title: 'Question 2', body: 'question 2 body rrrrrrrr', type: 'multiple', answers: [{body: 'Answer 1', selected: false}, {body: 'Answer 2', selected: false}, {body: 'Answer 3', selected: false}]}
-  ,{id:3, title: 'Question 3', body: 'question 3 body rrrrrrrr', type: 'true&false'}];
+  questions : IQuestion[];
   constructor(private quizService: QuizService) { }
 
   ngOnInit() {
@@ -24,7 +24,6 @@ export class QuizComponent implements OnInit {
   initQuiz() {
     this.quizService.getExamById('quiz', {userId: 1111, examId: this.quiz.id})
       .then(quiz => {
-        console.log(quiz);
         this.questions = quiz.questions;
         this.currentQuestion = this.questions[0];
         this.currentQuestionIndex = 0;
@@ -35,6 +34,11 @@ export class QuizComponent implements OnInit {
   }
 
   getAnswers() {
+    if (this.currentQuestion.type == 'MULTIPLE_CHOICE') {
+      if (this.currentQuestion.possibleAnswers.some(answer => answer.answered == true)) {
+        this.currentQuestion.answered = true;
+      }
+    }
     console.log(this.questions)
   }
 

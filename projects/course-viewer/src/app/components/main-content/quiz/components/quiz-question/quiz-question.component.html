@@ -15,7 +15,7 @@
   </div>
 
   <div *ngIf="currentQuestion.type == 'MULTIPLE_CHOICE'" class="multiple-answers">
-   <mat-checkbox [checked]="answer.answered" *ngFor="let answer of currentQuestion.possibleAnswers"
+   <mat-checkbox [checked]="answer.selected" *ngFor="let answer of currentQuestion.possibleAnswers"
                  (change)="sendAnswers($event, answer)">{{answer.body}}</mat-checkbox>
   </div>
 </div>

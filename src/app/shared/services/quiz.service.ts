@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CustomHttpClientService} from "./custom-http-client.service";
 import {BehaviorSubject} from "rxjs";
+import {IQuestion, IQuiz} from "../models/quiz.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class QuizService {
 
   constructor(private customHttpClient: CustomHttpClientService) { }
 
-  getExamById(sender: string, examBody: {userId: number, examId: number}): Promise<any> {
+  getExamById(sender: string, examBody: {userId: number, examId: number}): Promise<IQuiz> {
     return this.customHttpClient.sendBackendRequest({
       endpoint: 'exams/get/details',
       sender: sender,
@@ -21,7 +22,7 @@ export class QuizService {
     })
   }
 
-  submitAnswers(sender: string, examBody: {id: number, userId: number, questions: any}): Promise<any> {
+  submitAnswers(sender: string, examBody: {id: number, userId: number, questions: IQuestion[]}): Promise<IQuiz> {
     return this.customHttpClient.sendBackendRequest({
       endpoint: 'exams/submit/userAnswers',
       sender: sender,
