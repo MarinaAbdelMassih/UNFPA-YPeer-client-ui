@@ -14,7 +14,7 @@ export class QuizComponent implements OnInit {
   currentQuestion: IQuestion;
   currentQuestionIndex: number;
   quizStarted = false;
-  questions : IQuestion[];
+  questions : IQuestion[] = [];
   constructor(private quizService: QuizService) { }
 
   ngOnInit() {
@@ -57,11 +57,16 @@ export class QuizComponent implements OnInit {
   }
 
   submitAnswers() {
+    this.questions.map(question => {
+      question.possibleAnswers.map(answer => delete answer.selected);
+    });
     this.quizService.submitAnswers('quiz',{id: this.quiz.id, userId: 1111, questions: this.questions})
-      .then(data => {
-        console.log(data);
-        this.quizService.examIsFinished.next(true);
-        this.quizService.userScore.next(data.result.percentage)
+      .then(response => {
+        console.log(response);
+        if (response.success) {
+          this.quizService.examIsFinished.next(true);
+          this.quizService.userScore.next(response.results.percentage)
+        }
       })
   }
 

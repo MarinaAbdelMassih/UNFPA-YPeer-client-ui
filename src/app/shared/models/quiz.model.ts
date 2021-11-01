@@ -1,7 +1,7 @@
 export interface IQuiz {
   id: number,
   questions: IQuestion[]
-  result: IResult
+  results: IResult
 }
 
 export interface IQuestion {
