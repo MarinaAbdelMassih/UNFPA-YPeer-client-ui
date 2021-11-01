@@ -61,6 +61,11 @@
         transform: translateY(14%);
       }
 
+      ::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline-end {
+        border-radius: 0px;
+      }
+
+
       //.birthday-container {
       //  display: flex;
       //  justify-content: space-between;
@@ -69,18 +74,19 @@
       //    width: 100%;
       //  }
 
-        //.birthday-form {
-        //  width: 183px;
-        //  @media(max-width: 991px) {
-        //    width: 30%;
-        //  }
-        //}
+      //.birthday-form {
+      //  width: 183px;
+      //  @media(max-width: 991px) {
+      //    width: 30%;
+      //  }
+      //}
       //}
 
       mat-form-field {
         background-color: #FFFFFF;
         width: 579px;
         //height: 52px;
+        border-radius: 0 !important;
         @media(max-width: 991px) {
           width: 100%;
         }
@@ -100,6 +106,7 @@
         @media (max-width: 991px) {
           justify-content: center;
         }
+
         button {
           width: 181px;
           height: 46px;
