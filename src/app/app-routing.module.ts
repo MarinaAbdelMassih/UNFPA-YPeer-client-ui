@@ -1,5 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+import {WelcomeScreenApprovedComponent} from "./shared/components/welcome-screen-approved/welcome-screen-approved.component";
+import {WelcomeScreenPendingComponent} from "./shared/components/welcome-screen-pending/welcome-screen-pending.component";
 
 
 const routes: Routes = [
@@ -108,11 +110,17 @@ const routes: Routes = [
     path: 'signIn',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/sign-in/sign-in.module').then(mod => mod.SignInModule),
-  }
+  },
   {
     path: 'welcome',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/welcome-screen/welcome-screen.module').then(mod => mod.WelcomeScreenModule),
+  },
+  {
+    path: 'WelcomeScreenApproved', component: WelcomeScreenApprovedComponent
+  },
+  {
+    path: 'WelcomeScreenPending', component: WelcomeScreenPendingComponent
   }
 ];
 
