@@ -52,11 +52,14 @@
           <button class="language-button" [translateLocal]="{AR: 'EN', EN: 'AR'}"></button>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!loginName">
         <a href="#">
           <button class="ypeer-btn btn-full-color" [translateLocal]="{AR: 'اشترك معنا', EN: 'Join Us'}"></button>
         </a>
       </li>
+      <div class="user" *ngIf="loginName">
+        <p>{{loginName}}</p>
+      </div>
     </ul>
   </div>
 </nav>

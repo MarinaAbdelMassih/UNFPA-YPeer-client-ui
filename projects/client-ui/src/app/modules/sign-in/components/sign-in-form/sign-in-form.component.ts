@@ -46,6 +46,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
     this.signInService.signIn(this.signInUserData).then((signInData: any) => {
         if (signInData.success) {
           console.log('status', signInData.data.status);
+          localStorage.setItem('username', signInData.data.firstName);
           if (signInData.data.status == 1) {
             this.router.navigate(['/WelcomeScreenApproved']);
           } else if (signInData.data.status == 2) {
