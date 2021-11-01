@@ -46,7 +46,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.checkLanguage();
-    // this.getUserInfoById();
+    this.getUserInfoById();
     this.myProfileService.getGenders().then(data => {
       this.gender = data;
     });
