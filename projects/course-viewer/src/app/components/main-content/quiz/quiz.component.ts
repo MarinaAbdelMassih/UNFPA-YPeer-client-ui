@@ -63,10 +63,12 @@ export class QuizComponent implements OnInit {
     this.quizService.submitAnswers('quiz',{id: this.quiz.id, userId: 1111, questions: this.questions})
       .then(response => {
         console.log(response);
-        if (response.success) {
-          this.quizService.examIsFinished.next(true);
-          this.quizService.userScore.next(response.results.percentage)
-        }
+        this.quizService.examIsFinished.next(true);
+        this.quizService.userScore.next(response.results.percentage)
+        // if (response.success) {
+        //   this.quizService.examIsFinished.next(true);
+        //   this.quizService.userScore.next(response.results.percentage)
+        // }
       })
   }
 
