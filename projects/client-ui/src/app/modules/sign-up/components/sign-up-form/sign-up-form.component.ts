@@ -32,7 +32,6 @@ export const MY_FORMATS = {
   styleUrls: ['./sign-up-form.component.scss'],
   providers: [
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ],
 })
@@ -48,15 +47,17 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   // months = ['jan', 'feb', 'mar'];
   // years = [2020, 2021];
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
+  passwordPattern = '^(?=.*[A-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#$%^&*_~+/.])\\S{8,20}$';
   addUser: any;
   birthday;
   errorMsg: string;
   birthDate = new FormControl(moment());
+
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private signUpService: SignUpService, private router: Router) {
     this.signUpForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(11) , Validators.pattern(this.passwordPattern)]),
       birthDate: new FormControl('', Validators.required),
       genderId: new FormControl('', Validators.required),
       maritalStatusId: new FormControl('', Validators.required),
