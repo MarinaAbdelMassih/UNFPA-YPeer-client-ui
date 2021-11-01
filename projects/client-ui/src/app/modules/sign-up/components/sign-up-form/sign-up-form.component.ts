@@ -55,15 +55,15 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private signUpService: SignUpService, private router: Router) {
     this.signUpForm = this.fb.group({
-      firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      firstName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
       password: new FormControl('', [Validators.required, Validators.minLength(11) , Validators.pattern(this.passwordPattern)]),
       birthDate: new FormControl('', Validators.required),
       genderId: new FormControl('', Validators.required),
       maritalStatusId: new FormControl('', Validators.required),
       educationalLevelId: new FormControl(''),
-      lastName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-      phone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
+      lastName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.minLength(3)]),
+      phone: new FormControl('', [Validators.required, Validators.minLength(11)]),
       rePassword: new FormControl('', Validators.required),
       // days: new FormControl('', Validators.required),
       // months: new FormControl('', Validators.required),

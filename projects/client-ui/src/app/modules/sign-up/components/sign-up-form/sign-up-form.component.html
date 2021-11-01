@@ -10,6 +10,9 @@
             <input matInput type="text" name="firstName" class="firstName" formControlName="firstName"
                    [placeholder]="isArabic ? 'اكتب اسمك الأول ' : 'Type in your first name'">
           </mat-form-field>
+          <mat-error *ngIf="signUpForm.get('firstName').hasError('pattern')">
+            name must not contain number ,special charachter.
+          </mat-error>
           <p [translateLocal]="{EN: 'Email', AR: 'البريد الاكتروني '}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="email" name="email" class="email" formControlName="email"
@@ -52,6 +55,9 @@
             <input matInput type="text" name="lastName" class="lastName" formControlName="lastName"
                    [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
           </mat-form-field>
+          <mat-error *ngIf="signUpForm.get('lastName').hasError('pattern')">
+            name must not contain number ,special charachter.
+          </mat-error>
           <p [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="text" name="phone" class="phone" formControlName="phone"
