@@ -1,7 +1,8 @@
 .course-bar {
   height: 65px;
   background-color: #f0f0f0;
-  margin: 0 57px 0 56px;
+  padding: 0 30px;
+  //margin: 0 57px 0 56px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,7 +17,7 @@
     line-height: 1.18;
     color: #2e2e2e;
     margin-bottom: 0;
-    padding: 0 30px;
+    //padding: 0 30px;
     @media(max-width: 991px) {
       margin-bottom: 15px;
       margin-top: 15px;
@@ -62,7 +63,7 @@
     height: 46px;
     background-color: #cac5d2;
     border: 1px solid transparent;
-    margin: 0 30px;
+    //margin: 0 30px;
     @media(max-width: 991px) {
       margin-bottom: 15px;
       margin-top: 15px;
