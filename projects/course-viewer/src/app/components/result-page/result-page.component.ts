@@ -21,4 +21,13 @@ export class ResultPageComponent implements OnInit {
     console.log(this.score, this.numberOfTrials)
   }
 
+  viewCourse(type: string) {
+    if (type == 'retakeAssessment')
+      this.quizService.examIsFinished.next(false);
+    else {
+      location.reload();
+      setTimeout(() => {this.quizService.examIsFinished.next(false); }, 1000);
+    }
+  }
+
 }
