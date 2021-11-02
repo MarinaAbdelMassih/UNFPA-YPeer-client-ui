@@ -17,6 +17,7 @@ export class MyProfileService {
       body: {
         id: userId
       },
+      headers: true
     });
   }
 
