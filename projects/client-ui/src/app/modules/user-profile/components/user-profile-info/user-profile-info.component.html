@@ -1,7 +1,20 @@
 <div class="user-profile-info">
   <div class="img-container">
-    <img src="assets/images/profile-info.png" alt="profile-info">
-    <p [translateLocal]="{EN: 'Upload Your Photo', AR: 'رفع صورتك '}"></p>
+<!--    <div class="image-dropzone-container" *ngIf="!file">-->
+<!--      <ngx-dropzone-->
+<!--        (change)="onSelect($event)"-->
+<!--        [multiple]="false"-->
+<!--        [accept]="'image/jpeg,image/jpg,image/png'">-->
+<!--      </ngx-dropzone>-->
+<!--    </div>-->
+<!--    <img src="assets/images/profile-info.png" alt="profile-info">-->
+    <app-image-uploader [width]="125" [height]="125" [name]="'thumbImageName'" [update]="update"
+                          [shouldUpload]="upload"
+                          (onImageUpload)="onImageUpload($event)"
+                          (onImageRemove)="onImageRemove()"
+                          (onImageChange)="onImageChange($event)"></app-image-uploader>
+    <button [translateLocal]="{EN: 'Upload Your Photo', AR: 'رفع صورتك '}"  [disabled]="!imageSelected" (click)="uploadImage()" class="upload"></button>
+
   </div>
   <form [formGroup]="userProfileForm">
     <div class="form-container d-flex justify-content-between">

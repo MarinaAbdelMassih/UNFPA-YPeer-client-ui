@@ -6,12 +6,16 @@
     margin: auto;
     text-align: center;
 
-    p {
+
+
+    p ,.upload{
       font-family: 'TradeGothic', sans-serif;
       font-size: 14px;
       color: #2e2e2e;
       text-align: center;
       margin: 16px 0 30px;
+      cursor: pointer;
+      border: none;
     }
   }
 
