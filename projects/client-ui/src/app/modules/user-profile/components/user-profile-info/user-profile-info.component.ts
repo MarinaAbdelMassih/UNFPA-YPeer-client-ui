@@ -77,6 +77,8 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   getUserInfoById() {
     this.myProfileService.getUserInfo(this.userId).then(data => {
       this.userInfo = data;
+      console.log('userInfo' , this.userInfo);
+      console.log('userInfo' , this.userInfo.firstName);
       this.userProfileForm.setValue({
         firstName: this.userInfo.firstName,
         email: this.userInfo.email,
@@ -89,7 +91,6 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
       });
     });
   }
-
 
   submitUserProfileForm() {
     console.log('value', this.userProfileForm.value);
