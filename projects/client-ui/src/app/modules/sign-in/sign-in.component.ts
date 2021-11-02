@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LanguageService} from "../../../../../../src/app/shared/services/language.service";
 
 @Component({
   selector: 'app-sign-in',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-
-  constructor() { }
+  isArabic: boolean;
+  constructor(private languageService: LanguageService,) { }
 
   ngOnInit() {
   }
-
+  checkLanguage(): void {
+     this.languageService.isArabic.subscribe((isArabic: boolean) => {
+      this.isArabic = isArabic;
+    });
+  }
 }
