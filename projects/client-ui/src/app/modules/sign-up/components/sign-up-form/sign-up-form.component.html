@@ -23,12 +23,13 @@
             <input matInput type="password" name="password" class="password" formControlName="password"
                    [placeholder]="isArabic ? '******** ' : '********'">
           </mat-form-field>
+          <mat-error *ngIf="signUpForm.get('password').errors?.minlength">
+            Password must be at least 10 characters .
+          </mat-error>
           <mat-error *ngIf="signUpForm.get('password').hasError('pattern')">
             Password is weak , must contain capital , number ,special charachter.
           </mat-error>
-          <mat-error *ngIf="signUpForm.get('password').errors?.minLength">
-            Password must be at least 8 characters .
-          </mat-error>
+
           <p [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
           <mat-form-field appearance="outline">
             <mat-select [placeholder]="isArabic ? 'جنس' : 'gender'" formControlName="genderId">

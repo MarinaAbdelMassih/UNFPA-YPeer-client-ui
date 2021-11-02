@@ -47,7 +47,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   // months = ['jan', 'feb', 'mar'];
   // years = [2020, 2021];
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
-  passwordPattern = '^(?=.*[A-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#$%^&*_~+/.])\\S{8,20}$';
+  passwordPattern = '^(?=.*[A-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#$%^&*_~+/.])\\S{6,20}$';
   addUser: any;
   birthday;
   errorMsg: string;
@@ -57,7 +57,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
     this.signUpForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
-      password: new FormControl('', [Validators.required, Validators.minLength(11) , Validators.pattern(this.passwordPattern)]),
+      password: new FormControl('', [Validators.required, Validators.pattern(this.passwordPattern), Validators.minLength(10)]),
       birthDate: new FormControl('', Validators.required),
       genderId: new FormControl('', Validators.required),
       maritalStatusId: new FormControl('', Validators.required),
