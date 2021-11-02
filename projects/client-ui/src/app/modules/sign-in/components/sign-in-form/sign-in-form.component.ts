@@ -30,7 +30,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
     console.log(userData);
     this.isChecked = localStorage.getItem('remember-me') == 'false';
     this.signInForm = this.fb.group({
-      username: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       password: ['', [Validators.required]],
       // rememberMe: ['', [Validators.required]],
     });
@@ -39,7 +39,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   submitSignInForm() {
     console.log('value', this.signInForm.value);
     this.signInUserData = {
-      username: this.signInForm.controls.username.value,
+      username: this.signInForm.controls.email.value,
       password: this.signInForm.controls.password.value,
       authType: 'ALMENTOR',
     };
@@ -48,11 +48,12 @@ export class SignInFormComponent implements OnInit, OnDestroy {
         if (signInData.success) {
           console.log('status', signInData.data.status);
           localStorage.setItem('username', signInData.data.firstName);
-          if (signInData.data.status == 1) {
-            this.router.navigate(['/WelcomeScreenApproved']);
-          } else if (signInData.data.status == 2) {
-            this.router.navigate(['/WelcomeScreenPending']);
-          }
+          this.router.navigate(['/home']);
+          // if (signInData.data.status == 1) {
+          //   this.router.navigate(['/WelcomeScreenApproved']);
+          // } else if (signInData.data.status == 2) {
+          //   this.router.navigate(['/WelcomeScreenPending']);
+          // }
           console.log('signin', signInData.data);
           if (localStorage.getItem('remember-me') == 'true') {
             localStorage.setItem('refresh-token', signInData.data.refreshToken);
