@@ -80,7 +80,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     console.log('value', this.userProfileForm.value);
     this.updateDataInfo = {
       id: this.userId,
-      uuid: this.uuid,
+      // uuid: this.uuid,
       username: this.userProfileForm.controls.firstName.value + ' ' + this.userProfileForm.controls.lastName.value,
       firstName: this.userProfileForm.controls.firstName.value,
       email: this.userProfileForm.controls.email.value,
@@ -96,9 +96,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     });
   }
 
-  checkLanguage()
-    :
-    void {
+  checkLanguage(): void {
     this.subscription = this.languageService.isArabic.subscribe((isArabic: boolean) => {
       this.isArabic = isArabic;
     });
