@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LanguageService} from "../../../../../../src/app/shared/services/language.service";
 
 @Component({
   selector: 'app-user-profile',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-
-  constructor() { }
+  isArabic: boolean;
+  constructor(private languageService: LanguageService) {
+  }
 
   ngOnInit() {
   }
 
+  checkLanguage(): void {
+     this.languageService.isArabic.subscribe((isArabic: boolean) => {
+      this.isArabic = isArabic;
+    });
+  }
 }

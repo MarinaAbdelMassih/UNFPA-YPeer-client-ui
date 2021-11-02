@@ -1,10 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {MyProfileService} from '../../../../../../../../src/app/shared/services/my-profile.service';
 import {IUserInfo} from '../../../../../../../../src/app/shared/models/my-profile.model';
 import {UserService} from "../../../../../../../../src/app/shared/services/user.service";
+import {ImageService} from "../../../../../../../../src/app/shared/services/image.service";
 
 @Component({
   selector: 'app-user-profile-info',
@@ -27,8 +28,19 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   updateDataInfo: any;
   userId;
   uuid;
+  files: File[] = [];
+  upload: boolean;
+  update = true;
+  image: string | ArrayBuffer;
+  imageSelected = false;
+  imageSuccessMessageUploaded = false;
+ imageName: string;
+  width: number;
+ previewWidth: number;
+ height: number;
+  previewHeight: number;
 
-  constructor(private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService, private userService: UserService) {
+  constructor(private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService, private imageService: ImageService) {
     this.userProfileForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
@@ -57,6 +69,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     this.myProfileService.getEducationalLevels().then(data => {
       this.education = data;
     });
+    this.image = this.imageService.getHashedImage(this.imageName);
   }
 
   getUserInfoById() {
@@ -80,7 +93,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     console.log('value', this.userProfileForm.value);
     this.updateDataInfo = {
       id: this.userId,
-      uuid: this.uuid,
+      // uuid: this.uuid,
       username: this.userProfileForm.controls.firstName.value + ' ' + this.userProfileForm.controls.lastName.value,
       firstName: this.userProfileForm.controls.firstName.value,
       email: this.userProfileForm.controls.email.value,
@@ -96,12 +109,44 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     });
   }
 
-  checkLanguage()
-    :
-    void {
+  checkLanguage(): void {
     this.subscription = this.languageService.isArabic.subscribe((isArabic: boolean) => {
       this.isArabic = isArabic;
     });
+  }
+
+  onSelect(event) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+  }
+
+  onImageChange($event: string | ArrayBuffer) {
+    this.image = $event;
+    this.imageSelected = true;
+  }
+
+  onImageUpload($event: boolean) {
+    this.upload = false;
+    if ($event) {
+      this.update = true;
+      this.image = this.imageService.getHashedImage(this.imageName);
+      this.imageSuccessMessageUploaded = true;
+      setTimeout(() => this.imageSuccessMessageUploaded = false, 4000);
+    }
+  }
+
+  onImageRemove() {
+    this.image = null;
+    this.imageSelected = false;
+  }
+
+  onImageLoadError() {
+    this.update = false;
+  }
+
+  uploadImage() {
+    this.upload = true;
+    this.imageSelected = false;
   }
 
   ngOnDestroy() {
@@ -109,5 +154,5 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
   }
-
 }
+

@@ -23,9 +23,9 @@ export class MyProfileService {
 
   updateUserInfo(updateUser: IUserInfo): Promise<IUserInfo> {
     return this.customHttpClient.sendBackendRequest({
-      endpoint: 'auth/updateUserInfo',
-      sender: 'updateUserInfo',
-      receiver: 'updateUserInfo',
+      endpoint: 'auth/updateUser',
+      sender: 'updateUser',
+      receiver: 'updateUser',
       body: updateUser
     });
   }
