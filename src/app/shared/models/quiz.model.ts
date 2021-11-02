@@ -2,6 +2,7 @@ export interface IQuiz {
   id: number,
   questions: IQuestion[]
   results: IResult
+  trials: number
 }
 
 export interface IQuestion {

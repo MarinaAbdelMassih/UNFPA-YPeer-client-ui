@@ -34,6 +34,7 @@ export interface ILecture extends ISession {
 }
 
 export interface IQuiz extends ISession {
+  trials?: number;
   isSelected: boolean;
   quizLang: string,
   userPassOrProceedQuiz: boolean;
