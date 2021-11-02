@@ -6,6 +6,7 @@ import {MyProfileService} from '../../../../../../../../src/app/shared/services/
 import {IUserInfo} from '../../../../../../../../src/app/shared/models/my-profile.model';
 import {UserService} from "../../../../../../../../src/app/shared/services/user.service";
 import {ImageService} from "../../../../../../../../src/app/shared/services/image.service";
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-user-profile-info',
@@ -34,13 +35,14 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   image: string | ArrayBuffer;
   imageSelected = false;
   imageSuccessMessageUploaded = false;
- imageName: string;
+  imageName: string;
   width: number;
- previewWidth: number;
- height: number;
+  previewWidth: number;
+  height: number;
   previewHeight: number;
+   birthday: any;
 
-  constructor(private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService, private imageService: ImageService) {
+  constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService, private imageService: ImageService) {
     this.userProfileForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
@@ -91,13 +93,16 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
 
   submitUserProfileForm() {
     console.log('value', this.userProfileForm.value);
+    this.birthday = this.userProfileForm.controls.birthDate.value.toLocaleDateString();
+    const latestDate = this.datepipe.transform(this.birthday, 'yyyy-MM-dd');
     this.updateDataInfo = {
       id: this.userId,
       // uuid: this.uuid,
       username: this.userProfileForm.controls.firstName.value + ' ' + this.userProfileForm.controls.lastName.value,
       firstName: this.userProfileForm.controls.firstName.value,
       email: this.userProfileForm.controls.email.value,
-      birthDate: this.userProfileForm.controls.birthDate.value,
+      // birthDate: this.userProfileForm.controls.birthDate.value,
+      birthDate: latestDate,
       educationalLevelId: this.userProfileForm.controls.educationalLevelId.value,
       lastName: this.userProfileForm.controls.lastName.value,
       phone: this.userProfileForm.controls.phone.value,
