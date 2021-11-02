@@ -37,7 +37,7 @@ export class CustomHttpClientService {
   }
 
   upload(request: { endpoint: string, sender: string, receiver: string, body: object, file: File }): Promise<any> {
-    let uuid = this.checkIfUserLoggedIn();
+    let uuid = this.checkIfUserLoggedIn().uuid;
     let jwtToken = this.tokenService.buildJwt({
       sender: request.sender,
       receiver: request.receiver,
