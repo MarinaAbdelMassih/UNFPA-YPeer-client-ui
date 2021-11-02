@@ -94,8 +94,8 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
 
   submitUserProfileForm() {
     console.log('value', this.userProfileForm.value);
-    this.birthday = this.userProfileForm.controls.birthDate.value.toLocaleDateString();
-    const latestDate = this.datepipe.transform(this.birthday, 'yyyy-MM-dd');
+    // this.birthday = this.userProfileForm.controls.birthDate.value.toLocaleDateString();
+    // const latestDate = this.datepipe.transform(this.birthday, 'yyyy-MM-dd');
     this.updateDataInfo = {
       id: this.userId,
       // uuid: this.uuid,
@@ -103,7 +103,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
       firstName: this.userProfileForm.controls.firstName.value,
       email: this.userProfileForm.controls.email.value,
       // birthDate: this.userProfileForm.controls.birthDate.value,
-      birthDate: latestDate,
+      birthDate: '2021-11-02',
       educationalLevelId: this.userProfileForm.controls.educationalLevelId.value,
       lastName: this.userProfileForm.controls.lastName.value,
       phone: this.userProfileForm.controls.phone.value,

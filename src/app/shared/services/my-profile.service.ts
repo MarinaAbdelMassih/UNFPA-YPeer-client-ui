@@ -26,7 +26,8 @@ export class MyProfileService {
       endpoint: 'auth/updateUser',
       sender: 'updateUser',
       receiver: 'updateUser',
-      body: updateUser
+      body: updateUser,
+      headers: true
     });
   }
 
