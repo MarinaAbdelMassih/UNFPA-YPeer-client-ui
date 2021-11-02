@@ -11,10 +11,14 @@ export class ResultPageComponent implements OnInit {
   score = 85;
   numberOfTrials = 3;
   constructor(private quizService: QuizService) {
-    quizService.userScore.subscribe(score => this.score = score);
+    quizService.examUserData.subscribe(userData => {
+      this.score = userData.userScore;
+      this.numberOfTrials = userData.userUsedTrials
+    });
   }
 
   ngOnInit() {
+    console.log(this.score, this.numberOfTrials)
   }
 
 }

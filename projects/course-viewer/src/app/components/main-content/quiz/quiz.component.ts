@@ -27,6 +27,7 @@ export class QuizComponent implements OnInit {
         this.questions = quiz.questions;
         this.currentQuestion = this.questions[0];
         this.currentQuestionIndex = 0;
+        this.quizService.examUserData.next({userScore: quiz.results.percentage, userUsedTrials: quiz.trials})
       });
   }
   startQuiz(){
@@ -64,7 +65,7 @@ export class QuizComponent implements OnInit {
       .then(response => {
         console.log(response);
         this.quizService.examIsFinished.next(true);
-        this.quizService.userScore.next(response.results.percentage)
+        this.quizService.examUserData.next({userScore: response.results.percentage, userUsedTrials: response.trials})
         // if (response.success) {
         //   this.quizService.examIsFinished.next(true);
         //   this.quizService.userScore.next(response.results.percentage)

@@ -9,7 +9,7 @@ import {IQuestion, IQuiz} from "../models/quiz.model";
 export class QuizService {
 
   examIsFinished: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  userScore: BehaviorSubject<number> = new BehaviorSubject(0);
+  examUserData: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor(private customHttpClient: CustomHttpClientService) { }
 
