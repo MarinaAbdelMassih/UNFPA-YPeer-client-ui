@@ -35,7 +35,7 @@ export class QuizComponent implements OnInit {
   }
 
   getAnswers() {
-    if (this.currentQuestion.type == 'MULTIPLE_CHOICE') {
+    if (this.currentQuestion.type == 'MULTIPLE_CHOICE' || this.currentQuestion.type == 'SINGLE_CHOICE') {
       if (this.currentQuestion.possibleAnswers.some(answer => answer.answered == true)) {
         this.currentQuestion.answered = true;
       }
@@ -65,7 +65,7 @@ export class QuizComponent implements OnInit {
       .then(response => {
         console.log(response);
         this.quizService.examIsFinished.next(true);
-        this.quizService.examUserData.next({userScore: response.results.percentage, userUsedTrials: response.trials})
+        this.quizService.examUserData.next({userScore: response.results.percentage.toFixed(0), userUsedTrials: response.trials})
         // if (response.success) {
         //   this.quizService.examIsFinished.next(true);
         //   this.quizService.userScore.next(response.results.percentage)

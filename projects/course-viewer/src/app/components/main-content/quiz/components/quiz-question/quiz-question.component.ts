@@ -18,9 +18,15 @@ export class QuizQuestionComponent implements OnInit {
   }
 
   sendAnswers(event, answer?){
-    if ( this.currentQuestion.type == 'MULTIPLE_CHOICE') {
+    if (this.currentQuestion.type == 'MULTIPLE_CHOICE') {
       answer.answered = event.checked;
       answer.selected = event.checked;
+      this.sendAnswer.emit(answer);
+    }
+    else if (this.currentQuestion.type == 'SINGLE_CHOICE') {
+      this.currentQuestion.possibleAnswers.map((answer) => {answer.answered = false; answer.selected = false});
+      answer.answered = event.value;
+      answer.selected = event.value;
       this.sendAnswer.emit(answer);
     }
     else if (this.currentQuestion.type == 'true&false') {

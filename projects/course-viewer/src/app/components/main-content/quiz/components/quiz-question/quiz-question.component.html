@@ -18,4 +18,9 @@
    <mat-checkbox [checked]="answer.selected" *ngFor="let answer of currentQuestion.possibleAnswers"
                  (change)="sendAnswers($event, answer)">{{answer.body}}</mat-checkbox>
   </div>
+
+  <div *ngIf="currentQuestion.type == 'SINGLE_CHOICE'" class="single-answers">
+    <mat-radio-button [value]="true" [checked]="answer.selected" *ngFor="let answer of currentQuestion.possibleAnswers"
+                  (change)="sendAnswers($event, answer)">{{answer.body}}</mat-radio-button>
+  </div>
 </div>

@@ -25,6 +25,13 @@
       margin-bottom: 10px;
     }
   }
+  .single-answers {
+    display: flex;
+    flex-direction: column;
+    mat-radio-button {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 ::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
