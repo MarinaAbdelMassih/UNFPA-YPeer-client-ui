@@ -1,6 +1,6 @@
 .sign-in-container {
   //background-color: #ffa50052;
-  background-image: url("src/assets/images/bg-sign-in.png");
+  //background-image: url("src/assets/images/bg-sign-in.png");
   background-size: cover;
   height: 768px;
   width: 100%;
@@ -54,6 +54,7 @@
 ::ng-deep {
   [dir="ltr"] {
     .sign-in-container {
+      background-image: url("src/assets/images/bg-sign-in.png");
       .sign-in {
         img {
           padding-left: 73.7px;
@@ -72,6 +73,8 @@
 
   [dir="rtl"] {
     .sign-in-container {
+      background-image: url("src/assets/images/signin-arbic.png");
+
       .sign-in {
         img {
           padding-right: 73.7px;
