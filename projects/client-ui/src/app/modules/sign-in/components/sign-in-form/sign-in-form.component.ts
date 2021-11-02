@@ -48,11 +48,12 @@ export class SignInFormComponent implements OnInit, OnDestroy {
         if (signInData.success) {
           console.log('status', signInData.data.status);
           localStorage.setItem('username', signInData.data.firstName);
-          if (signInData.data.status == 1) {
-            this.router.navigate(['/WelcomeScreenApproved']);
-          } else if (signInData.data.status == 2) {
-            this.router.navigate(['/WelcomeScreenPending']);
-          }
+          this.router.navigate(['/home']);
+          // if (signInData.data.status == 1) {
+          //   this.router.navigate(['/WelcomeScreenApproved']);
+          // } else if (signInData.data.status == 2) {
+          //   this.router.navigate(['/WelcomeScreenPending']);
+          // }
           console.log('signin', signInData.data);
           if (localStorage.getItem('remember-me') == 'true') {
             localStorage.setItem('refresh-token', signInData.data.refreshToken);
