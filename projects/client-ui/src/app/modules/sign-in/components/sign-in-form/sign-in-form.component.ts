@@ -25,6 +25,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.checkLanguage();
     const userData = JSON.parse(localStorage.getItem('userData'));
     console.log(userData);
     this.isChecked = localStorage.getItem('remember-me') == 'false';
