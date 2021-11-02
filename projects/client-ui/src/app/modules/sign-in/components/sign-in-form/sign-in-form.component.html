@@ -40,7 +40,7 @@
     <a class="forgot-password-link" [translateLocal]="{EN: 'Forgot password!', AR: 'هل نسيت كلمة السر!'}"></a>
     <div class="d-flex justify-content-center">
       <p class="no-account-text" [translateLocal]="{EN: 'Have no account?', AR: 'ليس لديك حساب؟'}"></p>
-      <a class="sign-up-link" [translateLocal]="{EN: 'Sign Up', AR: 'اشتراك'}"></a>
+      <a [routerLink]="'/signUp'" class="sign-up-link" [translateLocal]="{EN: 'Sign Up', AR: 'اشتراك'}"></a>
     </div>
   </form>
 </div>
