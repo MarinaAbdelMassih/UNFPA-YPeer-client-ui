@@ -13,12 +13,12 @@ export class CustomHttpClientService {
 
   private checkIfUserLoggedIn = (): string => {
     let uuid = localStorage.getItem('uuid');
-    let auth = localStorage.getItem('auth');
+    let auth = localStorage.getItem('user-token');
     if (uuid && auth) {
       return uuid;
     }
     return null;
-  }
+  };
 
   sendBackendRequest(request: {endpoint: string, sender: string, receiver: string, body: object}): Promise<any> {
     let uuid = this.checkIfUserLoggedIn();

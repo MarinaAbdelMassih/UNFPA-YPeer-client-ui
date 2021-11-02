@@ -45,6 +45,10 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.userId = localStorage.getItem('id');
+    console.log('id', this.userId);
+    this.uuid = localStorage.getItem('uuid');
+    console.log('uuid', this.uuid);
     this.checkLanguage();
     this.getUserInfoById();
     this.myProfileService.getGenders().then(data => {
@@ -53,10 +57,6 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     this.myProfileService.getEducationalLevels().then(data => {
       this.education = data;
     });
-    this.userId = localStorage.getItem('id');
-    console.log('id', this.userId);
-    this.uuid = localStorage.getItem('uuid');
-    console.log('uuid', this.uuid);
   }
 
   getUserInfoById() {
