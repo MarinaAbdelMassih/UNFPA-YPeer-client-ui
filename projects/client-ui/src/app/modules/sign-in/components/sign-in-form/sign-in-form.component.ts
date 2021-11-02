@@ -30,7 +30,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
     console.log(userData);
     this.isChecked = localStorage.getItem('remember-me') == 'false';
     this.signInForm = this.fb.group({
-      username: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       password: ['', [Validators.required]],
       // rememberMe: ['', [Validators.required]],
     });
@@ -39,7 +39,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   submitSignInForm() {
     console.log('value', this.signInForm.value);
     this.signInUserData = {
-      username: this.signInForm.controls.username.value,
+      username: this.signInForm.controls.email.value,
       password: this.signInForm.controls.password.value,
       authType: 'ALMENTOR',
     };
