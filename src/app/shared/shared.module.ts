@@ -57,7 +57,7 @@ import {WelcomeScreenPendingComponent} from './components/welcome-screen-pending
     MatExpansionModule,
     MatIconModule,
     MatListModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class SharedModule {

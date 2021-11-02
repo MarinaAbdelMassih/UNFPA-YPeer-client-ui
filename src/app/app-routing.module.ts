@@ -112,6 +112,11 @@ const routes: Routes = [
     loadChildren: () => import('../../projects/client-ui/src/app/modules/sign-in/sign-in.module').then(mod => mod.SignInModule),
   },
   {
+    path: 'signUp',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/sign-up/sign-up.module').then(mod => mod.SignUpModule),
+  },
+  {
     path: 'welcome',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/welcome-screen/welcome-screen.module').then(mod => mod.WelcomeScreenModule),

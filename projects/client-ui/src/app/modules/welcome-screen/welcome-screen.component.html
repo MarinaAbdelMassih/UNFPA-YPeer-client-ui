@@ -1,9 +1,9 @@
 <div class="welcome-screen">
   <img src="assets/images/user-welcome.png" alt="user-img">
   <h2>{{subscribed ? 'CONGRATULATIONS!' : 'WELCOME TO Y-PEER EGYPT'}}</h2>
-  <p>{{subscribed ? 'Your account is approved now. You can start your learning journey and access the introductorycourse now.' : 'Your account has been created successfully. Now you can start your learning journey and share yourknowledge with other peers.'}}</p>
+  <p>{{subscribed ? 'Your account is approved now. You can start your learning journey and access the introductorycourse now.' : 'Your account is waiting for review. You would be able to access the introductory course once your account is approved..'}}</p>
   <button *ngIf="!pending">Start The Course</button>
   <div class="link">
-    <a *ngIf="pending">Go to Home Page</a>
+    <a [routerLink]="'/home'" *ngIf="pending">Go to Home Page</a>
   </div>
 </div>

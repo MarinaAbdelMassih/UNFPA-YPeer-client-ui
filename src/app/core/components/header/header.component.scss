@@ -33,6 +33,21 @@
     border-left: 0;
     padding-left: 0;
   }
+
+}
+
+.user {
+  width: 108px;
+  height: 37px;
+  background-color: #673bb8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    color: #FFFFFF;
+    margin-bottom: 0;
+  }
 }
 
 .user {
