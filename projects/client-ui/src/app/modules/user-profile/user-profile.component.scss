@@ -28,9 +28,33 @@
     margin-bottom: 49px;
     margin-top: 82.8px;
   }
+
   ::ng-deep.mat-tab-label.mat-tab-label-active {
     color: black;
     opacity: 1 !important;
 
+  }
+}
+
+
+::ng-deep {
+  [dir="ltr"] {
+    .user-profile {
+      ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar {
+        @media (max-width: 991px) {
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+
+  [dir="rtl"] {
+    .user-profile {
+      ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar {
+        @media (max-width: 991px) {
+          margin-right: 30px;
+        }
+      }
+    }
   }
 }
