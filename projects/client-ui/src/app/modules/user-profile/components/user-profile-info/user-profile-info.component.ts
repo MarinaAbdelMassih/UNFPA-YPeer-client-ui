@@ -41,6 +41,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   height: number;
   previewHeight: number;
    birthday: any;
+  successMessage: any;
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService, private imageService: ImageService) {
     this.userProfileForm = this.fb.group({
@@ -60,9 +61,8 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userId = localStorage.getItem('id');
-    console.log('id', this.userId);
     this.uuid = localStorage.getItem('uuid');
-    console.log('uuid', this.uuid);
+
     this.checkLanguage();
     this.getUserInfoById();
     this.myProfileService.getGenders().then(data => {
@@ -77,8 +77,6 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   getUserInfoById() {
     this.myProfileService.getUserInfo(this.userId).then(data => {
       this.userInfo = data;
-      console.log('userInfo' , this.userInfo);
-      console.log('userInfo' , this.userInfo.firstName);
       this.userProfileForm.setValue({
         firstName: this.userInfo.firstName,
         email: this.userInfo.email,
@@ -93,12 +91,8 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   }
 
   submitUserProfileForm() {
-    console.log('value', this.userProfileForm.value);
-    // this.birthday = this.userProfileForm.controls.birthDate.value.toLocaleDateString();
-    // const latestDate = this.datepipe.transform(this.birthday, 'yyyy-MM-dd');
     this.updateDataInfo = {
       id: this.userId,
-      // uuid: this.uuid,
       username: this.userProfileForm.controls.firstName.value + ' ' + this.userProfileForm.controls.lastName.value,
       firstName: this.userProfileForm.controls.firstName.value,
       email: this.userProfileForm.controls.email.value,
@@ -110,8 +104,9 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
       genderId: this.userProfileForm.controls.genderId.value,
       occupation: this.userProfileForm.controls.occupation.value
     };
-    this.myProfileService.updateUserInfo(this.updateDataInfo).then(data => {
-      console.log(data);
+    this.myProfileService.updateUserInfo(this.updateDataInfo).then(() => {
+      this.successMessage = {EN: 'Your information has been updated successfully', AR: 'لقد تم تعديل بياناتك بنجاح'};
+      setTimeout(() => {this.successMessage = null}, 2000);
     });
   }
 
