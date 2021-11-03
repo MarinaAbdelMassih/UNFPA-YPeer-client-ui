@@ -17,6 +17,7 @@ import {RouterModule} from "@angular/router";
 import { ConfirmationPopUpComponent } from './components/confirmation-pop-up/confirmation-pop-up.component';
 import {WelcomeScreenApprovedComponent} from './components/welcome-screen-approved/welcome-screen-approved.component';
 import {WelcomeScreenPendingComponent} from './components/welcome-screen-pending/welcome-screen-pending.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -52,8 +53,8 @@ import {WelcomeScreenPendingComponent} from './components/welcome-screen-pending
     InstructorCardComponent,
     SafePipe,
     WelcomeScreenApprovedComponent,
-    WelcomeScreenPendingComponent
-
+    WelcomeScreenPendingComponent,
+    MatDialogModule
   ],
   imports: [
     CommonModule,
@@ -61,6 +62,7 @@ import {WelcomeScreenPendingComponent} from './components/welcome-screen-pending
     MatIconModule,
     MatListModule,
     RouterModule,
+    MatDialogModule
   ]
 })
 export class SharedModule {

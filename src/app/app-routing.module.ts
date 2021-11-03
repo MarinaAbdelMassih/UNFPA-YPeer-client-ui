@@ -131,7 +131,24 @@ const routes: Routes = [
   },
   {
     path: 'WelcomeScreenPending', component: WelcomeScreenPendingComponent
-  }
+  },
+  {
+    path: 'viewer',
+    children: [
+      {path: '', pathMatch: 'full', redirectTo: '/home'},
+      {
+        path: ':courseId',
+        pathMatch: 'full',
+        loadChildren: () => import('../../projects/course-viewer/src/app/course-viewer.module').then(mod => mod.CourseViewerModule),
+      }
+    ],
+  },
+  // {
+  //   path: 'contactUs',
+  //   pathMatch: 'full',
+  //   loadChildren: () => import('../../projects/client-ui/src/app/modules/contact-us/contact-us.module').then(mod => mod.ContactUsModule),
+  // },
+
 ];
 
 @NgModule({

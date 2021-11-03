@@ -1,0 +1,77 @@
+.session {
+  .mat-list-base {
+    padding-top: 0;
+
+  }
+
+  mat-expansion-panel {
+    border-radius: 0;
+
+    mat-expansion-panel-header {
+      padding: 12px;
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      background-color: #f0f0f0;
+      font-family: "DroidKufiBold", sans-serif;
+      height: 55px !important;
+    }
+
+    ::ng-deep.mat-expansion-panel-body {
+      padding: 0;
+    }
+  }
+
+  .session-quiz {
+    //mat-list-item {
+    //  &.selected-stuff{
+    //    background-color: rgba(146, 148, 144, 0.8);
+    //    &:hover{
+    //      background-color: rgba(146, 148, 144, 0.8);
+    //    }
+    //  }
+    //  .mat-list-item-content {
+    //    padding: 0 2px;
+    //    .mat-list-text{
+    //      flex-direction: row !important;
+    //    }
+    //  }
+    //}
+
+    mat-list-item{
+      cursor: pointer;
+      &:hover{
+        background-color: #3b4249;
+        color: #ffffff;
+        .mat-list-text{
+          h4{
+            color: #ffffff;
+          }
+        }
+        transition: background-color 200ms ease-in;
+      }
+
+      &.selected-quiz{
+        background-color: #3b4249;
+        color: #ffffff;
+        .mat-list-text{
+          h4{
+            color: #ffffff;
+          }
+        }
+        &:hover{
+          background-color: #3b4249;
+          color: #ffffff;
+        }
+      }
+      .mat-list-text{
+        flex-direction: row !important;
+        h4{
+          color: white;
+        }
+      }
+      mat-progress-bar{
+        padding-bottom: 20px !important;
+      }
+    }
+  }
+}

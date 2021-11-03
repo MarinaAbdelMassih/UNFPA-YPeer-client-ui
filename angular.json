@@ -316,6 +316,128 @@
           }
         }
       }
+    },
+    "course-viewer": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/course-viewer",
+      "sourceRoot": "projects/course-viewer/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/course-viewer",
+            "index": "projects/course-viewer/src/index.html",
+            "main": "projects/course-viewer/src/main.ts",
+            "polyfills": "projects/course-viewer/src/polyfills.ts",
+            "tsConfig": "projects/course-viewer/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/course-viewer/src/favicon.ico",
+              "projects/course-viewer/src/assets"
+            ],
+            "styles": [
+              "projects/course-viewer/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/course-viewer/src/environments/environment.ts",
+                  "with": "projects/course-viewer/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "course-viewer:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "course-viewer:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "course-viewer:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/course-viewer/src/test.ts",
+            "polyfills": "projects/course-viewer/src/polyfills.ts",
+            "tsConfig": "projects/course-viewer/tsconfig.spec.json",
+            "karmaConfig": "projects/course-viewer/karma.conf.js",
+            "assets": [
+              "projects/course-viewer/src/favicon.ico",
+              "projects/course-viewer/src/assets"
+            ],
+            "styles": [
+              "projects/course-viewer/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/course-viewer/tsconfig.app.json",
+              "projects/course-viewer/tsconfig.spec.json",
+              "projects/course-viewer/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/course-viewer/e2e/protractor.conf.js",
+            "devServerTarget": "course-viewer:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "course-viewer:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "UNFPA-YPeer-client"

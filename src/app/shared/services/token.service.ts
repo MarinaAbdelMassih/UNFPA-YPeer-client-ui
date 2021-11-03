@@ -39,12 +39,12 @@ export class TokenService {
     let authLocalStorage = localStorage.getItem('auth');
     let authBase64 = Base64.stringify(Utf8.parse(JSON.stringify({})));
     return authLocalStorage ? authLocalStorage : authBase64;
-  }
+  };
 
   private buildJwtSignature = (headerBase64: string, payloadBase64: string, authBase64: string, secret: string): string => {
     let signatureString = `${headerBase64}.${payloadBase64}.${authBase64}.${secret}`;
     return SHA256(signatureString).toString();
-  }
+  };
 
   buildJwt(request: { sender: string, receiver: string, body: Object, uuid?: string }): string {
     let jwtHeader = this.buildJwtHeader(request.sender, request.receiver, request.uuid);

@@ -1,0 +1,16 @@
+<div class="section" *ngIf="section">
+  <mat-card fxLayout="column">
+    <mat-card-header fxLayout="row" fxLayoutAlign="start">
+      <div class="section-title" fxLayoutAlign="start">
+        <h3 [translateLocal]="{AR: 'محتوى الدورة', EN: 'Course Content'}"></h3>
+      </div>
+    </mat-card-header>
+    <mat-divider inset></mat-divider>
+    <mat-card-content fxLayout="column">
+      <div class="sessions">
+        <app-session-item *ngFor="let session of section?.lectures" [session]="session"
+                                 (selected)="onSelect()" [section]="section"></app-session-item>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
