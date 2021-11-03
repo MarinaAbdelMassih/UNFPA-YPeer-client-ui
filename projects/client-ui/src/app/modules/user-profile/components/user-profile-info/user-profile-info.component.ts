@@ -125,7 +125,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
       username: this.userProfileForm.controls.firstName.value + ' ' + this.userProfileForm.controls.lastName.value,
       firstName: this.userProfileForm.controls.firstName.value,
       email: this.userProfileForm.controls.email.value,
-      birthDate: this.userProfileForm.controls.birthDate.value,
+      birthDate: this.userProfileForm.controls.birthDate.value.toLocaleString(),
       // birthDate: '2021-11-02',
       educationalLevelId: this.userProfileForm.controls.educationalLevelId.value,
       lastName: this.userProfileForm.controls.lastName.value,
