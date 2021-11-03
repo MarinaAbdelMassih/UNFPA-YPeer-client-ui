@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
@@ -11,6 +11,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 
 import * as _moment from 'moment';
 
+// @ts-ignore
 import {default as _rollupMoment} from 'moment';
 
 const moment = _rollupMoment || _moment;
