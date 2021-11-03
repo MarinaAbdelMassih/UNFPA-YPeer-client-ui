@@ -4,14 +4,36 @@ import {Subscription} from 'rxjs';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {MyProfileService} from '../../../../../../../../src/app/shared/services/my-profile.service';
 import {IUserInfo} from '../../../../../../../../src/app/shared/models/my-profile.model';
-import {UserService} from "../../../../../../../../src/app/shared/services/user.service";
-import {ImageService} from "../../../../../../../../src/app/shared/services/image.service";
+import {ImageService} from '../../../../../../../../src/app/shared/services/image.service';
 import {DatePipe} from '@angular/common';
+import {MomentDateAdapter} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
+import * as _moment from 'moment';
+
+import {default as _rollupMoment} from 'moment';
+
+const moment = _rollupMoment || _moment;
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'YYYY',
+  },
+};
 @Component({
   selector: 'app-user-profile-info',
   templateUrl: './user-profile-info.component.html',
-  styleUrls: ['./user-profile-info.component.scss']
+  styleUrls: ['./user-profile-info.component.scss'],
+  providers: [
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ],
 })
 export class UserProfileInfoComponent implements OnInit, OnDestroy {
   userProfileForm: FormGroup;
@@ -40,7 +62,8 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   previewWidth: number;
   height: number;
   previewHeight: number;
-   birthday: any;
+   // birthday: any;
+  birthDate = new FormControl(moment());
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService, private imageService: ImageService) {
     this.userProfileForm = this.fb.group({
@@ -102,8 +125,8 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
       username: this.userProfileForm.controls.firstName.value + ' ' + this.userProfileForm.controls.lastName.value,
       firstName: this.userProfileForm.controls.firstName.value,
       email: this.userProfileForm.controls.email.value,
-      // birthDate: this.userProfileForm.controls.birthDate.value,
-      birthDate: '2021-11-02',
+      birthDate: this.userProfileForm.controls.birthDate.value,
+      // birthDate: '2021-11-02',
       educationalLevelId: this.userProfileForm.controls.educationalLevelId.value,
       lastName: this.userProfileForm.controls.lastName.value,
       phone: this.userProfileForm.controls.phone.value,
