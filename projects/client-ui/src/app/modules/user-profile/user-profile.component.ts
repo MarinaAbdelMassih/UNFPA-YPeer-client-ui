@@ -12,6 +12,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.checkLanguage();
   }
 
   checkLanguage(): void {

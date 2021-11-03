@@ -1,9 +1,9 @@
 <div class="user-profile">
   <mat-tab-group mat-align-tabs="start">
-    <mat-tab label="MY COURSES">
+    <mat-tab [label]="isArabic ? 'الدورات التدريبية' : 'MY COURSES'">
       <app-user-profile-courses></app-user-profile-courses>
     </mat-tab>
-    <mat-tab label="MY PROFILE">
+    <mat-tab [label]="isArabic ? 'ملفي الشخصي' : 'MY PROFILE'" >
       <app-user-profile-info></app-user-profile-info>
     </mat-tab>
   </mat-tab-group>
