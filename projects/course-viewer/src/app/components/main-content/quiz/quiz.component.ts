@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {IStuff} from "../../../../../../../src/app/shared/models/course-viewer/stuff.model";
 import {QuizService} from "../../../../../../../src/app/shared/services/quiz.service";
 import {IQuestion} from "../../../../../../../src/app/shared/models/quiz.model";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-quiz',
@@ -15,9 +16,11 @@ export class QuizComponent implements OnInit {
   currentQuestionIndex: number;
   quizStarted = false;
   questions : IQuestion[] = [];
-  constructor(private quizService: QuizService) { }
+  courseId: number;
+  constructor(private quizService: QuizService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.courseId = this.route.snapshot.params.courseId;
     this.initQuiz();
   }
 
@@ -61,15 +64,10 @@ export class QuizComponent implements OnInit {
     this.questions.map(question => {
       question.possibleAnswers.map(answer => delete answer.selected);
     });
-    this.quizService.submitAnswers('quiz',{id: this.quiz.id, userId: 1111, questions: this.questions})
+    this.quizService.submitAnswers('quiz',{id: this.quiz.id, userId: 1111, courseId: this.courseId, questions: this.questions})
       .then(response => {
-        console.log(response);
         this.quizService.examIsFinished.next(true);
         this.quizService.examUserData.next({userScore: response.results.percentage.toFixed(0), userUsedTrials: response.trials})
-        // if (response.success) {
-        //   this.quizService.examIsFinished.next(true);
-        //   this.quizService.userScore.next(response.results.percentage)
-        // }
       })
   }
 

@@ -22,7 +22,7 @@ export class QuizService {
     })
   }
 
-  submitAnswers(sender: string, examBody: {id: number, userId: number, questions: IQuestion[]}): Promise<any> {
+  submitAnswers(sender: string, examBody: {id: number, userId: number, courseId: number, questions: IQuestion[]}): Promise<any> {
     return this.customHttpClient.sendBackendRequest({
       endpoint: 'exams/submit/userAnswers',
       sender: sender,
