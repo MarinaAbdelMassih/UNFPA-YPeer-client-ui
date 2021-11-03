@@ -26,6 +26,7 @@ export const MY_FORMATS = {
     monthYearA11yLabel: 'YYYY',
   },
 };
+
 @Component({
   selector: 'app-user-profile-info',
   templateUrl: './user-profile-info.component.html',
@@ -62,7 +63,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   previewWidth: number;
   height: number;
   previewHeight: number;
-   // birthday: any;
+  birthday: any;
   birthDate = new FormControl(moment());
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService, private imageService: ImageService) {
@@ -100,8 +101,8 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   getUserInfoById() {
     this.myProfileService.getUserInfo(this.userId).then(data => {
       this.userInfo = data;
-      console.log('userInfo' , this.userInfo);
-      console.log('userInfo' , this.userInfo.firstName);
+      console.log('userInfo', this.userInfo);
+      console.log('userInfo', this.userInfo.firstName);
       this.userProfileForm.setValue({
         firstName: this.userInfo.firstName,
         email: this.userInfo.email,
@@ -117,16 +118,16 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
 
   submitUserProfileForm() {
     console.log('value', this.userProfileForm.value);
-    // this.birthday = this.userProfileForm.controls.birthDate.value.toLocaleDateString();
-    // const latestDate = this.datepipe.transform(this.birthday, 'yyyy-MM-dd');
+    this.birthday = this.userProfileForm.controls.birthDate.value;
+    const latestDate = this.datepipe.transform(this.birthday, 'yyyy-MM-dd');
     this.updateDataInfo = {
       id: this.userId,
       // uuid: this.uuid,
       username: this.userProfileForm.controls.firstName.value + ' ' + this.userProfileForm.controls.lastName.value,
       firstName: this.userProfileForm.controls.firstName.value,
       email: this.userProfileForm.controls.email.value,
-      birthDate: this.userProfileForm.controls.birthDate.value.toLocaleString(),
-      // birthDate: '2021-11-02',
+      // birthDate: this.userProfileForm.controls.birthDate.value,
+      birthDate: latestDate,
       educationalLevelId: this.userProfileForm.controls.educationalLevelId.value,
       lastName: this.userProfileForm.controls.lastName.value,
       phone: this.userProfileForm.controls.phone.value,
