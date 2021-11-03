@@ -2,12 +2,12 @@
   <h3 [translateLocal]="{EN: 'SIGN IN', AR: 'تسجيل الدخول'}"></h3>
   <form class="contact-form" [formGroup]="signInForm" (ngSubmit)='submitSignInForm()'>
     <div class="input-container">
-      <input matInput type="email" name="email" formControlName="username" class="email"
-             [placeholder]="isArabic ? 'البريد الالكتروني ' : 'username'">
+      <input matInput type="email" name="email" formControlName="email" class="email"
+             [placeholder]="isArabic ? 'البريد الالكتروني ' : 'email'">
     </div>
     <div class="error-label">
           <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
-                *ngIf="signInForm.get('username').touched && signInForm.get('username').errors?.required">
+                *ngIf="signInForm.get('email').touched && signInForm.get('email').errors?.required">
           </span>
       <!--      <div class="text-danger" [translateLocal]="{AR: 'البريد الالكتروني  خاطئ',EN: 'Invalid Email'}"-->
       <!--           *ngIf="signInForm.get('email').touched && signInForm.get('email').errors?.email">-->
@@ -40,7 +40,7 @@
     <a class="forgot-password-link" [translateLocal]="{EN: 'Forgot password!', AR: 'هل نسيت كلمة السر!'}"></a>
     <div class="d-flex justify-content-center">
       <p class="no-account-text" [translateLocal]="{EN: 'Have no account?', AR: 'ليس لديك حساب؟'}"></p>
-      <a class="sign-up-link" [translateLocal]="{EN: 'Sign Up', AR: 'اشتراك'}"></a>
+      <a [routerLink]="'/signUp'" class="sign-up-link" [translateLocal]="{EN: 'Sign Up', AR: 'اشتراك'}"></a>
     </div>
   </form>
 </div>
