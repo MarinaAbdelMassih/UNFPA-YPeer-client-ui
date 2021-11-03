@@ -1,5 +1,5 @@
 <div class="course-bar">
-  <p class="name"> {{name ? name : 'Introductory Course Name'}}</p>
+  <p class="name" [translateLocal]="name"></p>
   <div class="d-flex align-items-center">
     <circle-progress
       [percent]="percent ? percent : 10"
@@ -18,12 +18,12 @@
       [showSubtitle]="false"
     ></circle-progress>
 
-    <p class="progress">Your Progress</p>
+    <p class="progress" [translateLocal]="{EN:'Your Progress',AR:'التقدم المحرز الخاص بك'}"></p>
   </div>
-  <p *ngIf="finished" class="score">Your Score: <span>{{score ? score : '85'}}%</span></p>
-  <button  *ngIf="!advanced" class="normal-btn">{{btnText ? btnText : 'View Certificate'}}</button>
+  <p *ngIf="finished" class="score" [translateLocal]="{EN:'Your Score:',AR:'درجاتك:'}"> <span>{{score ? score : '85'}}%</span></p>
+  <button  *ngIf="!advanced" class="normal-btn" [translateLocal]="btnText"></button>
 <!--  <button>{{finished ? 'View Certificate' : 'Resume Course'}}</button>-->
-  <button *ngIf="advanced" class="advanced-btn">Resume Course</button>
+  <button *ngIf="advanced" class="advanced-btn" [translateLocal]="{EN:'Resume Course',AR:'استئناف الدورة'}"></button>
 </div>
 
 

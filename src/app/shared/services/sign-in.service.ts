@@ -14,7 +14,8 @@ export class SignInService {
       endpoint: 'auth/signin',
       sender: 'signin',
       receiver: 'signin',
-      body: data
+      body: data,
+      headers: true
     });
   }
 }

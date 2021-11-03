@@ -2,13 +2,18 @@
   padding-right: 87px;
   padding-left: 87px;
 
+  @media(max-width: 500px) {
+    padding-right: 25px;
+    padding-left: 25px;
+
+  }
+
   .img-container {
     margin: auto;
     text-align: center;
 
 
-
-    p ,.upload{
+    p, .upload {
       font-family: 'TradeGothic', sans-serif;
       font-size: 14px;
       color: #2e2e2e;
@@ -23,9 +28,21 @@
     .form-container {
       display: flex;
       justify-content: space-between;
+      @media(max-width: 1400px) and (min-width: 1200px) {
+        flex-direction: column;
+        justify-content: center !important;
+        align-items: center;
+      }
       @media(max-width: 1400px) {
         flex-direction: column;
+        //justify-content: center !important;
+        //align-items: center;
       }
+      //@media(max-width: 1100px) {
+      //  flex-direction: column;
+      //  justify-content: flex-start !important;
+      //  align-items: flex-start;
+      //}
 
       p {
         font-family: 'TradeGothic', sans-serif;
@@ -69,6 +86,14 @@
         border-radius: 0px;
       }
 
+      ::ng-deep.mat-form-field-appearance-outline .mat-form-field-flex {
+        width: 579px;
+        height: 54px;
+        @media (max-width: 991px) {
+          width: 100%;
+          height: auto;
+        }
+      }
 
       //.birthday-container {
       //  display: flex;
@@ -85,14 +110,19 @@
       //  }
       //}
       //}
+      ::ng-deep.mat-form-field-appearance-outline .mat-form-field-suffix {
+        top: 0.5em;
+      }
 
       mat-form-field {
         background-color: #FFFFFF;
         width: 579px;
         //height: 52px;
+        height: 54px;
         border-radius: 0 !important;
         @media(max-width: 991px) {
           width: 100%;
+          height: auto;
         }
       }
 
