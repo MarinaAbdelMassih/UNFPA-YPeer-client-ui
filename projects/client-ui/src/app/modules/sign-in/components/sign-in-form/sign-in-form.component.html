@@ -3,7 +3,7 @@
   <form class="contact-form" [formGroup]="signInForm" (ngSubmit)='submitSignInForm()'>
     <div class="input-container">
       <input matInput type="email" name="email" formControlName="email" class="email"
-             [placeholder]="isArabic ? 'البريد الالكتروني ' : 'email'">
+             [placeholder]="isArabic ? 'اسم المستخدم / البريد الالكتروني' : 'email'">
     </div>
     <div class="error-label">
           <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
