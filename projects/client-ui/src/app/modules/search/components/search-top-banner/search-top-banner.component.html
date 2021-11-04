@@ -3,25 +3,25 @@
   <div class="banner-text">
     <p [translateLocal]="{EN:'Search',AR:'بحث'}"></p>
     <div class="header-search form-container">
-      <form action="">
-        <input [placeholder]="isArabic ? 'إبحث' : 'search'"
+      <form>
+        <input [placeholder]="isArabic ? 'إبحث' : 'search'" [(ngModel)]="searchField" ngModelOptions="{standalone:true}"
                placeholder=""
                type="text"
                aria-label="Search"
-               name="search"/>
-        <button>
+               name="searchWord"/>
+        <button type = 'button' (click)="search()">
           <img src="assets/images/search-icon.png" alt="icon">
         </button>
       </form>
     </div>
     <div class="radio-btn-container">
-    <mat-radio-group aria-label="Select an option">
-      <mat-radio-button value="1" class="first">All</mat-radio-button>
-      <mat-radio-button value="2">News</mat-radio-button>
-      <mat-radio-button value="3">Events</mat-radio-button>
-      <mat-radio-button value="4">Stories</mat-radio-button>
-      <mat-radio-button value="5">Publications</mat-radio-button>
-      <mat-radio-button value="6">Training Manuals</mat-radio-button>
+    <mat-radio-group  [formControl]="searchType" aria-label="Select an option">
+      <mat-radio-button [checked]="true" value="" class="first">All</mat-radio-button>
+      <mat-radio-button value="news">News</mat-radio-button>
+      <mat-radio-button value="events">Events</mat-radio-button>
+      <mat-radio-button value="stories">Stories</mat-radio-button>
+      <mat-radio-button value="publications">Publications</mat-radio-button>
+      <mat-radio-button value="training">Training Manuals</mat-radio-button>
     </mat-radio-group>
     </div>
   </div>

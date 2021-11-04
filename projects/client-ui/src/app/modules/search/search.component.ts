@@ -1,4 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {SearchService} from "../../../../../../src/app/shared/services/search.service";
 
 @Component({
   selector: 'app-search',
@@ -27,10 +29,13 @@ export class SearchComponent implements OnInit {
   currentPage = 1;
   @Output() PageNumber = new EventEmitter<number>();
 
-  constructor() {
+  constructor(private route:ActivatedRoute, private searchService: SearchService) {
     for (let i = 1; i < 5; i++) {
       this.pageNumbers.push(i);
     }
+  }
+
+  ngOnInit() {
   }
 
   changeNumber(index): void {
@@ -55,7 +60,10 @@ export class SearchComponent implements OnInit {
     this.changeNumber(this.currentPage - 1);
   }
 
-  ngOnInit() {
+  search(searchData) {
+    if (searchData.searchType == null) {
+      this.searchService.getSearchData(searchData.searchWord).then(data => console.log(data))
+    }
   }
 
 }

@@ -1,6 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {Subscription} from 'rxjs';
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-search-top-banner',
@@ -10,6 +11,9 @@ import {Subscription} from 'rxjs';
 export class SearchTopBannerComponent implements OnInit, OnDestroy {
   isArabic: boolean;
   subscription: Subscription;
+  @Output() searchClicked: EventEmitter<any> = new EventEmitter<any>();
+  searchField = null;
+  searchType: FormControl = new FormControl();
 
 
   constructor(private languageService: LanguageService) {
@@ -23,6 +27,11 @@ export class SearchTopBannerComponent implements OnInit, OnDestroy {
     this.subscription = this.languageService.isArabic.subscribe((isArabic: boolean) => {
       this.isArabic = isArabic;
     });
+  }
+
+  search() {
+    this.searchClicked.emit({searchWord:this.searchField, searchType: this.searchType.value});
+    console.log(this.searchType.value)
   }
 
   ngOnDestroy() {

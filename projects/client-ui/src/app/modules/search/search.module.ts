@@ -7,6 +7,7 @@ import { ResultItemComponent } from './components/result-item/result-item.compon
 import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import { SearchTopBannerComponent } from './components/search-top-banner/search-top-banner.component';
 import {MatRadioModule} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import {MatRadioModule} from '@angular/material';
     CommonModule,
     SearchRoutingModule,
     SharedModule,
-    MatRadioModule
+    MatRadioModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SearchModule { }
