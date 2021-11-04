@@ -1,0 +1,88 @@
+.search {
+  .search-container {
+    padding: 0 46px 0 56px;
+
+    .title-container {
+      padding: 56px 0 72px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @media(max-width: 991px) {
+        flex-direction: column;
+      }
+
+      h3 {
+        font-family: 'TradeGothic', sans-serif;
+        font-size: 32px;
+        font-weight: bold;
+        color: #2e2e2e;
+        @media (max-width: 991px) {
+          font-size: 20px;
+          text-align: center;
+        }
+      }
+
+      p {
+        font-family: 'TradeGothic', sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        color: #929292;
+
+        span {
+          font-family: 'TradeGothic', sans-serif;
+          font-size: 18px;
+          font-weight: bold;
+          color: #4e4e4e;
+          padding-left: 11px;
+          padding-right: 11px;
+        }
+      }
+    }
+  }
+
+  .result {
+    margin-bottom: 48px;
+  }
+
+  .pagination {
+    margin-bottom: 36px;
+
+    .first-btn, .prev-btn, .next-btn, .last-btn {
+      width: 59px;
+    }
+
+    .first-btn, .prev-btn, .next-btn, .last-btn, .number-btn {
+      height: 32px;
+      font-family: 'TradeGothic', sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: #2e2e2e;
+      border: solid 1px #e0e0e0;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 4px;
+      cursor: pointer;
+    }
+
+    .number-btn {
+      width: 32px;
+    }
+    .active {
+      width: 32px;
+      height: 32px;
+      color: #ffffff;
+      background: #673bb8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .pages-showing {
+    font-family: 'TradeGothic', sans-serif;
+    font-size: 14px;
+    color: #929292;
+  }
+}

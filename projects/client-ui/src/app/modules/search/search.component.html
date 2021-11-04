@@ -1,0 +1,27 @@
+<div class="search">
+  <app-search-top-banner></app-search-top-banner>
+  <div class="search-container">
+    <div class="title-container">
+      <h3>Search Results for : "Reproductive Health"</h3>
+      <p><span>10</span>Results found</p>
+    </div>
+    <div class="result">
+      <app-result-item [tagsList]="tags" [details]="details" [start]="0" [end]="2"></app-result-item>
+    </div>
+    <div class="pagination">
+      <div (click)="first()" class="first-btn">First</div>
+      <div (click)="prev()" class="prev-btn ">prev</div>
+
+      <div class="number-btn" *ngFor="let pageNumber of pageNumbers; let i = index"
+           (click)='changeNumber(pageNumber)'>
+        <a [ngClass]="{'active':currentPage==pageNumber}" class="">
+          {{pageNumber}}
+        </a>
+      </div>
+
+      <div (click)="next()" class=" next-btn">Next</div>
+      <div (click)="last()" class="last-btn ">Last</div>
+    </div>
+    <p class="pages-showing">Showing page 1 of 8 - Items 1 - 6 of 40</p>
+  </div>
+</div>
