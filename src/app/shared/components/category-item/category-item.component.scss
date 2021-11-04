@@ -3,11 +3,19 @@
   margin-top: 4px;
   box-shadow: none;
 }
+
 .mat-expansion-panel-header {
   color: #232323;
   font-family: 'TradeGothic', sans-serif;
   font-weight: bold;
   height: 40px !important;
+
+  ::ng-deep.mat-expansion-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 
   .mat-expansion-panel-header-title {
     font-size: 16px;
@@ -27,12 +35,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+
   .mat-list-item {
     cursor: pointer;
     height: 35px;
     width: 71px;
     border-radius: 20px;
   }
+
   .mat-list-item:hover {
     background-color: #c1c1c1;
   }
