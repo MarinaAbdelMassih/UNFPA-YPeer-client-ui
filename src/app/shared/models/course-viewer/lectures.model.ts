@@ -2,7 +2,7 @@ import {
   ArticleStuffModel,
   InteractiveStuffModel,
   IStuff,
-  MaterialStuffModel,
+  MaterialStuffModel, QuizStuffModel,
   VideoStuffModel
 } from "./stuff.model";
 import {ILOChild, LOChildType} from "./Backend/course.model";
@@ -34,6 +34,7 @@ export interface ILecture extends ISession {
 }
 
 export interface IQuiz extends ISession {
+  trials?: number;
   isSelected: boolean;
   quizLang: string,
   userPassOrProceedQuiz: boolean;
@@ -110,7 +111,11 @@ export class LecturesModel extends SessionsModel implements ILecture {
         stuffInstance = new InteractiveStuffModel(loChild.id, this.id, this.sectionId, loChild.order, loChild.content,
           this.nextStuff(lectureStuff, index), this.prevStuff(lectureStuff, index), isBlocked,
           {ARABIC: loChild.title, ENGLISH: loChild.title});
-      }
+      } else if (loChild.typeId == LOChildType.QUIZ) {
+      stuffInstance = new QuizStuffModel(loChild.id, this.id, this.sectionId, loChild.order, loChild.content, false,
+        this.nextStuff(lectureStuff, index), this.prevStuff(lectureStuff, index), isBlocked,
+        {ARABIC: loChild.title, ENGLISH: loChild.title});
+    }
       if (loChild.actualProgress == 100 && stuffInstance)
         stuffInstance.setFinished(true);
       return stuffInstance;

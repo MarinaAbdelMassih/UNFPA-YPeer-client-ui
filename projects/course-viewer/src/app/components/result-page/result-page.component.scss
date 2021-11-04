@@ -1,0 +1,33 @@
+.page-container {
+  text-align: center;
+  font-family: TradeGothic, sans-serif;
+  color: #2e2e2e;
+  margin-top: 63px;
+  img {
+    margin-bottom: 36px;
+  }
+  .title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 45px;
+    text-transform: uppercase;
+  }
+  .msg {
+    font-size: 16px;
+    margin-bottom: 32px;
+    .score-text {
+      font-weight: bold;
+    }
+    .separated-msg {
+      line-height: 3;
+    }
+  }
+  button {
+    border: none;
+    margin-bottom: 194px;
+  }
+}
+
+::ng-deep .page-wrapper {
+  min-height: 100%;
+}

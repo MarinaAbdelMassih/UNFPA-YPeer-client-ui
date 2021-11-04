@@ -1,0 +1,52 @@
+.question-container {
+  font-size: 16px;
+  font-family: TradeGothic, sans-serif;
+  color: #232323;
+  .question-title {
+    font-weight: bold;
+    margin-bottom: 23px;
+  }
+  .question-body {
+    margin-bottom: 25px;
+  }
+  .true-false-answers {
+    mat-radio-group {
+      display: flex;
+      flex-direction: column;
+      mat-radio-button {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .multiple-answers {
+    display: flex;
+    flex-direction: column;
+    mat-checkbox {
+      margin-bottom: 10px;
+    }
+  }
+  .single-answers {
+    display: flex;
+    flex-direction: column;
+    mat-radio-button {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #5a3f99;
+}
+
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-inner-circle {
+  background-color: #5a3f99;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #5a3f99;
+}
+
+::ng-deep .mat-checkbox-inner-container {
+  width: 20px !important;
+  height: 20px !important;
+}

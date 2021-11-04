@@ -9,6 +9,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 import {LanguageService} from "../../../../src/app/shared/services/language.service";
 import {Location} from "@angular/common";
 import {ILocalPosition} from "../../../../src/app/shared/models/course-viewer/common-data.model";
+import {QuizService} from "../../../../src/app/shared/services/quiz.service";
 
 @Component({
   selector: 'course-viewer',
@@ -23,6 +24,7 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
   hasProgress: boolean;
   subjectId: number;
   private subscriptions: Subscription[] = [];
+  showResult: boolean;
 
 
   // private studentService: StudentService, private subjectService: SubjectService
@@ -30,7 +32,8 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
               private learnerSectionService: LearnerSectionsDataService, private route: ActivatedRoute,
               private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer,
               private courseViewerDataService: CourseViewerDataService,
-              private location: Location) {
+              private location: Location, private quizService: QuizService) {
+    quizService.examIsFinished.subscribe(showResult => this.showResult = showResult);
     // this.matIconRegistry.addSvgIcon(
     //   `viewer_interactive`,
     //   this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/interactive-icon.svg`)

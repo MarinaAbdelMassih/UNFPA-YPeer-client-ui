@@ -160,14 +160,13 @@ export class QuizStuffModel extends StuffModel implements IQuizStuff {
   quizLang: string;
   userPassOrProceedQuiz: boolean;
   finished: boolean;
+  link: string;
 
-  constructor(id: number, lectureId: number, courseId: number, number: number, quizLang: string, userPassOrProceedQuiz: boolean, finished: boolean,
-              next: number, prev: number, isBlocked, titleLocal: { ARABIC: string; ENGLISH: string }) {
+  constructor(id: number, lectureId: number, courseId: number, number: number, link: string, finished: boolean, next: number, prev: number, isBlocked,
+              titleLocal: { ARABIC: string; ENGLISH: string }) {
     super(id, lectureId, courseId, number, StuffType.QUIZ, next, prev, isBlocked.get(), titleLocal);
-    this.quizLang = quizLang;
-    this.userPassOrProceedQuiz = userPassOrProceedQuiz;
+    this.link = link;
     this.finished = finished;
-    this.initQuiz(userPassOrProceedQuiz, isBlocked)
   }
 
   private initQuiz(userPassOrProceedQuiz, isBlocked) {

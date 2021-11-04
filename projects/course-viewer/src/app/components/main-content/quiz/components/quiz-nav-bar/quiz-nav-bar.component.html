@@ -1,0 +1,14 @@
+<div class="nav-container">
+  <div class="questions-num">
+    <span [translateLocal]="{EN: 'Question', AR: 'سؤال'}"></span> {{currentQuestionIndex + 1}}
+    <span [translateLocal]="{EN: 'of', AR: 'من'}"></span> {{numberOfQuestions}}
+  </div>
+  <div class="buttons-container">
+    <button class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'Previous', AR: 'السابق'}"
+            [disabled]="currentQuestionIndex == 0" (click)="previousButtonClicked()"></button>
+    <button *ngIf="currentQuestionIndex != numberOfQuestions-1" class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'Next', AR: 'التالي'}"
+            (click)="nextButtonClicked()"></button>
+    <button [disabled]="disableFinishExamButton" *ngIf="currentQuestionIndex == numberOfQuestions-1" class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'Finish', AR: 'انهاء'}"
+            (click)="FinishQuiz()"></button>
+  </div>
+</div>

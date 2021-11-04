@@ -16,6 +16,7 @@ import {CourseViewerDataService} from "../../../../../../src/app/shared/services
 import {Subscription} from "rxjs";
 import {LanguageService} from "../../../../../../src/app/shared/services/language.service";
 import {delay} from "rxjs/operators";
+import {QuizComponent} from "./quiz/quiz.component";
 
 
 @Component({
@@ -62,10 +63,11 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
               (<VideoComponent>this.currentComponent.instance).video = stuff;
               // (<VideoComponent>this.currentComponent.instance).subjectId = this.subjectId;
             }
-            // else if (stuff.type == StuffType.QUIZ) {
-            //   this.createComponent(QuizComponent);
-            //   (<QuizComponent>this.currentComponent.instance).quiz = stuff;
-            // } else if (stuff.type == StuffType.MATERIAL) {
+            else if (stuff.type == StuffType.QUIZ) {
+              this.createComponent(QuizComponent);
+              (<QuizComponent>this.currentComponent.instance).quiz = stuff;
+            }
+            // else if (stuff.type == StuffType.MATERIAL) {
             //   this.setUserProgress(stuff);
             //   this.createComponent(MaterialComponent);
             //   (<MaterialComponent>this.currentComponent.instance).material = stuff;
