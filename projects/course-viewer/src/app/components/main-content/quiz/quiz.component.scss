@@ -16,6 +16,9 @@
     border: none;
     height: 46px;
     line-height: 1.19;
+    &:disabled {
+      background-color: #8a8a8a;
+    }
   }
 }
 

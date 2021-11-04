@@ -8,7 +8,7 @@
             [disabled]="currentQuestionIndex == 0" (click)="previousButtonClicked()"></button>
     <button *ngIf="currentQuestionIndex != numberOfQuestions-1" class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'Next', AR: 'التالي'}"
             (click)="nextButtonClicked()"></button>
-    <button *ngIf="currentQuestionIndex == numberOfQuestions-1" class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'Finish', AR: 'انهاء'}"
+    <button [disabled]="disableFinishExamButton" *ngIf="currentQuestionIndex == numberOfQuestions-1" class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'Finish', AR: 'انهاء'}"
             (click)="FinishQuiz()"></button>
   </div>
 </div>

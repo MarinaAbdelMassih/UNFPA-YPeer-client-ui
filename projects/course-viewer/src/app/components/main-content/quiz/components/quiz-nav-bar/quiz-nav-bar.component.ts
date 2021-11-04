@@ -13,6 +13,7 @@ export class QuizNavBarComponent implements OnInit {
   @Output() finishQuizClicked: EventEmitter<boolean> = new EventEmitter();
   @Input() currentQuestionIndex: number;
   @Input() numberOfQuestions: number;
+  disableFinishExamButton: boolean;
   constructor() { }
 
   ngOnInit() {
@@ -28,6 +29,7 @@ export class QuizNavBarComponent implements OnInit {
 
   FinishQuiz() {
     this.finishQuizClicked.emit();
+    this.disableFinishExamButton = true;
   }
 
 }
