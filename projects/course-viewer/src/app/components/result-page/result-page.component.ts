@@ -12,8 +12,10 @@ export class ResultPageComponent implements OnInit {
   numberOfTrials = 3;
   constructor(private quizService: QuizService) {
     quizService.examUserData.subscribe(userData => {
-      this.score = userData.userScore;
-      this.numberOfTrials = userData.userUsedTrials
+      if (userData) {
+        this.score = userData.userScore;
+        this.numberOfTrials = userData.userUsedTrials
+      }
     });
   }
 

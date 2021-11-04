@@ -24,6 +24,10 @@
   }
   button {
     border: none;
-    margin-bottom: 200px;
+    margin-bottom: 194px;
   }
+}
+
+::ng-deep .page-wrapper {
+  min-height: 100%;
 }
