@@ -1,7 +1,7 @@
 .sign-in-form-container {
   padding-left: 44px;
   padding-right: 44px;
-
+  background-color: #fff;
   h3 {
     font-size: 32px;
     font-weight: bold;
@@ -95,7 +95,6 @@
     width: 18px;
     height: 18px;
     border: solid 1px #bebebe;
-    background-color: #fff;
   }
 
   label {
@@ -108,7 +107,6 @@
     padding: 15px;
     opacity: 0.8;
     border: solid 1px #a4a4a4;
-    background-color: #ffffff;
     @media (max-width: 991px) {
       width: 100%;
     }
