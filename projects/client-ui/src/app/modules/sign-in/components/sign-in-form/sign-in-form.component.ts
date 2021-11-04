@@ -49,7 +49,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
         if (signInData.success) {
           console.log('status', signInData.data.status);
           localStorage.setItem('username', signInData.data.firstName);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home']).then(() => window.location.reload());
           // if (signInData.data.status == 1) {
           //   this.router.navigate(['/WelcomeScreenApproved']);
           // } else if (signInData.data.status == 2) {
