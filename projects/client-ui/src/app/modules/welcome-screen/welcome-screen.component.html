@@ -1,9 +1,37 @@
 <div class="welcome-screen">
   <img src="assets/images/user-welcome.png" alt="user-img">
-  <h2>{{subscribed ? 'CONGRATULATIONS!' : 'WELCOME TO Y-PEER EGYPT'}}</h2>
-  <p>{{subscribed ? 'Your account is approved now. You can start your learning journey and access the introductorycourse now.' : 'Your account is waiting for review. You would be able to access the introductory course once your account is approved..'}}</p>
-  <button *ngIf="!pending">Start The Course</button>
-  <div class="link">
-    <a [routerLink]="'/home'" *ngIf="pending">Go to Home Page</a>
-  </div>
+  <ng-container *ngIf="!pending">
+    <h2 [translateLocal]="{
+      EN: 'CONGRATULATIONS!',
+      AR: 'تهانينا'
+    }"></h2>
+    <p [translateLocal]="{
+      EN: 'Your account is approved now. You can start your learning journey and access the introductory course now.',
+      AR: 'تم تفعيل حسابك. يمكنك البدء في رحلة التعلم والوصول الي الدورة التمهيدية'
+    }"></p>
+    <div class="link">
+    <button [translateLocal]="{
+      EN: 'Start The Course',
+      AR: 'بدء الدورة'
+    }"></button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="pending">
+    <h2 [translateLocal]="{
+    EN: 'WELCOME TO Y-PEER EGYPT!',
+    AR: 'مرحبا بك في Y-PEER EGYPT!'
+    }" ></h2>
+    <p [translateLocal]="{
+      EN: 'Your account is waiting for review. You would be able to access the introductory course once your account is approved..',
+      AR: 'حسابك تحت المراجعة. عند تفعيل حسابك ستتمكن من الوصول الي الدورة التمهيدية'
+      }"></p>
+    <div class="link">
+      <a [routerLink]="'/home'"
+         [translateLocal]="{
+      EN: 'Go to Home Page',
+      AR: 'الذهاب للصفحة الرئيسية'
+    }"></a>
+    </div>
+  </ng-container>
+
 </div>
