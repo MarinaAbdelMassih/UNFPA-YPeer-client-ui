@@ -116,7 +116,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       const matchingControl = formGroup.controls[matchingControlName];
 
       if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-        return;
+        return matchingControl.setErrors(null);
       }
       if (control.value !== matchingControl.value) {
         matchingControl.setErrors({MustMatch: true});
