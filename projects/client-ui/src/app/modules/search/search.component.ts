@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {SearchService} from "../../../../../../src/app/shared/services/search.service";
+import {searchContent, SearchModel} from "../../../../../../src/app/shared/models/search.model";
 
 @Component({
   selector: 'app-search',
@@ -28,6 +29,9 @@ export class SearchComponent implements OnInit {
   pageNumbers: number[] = [];
   currentPage = 1;
   @Output() PageNumber = new EventEmitter<number>();
+  searchResults: searchContent;
+  resultList = [];
+  searchWord: '';
 
   constructor(private route:ActivatedRoute, private searchService: SearchService) {
     for (let i = 1; i < 5; i++) {
@@ -62,7 +66,16 @@ export class SearchComponent implements OnInit {
 
   search(searchData) {
     if (searchData.searchType == null) {
-      this.searchService.getSearchData(searchData.searchWord).then(data => console.log(data))
+      this.searchService.getSearchData(searchData.searchWord)
+        .then(data => {
+          this.searchResults = new SearchModel(data);
+          for (let i =0; i < this.searchResults.searchItems.length; i++) {
+            if (this.searchResults.searchItems[i]) {
+              this.resultList.push(this.searchResults.searchItems[i])
+            }
+          }
+          this.searchWord = searchData.searchWord;
+        });
     }
   }
 

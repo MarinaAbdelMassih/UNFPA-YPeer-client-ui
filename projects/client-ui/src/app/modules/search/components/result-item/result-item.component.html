@@ -1,14 +1,13 @@
-<div class="row result-item w-100" *ngFor="let detail of details | slice:start:end ; let i = index">
-  <div class="col-xl-3">
-    <img [src]="detail.img" alt="image" class="result-img">
-  </div>
-  <div class="col-xl-9" >
-    <h2 class="title">{{detail.title}}</h2>
-    <span class="type">{{detail.type }}</span>
-    <p
-      class="description">{{detail.description}}</p>
-    <div class="tags-container">
-      <app-tag-item *ngFor="let tag of tagsList" [tag]="tag"></app-tag-item>
+<div class="row result-item w-100" *ngFor="let detail of details; let i = index">
+      <div class="col-xl-3">
+        <img [src]="detail.imageId" alt="image" class="result-img">
+      </div>
+    <div class="col-xl-9">
+      <h2 class="title" [translateLocal]="detail.title"></h2>
+      <span class="type" [translateLocal]="detail.label"></span>
+      <p class="description" [translateLocal]="detail.description"></p>
+<!--          <div class="tags-container">-->
+<!--            <app-tag-item *ngFor="let tag of tagsList" [tag]="tag"></app-tag-item>-->
+<!--          </div>-->
     </div>
-  </div>
 </div>
