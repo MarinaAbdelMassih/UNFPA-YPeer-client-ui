@@ -33,6 +33,12 @@
   }
 }
 [dir = rtl] .buttons-container {
+  .slider-button {
+    bottom: 230px;
+    @media (max-width: 469px) {
+          bottom: 255px;
+    }
+  }
   .btn-prev {
     left: 46px;
     right: auto;
@@ -69,3 +75,8 @@
   }
 }
 
+@media (max-width: 385px) {
+  .instructor-list-container {
+    padding: 0 15px;
+  }
+}
