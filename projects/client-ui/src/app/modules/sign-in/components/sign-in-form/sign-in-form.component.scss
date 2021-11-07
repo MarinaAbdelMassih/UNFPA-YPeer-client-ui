@@ -109,6 +109,9 @@
     opacity: 0.8;
     border: solid 1px #a4a4a4;
     background-color: #ffffff;
+    @media (max-width: 500px) {
+      width: 100%;
+    }
 
     &::placeholder, ::ng-deep.mat-select-placeholder {
       font-size: 14px;
