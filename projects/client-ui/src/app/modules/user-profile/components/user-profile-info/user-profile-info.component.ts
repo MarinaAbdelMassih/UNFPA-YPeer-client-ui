@@ -49,6 +49,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   // months = ['jan', 'feb', 'mar'];
   // years = [2020, 2021];
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
+  phonePattern = '^[0-9]{11}$';
   userInfo: IUserInfo;
   updateDataInfo: any;
   userId;
@@ -67,18 +68,20 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   birthday: any;
   birthDate = new FormControl(moment());
   successMessage: any;
+  tomorrow = new Date();
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService, private imageService: ImageService) {
+    this.tomorrow.setDate(this.tomorrow.getDate() + 1);
     this.userProfileForm = this.fb.group({
-      firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      firstName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
       birthDate: new FormControl('', Validators.required),
       // days: new FormControl('', Validators.required),
       // months: new FormControl('', Validators.required),
       // years: new FormControl('', Validators.required),
       educationalLevelId: new FormControl('', Validators.required),
-      lastName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-      phone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
+      lastName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.maxLength(10)]),
+      phone: new FormControl('', [Validators.required, Validators.pattern(this.phonePattern), Validators.maxLength(11)]),
       genderId: new FormControl('', Validators.required),
       occupation: new FormControl('', [Validators.required, Validators.maxLength(20)]),
     });
@@ -134,7 +137,9 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     };
     this.myProfileService.updateUserInfo(this.updateDataInfo).then(() => {
       this.successMessage = {EN: 'Your information has been updated successfully', AR: 'لقد تم تعديل بياناتك بنجاح'};
-      setTimeout(() => {this.successMessage = null}, 2000);
+      setTimeout(() => {
+        this.successMessage = null
+      }, 2000);
     });
   }
 
