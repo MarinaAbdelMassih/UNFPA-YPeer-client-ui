@@ -23,11 +23,10 @@
             <input matInput type="password" name="password" class="password" formControlName="password"
                    [placeholder]="isArabic ? '******** ' : '********'">
           </mat-form-field>
-          <mat-error *ngIf="signUpForm.get('password').errors?.minlength">
-            Password must be at least 10 characters .
+          <mat-error [translateLocal]="{EN:'Password must be at least 10 characters .',AR:'يجب أن تتكون كلمة المرور من 10 أحرف على الأقل.'}" *ngIf="signUpForm.get('password').errors?.minlength">
+
           </mat-error>
-          <mat-error *ngIf="signUpForm.get('password').hasError('pattern')">
-            Password is weak , must contain capital , number ,special charachter.
+          <mat-error [translateLocal]="{EN:' Password is weak , must contain capital , number ,special charachter.',AR:'كلمة المرور ضعيفة ، يجب أن تحتوي على حرف كبير ، رقم ، حرف خاص.'}" *ngIf="signUpForm.get('password').hasError('pattern')">
           </mat-error>
 
           <p [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
