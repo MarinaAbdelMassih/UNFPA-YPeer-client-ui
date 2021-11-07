@@ -65,7 +65,7 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
     let paramsSub = this.route.params.subscribe((params) => {
       if (params.courseId) {
         this.courseId = params.courseId;
-        this.learnerSectionService.setLearnerSections(this.courseId, true).then((data) => {
+        this.learnerSectionService.setLearnerSections(this.courseId, true, 1111).then((data) => {
           this.learnerSectionService.learnerSections.next(data.sections);
           this.learnerSectionService.getUserCurrentPosition(data.sections, this.courseId).then((position: ILocalPosition) => {
             this.learnerSectionService.userCurrentPosition.next(position);
