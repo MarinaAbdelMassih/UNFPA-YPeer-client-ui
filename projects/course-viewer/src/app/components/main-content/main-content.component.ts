@@ -1,8 +1,8 @@
 import {
   AfterViewInit,
   Component,
-  ComponentFactoryResolver, ComponentRef, Input,
-  OnDestroy, Type,
+  ComponentFactoryResolver, ComponentRef, EventEmitter, Input,
+  OnDestroy, Output, Type,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -33,6 +33,7 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
   courseId = null;
   currentTitle: string;
   @Input() videosCount: number;
+  @Output() userProgress: EventEmitter<number> = new EventEmitter();
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private learnerSectionDataService: LearnerSectionsDataService,
               private curriculumControl: CurriculumControlService,
@@ -64,6 +65,8 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
               (<VideoComponent>this.currentComponent.instance).video = stuff;
               (<VideoComponent>this.currentComponent.instance).userId = 1111;
               (<VideoComponent>this.currentComponent.instance).videosCount = this.videosCount;
+              (<VideoComponent>this.currentComponent.instance).userProgress
+                .subscribe(progress => this.userProgress.emit(progress))
               // (<VideoComponent>this.currentComponent.instance).subjectId = this.subjectId;
             }
             else if (stuff.type == StuffType.QUIZ) {

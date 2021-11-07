@@ -110,6 +110,10 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
 
   }
 
+  getUserProgress(progress) {
+    this.courseProgress = progress;
+  }
+
   ngOnDestroy(): void {
     this.subscriptions.map((subscription) => {
       subscription.unsubscribe();

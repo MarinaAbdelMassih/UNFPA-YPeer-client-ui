@@ -1,7 +1,7 @@
 <div>
   <course-viewer-header [courseProgress]="courseProgress"></course-viewer-header>
   <app-curriculum-side-nav *ngIf="!showResult" [dir]="isArabic ? 'rtl' : 'ltr'">
-    <app-main-content [videosCount]="videosCount" fxFlex="100" fxFill></app-main-content>
+    <app-main-content (userProgress)="getUserProgress($event)" [videosCount]="videosCount" fxFlex="100" fxFill></app-main-content>
   </app-curriculum-side-nav>
   <app-result-page *ngIf="showResult"></app-result-page>
 </div>

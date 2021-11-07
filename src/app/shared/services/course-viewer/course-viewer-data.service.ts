@@ -54,16 +54,16 @@ export class CourseViewerDataService {
     return this.courseViewerService.updateFeedback(feedback);
   }
 
-  setUserProgress(progress: {userId: number, courseId: number, learningObjectiveChildId: number, videosCount: number }): Promise<boolean> {
+  setUserProgress(progress: {userId: number, courseId: number, learningObjectiveChildId: number, videosCount: number }): Promise<any> {
     return new Promise<boolean>(resolve => {
       if(this.shouldSendProgress){
         this.customHttpClientService.sendBackendRequest({
           sender: 'view',
           receiver: 'progress',
-          endpoint: 'setProgress',
+          endpoint: 'user/progress',
           body: progress
-        }).then(() => {
-          resolve(true);
+        }).then((data) => {
+          resolve(data);
         }).catch(() => {
           resolve(false);
         });

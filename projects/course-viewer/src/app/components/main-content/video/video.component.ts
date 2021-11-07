@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {IStuff} from "../../../../../../../src/app/shared/models/course-viewer/stuff.model";
 import {Subscription} from "rxjs";
 import {CourseViewerDataService} from "../../../../../../../src/app/shared/services/course-viewer/course-viewer-data.service";
@@ -23,6 +23,7 @@ export class VideoComponent implements OnInit, AfterViewInit, OnDestroy {
   videoPlayer;
   private currentTime: number = 0;
   private subscriptions: Set<Subscription> = new Set<Subscription>();
+  @Output() userProgress: EventEmitter<number> = new EventEmitter();
 
   constructor(private curriculumControl: CurriculumControlService, private router: Router,
               private courseViewerDataService: CourseViewerDataService, private sideControleService: SideComponentsControlsService) { }
@@ -104,11 +105,12 @@ export class VideoComponent implements OnInit, AfterViewInit, OnDestroy {
       courseId: this.video.courseId,
       learningObjectiveChildId: this.video.id,
       videosCount: videosCount,
-    }).then(() => {
+    }).then((data) => {
       //@ts-ignore
       this.video.setFinished(true);
       //@ts-ignore
       this.video.setLocalProgress(0);
+      this.userProgress.emit(data.totalProgress)
     });
   }
 
