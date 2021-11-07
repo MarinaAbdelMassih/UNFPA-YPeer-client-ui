@@ -67,6 +67,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   birthday: any;
   birthDate = new FormControl(moment());
   successMessage: any;
+  readonlyField;
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService, private imageService: ImageService) {
     this.userProfileForm = this.fb.group({
@@ -102,6 +103,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   getUserInfoById() {
     this.myProfileService.getUserInfo(this.userId).then(data => {
       this.userInfo = data;
+      this.readonlyField = true;
       this.userProfileForm.setValue({
         firstName: this.userInfo.firstName,
         email: this.userInfo.email,
@@ -134,7 +136,9 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     };
     this.myProfileService.updateUserInfo(this.updateDataInfo).then(() => {
       this.successMessage = {EN: 'Your information has been updated successfully', AR: 'لقد تم تعديل بياناتك بنجاح'};
-      setTimeout(() => {this.successMessage = null}, 2000);
+      setTimeout(() => {
+        this.successMessage = null
+      }, 2000);
     });
   }
 
