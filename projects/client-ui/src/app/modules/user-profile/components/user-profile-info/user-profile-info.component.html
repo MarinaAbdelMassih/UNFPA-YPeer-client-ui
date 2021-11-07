@@ -19,18 +19,18 @@
   <form [formGroup]="userProfileForm">
     <div class="form-container d-flex justify-content-between">
       <div class="">
-        <p class="fName" [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول '}"></p>
+        <p class="ypeer-form-field-label" [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول '}"></p>
         <mat-form-field appearance="outline">
-          <input matInput type="text" name="firstName" class="firstName" formControlName="firstName"
+          <input matInput type="text" name="firstName" formControlName="firstName"
                  [placeholder]="isArabic ? 'اكتب اسمك الأول ' : 'Type in your first name'">
         </mat-form-field>
-        <p class="email" [translateLocal]="{EN: 'Email', AR: 'بريد الالكتروني '}"></p>
+        <p class="ypeer-form-field-label" [translateLocal]="{EN: 'Email', AR: 'بريد الالكتروني '}"></p>
         <mat-form-field appearance="outline">
-          <input matInput type="email" name="email" class="email" formControlName="email"
+          <input matInput type="email" name="email" formControlName="email"
                  [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
         </mat-form-field>
 
-        <p class="date" [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الولادة'}"></p>
+        <p class="ypeer-form-field-label" [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الولادة'}"></p>
         <mat-form-field appearance="outline">
           <input matInput [matDatepicker]="basicDatepicker"
                  formControlName="birthDate"
@@ -55,7 +55,7 @@
         <!--            </mat-select>-->
         <!--          </mat-form-field>-->
         <!--        </div>-->
-        <p class="level" [translateLocal]="{EN: 'Education Level', AR: 'مستوى التعليم'}"></p>
+        <p class="ypeer-form-field-label" [translateLocal]="{EN: 'Education Level', AR: 'مستوى التعليم'}"></p>
         <mat-form-field appearance="outline">
           <mat-select [placeholder]="isArabic ? 'اختار ' : 'select'" formControlName="educationalLevelId">
             <mat-option *ngFor="let item of education ;" [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
@@ -63,26 +63,26 @@
         </mat-form-field>
       </div>
       <div class="">
-        <p class="lName" [translateLocal]="{EN: 'Last Name', AR: 'الاسم الأخير '}"></p>
+        <p class="ypeer-form-field-label" [translateLocal]="{EN: 'Last Name', AR: 'الاسم الأخير '}"></p>
         <mat-form-field appearance="outline">
-          <input matInput type="text" name="lastName" class="lastName" formControlName="lastName"
+          <input matInput type="text" name="lastName" formControlName="lastName"
                  [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
         </mat-form-field>
-        <p class="phone" [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
+        <p class="ypeer-form-field-label" [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
         <mat-form-field appearance="outline">
-          <input matInput type="text" name="phone" class="phone" formControlName="phone"
+          <input matInput type="text" name="phone" formControlName="phone"
                  [placeholder]="isArabic ? 'اكتب رقم هاتفك ' : 'Type in your Phone Number'">
         </mat-form-field>
-        <p class="sex" [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
+        <p class="ypeer-form-field-label" [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
         <mat-form-field appearance="outline">
           <mat-select [placeholder]="isArabic ? 'جنس' : 'gender'" formControlName="genderId">
             <mat-option *ngFor="let item of gender ;"
                         [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
           </mat-select>
         </mat-form-field>
-        <p class="occupation" [translateLocal]="{EN: 'occupation', AR: 'مهنة '}">Occupation</p>
+        <p class="ypeer-form-field-label" [translateLocal]="{EN: 'occupation', AR: 'مهنة '}">Occupation</p>
         <mat-form-field appearance="outline">
-          <input matInput type="text" name="occupation" class="occupation" formControlName="occupation"
+          <input matInput type="text" name="occupation" formControlName="occupation"
                  [placeholder]="isArabic ? 'اكتب في مهنتك ' : 'Type in your occupation'">
         </mat-form-field>
         <div class="btn-container">
