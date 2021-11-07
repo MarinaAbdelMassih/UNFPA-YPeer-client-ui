@@ -61,7 +61,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       birthDate: new FormControl('', Validators.required),
       genderId: new FormControl('', Validators.required),
       maritalStatusId: new FormControl('', Validators.required),
-      educationalLevelId: new FormControl(''),
+      educationalLevelId: new FormControl('', Validators.required),
       lastName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.minLength(3)]),
       phone: new FormControl('', [Validators.required, Validators.minLength(11)]),
       rePassword: new FormControl('', Validators.required),
@@ -69,7 +69,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       // months: new FormControl('', Validators.required),
       // years: new FormControl('', Validators.required),
       governorateId: new FormControl('', Validators.required),
-      occupation: new FormControl('', [Validators.maxLength(20)]),
+      occupation: new FormControl('', [Validators.required,Validators.maxLength(20)]),
     }, {
       validator: this.MustMatch('password', 'rePassword')
     });
