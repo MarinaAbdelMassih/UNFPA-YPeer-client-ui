@@ -13,24 +13,24 @@
                           (onImageUpload)="onImageUpload($event)"
                           (onImageRemove)="onImageRemove()"
                           (onImageChange)="onImageChange($event)"></app-image-uploader>
-    <button [translateLocal]="{EN: 'Upload Your Photo', AR: 'رفع صورتك '}"  [disabled]="!imageSelected" (click)="uploadImage()" class="upload"></button>
+    <button [translateLocal]="{EN: 'Upload Your Photo', AR: 'تحميل صورتك'}"  [disabled]="!imageSelected" (click)="uploadImage()" class="upload"></button>
 
   </div>
   <form [formGroup]="userProfileForm">
     <div class="form-container d-flex justify-content-between">
       <div class="">
-        <p class="fName" [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول '}"></p>
+        <p class="fName" [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول'}"></p>
         <mat-form-field appearance="outline">
           <input matInput type="text" name="firstName" class="firstName" formControlName="firstName"
                  [placeholder]="isArabic ? 'اكتب اسمك الأول ' : 'Type in your first name'">
         </mat-form-field>
-        <p class="email" [translateLocal]="{EN: 'Email', AR: 'بريد الالكتروني '}"></p>
+        <p class="email" [translateLocal]="{EN: 'Email', AR: 'البريد الاكتروني'}"></p>
         <mat-form-field appearance="outline">
           <input matInput type="email" name="email" class="email" formControlName="email"
                  [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
         </mat-form-field>
 
-        <p class="date" [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الولادة'}"></p>
+        <p class="date" [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الميلاد'}"></p>
         <mat-form-field appearance="outline">
           <input matInput [matDatepicker]="basicDatepicker"
                  formControlName="birthDate"
@@ -63,7 +63,7 @@
         </mat-form-field>
       </div>
       <div class="">
-        <p class="lName" [translateLocal]="{EN: 'Last Name', AR: 'الاسم الأخير '}"></p>
+        <p class="lName" [translateLocal]="{EN: 'Last Name', AR: 'الاسم الأخير'}"></p>
         <mat-form-field appearance="outline">
           <input matInput type="text" name="lastName" class="lastName" formControlName="lastName"
                  [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
@@ -80,7 +80,7 @@
                         [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
           </mat-select>
         </mat-form-field>
-        <p class="occupation" [translateLocal]="{EN: 'occupation', AR: 'مهنة '}">Occupation</p>
+        <p class="occupation" [translateLocal]="{EN: 'Occupation', AR: 'المهنة'}">Occupation</p>
         <mat-form-field appearance="outline">
           <input matInput type="text" name="occupation" class="occupation" formControlName="occupation"
                  [placeholder]="isArabic ? 'اكتب في مهنتك ' : 'Type in your occupation'">
