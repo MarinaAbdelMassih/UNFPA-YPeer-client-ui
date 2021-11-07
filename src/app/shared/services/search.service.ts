@@ -19,4 +19,11 @@ export class SearchService {
       {headers: {'authorization': 'Bearer SjOnnb-PwRJ45RxLrkygZq__Tcum2HeCje-ZxqgO0c0'
         }}).toPromise()
   }
+
+
+  getSearchDataByEntryId(entryId: string, searchWord: string) {
+    return this.http.get(`https://cdn.contentful.com/spaces/jvvejk00zh2l/entries?query=${searchWord}&links_to_entry=${entryId}`,
+      {headers: {'authorization': 'Bearer SjOnnb-PwRJ45RxLrkygZq__Tcum2HeCje-ZxqgO0c0'
+        }}).toPromise();
+  }
 }

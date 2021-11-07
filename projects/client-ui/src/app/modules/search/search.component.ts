@@ -77,6 +77,19 @@ export class SearchComponent implements OnInit {
           this.searchWord = searchData.searchWord;
         });
     }
+    else {
+      this.searchService.getSearchDataByEntryId('2K5STUE6MKAjh9qIQ1x5Jv', searchData.searchWord)
+        .then(data => {
+          console.log(data)
+          this.searchResults = new SearchModel(data);
+          for (let i =0; i < this.searchResults.searchItems.length; i++) {
+            if (this.searchResults.searchItems[i]) {
+              this.resultList.push(this.searchResults.searchItems[i])
+            }
+          }
+          this.searchWord = searchData.searchWord;
+        });
+    }
   }
 
 }
