@@ -57,8 +57,8 @@
                    [placeholder]="isArabic ? '******** ' : '********'">
 
           </mat-form-field>
-          <mat-error *ngIf="signUpForm.get('rePassword').errors?.MustMatch">
-            Passwords must match.
+          <mat-error [translateLocal]="{EN:'Passwords must match.',AR:'يجب أن تتطابق كلمات المرور.'}" *ngIf="signUpForm.get('rePassword').errors?.MustMatch">
+
           </mat-error>
           <p [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الولادة'}"></p>
           <mat-form-field appearance="outline">
