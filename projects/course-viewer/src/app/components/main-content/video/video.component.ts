@@ -17,6 +17,8 @@ import {environment} from "../../../../../../../src/environments/environment";
 export class VideoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() video: IStuff;
+  @Input() userId: number;
+  @Input() videosCount: number;
   @Input() subjectId: number;
   videoPlayer;
   private currentTime: number = 0;
@@ -91,16 +93,17 @@ export class VideoComponent implements OnInit, AfterViewInit, OnDestroy {
         //     this.videoPlayer.bookmarks.reset(this.bookmarks);
         // });
         // this.subscriptions.add(bookmarksSub1);
-        this.setVideoProgress();
+        this.setVideoProgress(this.userId, this.videosCount);
       });
     });
   }
 
-  private initFinishEvent() {
+  private initFinishEvent(userId: number, videosCount: number) {
     this.courseViewerDataService.setUserProgress({
-      entityId: this.video.courseId,
-      itemId: this.video.id,
-      itemTypeId: 14,
+      userId: userId,
+      courseId: this.video.courseId,
+      learningObjectiveChildId: this.video.id,
+      videosCount: videosCount,
     }).then(() => {
       //@ts-ignore
       this.video.setFinished(true);
@@ -109,12 +112,12 @@ export class VideoComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  private setVideoProgress() {
+  private setVideoProgress(userId: number, videosCount:number) {
     let finished = false;
     this.videoPlayer.on('timeupdate', (e) => {
       if ((this.videoPlayer.duration() - this.videoPlayer.currentTime()) <= 10 && !finished) {
         finished = true;
-        this.initFinishEvent();
+        this.initFinishEvent(userId, videosCount);
       }
       if (this.videoPlayer.duration() == this.videoPlayer.currentTime()) {
         if (this.curriculumControl.isNext()) {
