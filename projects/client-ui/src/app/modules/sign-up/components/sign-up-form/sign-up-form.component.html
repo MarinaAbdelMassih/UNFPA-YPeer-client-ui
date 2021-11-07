@@ -10,16 +10,26 @@
             <input matInput type="text" name="firstName" class="firstName" formControlName="firstName"
                    [placeholder]="isArabic ? 'اكتب اسمك الأول ' : 'Type in your first name'">
           </mat-form-field>
-          <p [translateLocal]="{EN: 'Email', AR: 'بريد الالكتروني '}"></p>
+          <mat-error *ngIf="signUpForm.get('firstName').hasError('pattern')">
+            name must not contain number ,special charachter.
+          </mat-error>
+          <p [translateLocal]="{EN: 'Email', AR: 'البريد الاكتروني '}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="email" name="email" class="email" formControlName="email"
                    [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
           </mat-form-field>
-          <p [translateLocal]="{EN: 'Password', AR: 'كلمه السر '}"></p>
+          <p [translateLocal]="{EN: 'Password', AR: 'كلمة المرور  '}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="password" name="password" class="password" formControlName="password"
                    [placeholder]="isArabic ? '******** ' : '********'">
           </mat-form-field>
+          <mat-error *ngIf="signUpForm.get('password').errors?.minlength">
+            Password must be at least 10 characters .
+          </mat-error>
+          <mat-error *ngIf="signUpForm.get('password').hasError('pattern')">
+            Password is weak , must contain capital , number ,special charachter.
+          </mat-error>
+
           <p [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
           <mat-form-field appearance="outline">
             <mat-select [placeholder]="isArabic ? 'جنس' : 'gender'" formControlName="genderId">
@@ -46,6 +56,9 @@
             <input matInput type="text" name="lastName" class="lastName" formControlName="lastName"
                    [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
           </mat-form-field>
+          <mat-error *ngIf="signUpForm.get('lastName').hasError('pattern')">
+            name must not contain number ,special charachter.
+          </mat-error>
           <p [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="text" name="phone" class="phone" formControlName="phone"
@@ -60,10 +73,10 @@
           <mat-error [translateLocal]="{EN:'Passwords must match.',AR:'يجب أن تتطابق كلمات المرور.'}" *ngIf="signUpForm.get('rePassword').errors?.MustMatch">
 
           </mat-error>
-          <p [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الولادة'}"></p>
+          <p [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الميلاد'}"></p>
           <mat-form-field appearance="outline">
             <input matInput [matDatepicker]="basicDatepicker"
-                   formControlName="birthDate"
+                   formControlName="birthDate"  datePickerFormat="YYYY/MM/DD"
                    [placeholder]="isArabic ? 'ادخل تاريخ الميلاد ' : 'enter your birthday'">
             <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
             <mat-datepicker #basicDatepicker></mat-datepicker>
@@ -86,14 +99,14 @@
           <!--              </mat-select>-->
           <!--            </mat-form-field>-->
           <!--          </div>-->
-          <p [translateLocal]="{EN: 'Governorate', AR: 'محافظة '}"></p>
+          <p [translateLocal]="{EN: 'Governorate', AR: 'المحافظة '}"></p>
           <mat-form-field appearance="outline">
             <mat-select [placeholder]="isArabic ? 'محافظة ' : 'governorate'" formControlName="governorateId">
               <mat-option *ngFor="let item of governorate ; let i=index;"
                           [value]="item.id">{{isArabic ? item.arabicName :item.englishName}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <p [translateLocal]="{EN: 'occupation', AR: 'مهنة '}"></p>
+          <p [translateLocal]="{EN: 'Occupation', AR: 'المهنة '}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="text" name="occupation" class="occupation" formControlName="occupation"
                    [placeholder]="isArabic ? 'اكتب في مهنتك ' : 'Type in your occupation'">
