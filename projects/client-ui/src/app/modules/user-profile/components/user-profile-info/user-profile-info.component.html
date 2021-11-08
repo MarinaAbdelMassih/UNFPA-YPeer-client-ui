@@ -17,19 +17,36 @@
 
   </div>
   <form [formGroup]="userProfileForm">
-    <div class="form-container d-flex justify-content-between justify-content-lg-around">
-      <div class="">
+    <div class="form-container d-flex justify-content-center">
+      <div class="form-field-container">
         <p class="fName" [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول '}"></p>
         <mat-form-field appearance="outline">
           <input matInput type="text" name="firstName" class="firstName" formControlName="firstName"
                  [placeholder]="isArabic ? 'اكتب اسمك الأول ' : 'Type in your first name'">
         </mat-form-field>
+      </div>
+      <div class="form-field-container">
+        <p class="lName" [translateLocal]="{EN: 'Last Name', AR: 'الاسم الأخير '}"></p>
+        <mat-form-field appearance="outline">
+          <input matInput type="text" name="lastName" class="lastName" formControlName="lastName"
+                 [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
+        </mat-form-field>
+      </div>
+      <div class="form-field-container">
         <p class="email" [translateLocal]="{EN: 'Email', AR: 'بريد الالكتروني '}"></p>
         <mat-form-field appearance="outline">
           <input matInput type="email" name="email" class="email" formControlName="email"
                  [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
         </mat-form-field>
-
+      </div>
+      <div class="form-field-container">
+        <p class="phone" [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
+        <mat-form-field appearance="outline">
+          <input matInput type="text" name="phone" class="phone" formControlName="phone"
+                 [placeholder]="isArabic ? 'اكتب رقم هاتفك ' : 'Type in your Phone Number'">
+        </mat-form-field>
+      </div>
+      <div class="form-field-container">
         <p class="date" [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الولادة'}"></p>
         <mat-form-field appearance="outline">
           <input matInput [matDatepicker]="basicDatepicker"
@@ -38,41 +55,8 @@
           <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
           <mat-datepicker #basicDatepicker></mat-datepicker>
         </mat-form-field>
-        <!--        <div class="birthday-container">-->
-        <!--          <mat-form-field appearance="outline" class="birthday-form">-->
-        <!--            <mat-select [placeholder]="isArabic ? 'اليوم ' : 'days'" formControlName="days">-->
-        <!--              <mat-option *ngFor="let item of days ;" [value]="item">{{item}}</mat-option>-->
-        <!--            </mat-select>-->
-        <!--          </mat-form-field>-->
-        <!--          <mat-form-field appearance="outline" class="birthday-form">-->
-        <!--            <mat-select [placeholder]="isArabic ? 'الشهر ' : 'months'" formControlName="months">-->
-        <!--              <mat-option *ngFor="let item of months ;" [value]="item">{{item}}</mat-option>-->
-        <!--            </mat-select>-->
-        <!--          </mat-form-field>-->
-        <!--          <mat-form-field appearance="outline" class="birthday-form">-->
-        <!--            <mat-select [placeholder]="isArabic ? 'السنه ' : 'years'" formControlName="years">-->
-        <!--              <mat-option *ngFor="let item of years ;" [value]="item">{{item}}</mat-option>-->
-        <!--            </mat-select>-->
-        <!--          </mat-form-field>-->
-        <!--        </div>-->
-        <p class="level" [translateLocal]="{EN: 'Education Level', AR: 'مستوى التعليم'}"></p>
-        <mat-form-field appearance="outline">
-          <mat-select [placeholder]="isArabic ? 'اختار ' : 'select'" formControlName="educationalLevelId">
-            <mat-option *ngFor="let item of education ;" [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
-          </mat-select>
-        </mat-form-field>
       </div>
-      <div class="">
-        <p class="lName" [translateLocal]="{EN: 'Last Name', AR: 'الاسم الأخير '}"></p>
-        <mat-form-field appearance="outline">
-          <input matInput type="text" name="lastName" class="lastName" formControlName="lastName"
-                 [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
-        </mat-form-field>
-        <p class="phone" [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
-        <mat-form-field appearance="outline">
-          <input matInput type="text" name="phone" class="phone" formControlName="phone"
-                 [placeholder]="isArabic ? 'اكتب رقم هاتفك ' : 'Type in your Phone Number'">
-        </mat-form-field>
+      <div class="form-field-container">
         <p class="sex" [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
         <mat-form-field appearance="outline">
           <mat-select [placeholder]="isArabic ? 'جنس' : 'gender'" formControlName="genderId">
@@ -80,16 +64,27 @@
                         [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
           </mat-select>
         </mat-form-field>
+      </div>
+      <div class="form-field-container">
+        <p class="level" [translateLocal]="{EN: 'Education Level', AR: 'مستوى التعليم'}"></p>
+        <mat-form-field appearance="outline">
+          <mat-select [placeholder]="isArabic ? 'اختار ' : 'select'" formControlName="educationalLevelId">
+            <mat-option *ngFor="let item of education ;" [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-field-container">
         <p class="occupation" [translateLocal]="{EN: 'occupation', AR: 'مهنة '}">Occupation</p>
         <mat-form-field appearance="outline">
           <input matInput type="text" name="occupation" class="occupation" formControlName="occupation"
                  [placeholder]="isArabic ? 'اكتب في مهنتك ' : 'Type in your occupation'">
         </mat-form-field>
-        <div class="btn-container">
-          <button [disabled]="!userProfileForm.valid"
-                  (click)="submitUserProfileForm()"
-                  [translateLocal]="{EN: ' Save', AR: 'حفظ '}"></button>
-        </div>
+      </div>
+      <div style="flex: 1 1 50%"></div>
+      <div class="btn-container">
+        <button [disabled]="!userProfileForm.valid"
+                (click)="submitUserProfileForm()"
+                [translateLocal]="{EN: ' Save', AR: 'حفظ '}"></button>
       </div>
     </div>
   </form>
