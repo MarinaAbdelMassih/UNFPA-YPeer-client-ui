@@ -31,7 +31,8 @@
           <input matInput type="email" name="email" class="email" formControlName="email"
                  [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
         </mat-form-field>
-
+        <mat-error [translateLocal]="{EN:'enter a valid email.',AR:'أدخل بريد إلكتروني صحيح.'}" *ngIf="userProfileForm.get('email').hasError('pattern')">
+        </mat-error>
         <p class="date" [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الولادة'}"></p>
         <mat-form-field appearance="outline">
           <input matInput [matDatepicker]="basicDatepicker"  [max]="tomorrow"
@@ -91,6 +92,8 @@
           <input matInput type="text" name="occupation" class="occupation" formControlName="occupation"
                  [placeholder]="isArabic ? 'اكتب في مهنتك ' : 'Type in your occupation'">
         </mat-form-field>
+        <mat-error  [translateLocal]="{AR: 'هذا الحقل مطلوب', EN: 'This Field is required'}" *ngIf="userProfileForm.get('occupation').hasError('required')">
+        </mat-error>
         <div class="btn-container">
           <button [disabled]="!userProfileForm.valid"
                   (click)="submitUserProfileForm()"
