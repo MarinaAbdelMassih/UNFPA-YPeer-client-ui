@@ -48,6 +48,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   // years = [2020, 2021];
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   passwordPattern = '^(?=.*[A-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#$%^&*_~+/.])\\S{6,20}$';
+  phonePattern = '^[0-9]{11}$';
   addUser: any;
   birthday;
   errorMsg: string;
@@ -63,7 +64,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       maritalStatusId: new FormControl('', Validators.required),
       educationalLevelId: new FormControl('', Validators.required),
       lastName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.minLength(3)]),
-      phone: new FormControl('', [Validators.required, Validators.minLength(11)]),
+      phone: new FormControl('', [Validators.required, Validators.pattern(this.phonePattern), Validators.minLength(11)]),
       rePassword: new FormControl('', Validators.required),
       // days: new FormControl('', Validators.required),
       // months: new FormControl('', Validators.required),

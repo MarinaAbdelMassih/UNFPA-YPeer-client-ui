@@ -63,7 +63,7 @@
             <input matInput type="text" name="phone" class="phone" formControlName="phone"
                    [placeholder]="isArabic ? 'اكتب رقم هاتفك ' : 'Type in your Phone Number'">
           </mat-form-field>
-          <mat-error  [translateLocal]="{AR: 'من فضلك ادخل رقم المحمول صالح', EN: 'Please enter a valid phone number'}" *ngIf="signUpForm.get('phone').hasError('required')">
+          <mat-error  [translateLocal]="{AR: 'من فضلك ادخل رقم المحمول صالح', EN: 'Please enter a valid phone number'}" *ngIf="signUpForm.get('phone').hasError('pattern')">
           </mat-error>
           <p [translateLocal]="{EN: 'Retype Password', AR: 'اعد ادخال كلمة المرور'}"></p>
           <mat-form-field appearance="outline">
