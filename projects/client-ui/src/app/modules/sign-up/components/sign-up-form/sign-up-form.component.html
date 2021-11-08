@@ -17,6 +17,8 @@
             <input matInput type="email" name="email" class="email" formControlName="email"
                    [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
           </mat-form-field>
+          <mat-error [translateLocal]="{EN:'enter a valid email.',AR:'أدخل بريد إلكتروني صحيح.'}" *ngIf="signUpForm.get('email').hasError('pattern')">
+          </mat-error>
           <p [translateLocal]="{EN: 'Password', AR: 'كلمة المرور  '}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="password" name="password" class="password" formControlName="password"
@@ -61,6 +63,8 @@
             <input matInput type="text" name="phone" class="phone" formControlName="phone"
                    [placeholder]="isArabic ? 'اكتب رقم هاتفك ' : 'Type in your Phone Number'">
           </mat-form-field>
+          <mat-error  [translateLocal]="{AR: 'من فضلك ادخل رقم المحمول صالح', EN: 'Please enter a valid phone number'}" *ngIf="signUpForm.get('phone').hasError('required')">
+          </mat-error>
           <p [translateLocal]="{EN: 'Retype Password', AR: 'اعد ادخال كلمة المرور'}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="password" name="passwordTwo" class="password" formControlName="rePassword"
