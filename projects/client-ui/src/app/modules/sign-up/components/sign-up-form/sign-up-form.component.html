@@ -3,8 +3,8 @@
   <div class="sign-up-form">
     <p class="sub-title" [translateLocal]="{EN: ' * All fields are mandatory', AR: '* كل الحقول إلزامية '}"></p>
     <form [formGroup]="signUpForm">
-      <div class="row">
-        <div class="col-md-6">
+      <div class="form-container d-flex justify-content-center">
+        <div class="form-field-container">
           <p [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول '}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="text" name="firstName" class="firstName" formControlName="firstName"
@@ -13,11 +13,32 @@
           <mat-error *ngIf="signUpForm.get('firstName').hasError('pattern')">
             name must not contain number ,special charachter.
           </mat-error>
+        </div>
+        <div class="form-field-container">
+          <p [translateLocal]="{EN: 'Last Name', AR: 'الاسم الأخير '}"></p>
+          <mat-form-field appearance="outline">
+            <input matInput type="text" name="lastName" class="lastName" formControlName="lastName"
+                   [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
+          </mat-form-field>
+          <mat-error *ngIf="signUpForm.get('lastName').hasError('pattern')">
+            name must not contain number ,special charachter.
+          </mat-error>
+        </div>
+        <div class="form-field-container">
           <p [translateLocal]="{EN: 'Email', AR: 'البريد الاكتروني '}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="email" name="email" class="email" formControlName="email"
                    [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
           </mat-form-field>
+        </div>
+        <div class="form-field-container">
+          <p [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
+          <mat-form-field appearance="outline">
+            <input matInput type="text" name="phone" class="phone" formControlName="phone"
+                   [placeholder]="isArabic ? 'اكتب رقم هاتفك ' : 'Type in your Phone Number'">
+          </mat-form-field>
+        </div>
+        <div class="form-field-container">
           <p [translateLocal]="{EN: 'Password', AR: 'كلمة المرور  '}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="password" name="password" class="password" formControlName="password"
@@ -29,41 +50,8 @@
           <mat-error *ngIf="signUpForm.get('password').hasError('pattern')">
             Password is weak , must contain capital , number ,special charachter.
           </mat-error>
-
-          <p [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
-          <mat-form-field appearance="outline">
-            <mat-select [placeholder]="isArabic ? 'جنس' : 'gender'" formControlName="genderId">
-              <mat-option *ngFor="let item of gender ;let i = index" [value]="item.id">{{isArabic ? item.arabicName :item.englishName}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <p [translateLocal]="{EN: 'Marital Status', AR: 'الحالة الاجتماعية '}"></p>
-          <mat-form-field appearance="outline">
-            <mat-select [placeholder]="isArabic ? 'الحالة' : 'status'" formControlName="maritalStatusId">
-              <mat-option *ngFor="let item of status ; let i = index;"
-                          [value]="item.id">{{isArabic ? item.arabicName :item.englishName}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <p [translateLocal]="{EN: 'Education Level', AR: 'مستوى التعليم'}"></p>
-          <mat-form-field appearance="outline">
-            <mat-select [placeholder]="isArabic ? 'اختار ' : 'select'" formControlName="educationalLevelId">
-              <mat-option *ngFor="let item of education ; let i=index;" [value]="item.id">{{isArabic ? item.arabicName :item.englishName}}</mat-option>
-            </mat-select>
-          </mat-form-field>
         </div>
-        <div class="col-md-6">
-          <p [translateLocal]="{EN: 'Last Name', AR: 'الاسم الأخير '}"></p>
-          <mat-form-field appearance="outline">
-            <input matInput type="text" name="lastName" class="lastName" formControlName="lastName"
-                   [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
-          </mat-form-field>
-          <mat-error *ngIf="signUpForm.get('lastName').hasError('pattern')">
-            name must not contain number ,special charachter.
-          </mat-error>
-          <p [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
-          <mat-form-field appearance="outline">
-            <input matInput type="text" name="phone" class="phone" formControlName="phone"
-                   [placeholder]="isArabic ? 'اكتب رقم هاتفك ' : 'Type in your Phone Number'">
-          </mat-form-field>
+        <div class="form-field-container">
           <p [translateLocal]="{EN: 'Retype Password', AR: 'اعد ادخال كلمة المرور'}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="password" name="passwordTwo" class="password" formControlName="rePassword"
@@ -73,15 +61,25 @@
           <mat-error *ngIf="signUpForm.get('rePassword').errors?.MustMatch">
             Passwords must match.
           </mat-error>
+        </div>
+        <div class="form-field-container">
+          <p [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
+          <mat-form-field appearance="outline">
+            <mat-select [placeholder]="isArabic ? 'جنس' : 'gender'" formControlName="genderId">
+              <mat-option *ngFor="let item of gender ;let i = index"
+                          [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-field-container">
           <p [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الميلاد'}"></p>
           <mat-form-field appearance="outline">
             <input matInput [matDatepicker]="basicDatepicker"
-                   formControlName="birthDate"  datePickerFormat="YYYY/MM/DD"
+                   formControlName="birthDate" datePickerFormat="YYYY/MM/DD"
                    [placeholder]="isArabic ? 'ادخل تاريخ الميلاد ' : 'enter your birthday'">
             <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
             <mat-datepicker #basicDatepicker></mat-datepicker>
           </mat-form-field>
-
           <!--          <div class="d-flex justify-content-between">-->
           <!--          <mat-form-field appearance="outline" class="birthday-form">-->
           <!--            <mat-select  [placeholder]="isArabic ? 'اليوم ' : 'days'"  formControlName="days">-->
@@ -99,30 +97,52 @@
           <!--              </mat-select>-->
           <!--            </mat-form-field>-->
           <!--          </div>-->
+        </div>
+        <div class="form-field-container">
+          <p [translateLocal]="{EN: 'Marital Status', AR: 'الحالة الاجتماعية '}"></p>
+          <mat-form-field appearance="outline">
+            <mat-select [placeholder]="isArabic ? 'الحالة' : 'status'" formControlName="maritalStatusId">
+              <mat-option *ngFor="let item of status ; let i = index;"
+                          [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-field-container">
           <p [translateLocal]="{EN: 'Governorate', AR: 'المحافظة '}"></p>
           <mat-form-field appearance="outline">
             <mat-select [placeholder]="isArabic ? 'محافظة ' : 'governorate'" formControlName="governorateId">
               <mat-option *ngFor="let item of governorate ; let i=index;"
-                          [value]="item.id">{{isArabic ? item.arabicName :item.englishName}}</mat-option>
+                          [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
             </mat-select>
           </mat-form-field>
+        </div>
+        <div class="form-field-container">
+          <p [translateLocal]="{EN: 'Education Level', AR: 'مستوى التعليم'}"></p>
+          <mat-form-field appearance="outline">
+            <mat-select [placeholder]="isArabic ? 'اختار ' : 'select'" formControlName="educationalLevelId">
+              <mat-option *ngFor="let item of education ; let i=index;"
+                          [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-field-container">
           <p [translateLocal]="{EN: 'Occupation', AR: 'المهنة '}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="text" name="occupation" class="occupation" formControlName="occupation"
                    [placeholder]="isArabic ? 'اكتب في مهنتك ' : 'Type in your occupation'">
           </mat-form-field>
         </div>
-        <p
-          [translateLocal]="{EN: '** We have limited seats; your application would be under assessment. We will notify you once your account is approved.', AR: '** مقاعدنا محدودة. سيكون طلبك قيد التقييم. سنقوم بإخطارك بمجرد الموافقة على حسابك. '}"
-          class="note"></p>
-        <div class="d-flex justify-content-center ">
-          <button [disabled]="!signUpForm.valid" [ngClass]="{'disabled':!signUpForm.valid == true}"
-                  (click)="submitSignUpForm();" [translateLocal]="{EN: ' Submit', AR: 'إرسال '}"></button>
-        </div>
-        <div class="d-flex justify-content-center align-items-center">
-          <p class="no-account-text" [translateLocal]="{EN: 'Already have an account?', AR: 'ليس لديك حساب؟'}"></p>
-          <a [routerLink]="'/signIn'" class="sign-in-link" [translateLocal]="{EN: 'Sign In', AR: 'تسجيل الدخول'}"></a>
-        </div>
+      </div>
+      <p
+        [translateLocal]="{EN: '** We have limited seats; your application would be under assessment. We will notify you once your account is approved.', AR: '** مقاعدنا محدودة. سيكون طلبك قيد التقييم. سنقوم بإخطارك بمجرد الموافقة على حسابك. '}"
+        class="note"></p>
+      <div class="d-flex justify-content-center ">
+        <button [disabled]="!signUpForm.valid" [ngClass]="{'disabled':!signUpForm.valid == true}"
+                (click)="submitSignUpForm();" [translateLocal]="{EN: ' Submit', AR: 'إرسال '}"></button>
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="no-account-text" [translateLocal]="{EN: 'Already have an account?', AR: 'ليس لديك حساب؟'}"></p>
+        <a [routerLink]="'/signIn'" class="sign-in-link" [translateLocal]="{EN: 'Sign In', AR: 'تسجيل الدخول'}"></a>
       </div>
     </form>
     <div>
