@@ -134,7 +134,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     };
     this.myProfileService.updateUserInfo(this.updateDataInfo).then(() => {
       this.successMessage = {EN: 'Your information has been updated successfully', AR: 'لقد تم تعديل بياناتك بنجاح'};
-      setTimeout(() => {this.successMessage = null}, 2000);
+      setTimeout(() => {this.successMessage = null}, 5000);
     });
   }
 
