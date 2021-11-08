@@ -24,6 +24,8 @@
           <input matInput type="text" name="firstName" class="firstName" formControlName="firstName"
                  [placeholder]="isArabic ? 'اكتب اسمك الأول ' : 'Type in your first name'">
         </mat-form-field>
+        <mat-error [translateLocal]="{EN:'name must not contain number ,special charachter.',AR:'يجب ألا يحتوي الاسم على رقم أو حرف خاص.'}" *ngIf="userProfileForm.get('firstName').hasError('pattern')">
+        </mat-error>
         <p class="email" [translateLocal]="{EN: 'Email', AR: 'بريد الالكتروني '}"></p>
         <mat-form-field appearance="outline">
           <input matInput type="email" name="email" class="email" formControlName="email"
@@ -68,11 +70,15 @@
           <input matInput type="text" name="lastName" class="lastName" formControlName="lastName"
                  [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
         </mat-form-field>
+        <mat-error [translateLocal]="{EN:'name must not contain number ,special charachter.',AR:'يجب ألا يحتوي الاسم على رقم أو حرف خاص.'}" *ngIf="userProfileForm.get('lastName').hasError('pattern')">
+        </mat-error>
         <p class="phone" [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
         <mat-form-field appearance="outline">
           <input matInput type="text" name="phone" class="phone" formControlName="phone"
                  [placeholder]="isArabic ? 'اكتب رقم هاتفك ' : 'Type in your Phone Number'">
         </mat-form-field>
+        <mat-error  [translateLocal]="{AR: 'من فضلك ادخل رقم المحمول صالح', EN: 'Please enter a valid phone number'}" *ngIf="userProfileForm.get('phone').hasError('pattern')">
+        </mat-error>
         <p class="sex" [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
         <mat-form-field appearance="outline">
           <mat-select [placeholder]="isArabic ? 'جنس' : 'gender'" formControlName="genderId">
