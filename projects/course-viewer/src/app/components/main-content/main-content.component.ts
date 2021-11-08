@@ -33,6 +33,7 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
   courseId = null;
   currentTitle: string;
   @Input() videosCount: number;
+  @Input() courseProgress: number;
   @Output() userProgress: EventEmitter<number> = new EventEmitter();
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private learnerSectionDataService: LearnerSectionsDataService,
@@ -72,6 +73,7 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
             else if (stuff.type == StuffType.QUIZ) {
               this.createComponent(QuizComponent);
               (<QuizComponent>this.currentComponent.instance).quiz = stuff;
+              (<QuizComponent>this.currentComponent.instance).disabled = this.courseProgress < 90;
             }
             // else if (stuff.type == StuffType.MATERIAL) {
             //   this.setUserProgress(stuff);
