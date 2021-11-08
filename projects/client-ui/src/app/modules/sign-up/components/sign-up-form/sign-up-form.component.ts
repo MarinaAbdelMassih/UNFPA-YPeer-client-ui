@@ -55,21 +55,21 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private signUpService: SignUpService, private router: Router) {
     this.signUpForm = this.fb.group({
-      firstName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.minLength(3)]),
+      firstName: new FormControl('', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.minLength(3), Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
       password: new FormControl('', [Validators.required, Validators.pattern(this.passwordPattern), Validators.minLength(10)]),
       birthDate: new FormControl('', Validators.required),
       genderId: new FormControl('', Validators.required),
       maritalStatusId: new FormControl('', Validators.required),
       educationalLevelId: new FormControl('', Validators.required),
-      lastName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.minLength(3)]),
-      phone: new FormControl('', [Validators.required, Validators.minLength(11)]),
+      lastName: new FormControl('', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.minLength(3), Validators.maxLength(10)]),
+      phone: new FormControl('', [Validators.required, this.noWhitespaceValidator, Validators.minLength(11), Validators.maxLength(11)]),
       rePassword: new FormControl('', Validators.required),
       // days: new FormControl('', Validators.required),
       // months: new FormControl('', Validators.required),
       // years: new FormControl('', Validators.required),
       governorateId: new FormControl('', Validators.required),
-      occupation: new FormControl('', [Validators.required,Validators.maxLength(20)]),
+      occupation: new FormControl('', [Validators.required, this.noWhitespaceValidator, Validators.maxLength(20)]),
     }, {
       validator: this.MustMatch('password', 'rePassword')
     });
@@ -150,6 +150,12 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
         matchingControl.setErrors(null);
       }
     };
+  }
+
+  noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'required': true };
   }
 
 

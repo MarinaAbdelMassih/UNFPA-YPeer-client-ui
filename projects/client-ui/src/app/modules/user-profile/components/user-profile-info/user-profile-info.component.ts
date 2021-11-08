@@ -70,17 +70,17 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService, private imageService: ImageService) {
     this.userProfileForm = this.fb.group({
-      firstName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      firstName: new FormControl('', [Validators.required, this.noWhitespaceValidator, Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
       birthDate: new FormControl('', Validators.required),
       // days: new FormControl('', Validators.required),
       // months: new FormControl('', Validators.required),
       // years: new FormControl('', Validators.required),
       educationalLevelId: new FormControl('', Validators.required),
-      lastName: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-      phone: new FormControl('', [Validators.required, Validators.maxLength(11)]),
+      lastName: new FormControl('', [Validators.required, this.noWhitespaceValidator, Validators.maxLength(10)]),
+      phone: new FormControl('', [Validators.required, this.noWhitespaceValidator, Validators.maxLength(11)]),
       genderId: new FormControl('', Validators.required),
-      occupation: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      occupation: new FormControl('', [Validators.required, this.noWhitespaceValidator, Validators.maxLength(20)]),
     });
   }
 
@@ -182,6 +182,12 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'required': true };
   }
 }
 
