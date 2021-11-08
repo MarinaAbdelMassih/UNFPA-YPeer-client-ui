@@ -24,15 +24,18 @@
           <input matInput type="text" name="firstName" formControlName="firstName"
                  [placeholder]="isArabic ? 'اكتب اسمك الأول ' : 'Type in your first name'">
         </mat-form-field>
-        <p class="email" [translateLocal]="{EN: 'Email', AR: 'البريد الاكتروني'}"></p>
+        <mat-error [translateLocal]="{EN:'name must not contain number ,special charachter.',AR:'يجب ألا يحتوي الاسم على رقم أو حرف خاص.'}" *ngIf="userProfileForm.get('firstName').hasError('pattern')">
+        </mat-error>
+        <p class="email" [translateLocal]="{EN: 'Email', AR: 'البريد الاكتروني '}"></p>
         <mat-form-field appearance="outline">
           <input matInput type="email" name="email" formControlName="email"
                  [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
         </mat-form-field>
-
+        <mat-error [translateLocal]="{EN:'enter a valid email.',AR:'أدخل بريد إلكتروني صحيح.'}" *ngIf="userProfileForm.get('email').hasError('pattern')">
+        </mat-error>
         <p class="date" [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الميلاد'}"></p>
         <mat-form-field appearance="outline">
-          <input matInput [matDatepicker]="basicDatepicker"
+          <input matInput [matDatepicker]="basicDatepicker"  [max]="tomorrow"
                  formControlName="birthDate"
                  [placeholder]="isArabic ? 'ادخل تاريخ الميلاد ' : 'your birthday'">
           <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
@@ -68,11 +71,15 @@
           <input matInput type="text" name="lastName" formControlName="lastName"
                  [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
         </mat-form-field>
+        <mat-error [translateLocal]="{EN:'name must not contain number ,special charachter.',AR:'يجب ألا يحتوي الاسم على رقم أو حرف خاص.'}" *ngIf="userProfileForm.get('lastName').hasError('pattern')">
+        </mat-error>
         <p class="ypeer-form-field-label" [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
         <mat-form-field appearance="outline">
           <input matInput type="text" name="phone" formControlName="phone"
                  [placeholder]="isArabic ? 'اكتب رقم هاتفك ' : 'Type in your Phone Number'">
         </mat-form-field>
+        <mat-error  [translateLocal]="{AR: 'من فضلك ادخل رقم المحمول صالح', EN: 'Please enter a valid phone number'}" *ngIf="userProfileForm.get('phone').hasError('pattern')">
+        </mat-error>
         <p class="ypeer-form-field-label" [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
         <mat-form-field appearance="outline">
           <mat-select [placeholder]="isArabic ? 'جنس' : 'gender'" formControlName="genderId">
@@ -85,6 +92,8 @@
           <input matInput type="text" name="occupation" formControlName="occupation"
                  [placeholder]="isArabic ? 'اكتب في مهنتك ' : 'Type in your occupation'">
         </mat-form-field>
+        <mat-error  [translateLocal]="{AR: 'هذا الحقل مطلوب', EN: 'This Field is required'}" *ngIf="userProfileForm.get('occupation').hasError('required')">
+        </mat-error>
         <div class="btn-container">
           <button [disabled]="!userProfileForm.valid"
                   (click)="submitUserProfileForm()"
