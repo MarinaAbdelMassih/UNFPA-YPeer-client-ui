@@ -17,6 +17,7 @@
       font-family: 'TradeGothic', sans-serif;
       font-size: 14px;
       color: #2e2e2e;
+      background: transparent;
       text-align: center;
       margin: 16px 0 30px;
       cursor: pointer;
@@ -30,11 +31,12 @@
       justify-content: space-between;
       @media(max-width: 1400px) and (min-width: 1200px) {
         flex-direction: column;
-        justify-content: center !important;
+        justify-content: space-around !important;
         align-items: center;
       }
       @media(max-width: 1400px) {
         flex-direction: column;
+        justify-content: space-around !important;
         //justify-content: center !important;
         //align-items: center;
       }

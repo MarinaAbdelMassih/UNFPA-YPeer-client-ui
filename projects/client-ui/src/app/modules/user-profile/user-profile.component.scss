@@ -11,8 +11,7 @@
     font-size: 25px;
     font-weight: bold;
     line-height: 1.2;
-    //color: #2e2e2e;
-    color: black;
+    color: #8f8f8f;
     padding-right: 53px;
     padding-left: 20px;
   }
@@ -29,8 +28,8 @@
     margin-top: 82.8px;
   }
 
-  ::ng-deep.mat-tab-label.mat-tab-label-active {
-    color: black;
+  ::ng-deep.mat-tab-label.mat-tab-label-active .mat-tab-label-content{
+    color: #2e2e2e;
     opacity: 1 !important;
 
   }
