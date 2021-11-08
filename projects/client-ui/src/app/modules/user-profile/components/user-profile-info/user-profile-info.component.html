@@ -26,7 +26,7 @@
         </mat-form-field>
         <p class="email" [translateLocal]="{EN: 'Email', AR: 'بريد الالكتروني '}"></p>
         <mat-form-field appearance="outline">
-          <input [readonly]="this.readonlyField" matInput type="email" name="email" class="email" formControlName="email"  [disabled]="readonlyField"
+          <input [readonly]="this.readonlyField"  [ngStyle]="{'color': readonlyField ? 'darkgray' : '' }" matInput type="email" name="email" class="email" formControlName="email"  [disabled]="readonlyField"
                  [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
         </mat-form-field>
 
