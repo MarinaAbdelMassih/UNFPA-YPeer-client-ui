@@ -10,24 +10,24 @@
             <input matInput type="text" name="firstName" class="firstName" formControlName="firstName"
                    [placeholder]="isArabic ? 'اكتب اسمك الأول ' : 'Type in your first name'">
           </mat-form-field>
-          <mat-error *ngIf="signUpForm.get('firstName').hasError('pattern')">
-            name must not contain number ,special charachter.
+          <mat-error [translateLocal]="{EN:'name must not contain number ,special charachter.',AR:'يجب ألا يحتوي الاسم على رقم أو حرف خاص.'}" *ngIf="signUpForm.get('firstName').hasError('pattern')">
           </mat-error>
           <p [translateLocal]="{EN: 'Email', AR: 'البريد الاكتروني '}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="email" name="email" class="email" formControlName="email"
                    [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
           </mat-form-field>
+          <mat-error [translateLocal]="{EN:'enter a valid email.',AR:'أدخل بريد إلكتروني صحيح.'}" *ngIf="signUpForm.get('email').hasError('pattern')">
+          </mat-error>
           <p [translateLocal]="{EN: 'Password', AR: 'كلمة المرور  '}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="password" name="password" class="password" formControlName="password"
                    placeholder="********">
           </mat-form-field>
-          <mat-error *ngIf="signUpForm.get('password').errors?.minlength">
-            Password must be at least 10 characters .
+          <mat-error [translateLocal]="{EN:'Password must be at least 10 characters .',AR:'يجب أن تتكون كلمة المرور من 10 أحرف على الأقل.'}" *ngIf="signUpForm.get('password').errors?.minlength">
+
           </mat-error>
-          <mat-error *ngIf="signUpForm.get('password').hasError('pattern')">
-            Password is weak , must contain capital , number ,special charachter.
+          <mat-error [translateLocal]="{EN:' Password is weak , must contain capital , number ,special charachter.',AR:'كلمة المرور ضعيفة ، يجب أن تحتوي على حرف كبير ، رقم ، حرف خاص.'}" *ngIf="signUpForm.get('password').hasError('pattern')">
           </mat-error>
 
           <p [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
@@ -56,22 +56,23 @@
             <input matInput type="text" name="lastName" class="lastName" formControlName="lastName"
                    [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
           </mat-form-field>
-          <mat-error *ngIf="signUpForm.get('lastName').hasError('pattern')">
-            name must not contain number ,special charachter.
+          <mat-error [translateLocal]="{EN:'name must not contain number ,special charachter.',AR:'يجب ألا يحتوي الاسم على رقم أو حرف خاص.'}" *ngIf="signUpForm.get('lastName').hasError('pattern')">
           </mat-error>
           <p [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="text" name="phone" class="phone" formControlName="phone"
                    [placeholder]="isArabic ? 'اكتب رقم هاتفك ' : 'Type in your Phone Number'">
           </mat-form-field>
+          <mat-error  [translateLocal]="{AR: 'من فضلك ادخل رقم المحمول صالح', EN: 'Please enter a valid phone number'}" *ngIf="signUpForm.get('phone').hasError('pattern')">
+          </mat-error>
           <p [translateLocal]="{EN: 'Retype Password', AR: 'اعد ادخال كلمة المرور'}"></p>
           <mat-form-field appearance="outline">
             <input matInput type="password" name="passwordTwo" class="password" formControlName="rePassword"
                    [placeholder]="isArabic ? '******** ' : '********'">
 
           </mat-form-field>
-          <mat-error *ngIf="signUpForm.get('rePassword').errors?.MustMatch">
-            Passwords must match.
+          <mat-error [translateLocal]="{EN:'Passwords must match.',AR:'يجب أن تتطابق كلمات المرور.'}" *ngIf="signUpForm.get('rePassword').errors?.MustMatch">
+
           </mat-error>
           <p [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الميلاد'}"></p>
           <mat-form-field appearance="outline">
