@@ -54,15 +54,7 @@
         margin-top: 23px;
       }
 
-      .fName, .lName {
-        padding-bottom: 13px;
-      }
-
-      .email, .level, .phone {
-        padding-bottom: 11px;
-      }
-
-      .date, .sex, .occupation {
+      .ypeer-form-field-label {
         padding-bottom: 12px;
       }
 
@@ -70,12 +62,6 @@
       ::ng-deep.mat-form-field-wrapper {
         margin: 0;
         padding: 0;
-      }
-
-      ::ng-deep.mat-form-field-infix {
-        padding: 19.62px 0;
-        border-top: 0 solid transparent;
-
       }
 
       ::ng-deep.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
