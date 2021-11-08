@@ -69,6 +69,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   birthDate = new FormControl(moment());
   successMessage: any;
   tomorrow = new Date();
+  readonlyField;
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService, private imageService: ImageService) {
     this.tomorrow.setDate(this.tomorrow.getDate() + 1);
@@ -105,6 +106,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   getUserInfoById() {
     this.myProfileService.getUserInfo(this.userId).then(data => {
       this.userInfo = data;
+      this.readonlyField = true;
       this.userProfileForm.setValue({
         firstName: this.userInfo.firstName,
         email: this.userInfo.email,

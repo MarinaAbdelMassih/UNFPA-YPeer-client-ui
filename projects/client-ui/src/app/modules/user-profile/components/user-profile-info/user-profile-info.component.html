@@ -28,8 +28,8 @@
         </mat-error>
         <p class="email" [translateLocal]="{EN: 'Email', AR: 'البريد الاكتروني '}"></p>
         <mat-form-field appearance="outline">
-          <input matInput type="email" name="email" formControlName="email"
-                 [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
+          <input [readonly]="this.readonlyField"  [ngStyle]="{'color': readonlyField ? 'darkgray' : '' }" matInput type="email" name="email" formControlName="email"
+                 [disabled]="readonlyField" [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
         </mat-form-field>
         <mat-error [translateLocal]="{EN:'enter a valid email.',AR:'أدخل بريد إلكتروني صحيح.'}" *ngIf="userProfileForm.get('email').hasError('pattern')">
         </mat-error>
