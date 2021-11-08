@@ -1,6 +1,7 @@
 .sign-in-container {
   //background-color: #ffa50052;
   //background-image: url("src/assets/images/bg-sign-in.png");
+  position: relative;
   background-size: cover;
   height: 768px;
   width: 100%;
@@ -20,14 +21,15 @@
       background-color: #FFFFFF;
       margin-top: 135px;
     }
-
-    .rights-reserved-text {
-      font-size: 11px;
-      line-height: 1.18;
-      color: #2e2e2e;
-      display: flex;
-      margin-top: 97px;
-    }
+  }
+  .rights-reserved-text {
+    font-size: 11px;
+    line-height: 1.18;
+    color: #2e2e2e;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: end;
   }
 }
 
@@ -41,9 +43,6 @@
       }
       .form-container {
         margin: auto;
-      }
-      .rights-reserved-text {
-        margin-bottom: -27px;
       }
     }
   }
@@ -69,10 +68,6 @@
         .form-container {
           margin-right: 44px;
         }
-
-        .rights-reserved-text {
-          justify-content: flex-end;
-        }
       }
     }
   }
@@ -88,10 +83,6 @@
 
         .form-container {
           margin-left: 44px;
-        }
-
-        .rights-reserved-text {
-          justify-content: flex-end;
         }
       }
     }
