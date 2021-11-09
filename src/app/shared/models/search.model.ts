@@ -34,7 +34,9 @@ export class SearchModel implements searchContent{
 
   private static setSearchResults(searchResult: any[]): searchListItem[]{
     return searchResult.map((searchResultItem) => {
-      if (searchResultItem.sys.contentType.sys.id == "newsListItem" || searchResultItem.sys.contentType.sys.id == "publicationsListItem") {
+      if (searchResultItem.sys.contentType.sys.id == "newsListItem" || searchResultItem.sys.contentType.sys.id == "eventsListItem"
+        || searchResultItem.sys.contentType.sys.id == "storiesListItem" || searchResultItem.sys.contentType.sys.id == "publicationsListItem"
+        || searchResultItem.sys.contentType.sys.id == "trainingsListItem") {
         return {
           id: searchResultItem.fields.id,
           label : {AR: searchResultItem.fields.labelAr, EN: searchResultItem.fields.labelEn},
