@@ -34,6 +34,26 @@
     opacity: 1 !important;
 
   }
+
+  @media(max-width: 600px) {
+    ::ng-deep.mat-tab-header {
+      .mat-tab-labels {
+        display: flex;
+        flex-flow: column;
+        gap: 6px;
+      }
+      .mat-tab-label-active {
+        border-bottom: 4px solid #ff7900;
+      }
+      .mat-tab-label-content {
+        padding: 0;
+      }
+      .mat-tab-header-pagination, .mat-ink-bar {
+        display: none;
+      }
+
+    }
+  }
 }
 
 
