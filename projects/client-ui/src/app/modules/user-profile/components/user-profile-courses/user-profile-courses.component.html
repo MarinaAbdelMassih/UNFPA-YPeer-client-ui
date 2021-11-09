@@ -1,14 +1,19 @@
 <div class="user-profile-courses">
-  <a (click)="openDialoge()">
-    <app-course-bar [name]="'Introductory Course Name'"
-                    [btnText]="'watch course'"
-                    [score]="85"
-                    [percent]="20"
-                    [finished]="true"
-                    [advanced]="true"
-    ></app-course-bar>
+  <a (click)="openDialog()" *ngFor="let course of myCourses">
+    <app-course-bar *ngIf="(course.id === 1) || (course.id === 2)" [name]="course.name"
+                    [btnText]="{EN: 'watch course', AR: 'ابدأ الدوره'}"
+                    [score]="course.score"
+                    [progress]="course.progress"
+                    [isArabic]="isArabic">
+    </app-course-bar>
   </a>
-  <app-course-status [title]="'Thank You!'"
-                     [description]="'You have applied to the advanced course successfully. Stay tuned; we are preparing your advanced course.'"
-                     [showBtn]="false"></app-course-status>
+  <div class="course-status">
+    <app-course-status *ngIf="isIntroProgress90 && isIntroScore75" [title]="{EN: 'What Next?', AR: 'ماذا بعد؟'}"
+                       [description]="{EN: 'advanced courses is available for limited time (2 months) from the date of enrollment.', AR: ''}"
+                       [btnText]= "{EN: 'Enroll Now', AR: 'سجل الان'}">
+    </app-course-status>
+    <!--  <app-course-status *ngIf="isIntroProgress90 && !isIntroScore75" [title]="'Thank You!'"-->
+    <!--                     [description]="'You have applied to the advanced course successfully. Stay tuned; we are preparing your advanced course.'">-->
+    <!--  </app-course-status>-->
+  </div>
 </div>

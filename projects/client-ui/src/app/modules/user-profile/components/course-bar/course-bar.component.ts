@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {TranslationModel} from '../../../../../../../../src/app/shared/models/translation.model';
 
 @Component({
   selector: 'app-course-bar',
@@ -6,12 +7,12 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./course-bar.component.scss']
 })
 export class CourseBarComponent implements OnInit {
-  @Input() name;
-  @Input() btnText;
+  @Input() name: TranslationModel;
+  @Input() btnText: TranslationModel;
   @Input() score: number;
-  @Input() finished = true;
-  @Input() percent;
-  @Input() advanced = false;
+  @Input() progress: number;
+  @Input() isArabic: boolean;
+  @Input() disabled: boolean;
 
   constructor() {
   }

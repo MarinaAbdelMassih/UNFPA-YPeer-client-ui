@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Subscription} from 'rxjs';
+import {LanguageService} from '../../../../../../src/app/shared/services/language.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  isArabic: boolean;
+  subscription: Subscription;
+
+  constructor(private languageService: LanguageService) { }
 
   ngOnInit() {
+    this.checkLanguage();
+  }
+
+  checkLanguage(): void {
+    this.subscription = this.languageService.isArabic.subscribe((isArabic: boolean) => {
+      this.isArabic = isArabic;
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

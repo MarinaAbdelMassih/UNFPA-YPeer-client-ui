@@ -1,5 +1,8 @@
 .user-profile {
   padding: 0 57px;
+  @media (max-width: 424px) {
+    padding: 0 20px;
+  }
   ::ng-deep.mat-tab-label {
     width: 219px;
   }
@@ -20,5 +23,15 @@
     border-bottom: 1px solid transparent;
     margin-bottom: 49px;
     margin-top: 82.8px;
+  }
+}
+
+::ng-deep {
+  [dir="rtl"] {
+    .user-profile {
+      ::ng-deep.mat-tab-label .mat-tab-label-content {
+        font-family: 'DroidKufiBold', sans-serif;
+      }
+    }
   }
 }

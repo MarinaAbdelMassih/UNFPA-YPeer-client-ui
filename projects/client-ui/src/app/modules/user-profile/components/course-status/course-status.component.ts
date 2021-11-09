@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {TranslationModel} from '../../../../../../../../src/app/shared/models/translation.model';
 
 @Component({
   selector: 'app-course-status',
@@ -7,9 +8,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CourseStatusComponent implements OnInit {
 
-  @Input() title;
-  @Input() description;
-  @Input() showBtn = true;
+  @Input() title: TranslationModel;
+  @Input() description: TranslationModel;
+  @Input() btnText: TranslationModel;
 
   constructor() {
   }
