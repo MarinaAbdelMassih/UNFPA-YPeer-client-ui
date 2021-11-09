@@ -28,6 +28,9 @@
     margin-top: 82.8px;
   }
 
+  ::ng-deep.mat-tab-label-active {
+    opacity: 1;
+  }
   ::ng-deep.mat-tab-label.mat-tab-label-active .mat-tab-label-content{
     color: #2e2e2e;
     opacity: 1 !important;
