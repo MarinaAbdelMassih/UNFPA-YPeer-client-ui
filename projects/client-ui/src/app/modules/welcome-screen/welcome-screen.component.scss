@@ -1,0 +1,57 @@
+.welcome-screen {
+  margin: auto;
+  text-align: center;
+
+  img {
+    padding-top: 96px;
+  }
+
+  h2 {
+    font-family: 'TradeGothic', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.19;
+    text-align: center;
+    color: #2e2e2e;
+    margin: 36px 0 45px;
+  }
+
+  p {
+    font-family: 'TradeGothic', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    color: #2e2e2e;
+    max-width: 512px;
+    height: 69px;
+
+    margin: auto;
+  }
+
+  button {
+    width: 174px;
+    height: 46px;
+    background-color: #5a3f99;
+    font-family: 'TradeGothic', sans-serif;
+    font-size: 16px;
+    line-height: 1.19;
+    text-align: center;
+    color: #fff;
+    border: 1px solid transparent;
+    margin: 32px 0 228px;
+  }
+
+  .link {
+    margin: 46px 0 241px;
+
+    a {
+      font-family: 'TradeGothic', sans-serif;
+      font-size: 16px;
+      line-height: 1.19;
+      text-align: center;
+      color: #5a3f99;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}

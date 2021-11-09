@@ -1,5 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+import {WelcomeScreenApprovedComponent} from "./shared/components/welcome-screen-approved/welcome-screen-approved.component";
+import {WelcomeScreenPendingComponent} from "./shared/components/welcome-screen-pending/welcome-screen-pending.component";
 
 
 const routes: Routes = [
@@ -108,7 +110,45 @@ const routes: Routes = [
     path: 'profile',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/user-profile/user-profile.module').then(mod => mod.UserProfileModule),
-  }
+  },
+  {
+    path: 'signIn',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/sign-in/sign-in.module').then(mod => mod.SignInModule),
+  },
+  {
+    path: 'signUp',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/sign-up/sign-up.module').then(mod => mod.SignUpModule),
+  },
+  {
+    path: 'welcome',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/welcome-screen/welcome-screen.module').then(mod => mod.WelcomeScreenModule),
+  },
+  {
+    path: 'WelcomeScreenApproved', component: WelcomeScreenApprovedComponent
+  },
+  {
+    path: 'WelcomeScreenPending', component: WelcomeScreenPendingComponent
+  },
+  {
+    path: 'viewer',
+    children: [
+      {path: '', pathMatch: 'full', redirectTo: '/home'},
+      {
+        path: ':courseId',
+        pathMatch: 'full',
+        loadChildren: () => import('../../projects/course-viewer/src/app/course-viewer.module').then(mod => mod.CourseViewerModule),
+      }
+    ],
+  },
+  // {
+  //   path: 'contactUs',
+  //   pathMatch: 'full',
+  //   loadChildren: () => import('../../projects/client-ui/src/app/modules/contact-us/contact-us.module').then(mod => mod.ContactUsModule),
+  // },
+
 ];
 
 @NgModule({

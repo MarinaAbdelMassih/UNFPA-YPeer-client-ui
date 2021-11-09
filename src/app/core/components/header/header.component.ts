@@ -2,7 +2,9 @@ import {Component, Inject, OnDestroy, OnInit, ViewEncapsulation} from '@angular/
 import {LanguageService} from "../../../shared/services/language.service";
 import {DOCUMENT} from "@angular/common";
 import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
+declare var $: any;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,11 +15,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   isArabic: boolean = false;
   private languageSubscription: Subscription;
+  loginName: any;
 
-  constructor(private languageService: LanguageService, @Inject(DOCUMENT) private document: Document) { }
+  constructor(private languageService: LanguageService, @Inject(DOCUMENT) private document: Document, private router: Router) {
+  }
 
   ngOnInit() {
     this.setDirectionBasedOnLanguage();
+    if (localStorage.getItem('username')) {
+      this.loginName = localStorage.getItem('username');
+    }
+    $('.navbar-nav>li').on('click', function () {
+      $('.navbar-collapse').collapse('hide');
+    });
   }
 
   setDirectionBasedOnLanguage(): void {
@@ -33,7 +43,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
-  changeLang(){
+  changeLang() {
     this.languageService.updateLang(this.isArabic ? 'en' : 'ar');
   }
 
@@ -43,4 +53,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
+  redirect() {
+    this.router.navigate(['/signUp']);
+  }
 }

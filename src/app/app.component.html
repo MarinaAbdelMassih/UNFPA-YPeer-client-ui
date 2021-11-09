@@ -1,6 +1,6 @@
-<app-header></app-header>
-<div class="page-wrapper">
+<app-header *ngIf="!isCourseViewer"></app-header>
+<div class="page-wrapper" [ngStyle] = "isCourseViewer ? {'margin-top': '20px'}: {'margin-top': '76.96px'}">
   <router-outlet></router-outlet>
 </div>
-<app-footer></app-footer>
-<app-sub-footer></app-sub-footer>
+<app-footer *ngIf="!isCourseViewer"></app-footer>
+<app-sub-footer [showLinks]="!isCourseViewer"></app-sub-footer>

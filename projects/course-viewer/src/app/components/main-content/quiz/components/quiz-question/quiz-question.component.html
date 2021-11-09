@@ -1,0 +1,26 @@
+<div class="question-container">
+  <div class="question-title">
+    <span [translateLocal]="{EN: 'Question', AR: 'سؤال'}"></span> {{currentQuestionIndex + 1}}
+   </div>
+  <div class="question-body">{{currentQuestion.body}}</div>
+  <div *ngIf="currentQuestion.type == 'true&false'" class="true-false-answers">
+    <mat-radio-group [value]="currentQuestion.selectedAnswer" >
+      <mat-radio-button (click)="sendAnswers('true')" value="true">
+        <span [translateLocal]="{EN: 'True', AR: 'صح'}"></span>
+      </mat-radio-button>
+      <mat-radio-button (click)="sendAnswers('false')" value="false">
+        <span [translateLocal]="{EN: 'False', AR: 'خطأ'}"></span>
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div *ngIf="currentQuestion.type == 'MULTIPLE_CHOICE'" class="multiple-answers">
+   <mat-checkbox [checked]="answer.selected" *ngFor="let answer of currentQuestion.possibleAnswers"
+                 (change)="sendAnswers($event, answer)">{{answer.body}}</mat-checkbox>
+  </div>
+
+  <div *ngIf="currentQuestion.type == 'SINGLE_CHOICE'" class="single-answers">
+    <mat-radio-button [value]="true" [checked]="answer.selected" *ngFor="let answer of currentQuestion.possibleAnswers"
+                  (change)="sendAnswers($event, answer)">{{answer.body}}</mat-radio-button>
+  </div>
+</div>

@@ -1,0 +1,314 @@
+$bcpControlBarHeight: 6em;
+$bcpControlBarLineHeight: 1.67em;
+$bcpControlBarFontSize: 1.8em;
+$bcpProgressControlNormalHeight: 0.5em;
+$bcpProgressControlHoverHeight: 1em;
+$bcpProgressControlBookmarkLineHeight: 3.5em;
+$bcpProgressControlBookmarkFormHeight: 16em;
+$permissibleMeasurementError: 0.47;
+$bcpControlBarVerticalPadding: ($bcpControlBarHeight - ($bcpControlBarLineHeight + $bcpControlBarFontSize - $permissibleMeasurementError))/2;
+
+$tablet-point: 766px;
+$mobile-point: 480px;
+$mobile-point-x: 320px;
+
+@mixin transition($transition: all 0.5s ease ) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin background-opacity($color, $opacity) {
+  $rgba-color: rgba(red($color), green($color), blue($color), $opacity);
+
+  background-color: $rgba-color;
+
+  &:not([dummy]) {
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='false'); // Only IE9
+  }
+}
+
+@mixin transform( $transform ) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -ms-transform: $transform;
+  -o-transform: $transform;
+  transform: $transform;
+}
+
+::ng-deep .video-player-container {
+  .vjs-overlay-background {
+    display: none;
+  }
+  div {
+    width: 100%;
+    height: 100%;
+
+    ::ng-deep div {
+      padding-top: unset !important;
+    }
+
+    .video-js {
+
+      .vjs-dock-text {
+        display: none;
+      }
+
+      &:hover {
+        .vjs-big-play-button {
+          background-color: #c5005b;
+          //background-image: linear-gradient(to right, #f82f12 12%, #c5005b 92%) !important;
+        }
+      }
+
+      .add-bookmark-opened {
+        background-color: black;
+      }
+
+      .vjs-big-play-button {
+        .vjs-icon-placeholder {
+          //display: none;
+        }
+
+        background-color: #f82f12;
+        //background: url("~src/assets/img/course-viewer/alm-bp-normal.png") no-repeat center center;
+        //background-size: contain;
+
+        &:hover {
+          background-color: #c5005b;
+          //background-image: linear-gradient(to right, #f82f12 12%, #c5005b 92%) !important;
+          //background: url("~src/assets/img/course-viewer/alm-bp-hover.png") no-repeat center center;
+          //background-size: contain;
+        }
+      }
+
+      .vjs-loading-spinner {
+        height: 50px !important;
+        width: 50px !important;
+      }
+
+      .vjs-play-progress {
+        &.vjs-slider-bar {
+          .vjs-time-tooltip {
+            display: none;
+          }
+        }
+      }
+
+      .vjs-mouse-display {
+        .vjs-time-tooltip {
+          width: 60px !important;
+          height: 20px !important;
+          padding-top: 6px !important;
+        }
+      }
+
+      .bookmarks-button {
+        //background: url("~src/assets/images/bookmark.png") center center;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        margin-top: 4px;
+        z-index: 99999;
+      }
+
+      .vjs-bookmark-control {
+        &.vjs-control-bar-bookmark-line.vjs-control {
+          height: $bcpProgressControlBookmarkLineHeight;
+          top: -($bcpProgressControlBookmarkLineHeight+$bcpProgressControlNormalHeight);
+          @include background-opacity(#000, 0.5);
+          position: absolute;
+          left: 0;
+          right: 0;
+          width: 100%;
+          -webkit-transition: height .5s, top .5s;
+          -moz-transition: height .5s, top .5s;
+          -ms-transition: height .5s, top .5s;
+          -o-transition: height .5s, top .5s;
+          transition: height .5s, top .5s;
+
+          .vjs-bookmark-control-list {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            //background: lightcyan;
+            .vjs-bookmark-control-list-item {
+              min-width: 8px;
+              width: 8px;
+              height: 20px;
+              position: absolute;
+              left: 25%;
+
+              &.vjs-bookmark-item {
+                @include transition(top 0.8s);
+
+                .vjs-bookmark-icon {
+                  background: #e9e9e9;
+                  width: 8px;
+                  height: 16px;
+                  display: inline-block;
+                  @include transition(background 0.55s);
+                  position: relative;
+
+                  &:before, &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: -4px;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-color: transparent;
+                    @include transition(border 0.55s);
+                  }
+
+                  &:before {
+                    border-width: 4px 4px 0 0;
+                    border-top-color: #e9e9e9;
+                    left: 0;
+                  }
+
+                  &:after {
+                    border-width: 0 4px 4px 0;
+                    border-right-color: #e9e9e9;
+                    right: 0;
+                  }
+                }
+
+                &:hover,
+                &.active {
+                  top: -1px;
+
+                  .vjs-bookmark-icon {
+                    cursor: pointer;
+                    height: 17px;
+                    background: white;
+
+                    &:before {
+                      border-top-color: white;
+                    }
+
+                    &:after {
+                      border-right-color: white;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .vjs-bookmark-tooltip {
+            position: absolute;
+            display: block;
+            visibility: hidden;
+            height: 0px;
+            top: 0px;
+            background: #ffffff;
+            max-width: 264px;
+            min-width: 160px;
+            margin-top: -1px;
+
+            -webkit-transition: height .5s, top .5s;
+            -moz-transition: height .5s, top .5s;
+            -ms-transition: height .5s, top .5s;
+            -o-transition: height .5s, top .5s;
+            transition: height .5s, top .5s;
+
+            overflow: hidden;
+
+            &:before {
+              content: '';
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              //left: -8px;
+              left: 0;
+              width: 8px;
+              background: white;
+            }
+
+            .vjs-bookmark-tooltip-arrow {
+              padding-top: auto !important;
+              width: auto;
+              height: auto;
+            }
+
+            .vjs-bookmark-tooltip-inner {
+              width: auto;
+              height: auto;
+              color: #3d4248;
+              text-align: left;
+              font-size: 1.4em;
+              line-height: 1.27em;
+              overflow: hidden;
+              padding: 12px 14px 12px 19px !important;
+              white-space: normal;
+              word-wrap: break-word;
+            }
+
+            &.vjs-bookmark-tooltip-right {
+              .vjs-bookmark-tooltip-inner {
+                padding: 12px 19px 12px 14px;
+              }
+
+              &:before {
+                left: auto;
+                right: 0;
+              }
+            }
+
+          }
+        }
+      }
+    }
+  }
+}
+
+.vjs-has-started {
+  .vjs-has-paused {
+    display: block !important;
+  }
+}
+
+.bc-player-SyJWCQmkG_default {
+  .vjs-poster {
+    background-color: #000000;
+  }
+
+  .vjs-play-progress,
+  .vjs-volume-level,
+  .vjs-menu-button-popup .vjs-menu .vjs-menu-item.vjs-selected {
+    background-color: transparent;
+    //background-image: linear-gradient(to right, $primary-color, $primary-color-1 48%, $primary-color-2);
+  }
+}
+
+.bc-player-SyJWCQmkG_default .vjs-progress-control {
+  z-index: 99999;
+}
+
+.bc-player-SyJWCQmkG_default {
+  &.not-hover.vjs-has-started.vjs-paused.vjs-user-active .vjs-control-bar,
+  &.not-hover.vjs-has-started.vjs-paused.vjs-user-inactive .vjs-control-bar,
+  &.not-hover.vjs-has-started.vjs-playing.vjs-user-active .vjs-control-bar,
+  &.not-hover.vjs-has-started.vjs-playing.vjs-user-inactive .vjs-control-bar,
+  &.vjs-has-started.vjs-paused.vjs-ad-playing.vjs-user-inactive .vjs-control-bar,
+  &.vjs-has-started.vjs-playing.vjs-user-inactive .vjs-control-bar {
+    transform: none !important;
+    opacity: 0 !important;
+    transition: opacity 500ms ease-out !important;
+  }
+}
+
+.video-player-container {
+  .vjs-overlay {
+    height: 50px !important;
+    background-color: transparent;
+    width: auto;
+    img {
+      margin: auto;
+    }
+  }
+}

@@ -11,10 +11,15 @@ import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import { CourseBarComponent } from './components/course-bar/course-bar.component';
 import { CourseStatusComponent } from './components/course-status/course-status.component';
 import {NgCircleProgressModule} from 'ng-circle-progress';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {ImageUploaderComponent} from './components/image-uploader/image-uploader.component';
+import {NgxDropzoneModule} from "ngx-dropzone";
+
 
 
 @NgModule({
-  declarations: [UserProfileComponent, UserProfileInfoComponent, UserProfileCoursesComponent, CourseBarComponent, CourseStatusComponent],
+  declarations: [UserProfileComponent, UserProfileInfoComponent, UserProfileCoursesComponent, CourseBarComponent, CourseStatusComponent, ImageUploaderComponent],
   imports: [
     CommonModule,
     UserProfileRoutingModule,
@@ -24,7 +29,10 @@ import {NgCircleProgressModule} from 'ng-circle-progress';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    NgCircleProgressModule
+    NgCircleProgressModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    NgxDropzoneModule,
   ]
 })
 export class UserProfileModule { }

@@ -1,0 +1,27 @@
+<div class="image-dropzone" *ngIf="!showInputError">
+  <div class="image-dropzone-container" *ngIf="!file">
+    <ngx-dropzone
+      (change)="onSelect($event)"
+      [multiple]="false"
+      [accept]="'image/jpeg,image/jpg,image/png'">
+<!--      <ngx-dropzone-label>drop your image here or click to browse</ngx-dropzone-label>-->
+    </ngx-dropzone>
+  </div>
+  <div class="image-error-container" *ngIf="hasError">
+    <p class="alert-danger">Image dimensions should be ({{width}} x {{height}})px</p>
+  </div>
+  <div class="image-preview-container" *ngIf="file">
+    <ngx-dropzone-preview  [file]="file"  [removable]="!uploading" (removed)="onRemove(file)">
+      <ngx-dropzone-label>
+        <div class="file-info">
+          <p><strong>Name:</strong> {{ file.name }} </p>
+          <p><strong>Size:</strong>  {{ file.size / 1000 }} KB</p>
+        </div>
+      </ngx-dropzone-label>
+    </ngx-dropzone-preview>
+    <div class="spinner-container" *ngIf="uploading">
+<!--      <mat-spinner></mat-spinner>-->
+    </div>
+    <button mat-flat-button color="primary" *ngIf="!uploading" (click)="onRemove(file)">Remove Image</button>
+  </div>
+</div>

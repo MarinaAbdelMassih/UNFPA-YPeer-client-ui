@@ -1,77 +1,105 @@
 <div class="user-profile-info">
   <div class="img-container">
-    <img src="assets/images/profile-info.png" alt="profile-info">
-    <p>Upload Your Photo</p>
+<!--    <div class="image-dropzone-container" *ngIf="!file">-->
+<!--      <ngx-dropzone-->
+<!--        (change)="onSelect($event)"-->
+<!--        [multiple]="false"-->
+<!--        [accept]="'image/jpeg,image/jpg,image/png'">-->
+<!--      </ngx-dropzone>-->
+<!--    </div>-->
+<!--    <img src="assets/images/profile-info.png" alt="profile-info">-->
+    <app-image-uploader [width]="125" [height]="125" [name]="'thumbImageName'" [update]="update"
+                          [shouldUpload]="upload"
+                          (onImageUpload)="onImageUpload($event)"
+                          (onImageRemove)="onImageRemove()"
+                          (onImageChange)="onImageChange($event)"></app-image-uploader>
+    <button [translateLocal]="{EN: 'Upload Your Photo', AR: 'تحميل صورتك'}"  [disabled]="!imageSelected" (click)="uploadImage()" class="upload"></button>
+
   </div>
   <form [formGroup]="userProfileForm">
     <div class="form-container d-flex justify-content-between">
-      <div class="">
+      <div class="form-field-container">
         <p class="fName" [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول '}"></p>
         <mat-form-field appearance="outline">
-          <input matInput type="text" name="firstName" class="firstName" formControlName="fName"
+          <input matInput type="text" name="firstName" formControlName="firstName"
                  [placeholder]="isArabic ? 'اكتب اسمك الأول ' : 'Type in your first name'">
         </mat-form-field>
-        <p class="email" [translateLocal]="{EN: 'Email', AR: 'بريد الالكتروني '}"></p>
-        <mat-form-field appearance="outline">
-          <input matInput type="email" name="email" class="email" formControlName="email"
-                 [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
-        </mat-form-field>
-
-        <p class="date" [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الولادة'}"></p>
-        <div class="birthday-container">
-          <mat-form-field appearance="outline" class="birthday-form">
-            <mat-select [placeholder]="isArabic ? 'اليوم ' : 'days'" formControlName="days">
-              <mat-option *ngFor="let item of days ;" [value]="item">{{item}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="birthday-form">
-            <mat-select [placeholder]="isArabic ? 'الشهر ' : 'months'" formControlName="months">
-              <mat-option *ngFor="let item of months ;" [value]="item">{{item}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="birthday-form">
-            <mat-select [placeholder]="isArabic ? 'السنه ' : 'years'" formControlName="years">
-              <mat-option *ngFor="let item of years ;" [value]="item">{{item}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <p class="level" [translateLocal]="{EN: 'Education Level', AR: 'مستوى التعليم'}"></p>
-        <mat-form-field appearance="outline">
-          <mat-select [placeholder]="isArabic ? 'اختار ' : 'select'" formControlName="education">
-            <mat-option *ngFor="let item of education ;" [value]="item">{{item}}</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <mat-error [translateLocal]="{EN:'name must not contain number ,special charachter.',AR:'يجب ألا يحتوي الاسم على رقم أو حرف خاص.'}" *ngIf="userProfileForm.get('firstName').hasError('pattern')">
+        </mat-error>
       </div>
-      <div class="">
+      <div class="form-field-container">
         <p class="lName" [translateLocal]="{EN: 'Last Name', AR: 'الاسم الأخير '}"></p>
         <mat-form-field appearance="outline">
-          <input matInput type="text" name="lastName" class="lastName" formControlName="lName"
+          <input matInput type="text" name="lastName" class="lastName" formControlName="lastName"
                  [placeholder]="isArabic ? 'اكتب اسمك الاخير ' : 'Type in your last name'">
         </mat-form-field>
+        <mat-error [translateLocal]="{EN:'name must not contain number ,special charachter.',AR:'يجب ألا يحتوي الاسم على رقم أو حرف خاص.'}" *ngIf="userProfileForm.get('lastName').hasError('pattern')">
+        </mat-error>
+      </div>
+      <div class="form-field-container">
+        <p class="email" [translateLocal]="{EN: 'Email', AR: 'بريد الالكتروني '}"></p>
+        <mat-form-field appearance="outline">
+          <input matInput [readonly]="this.readonlyField"  [ngStyle]="{'color': readonlyField ? 'darkgray' : '' }" type="email" name="email" class="email" formControlName="email"
+                 [disabled]="readonlyField" [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
+        </mat-form-field>
+        <mat-error [translateLocal]="{EN:'enter a valid email.',AR:'أدخل بريد إلكتروني صحيح.'}" *ngIf="userProfileForm.get('email').hasError('pattern')">
+        </mat-error>
+      </div>
+      <div class="form-field-container">
         <p class="phone" [translateLocal]="{EN: 'Phone', AR: 'رقم الهاتف'}"></p>
         <mat-form-field appearance="outline">
           <input matInput type="text" name="phone" class="phone" formControlName="phone"
                  [placeholder]="isArabic ? 'اكتب رقم هاتفك ' : 'Type in your Phone Number'">
         </mat-form-field>
+        <mat-error  [translateLocal]="{AR: 'من فضلك ادخل رقم المحمول صالح', EN: 'Please enter a valid phone number'}" *ngIf="userProfileForm.get('phone').hasError('pattern')">
+        </mat-error>
+      </div>
+      <div class="form-field-container">
+        <p class="date" [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الولادة'}"></p>
+        <mat-form-field appearance="outline">
+          <input matInput [matDatepicker]="basicDatepicker"  [max]="tomorrow"
+                 formControlName="birthDate"
+                 [placeholder]="isArabic ? 'ادخل تاريخ الميلاد ' : 'your birthday'">
+          <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #basicDatepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="form-field-container">
         <p class="sex" [translateLocal]="{EN: 'Sex', AR: 'الجنس'}"></p>
         <mat-form-field appearance="outline">
-          <mat-select [placeholder]="isArabic ? 'جنس' : 'gender'" formControlName="gender">
-            <mat-option *ngFor="let item of gender ;" [value]="item">{{item}}</mat-option>
+          <mat-select [placeholder]="isArabic ? 'جنس' : 'gender'" formControlName="genderId">
+            <mat-option *ngFor="let item of gender ;"
+                        [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
           </mat-select>
         </mat-form-field>
+      </div>
+      <div class="form-field-container">
+        <p class="level" [translateLocal]="{EN: 'Education Level', AR: 'مستوى التعليم'}"></p>
+        <mat-form-field appearance="outline">
+          <mat-select [placeholder]="isArabic ? 'اختار ' : 'select'" formControlName="educationalLevelId">
+            <mat-option *ngFor="let item of education ;" [value]="item.id">{{isArabic ? item.arabicName : item.englishName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-field-container">
         <p class="occupation" [translateLocal]="{EN: 'occupation', AR: 'مهنة '}">Occupation</p>
         <mat-form-field appearance="outline">
-          <input matInput type="text" name="occupation" class="occupation" formControlName="occupation"
+          <input matInput type="text" name="occupation" formControlName="occupation"
                  [placeholder]="isArabic ? 'اكتب في مهنتك ' : 'Type in your occupation'">
         </mat-form-field>
-        <div class="d-flex justify-content-end ">
-          <button [disabled]="!userProfileForm.valid"
-                  (click)="submitUserProfileForm()"
-                  [translateLocal]="{EN: ' Save', AR: 'حفظ '}"></button>
-        </div>
+        <mat-error  [translateLocal]="{AR: 'هذا الحقل مطلوب', EN: 'This Field is required'}" *ngIf="userProfileForm.get('occupation').hasError('required')">
+        </mat-error>
       </div>
-
+      <div style="flex: 1 1 50%"></div>
+      <div class="btn-container">
+        <button [disabled]="!userProfileForm.valid"
+                (click)="submitUserProfileForm()"
+                [translateLocal]="{EN: ' Save', AR: 'حفظ '}"></button>
+      </div>
     </div>
-
   </form>
+  <div *ngIf="successMessage" class="row">
+    <div class="col-6 alert-success" [translateLocal]="successMessage">
+    </div>
+  </div>
 </div>

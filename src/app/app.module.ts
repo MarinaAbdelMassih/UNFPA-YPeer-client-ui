@@ -13,6 +13,7 @@ import {EventDetailsModule} from '../../projects/client-ui/src/app/modules/event
 import {LightboxModule} from 'ngx-lightbox';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConfirmationPopUpComponent} from './shared/components/confirmation-pop-up/confirmation-pop-up.component';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import {ConfirmationPopUpComponent} from './shared/components/confirmation-pop-u
     })
   ],
   entryComponents: [EventDetailsViewImageComponent , ConfirmationPopUpComponent],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 
 })
