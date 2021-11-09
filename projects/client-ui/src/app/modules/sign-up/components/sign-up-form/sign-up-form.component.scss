@@ -55,6 +55,12 @@
       ::ng-deep.mat-form-field-appearance-outline .mat-form-field-suffix {
         top: 10px;
       }
+      ::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline {
+        top: 0;
+      }
+      ::ng-deep.mat-form-field-appearance-outline .mat-form-field-flex {
+        margin-top: 0;
+      }
 
       .birthday-form {
         width: 126px;
@@ -70,6 +76,9 @@
         @media(max-width: 991px) {
           width: 100%;
         }
+        //input {
+        //  vertical-align: sub;
+        //}
       }
 
       ::placeholder {
