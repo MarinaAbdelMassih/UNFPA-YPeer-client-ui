@@ -17,9 +17,9 @@
 
   </div>
   <form [formGroup]="userProfileForm">
-    <div class="form-container d-flex justify-content-between justify-content-lg-around">
+    <div class="form-container d-flex justify-content-between">
       <div class="form-field-container">
-        <p class="fName" [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول'}"></p>
+        <p class="fName" [translateLocal]="{EN: 'First Name', AR: 'الاسم الأول '}"></p>
         <mat-form-field appearance="outline">
           <input matInput type="text" name="firstName" formControlName="firstName"
                  [placeholder]="isArabic ? 'اكتب اسمك الأول ' : 'Type in your first name'">
@@ -39,7 +39,7 @@
       <div class="form-field-container">
         <p class="email" [translateLocal]="{EN: 'Email', AR: 'بريد الالكتروني '}"></p>
         <mat-form-field appearance="outline">
-          <input [readonly]="this.readonlyField"  [ngStyle]="{'color': readonlyField ? 'darkgray' : '' }" matInput type="email" name="email" formControlName="email"
+          <input matInput [readonly]="this.readonlyField"  [ngStyle]="{'color': readonlyField ? 'darkgray' : '' }" type="email" name="email" class="email" formControlName="email"
                  [disabled]="readonlyField" [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
         </mat-form-field>
         <mat-error [translateLocal]="{EN:'enter a valid email.',AR:'أدخل بريد إلكتروني صحيح.'}" *ngIf="userProfileForm.get('email').hasError('pattern')">
