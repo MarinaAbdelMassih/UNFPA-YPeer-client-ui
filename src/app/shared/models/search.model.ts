@@ -13,6 +13,7 @@ export interface searchListItem {
   description: {AR: string, EN: string};
   imageId: string;
   tagLabel: string;
+  type: string;
 }
 export class SearchModel implements searchContent{
   searchItems: any;
@@ -41,6 +42,7 @@ export class SearchModel implements searchContent{
           description : {AR: searchResultItem.fields.descriptionAr, EN: searchResultItem.fields.descriptionEn},
           imageId:searchResultItem.fields.image.sys.id,
           tagLabel: searchResultItem.fields.tagLabel,
+          type: searchResultItem.sys.contentType.sys.id
         }
       }
       else return null;

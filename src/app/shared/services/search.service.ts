@@ -9,7 +9,7 @@ export class SearchService {
   constructor(private http: HttpClient) { }
 
   getSearchData(searchWord: string) {
-   return this.http.get(`https://cdn.contentful.com/spaces/jvvejk00zh2l/entries?query=${searchWord}&limit=7&skip=0`,
+   return this.http.get(`https://cdn.contentful.com/spaces/jvvejk00zh2l/entries?query=${searchWord}`,
       {headers: {'authorization': 'Bearer SjOnnb-PwRJ45RxLrkygZq__Tcum2HeCje-ZxqgO0c0'
         }}).toPromise();
   }

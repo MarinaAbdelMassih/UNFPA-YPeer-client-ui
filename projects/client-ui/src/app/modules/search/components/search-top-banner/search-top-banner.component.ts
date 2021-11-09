@@ -30,8 +30,10 @@ export class SearchTopBannerComponent implements OnInit, OnDestroy {
   }
 
   search() {
-    this.searchClicked.emit({searchWord:this.searchField, searchType: this.searchType.value});
-    console.log(this.searchType.value)
+    if (this.searchField) {
+      this.searchClicked.emit({searchWord:this.searchField, searchType: this.searchType.value});
+      console.log(this.searchType.value)
+    }
   }
 
   ngOnDestroy() {
