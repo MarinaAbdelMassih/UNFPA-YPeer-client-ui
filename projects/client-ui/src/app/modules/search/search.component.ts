@@ -53,8 +53,9 @@ export class SearchComponent implements OnInit {
 
   }
 
-  search(searchData?) {
-    //this.resultList = [];
+  search(searchData?, initial?: boolean) {
+    if (initial)
+      this.resultList = [];
     searchData? this.searchWord = searchData.searchWord : null;
     searchData? this.searchType = searchData.searchType : null;
       this.searchService.getSearchData(this.searchWord, this.resultList.length, 2)

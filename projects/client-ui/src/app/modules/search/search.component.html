@@ -1,5 +1,5 @@
 <div class="search">
-  <app-search-top-banner (searchClicked)="search($event)"></app-search-top-banner>
+  <app-search-top-banner (searchClicked)="search($event, true)"></app-search-top-banner>
   <div *ngIf="searchResults" class="search-container">
     <div class="title-container">
       <h3 *ngIf="searchResults">Search Results for : "{{searchWord}}"</h3>
