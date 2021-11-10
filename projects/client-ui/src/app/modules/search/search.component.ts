@@ -14,8 +14,9 @@ export class SearchComponent implements OnInit {
   currentPage = 1;
   @Output() PageNumber = new EventEmitter<number>();
   searchResults: searchContent;
-  resultList: searchListItem[];
+  resultList: searchListItem[] = [];
   searchWord: '';
+  searchType: '';
 
   constructor(private route:ActivatedRoute, private searchService: SearchService) {
     for (let i = 1; i < 5; i++) {
@@ -48,23 +49,28 @@ export class SearchComponent implements OnInit {
     this.changeNumber(this.currentPage - 1);
   }
 
-  search(searchData) {
-    this.resultList = [];
-      this.searchService.getSearchData(searchData.searchWord)
+  loadMoreResults() {
+
+  }
+
+  search(searchData?) {
+    //this.resultList = [];
+    searchData? this.searchWord = searchData.searchWord : null;
+    searchData? this.searchType = searchData.searchType : null;
+      this.searchService.getSearchData(this.searchWord, this.resultList.length, 2)
         .then(data => {
           this.searchResults = new SearchModel(data);
           for (let i =0; i < this.searchResults.searchItems.length; i++) {
             if (this.searchResults.searchItems[i]) {
               this.searchService.getImageById(this.searchResults.searchItems[i].imageId).then((data: any) => this.searchResults.searchItems[i].imageId = data.fields.file.url);
-              if (searchData.searchType == null || searchData.searchType == '') {
+              if (this.searchType == null || this.searchType == '') {
                 this.resultList.push(this.searchResults.searchItems[i])
               }
-              else if (searchData.searchType == this.searchResults.searchItems[i].type) {
+              else if (this.searchType == this.searchResults.searchItems[i].type) {
                 this.resultList.push(this.searchResults.searchItems[i])
               }
             }
           }
-          this.searchWord = searchData.searchWord;
           console.log(this.resultList)
         });
   }

@@ -8,8 +8,8 @@ export class SearchService {
 
   constructor(private http: HttpClient) { }
 
-  getSearchData(searchWord: string) {
-   return this.http.get(`https://cdn.contentful.com/spaces/jvvejk00zh2l/entries?query=${searchWord}`,
+  getSearchData(searchWord: string, skip: number, limit: number) {
+   return this.http.get(`https://cdn.contentful.com/spaces/jvvejk00zh2l/entries?query=${searchWord}&skip=${skip}&limit=${limit}`,
       {headers: {'authorization': 'Bearer SjOnnb-PwRJ45RxLrkygZq__Tcum2HeCje-ZxqgO0c0'
         }}).toPromise();
   }
