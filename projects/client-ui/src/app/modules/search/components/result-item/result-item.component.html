@@ -1,4 +1,4 @@
-<div class="row result-item w-100" *ngFor="let detail of details; let i = index">
+<div (click)="openDetailsPage(detail)"  class="row result-item w-100" *ngFor="let detail of details; let i = index">
       <div class="col-xl-3">
         <img [src]="detail.imageId" alt="image" class="result-img">
       </div>
