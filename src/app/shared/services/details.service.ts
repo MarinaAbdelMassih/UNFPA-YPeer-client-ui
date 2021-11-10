@@ -8,12 +8,12 @@ export class DetailsService {
 
   constructor(private customHttpClient: CustomHttpClientService) { }
 
-  getCourseById(sender: string, id: number, hasProgress: boolean) {
+  getCourseById(sender: string, id: number, hasProgress: boolean, userId: number) {
     return this.customHttpClient.sendBackendRequest({
       endpoint: "course/details",
       sender: sender,
       receiver: "details",
-      body: {entityId: id, hasProgress: hasProgress},
+      body: {entityId: id, hasProgress: hasProgress, userId},
     });
   }
 }

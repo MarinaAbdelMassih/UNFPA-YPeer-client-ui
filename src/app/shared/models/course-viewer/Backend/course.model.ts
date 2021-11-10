@@ -19,6 +19,7 @@ export interface ICourse {
   progress?: number;
   typeId?: number;
   isEnrolled: boolean;
+  videosCount: number;
 }
 
 export interface ITeacher {

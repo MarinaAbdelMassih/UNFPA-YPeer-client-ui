@@ -17,6 +17,7 @@ export class QuizComponent implements OnInit {
   quizStarted = false;
   questions : IQuestion[] = [];
   courseId: number;
+  @Input() disabled: boolean = false;
   constructor(private quizService: QuizService, private route: ActivatedRoute) { }
 
   ngOnInit() {

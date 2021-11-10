@@ -1,8 +1,8 @@
 import {
   AfterViewInit,
   Component,
-  ComponentFactoryResolver, ComponentRef,
-  OnDestroy, Type,
+  ComponentFactoryResolver, ComponentRef, EventEmitter, Input,
+  OnDestroy, Output, Type,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -32,6 +32,9 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
   isArabic: boolean = false;
   courseId = null;
   currentTitle: string;
+  @Input() videosCount: number;
+  @Input() courseProgress: number;
+  @Output() userProgress: EventEmitter<number> = new EventEmitter();
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private learnerSectionDataService: LearnerSectionsDataService,
               private curriculumControl: CurriculumControlService,
@@ -61,11 +64,16 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
             if (stuff.type == StuffType.VIDEO) {
               this.createComponent(VideoComponent);
               (<VideoComponent>this.currentComponent.instance).video = stuff;
+              (<VideoComponent>this.currentComponent.instance).userId = 1111;
+              (<VideoComponent>this.currentComponent.instance).videosCount = this.videosCount;
+              (<VideoComponent>this.currentComponent.instance).userProgress
+                .subscribe(progress => this.userProgress.emit(progress))
               // (<VideoComponent>this.currentComponent.instance).subjectId = this.subjectId;
             }
             else if (stuff.type == StuffType.QUIZ) {
               this.createComponent(QuizComponent);
               (<QuizComponent>this.currentComponent.instance).quiz = stuff;
+              (<QuizComponent>this.currentComponent.instance).disabled = this.courseProgress < 90;
             }
             // else if (stuff.type == StuffType.MATERIAL) {
             //   this.setUserProgress(stuff);
@@ -125,11 +133,12 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
       this.currentComponent.destroy();
   }
 
-  private setUserProgress(stuff: IStuff) {
+  private setUserProgress(stuff: IStuff, userId: number) {
     this.courseViewerDataService.setUserProgress({
-      entityId: stuff.courseId,
-      itemId: stuff.id,
-      itemTypeId: 14,
+      userId: userId,
+      courseId: stuff.courseId,
+      learningObjectiveChildId: stuff.id,
+      videosCount: 14,
     }).then(success => {
       stuff.setFinished(true);
     })

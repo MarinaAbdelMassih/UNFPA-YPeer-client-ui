@@ -25,6 +25,8 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
   subjectId: number;
   private subscriptions: Subscription[] = [];
   showResult: boolean;
+  courseProgress = 0;
+  videosCount: number;
 
 
   // private studentService: StudentService, private subjectService: SubjectService
@@ -65,7 +67,9 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
     let paramsSub = this.route.params.subscribe((params) => {
       if (params.courseId) {
         this.courseId = params.courseId;
-        this.learnerSectionService.setLearnerSections(this.courseId, true).then((data) => {
+        this.learnerSectionService.setLearnerSections(this.courseId, true, 1111).then((data) => {
+          this.videosCount = data.course.videosCount;
+          this.courseProgress = data.course.progress;
           this.learnerSectionService.learnerSections.next(data.sections);
           this.learnerSectionService.getUserCurrentPosition(data.sections, this.courseId).then((position: ILocalPosition) => {
             this.learnerSectionService.userCurrentPosition.next(position);
@@ -104,6 +108,10 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
     });
     this.subscriptions.push(paramsSub);
 
+  }
+
+  getUserProgress(progress) {
+    this.courseProgress = progress;
   }
 
   ngOnDestroy(): void {
