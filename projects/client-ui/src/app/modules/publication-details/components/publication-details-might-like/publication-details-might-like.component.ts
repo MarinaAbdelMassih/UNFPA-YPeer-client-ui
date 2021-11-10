@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 
@@ -7,7 +7,7 @@ import {LanguageService} from '../../../../../../../../src/app/shared/services/l
   templateUrl: './publication-details-might-like.component.html',
   styleUrls: ['./publication-details-might-like.component.scss']
 })
-export class PublicationDetailsMightLikeComponent implements OnInit {
+export class PublicationDetailsMightLikeComponent implements OnInit, AfterViewInit {
 
   @Input() cardDetails;
   @ViewChild('latestSlickModal', {static: false}) slickModal;
