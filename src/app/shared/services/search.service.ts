@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {DataHandlerService} from "./data-handler.service";
+import {searchContent, SearchModelSpecific} from "../models/search.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
 
-  constructor(private http: HttpClient) { }
+  searchData: searchContent;
+  constructor(private http: HttpClient, private dataHandlerService: DataHandlerService) { }
 
   getSearchData(searchWord: string, skip: number, limit: number) {
    return this.http.get(`https://cdn.contentful.com/spaces/jvvejk00zh2l/entries?query=${searchWord}`,
@@ -25,5 +29,19 @@ export class SearchService {
     return this.http.get(`https://cdn.contentful.com/spaces/jvvejk00zh2l/entries?query=${searchWord}&links_to_entry=${entryId}`,
       {headers: {'authorization': 'Bearer SjOnnb-PwRJ45RxLrkygZq__Tcum2HeCje-ZxqgO0c0'
         }}).toPromise();
+  }
+
+  getPageData(skip: number, limit: number, searchWord: string, searchQuery:any, searchDataType?: string): Observable<searchContent> {
+    let result;
+    return new Observable<searchContent>(subscriber => {
+      this.dataHandlerService.getRemoteDataWithoutSave(searchQuery(skip, limit, searchWord), (res) => {
+        result = res;
+      }).then(() => {
+        this.searchData = new SearchModelSpecific({
+         searchResult: result.data[searchDataType]
+        });
+        subscriber.next(this.searchData);
+      }, () => {subscriber.next(null);    console.log(result)});
+    });
   }
 }

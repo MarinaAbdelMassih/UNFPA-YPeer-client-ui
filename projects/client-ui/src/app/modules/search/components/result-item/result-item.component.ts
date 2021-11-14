@@ -12,12 +12,13 @@ export class ResultItemComponent implements OnInit {
   @Input() tagsList;
   @Input() start?;
   @Input() end?;
+  @Input() searchType?;
   images = [];
 
   constructor(private router: Router) {
   }
   openDetailsPage(detail) {
-    switch (detail.type) {
+    switch (this.searchType) {
       case 'storiesListItem':  this.router.navigate(['/story-details/'+ detail.id]);break;
       case 'trainingsListItem': this.router.navigate(['/training-details/'+ detail.id]);break;
       case 'newsListItem': this.router.navigate(['/news-details/'+ detail.id]);break;

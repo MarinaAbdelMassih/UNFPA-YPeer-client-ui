@@ -1,16 +1,16 @@
 <div class="search">
-  <app-search-top-banner (searchClicked)="search($event)"></app-search-top-banner>
-  <div *ngIf="searchResults" class="search-container">
+  <app-search-top-banner (searchClicked)="search($event, true)"></app-search-top-banner>
+  <div *ngIf="resultList.length" class="search-container">
     <div class="title-container">
-      <h3 *ngIf="searchResults">Search Results for : "{{searchWord}}"</h3>
-      <p><span>{{allResultData.length}}</span>Results found</p>
+      <h3 *ngIf="resultList.length">Search Results for : "{{searchWord}}"</h3>
+      <p><span>{{total}}</span>Results found</p>
     </div>
     <div class="result">
-      <app-result-item [tagsList]="tags" [details]="resultList" [start]="0" [end]="2"></app-result-item>
+      <app-result-item [searchType]="searchType" [details]="resultList" [start]="0" [end]="2"></app-result-item>
     </div>
     <div class="load-more-container">
-      <button *ngIf="allResultData.length > resultList.length" class="ypeer-btn btn-outlined"
-              [translateLocal]="{EN: 'Load More', AR: 'اعرض المزيد'}" (click)="loadMoreResults()"></button>
+      <button *ngIf="resultList.length < total" class="ypeer-btn btn-outlined"
+              [translateLocal]="{EN: 'Load More', AR: 'اعرض المزيد'}" (click)="search()"></button>
     </div>
 <!--    <div class="pagination">-->
 <!--      <div (click)="first()" class="first-btn">First</div>-->

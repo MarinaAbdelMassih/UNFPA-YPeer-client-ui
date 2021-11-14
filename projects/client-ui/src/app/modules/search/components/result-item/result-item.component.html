@@ -6,8 +6,8 @@
       <h2 class="title" [translateLocal]="detail.title"></h2>
       <span class="type" [translateLocal]="detail.label"></span>
       <p class="description" [translateLocal]="detail.description"></p>
-<!--          <div class="tags-container">-->
-<!--            <app-tag-item *ngFor="let tag of tagsList" [tag]="tag"></app-tag-item>-->
-<!--          </div>-->
+          <div class="tags-container">
+            <app-tag-item *ngFor="let tag of detail.tagsList" [tag]="tag"></app-tag-item>
+          </div>
     </div>
 </div>

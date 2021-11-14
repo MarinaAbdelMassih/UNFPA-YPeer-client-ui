@@ -1,3 +1,5 @@
+import {publicationsListItem, tag} from "./publications.model";
+
 export interface searchContent{
   searchItems: any;
   searchItemsMetaData: any;
@@ -12,8 +14,15 @@ export interface searchListItem {
   title: {AR: string, EN: string};
   description: {AR: string, EN: string};
   imageId: string;
-  tagLabel: string;
-  type: string;
+  tagLabel?: string;
+  type?: string;
+  tagsList?: tag[];
+}
+
+export interface tag {
+  id: number;
+  name: { AR: string, EN: string };
+  selected?: boolean;
 }
 export class SearchModel implements searchContent{
   searchItems: any;
@@ -78,4 +87,37 @@ export class SearchModel implements searchContent{
   //   });
   // }
 
+}
+
+export class SearchModelSpecific implements searchContent {
+  searchItemsMetaData: any;
+    limit: number;
+    skip: number;
+    total: number;
+  searchItems: searchListItem[];
+
+
+  constructor(searchData: any) {
+    this.searchItems = SearchModelSpecific.setPublicationsList(searchData.searchResult.items);
+    this.total = searchData.searchResult.total;
+  }
+
+  private static setPublicationsList(searchListItems: any[]): searchListItem[] {
+    return searchListItems.map((searchListItem) => {
+      return {
+        id: searchListItem.id,
+        label: {AR: searchListItem.labelAr, EN: searchListItem.labelEn},
+        title: {AR: searchListItem.titleAr, EN: searchListItem.titleEn},
+        description: {AR: searchListItem.descriptionAr, EN: searchListItem.descriptionEn},
+        imageId: searchListItem.image ? searchListItem.image.url : null,
+        tagsList: searchListItem.tagsListCollection.items.map(tag => {
+          return {
+            id: tag.id,
+            label: tag.label,
+            name: {AR: tag.nameAr, EN: tag.nameEn}
+          };
+        })
+      };
+    });
+  }
 }
