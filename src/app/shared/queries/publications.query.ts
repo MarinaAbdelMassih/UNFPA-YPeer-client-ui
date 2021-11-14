@@ -201,3 +201,39 @@ export const PublicationsDetailsQuery = (id: number) => {
   }
 }`;
 };
+
+export const searchPublications = (skip: number, limit: number, searchWord: string) => {
+  return `{
+  publicationsListItemCollection (skip: ${skip}, limit: ${limit}, order: id_ASC , where:{
+  OR: [
+    {labelEn_contains: "${searchWord}"},
+    {labelAr_contains: "${searchWord}"},
+    {titleEn_contains: "${searchWord}"},
+    {titleAr_contains: "${searchWord}"},
+    {descriptionEn_contains: "${searchWord}"},
+    {descriptionAr_contains: "${searchWord}"}
+    ]}
+    ){
+   items {
+        id
+        labelEn
+        labelAr
+        titleEn
+        titleAr
+        descriptionEn
+        descriptionAr
+       tagsListCollection{
+        items{
+          id
+          nameEn
+          nameAr
+        }
+      }
+        image {
+          url
+        }
+      }
+      total
+  }
+}`;
+};
