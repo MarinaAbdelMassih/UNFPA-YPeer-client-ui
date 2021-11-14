@@ -3,7 +3,7 @@
     padding: 0 46px 0 56px;
 
     .title-container {
-      padding: 56px 0 72px 0;
+      padding: 0 0 72px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -42,6 +42,12 @@
 
   .result {
     margin-bottom: 48px;
+  }
+
+  .load-more-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
   }
 
   .pagination {

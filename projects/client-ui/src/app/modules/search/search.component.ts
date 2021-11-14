@@ -14,9 +14,11 @@ export class SearchComponent implements OnInit {
   currentPage = 1;
   @Output() PageNumber = new EventEmitter<number>();
   searchResults: searchContent;
-  resultList: searchListItem[] = [];
+  resultList: searchListItem[];
   searchWord: '';
   searchType: '';
+  allResultData: searchListItem[] = [];
+  searchLimit = 3;
 
   constructor(private route:ActivatedRoute, private searchService: SearchService) {
     for (let i = 1; i < 5; i++) {
@@ -50,28 +52,35 @@ export class SearchComponent implements OnInit {
   }
 
   loadMoreResults() {
-
-  }
+    let maxLength = this.resultList.length + this.searchLimit;
+    for (let i = this.resultList.length; (i < this.allResultData.length && i < maxLength); i++) {
+      this.resultList.push(this.allResultData[i])
+    }
+      }
 
   search(searchData?, initial?: boolean) {
-    if (initial)
-      this.resultList = [];
+    this.resultList = []; this.allResultData = [];
     searchData? this.searchWord = searchData.searchWord : null;
     searchData? this.searchType = searchData.searchType : null;
-      this.searchService.getSearchData(this.searchWord, this.resultList.length, 2)
+      this.searchService.getSearchData(this.searchWord, 0, 100)
         .then(data => {
           this.searchResults = new SearchModel(data);
           for (let i =0; i < this.searchResults.searchItems.length; i++) {
             if (this.searchResults.searchItems[i]) {
               this.searchService.getImageById(this.searchResults.searchItems[i].imageId).then((data: any) => this.searchResults.searchItems[i].imageId = data.fields.file.url);
               if (this.searchType == null || this.searchType == '') {
-                this.resultList.push(this.searchResults.searchItems[i])
+                this.allResultData.push(this.searchResults.searchItems[i]);
+                if (this.resultList.length < this.searchLimit)
+                  this.resultList.push(this.searchResults.searchItems[i]);
               }
               else if (this.searchType == this.searchResults.searchItems[i].type) {
-                this.resultList.push(this.searchResults.searchItems[i])
+                this.allResultData.push(this.searchResults.searchItems[i]);
+                if(this.resultList.length < this.searchLimit)
+                  this.resultList.push(this.searchResults.searchItems[i]);
               }
             }
           }
+          console.log(this.allResultData);
           console.log(this.resultList)
         });
   }
