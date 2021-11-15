@@ -28,4 +28,6 @@
 <!--    </div>-->
 <!--    <p class="pages-showing">Showing page 1 of 8 - Items 1 - 6 of 40</p>-->
   </div>
+  <div class="no-result-container" *ngIf="!resultList.length && searchStarted"
+       [translateLocal]="{EN: 'No result found', AR: 'لا توجد نتائج'}"></div>
 </div>

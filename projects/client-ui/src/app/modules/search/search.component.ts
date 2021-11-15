@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit {
   allResultData: searchListItem[] = [];
   searchLimit = 3;
   total: number;
+  searchStarted: boolean;
 
   constructor(private route:ActivatedRoute, private searchService: SearchService) {
     for (let i = 1; i < 5; i++) {
@@ -81,6 +82,7 @@ export class SearchComponent implements OnInit {
       case 'publicationsListItem':  this.searchService.getPageData(this.resultList.length, 2, this.searchWord, searchPublications, 'publicationsListItemCollection')
         .subscribe(data => {this.resultList = this.resultList.concat(data.searchItems); this.total = data.total});break;
     }
+    this.searchStarted = true;
     // else {
     //   this.searchService.getSearchData(this.searchWord, 0, 100)
     //     .then(data => {
