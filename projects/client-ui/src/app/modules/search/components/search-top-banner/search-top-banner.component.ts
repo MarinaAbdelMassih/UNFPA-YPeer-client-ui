@@ -21,6 +21,7 @@ export class SearchTopBannerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.checkLanguage();
+    this.searchType.setValue('newsListItem');
   }
 
   checkLanguage(): void {
