@@ -35,7 +35,7 @@ export const TrainingsQuery = `{
 
 export const TrainingsTagsQuery = (tagLabel: string) => {
   return `{
-  trainingsListItemCollection(where: { tagLabel: "${tagLabel}"})
+  trainingsListItemCollection(where: { tagLabel_contains: "${tagLabel}"})
   {
    items {
         id
@@ -101,7 +101,7 @@ export const TrainingsYearsQuery = (year: number) => {
 export const TrainingsYearsAndTagsQuery = (year: number, tagLabel: string) => {
   return `{
   trainingsListItemCollection (where:{
-  AND: [ {year: ${year}}, {tagLabel: "${tagLabel}"} ]
+  AND: [ {year: ${year}}, {tagLabel_contains: "${tagLabel}"} ]
   })
   {
    items {

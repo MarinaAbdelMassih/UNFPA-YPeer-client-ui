@@ -35,7 +35,7 @@ export const NewsQuery = `{
 
 export const NewsTagsQuery = (tagLabel: string) => {
   return `{
-  newsListItemCollection(where: { tagLabel: "${tagLabel}"})
+  newsListItemCollection(where: { tagLabel_contains: "${tagLabel}"})
   {
    items {
         id
@@ -101,7 +101,7 @@ export const NewsYearsQuery = (year: number) => {
 export const NewsYearsAndTagsQuery = (year: number, tagLabel: string) => {
   return `{
   newsListItemCollection (where:{
-  AND: [ {year: ${year}}, {tagLabel: "${tagLabel}"} ]
+  AND: [ {year: ${year}}, {tagLabel_contains: "${tagLabel}"} ]
   })
   {
    items {

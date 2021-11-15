@@ -34,7 +34,7 @@ export const StoriesQuery = `{
 
 export const StoriesTagsQuery = (tagLabel: string) => {
   return `{
-  storiesListItemCollection(where: { tagLabel: "${tagLabel}"})
+  storiesListItemCollection(where: { tagLabel_contains: "${tagLabel}"})
   {
    items {
         id
@@ -98,7 +98,7 @@ export const StoriesYearsQuery = (year: number) => {
 export const StoriesYearsAndTagsQuery = (year: number, tagLabel: string) => {
   return `{
   storiesListItemCollection (where:{
-  AND: [ {year: ${year}}, {tagLabel: "${tagLabel}"} ]
+  AND: [ {year: ${year}}, {tagLabel_contains: "${tagLabel}"} ]
   })
   {
    items {

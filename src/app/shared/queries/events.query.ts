@@ -35,7 +35,7 @@ export const EventsQuery = `{
 
 export const EventsTagsQuery = (tagLabel: string) => {
   return `{
-  eventsListItemCollection(where: { tagLabel: "${tagLabel}"})
+  eventsListItemCollection(where: { tagLabel_contains: "${tagLabel}"})
   {
    items {
         id

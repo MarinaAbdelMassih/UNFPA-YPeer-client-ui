@@ -35,7 +35,7 @@ export const PublicationsQuery = `{
 
 export const PublicationsTagsQuery = (tagLabel: string) => {
   return `{
-  publicationsListItemCollection(where: { tagLabel: "${tagLabel}"})
+  publicationsListItemCollection(where: { tagLabel_contains: "${tagLabel}"})
   {
    items {
         id
@@ -101,7 +101,7 @@ export const PublicationsYearsQuery = (year: number) => {
 export const PublicationsYearsAndTagsQuery = (year: number, tagLabel: string) => {
   return `{
   publicationsListItemCollection (where:{
-  AND: [ {year: ${year}}, {tagLabel: "${tagLabel}"} ]
+  AND: [ {year: ${year}}, {tagLabel_contains: "${tagLabel}"} ]
   })
   {
    items {
