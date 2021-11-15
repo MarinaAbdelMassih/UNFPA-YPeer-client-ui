@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {newsListItem} from '../../../../../../../../src/app/shared/models/news.model';
@@ -8,7 +8,7 @@ import {newsListItem} from '../../../../../../../../src/app/shared/models/news.m
   templateUrl: './news-details-might-like.component.html',
   styleUrls: ['./news-details-might-like.component.scss']
 })
-export class NewsDetailsMightLikeComponent implements OnInit {
+export class NewsDetailsMightLikeComponent implements OnInit, AfterViewInit {
   @Input() cardDetails: newsListItem[];
   @ViewChild('latestSlickModal', {static: false}) slickModal;
   latestConfig: any = {

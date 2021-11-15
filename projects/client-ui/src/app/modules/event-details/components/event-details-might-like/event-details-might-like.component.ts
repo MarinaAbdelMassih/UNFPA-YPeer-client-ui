@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {eventsListItem} from '../../../../../../../../src/app/shared/models/events.model';
@@ -8,7 +8,7 @@ import {eventsListItem} from '../../../../../../../../src/app/shared/models/even
   templateUrl: './event-details-might-like.component.html',
   styleUrls: ['./event-details-might-like.component.scss']
 })
-export class EventDetailsMightLikeComponent implements OnInit {
+export class EventDetailsMightLikeComponent implements OnInit, AfterViewInit {
 
   @Input() cardDetails: eventsListItem[];
   @ViewChild('latestSlickModal', {static: false}) slickModal;

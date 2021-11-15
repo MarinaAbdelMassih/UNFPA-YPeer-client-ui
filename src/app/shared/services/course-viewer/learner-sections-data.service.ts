@@ -35,9 +35,9 @@ export class LearnerSectionsDataService {
   learnerSections: BehaviorSubject<ISection[]> = new BehaviorSubject(null);
   userCurrentPosition: BehaviorSubject<ILocalPosition> = new BehaviorSubject(null);
 
-  setLearnerSections(courseId: number, hasProgress: boolean): Promise<{sections: ISection[], course: ICourse}> {
+  setLearnerSections(courseId: number, hasProgress: boolean, userId: number): Promise<{sections: ISection[], course: ICourse}> {
     return new Promise<{sections: ISection[], course: ICourse}>((resolve, reject) => {
-      this.detailsService.getCourseById('view', courseId, hasProgress).then((course: ICourse) => {
+      this.detailsService.getCourseById('view', courseId, hasProgress, userId).then((course: ICourse) => {
         let sections = [
           {
             id: course.id,

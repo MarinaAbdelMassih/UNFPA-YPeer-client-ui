@@ -8,7 +8,7 @@
           <mat-icon  color="accent">list</mat-icon>
         </button>
       </div>
-      <span style="margin: 15px" fxFlexAlign="center" fxFlex="100" fxLayoutAlign="start" fxLayout="row">
+      <span class="logo-image-container" fxFlexAlign="center" fxFlex="100" fxLayoutAlign="start" fxLayout="row">
       <img src="assets/images/ypeer-logo-header.png"
            class="logo" routerLink="/home" alt="hesas-logo">
         <div class="course-name-separator"></div>
@@ -16,7 +16,7 @@
     </span>
       <div class="exit" fxFlex.xs="25%" fxFlex.sm="25%" fxFlex.md="30%" fxFlex.lg="30%" fxFlex.xl="30%"
            fxFlexAlign="center" fxLayoutAlign="center" fxLayout="row">
-        <circle-progress [percent]="0"
+        <circle-progress [percent]="courseProgress"
                          [radius]="16"
                          [outerStrokeWidth]="3"
                          [innerStrokeWidth]="3"
