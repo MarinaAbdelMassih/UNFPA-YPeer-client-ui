@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {SearchService} from "../../../../../../src/app/shared/services/search.service";
-import {searchContent, searchListItem, SearchModel} from "../../../../../../src/app/shared/models/search.model";
+import {searchContent, searchListItem} from "../../../../../../src/app/shared/models/search.model";
 import {searchPublications} from "../../../../../../src/app/shared/queries/publications.query";
 import {searchStories} from "../../../../../../src/app/shared/queries/stories.query";
 import {searchTrainings} from "../../../../../../src/app/shared/queries/trainings.query";
@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
   total: number;
   searchStarted: boolean;
 
-  constructor(private route:ActivatedRoute, private searchService: SearchService) {
+  constructor(private route: ActivatedRoute, private searchService: SearchService) {
     for (let i = 1; i < 5; i++) {
       this.pageNumbers.push(i);
     }
@@ -63,26 +63,30 @@ export class SearchComponent implements OnInit {
     for (let i = this.resultList.length; (i < this.allResultData.length && i < maxLength); i++) {
       this.resultList.push(this.allResultData[i])
     }
-      }
+  }
+
+  getSearchData(searchFunction: any, searchDataType: string) {
+    this.searchService.getPageData(this.resultList.length, 6, this.searchWord, searchFunction, searchDataType)
+      .subscribe(data => {
+        this.resultList = this.resultList.concat(data.searchItems);
+        this.total = data.total;
+        this.searchStarted = true;
+      });
+  }
 
   search(searchData?, initial?: boolean) {
+    this.searchStarted = false;
     if (initial)
       this.resultList = [];
-    searchData? this.searchWord = searchData.searchWord : null;
-    searchData? this.searchType = searchData.searchType : null;
+    searchData ? this.searchWord = searchData.searchWord : null;
+    searchData ? this.searchType = searchData.searchType : null;
     switch (this.searchType) {
-      case 'storiesListItem':  this.searchService.getPageData(this.resultList.length, 2, this.searchWord, searchStories, 'storiesListItemCollection')
-        .subscribe(data => {this.resultList = this.resultList.concat(data.searchItems); this.total = data.total});break;
-      case 'trainingsListItem': this.searchService.getPageData(this.resultList.length, 2, this.searchWord, searchTrainings, 'trainingsListItemCollection')
-        .subscribe(data => {this.resultList = this.resultList.concat(data.searchItems); this.total = data.total});break;
-      case 'newsListItem': this.searchService.getPageData(this.resultList.length, 2, this.searchWord, searchNews, 'newsListItemCollection')
-        .subscribe(data => {this.resultList = this.resultList.concat(data.searchItems); this.total = data.total});break;
-      case 'eventsListItem': this.searchService.getPageData(this.resultList.length, 2, this.searchWord, searchEvents, 'eventsListItemCollection')
-        .subscribe(data => {this.resultList = this.resultList.concat(data.searchItems); this.total = data.total});break;
-      case 'publicationsListItem':  this.searchService.getPageData(this.resultList.length, 2, this.searchWord, searchPublications, 'publicationsListItemCollection')
-        .subscribe(data => {this.resultList = this.resultList.concat(data.searchItems); this.total = data.total});break;
+      case 'storiesListItem': this.getSearchData(searchStories, 'storiesListItemCollection');break;
+      case 'trainingsListItem': this.getSearchData(searchTrainings, 'trainingsListItemCollection');break;
+      case 'newsListItem': this.getSearchData(searchNews, 'newsListItemCollection');break;
+      case 'eventsListItem': this.getSearchData(searchEvents, 'eventsListItemCollection');break;
+      case 'publicationsListItem': this.getSearchData(searchPublications, 'publicationsListItemCollection');break;
     }
-    this.searchStarted = true;
     // else {
     //   this.searchService.getSearchData(this.searchWord, 0, 100)
     //     .then(data => {
