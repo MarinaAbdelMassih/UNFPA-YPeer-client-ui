@@ -2,8 +2,14 @@
   <app-search-top-banner (searchClicked)="search($event, true)"></app-search-top-banner>
   <div *ngIf="resultList.length" class="search-container">
     <div class="title-container">
-      <h3 *ngIf="resultList.length">Search Results for : "{{searchWord}}"</h3>
-      <p><span>{{total}}</span>Results found</p>
+      <h3 *ngIf="resultList.length">
+        <span [translateLocal]="{EN: 'Search Results for:', AR: 'نتائج البحث ل:'}"></span>
+        <span> "{{searchWord}}"</span>
+      </h3>
+      <p>
+        <span class="result-number">{{total}}</span>
+        <span [translateLocal]="{EN: 'Results found', AR: 'نتائج'}"></span>
+      </p>
     </div>
     <div class="result">
       <app-result-item [searchType]="searchType" [details]="resultList" [start]="0" [end]="2"></app-result-item>

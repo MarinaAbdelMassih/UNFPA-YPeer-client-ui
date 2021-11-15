@@ -17,11 +17,21 @@
     <div class="radio-btn-container">
     <mat-radio-group (change)="search()"  [formControl]="searchType" aria-label="Select an option">
 <!--      <mat-radio-button [checked]="true" value="" class="first">All</mat-radio-button>-->
-      <mat-radio-button [checked]="true" value="newsListItem">News</mat-radio-button>
-      <mat-radio-button value="eventsListItem">Events</mat-radio-button>
-      <mat-radio-button value="storiesListItem">Stories</mat-radio-button>
-      <mat-radio-button value="publicationsListItem">Publications</mat-radio-button>
-      <mat-radio-button value="trainingsListItem">Training Manuals</mat-radio-button>
+      <mat-radio-button [checked]="true" value="newsListItem">
+        <span [translateLocal]="{EN: 'News', AR:'الاخبار'}"></span>
+      </mat-radio-button>
+      <mat-radio-button value="eventsListItem">
+        <span [translateLocal]="{EN: 'Events', AR:'الاحداث'}"></span>
+      </mat-radio-button>
+      <mat-radio-button value="storiesListItem">
+        <span [translateLocal]="{EN: 'Stories', AR:'القصص'}"></span>
+      </mat-radio-button>
+      <mat-radio-button value="publicationsListItem">
+        <span [translateLocal]="{EN: 'Publications', AR:'النشورات'}"></span>
+      </mat-radio-button>
+      <mat-radio-button value="trainingsListItem">
+        <span [translateLocal]="{EN: 'Training manual', AR:'دليل التدريب'}"></span>
+      </mat-radio-button>
     </mat-radio-group>
     </div>
   </div>

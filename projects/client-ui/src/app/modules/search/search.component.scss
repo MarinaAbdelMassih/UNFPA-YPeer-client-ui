@@ -32,9 +32,11 @@
           font-family: 'TradeGothic', sans-serif;
           font-size: 18px;
           font-weight: bold;
-          color: #4e4e4e;
-          padding-left: 11px;
+          color: #929292;
           padding-right: 11px;
+        }
+        .result-number {
+          color: #4e4e4e;
         }
       }
     }
@@ -99,4 +101,11 @@
     font-weight: 600;
     margin-bottom: 30px;
   }
+}
+
+::ng-deep [dir=rtl] .mat-radio-label-content {
+  padding-right: 24px !important;
+  padding-left: 0 !important;
+  margin-left: 4px;
+  margin-right: 0 !important;
 }

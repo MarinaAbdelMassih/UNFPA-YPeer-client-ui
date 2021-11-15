@@ -6,7 +6,7 @@ import {FormControl} from "@angular/forms";
 @Component({
   selector: 'app-search-top-banner',
   templateUrl: './search-top-banner.component.html',
-  styleUrls: ['./search-top-banner.component.scss']
+  styleUrls: ['./search-top-banner.component.scss'],
 })
 export class SearchTopBannerComponent implements OnInit, OnDestroy {
   isArabic: boolean;
