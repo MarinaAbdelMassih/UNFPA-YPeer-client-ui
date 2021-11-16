@@ -1,7 +1,12 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {SearchService} from "../../../../../../src/app/shared/services/search.service";
-import {searchContent, searchListItem, SearchModel} from "../../../../../../src/app/shared/models/search.model";
+import {
+  SearchAllContent,
+  searchContent,
+  searchListItem,
+  SearchModel
+} from "../../../../../../src/app/shared/models/search.model";
 import {searchPublications} from "../../../../../../src/app/shared/queries/publications.query";
 import {searchStories} from "../../../../../../src/app/shared/queries/stories.query";
 import {searchTrainings} from "../../../../../../src/app/shared/queries/trainings.query";
@@ -21,6 +26,7 @@ export class SearchComponent implements OnInit {
   @Output() PageNumber = new EventEmitter<number>();
   searchResults: searchContent;
   resultList: searchListItem[] = [];
+  allResultList: SearchAllContent[] = [];
   searchWord = '';
   searchType = '';
   allResultData: searchListItem[] = [];
@@ -76,23 +82,24 @@ export class SearchComponent implements OnInit {
       });
   }
   getSearchQuery(searchFunction, searchWord) {
-    const query = searchFunction(0, 6, searchWord);
-    return query.substring(query.indexOf("\n") + 1, query.lastIndexOf("\n") + 1);
+    const query = searchFunction(0, 10, searchWord);
+    return query.substring(query.indexOf('\n') + 1, query.lastIndexOf('\n') + 1);
   }
   getAllSearchData({searchWord}) {
-    let searchQuery = `{
+    const searchQuery = `{
       ${this.getSearchQuery(searchStories, searchWord)}
       ${this.getSearchQuery(searchTrainings, searchWord)}
       ${this.getSearchQuery(searchNews, searchWord)}
       ${this.getSearchQuery(searchEvents, searchWord)}
       ${this.getSearchQuery(searchPublications, searchWord)}
       }`;
-    this.contentfulService.getQuery(searchQuery).then(data => {
-      //this.total = data[0].total;
-      this.resultList = data;
+    this.searchService.getMultiPageData(searchQuery).subscribe(data => {
+      this.total = data.reduce((previous, current) => {
+        return previous + current.items.length;
+      }, 0);
+      this.allResultList = data;
       this.searchStarted = true;
-      console.log(data);
-    })
+    });
   }
 
   search(searchData?, initial?: boolean) {
@@ -102,11 +109,11 @@ export class SearchComponent implements OnInit {
     searchData ? this.searchWord = searchData.searchWord : null;
     searchData ? this.searchType = searchData.searchType : null;
     switch (this.searchType) {
-      case 'storiesListItem': this.getSearchData(searchStories, 'storiesListItemCollection');break;
-      case 'trainingsListItem': this.getSearchData(searchTrainings, 'trainingsListItemCollection');break;
-      case 'newsListItem': this.getSearchData(searchNews, 'newsListItemCollection');break;
-      case 'eventsListItem': this.getSearchData(searchEvents, 'eventsListItemCollection');break;
-      case 'publicationsListItem': this.getSearchData(searchPublications, 'publicationsListItemCollection');break;
+      case 'storiesListItem': this.getSearchData(searchStories, 'storiesListItemCollection'); break;
+      case 'trainingsListItem': this.getSearchData(searchTrainings, 'trainingsListItemCollection'); break;
+      case 'newsListItem': this.getSearchData(searchNews, 'newsListItemCollection'); break;
+      case 'eventsListItem': this.getSearchData(searchEvents, 'eventsListItemCollection'); break;
+      case 'publicationsListItem': this.getSearchData(searchPublications, 'publicationsListItemCollection'); break;
       default: this.getAllSearchData(searchData); break;
     }
     // else {
@@ -115,7 +122,8 @@ export class SearchComponent implements OnInit {
     //       this.searchResults = new SearchModel(data);
     //       for (let i =0; i < this.searchResults.searchItems.length; i++) {
     //         if (this.searchResults.searchItems[i]) {
-    //           this.searchService.getImageById(this.searchResults.searchItems[i].imageId).then((data: any) => this.searchResults.searchItems[i].imageId = data.fields.file.url);
+    //           this.searchService.getImageById(this.searchResults.searchItems[i].imageId)
+    //           .then((data: any) => this.searchResults.searchItems[i].imageId = data.fields.file.url);
     //           if (this.searchType == null || this.searchType == '') {
     //             this.allResultData.push(this.searchResults.searchItems[i]);
     //             if (this.resultList.length < this.searchLimit)

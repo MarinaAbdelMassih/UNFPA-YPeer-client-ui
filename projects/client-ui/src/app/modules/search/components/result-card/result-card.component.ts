@@ -18,11 +18,11 @@ export class ResultCardComponent implements OnInit {
 
   openDetailsPage(detail) {
     switch (this.searchType) {
-      case 'storiesListItem':  this.router.navigate(['/story-details/'+ detail.id]);break;
-      case 'trainingsListItem': this.router.navigate(['/training-details/'+ detail.id]);break;
-      case 'newsListItem': this.router.navigate(['/news-details/'+ detail.id]);break;
-      case 'eventsListItem': this.router.navigate(['/event-details/'+ detail.id]);break;
-      case 'publicationsListItem': this.router.navigate(['/publication-details/'+ detail.id]);break;
+      case 'storiesListItemCollection':  this.router.navigate(['/story-details/' + detail.id]); break;
+      case 'trainingsListItemCollection': this.router.navigate(['/training-details/' + detail.id]); break;
+      case 'newsListItemCollection': this.router.navigate(['/news-details/' + detail.id]); break;
+      case 'eventsListItemCollection': this.router.navigate(['/event-details/' + detail.id]); break;
+      case 'publicationsListItemCollection': this.router.navigate(['/publication-details/' + detail.id]); break;
     }
 
   }

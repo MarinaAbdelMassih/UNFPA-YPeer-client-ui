@@ -11,10 +11,11 @@ import {FormControl} from "@angular/forms";
 export class SearchTopBannerComponent implements OnInit, OnDestroy {
   isArabic: boolean;
   subscription: Subscription;
-  @Input() set SearchType (searchType: string){
-    console.log('searchType', searchType);
-    this.searchType.patchValue(searchType);
-    this.search();
+  @Input() set SearchType(searchType: string) {
+    if (searchType !== this.searchType.value) {
+      this.searchType.patchValue(searchType);
+      this.search();
+    }
   }
   @Output() searchClicked: EventEmitter<any> = new EventEmitter<any>();
   searchField = null;

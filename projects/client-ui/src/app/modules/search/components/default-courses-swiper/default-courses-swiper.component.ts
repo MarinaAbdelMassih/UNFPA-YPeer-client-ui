@@ -10,7 +10,7 @@ import {
   SimpleChanges,
   TemplateRef
 } from '@angular/core';
-import Swiper from "swiper/core";
+import Swiper from 'swiper/core';
 
 @Component({
   selector: 'app-default-swiper',
@@ -20,7 +20,7 @@ import Swiper from "swiper/core";
 export class DefaultCoursesSwiperComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() searchResults: any[] = [];
-  @Input() searchType: string = 'default';
+  @Input() searchType: string;
   @ContentChild(TemplateRef, {static: true}) templateRef: TemplateRef<any>;
   private swiper?: Swiper;
   private initialized: boolean = false;
@@ -52,8 +52,8 @@ export class DefaultCoursesSwiperComponent implements OnInit, OnChanges, OnDestr
         updateOnImagesReady: false,
         loop: false,
         navigation: {
-          nextEl: `#courses-swiper-${this.searchType} #courses-next`,
-          prevEl: `#courses-swiper-${this.searchType} #courses-prev`
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
         }
       });
       this.swiper.init();

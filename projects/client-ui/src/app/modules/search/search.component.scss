@@ -1,7 +1,9 @@
 .search {
   .search-container {
     padding: 0 46px 0 56px;
-
+    @media (max-width: 600px) {
+      padding: 0 20px 0;
+    }
     .title-container {
       padding: 0 0 72px 0;
       display: flex;

@@ -1,13 +1,4 @@
-<div (click)="openDetailsPage(result)"  class="course-card card">
-  <div class="col-xl-3">
-    <img [src]="result.imageId" alt="image" class="result-img">
-  </div>
-  <div class="col-xl-9">
-    <h2 class="title" [translateLocal]="result.title"></h2>
-    <span class="type" [translateLocal]="result.label"></span>
-    <p class="description" [translateLocal]="result.description"></p>
-    <div class="tags-container">
-      <app-tag-item *ngFor="let tag of result.tagsList" [tag]="tag"></app-tag-item>
-    </div>
-  </div>
+<div (click)="openDetailsPage(result)"  class="card result-card mat-elevation-z3">
+  <img [src]="result.imageId" alt="image" class="result-img">
+  <h4 class="title" [translateLocal]="result.title"></h4>
 </div>
