@@ -1,7 +1,7 @@
 <div class="search-top-banner">
   <img src="assets/images/search-banner.png" alt="top-banner">
   <div class="banner-text">
-    <p [translateLocal]="{EN:'Search',AR:'بحث'}"></p>
+    <p [translateLocal]="{EN:'Search',AR:'محرك البحث'}"></p>
     <div class="header-search form-container">
       <form>
         <input (keyup.enter)="search()" [placeholder]="isArabic ? 'إبحث' : 'search'" [(ngModel)]="searchField" ngModelOptions="{standalone:true}"
@@ -30,7 +30,7 @@
         <span [translateLocal]="{EN: 'Publications', AR:'المنشورات'}"></span>
       </mat-radio-button>
       <mat-radio-button [labelPosition]="'before'" value="trainingsListItem">
-        <span [translateLocal]="{EN: 'Training manual', AR:'دليل التدريب'}"></span>
+        <span [translateLocal]="{EN: 'Training Manuals', AR:'دليل التدريب'}"></span>
       </mat-radio-button>
     </mat-radio-group>
     </div>
