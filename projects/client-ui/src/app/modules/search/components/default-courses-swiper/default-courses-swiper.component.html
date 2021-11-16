@@ -1,0 +1,16 @@
+<div class="swiper__container-courses" id="courses-swiper-{{searchType}}">
+  <div class="swiper__wrapper">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let result of searchResults">
+          <app-result-card [result]="result" [searchType]="searchType"></app-result-card>
+        </div>
+        <div class="swiper-slide">
+          <ng-content></ng-content>
+        </div>
+      </div>
+    </div>
+    <div id="courses-prev" class="swiper-button-prev"></div>
+    <div id="courses-next" class="swiper-button-next"></div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div *ngFor="let model of resultsModels" class="result-section">
+  <h3>{{model.title}}</h3>
+  <app-default-swiper [searchType]="model.type"
+                      [searchResults]="allSearchResults[model.id]">
+    <div class="card load-more-results" (click)="loadResultsByType(model.type)">More Results</div>
+  </app-default-swiper>
+</div>
+

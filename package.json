@@ -33,6 +33,7 @@
     "idb": "^6.1.2",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
+    "swiper": "^6.4.8",
     "ng-circle-progress": "^1.6.0",
     "ngx-dropzone": "^3.0.0",
     "ngx-lightbox": "^2.4.1",

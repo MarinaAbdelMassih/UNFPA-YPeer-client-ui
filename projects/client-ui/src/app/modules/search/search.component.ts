@@ -1,12 +1,13 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {SearchService} from "../../../../../../src/app/shared/services/search.service";
-import {searchContent, searchListItem} from "../../../../../../src/app/shared/models/search.model";
+import {searchContent, searchListItem, SearchModel} from "../../../../../../src/app/shared/models/search.model";
 import {searchPublications} from "../../../../../../src/app/shared/queries/publications.query";
 import {searchStories} from "../../../../../../src/app/shared/queries/stories.query";
 import {searchTrainings} from "../../../../../../src/app/shared/queries/trainings.query";
 import {searchNews} from "../../../../../../src/app/shared/queries/news.query";
 import {searchEvents} from "../../../../../../src/app/shared/queries/events.query";
+import {ContentfulService} from '../../../../../../src/app/shared/services/contentful.service';
 
 @Component({
   selector: 'app-search',
@@ -27,7 +28,8 @@ export class SearchComponent implements OnInit {
   total: number;
   searchStarted: boolean;
 
-  constructor(private route: ActivatedRoute, private searchService: SearchService) {
+  constructor(private route: ActivatedRoute, private searchService: SearchService,
+              private contentfulService: ContentfulService) {
     for (let i = 1; i < 5; i++) {
       this.pageNumbers.push(i);
     }
@@ -73,6 +75,25 @@ export class SearchComponent implements OnInit {
         this.searchStarted = true;
       });
   }
+  getSearchQuery(searchFunction, searchWord) {
+    const query = searchFunction(0, 6, searchWord);
+    return query.substring(query.indexOf("\n") + 1, query.lastIndexOf("\n") + 1);
+  }
+  getAllSearchData({searchWord}) {
+    let searchQuery = `{
+      ${this.getSearchQuery(searchStories, searchWord)}
+      ${this.getSearchQuery(searchTrainings, searchWord)}
+      ${this.getSearchQuery(searchNews, searchWord)}
+      ${this.getSearchQuery(searchEvents, searchWord)}
+      ${this.getSearchQuery(searchPublications, searchWord)}
+      }`;
+    this.contentfulService.getQuery(searchQuery).then(data => {
+      //this.total = data[0].total;
+      this.resultList = data;
+      this.searchStarted = true;
+      console.log(data);
+    })
+  }
 
   search(searchData?, initial?: boolean) {
     this.searchStarted = false;
@@ -86,6 +107,7 @@ export class SearchComponent implements OnInit {
       case 'newsListItem': this.getSearchData(searchNews, 'newsListItemCollection');break;
       case 'eventsListItem': this.getSearchData(searchEvents, 'eventsListItemCollection');break;
       case 'publicationsListItem': this.getSearchData(searchPublications, 'publicationsListItemCollection');break;
+      default: this.getAllSearchData(searchData); break;
     }
     // else {
     //   this.searchService.getSearchData(this.searchWord, 0, 100)

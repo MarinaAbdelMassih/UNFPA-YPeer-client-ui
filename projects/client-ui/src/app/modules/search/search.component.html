@@ -1,5 +1,5 @@
 <div class="search">
-  <app-search-top-banner (searchClicked)="search($event, true)"></app-search-top-banner>
+  <app-search-top-banner (searchClicked)="search($event, true)" [SearchType]="searchType"></app-search-top-banner>
   <div *ngIf="resultList.length" class="search-container">
     <div class="title-container">
       <h3 *ngIf="resultList.length">
@@ -12,10 +12,14 @@
       </p>
     </div>
     <div class="result">
-      <app-result-item [searchType]="searchType" [details]="resultList" [start]="0" [end]="2"></app-result-item>
+      <app-all-results *ngIf="!searchType"
+                       [allSearchResults]="resultList"
+                       (showResultsByType)="searchType = $event">
+      </app-all-results>
+      <app-result-item *ngIf="searchType" [searchType]="searchType" [details]="resultList" [start]="0" [end]="2"></app-result-item>
     </div>
     <div class="load-more-container">
-      <button *ngIf="resultList.length < total" class="ypeer-btn btn-outlined"
+      <button *ngIf="searchType && resultList.length < total" class="ypeer-btn btn-outlined"
               [translateLocal]="{EN: 'Load More', AR: 'اعرض المزيد'}" (click)="search()"></button>
     </div>
 <!--    <div class="pagination">-->

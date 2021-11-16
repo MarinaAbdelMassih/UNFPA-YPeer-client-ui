@@ -1,0 +1,89 @@
+::ng-deep {
+  .swiper__container-courses {
+    width: 100%;
+    position: relative;
+
+    .swiper__wrapper {
+      width: 100%;
+      @media (min-width: 769px) {
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .swiper-container {
+        //padding-bottom: 15px;
+        padding: 15px 0;
+      }
+
+      .swiper-slide {
+        width: 245px;
+      }
+    }
+  }
+
+  [dir='ltr'] {
+    .swiper__container-courses {
+      margin-right: 0;
+      margin-left: 0;
+
+      .swiper__wrapper {
+        .swiper-slide {
+          margin-right: 40px;
+          margin-left: 0;
+          @media (max-width: 768px) {
+            margin-right: 15px;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        #courses-prev {
+          left: -20px;
+        }
+        #courses-next {
+          right: -20px;
+        }
+      }
+    }
+  }
+
+  [dir='rtl'] {
+    .swiper__container-courses {
+      margin-left: 0;
+      margin-right: 0;
+
+      .swiper__wrapper {
+        .swiper-slide {
+          margin-left: 40px;
+          margin-right: 0;
+          @media (max-width: 768px) {
+            margin-left: 15px;
+          }
+
+          &:last-child {
+            margin-left: 0;
+          }
+        }
+        #courses-prev {
+          right: -20px;
+        }
+        #courses-next {
+          left: -20px;
+        }
+      }
+    }
+  }
+}
+
+.swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  box-sizing: content-box;
+}
+
