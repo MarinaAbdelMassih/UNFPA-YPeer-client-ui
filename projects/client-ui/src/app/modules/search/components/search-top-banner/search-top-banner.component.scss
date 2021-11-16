@@ -146,19 +146,18 @@
     }
 
     ::ng-deep.mat-radio-label {
-      flex-direction: row-reverse
+      margin-right: 24px;
     }
 
     ::ng-deep.mat-radio-label-content {
       margin-right: 4px;
       color: #FFFFFF;
-      padding-left: 24px;
+      padding-right: 0;
       @media(max-width: 991px) {
         color: #000000;
         padding-left: 15px;
       }
     }
-
     .first {
       ::ng-deep.mat-radio-label-content {
         padding-left: 0 !important;

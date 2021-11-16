@@ -103,8 +103,12 @@
   }
 }
 
+::ng-deep [dir=rtl] .mat-radio-label {
+  margin-right: 0 !important;
+  margin-left: 24px;
+}
+
 ::ng-deep [dir=rtl] .mat-radio-label-content {
-  padding-right: 24px !important;
   padding-left: 0 !important;
   margin-left: 4px;
   margin-right: 0 !important;
