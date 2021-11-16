@@ -4,7 +4,7 @@
     <p [translateLocal]="{EN:'Search',AR:'محرك البحث'}"></p>
     <div class="header-search form-container">
       <form>
-        <input (keyup.enter)="search()" [placeholder]="isArabic ? 'إبحث' : 'search'" [(ngModel)]="searchField" ngModelOptions="{standalone:true}"
+        <input (keyup.enter)="search()" [placeholder]="isArabic ? 'إبحث' : 'Search'" [(ngModel)]="searchField" ngModelOptions="{standalone:true}"
                placeholder=""
                type="text"
                aria-label="Search"
