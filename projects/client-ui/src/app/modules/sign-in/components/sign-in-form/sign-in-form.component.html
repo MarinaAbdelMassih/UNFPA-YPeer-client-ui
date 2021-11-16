@@ -3,7 +3,7 @@
   <form class="contact-form" [formGroup]="signInForm" (ngSubmit)='submitSignInForm()'>
     <div class="input-container">
       <input matInput type="email" name="email" formControlName="email" class="email"
-             [placeholder]="isArabic ? 'البريد الالكتروني ' : 'email'">
+             [placeholder]="isArabic ? 'البريد الالكتروني ' : 'Email'">
     </div>
     <div class="error-label">
           <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
@@ -35,12 +35,12 @@
     <br>
     <div class="d-flex justify-content-center ">
       <button [disabled]="!signInForm.valid" [ngClass]="{'disabled':!signInForm.valid == true}"
-              [translateLocal]="{EN: 'SIGN IN', AR: 'تسجيل الدخول'}"></button>
+              [translateLocal]="{EN: 'Sign In', AR: 'تسجيل الدخول'}"></button>
     </div>
     <a class="forgot-password-link" [translateLocal]="{EN: 'Forgot password!', AR: 'هل نسيت كلمة السر!'}"></a>
     <div class="d-flex justify-content-center">
       <p class="no-account-text" [translateLocal]="{EN: 'Have no account?', AR: 'ليس لديك حساب؟'}"></p>
-      <a [routerLink]="'/signUp'" class="sign-up-link" [translateLocal]="{EN: 'Sign Up', AR: 'اشتراك'}"></a>
+      <a [routerLink]="'/signUp'" class="sign-up-link" [translateLocal]="{EN: 'Join Us', AR: 'اشتراك'}"></a>
     </div>
   </form>
 </div>

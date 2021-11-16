@@ -4,6 +4,7 @@ import {DOCUMENT} from "@angular/common";
 import {Subscription} from "rxjs";
 import {Router} from "@angular/router";
 
+declare var $: any;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -24,6 +25,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (localStorage.getItem('username')) {
       this.loginName = localStorage.getItem('username');
     }
+    $('.navbar-nav>li').on('click', function () {
+      $('.navbar-collapse').collapse('hide');
+    });
   }
 
   setDirectionBasedOnLanguage(): void {

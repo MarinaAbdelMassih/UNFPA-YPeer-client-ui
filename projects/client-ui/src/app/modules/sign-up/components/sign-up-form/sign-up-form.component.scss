@@ -1,4 +1,16 @@
 .sign-up-form-container {
+
+  .form-container {
+    flex-flow: row wrap;
+    gap: 0 30px;
+    .form-field-container{
+      flex: 1 1 47.5%;
+      @media (max-width: 768px) {
+        flex: 1 1 100%;
+        justify-content: center;
+      }
+    }
+  }
   .title {
     font-family: 'TradeGothic', sans-serif !important;
     font-size: 32px;
@@ -37,17 +49,17 @@
         padding: 0;
       }
 
-      ::ng-deep.mat-form-field-infix {
-        padding: 19.12px 0;
-        border-top: 0 solid transparent;
-
-      }
-
       ::ng-deep.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
         transform: translateY(14%);
       }
       ::ng-deep.mat-form-field-appearance-outline .mat-form-field-suffix {
         top: 10px;
+      }
+      ::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline {
+        top: 0;
+      }
+      ::ng-deep.mat-form-field-appearance-outline .mat-form-field-flex {
+        margin-top: 0;
       }
 
       .birthday-form {
@@ -60,10 +72,13 @@
       mat-form-field {
         background-color: #FFFFFF;
         width: 402px;
-        //height: 52px;
+        height: 52px;
         @media(max-width: 991px) {
           width: 100%;
         }
+        //input {
+        //  vertical-align: sub;
+        //}
       }
 
       ::placeholder {

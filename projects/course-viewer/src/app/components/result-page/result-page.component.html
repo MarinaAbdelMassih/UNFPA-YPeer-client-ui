@@ -1,9 +1,9 @@
 <div class="page-container" *ngIf="score >= 75 && numberOfTrials <= 3">
   <img src="assets/images/icons/check-icon.png" alt="">
-  <div class="title" [translateLocal]="{EN: 'Congratulations',AR: 'مبروك'}"></div>
+  <div class="title" [translateLocal]="{EN: 'Congratulations',AR: 'تهانينا'}"></div>
   <div class="msg">
     <span [translateLocal]="{EN: 'You have completed the introductory course successfully.\n'+
-'Your Score is',AR: 'مبروك'}"></span>
+'Your Score is',AR: ' لقد اكملت الدورة التدريبية بنجاح. نتيجتك هي '}"></span>
     <span class="score-text"> {{score}}%</span>
   </div>
   <button class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'View Certificate',AR: 'اظهار الشهادة'}"></button>
@@ -11,25 +11,26 @@
 
 <div class="page-container" *ngIf="score < 75 && numberOfTrials <= 2">
   <img src="assets/images/icons/Path 85.png" alt="">
-  <div class="title" [translateLocal]="{EN: 'Sorry!',AR: 'مبروك'}"></div>
+  <div class="title" [translateLocal]="{EN: 'Sorry!',AR: 'عفواً'}"></div>
   <div class="msg">
-    <span [translateLocal]="{EN: 'You scored',AR: 'مبروك'}"></span>
+    <span [translateLocal]="{EN: 'You scored',AR: 'نتيجتك'}"></span>
     <span class="score-text"> {{score}}%</span>
     <span [translateLocal]="{EN: ',  you need 75% or more to pass this course.\n'+
-    'Please try again.',AR: 'مبروك'}"></span>
+    'Please try again.',AR: ' ، انت تحتاج 75% او اكثر لكي تتخطى الامتحان.\n'+
+    'من فضلك حاول مرة اخرى.'}"></span>
 
   </div>
-  <button class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'Retake Assessment',AR: 'اظهار الشهادة'}"
+  <button class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'Retake Assessment',AR: 'إعادة الامتحان'}"
           (click)="viewCourse('retakeAssessment')"></button>
 </div>
 
 <div class="page-container" *ngIf="score < 75 && numberOfTrials == 3">
   <img src="assets/images/icons/Path 85.png" alt="">
-  <div class="title" [translateLocal]="{EN: 'Sorry!',AR: 'مبروك'}"></div>
+  <div class="title" [translateLocal]="{EN: 'Sorry!',AR: 'عفواً'}"></div>
   <div class="msg">
-    <div class="separated-msg" [translateLocal]="{EN: 'You cannot retake the assessment anymore. You are run out of tries.', AR: 'مبروك'}"></div>
-    <div class="separated-msg" [translateLocal]="{EN: 'You better rewatch the course to be able to pass the assessment.', AR: 'مبروك'}"></div>
+    <div class="separated-msg" [translateLocal]="{EN: 'You cannot retake the assessment anymore. You are run out of tries.', AR: 'لم تعد تستطيع إعادة الامتحان. لقد نفذت محاولاتك.'}"></div>
+    <div class="separated-msg" [translateLocal]="{EN: 'You better rewatch the course to be able to pass the assessment.', AR: 'من الأفضل ان تعيد مشاهدة الدورة التدريبة لكى تتجاوز الامتحان.'}"></div>
   </div>
-  <button class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'Retake Course',AR: 'اظهار الشهادة'}"
+  <button class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'Retake Course',AR: 'إعادة الدورة التدريبة'}"
           (click)="viewCourse('retakeCourse')"></button>
 </div>

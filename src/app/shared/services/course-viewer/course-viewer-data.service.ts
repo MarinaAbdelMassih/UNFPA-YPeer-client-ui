@@ -12,7 +12,7 @@ import {CustomHttpClientService} from "../custom-http-client.service";
 export class CourseViewerDataService {
 
   videoPlayer: BehaviorSubject<any> = new BehaviorSubject(null);
-  shouldSendProgress: boolean = false;
+  shouldSendProgress: boolean = true;
 
   constructor(private courseViewerService: CourseViewerService, private customHttpClientService: CustomHttpClientService) {
   }
@@ -54,16 +54,16 @@ export class CourseViewerDataService {
     return this.courseViewerService.updateFeedback(feedback);
   }
 
-  setUserProgress(progress: { entityId: number, itemId: number, itemTypeId: number }): Promise<boolean> {
+  setUserProgress(progress: {userId: number, courseId: number, learningObjectiveChildId: number, videosCount: number }): Promise<any> {
     return new Promise<boolean>(resolve => {
       if(this.shouldSendProgress){
         this.customHttpClientService.sendBackendRequest({
           sender: 'view',
           receiver: 'progress',
-          endpoint: 'progress',
+          endpoint: 'user/progress',
           body: progress
-        }).then(() => {
-          resolve(true);
+        }).then((data) => {
+          resolve(data);
         }).catch(() => {
           resolve(false);
         });

@@ -1,5 +1,6 @@
 .buttons-container {
   position: relative;
+
   .slider-button {
     background: transparent;
     border: none;
@@ -7,9 +8,11 @@
     cursor: pointer;
     bottom: 600px;
   }
+
   .btn-next {
     right: 46px;
   }
+
   .btn-prev {
     right: 84px;
   }
@@ -20,6 +23,7 @@
     left: 46px;
     right: auto;
   }
+
   .btn-next {
     left: 84px;
     right: auto;
@@ -31,27 +35,36 @@
     .slider-button {
       bottom: 570px;
     }
+
     .btn-next {
       right: 10%;
     }
+
     .btn-prev {
       right: 20%;
     }
   }
 }
 
-@media (max-width: 370px) {
+@media (max-width: 390px) {
   .buttons-container {
     .slider-button {
-      bottom: 550px;
+      bottom: 615px;
     }
   }
-}
+  }
+  @media (max-width: 370px) {
+    .buttons-container {
+      .slider-button {
+        bottom: 550px;
+      }
+    }
+  }
 
-@media (max-width: 330px) {
-  .buttons-container {
-    .slider-button {
-      bottom: 520px;
+  @media (max-width: 330px) {
+    .buttons-container {
+      .slider-button {
+        bottom: 520px;
+      }
     }
   }
-}

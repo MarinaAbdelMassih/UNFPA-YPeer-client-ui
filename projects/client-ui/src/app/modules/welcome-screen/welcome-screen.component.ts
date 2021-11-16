@@ -7,7 +7,6 @@ import {Component, OnInit} from '@angular/core';
 })
 export class WelcomeScreenComponent implements OnInit {
 
-  subscribed = false;
   pending = true;
 
   constructor() {

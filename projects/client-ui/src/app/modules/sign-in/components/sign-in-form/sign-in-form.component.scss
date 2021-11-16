@@ -1,14 +1,14 @@
 .sign-in-form-container {
   padding-left: 44px;
   padding-right: 44px;
-
+  background-color: #fff;
   h3 {
     font-size: 32px;
     font-weight: bold;
     line-height: 1.19;
     color: #2e2e2e;
     padding-top: 39px;
-    padding-bottom: 65px;
+    padding-bottom: 67.07px;
     text-align: center;
 
   }
@@ -52,9 +52,9 @@
     justify-content: center;
   }
 
-  //.input-container {
-  //  text-align: center;
-  //}
+  .input-container {
+    text-align: center;
+  }
   .no-account-text {
     font-size: 14px;
     line-height: 1.14;
@@ -95,10 +95,11 @@
     width: 18px;
     height: 18px;
     border: solid 1px #bebebe;
-    background-color: #fff;
   }
 
   label {
+    color: #2e2e2e;
+    font-size: 14px;
     padding: 0 8px;
   }
 

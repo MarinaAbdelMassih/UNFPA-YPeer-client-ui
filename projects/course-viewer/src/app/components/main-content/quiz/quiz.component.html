@@ -5,7 +5,8 @@
       {{questions.length}}
       <span [translateLocal]="{EN: 'Questions', AR: 'اسئلة'}"></span>
     </div>
-    <button [disabled]="questions.length == 0" class="ypeer-btn-purple start-quiz-btn" [translateLocal]="{EN: 'Start Quiz', AR: 'ابدأ الامتحان'}" (click)="startQuiz()"></button>
+    <p *ngIf="disabled" [translateLocal]="{EN: 'you have to get 90% or more of course progress to open the exam', AR: 'امتحان الكورس التقديمي'}"></p>
+    <button [disabled]="questions.length == 0 || disabled" class="ypeer-btn-purple start-quiz-btn" [translateLocal]="{EN: 'Start Quiz', AR: 'ابدأ الامتحان'}" (click)="startQuiz()"></button>
   </div>
 
   <div *ngIf="quizStarted" class="quiz-content">

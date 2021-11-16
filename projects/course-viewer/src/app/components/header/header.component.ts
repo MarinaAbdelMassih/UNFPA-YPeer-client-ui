@@ -1,4 +1,4 @@
-import {Component, HostListener, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, HostListener, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from '@angular/common'
@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isMobile: boolean = false;
   size: number;
   openSub: Subscription;
+  @Input() courseProgress;
 
   @HostListener("window:resize", ['$event'])
    onResize(event) {
