@@ -75,7 +75,9 @@
            [translateLocal]="{AR: 'اتصل بنا', EN: 'contact'}"></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="'/search'">
+        <a class="nav-link" [routerLink]="'/search'"
+           routerLinkActive="active-link"
+           [routerLinkActiveOptions]="{exact: true}">
           <i class="search-icon fa fa-search"></i>
         </a>
       </li>

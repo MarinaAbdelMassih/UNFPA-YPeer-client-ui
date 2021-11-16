@@ -113,3 +113,9 @@
   margin-left: 4px;
   margin-right: 0 !important;
 }
+
+::ng-deep [dir=rtl] .search-top-banner {
+  .banner-text {
+    right: 127px;
+  }
+}
