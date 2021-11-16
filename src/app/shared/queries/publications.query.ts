@@ -211,7 +211,8 @@ export const searchPublications = (skip: number, limit: number, searchWord: stri
     {titleEn_contains: "${searchWord}"},
     {titleAr_contains: "${searchWord}"},
     {descriptionEn_contains: "${searchWord}"},
-    {descriptionAr_contains: "${searchWord}"}
+    {descriptionAr_contains: "${searchWord}"},
+    {tagLabel_contains: "${searchWord}"}
     ]}
     ){
    items {

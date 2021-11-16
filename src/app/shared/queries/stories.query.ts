@@ -206,7 +206,8 @@ export const searchStories = (skip: number, limit: number, searchWord: string) =
     {titleEn_contains: "${searchWord}"},
     {titleAr_contains: "${searchWord}"},
     {descriptionEn_contains: "${searchWord}"},
-    {descriptionAr_contains: "${searchWord}"}
+    {descriptionAr_contains: "${searchWord}"},
+    {tagLabel_contains: "${searchWord}"}
     ]}
     ){
    items {
