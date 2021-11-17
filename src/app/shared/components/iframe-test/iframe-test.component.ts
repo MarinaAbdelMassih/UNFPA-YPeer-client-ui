@@ -1,6 +1,5 @@
-import {Component, OnInit, Sanitizer, SecurityContext} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-iframe-test',
