@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TranslationModel} from '../../../../../../../../src/app/shared/models/translation.model';
 
 @Component({
@@ -11,11 +11,16 @@ export class CourseStatusComponent implements OnInit {
   @Input() title: TranslationModel;
   @Input() description: TranslationModel;
   @Input() btnText: TranslationModel;
+  @Output() enrollClicked: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  enroll(): void {
+    this.enrollClicked.emit(true);
   }
 
 }

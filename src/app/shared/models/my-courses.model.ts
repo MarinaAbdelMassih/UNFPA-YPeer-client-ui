@@ -4,7 +4,8 @@ export interface IMyCourses {
   progress: number,
   score: number,
   hasCertificate: boolean,
-  courseStatus: CourseStatus
+  courseStatus: CourseStatus,
+  type: CourseType
 }
 
 export enum CourseStatus {
@@ -12,4 +13,9 @@ export enum CourseStatus {
   PendingAndNoPlaceInWaitingList,
   Approved,
   deleted
+}
+
+export enum CourseType {
+  introductory = 1,
+  advanced,
 }

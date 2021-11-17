@@ -1,5 +1,5 @@
 <div class="course-bar">
-  <p *ngIf="name" class="name" [translateLocal]="name"></p>
+  <p *ngIf="name" class="name"> {{name}}   <img *ngIf="status === 4" src="assets/images/icons/warning icon.png" alt="warning-icon"></p>
   <div class="d-flex align-items-center" *ngIf="progress">
     <circle-progress
       [percent]="progress"
@@ -20,8 +20,8 @@
 
     <p class="progress" [translateLocal]="{EN: 'Your Progress', AR: 'مستوي التقدم'}"></p>
   </div>
-  <p *ngIf="score" class="score">{{isArabic? 'درجاتك:' : 'Your Score:'}}<span>{{score}}%</span></p>
-  <button class="normal-btn" [ngClass]="{'disabled': disabled}" [translateLocal]="btnText"></button>
+  <p *ngIf="score" class="score">{{isArabic? 'درجاتك:' : 'Your Score:'}}<span> {{score}}% </span></p>
+  <button class="normal-btn" (click)="onClick()" [ngClass]="{'disabled': status === 4}" [translateLocal]="btnText"></button>
 </div>
 
 

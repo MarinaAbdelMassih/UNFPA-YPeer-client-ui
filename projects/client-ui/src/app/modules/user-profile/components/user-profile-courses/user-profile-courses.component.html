@@ -1,19 +1,20 @@
 <div class="user-profile-courses">
-  <a (click)="openDialog()" *ngFor="let course of myCourses">
-    <app-course-bar *ngIf="(course.id === 1) || (course.id === 2)" [name]="course.name"
-                    [btnText]="{EN: 'watch course', AR: 'ابدأ الدوره'}"
+  <a (click)="openDialog(course)" *ngFor="let course of myCourses; let i = index">
+    <app-course-bar *ngIf="(course.type === 1) || (course.type === 2 && (course.courseStatus === 3 || course.courseStatus === 4))"
+                    [name]="course.name"
+                    [btnText]="setButtonText(course)"
                     [score]="course.score"
                     [progress]="course.progress"
-                    [isArabic]="isArabic">
+                    [status]="course.courseStatus"
+                    [isArabic]="isArabic"
+                    (btnClicked)="watchCourse(course)" >
     </app-course-bar>
   </a>
   <div class="course-status">
-    <app-course-status *ngIf="isIntroProgress90 && isIntroScore75" [title]="{EN: 'What Next?', AR: 'ماذا بعد؟'}"
-                       [description]="{EN: 'advanced courses is available for limited time (2 months) from the date of enrollment.', AR: ''}"
-                       [btnText]= "{EN: 'Enroll Now', AR: 'سجل الان'}">
+    <app-course-status [title]="advancedStatusTitle"
+                       [description]="advancedStatusDescription"
+                       [btnText]= "advancedStatusBtnText"
+                       (enrollClicked)="enrollAdvanced()">
     </app-course-status>
-    <!--  <app-course-status *ngIf="isIntroProgress90 && !isIntroScore75" [title]="'Thank You!'"-->
-    <!--                     [description]="'You have applied to the advanced course successfully. Stay tuned; we are preparing your advanced course.'">-->
-    <!--  </app-course-status>-->
   </div>
 </div>

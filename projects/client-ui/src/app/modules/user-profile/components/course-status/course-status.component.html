@@ -1,5 +1,5 @@
 <div class="course-status">
-  <h3 [translateLocal]="title"></h3>
-  <p [translateLocal]="description"></p>
-  <button [translateLocal]="btnText"></button>
+  <h3 *ngIf="title" [translateLocal]="title"></h3>
+  <p *ngIf="description" [translateLocal]="description"></p>
+  <button *ngIf="btnText" [translateLocal]="btnText" (click)="enroll()"></button>
 </div>
