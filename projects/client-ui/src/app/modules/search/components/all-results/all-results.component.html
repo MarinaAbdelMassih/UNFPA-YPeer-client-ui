@@ -1,7 +1,7 @@
 <div *ngFor="let model of allSearchResults" class="result-section">
   <ng-container *ngIf="model.items.length">
-    <h3 [translateLocal]="models[model.modelType].title"></h3>
-    <app-default-swiper [searchType]="model.modelType"
+    <app-default-swiper [title]="models[model.modelType].title"
+                        [searchType]="model.modelType"
                         [searchResults]="model.items">
       <div class="card load-more-results" *ngIf="model.items.length < model.total" (click)="loadResultsByType(model.modelType)">
         <span [translateLocal]="{EN: 'More Results', AR : 'المزيد من النتائج'}"></span>

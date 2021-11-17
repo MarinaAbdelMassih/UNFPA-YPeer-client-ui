@@ -11,6 +11,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import Swiper from 'swiper/core';
+import {LanguageService} from "../../../../../../../../src/app/shared/services/language.service";
 
 @Component({
   selector: 'app-default-swiper',
@@ -19,13 +20,14 @@ import Swiper from 'swiper/core';
 })
 export class DefaultCoursesSwiperComponent implements OnInit, OnChanges, OnDestroy {
 
+  @Input() title: string;
   @Input() searchResults: any[] = [];
   @Input() searchType: string;
   @ContentChild(TemplateRef, {static: true}) templateRef: TemplateRef<any>;
-  private swiper?: Swiper;
+  public swiper?: Swiper;
   private initialized: boolean = false;
 
-  constructor() {
+  constructor(public languageService: LanguageService) {
   }
 
   ngOnDestroy(): void {
@@ -51,10 +53,7 @@ export class DefaultCoursesSwiperComponent implements OnInit, OnChanges, OnDestr
         preloadImages: false,
         updateOnImagesReady: false,
         loop: false,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        }
+        speed: 500,
       });
       this.swiper.init();
     }, 300);
@@ -67,5 +66,14 @@ export class DefaultCoursesSwiperComponent implements OnInit, OnChanges, OnDestr
         this.initSwiper();
       }
     }
+  }
+
+  nextSlide() {
+    console.log(this.swiper.slides)
+    this.swiper.slideNext(500);
+  }
+
+  prevSlide() {
+    this.swiper.slidePrev(500);
   }
 }

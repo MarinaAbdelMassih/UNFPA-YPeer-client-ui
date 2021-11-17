@@ -119,3 +119,21 @@
   object-fit: cover;
 }
 
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  .slider-button {
+    background: transparent;
+    border: none;
+    //position: absolute;
+    cursor: pointer;
+    //bottom: 30px;
+    padding: 0;
+    .enabled:hover {
+      filter: brightness(0.5);
+    }
+  }
+}
+
