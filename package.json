@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "startSSL": "ng serve --ssl --port 443 --host stgclient-y-peer.almentor.net",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
