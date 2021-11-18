@@ -1,5 +1,7 @@
-<div *ngFor="let model of allSearchResults" class="result-section">
-  <ng-container *ngIf="model.items.length">
+<div *ngFor="let model of allSearchResults">
+  <app-default-swiper [cardDetails]="model.items"></app-default-swiper>
+
+  <!--<ng-container *ngIf="model.items.length">
     <app-default-swiper [title]="models[model.modelType].title"
                         [searchType]="model.modelType"
                         [searchResults]="model.items">
@@ -7,6 +9,6 @@
         <span [translateLocal]="{EN: 'More Results', AR : 'المزيد من النتائج'}"></span>
       </div>
     </app-default-swiper>
-  </ng-container>
+  </ng-container>-->
 </div>
 

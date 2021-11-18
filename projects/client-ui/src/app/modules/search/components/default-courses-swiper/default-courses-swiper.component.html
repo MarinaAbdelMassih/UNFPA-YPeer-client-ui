@@ -1,29 +1,25 @@
-<div class="title-container">
-  <h3 [translateLocal]="title"></h3>
-  <div class="buttons-container" *ngIf="!swiper?.isBeginning || !swiper?.isEnd">
-    <button class="slider-button btn-prev" (click)="prevSlide()" [disabled]="swiper?.isBeginning">
-      <img src="assets/images/icons/arrow-left-gray.png"
-           [style.transform]="languageService.getIsArabic() ? 'scaleX(-1)' : ''"
-           alt="arrow-left">
-    </button>
-    <button class="slider-button btn-next" (click)="nextSlide()" [disabled]="swiper?.isEnd">
-      <img src="assets/images/icons/arrow-right-gray.png"
-           [style.transform]="languageService.getIsArabic() ? 'scaleX(-1)' : ''"
-           alt="arrow-right">
-    </button>
-  </div>
-</div>
-<div class="swiper__container-courses" id="courses-swiper-{{searchType}}">
-  <div class="swiper__wrapper">
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide" *ngFor="let result of searchResults">
-          <app-result-card [result]="result" [searchType]="searchType"></app-result-card>
-        </div>
-        <div class="swiper-slide">
-          <ng-content></ng-content>
-        </div>
-      </div>
+<div class="search-results-section" *ngIf="cardDetails && cardDetails.length">
+  <div class="d-flex justify-content-between align-items-center">
+    <p [translateLocal]="{EN:'YOU MIGHT ALSO LIKE',AR:'قد يعجبك ايضا'}"></p>
+    <div class="buttons-container" *ngIf="cardDetails.length >= 4">
+      <button class="slider-button btn-prev" (click)="prev()"><img src="assets/images/icons/arrow-left-gray.png" alt="">
+      </button>
+      <button class="slider-button btn-next" (click)="next()"><img src="assets/images/icons/arrow-right-gray.png"
+                                                                   alt=""></button>
     </div>
   </div>
+  <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
+    <div *ngFor="let cardDetail of cardDetails" (click)="reloadCurrentPage()">
+      <a [routerLink]='["/event-details", cardDetail.id]'>
+        <app-might-like-item ngxSlickItem
+                             [title]="cardDetail.title"
+                             [type]="cardDetail.label"
+                             [description]="cardDetail.description "
+                             [imageSrc]="cardDetail.imageId" (moreClicked)="openDetailsPage()">
+        </app-might-like-item>
+      </a>
+    </div>
+  </ngx-slick-carousel>
+
 </div>
+

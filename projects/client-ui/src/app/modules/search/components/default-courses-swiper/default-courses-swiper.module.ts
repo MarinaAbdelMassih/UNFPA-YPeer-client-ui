@@ -1,18 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DefaultCoursesSwiperComponent } from './default-courses-swiper.component';
-import {SwiperModule} from "swiper/angular";
-import SwiperCore, {Controller, Lazy, Navigation, Pagination} from "swiper";
-import {SearchModule} from '../../search.module';
-import {ResultCardComponent} from '../result-card/result-card.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {DefaultCoursesSwiperComponent} from './default-courses-swiper.component';
+import {SwiperModule} from 'swiper/angular';
+import SwiperCore, {Controller, Lazy, Navigation, Pagination} from 'swiper';
 import {SharedModule} from '../../../../../../../../src/app/shared/shared.module';
+import {SlickCarouselModule} from 'ngx-slick-carousel';
+import {RouterModule} from '@angular/router';
 
 SwiperCore.use([Navigation, Lazy, Controller, Pagination]);
 
 @NgModule({
   declarations: [
     DefaultCoursesSwiperComponent,
-    ResultCardComponent,
   ],
     exports: [
         DefaultCoursesSwiperComponent
@@ -21,6 +20,8 @@ SwiperCore.use([Navigation, Lazy, Controller, Pagination]);
     CommonModule,
     SwiperModule,
     SharedModule,
+    SlickCarouselModule,
+    RouterModule,
   ]
 })
 export class DefaultCoursesSwiperModule { }
