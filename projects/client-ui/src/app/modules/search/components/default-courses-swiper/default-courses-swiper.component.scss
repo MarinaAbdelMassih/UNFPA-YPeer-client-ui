@@ -127,12 +127,21 @@
   .slider-button {
     background: transparent;
     border: none;
-    //position: absolute;
     cursor: pointer;
-    //bottom: 30px;
     padding: 0;
-    .enabled:hover {
-      filter: brightness(0.5);
+
+    &:disabled {
+      img {
+        filter: brightness(1.25);
+      }
+    }
+    &:not(:disabled) {
+      img {
+        filter: none;
+        &:hover {
+          filter: brightness(0.5);
+        }
+      }
     }
   }
 }

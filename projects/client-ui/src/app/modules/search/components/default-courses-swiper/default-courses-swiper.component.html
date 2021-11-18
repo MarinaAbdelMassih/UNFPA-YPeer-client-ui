@@ -4,13 +4,11 @@
     <button class="slider-button btn-prev" (click)="prevSlide()" [disabled]="swiper?.isBeginning">
       <img src="assets/images/icons/arrow-left-gray.png"
            [style.transform]="languageService.getIsArabic() ? 'scaleX(-1)' : ''"
-           [ngClass]="{enabled: !swiper?.isBeginning}"
            alt="arrow-left">
     </button>
     <button class="slider-button btn-next" (click)="nextSlide()" [disabled]="swiper?.isEnd">
       <img src="assets/images/icons/arrow-right-gray.png"
            [style.transform]="languageService.getIsArabic() ? 'scaleX(-1)' : ''"
-           [ngClass]="{enabled: !swiper?.isEnd}"
            alt="arrow-right">
     </button>
   </div>
