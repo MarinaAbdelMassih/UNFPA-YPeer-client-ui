@@ -9,12 +9,21 @@ export class MyCoursesService {
 
   constructor(private customHttpClient: CustomHttpClientService) { }
 
-  getMyCourses(myCoursesBody: {userId: any}): Promise<{ courses: IMyCourses[] }> {
+  getMyCourses(myCoursesBody: {userId: number}): Promise<{ courses: IMyCourses[] }> {
     return this.customHttpClient.sendBackendRequest({
       endpoint: 'user/myCourses',
       sender: 'my-courses',
       receiver: 'myCourses',
       body: myCoursesBody
+    });
+  }
+
+  enrollAdvanced(enrollBody: {userId: number, email: string, firstName: string, lastName: string}): Promise<{status: boolean}> {
+    return this.customHttpClient.sendBackendRequest({
+      endpoint: 'user/enroll/advanced',
+      sender: 'enroll-advanced',
+      receiver: 'advanced',
+      body: enrollBody
     });
   }
 }

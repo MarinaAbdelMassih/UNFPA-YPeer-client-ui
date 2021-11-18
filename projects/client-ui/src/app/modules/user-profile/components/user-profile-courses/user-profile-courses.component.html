@@ -1,6 +1,6 @@
 <div class="user-profile-courses">
   <a (click)="openDialog(course)" *ngFor="let course of myCourses; let i = index">
-    <app-course-bar *ngIf="(course.type === 1) || (course.type === 2 && (course.courseStatus === 3 || course.courseStatus === 4))"
+    <app-course-bar *ngIf="(course.courseType === 1) || (course.courseType === 2 && (course.courseStatus === 3 || course.courseStatus === 4))"
                     [name]="course.name"
                     [btnText]="setButtonText(course)"
                     [score]="course.score"

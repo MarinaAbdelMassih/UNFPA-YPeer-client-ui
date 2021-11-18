@@ -5,6 +5,7 @@ import {MyCoursesService} from '../../../../../../../../src/app/shared/services/
 import {IMyCourses} from '../../../../../../../../src/app/shared/models/my-courses.model';
 import {TranslationModel} from '../../../../../../../../src/app/shared/models/translation.model';
 import {Router} from '@angular/router';
+import {IUserInfo} from '../../../../../../../../src/app/shared/models/my-profile.model';
 
 @Component({
   selector: 'app-user-profile-courses',
@@ -13,6 +14,7 @@ import {Router} from '@angular/router';
 })
 export class UserProfileCoursesComponent implements OnInit {
 
+  @Input() userInfo: IUserInfo;
   @Input() isArabic: boolean;
   myCourses: IMyCourses[];
   introductoryCourse: IMyCourses;
@@ -30,15 +32,15 @@ export class UserProfileCoursesComponent implements OnInit {
   }
 
   getMyCourses(): void {
-    // let userId = localStorage.getItem('id');
     this.myCoursesService.getMyCourses({userId: 1000}).then((myCourses) => {
-      console.log(myCourses);
-      // this.myCourses = myCourses.courses;
-      this.myCourses = [
-        {id: 1, name: 'introductory course', progress: 100, score: 0, hasCertificate: false, courseStatus: null, type: 1},
-        {id: 2, name: 'introductory course', progress: 0, score: 0, hasCertificate: true, courseStatus: 4, type: 2}];
-      this.introductoryCourse = (this.myCourses)[0];
-      this.advancedCourse = (this.myCourses)[1];
+      this.myCourses = myCourses.courses;
+      // this.myCourses =
+      //   [
+      //     {id: 1, name: 'Introductory Course', progress: 100, score: 80, hasCertificate: true, courseStatus: null, courseType: 1},
+      //     {id: 2, name: 'Advanced Course', progress: 0, score: 0, hasCertificate: true, courseStatus: 4, courseType: 2}
+      //   ];
+      this.introductoryCourse = this.myCourses.find(course => course.courseType === 1);
+      this.advancedCourse = this.myCourses.find(course => course.courseType === 2);
       this.setAdvancedStatus();
     });
   }
@@ -82,15 +84,20 @@ export class UserProfileCoursesComponent implements OnInit {
     debugger;
     if(course.hasCertificate) {
       //view student certificate
-    } else if (course.type === 1) {
+    } else if (course.courseType === 1) {
       //navigate to introductory course viewer
       this.router.navigate(['/viewer/111']);
-    } else if (course.type === 2) {
+    } else if (course.courseType === 2) {
       //navigate to advanced course viewer
     }
   }
 
   enrollAdvanced(): void {
     //enrollment in advanced course request and recall getMyCourses() again to update the data
+    this.myCoursesService.enrollAdvanced({userId: this.userInfo.id, email: this.userInfo.email, firstName: this.userInfo.firstName, lastName: this.userInfo.lastName}).then(response => {
+      if (response.status) {
+        this.getMyCourses();
+      }
+    });
   }
 }
