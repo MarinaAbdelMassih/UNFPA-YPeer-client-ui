@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {WelcomeScreenApprovedComponent} from "./shared/components/welcome-screen-approved/welcome-screen-approved.component";
 import {WelcomeScreenPendingComponent} from "./shared/components/welcome-screen-pending/welcome-screen-pending.component";
+import {IframeTestComponent} from "./shared/components/iframe-test/iframe-test.component";
 
 
 const routes: Routes = [
@@ -131,6 +132,9 @@ const routes: Routes = [
   },
   {
     path: 'WelcomeScreenPending', component: WelcomeScreenPendingComponent
+  },
+  {
+    path: 'iframe-test', component: IframeTestComponent
   },
   {
     path: 'viewer',
