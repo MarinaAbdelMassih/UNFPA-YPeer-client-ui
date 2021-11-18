@@ -1,6 +1,6 @@
 .result-card {
   height: 100%;
-  min-height: 200px;
+  min-height: 250px;
   min-width: 250px;
   max-width: 250px;
   margin: 0;
@@ -16,9 +16,16 @@
   }
 
   .title {
-    font-size: 15px;
-    text-align: start;
-    padding: 5px;
+    font-family: Oswald, serif;
+    font-size: 22px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    text-align: left;
+    color: #2e2e2e;
+    padding: 10px;
   }
 
 }
