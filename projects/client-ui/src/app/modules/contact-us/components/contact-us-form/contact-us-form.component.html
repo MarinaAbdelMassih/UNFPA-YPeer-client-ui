@@ -1,38 +1,38 @@
 <div class="form-container">
   <h3 [translateLocal]="{EN: 'LEAVE US A MESSAGE', AR: 'اترك لنا رسالة'}"></h3>
-  <form class="contact-form" [formGroup]="contactForm" (ngSubmit)='submitContactForm()'>
+  <form class="contact-form" [formGroup]="contactForm">
     <div class="first-inputs-row ">
       <div class="mat-select-container w-20">
-        <mat-select formControlName="titles" class="title-select" [placeholder]="isArabic ? 'الوظيفة' : 'Title'">
-          <mat-option *ngFor="let title of titles" [value]="title.name">
-            {{title.name}}
+        <mat-select formControlName="title" class="title-select" [placeholder]="isArabic ? 'الوظيفة' : 'Title'">
+          <mat-option *ngFor="let title of titles" [value]="isArabic ? title.nameAr :title.nameEn">
+            {{isArabic ? title.nameAr :title.nameEn}}
           </mat-option>
         </mat-select>
       </div>
       <div class="input-container w-40">
-        <input matInput class="input-fName" type="text" name="fName" formControlName="fName"
+        <input matInput class="input-fName" type="text" name="fName" formControlName="firstName"
                [placeholder]="isArabic ? 'الاسم الأول ' : 'First Name'">
 
         <div class="error-label">
           <div class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
-               *ngIf="contactForm.get('fName').touched && contactForm.get('fName').errors?.required">
+               *ngIf="contactForm.get('firstName').touched && contactForm.get('firstName').errors?.required">
           </div>
           <div class="text-danger" [translateLocal]="{AR: 'الاسم الأول خاطئ',EN: 'Invalid First Name'}"
-               *ngIf="contactForm.get('fName').hasError('pattern')">
+               *ngIf="contactForm.get('firstName').hasError('pattern')">
           </div>
         </div>
       </div>
 
       <div class="input-container w-40">
-        <input matInput class="input-fName" type="text" name="lName" formControlName="lName"
+        <input matInput class="input-fName" type="text" name="lName" formControlName="lastName"
                [placeholder]="isArabic ? 'الاسم الأخير' : 'Last Name'">
 
         <div class="error-label">
                 <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
-                      *ngIf="contactForm.get('lName').touched && contactForm.get('lName').errors?.required">
+                      *ngIf="contactForm.get('lastName').touched && contactForm.get('lastName').errors?.required">
                 </span>
           <div class="text-danger" [translateLocal]="{AR: 'الاسم الأخير خاطئ',EN: 'Invalid Last Name'}"
-               *ngIf="contactForm.get('lName').hasError('pattern')">
+               *ngIf="contactForm.get('lastName').hasError('pattern')">
           </div>
         </div>
       </div>
@@ -63,29 +63,29 @@
       </div>
     </div>
     <div class="mat-select-container">
-      <mat-select class="select-option" (change)="changeOption($event)" [placeholder]="isArabic ? 'اختر' : 'Select an option'">
-        <mat-option *ngFor="let option of options" [value]="option.value">
-          {{option.viewValue}}
+      <mat-select class="select-option" (change)="changeOption($event)"  [placeholder]="isArabic ? 'اختر' : 'Select an option'" formControlName="option">
+        <mat-option *ngFor="let item of options" [value]="isArabic ? item.nameAr :item.nameEn">
+          {{isArabic ? item.nameAr :item.nameEn}}
         </mat-option>
       </mat-select>
     </div>
     <div class="input-container">
-      <textarea matInput type="text" name="massage" formControlName="massage"
+      <textarea matInput type="text" name="massage" formControlName="message"
                 [placeholder]="isArabic ? ' الرسالة' : 'Your Message'" rows="4" class="mb-0">
       </textarea>
       <div class="error-label">
         <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
-              *ngIf="contactForm.get('massage').touched && contactForm.get('massage').errors?.required">
+              *ngIf="contactForm.get('message').touched && contactForm.get('message').errors?.required">
         </span>
       </div>
     </div>
     <div class="radio-button-container">
       <p [translateLocal]="{EN: 'Do you require a response?', AR: 'هل تتوقع رد على الرسالة!'}"></p>
       <mat-radio-group aria-label="Select an option" formControlName="response">
-        <mat-radio-button value="1" name="responseMassage">
+        <mat-radio-button value="true" name="responseMassage">
           <p [translateLocal]="{EN: 'Yes', AR: 'نعم'}"></p>
         </mat-radio-button>
-        <mat-radio-button value="2" name="responseMassage">
+        <mat-radio-button value="false" name="responseMassage">
           <p [translateLocal]="{EN: 'No', AR: 'لا'}"></p>
         </mat-radio-button>
       </mat-radio-group>
@@ -112,7 +112,7 @@
       </svg>
     </div>
     <button
-      type="submit"
+      type="submit" [disabled]="!contactForm.valid"   [ngStyle]="{'background-color': !contactForm.valid ? 'darkgray' : '#5a3f99' }" (click)="submitContactForm()"
       [translateLocal]="{EN: 'Send Message', AR: 'ارسال'}">
     </button>
   </form>
