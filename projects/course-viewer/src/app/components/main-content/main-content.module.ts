@@ -32,6 +32,10 @@ import { HtmlComponent } from './html/html.component';
     SharedModule
   ],
 
-  entryComponents: [VideoComponent, QuizComponent]
+  entryComponents: [
+    VideoComponent,
+    QuizComponent,
+    HtmlComponent,
+  ]
 })
 export class MainContentModule { }
