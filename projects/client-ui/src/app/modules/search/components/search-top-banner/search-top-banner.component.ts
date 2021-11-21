@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {Subscription} from 'rxjs';
-import {FormControl} from "@angular/forms";
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-search-top-banner',
@@ -36,9 +36,8 @@ export class SearchTopBannerComponent implements OnInit, OnDestroy {
   }
 
   search() {
-    if (this.searchField) {
-      this.searchClicked.emit({searchWord:this.searchField, searchType: this.searchType.value});
-      console.log(this.searchType.value)
+    if (this.searchField && this.searchField.trim()) {
+      this.searchClicked.emit({searchWord: this.searchField, searchType: this.searchType.value});
     }
   }
 
