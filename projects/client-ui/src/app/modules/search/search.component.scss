@@ -109,6 +109,9 @@
 ::ng-deep [dir=rtl] .mat-radio-label {
   margin-right: 0 !important;
   margin-left: 24px;
+  @media (max-width: 992px) {
+    margin-left: 12px;
+  }
 }
 
 ::ng-deep [dir=rtl] .mat-radio-label-content {
