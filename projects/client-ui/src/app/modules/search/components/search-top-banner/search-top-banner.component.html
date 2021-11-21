@@ -16,8 +16,10 @@
     </div>
     <div class="radio-btn-container">
     <mat-radio-group (change)="search()"  [formControl]="searchType" aria-label="Select an option">
-<!--      <mat-radio-button [checked]="true" value="" class="first">All</mat-radio-button>-->
-      <mat-radio-button [labelPosition]="'before'" [checked]="true" value="newsListItem">
+      <mat-radio-button [checked]="true" [labelPosition]="'before'" value="" class="first">
+        <span [translateLocal]="{EN: 'All', AR:'الكل'}"></span>
+      </mat-radio-button>
+      <mat-radio-button [labelPosition]="'before'" value="newsListItem">
         <span [translateLocal]="{EN: 'News', AR:'الاخبار'}"></span>
       </mat-radio-button>
       <mat-radio-button [labelPosition]="'before'" value="eventsListItem">

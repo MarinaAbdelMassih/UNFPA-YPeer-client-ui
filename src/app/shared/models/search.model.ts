@@ -8,6 +8,12 @@ export interface searchContent{
   total: number;
 }
 
+export interface SearchAllContent {
+  items: searchListItem[];
+  modelType: string;
+  total: number;
+}
+
 export interface searchListItem {
   id: number;
   label: {AR: string, EN: string};
@@ -102,7 +108,7 @@ export class SearchModelSpecific implements searchContent {
     this.total = searchData.searchResult.total;
   }
 
-  private static setPublicationsList(searchListItems: any[]): searchListItem[] {
+  public static setPublicationsList(searchListItems: any[]): searchListItem[] {
     return searchListItems.map((searchListItem) => {
       return {
         id: searchListItem.id,

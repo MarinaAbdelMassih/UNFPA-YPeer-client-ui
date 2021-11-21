@@ -1,8 +1,8 @@
 <div class="search">
-  <app-search-top-banner (searchClicked)="search($event, true)"></app-search-top-banner>
-  <div *ngIf="resultList.length" class="search-container">
+  <app-search-top-banner (searchClicked)="search($event, true)" [SearchType]="searchType"></app-search-top-banner>
+  <div *ngIf="total" class="search-container">
     <div class="title-container">
-      <h3 *ngIf="resultList.length">
+      <h3>
         <span [translateLocal]="{EN: 'Search Results for:', AR: 'نتائج البحث ل:'}"></span>
         <span> "{{searchWord}}"</span>
       </h3>
@@ -12,10 +12,14 @@
       </p>
     </div>
     <div class="result">
-      <app-result-item [searchType]="searchType" [details]="resultList" [start]="0" [end]="2"></app-result-item>
+      <app-all-results *ngIf="!searchType"
+                       [allSearchResults]="allResultList"
+                       (showResultsByType)="searchType = $event">
+      </app-all-results>
+      <app-result-item *ngIf="searchType" [searchType]="searchType" [details]="resultList" [start]="0" [end]="2"></app-result-item>
     </div>
     <div class="load-more-container">
-      <button *ngIf="resultList.length < total" class="ypeer-btn btn-outlined"
+      <button *ngIf="searchStarted && searchType && resultList.length < total" class="ypeer-btn btn-outlined"
               [translateLocal]="{EN: 'Load More', AR: 'المزيد'}" (click)="search()"></button>
     </div>
 <!--    <div class="pagination">-->
@@ -34,6 +38,6 @@
 <!--    </div>-->
 <!--    <p class="pages-showing">Showing page 1 of 8 - Items 1 - 6 of 40</p>-->
   </div>
-  <div class="no-result-container" *ngIf="!resultList.length && searchStarted"
+  <div class="no-result-container" *ngIf="total === 0 && searchStarted"
        [translateLocal]="{EN: 'No result found', AR: 'لا توجد نتائج'}"></div>
 </div>

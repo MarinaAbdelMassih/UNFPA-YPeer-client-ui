@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {Subscription} from 'rxjs';
 import {FormControl} from "@angular/forms";
@@ -11,6 +11,12 @@ import {FormControl} from "@angular/forms";
 export class SearchTopBannerComponent implements OnInit, OnDestroy {
   isArabic: boolean;
   subscription: Subscription;
+  @Input() set SearchType(searchType: string) {
+    if (searchType !== this.searchType.value) {
+      this.searchType.patchValue(searchType);
+      this.search();
+    }
+  }
   @Output() searchClicked: EventEmitter<any> = new EventEmitter<any>();
   searchField = null;
   searchType: FormControl = new FormControl();
@@ -21,7 +27,6 @@ export class SearchTopBannerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.checkLanguage();
-    this.searchType.setValue('newsListItem');
   }
 
   checkLanguage(): void {
