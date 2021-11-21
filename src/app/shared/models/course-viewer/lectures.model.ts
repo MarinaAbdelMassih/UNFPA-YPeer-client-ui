@@ -9,7 +9,8 @@ import {ILOChild, LOChildType} from "./Backend/course.model";
 
 export enum LectureType {
   LECTURE = 0,
-  QUIZ
+  QUIZ,
+  INTERACTIVE,
 }
 
 export interface ISession {

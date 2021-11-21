@@ -8,11 +8,19 @@ import { QuizNavBarComponent } from './quiz/components/quiz-nav-bar/quiz-nav-bar
 import { QuizQuestionComponent } from './quiz/components/quiz-question/quiz-question.component';
 import {MatCheckboxModule, MatRadioModule} from "@angular/material";
 import {SharedModule} from "../../../../../../src/app/shared/shared.module";
+import { HtmlComponent } from './html/html.component';
 
 
 
 @NgModule({
-  declarations: [MainContentComponent, VideoComponent, QuizComponent, QuizNavBarComponent, QuizQuestionComponent],
+  declarations: [
+    MainContentComponent,
+    VideoComponent,
+    QuizComponent,
+    QuizNavBarComponent,
+    QuizQuestionComponent,
+    HtmlComponent,
+  ],
   exports: [
     MainContentComponent
   ],
