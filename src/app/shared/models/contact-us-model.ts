@@ -7,4 +7,5 @@ export interface IContactUs {
   option: string;
   email: string;
   response: boolean;
+  captchaToken: string;
 }

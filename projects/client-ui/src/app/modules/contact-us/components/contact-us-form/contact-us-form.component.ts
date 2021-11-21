@@ -35,12 +35,13 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
       option: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       response: ['', [Validators.required]],
-      robotOr: ['', [Validators.required]],
+      captchaToken: ['', [Validators.required]],
     });
   }
 
   ngOnInit() {
     this.checkLanguage();
+    this.contactForm.valueChanges.subscribe(console.log);
   }
 
   checkLanguage(): void {
@@ -61,6 +62,7 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
       option: this.contactForm.controls.option.value,
       email: this.contactForm.controls.email.value,
       response: this.contactForm.controls.response.value,
+      captchaToken : this.contactForm.controls.captcha.value
     };
     this.contactUsService.contactUs(this.contactUsUserData).then(data => {
       console.log('contactus', data);
