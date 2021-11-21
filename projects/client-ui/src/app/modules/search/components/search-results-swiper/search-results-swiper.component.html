@@ -1,6 +1,6 @@
 <div class="search-results-section" *ngIf="cardDetails && cardDetails.length">
   <div class="d-flex justify-content-between align-items-center">
-    <p [translateLocal]="{EN:'YOU MIGHT ALSO LIKE',AR:'قد يعجبك ايضا'}"></p>
+    <p [translateLocal]="title"></p>
     <div class="buttons-container" *ngIf="cardDetails.length >= 4">
       <button class="slider-button btn-prev" (click)="prev()"><img src="assets/images/icons/arrow-left-gray.png" alt="">
       </button>

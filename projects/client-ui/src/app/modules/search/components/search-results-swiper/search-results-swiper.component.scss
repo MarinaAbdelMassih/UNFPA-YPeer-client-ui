@@ -1,6 +1,7 @@
 .search-results-section {
   width: 100%;
   overflow: hidden;
+  margin-bottom: 30px;
   .buttons-container {
     position: relative;
     direction: initial;
@@ -84,7 +85,7 @@
 ::ng-deep {
   .slick-track {
     width: 100% !important;
-    //display: flex;
+    display: flex;
   }
 }
 

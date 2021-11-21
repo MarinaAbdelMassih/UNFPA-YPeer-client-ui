@@ -8,8 +8,9 @@ import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import {SearchTopBannerComponent} from './components/search-top-banner/search-top-banner.component';
 import {MatRadioModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DefaultCoursesSwiperModule} from './components/default-courses-swiper/default-courses-swiper.module';
 import {AllResultsComponent} from './components/all-results/all-results.component';
+import {SearchResultsSwiperComponent} from "./components/search-results-swiper/search-results-swiper.component";
+import {SlickCarouselModule} from "ngx-slick-carousel";
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {AllResultsComponent} from './components/all-results/all-results.componen
     ResultItemComponent,
     SearchTopBannerComponent,
     AllResultsComponent,
+    SearchResultsSwiperComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,7 @@ import {AllResultsComponent} from './components/all-results/all-results.componen
     MatRadioModule,
     FormsModule,
     ReactiveFormsModule,
-    DefaultCoursesSwiperModule,
+    SlickCarouselModule,
   ]
 })
 export class SearchModule { }

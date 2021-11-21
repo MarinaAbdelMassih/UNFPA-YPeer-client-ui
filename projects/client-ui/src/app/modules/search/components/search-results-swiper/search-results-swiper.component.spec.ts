@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DefaultCoursesSwiperComponent } from './default-courses-swiper.component';
+import { SearchResultsSwiperComponent } from './search-results-swiper.component';
 
 describe('DefaultCoursesSwiperComponent', () => {
-  let component: DefaultCoursesSwiperComponent;
-  let fixture: ComponentFixture<DefaultCoursesSwiperComponent>;
+  let component: SearchResultsSwiperComponent;
+  let fixture: ComponentFixture<SearchResultsSwiperComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DefaultCoursesSwiperComponent ]
+      declarations: [ SearchResultsSwiperComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DefaultCoursesSwiperComponent);
+    fixture = TestBed.createComponent(SearchResultsSwiperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

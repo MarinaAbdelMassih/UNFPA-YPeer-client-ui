@@ -1,17 +1,16 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
-import {eventsListItem} from '../../../../../../../../src/app/shared/models/events.model';
 import {Router} from '@angular/router';
 import {searchListItem} from '../../../../../../../../src/app/shared/models/search.model';
 
 @Component({
-  selector: 'app-default-swiper',
-  templateUrl: './default-courses-swiper.component.html',
-  styleUrls: ['./default-courses-swiper.component.scss']
+  selector: 'app-search-results-swiper',
+  templateUrl: './search-results-swiper.component.html',
+  styleUrls: ['./search-results-swiper.component.scss']
 })
-export class DefaultCoursesSwiperComponent implements OnInit, AfterViewInit {
+export class SearchResultsSwiperComponent implements OnInit, AfterViewInit {
 
-  @Input() title: string;
+  @Input() title: {AR: string, EN: string};
   @Input() searchResults: any[] = [];
   @Input() searchType: string;
 
