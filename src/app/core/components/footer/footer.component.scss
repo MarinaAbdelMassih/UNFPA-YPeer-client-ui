@@ -1,32 +1,62 @@
 .footer-section {
   height: 288px;
   background-color: #ddd8e4;
+
   .footer-container {
     display: flex;
     flex-wrap: wrap;
     height: 100%;
-    padding: 110px 27px 101px 35px;
+    padding: 52px 35.8px 48px 35px;
+    justify-content: space-between;
+
     .left-section {
-      margin-right: 120px;
+
       img {
         cursor: pointer;
       }
+
+      .left-section-social-media {
+        padding-top: 33px;
+
+        h6 {
+          font-size: 18px;
+          font-weight: bold;
+          line-height: 1.17;
+          color: #2e2e2e;
+          margin-bottom: 16px;
+        }
+      }
     }
+
     .middle-section {
       width: 590px;
-      margin-right: 190px;
+      //margin-right: 190px;
+
       p {
         font-size: 15px;
         line-height: 1.6;
         color: #2e2e2e;
+        margin-top: 59px;
+        height: 69px;
+
+        @media (max-width: 991px) {
+          margin-top: 0;
+          height: auto;
+        }
       }
     }
+
     .right-section {
+      img {
+        margin-bottom: 47.7px;
+      }
+
       h6 {
-        font-size: 22px;
+        font-size: 18px;
         font-weight: bold;
-        line-height: 1.18;
+        line-height: 1.17;
         color: #2e2e2e;
+        margin-bottom: 16px;
       }
     }
   }
@@ -36,9 +66,11 @@
   .footer-section {
     .footer-container {
       justify-content: space-between;
+
       .left-section {
         margin-right: 0;
       }
+
       .middle-section {
         margin-right: 0;
         @media (max-width: 1100px) {
@@ -52,11 +84,13 @@
 @media (max-width: 1000px) {
   .footer-section {
     height: auto;
+
     .footer-container {
       flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 90px 35px 81px 35px;
+
       .footer-inner-section {
         width: 65%;
         display: flex;
@@ -68,4 +102,33 @@
       }
     }
   }
+}
+
+::ng-deep {
+  [dir="ltr"] {
+    .footer-section {
+      .footer-container {
+        .left-section {
+          @media(max-width: 991px) {
+            //margin-right: 120px;
+          }
+        }
+      }
+    }
+  }
+
+
+  [dir="rtr"] {
+    .footer-section {
+      .footer-container {
+        .left-section {
+          @media(max-width: 991px) {
+            //margin-left: 120px;
+
+          }
+        }
+      }
+    }
+  }
+
 }

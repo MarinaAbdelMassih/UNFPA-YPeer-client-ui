@@ -56,10 +56,11 @@
   }
 }
 
-@media (max-width: 426px) {
+@media (max-width: 991px) {
   .story-image-container {
     img {
       max-width: 100%;
+      width: 100%;
     }
   }
 }

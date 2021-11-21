@@ -2,6 +2,10 @@
   <div class="footer-container">
     <div class="left-section footer-inner-section">
       <img src="assets/images/ypeer-logo-footer.png" alt="footer-logo" [routerLink]="">
+      <div class="left-section-social-media">
+        <h6 [translateLocal]="{EN: 'Follow Us', AR: 'تابعونا'}"></h6>
+        <app-footer-social></app-footer-social>
+      </div>
     </div>
     <div class="middle-section footer-inner-section">
       <p>
@@ -10,7 +14,8 @@
       </p>
     </div>
     <div class="right-section footer-inner-section">
-      <h6 [translateLocal]="{EN: 'Follow Us', AR: 'تابعونا'}"></h6>
+      <img src="assets/images/footer-logo.png" alt="footer-logo" [routerLink]="">
+      <h6 [translateLocal]="{EN: 'Follow UNFPA', AR: 'تابع UNFPA '}"></h6>
       <app-footer-social></app-footer-social>
     </div>
   </div>
