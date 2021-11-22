@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {WelcomeScreenApprovedComponent} from "./shared/components/welcome-screen-approved/welcome-screen-approved.component";
 import {WelcomeScreenPendingComponent} from "./shared/components/welcome-screen-pending/welcome-screen-pending.component";
+import {AuthGuard} from "./core/guards/auth.guard";
+import {NoAuthGuard} from "./core/guards/no-auth.guard";
 
 
 const routes: Routes = [
@@ -110,16 +112,22 @@ const routes: Routes = [
     path: 'profile',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/user-profile/user-profile.module').then(mod => mod.UserProfileModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
   },
   {
     path: 'signIn',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/sign-in/sign-in.module').then(mod => mod.SignInModule),
+    canLoad: [NoAuthGuard],
+    canActivate: [NoAuthGuard]
   },
   {
     path: 'signUp',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/sign-up/sign-up.module').then(mod => mod.SignUpModule),
+    canLoad: [NoAuthGuard],
+    canActivate: [NoAuthGuard]
   },
   {
     path: 'welcome',
