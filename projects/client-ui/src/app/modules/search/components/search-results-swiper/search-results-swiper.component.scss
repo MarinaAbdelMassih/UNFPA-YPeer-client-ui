@@ -88,4 +88,9 @@
     display: flex;
   }
 }
+::ng-deep {
+  .slick-slide {
+    height: unset;
+  }
+}
 
