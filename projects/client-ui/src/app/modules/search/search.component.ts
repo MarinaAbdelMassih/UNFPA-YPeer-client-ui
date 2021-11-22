@@ -95,7 +95,7 @@ export class SearchComponent implements OnInit {
       }`;
     this.searchService.getMultiPageData(searchQuery).subscribe(data => {
       this.total = data.reduce((previous, current) => {
-        return previous + current.items.length;
+        return previous + current.total;
       }, 0);
       this.allResultList = data;
       this.searchStarted = true;

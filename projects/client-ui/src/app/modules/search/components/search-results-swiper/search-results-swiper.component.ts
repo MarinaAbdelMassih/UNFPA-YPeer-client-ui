@@ -70,8 +70,14 @@ export class SearchResultsSwiperComponent implements OnInit, AfterViewInit {
     }
   }
 
-  openDetailsPage(): void {
-    this.router.navigate(['']);
+  openDetailsPage(id): void {
+    switch (this.searchType) {
+      case 'newsListItem':  this.router.navigate(['/news-details/' + id]); break;
+      case 'eventsListItem': this.router.navigate(['/event-details/' + id]); break;
+      case 'storiesListItem': this.router.navigate(['/story-details/' + id]); break;
+      case 'publicationsListItem': this.router.navigate(['/publication-details/' + id]); break;
+      case 'trainingsListItem': this.router.navigate(['/training-details/' + id]); break;
+    }
   }
 
 }
