@@ -37,25 +37,17 @@ export class SignInFormComponent implements OnInit, OnDestroy {
   }
 
   submitSignInForm() {
-    console.log('value', this.signInForm.value);
     this.signInUserData = {
       username: this.signInForm.controls.email.value,
       password: this.signInForm.controls.password.value,
       authType: 'ALMENTOR',
     };
     this.signInService.signIn(this.signInUserData).then((signInData: any) => {
-        localStorage.setItem('id', signInData.data.userId);
-        localStorage.setItem('uuid', signInData.data.uuid);
         if (signInData.success) {
-          console.log('status', signInData.data.status);
-          localStorage.setItem('username', signInData.data.firstName);
-          this.router.navigate(['/home']).then(() => window.location.reload());
-          // if (signInData.data.status == 1) {
-          //   this.router.navigate(['/WelcomeScreenApproved']);
-          // } else if (signInData.data.status == 2) {
-          //   this.router.navigate(['/WelcomeScreenPending']);
-          // }
-          console.log('signin', signInData.data);
+          this.signInService.userInfo.next(signInData.data);
+          localStorage.setItem('uuid', signInData.data.uuid);
+          localStorage.setItem('user-token', signInData.data.accessToken);
+          this.router.navigate(['/home']);
           if (localStorage.getItem('remember-me') == 'true') {
             localStorage.setItem('refresh-token', signInData.data.refreshToken);
           } else {

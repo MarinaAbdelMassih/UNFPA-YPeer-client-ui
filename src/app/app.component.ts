@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {map} from "rxjs/operators";
+import {SignInService} from "./shared/services/sign-in.service";
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,17 @@ import {map} from "rxjs/operators";
 export class AppComponent implements OnInit {
 
   isCourseViewer: boolean = false;
-  constructor(private router: Router) {
+  userName: string;
+  constructor(private router: Router, private signInService: SignInService) {
   }
 
   ngOnInit(): void {
+    this.signInService.userInfo.subscribe((userData) => {
+      if (userData) {
+        this.userName = userData.firstName;
+      }
+    });
+
     this.router.events.pipe(
       map((event) => {
         return event;

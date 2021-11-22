@@ -1,4 +1,4 @@
-import {Component, Inject, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {LanguageService} from "../../../shared/services/language.service";
 import {DOCUMENT} from "@angular/common";
 import {Subscription} from "rxjs";
@@ -15,16 +15,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   isArabic: boolean = false;
   private languageSubscription: Subscription;
-  loginName: any;
+  @Input() userName: string;
 
   constructor(private languageService: LanguageService, @Inject(DOCUMENT) private document: Document, private router: Router) {
   }
 
   ngOnInit() {
     this.setDirectionBasedOnLanguage();
-    if (localStorage.getItem('username')) {
-      this.loginName = localStorage.getItem('username');
-    }
+
     $('.navbar-nav>li').on('click', function () {
       $('.navbar-collapse').collapse('hide');
     });

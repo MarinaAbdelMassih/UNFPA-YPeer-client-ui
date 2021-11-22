@@ -13,6 +13,7 @@ import * as _moment from 'moment';
 
 // @ts-ignore
 import {default as _rollupMoment} from 'moment';
+import {SignInService} from "../../../../../../../../src/app/shared/services/sign-in.service";
 
 const moment = _rollupMoment || _moment;
 
@@ -71,7 +72,8 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   tomorrow = new Date();
   readonlyField;
 
-  constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService, private imageService: ImageService) {
+  constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService,
+              private imageService: ImageService, private signInService: SignInService) {
     this.tomorrow.setDate(this.tomorrow.getDate() + 1);
     this.userProfileForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.maxLength(10)]),
@@ -86,7 +88,10 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.userId = localStorage.getItem('id');
+    this.signInService.userInfo.subscribe((userData) => {
+      if (userData)
+        this.userId = userData.userId;
+    });
     this.uuid = localStorage.getItem('uuid');
 
     this.checkLanguage();
