@@ -29,24 +29,18 @@ a{
     margin-top: 15px;
 
     .type {
-      width: 86px;
-      height: 28px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       background-color: #ff7900;
       font-size: 12px;
       font-weight: bold;
       color: #FFFFFF;
-      margin-bottom: 15px;
-      padding: 13px;
+      padding: 8px 10px;
     }
 
     .title {
       font-size: 22px;
       font-weight: bold;
       color: #232323;
-      margin-bottom: 15px;
+      margin: 15px 0;
     }
 
     .description {
