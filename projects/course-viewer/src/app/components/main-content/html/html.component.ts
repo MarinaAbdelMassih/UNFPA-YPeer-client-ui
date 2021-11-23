@@ -14,7 +14,9 @@ export class HtmlComponent implements OnInit {
 
   ngOnInit() {
     const folderName = this.imageService.hashFileName(`interactive-${this.html.lectureId}-${this.html.id}`);
-    this.html.link = `https://cdn-stg-doroos.almentor.net/${folderName}/story.html`;
+    // TODO change CDN URI in the environment file
+    // this.html.link = `${environment.cdnURI}/${folderName}/story.html`;
+    this.html.link = `https://ypeerstgcdn.z1.web.core.windows.net/${folderName}/story.html`;
   }
 
 }
