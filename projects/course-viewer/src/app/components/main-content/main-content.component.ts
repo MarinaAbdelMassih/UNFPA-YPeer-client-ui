@@ -1,8 +1,13 @@
 import {
   AfterViewInit,
   Component,
-  ComponentFactoryResolver, ComponentRef, EventEmitter, Input,
-  OnDestroy, Output, Type,
+  ComponentFactoryResolver,
+  ComponentRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+  Type,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -17,6 +22,7 @@ import {Subscription} from "rxjs";
 import {LanguageService} from "../../../../../../src/app/shared/services/language.service";
 import {delay} from "rxjs/operators";
 import {QuizComponent} from "./quiz/quiz.component";
+import {HtmlComponent} from "./html/html.component";
 
 
 @Component({
@@ -74,6 +80,10 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
               this.createComponent(QuizComponent);
               (<QuizComponent>this.currentComponent.instance).quiz = stuff;
               (<QuizComponent>this.currentComponent.instance).disabled = this.courseProgress < 90;
+            }
+            else if (stuff.type == StuffType.INTERACTIVE) {
+              this.createComponent(HtmlComponent);
+              (<HtmlComponent>this.currentComponent.instance).html = stuff;
             }
             // else if (stuff.type == StuffType.MATERIAL) {
             //   this.setUserProgress(stuff);
