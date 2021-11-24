@@ -112,5 +112,7 @@
       [translateLocal]="{EN: 'Send Message', AR: 'ارسال'}">
     </button>
   </form>
+  <div *ngIf="successMessageIsExist" class="alert alert-success"
+       [translateLocal]="{EN: 'Your message has been sent successfully', AR: 'لقد تم ارسال رسالتك بنجاح'}"></div>
 </div>
 

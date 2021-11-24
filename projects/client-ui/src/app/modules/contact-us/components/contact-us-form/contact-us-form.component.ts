@@ -24,6 +24,7 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
   isArabic: boolean;
   subscription: Subscription;
   contactUsUserData: IContactUs;
+  successMessageIsExist: boolean;
 
   constructor(private fb: FormBuilder, private languageService: LanguageService, private contactUsService: ContactUsService) {
     this.contactForm = this.fb.group({
@@ -61,7 +62,10 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
       response: this.contactForm.controls.response.value,
       captchaToken : this.contactForm.controls.captchaToken.value
     };
-    this.contactUsService.contactUs(this.contactUsUserData).then();
+    this.contactUsService.contactUs(this.contactUsUserData).then(() => {
+      this.successMessageIsExist = true;
+      setTimeout(() => this.successMessageIsExist = false, 5000);
+    });
   }
 
   changeOption(e) {
