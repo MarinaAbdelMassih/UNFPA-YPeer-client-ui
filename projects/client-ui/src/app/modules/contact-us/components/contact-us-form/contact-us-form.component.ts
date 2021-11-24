@@ -28,10 +28,10 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder, private languageService: LanguageService, private contactUsService: ContactUsService) {
     this.contactForm = this.fb.group({
       title: ['', [Validators.required]],
-      firstName: ['', [Validators.required, Validators.maxLength(10)]],
-      lastName: ['', [Validators.required, Validators.maxLength(10)]],
-      subject: ['', [Validators.required, Validators.maxLength(25)]],
-      message: ['', [Validators.required, Validators.maxLength(50)]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      subject: ['', [Validators.required]],
+      message: ['', [Validators.required, Validators.maxLength(250)]],
       option: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       response: ['', [Validators.required]],
