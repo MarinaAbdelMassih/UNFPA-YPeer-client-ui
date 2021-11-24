@@ -34,7 +34,7 @@ export const StoriesQuery = `{
 
 export const StoriesTagsQuery = (tagLabel: string) => {
   return `{
-  storiesListItemCollection(where: { tagLabel: "${tagLabel}"})
+  storiesListItemCollection(where: { tagLabel_contains: "${tagLabel}"})
   {
    items {
         id
@@ -98,7 +98,7 @@ export const StoriesYearsQuery = (year: number) => {
 export const StoriesYearsAndTagsQuery = (year: number, tagLabel: string) => {
   return `{
   storiesListItemCollection (where:{
-  AND: [ {year: ${year}}, {tagLabel: "${tagLabel}"} ]
+  AND: [ {year: ${year}}, {tagLabel_contains: "${tagLabel}"} ]
   })
   {
    items {
@@ -193,6 +193,43 @@ export const StoriesDetailsQuery = (id: number) => {
       nameAr
       label
     }
+  }
+}`;
+};
+
+export const searchStories = (skip: number, limit: number, searchWord: string) => {
+  return `{
+  storiesListItemCollection (skip: ${skip}, limit: ${limit}, order: id_ASC , where:{
+  OR: [
+    {labelEn_contains: "${searchWord}"},
+    {labelAr_contains: "${searchWord}"},
+    {titleEn_contains: "${searchWord}"},
+    {titleAr_contains: "${searchWord}"},
+    {descriptionEn_contains: "${searchWord}"},
+    {descriptionAr_contains: "${searchWord}"},
+    {tagLabel_contains: "${searchWord}"}
+    ]}
+    ){
+   items {
+        id
+        labelEn
+        labelAr
+        titleEn
+        titleAr
+        descriptionEn
+        descriptionAr
+       tagsListCollection{
+        items{
+          id
+          nameEn
+          nameAr
+        }
+      }
+        image {
+          url
+        }
+      }
+      total
   }
 }`;
 };

@@ -35,7 +35,7 @@ export const TrainingsQuery = `{
 
 export const TrainingsTagsQuery = (tagLabel: string) => {
   return `{
-  trainingsListItemCollection(where: { tagLabel: "${tagLabel}"})
+  trainingsListItemCollection(where: { tagLabel_contains: "${tagLabel}"})
   {
    items {
         id
@@ -101,7 +101,7 @@ export const TrainingsYearsQuery = (year: number) => {
 export const TrainingsYearsAndTagsQuery = (year: number, tagLabel: string) => {
   return `{
   trainingsListItemCollection (where:{
-  AND: [ {year: ${year}}, {tagLabel: "${tagLabel}"} ]
+  AND: [ {year: ${year}}, {tagLabel_contains: "${tagLabel}"} ]
   })
   {
    items {
@@ -198,6 +198,43 @@ export const TrainingsDetailsQuery = (id: number) => {
       nameAr
       label
     }
+  }
+}`;
+};
+
+export const searchTrainings = (skip: number, limit: number, searchWord: string) => {
+  return `{
+  trainingsListItemCollection (skip: ${skip}, limit: ${limit}, order: id_ASC , where:{
+  OR: [
+    {labelEn_contains: "${searchWord}"},
+    {labelAr_contains: "${searchWord}"},
+    {titleEn_contains: "${searchWord}"},
+    {titleAr_contains: "${searchWord}"},
+    {descriptionEn_contains: "${searchWord}"},
+    {descriptionAr_contains: "${searchWord}"},
+    {tagLabel_contains: "${searchWord}"}
+    ]}
+    ){
+   items {
+        id
+        labelEn
+        labelAr
+        titleEn
+        titleAr
+        descriptionEn
+        descriptionAr
+       tagsListCollection{
+        items{
+          id
+          nameEn
+          nameAr
+        }
+      }
+        image {
+          url
+        }
+      }
+      total
   }
 }`;
 };

@@ -35,7 +35,7 @@ export const NewsQuery = `{
 
 export const NewsTagsQuery = (tagLabel: string) => {
   return `{
-  newsListItemCollection(where: { tagLabel: "${tagLabel}"})
+  newsListItemCollection(where: { tagLabel_contains: "${tagLabel}"})
   {
    items {
         id
@@ -101,7 +101,7 @@ export const NewsYearsQuery = (year: number) => {
 export const NewsYearsAndTagsQuery = (year: number, tagLabel: string) => {
   return `{
   newsListItemCollection (where:{
-  AND: [ {year: ${year}}, {tagLabel: "${tagLabel}"} ]
+  AND: [ {year: ${year}}, {tagLabel_contains: "${tagLabel}"} ]
   })
   {
    items {
@@ -199,6 +199,43 @@ export const NewsDetailsQuery = (id: number) => {
       nameAr
       label
     }
+  }
+}`;
+};
+
+export const searchNews = (skip: number, limit: number, searchWord: string) => {
+  return `{
+  newsListItemCollection (skip: ${skip}, limit: ${limit}, order: id_ASC , where:{
+  OR: [
+    {labelEn_contains: "${searchWord}"},
+    {labelAr_contains: "${searchWord}"},
+    {titleEn_contains: "${searchWord}"},
+    {titleAr_contains: "${searchWord}"},
+    {descriptionEn_contains: "${searchWord}"},
+    {descriptionAr_contains: "${searchWord}"},
+    {tagLabel_contains: "${searchWord}"}
+    ]}
+    ){
+   items {
+        id
+        labelEn
+        labelAr
+        titleEn
+        titleAr
+        descriptionEn
+        descriptionAr
+       tagsListCollection{
+        items{
+          id
+          nameEn
+          nameAr
+        }
+      }
+        image {
+          url
+        }
+      }
+      total
   }
 }`;
 };

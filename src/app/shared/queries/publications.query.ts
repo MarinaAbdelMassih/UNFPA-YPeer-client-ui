@@ -35,7 +35,7 @@ export const PublicationsQuery = `{
 
 export const PublicationsTagsQuery = (tagLabel: string) => {
   return `{
-  publicationsListItemCollection(where: { tagLabel: "${tagLabel}"})
+  publicationsListItemCollection(where: { tagLabel_contains: "${tagLabel}"})
   {
    items {
         id
@@ -101,7 +101,7 @@ export const PublicationsYearsQuery = (year: number) => {
 export const PublicationsYearsAndTagsQuery = (year: number, tagLabel: string) => {
   return `{
   publicationsListItemCollection (where:{
-  AND: [ {year: ${year}}, {tagLabel: "${tagLabel}"} ]
+  AND: [ {year: ${year}}, {tagLabel_contains: "${tagLabel}"} ]
   })
   {
    items {
@@ -198,6 +198,43 @@ export const PublicationsDetailsQuery = (id: number) => {
       nameAr
       label
     }
+  }
+}`;
+};
+
+export const searchPublications = (skip: number, limit: number, searchWord: string) => {
+  return `{
+  publicationsListItemCollection (skip: ${skip}, limit: ${limit}, order: id_ASC , where:{
+  OR: [
+    {labelEn_contains: "${searchWord}"},
+    {labelAr_contains: "${searchWord}"},
+    {titleEn_contains: "${searchWord}"},
+    {titleAr_contains: "${searchWord}"},
+    {descriptionEn_contains: "${searchWord}"},
+    {descriptionAr_contains: "${searchWord}"},
+    {tagLabel_contains: "${searchWord}"}
+    ]}
+    ){
+   items {
+        id
+        labelEn
+        labelAr
+        titleEn
+        titleAr
+        descriptionEn
+        descriptionAr
+       tagsListCollection{
+        items{
+          id
+          nameEn
+          nameAr
+        }
+      }
+        image {
+          url
+        }
+      }
+      total
   }
 }`;
 };
