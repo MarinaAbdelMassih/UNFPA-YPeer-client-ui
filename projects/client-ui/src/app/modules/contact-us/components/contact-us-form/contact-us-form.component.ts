@@ -41,7 +41,6 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.checkLanguage();
-    this.contactForm.valueChanges.subscribe(console.log);
   }
 
   checkLanguage(): void {
@@ -51,8 +50,6 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
   }
 
   submitContactForm() {
-    console.log('value', this.contactForm.value);
-    console.log('value', this.contactForm.controls.title.value);
     this.contactUsUserData = {
       title: this.contactForm.controls.title.value,
       firstName: this.contactForm.controls.firstName.value,
@@ -62,19 +59,15 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
       option: this.contactForm.controls.option.value,
       email: this.contactForm.controls.email.value,
       response: this.contactForm.controls.response.value,
-      captchaToken : this.contactForm.controls.captcha.value
+      captchaToken : this.contactForm.controls.captchaToken.value
     };
-    this.contactUsService.contactUs(this.contactUsUserData).then(data => {
-      console.log('contactus', data);
-    });
+    this.contactUsService.contactUs(this.contactUsUserData).then();
   }
 
   changeOption(e) {
-    console.log(e.target.value);
   }
 
   changeResponse(e) {
-    console.log(e.target.value);
   }
 
   ngOnDestroy() {
