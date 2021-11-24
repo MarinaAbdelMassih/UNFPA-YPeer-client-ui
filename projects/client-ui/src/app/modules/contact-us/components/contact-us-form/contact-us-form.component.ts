@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {Subscription} from 'rxjs';
 import {ContactUsService} from '../../../../../../../../src/app/shared/services/contact-us.service';
 import {IContactUs} from '../../../../../../../../src/app/shared/models/contact-us-model';
+import {NameValidator} from "../NameValidator";
 
 @Component({
   selector: 'app-contact-us-form',
@@ -29,9 +30,9 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder, private languageService: LanguageService, private contactUsService: ContactUsService) {
     this.contactForm = this.fb.group({
       title: ['', [Validators.required]],
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      subject: ['', [Validators.required]],
+      firstName: ['', [Validators.required, NameValidator.noWhiteSpace]],
+      lastName: ['', [Validators.required, NameValidator.noWhiteSpace]],
+      subject: ['', [Validators.required, NameValidator.noWhiteSpace]],
       message: ['', [Validators.required, Validators.maxLength(250)]],
       option: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -60,7 +61,7 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
       option: this.contactForm.controls.option.value,
       email: this.contactForm.controls.email.value,
       response: this.contactForm.controls.response.value,
-      captchaToken : this.contactForm.controls.captchaToken.value
+      captchaToken: this.contactForm.controls.captchaToken.value
     };
     this.contactUsService.contactUs(this.contactUsUserData).then(() => {
       this.successMessageIsExist = true;
