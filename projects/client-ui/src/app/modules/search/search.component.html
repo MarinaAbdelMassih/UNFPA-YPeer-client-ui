@@ -1,0 +1,43 @@
+<div class="search">
+  <app-search-top-banner (searchClicked)="search($event, true)" [SearchType]="searchType"></app-search-top-banner>
+  <div *ngIf="total" class="search-container">
+    <div class="title-container">
+      <h3>
+        <span [translateLocal]="{EN: 'Search Results for:', AR: 'نتائج البحث ل:'}"></span>
+        <span> "{{searchWord}}"</span>
+      </h3>
+      <p>
+        <span class="result-number">{{total}}</span>
+        <span [translateLocal]="{EN: 'Results found', AR: 'نتائج'}"></span>
+      </p>
+    </div>
+    <div class="result">
+      <app-all-results *ngIf="!searchType"
+                       [allSearchResults]="allResultList"
+                       (showResultsByType)="searchType = $event">
+      </app-all-results>
+      <app-result-item *ngIf="searchType" [searchType]="searchType" [details]="resultList" [start]="0" [end]="2"></app-result-item>
+    </div>
+    <div class="load-more-container">
+      <button *ngIf="searchStarted && searchType && resultList.length < total" class="ypeer-btn btn-outlined"
+              [translateLocal]="{EN: 'Load More', AR: 'المزيد'}" (click)="search()"></button>
+    </div>
+<!--    <div class="pagination">-->
+<!--      <div (click)="first()" class="first-btn">First</div>-->
+<!--      <div (click)="prev()" class="prev-btn ">prev</div>-->
+
+<!--      <div class="number-btn" *ngFor="let pageNumber of pageNumbers; let i = index"-->
+<!--           (click)='changeNumber(pageNumber)'>-->
+<!--        <a [ngClass]="{'active':currentPage==pageNumber}" class="">-->
+<!--          {{pageNumber}}-->
+<!--        </a>-->
+<!--      </div>-->
+
+<!--      <div (click)="next()" class=" next-btn">Next</div>-->
+<!--      <div (click)="last()" class="last-btn ">Last</div>-->
+<!--    </div>-->
+<!--    <p class="pages-showing">Showing page 1 of 8 - Items 1 - 6 of 40</p>-->
+  </div>
+  <div class="no-result-container" *ngIf="total === 0 && searchStarted"
+       [translateLocal]="{EN: 'No result found', AR: 'لا توجد نتائج'}"></div>
+</div>

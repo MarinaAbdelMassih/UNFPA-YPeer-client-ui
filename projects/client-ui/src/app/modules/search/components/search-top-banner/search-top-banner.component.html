@@ -1,0 +1,47 @@
+<div class="search-top-banner">
+  <img src="assets/images/search-banner.png" alt="top-banner">
+  <div class="banner-text">
+    <p [translateLocal]="{EN:'Search',AR:'محرك البحث'}"></p>
+    <div class="header-search form-container">
+      <form>
+        <input (keyup.enter)="search()" [placeholder]="isArabic ? 'إبحث' : 'Search'" [(ngModel)]="searchField" ngModelOptions="{standalone:true}"
+               placeholder=""
+               type="text"
+               aria-label="Search"
+               name="searchWord"/>
+        <button type = 'button' (click)="search()">
+          <img src="assets/images/search-icon.png" alt="icon">
+        </button>
+      </form>
+    </div>
+    <div class="radio-btn-container">
+    <mat-radio-group (change)="search()"  [formControl]="searchType" aria-label="Select an option">
+      <mat-radio-button [checked]="true" [labelPosition]="'before'" value="" class="first">
+        <span [translateLocal]="{EN: 'All', AR:'الكل'}"></span>
+      </mat-radio-button>
+      <mat-radio-button [labelPosition]="'before'" value="newsListItem">
+        <span [translateLocal]="{EN: 'News', AR:'الاخبار'}"></span>
+      </mat-radio-button>
+      <mat-radio-button [labelPosition]="'before'" value="eventsListItem">
+        <span [translateLocal]="{EN: 'Events', AR:'الاحداث'}"></span>
+      </mat-radio-button>
+      <mat-radio-button [labelPosition]="'before'" value="storiesListItem">
+        <span [translateLocal]="{EN: 'Stories', AR:'القصص'}"></span>
+      </mat-radio-button>
+      <mat-radio-button [labelPosition]="'before'" value="publicationsListItem">
+        <span [translateLocal]="{EN: 'Publications', AR:'المنشورات'}"></span>
+      </mat-radio-button>
+      <mat-radio-button [labelPosition]="'before'" value="trainingsListItem">
+        <span [translateLocal]="{EN: 'Training Manuals', AR:'دليل التدريب'}"></span>
+      </mat-radio-button>
+    </mat-radio-group>
+    </div>
+  </div>
+</div>
+
+<!--<mat-radio-button value="1" class="first" [translateLocal]="{EN:'All',AR:'الجميع'}"></mat-radio-button>-->
+<!--<mat-radio-button value="2" [translateLocal]="{EN:'News',AR:'أخبار'}"></mat-radio-button>-->
+<!--<mat-radio-button value="3" [translateLocal]="{EN:'Events',AR:'الأحداث'}"></mat-radio-button>-->
+<!--<mat-radio-button value="4" [translateLocal]="{EN:'Stories',AR:'القصص'}"></mat-radio-button>-->
+<!--<mat-radio-button value="5" [translateLocal]="{EN:'Publications',AR:'المنشورات'}"></mat-radio-button>-->
+<!--<mat-radio-button value="6" [translateLocal]="{EN:'Training Manuals',AR:'كتيبات التدريب'}"></mat-radio-button>-->

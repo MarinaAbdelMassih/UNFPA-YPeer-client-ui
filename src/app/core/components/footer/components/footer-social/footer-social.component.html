@@ -1,16 +1,16 @@
 <div class="logos-container">
-  <a href="https://www.facebook.com/YPeerEgypt/" target="_blank">
+  <a [href]="facebook? facebook :'https://www.facebook.com/YPeerEgypt/'" target="_blank">
     <img src="assets/images/icons/FB-icon-grey.png" alt="fb-icon">
   </a>
-  <a href="https://twitter.com/YPEER_EGYPT" target="_blank">
+  <a [href]="twitter ? twitter :'https://twitter.com/YPEER_EGYPT'" target="_blank">
     <img src="assets/images/icons/twitter-icon-grey.png" alt="twitter-icon">
   </a>
-  <a href="https://www.instagram.com/ypeeregypt/" target="_blank">
+  <a [href]="instagram ? instagram: 'https://www.instagram.com/ypeeregypt/'" target="_blank">
   <img src="assets/images/icons/instagram-icon-grey.png" alt="instagram-icon">
   </a>
-  <a href="https://www.linkedin.com/in/y-peer-egypt" target="_blank">
-  <img src="assets/images/icons/youtube-icon-grey.png" alt="youtube-icon">
-  </a>
+<!--  <a [href]=" https://www.linkedin.com/in/y-peer-egypt" target="_blank">-->
+<!--  <img src="assets/images/icons/youtube-icon-grey.png" alt="youtube-icon">-->
+<!--  </a>-->
   <a href="" target="_blank" *ngIf="show">
     <img src="assets/images/icons/wats.jpg" alt="whatsapp-icon">
   </a>

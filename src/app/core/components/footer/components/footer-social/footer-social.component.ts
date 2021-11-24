@@ -6,7 +6,10 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./footer-social.component.scss']
 })
 export class FooterSocialComponent implements OnInit {
-  @Input() show ?= false;
+  @Input() show ? = false;
+  @Input() facebook: string;
+  @Input() twitter: string;
+  @Input() instagram: string;
 
   constructor() {
   }

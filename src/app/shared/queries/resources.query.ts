@@ -32,7 +32,7 @@ export const ResourcesQuery = `{
 
 export const ResourcesTagsQuery = (tagLabel: string) => {
   return `{
-  resourcesListItemCollection(where: { tagLabel: "${tagLabel}"})
+  resourcesListItemCollection(where: { tagLabel_contains: "${tagLabel}"})
   {
    items {
         id
@@ -102,7 +102,7 @@ export const ResourcesYearsQuery = (year: number) => {
 export const ResourcesYearsAndTagsQuery = (year: number, tagLabel: string) => {
   return `{
   resourcesListItemCollection (where:{
-  AND: [ {year: ${year}}, {tagLabel: "${tagLabel}"} ]
+  AND: [ {year: ${year}}, {tagLabel_contains: "${tagLabel}"} ]
   })
   {
    items {

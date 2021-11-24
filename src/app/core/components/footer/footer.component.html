@@ -10,13 +10,16 @@
     <div class="middle-section footer-inner-section">
       <p>
         <strong [translateLocal]="{EN: 'Y-PEER ', AR: 'لوريم ايبسوم '}"></strong>
-        <span [translateLocal]="{EN: 'is a groundbreaking and comprehensive network of more than 500 non-profit organizations and governmental institutions; its membership includes thousands of young people who work in the many areas surrounding sexual and reproductive health.', AR: 'دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور.'}"></span>
+        <span
+          [translateLocal]="{EN: 'is a groundbreaking and comprehensive network of more than 500 non-profit organizations and governmental institutions; its membership includes thousands of young people who work in the many areas surrounding sexual and reproductive health.', AR: 'دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور.'}"></span>
       </p>
     </div>
     <div class="right-section footer-inner-section">
-      <img src="assets/images/footer-logo.png" alt="footer-logo" [routerLink]="">
+      <a href="https://egypt.unfpa.org/en">
+        <img src="assets/images/footer-logo.png" alt="footer-logo" [routerLink]="">
+      </a>
       <h6 [translateLocal]="{EN: 'Follow UNFPA', AR: 'تابع UNFPA '}"></h6>
-      <app-footer-social></app-footer-social>
+      <app-footer-social [facebook]="'https://www.facebook.com/UnfpaEgypt'" [instagram]="'https://www.instagram.com/unfpaegypt/'" [twitter]="'https://twitter.com/UnfpaEgypt'"></app-footer-social>
     </div>
   </div>
 </footer>
