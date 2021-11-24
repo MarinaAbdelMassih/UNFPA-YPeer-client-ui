@@ -36,10 +36,10 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
               private courseViewerDataService: CourseViewerDataService,
               private location: Location, private quizService: QuizService) {
     quizService.examIsFinished.subscribe(showResult => this.showResult = showResult);
-    // this.matIconRegistry.addSvgIcon(
-    //   `viewer_interactive`,
-    //   this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/interactive-icon.svg`)
-    // );
+    this.matIconRegistry.addSvgIcon(
+      `viewer_interactive`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/interactive-icon.svg`)
+    );
     // this.matIconRegistry.addSvgIcon(
     //   `viewer_video`,
     //   this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/video-icon.svg`)
