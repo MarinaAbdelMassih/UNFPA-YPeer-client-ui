@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {Subscription} from 'rxjs';
+import {ContactUsService} from '../../../../../../../../src/app/shared/services/contact-us.service';
+import {IContactUs} from '../../../../../../../../src/app/shared/models/contact-us-model';
 
 @Component({
   selector: 'app-contact-us-form',
@@ -9,37 +11,37 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./contact-us-form.component.scss']
 })
 export class ContactUsFormComponent implements OnInit, OnDestroy {
-  options = [{value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}];
+  options = [
+    {nameAr: 'اوبشن1', nameEn: 'option1'},
+    {nameAr: 'اوبشن2', nameEn: 'option2'}
+  ];
   titles = [
-    {name: 'Dog', sound: 'Dog!'},
-    {name: 'Cat', sound: 'Cat!'},
-    {name: 'Cow', sound: 'Cow!'},
-    {name: 'Fox', sound: 'Fox!'},
+    {nameAr: 'دكتور', nameEn: 'Dr'},
+    {nameAr: 'مهندس', nameEn: 'mohnds'}
   ];
   contactForm: FormGroup;
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   isArabic: boolean;
   subscription: Subscription;
+  contactUsUserData: IContactUs;
+  successMessageIsExist: boolean;
 
-  constructor(private fb: FormBuilder, private languageService: LanguageService) {
+  constructor(private fb: FormBuilder, private languageService: LanguageService, private contactUsService: ContactUsService) {
+    this.contactForm = this.fb.group({
+      title: ['', [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      subject: ['', [Validators.required]],
+      message: ['', [Validators.required, Validators.maxLength(250)]],
+      option: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      response: ['', [Validators.required]],
+      captchaToken: ['', [Validators.required]],
+    });
   }
 
   ngOnInit() {
     this.checkLanguage();
-
-    this.contactForm = this.fb.group({
-      titles: ['', [Validators.required]],
-      fName: ['', [Validators.required, Validators.maxLength(10)]],
-      lName: ['', [Validators.required, Validators.maxLength(10)]],
-      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
-      subject: ['', [Validators.required, Validators.maxLength(25)]],
-      options: ['', [Validators.required]],
-      massage: ['', [Validators.required, Validators.maxLength(50)]],
-      response: ['', [Validators.required]],
-      robotOr: ['', [Validators.required]],
-    });
   }
 
   checkLanguage(): void {
@@ -49,15 +51,27 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
   }
 
   submitContactForm() {
-    console.log('value', this.contactForm);
+    this.contactUsUserData = {
+      title: this.contactForm.controls.title.value,
+      firstName: this.contactForm.controls.firstName.value,
+      lastName: this.contactForm.controls.lastName.value,
+      subject: this.contactForm.controls.subject.value,
+      message: this.contactForm.controls.message.value,
+      option: this.contactForm.controls.option.value,
+      email: this.contactForm.controls.email.value,
+      response: this.contactForm.controls.response.value,
+      captchaToken : this.contactForm.controls.captchaToken.value
+    };
+    this.contactUsService.contactUs(this.contactUsUserData).then(() => {
+      this.successMessageIsExist = true;
+      setTimeout(() => this.successMessageIsExist = false, 5000);
+    });
   }
 
   changeOption(e) {
-    console.log(e.target.value);
   }
 
   changeResponse(e) {
-    console.log(e.target.value);
   }
 
   ngOnDestroy() {
