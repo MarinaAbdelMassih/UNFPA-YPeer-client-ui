@@ -8,6 +8,11 @@
             {{isArabic ? title.nameAr :title.nameEn}}
           </mat-option>
         </mat-select>
+        <div class="error-label">
+          <div class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
+               *ngIf="contactForm.get('title').touched && contactForm.get('title').errors?.required">
+          </div>
+        </div>
       </div>
       <div class="input-container w-40">
         <input matInput class="input-fName" type="text" name="fName" formControlName="firstName"
@@ -16,9 +21,6 @@
         <div class="error-label">
           <div class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
                *ngIf="contactForm.get('firstName').touched && contactForm.get('firstName').errors?.required">
-          </div>
-          <div class="text-danger" [translateLocal]="{AR: 'الاسم الأول خاطئ',EN: 'Invalid First Name'}"
-               *ngIf="contactForm.get('firstName').hasError('pattern')">
           </div>
         </div>
       </div>
@@ -46,7 +48,7 @@
                 *ngIf="contactForm.get('email').touched && contactForm.get('email').errors?.required">
           </span>
       <div class="text-danger" [translateLocal]="{AR: 'البريد الالكتروني  خاطئ',EN: 'Invalid Email'}"
-           *ngIf="contactForm.get('email').touched && contactForm.get('email').errors?.email">
+           *ngIf="contactForm.get('email').touched && contactForm.get('email').hasError('pattern')">
       </div>
     </div>
     <div class="input-container">
@@ -68,6 +70,11 @@
           {{isArabic ? item.nameAr :item.nameEn}}
         </mat-option>
       </mat-select>
+      <div class="error-label">
+        <div class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
+             *ngIf="contactForm.get('option').touched && contactForm.get('option').errors?.required">
+        </div>
+      </div>
     </div>
     <div class="input-container">
       <textarea matInput type="text" name="massage" formControlName="message"
@@ -76,6 +83,8 @@
       <div class="error-label">
         <span class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
               *ngIf="contactForm.get('message').touched && contactForm.get('message').errors?.required">
+        </span> <span class="text-danger" [translateLocal]="{AR: 'يجب الا يزيد موضوع الرساله عن 512 حرف',EN: 'The subject of the message should not exceed 512 characters'}"
+              *ngIf="contactForm.get('message').touched && contactForm.get('message').errors?.maxlength">
         </span>
       </div>
     </div>
@@ -89,6 +98,11 @@
           <p [translateLocal]="{EN: 'No', AR: 'لا'}"></p>
         </mat-radio-button>
       </mat-radio-group>
+      <div class="error-label">
+        <div class="text-danger" [translateLocal]="{AR: 'الحقل مطلوب',EN: 'Field is require'}"
+             *ngIf="contactForm.get('response').touched && contactForm.get('response').errors?.required">
+        </div>
+      </div>
     </div>
 
     <h5 [translateLocal]="{EN: '* All fields are required', AR: '* كل البيانات إجبارية'}"></h5>
