@@ -23,6 +23,15 @@ export class SignInService {
     });
   }
 
+  refreshToken(): Promise<any> {
+    return this.customHttpClient.sendBackendRequest({
+      endpoint: 'auth/refreshToken',
+      sender: 'app',
+      receiver: 'refreshToken',
+      body: {refreshToken: localStorage.getItem('refresh-token')}
+    });
+  }
+
   saveUserAuth(userData): void {
     let authBase64 = Base64.stringify(Utf8.parse(JSON.stringify(userData.auth)));
     localStorage.setItem('auth', authBase64);
@@ -57,6 +66,18 @@ export class SignInService {
     });
   }
 
+  rememberMe() {
+    if (localStorage.getItem('remember-me') == 'true') {
+      this.refreshToken().then((data => {
+        this.saveUserAuth(data.data);
+        this.userInfo.next(data.data);
+        return true;
+      }))
+    }
+    else {
+      return false;
+    }
+  }
   userAuthorized(): Promise<any> {
     return new Promise<any>((resolve) => {
       let uuid = localStorage.getItem('uuid');
@@ -67,12 +88,22 @@ export class SignInService {
           if (userData.valid) {
             resolve(userData);
           } else {
+            if (this.rememberMe()) {
+              resolve(true)
+            }
+            else {
+              this.logout();
+              resolve(null);
+            }
+          }
+        }).catch(() => {
+          if (this.rememberMe()) {
+            resolve(true)
+          }
+          else {
             this.logout();
             resolve(null);
           }
-        }).catch(() => {
-          this.logout();
-          resolve(null);
         })
       } else {
         resolve(null);

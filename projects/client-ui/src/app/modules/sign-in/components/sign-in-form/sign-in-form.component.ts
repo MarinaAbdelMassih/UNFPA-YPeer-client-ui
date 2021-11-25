@@ -26,13 +26,10 @@ export class SignInFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.checkLanguage();
-    const userData = JSON.parse(localStorage.getItem('userData'));
-    console.log(userData);
-    this.isChecked = localStorage.getItem('remember-me') == 'false';
+    this.isChecked = localStorage.getItem('remember-me') == 'true';
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       password: ['', [Validators.required]],
-      // rememberMe: ['', [Validators.required]],
     });
   }
 
@@ -47,11 +44,6 @@ export class SignInFormComponent implements OnInit, OnDestroy {
           this.signInService.userInfo.next(signInData.data);
           this.signInService.saveUserAuth(signInData.data);
           this.router.navigate(['/home']);
-          if (localStorage.getItem('remember-me') == 'true') {
-            localStorage.setItem('refresh-token', signInData.data.refreshToken);
-          } else {
-            localStorage.setItem('user-token', signInData.data.accessToken);
-          }
         } else {
           this.errorMsg = signInData.error.message;
         }
