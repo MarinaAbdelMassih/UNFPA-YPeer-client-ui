@@ -1,5 +1,6 @@
 export class User {
-  userId?: number;
+  userId ?: number;
   firstName: string;
   status: number;
+  valid?: boolean;
 }

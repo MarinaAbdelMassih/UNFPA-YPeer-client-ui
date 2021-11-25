@@ -23,7 +23,8 @@ export class NoAuthGuard implements CanActivate, CanLoad {
     return new Promise<boolean>(resolve => {
       let uuid = localStorage.getItem('uuid');
       let token = localStorage.getItem('user-token');
-      if (uuid && token) {
+      let auth = localStorage.getItem('auth');
+      if (uuid && token && auth) {
         resolve(false);
         this.router.navigate(['/home']);
       } else {

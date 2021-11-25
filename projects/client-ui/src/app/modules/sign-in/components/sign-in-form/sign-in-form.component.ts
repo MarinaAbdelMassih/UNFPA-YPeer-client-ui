@@ -45,8 +45,7 @@ export class SignInFormComponent implements OnInit, OnDestroy {
     this.signInService.signIn(this.signInUserData).then((signInData: any) => {
         if (signInData.success) {
           this.signInService.userInfo.next(signInData.data);
-          localStorage.setItem('uuid', signInData.data.uuid);
-          localStorage.setItem('user-token', signInData.data.accessToken);
+          this.signInService.saveUserAuth(signInData.data);
           this.router.navigate(['/home']);
           if (localStorage.getItem('remember-me') == 'true') {
             localStorage.setItem('refresh-token', signInData.data.refreshToken);
