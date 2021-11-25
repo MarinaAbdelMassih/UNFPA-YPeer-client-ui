@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate, CanLoad {
         resolve(true);
       else {
         this.signInService.userAuthorized().then((userData => {
-            if (userData.valid) {
+            if (userData && userData.valid) {
               resolve(true);
             } else {
               this.router.navigate(['/signIn']);

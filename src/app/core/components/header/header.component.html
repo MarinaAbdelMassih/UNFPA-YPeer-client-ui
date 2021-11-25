@@ -94,6 +94,12 @@
         <a [routerLink]="'/profile'" *ngIf="userName">
           <button class="ypeer-btn btn-full-color"> {{userName}} </button>
         </a>
+        <a *ngIf="userName && !isIPad" (click)="logout()">
+          <button class="ypeer-btn btn-outlined" [translateLocal]="{AR: 'الخروخ', EN: 'Logout'}">  </button>
+        </a>
+        <a class="logout-icon" title="logout" *ngIf="userName && isIPad" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
       </li>
     </ul>
   </div>
