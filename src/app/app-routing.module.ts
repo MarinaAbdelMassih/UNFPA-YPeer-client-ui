@@ -159,6 +159,11 @@ const routes: Routes = [
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/faqs/faqs.module').then(mod => mod.FaqsModule),
   },
+  {
+    path: 'terms',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/terms-of-use/terms-of-use.module').then(mod => mod.TermsOfUseModule),
+  },
 ];
 
 @NgModule({
