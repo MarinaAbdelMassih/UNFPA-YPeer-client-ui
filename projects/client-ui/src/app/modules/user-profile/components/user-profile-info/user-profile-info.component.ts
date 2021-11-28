@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
@@ -13,7 +13,6 @@ import * as _moment from 'moment';
 
 // @ts-ignore
 import {default as _rollupMoment} from 'moment';
-import {SignInService} from "../../../../../../../../src/app/shared/services/sign-in.service";
 
 const moment = _rollupMoment || _moment;
 
@@ -39,19 +38,15 @@ export const MY_FORMATS = {
   ],
 })
 export class UserProfileInfoComponent implements OnInit, OnDestroy {
+
+  @Input() userInfo: IUserInfo;
   userProfileForm: FormGroup;
   isArabic: boolean;
   subscription: Subscription;
-  // gender = ['male', 'female'];
   gender;
   education;
-  // education = ['primary', 'secondary'];
-  // days = [1, 2, 3, 4, 5];
-  // months = ['jan', 'feb', 'mar'];
-  // years = [2020, 2021];
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   phonePattern = '^[0-9]{11}$';
-  userInfo: IUserInfo;
   updateDataInfo: any;
   userId;
   uuid;
@@ -73,7 +68,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   readonlyField;
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService,
-              private imageService: ImageService, private signInService: SignInService) {
+              private imageService: ImageService) {
     this.tomorrow.setDate(this.tomorrow.getDate() + 1);
     this.userProfileForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.maxLength(10)]),
@@ -88,14 +83,11 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.signInService.userInfo.subscribe((userData) => {
-      if (userData)
-        this.userId = userData.userId;
-    });
+    this.userId = this.userInfo.id;
     this.uuid = localStorage.getItem('uuid');
 
     this.checkLanguage();
-    this.getUserInfoById();
+    this.populateFormData();
     this.myProfileService.getGenders().then(data => {
       this.gender = data;
     });
@@ -105,9 +97,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     this.image = this.imageService.getHashedImage(this.imageName);
   }
 
-  getUserInfoById() {
-    this.myProfileService.getUserInfo(this.userId).then(data => {
-      this.userInfo = data;
+  populateFormData() {
       this.readonlyField = true;
       this.userProfileForm.setValue({
         firstName: this.userInfo.firstName,
@@ -119,7 +109,6 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
         genderId: this.userInfo.genderId,
         occupation: this.userInfo.occupation
       });
-    });
   }
 
   submitUserProfileForm() {
