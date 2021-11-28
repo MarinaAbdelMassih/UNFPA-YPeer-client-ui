@@ -40,8 +40,8 @@ export const MY_FORMATS = {
 export class UserProfileInfoComponent implements OnInit, OnDestroy {
 
   @Input() userInfo: IUserInfo;
+  @Input() isArabic: boolean;
   userProfileForm: FormGroup;
-  isArabic: boolean;
   subscription: Subscription;
   gender;
   education;
@@ -84,9 +84,6 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userId = this.userInfo.id;
-    this.uuid = localStorage.getItem('uuid');
-
-    this.checkLanguage();
     this.populateFormData();
     this.myProfileService.getGenders().then(data => {
       this.gender = data;
@@ -112,6 +109,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   }
 
   submitUserProfileForm() {
+    debugger
     console.log('value', this.userProfileForm.value);
     this.birthday = this.userProfileForm.controls.birthDate.value;
     const latestDate = this.datepipe.transform(this.birthday, 'yyyy-MM-dd');
@@ -131,12 +129,6 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     this.myProfileService.updateUserInfo(this.updateDataInfo).then(() => {
       this.successMessage = {EN: 'Your information has been updated successfully', AR: 'لقد تم تعديل بياناتك بنجاح'};
       setTimeout(() => {this.successMessage = null}, 5000);
-    });
-  }
-
-  checkLanguage(): void {
-    this.subscription = this.languageService.isArabic.subscribe((isArabic: boolean) => {
-      this.isArabic = isArabic;
     });
   }
 
