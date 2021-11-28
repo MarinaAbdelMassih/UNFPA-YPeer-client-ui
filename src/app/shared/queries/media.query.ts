@@ -31,7 +31,7 @@ export const MediaQuery = `{
 
 export const MediaTagsQuery = (tagLabel: string) => {
   return `{
-  mediaListCollection(where: { tagLabel: "${tagLabel}"})
+  mediaListCollection(where: { tagLabel_contains: "${tagLabel}"})
   {
    items {
         id
@@ -95,7 +95,7 @@ export const MediaYearsQuery = (year: number) => {
 export const MediaYearsAndTagsQuery = (year: number, tagLabel: string) => {
   return `{
   mediaListCollection (where:{
-  AND: [ {year: ${year}}, {tagLabel: "${tagLabel}"} ]
+  AND: [ {year: ${year}}, {tagLabel_contains: "${tagLabel}"} ]
   })
   {
    items {

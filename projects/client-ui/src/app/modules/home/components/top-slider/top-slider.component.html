@@ -17,8 +17,8 @@
           </div>
         </div>
       </div>
-      <button class="slider-button btn-next" (click)="next()"><img src="assets/images/icons/arrow-right.png" alt="arrow-right"></button>
-      <button class="slider-button btn-prev" (click)="prev()"><img src="assets/images/icons/arrow-left.png" alt="arrow-left"></button>
+      <button class="slider-button btn-next" (click)="next()"><img [deploySrc]="'assets/images/icons/arrow-right.png'" alt="arrow-right"></button>
+      <button class="slider-button btn-prev" (click)="prev()"><img [deploySrc]="'assets/images/icons/arrow-left.png'" alt="arrow-left"></button>
     </div>
   </div>
 </ngx-slick-carousel>

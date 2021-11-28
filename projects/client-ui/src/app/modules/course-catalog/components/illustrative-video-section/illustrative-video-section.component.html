@@ -2,7 +2,7 @@
   <div class="media-container">
     <img [src]="illustrativeData.image" alt="video-image" class="media-image" *ngIf="!videoPlayed">
     <div class="overlay" (click)="playTheVideo(true)">
-        <img src="assets/images/icons/play-arrow.png" alt="play-icon" class="play-icon">
+        <img [deploySrc]="'assets/images/icons/play-arrow.png'" alt="play-icon" class="play-icon">
     </div>
     <div class="embed-responsive embed-responsive-16by9" *ngIf="videoPlayed">
       <iframe allowfullscreen="" [src]="illustrativeData.introductoryVideo | safe"></iframe>

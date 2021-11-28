@@ -1,0 +1,10 @@
+<div *ngFor="let model of allSearchResults">
+  <app-search-results-swiper [title]="models[model.modelType].title"
+                             [cardDetails]="model.items"
+                             [searchType]="models[model.modelType].searchType">
+  </app-search-results-swiper>
+  <div class="load-more-results" *ngIf="model.items.length < model.total" (click)="loadResultsByType(model.modelType)">
+    <span [translateLocal]="{EN: 'Load More ...', AR : 'المزيد من النتائج ...'}"></span>
+  </div>
+</div>
+

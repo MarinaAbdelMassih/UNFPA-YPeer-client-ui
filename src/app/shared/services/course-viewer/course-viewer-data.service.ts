@@ -61,7 +61,8 @@ export class CourseViewerDataService {
           sender: 'view',
           receiver: 'progress',
           endpoint: 'user/progress',
-          body: progress
+          body: progress,
+          headers: true
         }).then((data) => {
           resolve(data);
         }).catch(() => {

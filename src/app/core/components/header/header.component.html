@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" [routerLink]="'/home'">
-    <img src="assets/images/ypeer-logo-header.png" alt="">
+    <img [deploySrc]="'assets/images/ypeer-logo-header.png'" alt="">
   </a>
   <button class="navbar-toggler"
           type="button"
@@ -75,7 +75,9 @@
            [translateLocal]="{AR: 'اتصل بنا', EN: 'contact'}"></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" [routerLink]="'/search'"
+           routerLinkActive="active-link"
+           [routerLinkActiveOptions]="{exact: true}">
           <i class="search-icon fa fa-search"></i>
         </a>
       </li>
@@ -85,12 +87,18 @@
         </a>
       </li>
       <li class="nav-item">
-        <a [routerLink]="'/signIn'" *ngIf="!loginName">
+        <a [routerLink]="'/signIn'" *ngIf="!userName">
           <button class="ypeer-btn btn-full-color"  [translateLocal]="{AR: 'اشترك معنا', EN: 'Join Us'}">
           </button>
         </a>
-        <a [routerLink]="'/profile'" *ngIf="loginName">
-          <button class="ypeer-btn btn-full-color"> {{loginName}} </button>
+        <a [routerLink]="'/profile'" *ngIf="userName">
+          <button class="ypeer-btn btn-full-color"> {{userName}} </button>
+        </a>
+        <a *ngIf="userName && !isIPad" (click)="logout()">
+          <button class="ypeer-btn btn-outlined" [translateLocal]="{AR: 'الخروخ', EN: 'Logout'}">  </button>
+        </a>
+        <a class="logout-icon" title="logout" *ngIf="userName && isIPad" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i>
         </a>
       </li>
     </ul>

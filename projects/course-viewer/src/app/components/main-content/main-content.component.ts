@@ -1,8 +1,13 @@
 import {
   AfterViewInit,
   Component,
-  ComponentFactoryResolver, ComponentRef, EventEmitter, Input,
-  OnDestroy, Output, Type,
+  ComponentFactoryResolver,
+  ComponentRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+  Type,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -17,6 +22,8 @@ import {Subscription} from "rxjs";
 import {LanguageService} from "../../../../../../src/app/shared/services/language.service";
 import {delay} from "rxjs/operators";
 import {QuizComponent} from "./quiz/quiz.component";
+import {HtmlComponent} from "./html/html.component";
+import {SignInService} from "../../../../../../src/app/shared/services/sign-in.service";
 
 
 @Component({
@@ -35,15 +42,17 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
   @Input() videosCount: number;
   @Input() courseProgress: number;
   @Output() userProgress: EventEmitter<number> = new EventEmitter();
+  userId: number;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private learnerSectionDataService: LearnerSectionsDataService,
               private curriculumControl: CurriculumControlService,
               private courseViewerDataService: CourseViewerDataService, private langService: LanguageService,
-              private componentsControlsService: SideComponentsControlsService) {
+              private componentsControlsService: SideComponentsControlsService, private signInService: SignInService) {
     this.isArabic = this.langService.getIsArabic();
   }
 
   ngOnInit() {
+    this.signInService.userInfo.getValue() ? this.userId = this.signInService.userInfo.getValue().userId: null;
   }
 
   ngAfterViewInit(): void {
@@ -64,7 +73,7 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
             if (stuff.type == StuffType.VIDEO) {
               this.createComponent(VideoComponent);
               (<VideoComponent>this.currentComponent.instance).video = stuff;
-              (<VideoComponent>this.currentComponent.instance).userId = 1111;
+              (<VideoComponent>this.currentComponent.instance).userId = this.userId;
               (<VideoComponent>this.currentComponent.instance).videosCount = this.videosCount;
               (<VideoComponent>this.currentComponent.instance).userProgress
                 .subscribe(progress => this.userProgress.emit(progress))
@@ -74,6 +83,11 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
               this.createComponent(QuizComponent);
               (<QuizComponent>this.currentComponent.instance).quiz = stuff;
               (<QuizComponent>this.currentComponent.instance).disabled = this.courseProgress < 90;
+            }
+            else if (stuff.type == StuffType.INTERACTIVE) {
+              this.createComponent(HtmlComponent);
+              (<HtmlComponent>this.currentComponent.instance).html = stuff;
+              this.setUserProgress(stuff, this.userId);
             }
             // else if (stuff.type == StuffType.MATERIAL) {
             //   this.setUserProgress(stuff);

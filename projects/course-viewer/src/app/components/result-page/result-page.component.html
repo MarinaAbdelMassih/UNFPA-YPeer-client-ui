@@ -1,5 +1,5 @@
 <div class="page-container" *ngIf="score >= 75 && numberOfTrials <= 3">
-  <img src="assets/images/icons/check-icon.png" alt="">
+  <img [deploySrc]="'assets/images/icons/check-icon.png'" alt="">
   <div class="title" [translateLocal]="{EN: 'Congratulations',AR: 'تهانينا'}"></div>
   <div class="msg">
     <span [translateLocal]="{EN: 'You have completed the introductory course successfully.\n'+
@@ -10,7 +10,7 @@
 </div>
 
 <div class="page-container" *ngIf="score < 75 && numberOfTrials <= 2">
-  <img src="assets/images/icons/Path 85.png" alt="">
+  <img [deploySrc]="'assets/images/icons/Path 85.png'" alt="">
   <div class="title" [translateLocal]="{EN: 'Sorry!',AR: 'عفواً'}"></div>
   <div class="msg">
     <span [translateLocal]="{EN: 'You scored',AR: 'نتيجتك'}"></span>
@@ -25,7 +25,7 @@
 </div>
 
 <div class="page-container" *ngIf="score < 75 && numberOfTrials == 3">
-  <img src="assets/images/icons/Path 85.png" alt="">
+  <img [deploySrc]="'assets/images/icons/Path 85.png'" alt="">
   <div class="title" [translateLocal]="{EN: 'Sorry!',AR: 'عفواً'}"></div>
   <div class="msg">
     <div class="separated-msg" [translateLocal]="{EN: 'You cannot retake the assessment anymore. You are run out of tries.', AR: 'لم تعد تستطيع إعادة الامتحان. لقد نفذت محاولاتك.'}"></div>

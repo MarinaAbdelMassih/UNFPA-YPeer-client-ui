@@ -10,6 +10,7 @@ import {LanguageService} from "../../../../src/app/shared/services/language.serv
 import {Location} from "@angular/common";
 import {ILocalPosition} from "../../../../src/app/shared/models/course-viewer/common-data.model";
 import {QuizService} from "../../../../src/app/shared/services/quiz.service";
+import {SignInService} from "../../../../src/app/shared/services/sign-in.service";
 
 @Component({
   selector: 'course-viewer',
@@ -27,6 +28,7 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
   showResult: boolean;
   courseProgress = 0;
   videosCount: number;
+  userId: number;
 
 
   // private studentService: StudentService, private subjectService: SubjectService
@@ -34,12 +36,13 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
               private learnerSectionService: LearnerSectionsDataService, private route: ActivatedRoute,
               private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer,
               private courseViewerDataService: CourseViewerDataService,
-              private location: Location, private quizService: QuizService) {
+              private location: Location, private quizService: QuizService,
+              private signInService: SignInService) {
     quizService.examIsFinished.subscribe(showResult => this.showResult = showResult);
-    // this.matIconRegistry.addSvgIcon(
-    //   `viewer_interactive`,
-    //   this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/interactive-icon.svg`)
-    // );
+    this.matIconRegistry.addSvgIcon(
+      `viewer_interactive`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/interactive-icon.svg`)
+    );
     // this.matIconRegistry.addSvgIcon(
     //   `viewer_video`,
     //   this.domSanitizer.bypassSecurityTrustResourceUrl(`${environment.deployUrl}/assets/images/video-icon.svg`)
@@ -64,10 +67,11 @@ export class CourseViewerComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit() {
+    this.signInService.userInfo.getValue() ? this.userId = this.signInService.userInfo.getValue().userId: null;
     let paramsSub = this.route.params.subscribe((params) => {
       if (params.courseId) {
         this.courseId = params.courseId;
-        this.learnerSectionService.setLearnerSections(this.courseId, true, 1111).then((data) => {
+        this.learnerSectionService.setLearnerSections(this.courseId, true, this.userId).then((data) => {
           this.videosCount = data.course.videosCount;
           this.courseProgress = data.course.progress;
           this.learnerSectionService.learnerSections.next(data.sections);

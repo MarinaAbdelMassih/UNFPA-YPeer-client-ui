@@ -26,41 +26,24 @@ export class SignInFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.checkLanguage();
-    const userData = JSON.parse(localStorage.getItem('userData'));
-    console.log(userData);
-    this.isChecked = localStorage.getItem('remember-me') == 'false';
+    this.isChecked = localStorage.getItem('remember-me') == 'true';
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       password: ['', [Validators.required]],
-      // rememberMe: ['', [Validators.required]],
     });
   }
 
   submitSignInForm() {
-    console.log('value', this.signInForm.value);
     this.signInUserData = {
       username: this.signInForm.controls.email.value,
       password: this.signInForm.controls.password.value,
       authType: 'ALMENTOR',
     };
     this.signInService.signIn(this.signInUserData).then((signInData: any) => {
-        localStorage.setItem('id', signInData.data.userId);
-        localStorage.setItem('uuid', signInData.data.uuid);
         if (signInData.success) {
-          console.log('status', signInData.data.status);
-          localStorage.setItem('username', signInData.data.firstName);
-          this.router.navigate(['/home']).then(() => window.location.reload());
-          // if (signInData.data.status == 1) {
-          //   this.router.navigate(['/WelcomeScreenApproved']);
-          // } else if (signInData.data.status == 2) {
-          //   this.router.navigate(['/WelcomeScreenPending']);
-          // }
-          console.log('signin', signInData.data);
-          if (localStorage.getItem('remember-me') == 'true') {
-            localStorage.setItem('refresh-token', signInData.data.refreshToken);
-          } else {
-            localStorage.setItem('user-token', signInData.data.accessToken);
-          }
+          this.signInService.userInfo.next(signInData.data);
+          this.signInService.saveUserAuth(signInData.data);
+          this.router.navigate(['/home']);
         } else {
           this.errorMsg = signInData.error.message;
         }

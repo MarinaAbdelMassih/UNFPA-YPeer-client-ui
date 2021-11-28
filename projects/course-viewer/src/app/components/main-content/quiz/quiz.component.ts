@@ -3,6 +3,7 @@ import {IStuff} from "../../../../../../../src/app/shared/models/course-viewer/s
 import {QuizService} from "../../../../../../../src/app/shared/services/quiz.service";
 import {IQuestion} from "../../../../../../../src/app/shared/models/quiz.model";
 import {ActivatedRoute} from "@angular/router";
+import {SignInService} from "../../../../../../../src/app/shared/services/sign-in.service";
 
 @Component({
   selector: 'app-quiz',
@@ -18,15 +19,17 @@ export class QuizComponent implements OnInit {
   questions : IQuestion[] = [];
   courseId: number;
   @Input() disabled: boolean = false;
-  constructor(private quizService: QuizService, private route: ActivatedRoute) { }
+  userId: number;
+  constructor(private quizService: QuizService, private route: ActivatedRoute, private signInService: SignInService) { }
 
   ngOnInit() {
+    this.userId = this.signInService.userInfo.getValue().userId;
     this.courseId = this.route.snapshot.params.courseId;
     this.initQuiz();
   }
 
   initQuiz() {
-    this.quizService.getExamById('quiz', {userId: 1111, examId: this.quiz.id})
+    this.quizService.getExamById('quiz', {userId: this.userId, examId: this.quiz.id})
       .then(quiz => {
         this.questions = quiz.questions;
         this.currentQuestion = this.questions[0];
@@ -65,7 +68,7 @@ export class QuizComponent implements OnInit {
     this.questions.map(question => {
       question.possibleAnswers.map(answer => delete answer.selected);
     });
-    this.quizService.submitAnswers('quiz',{id: this.quiz.id, userId: 1111, courseId: this.courseId, questions: this.questions})
+    this.quizService.submitAnswers('quiz',{id: this.quiz.id, userId: this.userId, courseId: this.courseId, questions: this.questions})
       .then(response => {
         this.quizService.examIsFinished.next(true);
         this.quizService.examUserData.next({userScore: response.results.percentage.toFixed(0), userUsedTrials: response.trials})

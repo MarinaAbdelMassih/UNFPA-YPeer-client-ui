@@ -18,7 +18,8 @@ import { ConfirmationPopUpComponent } from './components/confirmation-pop-up/con
 import {WelcomeScreenApprovedComponent} from './components/welcome-screen-approved/welcome-screen-approved.component';
 import {WelcomeScreenPendingComponent} from './components/welcome-screen-pending/welcome-screen-pending.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import {IframeTestComponent} from "./components/iframe-test/iframe-test.component";
+import {InjectIframeDirective} from "./directives/inject-iframe.directive";
+import {DeployImageSrcDirective} from "./directives/deploy-image-src.directive";
 
 
 
@@ -39,7 +40,8 @@ import {IframeTestComponent} from "./components/iframe-test/iframe-test.componen
     ConfirmationPopUpComponent,
     WelcomeScreenApprovedComponent,
     WelcomeScreenPendingComponent,
-    IframeTestComponent,
+    InjectIframeDirective,
+    DeployImageSrcDirective
   ],
   exports: [
     TranslateLocalDirective,
@@ -56,8 +58,9 @@ import {IframeTestComponent} from "./components/iframe-test/iframe-test.componen
     SafePipe,
     WelcomeScreenApprovedComponent,
     WelcomeScreenPendingComponent,
+    InjectIframeDirective,
     MatDialogModule,
-    IframeTestComponent,
+    DeployImageSrcDirective
   ],
   imports: [
     CommonModule,

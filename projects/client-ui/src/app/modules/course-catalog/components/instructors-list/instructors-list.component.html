@@ -9,8 +9,8 @@
 </div>
 
 <div class="buttons-container" *ngIf="instructorsList.length > 3">
-  <button class="slider-button btn-next" (click)="next()"><img src="assets/images/icons/arrow-right-black.png" alt="arrow-right"></button>
-  <button class="slider-button btn-prev" (click)="prev()"><img src="assets/images/icons/arrow-left-black.png" alt="arrow-left"></button>
+  <button class="slider-button btn-next" (click)="next()"><img [deploySrc]="'assets/images/icons/arrow-right-black.png'" alt="arrow-right"></button>
+  <button class="slider-button btn-prev" (click)="prev()"><img [deploySrc]="'assets/images/icons/arrow-left-black.png'" alt="arrow-left"></button>
 </div>
 
 <div class="enroll-button">

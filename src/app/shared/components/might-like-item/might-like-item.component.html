@@ -4,10 +4,10 @@
   </div>
   <div class="description-container">
     <span class="type" [translateLocal]="type"></span>
-    <h2 class="title" [translateLocal]="title"></h2>
-    <p class="description" [translateLocal]="description"></p>
-    <div class="more">
-      <img src="assets/images/icons/more-icon.png" alt="more" (click)="clickMore()">
-    </div>
+    <h2 class="limit-lines-3 title" [translateLocal]="title"></h2>
+    <p class="limit-lines-3 description" [translateLocal]="description"></p>
+  </div>
+  <div class="more">
+    <img [deploySrc]="'assets/images/icons/more-icon.png'" alt="more" (click)="clickMore()">
   </div>
 </div>

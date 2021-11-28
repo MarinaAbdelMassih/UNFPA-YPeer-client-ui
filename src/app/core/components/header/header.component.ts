@@ -1,8 +1,9 @@
-import {Component, Inject, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, HostListener, Inject, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {LanguageService} from "../../../shared/services/language.service";
 import {DOCUMENT} from "@angular/common";
 import {Subscription} from "rxjs";
 import {Router} from "@angular/router";
+import {SignInService} from "../../../shared/services/sign-in.service";
 
 declare var $: any;
 @Component({
@@ -15,16 +16,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   isArabic: boolean = false;
   private languageSubscription: Subscription;
-  loginName: any;
+  @Input() userName: string;
+  size: number;
+  isIPad: boolean = false;
 
-  constructor(private languageService: LanguageService, @Inject(DOCUMENT) private document: Document, private router: Router) {
+  @HostListener("window:resize", ['$event'])
+  onResize(event) {
+    this.size = event.target.innerWidth;
+    this.isIPad = this.size<= 1200 && this.size >= 980;
+  }
+
+  constructor(private languageService: LanguageService, @Inject(DOCUMENT) private document: Document,
+              private router: Router, private signInService: SignInService) {
   }
 
   ngOnInit() {
+    this.size = window.innerWidth;
+    this.isIPad = this.size<= 1200 && this.size >= 980;
     this.setDirectionBasedOnLanguage();
-    if (localStorage.getItem('username')) {
-      this.loginName = localStorage.getItem('username');
-    }
+
     $('.navbar-nav>li').on('click', function () {
       $('.navbar-collapse').collapse('hide');
     });
@@ -55,5 +65,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   redirect() {
     this.router.navigate(['/signUp']);
+  }
+  logout() {
+    this.signInService.logout();
+    location.reload();
   }
 }
