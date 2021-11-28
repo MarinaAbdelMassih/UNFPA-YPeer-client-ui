@@ -5,13 +5,14 @@ import {BehaviorSubject} from "rxjs";
 import {User} from "../models/user.model";
 import Base64 from 'crypto-js/enc-base64';
 import Utf8 from 'crypto-js/enc-utf8';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignInService {
   userInfo: BehaviorSubject<User> = new BehaviorSubject<User>(null);
-  constructor(private customHttpClient: CustomHttpClientService) {
+  constructor(private customHttpClient: CustomHttpClientService, private router: Router) {
   }
 
   signIn(data: ISignIn): Promise<ISignIn> {
@@ -71,6 +72,7 @@ export class SignInService {
       this.refreshToken().then((data => {
         this.saveUserAuth(data.data);
         this.userInfo.next(data.data);
+        this.router.navigate(['/home']);
         return true;
       }))
     }

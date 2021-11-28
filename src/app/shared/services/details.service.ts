@@ -14,6 +14,7 @@ export class DetailsService {
       sender: sender,
       receiver: "details",
       body: {entityId: id, hasProgress: hasProgress, userId},
+      headers: true
     });
   }
 }

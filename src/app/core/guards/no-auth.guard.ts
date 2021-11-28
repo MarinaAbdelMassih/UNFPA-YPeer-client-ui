@@ -10,13 +10,14 @@ import {
   Router
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import {SignInService} from "../../shared/services/sign-in.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoAuthGuard implements CanActivate, CanLoad {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private signInService: SignInService) {
   }
 
   private auth(): Promise<boolean> {
@@ -25,8 +26,15 @@ export class NoAuthGuard implements CanActivate, CanLoad {
       let token = localStorage.getItem('user-token');
       let auth = localStorage.getItem('auth');
       if (uuid && token && auth) {
-        resolve(false);
-        this.router.navigate(['/home']);
+        this.signInService.userAuthorized().then((userData => {
+          if (userData && userData.valid) {
+            resolve(false);
+            this.router.navigate(['/home']);
+          } else {
+            this.router.navigate(['/signIn']);
+            resolve(true);
+          }
+        }));
       } else {
         resolve(true)
       }

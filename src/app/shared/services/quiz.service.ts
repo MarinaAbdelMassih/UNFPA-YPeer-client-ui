@@ -19,6 +19,7 @@ export class QuizService {
       sender: sender,
       receiver: 'details',
       body: examBody,
+      headers: true
     })
   }
 
@@ -28,6 +29,7 @@ export class QuizService {
       sender: sender,
       receiver: 'userAnswers',
       body: examBody,
+      headers: true
     })
   }
 }
