@@ -14,7 +14,8 @@ export class MyCoursesService {
       endpoint: 'user/myCourses',
       sender: 'my-courses',
       receiver: 'myCourses',
-      body: myCoursesBody
+      body: myCoursesBody,
+      headers: true
     });
   }
 
@@ -23,7 +24,8 @@ export class MyCoursesService {
       endpoint: 'user/enroll/advanced',
       sender: 'enroll-advanced',
       receiver: 'advanced',
-      body: enrollBody
+      body: enrollBody,
+      headers: true
     });
   }
 }
