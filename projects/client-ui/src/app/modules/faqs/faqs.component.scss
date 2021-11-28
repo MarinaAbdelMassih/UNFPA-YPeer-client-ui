@@ -1,0 +1,43 @@
+.faqs {
+  .faqs-container {
+    display: flex;
+    padding: 0 64px;
+    .related-questions{
+      width: 70%;
+    }
+    .links {
+      width: 30%;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .faqs {
+    .faqs-container {
+      flex-direction: column;
+      align-items: center;
+
+      .related-questions {
+        width: 100%;
+        margin-bottom: 40px;
+      }
+
+      .links {
+        width: 60%;
+        padding: 0;
+        margin-bottom: 50px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .faqs {
+    .faqs-container {
+      .links {
+        width: 90%;
+        margin-bottom: 50px;
+      }
+    }
+  }
+}

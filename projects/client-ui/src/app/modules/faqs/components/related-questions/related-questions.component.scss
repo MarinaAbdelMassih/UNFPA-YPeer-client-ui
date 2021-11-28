@@ -1,0 +1,72 @@
+.related-questions {
+  .program {
+    font-family: 'TradeGothic', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: #2e2e2e;
+    padding-top: 66px;
+    padding-bottom: 40px;
+    margin-bottom: 0;
+    @media(max-width: 991px) {
+      font-size: 25px;
+    }
+  }
+
+  .account {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-family: 'TradeGothic', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: #2e2e2e;
+    margin-bottom: 0;
+    @media(max-width: 991px) {
+      font-size: 25px;
+    }
+  }
+
+  .account-container {
+    margin-bottom: 118px;
+  }
+
+  ::ng-deep.mat-expansion-panel {
+    width: 836px;
+    //height: 59px;
+    background-color: #f0f0f0;
+    box-shadow: none;
+    margin-bottom: 20px;
+    @media(max-width: 991px) {
+      width: 100%;
+    }
+  }
+
+  ::ng-deep.mat-expansion-indicator::after, .mat-expansion-panel-header-description {
+    //width: 11.1px;
+    //height: 6.4px;
+    color: #929292;
+  }
+
+  ::ng-deep.mat-expansion-panel-header-description, .mat-expansion-panel-header-title {
+    font-family: 'TradeGothic', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #232323;
+    @media(max-width: 991px) {
+      font-size: 15px
+    }
+    @media(max-width: 420px) {
+      font-size: 10px
+    }
+  }
+
+  ::ng-deep.mat-expansion-panel-content {
+    background-color: #FFFFFF;
+  }
+
+  ::ng-deep.mat-expansion-panel-body {
+    margin-top: 20px;
+    p {
+      margin-bottom: 20px;
+    }
+  }
+}
