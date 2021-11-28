@@ -1,6 +1,6 @@
 <div class="might-like-item">
   <div class="image-container">
-    <img [src]="imageSrc" alt="might-like-item">
+    <img [deploySrc]="imageSrc" alt="might-like-item">
   </div>
   <div class="description-container">
     <span class="type" [translateLocal]="type"></span>
@@ -8,6 +8,6 @@
     <p class="limit-lines-3 description" [translateLocal]="description"></p>
   </div>
   <div class="more">
-    <img src="assets/images/icons/more-icon.png" alt="more" (click)="clickMore()">
+    <img [deploySrc]="'assets/images/icons/more-icon.png'" alt="more" (click)="clickMore()">
   </div>
 </div>

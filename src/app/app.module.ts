@@ -21,6 +21,7 @@ import {
   POSITION,
   SPINNER
 } from "ngx-ui-loader";
+import {environment} from "../environments/environment";
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsColor: '#07212f',
@@ -30,7 +31,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   pbThickness: 5,
   pbColor: '#07212f',
   overlayColor: 'rgba(255, 255, 255, 0.9)',
-  logoUrl: `assets/images/ypeer-logo-footer.png`,
+  logoUrl: `${environment.deployUrl}/assets/images/ypeer-logo-footer.png`,
 };
 
 @NgModule({

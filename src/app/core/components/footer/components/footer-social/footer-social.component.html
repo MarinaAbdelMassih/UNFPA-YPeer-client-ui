@@ -1,18 +1,18 @@
 <div class="logos-container">
   <a [href]="facebook? facebook :'https://www.facebook.com/YPeerEgypt/'" target="_blank">
-    <img src="assets/images/icons/FB-icon-grey.png" alt="fb-icon">
+    <img [deploySrc]="'assets/images/icons/FB-icon-grey.png'" alt="fb-icon">
   </a>
   <a [href]="twitter ? twitter :'https://twitter.com/YPEER_EGYPT'" target="_blank">
-    <img src="assets/images/icons/twitter-icon-grey.png" alt="twitter-icon">
+    <img [deploySrc]="'assets/images/icons/twitter-icon-grey.png'" alt="twitter-icon">
   </a>
   <a [href]="instagram ? instagram: 'https://www.instagram.com/ypeeregypt/'" target="_blank">
-  <img src="assets/images/icons/instagram-icon-grey.png" alt="instagram-icon">
+  <img [deploySrc]="'assets/images/icons/instagram-icon-grey.png'" alt="instagram-icon">
   </a>
 <!--  <a [href]=" https://www.linkedin.com/in/y-peer-egypt" target="_blank">-->
 <!--  <img src="assets/images/icons/youtube-icon-grey.png" alt="youtube-icon">-->
 <!--  </a>-->
   <a href="" target="_blank" *ngIf="show">
-    <img src="assets/images/icons/wats.jpg" alt="whatsapp-icon">
+    <img [deploySrc]="'assets/images/icons/wats.jpg'" alt="whatsapp-icon">
   </a>
 
 <!--  need to add whatsapp icon to shares icons and it's should be optional by an input to show or hide in different pages -->

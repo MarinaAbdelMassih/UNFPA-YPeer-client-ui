@@ -9,7 +9,8 @@ import {MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule, M
 import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
-import {environment} from '../../../environments/environment';
+import {environment} from "../../../../../../src/environments/environment";
+
 
 @NgModule({
   declarations: [ContactUsComponent, ContactUsBannerComponent, ContactUsFormComponent],

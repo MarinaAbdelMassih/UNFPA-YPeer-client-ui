@@ -1,7 +1,7 @@
 <footer class="footer-section" id="footer-section">
   <div class="footer-container">
     <div class="left-section footer-inner-section">
-      <img src="assets/images/ypeer-logo-footer.png" alt="footer-logo" [routerLink]="">
+      <img [deploySrc]="'assets/images/ypeer-logo-footer.png'" alt="footer-logo" [routerLink]="">
       <div class="left-section-social-media">
         <h6 [translateLocal]="{EN: 'Follow Us', AR: 'تابعونا'}"></h6>
         <app-footer-social></app-footer-social>
@@ -16,7 +16,7 @@
     </div>
     <div class="right-section footer-inner-section">
       <a href="https://egypt.unfpa.org/en" target="_blank">
-        <img src="assets/images/footer-logo.png" alt="footer-logo" [routerLink]="">
+        <img [deploySrc]="'assets/images/footer-logo.png'" alt="footer-logo" [routerLink]="">
       </a>
       <h6 [translateLocal]="{EN: 'Follow UNFPA', AR: 'تابع UNFPA '}"></h6>
       <app-footer-social [facebook]="'https://www.facebook.com/UnfpaEgypt'" [instagram]="'https://www.instagram.com/unfpaegypt/'" [twitter]="'https://twitter.com/UnfpaEgypt'"></app-footer-social>

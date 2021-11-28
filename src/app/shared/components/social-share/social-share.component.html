@@ -1,17 +1,17 @@
 <ul class="social-icon-list list-unstyled mb-0">
   <li *ngIf="facebook" class="list-inline-item" [shareButton]="'facebook'">
     <a href="javascript:void(0);">
-      <img src="assets/images/icons/FB-icon-grey.png" alt="fb-icon">
+      <img [deploySrc]="'assets/images/icons/FB-icon-grey.png'" alt="fb-icon">
     </a>
   </li>
   <li *ngIf="twitter" class="list-inline-item" [shareButton]="'twitter'">
     <a href="javascript:void(0);">
-      <img src="assets/images/icons/twitter-icon-grey.png" alt="twitter-icon">
+      <img [deploySrc]="'assets/images/icons/twitter-icon-grey.png'" alt="twitter-icon">
     </a>
   </li>
   <li *ngIf="whatsapp" class="list-inline-item" [shareButton]="'whatsapp'">
     <a href="javascript:void(0);">
-      <img src="assets/images/icons/whatsapp-icon-grey.png" alt="whatsapp-icon">
+      <img [deploySrc]="'assets/images/icons/whatsapp-icon-grey.png'" alt="whatsapp-icon">
     </a>
   </li>
 <!--  <li *ngIf="instagram" class="list-inline-item" [shareButton]="'instagram'">-->

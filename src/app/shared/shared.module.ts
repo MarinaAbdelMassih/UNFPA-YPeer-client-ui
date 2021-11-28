@@ -19,6 +19,7 @@ import {WelcomeScreenApprovedComponent} from './components/welcome-screen-approv
 import {WelcomeScreenPendingComponent} from './components/welcome-screen-pending/welcome-screen-pending.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {InjectIframeDirective} from "./directives/inject-iframe.directive";
+import {DeployImageSrcDirective} from "./directives/deploy-image-src.directive";
 
 
 
@@ -40,6 +41,7 @@ import {InjectIframeDirective} from "./directives/inject-iframe.directive";
     WelcomeScreenApprovedComponent,
     WelcomeScreenPendingComponent,
     InjectIframeDirective,
+    DeployImageSrcDirective
   ],
   exports: [
     TranslateLocalDirective,
@@ -57,7 +59,8 @@ import {InjectIframeDirective} from "./directives/inject-iframe.directive";
     WelcomeScreenApprovedComponent,
     WelcomeScreenPendingComponent,
     InjectIframeDirective,
-    MatDialogModule
+    MatDialogModule,
+    DeployImageSrcDirective
   ],
   imports: [
     CommonModule,

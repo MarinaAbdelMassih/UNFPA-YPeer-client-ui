@@ -1,6 +1,6 @@
 <div class="card-container">
   <div class="image-container">
-    <img [src]="imageSrc" alt="latest from ypeer">
+    <img [deploySrc]="imageSrc" alt="latest from ypeer">
   </div>
   <div class="description-container">
     <span class="type" [translateLocal]="type"></span>
@@ -8,7 +8,7 @@
     <span class="date" [translateLocal]="date"></span>
     <p class="description" [translateLocal]="description"></p>
     <div class="more">
-      <img src="assets/images/icons/more-icon.png" alt="more" (click)="clickMore()">
+      <img [deploySrc]="'assets/images/icons/more-icon.png'" alt="more" (click)="clickMore()">
     </div>
     <a *ngIf="resources && resourceFile" [href]="resourceFile" target="_blank">
       <button class="btn ypeer-btn-purple">View PDF</button>

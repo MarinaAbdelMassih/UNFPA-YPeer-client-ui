@@ -1,5 +1,5 @@
 <div class="search-top-banner">
-  <img src="assets/images/search-banner.png" alt="top-banner">
+  <img [deploySrc]="'assets/images/search-banner.png'" alt="top-banner">
   <div class="banner-text">
     <p [translateLocal]="{EN:'Search',AR:'محرك البحث'}"></p>
     <div class="header-search form-container">
@@ -10,7 +10,7 @@
                aria-label="Search"
                name="searchWord"/>
         <button type = 'button' (click)="search()">
-          <img src="assets/images/search-icon.png" alt="icon">
+          <img [deploySrc]="'assets/images/search-icon.png'" alt="icon">
         </button>
       </form>
     </div>
