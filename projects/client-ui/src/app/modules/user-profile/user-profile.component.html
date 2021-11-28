@@ -1,7 +1,7 @@
 <div class="user-profile">
   <mat-tab-group>
     <mat-tab [label]="isArabic ? 'الدورات' : 'MY COURSES'">
-      <app-user-profile-courses [userInfo]="userInfo" [isArabic] = "isArabic"></app-user-profile-courses>
+      <app-user-profile-courses *ngIf="userInfo" [userInfo]="userInfo" [isArabic] = "isArabic"></app-user-profile-courses>
     </mat-tab>
     <mat-tab [label]="isArabic ? 'الصفحه الشخصيه' : 'MY PROFILE'">
       <app-user-profile-info></app-user-profile-info>

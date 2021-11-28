@@ -29,7 +29,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   getUSerInfo(): void {
-    this.myProfileService.getUserInfo(46).then(userInfo => {
+    this.myProfileService.getUserInfo(111).then(userInfo => {
       this.userInfo = userInfo;
     });
   }

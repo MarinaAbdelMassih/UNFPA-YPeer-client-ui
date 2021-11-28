@@ -1,4 +1,4 @@
-<div class="user-profile-courses">
+<div class="user-profile-courses"  *ngIf="myCourses">
   <a (click)="openDialog(course)" *ngFor="let course of myCourses; let i = index">
     <app-course-bar *ngIf="(course.courseType === 1) || (course.courseType === 2 && (course.courseStatus === 3 || course.courseStatus === 4))"
                     [name]="course.name"

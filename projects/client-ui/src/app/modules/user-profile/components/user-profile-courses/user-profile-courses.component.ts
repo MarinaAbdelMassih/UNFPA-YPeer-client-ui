@@ -32,12 +32,12 @@ export class UserProfileCoursesComponent implements OnInit {
   }
 
   getMyCourses(): void {
-    this.myCoursesService.getMyCourses({userId: 1000}).then((myCourses) => {
+    this.myCoursesService.getMyCourses({userId: this.userInfo.id}).then((myCourses) => {
       this.myCourses = myCourses.courses;
       // this.myCourses =
       //   [
       //     {id: 1, name: 'Introductory Course', progress: 100, score: 80, hasCertificate: true, courseStatus: null, courseType: 1},
-      //     {id: 2, name: 'Advanced Course', progress: 0, score: 0, hasCertificate: true, courseStatus: 4, courseType: 2}
+      //     // {id: 2, name: 'Advanced Course', progress: 90, score: 60, hasCertificate: false, courseStatus: 3, courseType: 2}
       //   ];
       this.introductoryCourse = this.myCourses.find(course => course.courseType === 1);
       this.advancedCourse = this.myCourses.find(course => course.courseType === 2);
@@ -81,7 +81,6 @@ export class UserProfileCoursesComponent implements OnInit {
   }
 
   watchCourse(course: IMyCourses) : void {
-    debugger;
     if(course.hasCertificate) {
       //view student certificate
     } else if (course.courseType === 1) {
@@ -89,6 +88,7 @@ export class UserProfileCoursesComponent implements OnInit {
       this.router.navigate(['/viewer/111']);
     } else if (course.courseType === 2) {
       //navigate to advanced course viewer
+      this.router.navigate(['/iframe-test']);
     }
   }
 
