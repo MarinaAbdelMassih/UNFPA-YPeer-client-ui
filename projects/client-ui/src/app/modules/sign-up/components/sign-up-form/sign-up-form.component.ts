@@ -51,7 +51,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   errorMsg: string;
   password: string;
   rePassword: string;
-
+  maxDate = new Date();
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService,
               private signUpService: SignUpService, private router: Router, private signInService: SignInService) {
