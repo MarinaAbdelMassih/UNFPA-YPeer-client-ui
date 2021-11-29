@@ -13,6 +13,6 @@
   <button class="slider-button btn-prev" (click)="prev()"><img [deploySrc]="'assets/images/icons/arrow-left-black.png'" alt="arrow-left"></button>
 </div>
 
-<div class="enroll-button">
-  <button class="ypeer-btn btn-full-color" [translateLocal]="{EN: 'Enroll Now', AR: 'اشترك الان'}"></button>
+<div class="enroll-button" [routerLink]="'/profile'">
+  <button class="ypeer-btn btn-full-color" [translateLocal]="{EN: 'Start Learning', AR: 'ابدأ الدراسه'}"></button>
 </div>
