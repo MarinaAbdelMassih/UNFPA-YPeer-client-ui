@@ -4,17 +4,9 @@ import {Subscription} from 'rxjs';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {MyProfileService} from '../../../../../../../../src/app/shared/services/my-profile.service';
 import {IUserInfo} from '../../../../../../../../src/app/shared/models/my-profile.model';
-import {ImageService} from '../../../../../../../../src/app/shared/services/image.service';
 import {DatePipe} from '@angular/common';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-
-import * as _moment from 'moment';
-
-// @ts-ignore
-import {default as _rollupMoment} from 'moment';
-
-const moment = _rollupMoment || _moment;
 
 export const MY_FORMATS = {
   parse: {
@@ -48,27 +40,21 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   phonePattern = '^[0-9]{11}$';
   updateDataInfo: any;
-  userId;
-  uuid;
+  userId: number;
   files: File[] = [];
   upload: boolean;
   update = true;
-  image: string | ArrayBuffer;
+  image: string;
   imageSelected = false;
   imageSuccessMessageUploaded = false;
-  imageName: string;
   width: number;
-  previewWidth: number;
   height: number;
-  previewHeight: number;
   birthday: any;
-  birthDate = new FormControl(moment());
   successMessage: any;
   tomorrow = new Date();
   readonlyField;
 
-  constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService,
-              private imageService: ImageService) {
+  constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService) {
     this.tomorrow.setDate(this.tomorrow.getDate() + 1);
     this.userProfileForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.maxLength(10)]),
@@ -91,7 +77,9 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
     this.myProfileService.getEducationalLevels().then(data => {
       this.education = data;
     });
-    this.image = this.imageService.getHashedImage(this.imageName);
+    if(this.userInfo.hasImage) {
+      this.image = this.userInfo.profileImage;
+    }
   }
 
   populateFormData() {
@@ -109,8 +97,6 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   }
 
   submitUserProfileForm() {
-    debugger
-    console.log('value', this.userProfileForm.value);
     this.birthday = this.userProfileForm.controls.birthDate.value;
     const latestDate = this.datepipe.transform(this.birthday, 'yyyy-MM-dd');
     this.updateDataInfo = {
@@ -118,7 +104,6 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
       username: this.userProfileForm.controls.firstName.value + ' ' + this.userProfileForm.controls.lastName.value,
       firstName: this.userProfileForm.controls.firstName.value,
       email: this.userProfileForm.controls.email.value,
-      // birthDate: this.userProfileForm.controls.birthDate.value,
       birthDate: latestDate,
       educationalLevelId: this.userProfileForm.controls.educationalLevelId.value,
       lastName: this.userProfileForm.controls.lastName.value,
@@ -133,20 +118,19 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   }
 
   onSelect(event) {
-    console.log(event);
     this.files.push(...event.addedFiles);
   }
 
-  onImageChange($event: string | ArrayBuffer) {
+  onImageChange($event: string) {
     this.image = $event;
     this.imageSelected = true;
   }
 
-  onImageUpload($event: boolean) {
+  onImageUpload($event) {
     this.upload = false;
     if ($event) {
       this.update = true;
-      this.image = this.imageService.getHashedImage(this.imageName);
+      this.image = $event;
       this.imageSuccessMessageUploaded = true;
       setTimeout(() => this.imageSuccessMessageUploaded = false, 4000);
     }

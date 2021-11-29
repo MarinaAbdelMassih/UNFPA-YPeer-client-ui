@@ -13,8 +13,5 @@ export interface IUserInfo {
   governorateId: number
   hasImage: boolean;
   maritalStatusId: number;
+  profileImage: string;
 }
-
-
-  // "maritalStatusId": 3,
-  // "governorateId": 5
