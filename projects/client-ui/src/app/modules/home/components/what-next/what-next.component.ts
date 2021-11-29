@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-what-next',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./what-next.component.scss']
 })
 export class WhatNextComponent implements OnInit {
+
+  @Input() isActive: boolean;
 
   constructor() { }
 
