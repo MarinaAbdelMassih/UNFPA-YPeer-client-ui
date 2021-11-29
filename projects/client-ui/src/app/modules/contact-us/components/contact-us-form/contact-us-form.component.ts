@@ -33,7 +33,7 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
       firstName: ['', [Validators.required, NameValidator.noWhiteSpace]],
       lastName: ['', [Validators.required, NameValidator.noWhiteSpace]],
       subject: ['', [Validators.required, NameValidator.noWhiteSpace]],
-      message: ['', [Validators.required, Validators.maxLength(250)]],
+      message: ['', [Validators.required, Validators.maxLength(512)]],
       option: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       response: ['', [Validators.required]],
