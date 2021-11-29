@@ -1,16 +1,16 @@
 <div class="user-profile-courses"  *ngIf="myCourses">
   <a (click)="openDialog(course)" *ngFor="let course of myCourses; let i = index">
-    <app-course-bar *ngIf="(course.courseType === 1) || (course.courseType === 2 && (course.courseStatus === 3 || course.courseStatus === 4))"
-                    [name]="course.name"
+    <app-course-bar [name]="course.name"
                     [btnText]="setButtonText(course)"
                     [score]="course.score"
                     [progress]="course.progress"
-                    [status]="course.courseStatus"
                     [isArabic]="isArabic"
+                    [disabled]="setDisableValue(course)"
+                    [hasCertificate]="course.hasCertificate"
                     (btnClicked)="watchCourse(course)" >
     </app-course-bar>
   </a>
-  <div class="course-status">
+  <div class="course-status" *ngIf="!advancedCourse">
     <app-course-status [title]="advancedStatusTitle"
                        [description]="advancedStatusDescription"
                        [btnText]= "advancedStatusBtnText"

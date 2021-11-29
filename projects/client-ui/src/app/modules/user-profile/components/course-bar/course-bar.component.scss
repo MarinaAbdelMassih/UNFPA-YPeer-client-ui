@@ -6,6 +6,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+  cursor: pointer;
   @media(max-width: 991px) {
     flex-direction: column;
     height: auto;

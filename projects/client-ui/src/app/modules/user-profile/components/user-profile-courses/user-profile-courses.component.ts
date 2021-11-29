@@ -16,6 +16,7 @@ export class UserProfileCoursesComponent implements OnInit {
 
   @Input() userInfo: IUserInfo;
   @Input() isArabic: boolean;
+  @Input() isActive: boolean;
   myCourses: IMyCourses[];
   introductoryCourse: IMyCourses;
   advancedCourse: IMyCourses;
@@ -37,12 +38,28 @@ export class UserProfileCoursesComponent implements OnInit {
       // this.myCourses =
       //   [
       //     {id: 1, name: 'Introductory Course', progress: 100, score: 80, hasCertificate: true, courseStatus: null, courseType: 1},
-      //     // {id: 2, name: 'Advanced Course', progress: 90, score: 60, hasCertificate: false, courseStatus: 3, courseType: 2}
+      //     {id: 2, name: 'Advanced Course', progress: 90, score: 60, hasCertificate: false, courseStatus: 1, courseType: 2}
       //   ];
       this.introductoryCourse = this.myCourses.find(course => course.courseType === 1);
       this.advancedCourse = this.myCourses.find(course => course.courseType === 2);
       this.setAdvancedStatus();
     });
+  }
+
+  setAdvancedStatus(): void {
+    if (this.introductoryCourse.progress >= 90 && this.introductoryCourse.score >= 70 && !this.advancedCourse) {
+      this.advancedStatusTitle = {EN: 'What Next?', AR: 'ماذا بعد؟'};
+      this.advancedStatusDescription = {EN: 'advanced courses is available for limited time (2 months) from the date of enrollment.', AR: ''};
+      this.advancedStatusBtnText = {EN: 'Enroll Now', AR: 'سجل الان'};
+    }
+    // else if (this.advancedCourse.courseStatus === 1) {
+    //   this.advancedStatusTitle = {EN: 'Thank You!', AR: 'شكراً!'};
+    //   this.advancedStatusDescription = {EN: 'You have applied to the advanced course successfully. Stay tuned; we are preparing your advanced course.', AR: ''};
+    // }
+    // else if (this.advancedCourse.courseStatus === 2) {
+    //   this.advancedStatusTitle = {EN: 'Thank You!', AR: 'شكراً!'};
+    //   this.advancedStatusDescription = {EN: 'You did a great job. Now you are on our waiting list, be patient; you will join the advanced course shortly', AR: ''};
+    // }
   }
 
   setButtonText(course: IMyCourses): TranslationModel {
@@ -58,22 +75,15 @@ export class UserProfileCoursesComponent implements OnInit {
     return (this.btnText);
   }
 
-  setAdvancedStatus(): void {
-    if (this.introductoryCourse.progress >= 90 && this.introductoryCourse.score >= 70 && !this.advancedCourse) {
-      this.advancedStatusTitle = {EN: 'What Next?', AR: 'ماذا بعد؟'};
-      this.advancedStatusDescription = {EN: 'advanced courses is available for limited time (2 months) from the date of enrollment.', AR: ''};
-      this.advancedStatusBtnText = {EN: 'Enroll Now', AR: 'سجل الان'};
-    } else if (this.advancedCourse.courseStatus === 1) {
-      this.advancedStatusTitle = {EN: 'Thank You!', AR: 'شكراً!'};
-      this.advancedStatusDescription = {EN: 'You have applied to the advanced course successfully. Stay tuned; we are preparing your advanced course.', AR: ''};
-    } else if (this.advancedCourse.courseStatus === 2) {
-      this.advancedStatusTitle = {EN: 'Thank You!', AR: 'شكراً!'};
-      this.advancedStatusDescription = {EN: 'You did a great job. Now you are on our waiting list, be patient; you will join the advanced course shortly', AR: ''};
+  setDisableValue(course: IMyCourses): boolean {
+    if((course.courseType === 1 && !this.isActive) || (course.courseType === 2 && course.courseStatus === 2)) {
+      return false;
     }
   }
 
   openDialog(course: IMyCourses): void {
-    if (course.courseStatus === 4 && this.advancedCourse.courseStatus === 4) {
+    debugger
+    if ((course.courseType === 1 && !this.isActive) || (course.courseType === 2 && course.courseStatus === 2)) {
       this.dialog.open(ConfirmationPopUpComponent, {
         width: '740px',
       });
@@ -97,6 +107,9 @@ export class UserProfileCoursesComponent implements OnInit {
     this.myCoursesService.enrollAdvanced({userId: this.userInfo.id, email: this.userInfo.email, firstName: this.userInfo.firstName, lastName: this.userInfo.lastName}).then(response => {
       if (response.status) {
         this.getMyCourses();
+      } else {
+        this.advancedStatusTitle = {EN: 'Thank You!', AR: 'شكراً!'};
+        this.advancedStatusDescription = {EN: 'You did a great job. Now you are on our waiting list, be patient; you will join the advanced course shortly', AR: ''};
       }
     });
   }

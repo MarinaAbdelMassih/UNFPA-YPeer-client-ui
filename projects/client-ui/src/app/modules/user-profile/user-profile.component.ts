@@ -14,6 +14,7 @@ export class UserProfileComponent implements OnInit {
 
   userInfo: IUserInfo;
   isArabic: boolean;
+  isActive: boolean = false;
   subscription: Subscription;
 
   constructor(private languageService: LanguageService, private myProfileService: MyProfileService,
@@ -33,6 +34,7 @@ export class UserProfileComponent implements OnInit {
   getUSerInfo(): void {
     this.signInService.userAuthorized().then(userData => {
       if(userData) {
+        this.isActive = userData.status === 1;
         this.myProfileService.getUserInfo(userData.auth.userId).then(userInfo => {
           this.userInfo = userInfo;
         });

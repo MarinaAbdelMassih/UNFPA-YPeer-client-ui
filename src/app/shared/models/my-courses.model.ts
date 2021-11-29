@@ -9,10 +9,8 @@ export interface IMyCourses {
 }
 
 export enum CourseStatus {
-  PendingInWaitingList = 1,
-  PendingAndNoPlaceInWaitingList,
-  Approved,
-  deleted
+  Approved = 1,
+  deleted = 2
 }
 
 export enum CourseType {

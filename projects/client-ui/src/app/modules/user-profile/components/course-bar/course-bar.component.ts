@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TranslationModel} from '../../../../../../../../src/app/shared/models/translation.model';
-import {CourseStatus} from '../../../../../../../../src/app/shared/models/my-courses.model';
 
 @Component({
   selector: 'app-course-bar',
@@ -13,7 +12,8 @@ export class CourseBarComponent implements OnInit {
   @Input() score: number;
   @Input() progress: number;
   @Input() isArabic: boolean;
-  @Input() status: CourseStatus;
+  @Input() disabled: boolean;
+  @Input() hasCertificate: boolean;
   @Output() btnClicked: EventEmitter<boolean> = new EventEmitter<false>();
 
   constructor() {
