@@ -75,7 +75,7 @@
         <div class="form-field-container">
           <p [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الميلاد'}"></p>
           <mat-form-field appearance="outline">
-            <input matInput [matDatepicker]="basicDatepicker"
+            <input matInput [matDatepicker]="basicDatepicker" [max]="maxDate"
                    formControlName="birthDate" datePickerFormat="YYYY/MM/DD"
                    [placeholder]="isArabic ? 'ادخل تاريخ الميلاد ' : 'enter your birthday'">
             <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>

@@ -49,6 +49,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   phonePattern = '^[0-9]{11}$';
   addUser: any;
   errorMsg: string;
+  maxDate = new Date();
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService,
               private signUpService: SignUpService, private router: Router, private signInService: SignInService) {
