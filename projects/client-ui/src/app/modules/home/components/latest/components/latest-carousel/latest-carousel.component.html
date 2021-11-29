@@ -1,8 +1,12 @@
 <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
+<!--  <div>-->
+<!--  <a [routerLink]='["/", latestSection.id]'>-->
       <app-image-description-card ngxSlickItem *ngFor="let latestSection of latestSections" [imageSrc]="latestSection.image" [type]="latestSection.label"
                                   [title]="latestSection.title" [date]="latestSection.date"
                                   [description]="latestSection.description" (moreClicked)="openDetailsPage()">
       </app-image-description-card>
+<!--    </a>-->
+<!--  </div>-->
 </ngx-slick-carousel>
 <div class="buttons-container" *ngIf="latestSections.length > 3">
   <button class="slider-button btn-next" (click)="next()"><img [deploySrc]="'assets/images/icons/arrow-right-gray.png'" alt=""></button>
