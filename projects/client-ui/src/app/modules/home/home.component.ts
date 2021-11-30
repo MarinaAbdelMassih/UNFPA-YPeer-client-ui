@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {homeContent} from "../../../../../../src/app/shared/models/home.model";
 import {HomeResolverService} from "../../../../../../src/app/shared/services/home-resolver.service";
@@ -9,7 +9,7 @@ import {SignInService} from '../../../../../../src/app/shared/services/sign-in.s
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
   homeData: homeContent;
@@ -31,10 +31,16 @@ export class HomeComponent implements OnInit {
   }
 
   checkUserStatus(): void {
-    this.signInService.userAuthorized().then(userInfo => {
-      if(userInfo && userInfo.status === 1) {
-        this.isActive = true
+    this.signInService.userInfo.subscribe((userData) => {
+      if (userData && userData.status === 1) {
+        this.isActive = true;
       }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.map(subscription => {
+      subscription.unsubscribe();
     });
   }
 

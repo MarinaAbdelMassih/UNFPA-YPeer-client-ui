@@ -151,6 +151,8 @@ const routes: Routes = [
     resolve: {
       auth: AuthResolverService
     },
+  canLoad: [AuthGuard],
+  canActivate: [AuthGuard]
   },
   {
     path: 'profile',

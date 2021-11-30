@@ -43,9 +43,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   checkUserStatus(): void {
-    this.signInService.userAuthorized().then(userInfo => {
-      if(userInfo && userInfo.status === 1) {
-        this.isActive = true
+    this.signInService.userInfo.subscribe((userData) => {
+      if (userData && userData.status === 1) {
+        this.isActive = true;
       }
     });
   }

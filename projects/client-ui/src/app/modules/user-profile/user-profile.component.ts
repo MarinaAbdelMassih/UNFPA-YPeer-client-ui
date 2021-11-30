@@ -32,10 +32,10 @@ export class UserProfileComponent implements OnInit {
   }
 
   getUSerInfo(): void {
-    this.signInService.userAuthorized().then(userData => {
-      if(userData) {
+    this.signInService.userInfo.subscribe((userData) => {
+      if (userData) {
         this.isActive = userData.status === 1;
-        this.myProfileService.getUserInfo(userData.auth.userId).then(userInfo => {
+        this.myProfileService.getUserInfo(userData.userId).then(userInfo => {
           this.userInfo = userInfo;
         });
       }
