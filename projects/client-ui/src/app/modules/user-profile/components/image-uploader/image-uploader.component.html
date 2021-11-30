@@ -4,7 +4,8 @@
       (change)="onSelect($event)"
       [multiple]="false"
       [accept]="'image/jpeg,image/jpg,image/png'">
-<!--      <ngx-dropzone-label>drop your image here or click to browse</ngx-dropzone-label>-->
+      <img *ngIf="imageSrc" [src]="imageSrc" alt="profile-picture">
+      <!--      <ngx-dropzone-label>drop your image here or click to browse</ngx-dropzone-label>-->
     </ngx-dropzone>
   </div>
   <div class="image-error-container" *ngIf="hasError">

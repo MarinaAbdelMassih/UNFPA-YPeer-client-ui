@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {TranslationModel} from '../../../../../../../../src/app/shared/models/translation.model';
 
 @Component({
   selector: 'app-course-bar',
@@ -6,12 +7,14 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./course-bar.component.scss']
 })
 export class CourseBarComponent implements OnInit {
-  @Input() name;
-  @Input() btnText;
+  @Input() name: string;
+  @Input() btnText: TranslationModel;
   @Input() score: number;
-  @Input() finished = true;
-  @Input() percent;
-  @Input() advanced = false;
+  @Input() progress: number;
+  @Input() isArabic: boolean;
+  @Input() disabled: boolean;
+  @Input() hasCertificate: boolean;
+  @Output() btnClicked: EventEmitter<boolean> = new EventEmitter<false>();
 
   constructor() {
   }
@@ -19,4 +22,7 @@ export class CourseBarComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClick(): void {
+    this.btnClicked.emit(true);
+  }
 }

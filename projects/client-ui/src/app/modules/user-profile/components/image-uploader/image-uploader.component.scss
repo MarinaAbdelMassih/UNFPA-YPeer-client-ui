@@ -1,18 +1,10 @@
 ::ng-deep {
   .image-dropzone {
-    //width: 100%;
-    //min-height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     .image-dropzone-container{
-      //ngx-dropzone{
-      //  width: 350px !important;
-      //  height: 350px !important;
-      //  justify-content: center;
-      //
-      //}
       ngx-dropzone {
         width: 125px;
         height: 125px;
@@ -20,6 +12,7 @@
         margin: auto;
         border-radius: 50%;
         border: 1px solid transparent;
+        overflow: hidden;
       }
     }
     .image-error-container{
@@ -52,6 +45,5 @@
         }
       }
     }
-
   }
 }

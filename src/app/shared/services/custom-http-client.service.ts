@@ -36,8 +36,12 @@ export class CustomHttpClientService {
       {headers: request.headers ? {'authorization': `Bearer ${token}`}: null } ).toPromise();
   }
 
-  upload(request: { endpoint: string, sender: string, receiver: string, body: object, file: File }): Promise<any> {
-    let uuid = this.checkIfUserLoggedIn().uuid;
+  upload(request: { endpoint: string, sender: string, receiver: string, body: object, file: File, headers?: boolean }): Promise<any> {
+    let uuid, token;
+    if (this.checkIfUserLoggedIn()) {
+      uuid = this.checkIfUserLoggedIn().uuid;
+      token = this.checkIfUserLoggedIn().accessToken;
+    }
     let jwtToken = this.tokenService.buildJwt({
       sender: request.sender,
       receiver: request.receiver,
@@ -47,7 +51,8 @@ export class CustomHttpClientService {
     let fileFormData = new FormData();
     fileFormData.append('file', request.file, request.file.name);
     fileFormData.append('token', jwtToken);
-    return this.http.post(`${environment.uploadServiceURI}/${request.endpoint}`, fileFormData).toPromise();
+    return this.http.post(`${environment.serviceURI}/${request.endpoint}`, fileFormData,
+      {headers: request.headers ? {'authorization': `Bearer ${token}`}: null }).toPromise();
   }
 
 }

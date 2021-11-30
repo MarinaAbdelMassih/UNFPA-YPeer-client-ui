@@ -9,8 +9,9 @@ import {sliderItem} from "../../../../../../../../src/app/shared/models/home.mod
 })
 export class TopSliderComponent implements OnInit, AfterViewInit {
 
-  isArabic: boolean = this.langService.getIsArabic();
   @Input() slides: sliderItem[];
+  @Input() isActive: boolean;
+  isArabic: boolean = this.langService.getIsArabic();
   @ViewChild('bannersSlickModal', {static: false}) slickModal;
   bannerConfig: any = {"slidesToShow": 1, "rtl": this.isArabic, "slidesToScroll": 1,"arrows": false, "fade": true,
     "cssEase": 'linear', "dots": false,"autoplay": true, "autoplaySpeed": 10000};
@@ -18,7 +19,7 @@ export class TopSliderComponent implements OnInit, AfterViewInit {
   constructor(private langService: LanguageService) { }
 
   ngOnInit() {
-    }
+  }
 
   ngAfterViewInit(): void {
     this.reinitSlick();
