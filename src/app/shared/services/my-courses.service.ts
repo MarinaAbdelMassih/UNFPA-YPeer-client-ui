@@ -28,4 +28,14 @@ export class MyCoursesService {
       headers: true
     });
   }
+
+  getIframeToken(iframeBody: {userId: number, email: string, firstName: string, lastName: string}): Promise<any> {
+    return this.customHttpClient.sendBackendRequest({
+      endpoint: 'user/advanced/iframe',
+      sender: 'advanced-course',
+      receiver: 'iframe',
+      body: iframeBody,
+      headers: true
+    });
+  }
 }

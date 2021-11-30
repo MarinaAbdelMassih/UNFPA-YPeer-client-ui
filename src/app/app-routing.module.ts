@@ -235,6 +235,16 @@ const routes: Routes = [
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/terms-of-use/terms-of-use.module').then(mod => mod.TermsOfUseModule),
   },
+  {
+    path: 'advanced-course',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/itworx-iframe/itworx-iframe.module').then(mod=> mod.ItworxIframeModule),
+    resolve: {
+      auth: AuthResolverService
+    },
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
