@@ -1,14 +1,20 @@
-<div class="user-profile-courses">
-  <a (click)="openDialoge()">
-    <app-course-bar [name]="{EN:'Introductory Course Name',AR:'اسم الدورة التمهيدية'}"
-                    [btnText]="{EN:'watch course',AR:'مشاهدة الكورس'}"
-                    [score]="85"
-                    [percent]="20"
-                    [finished]="true"
-                    [advanced]="true"
-    ></app-course-bar>
+<div class="user-profile-courses"  *ngIf="myCourses">
+  <a (click)="openDialog(course)" *ngFor="let course of myCourses; let i = index">
+    <app-course-bar [name]="course.name"
+                    [btnText]="setButtonText(course)"
+                    [score]="course.score"
+                    [progress]="course.progress"
+                    [isArabic]="isArabic"
+                    [disabled]="setDisableValue(course)"
+                    [hasCertificate]="course.hasCertificate"
+                    (btnClicked)="watchCourse(course)" >
+    </app-course-bar>
   </a>
-  <app-course-status [title]="{EN:'Thank You!',AR:'شكرا لك'}"
-                     [description]="{EN:'You have applied to the advanced course successfully. Stay tuned; we are preparing your advanced course.',AR:'لقد تقدمت إلى الدورة المتقدمة بنجاح. ابقوا متابعين؛ نحن نعد دورتك المتقدمة.'}"
-                     [showBtn]="false"></app-course-status>
+  <div class="course-status" *ngIf="!advancedCourse">
+    <app-course-status [title]="advancedStatusTitle"
+                       [description]="advancedStatusDescription"
+                       [btnText]= "advancedStatusBtnText"
+                       (enrollClicked)="enrollAdvanced()">
+    </app-course-status>
+  </div>
 </div>

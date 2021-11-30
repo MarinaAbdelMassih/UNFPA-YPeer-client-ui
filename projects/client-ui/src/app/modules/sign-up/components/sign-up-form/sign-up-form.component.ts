@@ -119,7 +119,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       },
       (error) => {
         this.errorMsg = error.error.error.message;
-        if (this.errorMsg == 'This email is already registered.') {
+        if (this.errorMsg == 'This email is already registered.' || this.errorMsg == 'This mobile number is already registered.' ) {
           this.password = '';
           this.rePassword = '';
         }

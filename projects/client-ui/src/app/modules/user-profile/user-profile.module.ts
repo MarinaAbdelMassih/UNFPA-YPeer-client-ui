@@ -5,7 +5,7 @@ import { UserProfileRoutingModule } from './user-profile-routing.module';
 import { UserProfileComponent } from './user-profile.component';
 import { UserProfileInfoComponent } from './components/user-profile-info/user-profile-info.component';
 import { UserProfileCoursesComponent } from './components/user-profile-courses/user-profile-courses.component';
-import {MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule} from '@angular/material';
+import {MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import { CourseBarComponent } from './components/course-bar/course-bar.component';
@@ -33,6 +33,7 @@ import {NgxDropzoneModule} from "ngx-dropzone";
     MatNativeDateModule,
     MatDatepickerModule,
     NgxDropzoneModule,
+    MatButtonModule,
   ]
 })
 export class UserProfileModule { }

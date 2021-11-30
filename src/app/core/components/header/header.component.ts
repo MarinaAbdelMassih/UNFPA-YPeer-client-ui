@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Input() userName: string;
   size: number;
   isIPad: boolean = false;
+  isActive: boolean = false;
 
   @HostListener("window:resize", ['$event'])
   onResize(event) {
@@ -31,12 +32,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.checkUserStatus();
     this.size = window.innerWidth;
     this.isIPad = this.size<= 1200 && this.size >= 980;
     this.setDirectionBasedOnLanguage();
 
     $('.navbar-nav>li').on('click', function () {
       $('.navbar-collapse').collapse('hide');
+    });
+  }
+
+  checkUserStatus(): void {
+    this.signInService.userInfo.subscribe((userData) => {
+      if (userData && userData.status === 1) {
+        this.isActive = true;
+      }
     });
   }
 

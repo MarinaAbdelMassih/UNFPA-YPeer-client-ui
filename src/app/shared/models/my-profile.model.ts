@@ -1,6 +1,6 @@
 export interface IUserInfo {
   id: number;
-  // uuid: string;
+  uuid: string;
   username: string;
   email: string;
   firstName: string;
@@ -10,8 +10,8 @@ export interface IUserInfo {
   birthDate: string;
   educationalLevelId: number;
   genderId: number;
+  governorateId: number
+  hasImage: boolean;
+  maritalStatusId: number;
+  profileImage: string;
 }
-
-
-  // "maritalStatusId": 3,
-  // "governorateId": 5
