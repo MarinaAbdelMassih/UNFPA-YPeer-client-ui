@@ -26,6 +26,15 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   contactUsUserData: IContactUs;
   successMessageIsExist: boolean;
+  title: string;
+  firstName: string;
+  lastName: string;
+  subject: string;
+  message: string;
+  option: string;
+  email: string;
+  response: string;
+  captchaToken: string;
 
   constructor(private fb: FormBuilder, private languageService: LanguageService, private contactUsService: ContactUsService) {
     this.contactForm = this.fb.group({
@@ -65,9 +74,20 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
     };
     this.contactUsService.contactUs(this.contactUsUserData).then(() => {
       this.successMessageIsExist = true;
-      setTimeout(() => this.successMessageIsExist = false, 5000);
+      this.title = '';
+      this.firstName = '';
+      this.subject = '';
+      this.lastName = '';
+      this.email = '';
+      this.option = '';
+      this.message = '';
+      this.response = '';
+      this.captchaToken = '';
+      setTimeout(() =>
+        this.successMessageIsExist = false, 5000);
     });
-    this.contactForm.reset();
+    window.location.reload();
+
   }
 
   changeOption(e) {
