@@ -13,6 +13,9 @@
 
     img {
       padding-top: 74px;
+      @media(max-width: 1000px) and (min-width: 500px) {
+        padding-top: 25px;
+      }
     }
 
     .form-container {
@@ -20,6 +23,10 @@
       height: 498px;
       background-color: #FFFFFF;
       margin-top: 135px;
+      @media(max-width: 1000px) and (min-width: 500px) {
+        height: 564px;
+
+      }
     }
   }
   .rights-reserved-text {
