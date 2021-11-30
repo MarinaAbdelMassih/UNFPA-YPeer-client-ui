@@ -98,8 +98,9 @@
       </div>
     </div>
   </form>
-  <div *ngIf="successMessage" class="row">
-    <div class="col-6 alert-success" [translateLocal]="successMessage">
+  <div *ngIf="successMessage"  class="row">
+    <div class="col-6 alert-success" >
+      <p [translateLocal]="successMessage"></p>
     </div>
   </div>
 </div>
