@@ -4,9 +4,6 @@
     justify-content: center;
     margin-bottom: 80.8px;
     padding-top: 74px;
-    .logo-one {
-      padding-right: 39px;
-    }
   }
 
   .sign-up-form {
@@ -17,6 +14,26 @@
     margin-bottom: 49px;
     @media(max-width: 991px) {
       width: 100%;
+    }
+  }
+}
+::ng-deep {
+  [dir="ltr"] {
+    .sign-up-container {
+      .logos-container {
+        .logo-one {
+          padding-right: 39px;
+        }
+      }
+    }
+  }
+  [dir="rtl"] {
+    .sign-up-container {
+      .logos-container {
+        .logo-one {
+          padding-left: 39px;
+        }
+      }
     }
   }
 }

@@ -40,6 +40,10 @@
     }
   }
 
+  ::ng-deep.mat-expansion-panel-header {
+    height: 59px !important;
+  }
+
   ::ng-deep.mat-expansion-indicator::after, .mat-expansion-panel-header-description {
     //width: 11.1px;
     //height: 6.4px;
@@ -59,14 +63,22 @@
     }
   }
 
+  @media (hover: none) {
+  .mat-expansion-panel .mat-expansion-panel-header:hover {
+   background: #f0f0f0 !important;
+  }}
+
   ::ng-deep.mat-expansion-panel-content {
     background-color: #FFFFFF;
   }
 
   ::ng-deep.mat-expansion-panel-body {
     margin-top: 20px;
+
     p {
       margin-bottom: 20px;
+      font-size :18px;
+      color: #2e2e2e;
     }
   }
 }
