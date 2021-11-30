@@ -43,7 +43,7 @@
         <div class="form-field-container">
           <p [translateLocal]="{EN: 'Password', AR: 'كلمة المرور  '}"></p>
           <mat-form-field appearance="outline">
-            <input matInput type="password" name="password" class="password" formControlName="password"
+            <input matInput type="password" [(ngModel)]="password" name="password" class="password" formControlName="password"
                    placeholder="********">
           </mat-form-field>
           <mat-error [translateLocal]="{EN:'Password must be at least 10 characters .',AR:'يجب أن تتكون كلمة المرور من 10 أحرف على الأقل.'}" *ngIf="signUpForm.get('password').errors?.minlength">
@@ -55,7 +55,7 @@
         <div class="form-field-container">
           <p [translateLocal]="{EN: 'Retype Password', AR: 'اعد ادخال كلمة المرور'}"></p>
           <mat-form-field appearance="outline">
-            <input matInput type="password" name="passwordTwo" class="password" formControlName="rePassword"
+            <input matInput type="password" [(ngModel)]="rePassword"  name="passwordTwo" class="password" formControlName="rePassword"
                    [placeholder]="isArabic ? '******** ' : '********'">
 
           </mat-form-field>
@@ -75,7 +75,7 @@
         <div class="form-field-container">
           <p [translateLocal]="{EN: 'Date of Birth', AR: 'تاريخ الميلاد'}"></p>
           <mat-form-field appearance="outline">
-            <input matInput [matDatepicker]="basicDatepicker"
+            <input matInput [matDatepicker]="basicDatepicker" [max]="maxDate"
                    formControlName="birthDate" datePickerFormat="YYYY/MM/DD"
                    [placeholder]="isArabic ? 'ادخل تاريخ الميلاد ' : 'enter your birthday'">
             <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>

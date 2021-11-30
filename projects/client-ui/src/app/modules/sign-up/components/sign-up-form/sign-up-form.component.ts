@@ -49,6 +49,9 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   phonePattern = '^[0-9]{11}$';
   addUser: any;
   errorMsg: string;
+  password: string;
+  rePassword: string;
+  maxDate = new Date();
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService,
               private signUpService: SignUpService, private router: Router, private signInService: SignInService) {
@@ -116,6 +119,10 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
       },
       (error) => {
         this.errorMsg = error.error.error.message;
+        if (this.errorMsg == 'This email is already registered.') {
+          this.password = '';
+          this.rePassword = '';
+        }
       }
     );
   }
@@ -146,7 +153,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
-    return isValid ? null : { 'required': true };
+    return isValid ? null : {'required': true};
   }
 
 
