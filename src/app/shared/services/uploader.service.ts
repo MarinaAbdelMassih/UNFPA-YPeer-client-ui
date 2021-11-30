@@ -1,22 +1,22 @@
 import {Injectable} from '@angular/core';
 import {CustomHttpClientService} from './custom-http-client.service';
-import {ImageService} from './image.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploaderService {
 
-  constructor(private customHttpClientService: CustomHttpClientService, private imageService: ImageService) {
+  constructor(private customHttpClientService: CustomHttpClientService) {
   }
 
-  uploadImage(image: { sender: string, file: File, name: string, update: boolean }): Promise<any> {
+  uploadImage(image: { sender: string, file: File, token: {userId: number, uuid: string} }): Promise<any> {
     return this.customHttpClientService.upload({
-      endpoint: 'uploadImage', sender: image.sender,
-      receiver: 'uploadImage', file: image.file, body: {
-        name: this.imageService.hashFileName(image.name),
-        update: image.update
-      }
+      endpoint: 'uploader/uploadImage',
+      sender: image.sender,
+      receiver: 'uploadImage',
+      body: image.token,
+      file: image.file,
+      headers: true
     });
   }
 }

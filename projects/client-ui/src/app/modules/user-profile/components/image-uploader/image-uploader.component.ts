@@ -1,15 +1,7 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-  ViewEncapsulation
-} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {NgxDropzoneChangeEvent} from 'ngx-dropzone';
 import {UploaderService} from '../../../../../../../../src/app/shared/services/uploader.service';
+import {IUserInfo} from '../../../../../../../../src/app/shared/models/my-profile.model';
 
 @Component({
   selector: 'app-image-uploader',
@@ -18,6 +10,8 @@ import {UploaderService} from '../../../../../../../../src/app/shared/services/u
 })
 export class ImageUploaderComponent implements OnInit, OnChanges {
   file: File;
+  @Input() userInfo: IUserInfo;
+  @Input() imageSrc: string;
   @Input() width: number;
   @Input() height: number;
   @Input() name: string;
@@ -85,13 +79,16 @@ export class ImageUploaderComponent implements OnInit, OnChanges {
       this.uploading = true;
       this.uploaderService.uploadImage({
         file: this.file,
-        name: this.name,
-        update: this.update,
-        sender: 'image'
+        sender: 'image',
+        token: {
+          userId: this.userInfo.id,
+          uuid: this.userInfo.uuid
+        }
       }).then((res) => {
         this.uploading = false;
         this.file = null;
-        this.onImageUpload.emit(res.success);
+        this.onImageUpload.emit(res.url);
+        this.imageSrc = res.url;
       }).catch(() => {
         this.file = null;
         this.onImageUpload.emit(false);

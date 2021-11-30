@@ -1,8 +1,8 @@
 <div class="course-bar">
-  <p class="name" [translateLocal]="name"></p>
-  <div class="d-flex align-items-center">
+  <p *ngIf="name" class="name"> {{name}} <img *ngIf="disabled" [deploySrc]="'assets/images/icons/warning icon.png'" alt="warning-icon"></p>
+  <div class="d-flex align-items-center" *ngIf="progress">
     <circle-progress
-      [percent]="percent ? percent : 10"
+      [percent]="progress"
       [radius]="10"
       [outerStrokeWidth]="3"
       [innerStrokeWidth]="3"
@@ -15,15 +15,13 @@
       [space]="-3"
       [subtitleFontSize]="'6'"
       [unitsFontSize]="'6'"
-      [showSubtitle]="false"
-    ></circle-progress>
+      [showSubtitle]="false">
+    </circle-progress>
 
-    <p class="progress" [translateLocal]="{EN:'Your Progress',AR:'التقدم المحرز الخاص بك'}"></p>
+    <p class="progress" [translateLocal]="{EN: 'Your Progress', AR: 'مستوي التقدم'}"></p>
   </div>
-  <p *ngIf="finished" class="score" [translateLocal]="{EN:'Your Score:',AR:'درجاتك:'}"> <span>{{score ? score : '85'}}%</span></p>
-  <button  *ngIf="!advanced" class="normal-btn" [translateLocal]="btnText"></button>
-<!--  <button>{{finished ? 'View Certificate' : 'Resume Course'}}</button>-->
-  <button *ngIf="advanced" class="advanced-btn" [translateLocal]="{EN:'Resume Course',AR:'استئناف الدورة'}"></button>
+  <p *ngIf="score" class="score">{{isArabic? 'درجاتك:' : 'Your Score:'}}<span> {{score}}% </span></p>
+  <button class="normal-btn" [disabled]="disabled && !hasCertificate" (click)="onClick()" [ngClass]="{'disabled': disabled && !hasCertificate}" [translateLocal]="btnText"></button>
 </div>
 
 

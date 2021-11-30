@@ -5,6 +5,7 @@ import {WelcomeScreenPendingComponent} from "./shared/components/welcome-screen-
 import {AuthGuard} from "./core/guards/auth.guard";
 import {NoAuthGuard} from "./core/guards/no-auth.guard";
 import {AuthResolverService} from "./shared/resolvers/auth-resolver.service";
+import {IframeTestComponent} from './shared/components/iframe-test/iframe-test.component';
 
 
 const routes: Routes = [
@@ -150,6 +151,8 @@ const routes: Routes = [
     resolve: {
       auth: AuthResolverService
     },
+  canLoad: [AuthGuard],
+  canActivate: [AuthGuard]
   },
   {
     path: 'profile',
@@ -218,6 +221,9 @@ const routes: Routes = [
     resolve: {
       auth: AuthResolverService
     },
+  },
+  {
+    path: 'iframe-test', component: IframeTestComponent
   },
   {
     path: 'faqs',
