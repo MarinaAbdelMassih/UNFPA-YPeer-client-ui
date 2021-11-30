@@ -69,12 +69,12 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   birthday: any;
   birthDate = new FormControl(moment());
   successMessage: any;
-  tomorrow = new Date();
+  maxDate = new Date();
   readonlyField;
 
   constructor(private datepipe: DatePipe, private fb: FormBuilder, private languageService: LanguageService, private myProfileService: MyProfileService,
               private imageService: ImageService, private signInService: SignInService) {
-    this.tomorrow.setDate(this.tomorrow.getDate() + 1);
+    // this.tomorrow.setDate(this.tomorrow.getDate() + 1);
     this.userProfileForm = this.fb.group({
       firstName: new FormControl('', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Zء-ي ]+$/), Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
