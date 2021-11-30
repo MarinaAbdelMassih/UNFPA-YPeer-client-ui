@@ -1,13 +1,15 @@
 .banner {
   display: flex;
   position: relative;
+
   img {
-    width:100%
+    width: 100%
   }
+
   .banner-text {
-    position: absolute;
-    top: 53%;
-    left: 9%;
+    //position: absolute;
+    //top: 53%;
+    //left: 9%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,6 +40,28 @@
   .banner {
     .banner-text {
       font-size: 25px;
+    }
+  }
+}
+
+::ng-deep {
+  [dir="ltr"] {
+    .banner {
+      .banner-text {
+        position: absolute;
+        top: 53%;
+        left: 9%;
+      }
+    }
+  }
+
+  [dir="rtl"] {
+    .banner {
+      .banner-text {
+        position: absolute;
+        top: 53%;
+        right: 9%;
+      }
     }
   }
 }
