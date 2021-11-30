@@ -82,7 +82,6 @@ export class UserProfileCoursesComponent implements OnInit {
   }
 
   openDialog(course: IMyCourses): void {
-    debugger
     if ((course.courseType === 1 && !this.isActive) || (course.courseType === 2 && course.courseStatus === 2)) {
       this.dialog.open(ConfirmationPopUpComponent, {
         width: '740px',
