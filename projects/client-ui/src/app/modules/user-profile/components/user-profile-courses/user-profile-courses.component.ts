@@ -97,7 +97,7 @@ export class UserProfileCoursesComponent implements OnInit {
       this.router.navigate(['/viewer/111']);
     } else if (course.courseType === 2) {
       //navigate to advanced course viewer
-      this.router.navigate(['/iframe-test']);
+      this.router.navigate(['/advanced-course']);
     }
   }
 
