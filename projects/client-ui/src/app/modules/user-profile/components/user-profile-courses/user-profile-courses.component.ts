@@ -38,7 +38,7 @@ export class UserProfileCoursesComponent implements OnInit {
       // this.myCourses =
       //   [
       //     {id: 1, name: 'Introductory Course', progress: 100, score: 80, hasCertificate: true, courseStatus: null, courseType: 1},
-      //     {id: 2, name: 'Advanced Course', progress: 90, score: 60, hasCertificate: false, courseStatus: 1, courseType: 2}
+      //     {id: 2, name: 'Advanced Course', progress: null, score: null, hasCertificate: false, courseStatus: 1, courseType: 2}
       //   ];
       this.introductoryCourse = this.myCourses.find(course => course.courseType === 1);
       this.advancedCourse = this.myCourses.find(course => course.courseType === 2);
@@ -47,7 +47,7 @@ export class UserProfileCoursesComponent implements OnInit {
   }
 
   setAdvancedStatus(): void {
-    if (this.introductoryCourse.progress >= 90 && this.introductoryCourse.score >= 70 && !this.advancedCourse) {
+    if (this.introductoryCourse.progress >= 90 && this.introductoryCourse.score >= 75 && !this.advancedCourse) {
       this.advancedStatusTitle = {EN: 'What Next?', AR: 'ماذا بعد؟'};
       this.advancedStatusDescription = {EN: 'advanced courses is available for limited time (2 months) from the date of enrollment.', AR: ''};
       this.advancedStatusBtnText = {EN: 'Enroll Now', AR: 'سجل الان'};
@@ -63,7 +63,7 @@ export class UserProfileCoursesComponent implements OnInit {
   }
 
   setButtonText(course: IMyCourses): TranslationModel {
-    if (course.progress === 0) {
+    if (!course.progress) {
       this.btnText = {EN: 'watch course', AR: 'ابدأ المشاهده'};
     } else if (course.progress >= 90 && course.score < 75){
       this.btnText = {EN: 'Rewatch course', AR: 'أعد المشاهده'};
