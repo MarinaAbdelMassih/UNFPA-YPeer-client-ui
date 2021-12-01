@@ -3,6 +3,7 @@ import {Subscription} from "rxjs";
 import {homeContent} from "../../../../../../src/app/shared/models/home.model";
 import {HomeResolverService} from "../../../../../../src/app/shared/services/home-resolver.service";
 import {SignInService} from '../../../../../../src/app/shared/services/sign-in.service';
+import {MyCoursesService} from '../../../../../../src/app/shared/services/my-courses.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   homeData: homeContent;
   isActive: boolean = false;
 
-  constructor(private homeResolver: HomeResolverService, private signInService: SignInService) { }
+  constructor(private homeResolver: HomeResolverService, private signInService: SignInService,
+              private myCoursesService: MyCoursesService) { }
 
   ngOnInit() {
     this.checkUserStatus();
@@ -34,8 +36,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.signInService.userInfo.subscribe((userData) => {
       if (userData && userData.status === 1) {
         this.isActive = true;
+        this.enrollIntroductory(userData.userId);
       }
     });
+  }
+
+  enrollIntroductory(userId: number): void {
+    this.myCoursesService.enrollIntroductory({userId: userId}).then();
   }
 
   ngOnDestroy(): void {

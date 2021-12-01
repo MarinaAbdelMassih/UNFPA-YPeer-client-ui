@@ -20,7 +20,6 @@ import {WelcomeScreenPendingComponent} from './components/welcome-screen-pending
 import {MatDialogModule} from '@angular/material/dialog';
 import {InjectIframeDirective} from "./directives/inject-iframe.directive";
 import {DeployImageSrcDirective} from "./directives/deploy-image-src.directive";
-import {IframeTestComponent} from './components/iframe-test/iframe-test.component';
 
 
 @NgModule({
@@ -42,7 +41,6 @@ import {IframeTestComponent} from './components/iframe-test/iframe-test.componen
     WelcomeScreenPendingComponent,
     InjectIframeDirective,
     DeployImageSrcDirective,
-    IframeTestComponent
   ],
   exports: [
     TranslateLocalDirective,
@@ -62,7 +60,6 @@ import {IframeTestComponent} from './components/iframe-test/iframe-test.componen
     InjectIframeDirective,
     MatDialogModule,
     DeployImageSrcDirective,
-    IframeTestComponent
   ],
   imports: [
     CommonModule,
