@@ -40,19 +40,16 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.checkLanguage();
-    this.contactForm.valueChanges.subscribe(console.log);
-  }
-
-  checkLanguage(): void {
-    this.subscription = this.languageService.isArabic.subscribe((isArabic: boolean) => {
-      this.isArabic = isArabic;
+    this.isArabic = this.languageService.isArabic.value;
+    const isCurrentArabic = window.localStorage.getItem('lang') === 'ar';
+    this.languageService.isArabic.subscribe((isArabic) => {
+      if (isCurrentArabic !== isArabic) {
+        window.location.reload();
+      }
     });
   }
 
   submitContactForm() {
-    console.log('value', this.contactForm.value);
-    console.log('value', this.contactForm.controls.title.value);
     this.contactUsUserData = {
       title: this.contactForm.controls.title.value,
       firstName: this.contactForm.controls.firstName.value,
@@ -65,16 +62,8 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
       captchaToken : this.contactForm.controls.captcha.value
     };
     this.contactUsService.contactUs(this.contactUsUserData).then(data => {
-      console.log('contactus', data);
+      // console.log('contactus', data);
     });
-  }
-
-  changeOption(e) {
-    console.log(e.target.value);
-  }
-
-  changeResponse(e) {
-    console.log(e.target.value);
   }
 
   ngOnDestroy() {
