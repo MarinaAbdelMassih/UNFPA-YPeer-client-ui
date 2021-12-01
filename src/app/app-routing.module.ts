@@ -240,7 +240,12 @@ const routes: Routes = [
     },
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'policy',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/privacy-policy/privacy-policy.module').then(mod => mod.PrivacyPolicyModule),
+  },
 ];
 
 @NgModule({

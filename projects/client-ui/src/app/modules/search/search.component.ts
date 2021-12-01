@@ -1,18 +1,16 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {SearchService} from "../../../../../../src/app/shared/services/search.service";
 import {
   SearchAllContent,
   searchContent,
-  searchListItem,
-  SearchModel
+  searchListItem
 } from "../../../../../../src/app/shared/models/search.model";
 import {searchPublications} from "../../../../../../src/app/shared/queries/publications.query";
 import {searchStories} from "../../../../../../src/app/shared/queries/stories.query";
 import {searchTrainings} from "../../../../../../src/app/shared/queries/trainings.query";
 import {searchNews} from "../../../../../../src/app/shared/queries/news.query";
 import {searchEvents} from "../../../../../../src/app/shared/queries/events.query";
-import {ContentfulService} from '../../../../../../src/app/shared/services/contentful.service';
 
 @Component({
   selector: 'app-search',
@@ -34,8 +32,7 @@ export class SearchComponent implements OnInit {
   total: number;
   searchStarted: boolean;
 
-  constructor(private route: ActivatedRoute, private searchService: SearchService,
-              private contentfulService: ContentfulService) {
+  constructor(private route: ActivatedRoute, private searchService: SearchService) {
     for (let i = 1; i < 5; i++) {
       this.pageNumbers.push(i);
     }
@@ -47,7 +44,6 @@ export class SearchComponent implements OnInit {
   changeNumber(index): void {
     this.currentPage = index;
     this.PageNumber.emit(this.currentPage);
-    console.log('page no', this.currentPage);
   }
 
   first(): void {

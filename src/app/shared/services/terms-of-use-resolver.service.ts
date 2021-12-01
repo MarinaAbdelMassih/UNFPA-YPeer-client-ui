@@ -20,7 +20,6 @@ export class TermsOfUseResolverService {
         return new TermsModel(res.data.termsOfUse);
       }).subscribe((termsData: termsContent) => {
         this.termsData = termsData;
-        console.log('service' , this.termsData);
         subscriber.next(this.termsData);
       }, () => subscriber.next(null));
     });

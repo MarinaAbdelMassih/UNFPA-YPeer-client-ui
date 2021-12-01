@@ -23,9 +23,7 @@ export class FaqsComponent implements OnInit {
   getFaqsData(): void {
     this.faqsResolverService.resolve().subscribe((faqsData: faqsContent) => {
       this.faqsList = faqsData.faqsList;
-      console.log(this.faqsList);
       this.links = faqsData.links;
-      console.log(this.links);
       this.faqsAccList = faqsData.faqsAccQuesList;
     });
   }

@@ -20,7 +20,6 @@ export class ResultPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.score, this.numberOfTrials)
   }
 
   viewCourse(type: string) {

@@ -47,7 +47,6 @@ export class QuizComponent implements OnInit {
         this.currentQuestion.answered = true;
       }
     }
-    console.log(this.questions)
   }
 
   getNextQuestion() {

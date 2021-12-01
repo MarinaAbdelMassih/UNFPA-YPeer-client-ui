@@ -13,6 +13,9 @@
 
     img {
       padding-top: 74px;
+      @media(max-width: 1000px) and (min-width: 500px) {
+        padding-top: 25px;
+      }
     }
 
     .form-container {
@@ -20,8 +23,13 @@
       height: 498px;
       background-color: #FFFFFF;
       margin-top: 135px;
+      @media(max-width: 1000px) and (min-width: 500px) {
+        height: 564px;
+
+      }
     }
   }
+
   .rights-reserved-text {
     font-size: 11px;
     line-height: 1.18;
@@ -37,10 +45,12 @@
   .sign-in-container {
     .sign-in {
       flex-direction: column;
+
       img {
         width: 75%;
         //padding-left: 33.7px;
       }
+
       .form-container {
         margin: auto;
       }
@@ -60,6 +70,7 @@
   [dir="ltr"] {
     .sign-in-container {
       background-image: url("src/assets/images/bg-sign-in.png");
+
       .sign-in {
         img {
           padding-left: 73.7px;
@@ -75,6 +86,13 @@
   [dir="rtl"] {
     .sign-in-container {
       background-image: url("src/assets/images/signin-arbic.png");
+
+      .rights-reserved-text {
+        @media(max-width: 320px) {
+          margin-bottom: 7px;
+          font-size: 10px;
+        }
+      }
 
       .sign-in {
         img {

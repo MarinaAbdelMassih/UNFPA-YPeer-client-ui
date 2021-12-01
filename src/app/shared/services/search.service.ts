@@ -12,7 +12,7 @@ export class SearchService {
   searchData: searchContent;
   constructor(private http: HttpClient, private dataHandlerService: DataHandlerService) { }
 
-  getSearchData(searchWord: string, skip: number, limit: number) {
+  getSearchData(searchWord: string) {
    return this.http.get(`https://cdn.contentful.com/spaces/jvvejk00zh2l/entries?query=${searchWord}`,
       {headers: {'authorization': 'Bearer SjOnnb-PwRJ45RxLrkygZq__Tcum2HeCje-ZxqgO0c0'
         }}).toPromise();
@@ -41,7 +41,8 @@ export class SearchService {
          searchResult: result.data[searchDataType]
         });
         subscriber.next(this.searchData);
-      }, () => {subscriber.next(null);    console.log(result)});
+      }, () => {subscriber.next(null);
+      });
     });
   }
 
