@@ -3,4 +3,6 @@ export class User {
   firstName: string;
   status: number;
   valid?: boolean;
+  auth?: any;
+  uuid?: string;
 }
