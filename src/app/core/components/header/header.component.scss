@@ -96,7 +96,23 @@
   }
 }
 
+[dir = ltr] {
+  .navbar {
+    .navbar-brand {
+      .ybeer-logo {
+        margin-left: 15px;
+      }
+    }
+  }
+}
 [dir = rtl] {
+  .navbar {
+    .navbar-brand {
+      .ybeer-logo {
+        margin-right: 15px;
+      }
+    }
+  }
   .nav-link {
     font-size: 14px;
     font-family: 'DroidKufiBold', sans-serif;
