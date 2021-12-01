@@ -120,13 +120,14 @@
         color: #2e2e2e;
       }
 
-      .form-field-container{
+      .form-field-container {
         flex: 1 1 47.5%;
         @media (max-width: 768px) {
           flex: 1 1 100%;
           justify-content: center;
         }
       }
+
       .btn-container {
         display: flex;
         margin-left: auto;
@@ -149,6 +150,7 @@
           border: 1px solid transparent;
           margin-bottom: 78px;
           margin-top: 26px;
+
           &:disabled {
             background: #5a5a5a;
           }
@@ -157,16 +159,29 @@
     }
   }
 }
+
 .row {
   display: flex;
   align-items: center;
   justify-content: center;
+
   .alert-success {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
     height: 50px;
+    @media(max-width: 500px) {
+      width: 100%;
+    }
+
+    p {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0;
+      }
   }
 
 }

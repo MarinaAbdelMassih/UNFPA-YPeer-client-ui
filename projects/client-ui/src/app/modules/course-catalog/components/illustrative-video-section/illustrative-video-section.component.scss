@@ -39,6 +39,9 @@
       font-weight: bold;
       margin-bottom: 11px;
       color: #232323;
+      @media (max-width: 320px) {
+        font-size: 25px;
+      }
     }
     span {
       font-size: 12px;
