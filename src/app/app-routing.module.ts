@@ -5,6 +5,7 @@ import {WelcomeScreenPendingComponent} from "./shared/components/welcome-screen-
 import {AuthGuard} from "./core/guards/auth.guard";
 import {NoAuthGuard} from "./core/guards/no-auth.guard";
 import {AuthResolverService} from "./shared/resolvers/auth-resolver.service";
+import {IframeTestComponent} from './shared/components/iframe-test/iframe-test.component';
 
 
 const routes: Routes = [
@@ -222,6 +223,9 @@ const routes: Routes = [
     },
   },
   {
+    path: 'iframe-test', component: IframeTestComponent
+  },
+  {
     path: 'faqs',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/faqs/faqs.module').then(mod => mod.FaqsModule),
@@ -240,7 +244,12 @@ const routes: Routes = [
     },
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'policy',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/privacy-policy/privacy-policy.module').then(mod => mod.PrivacyPolicyModule),
+  },
 ];
 
 @NgModule({
