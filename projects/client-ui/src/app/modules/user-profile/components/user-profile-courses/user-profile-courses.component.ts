@@ -69,7 +69,7 @@ export class UserProfileCoursesComponent implements OnInit {
       this.btnText = {EN: 'Rewatch course', AR: 'أعد المشاهده'};
     } else if (course.progress < 90){
       this.btnText = {EN: 'Resume Course', AR: 'اكمل الدورة'};
-    } else if (course.progress >= 90 && course.score >= 75 && course.hasCertificate){
+    } else if (course.progress >= 90 && course.score >= 75){
       this.btnText = {EN: 'View Certificate', AR: 'افتح الشهاده'};
     }
     return (this.btnText);
