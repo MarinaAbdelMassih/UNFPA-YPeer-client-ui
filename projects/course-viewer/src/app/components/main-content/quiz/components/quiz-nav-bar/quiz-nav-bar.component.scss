@@ -50,9 +50,10 @@
     }
   }
 }
-@media (max-width: 414px) {
+@media (max-width: 415px) {
   .nav-container {
     .buttons-container {
+      display: contents;
       button {
         width: 60px;
         padding: 4px;
