@@ -3,7 +3,7 @@
   <form class="contact-form" [formGroup]="contactForm">
     <div class="first-inputs-row ">
       <div class="mat-select-container w-20">
-        <mat-select formControlName="title" class="title-select" [placeholder]="isArabic ? 'الوظيفة' : 'Title'">
+        <mat-select formControlName="title" [(ngModel)]="title" class="title-select" [placeholder]="isArabic ? 'الوظيفة' : 'Title'">
           <mat-option *ngFor="let title of titles" [value]="isArabic ? title.nameAr :title.nameEn">
             {{isArabic ? title.nameAr :title.nameEn}}
           </mat-option>
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="input-container w-40">
-        <input matInput class="input-fName" type="text" name="fName" formControlName="firstName"
+        <input matInput class="input-fName" type="text" name="fName" formControlName="firstName" [(ngModel)]="firstName"
                [placeholder]="isArabic ? 'الاسم الأول ' : 'First Name'">
 
         <div class="error-label">
@@ -30,7 +30,7 @@
       </div>
 
       <div class="input-container w-40">
-        <input matInput class="input-fName" type="text" name="lName" formControlName="lastName"
+        <input matInput class="input-fName"  [(ngModel)]="lastName" type="text" name="lName" formControlName="lastName"
                [placeholder]="isArabic ? 'الاسم الأخير' : 'Last Name'">
 
         <div class="error-label">
@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="input-container">
-      <input matInput type="email" name="email" formControlName="email" class="email"
+      <input matInput type="email" name="email"  [(ngModel)]="email" formControlName="email" class="email"
              [placeholder]="isArabic ? 'البريد الالكتروني ' : 'Email'">
     </div>
     <div class="error-label">
@@ -59,7 +59,7 @@
       </div>
     </div>
     <div class="input-container">
-      <input matInput
+      <input matInput [(ngModel)]="subject"
              type="text" name="subject" formControlName="subject" class="subject"
              [placeholder]="isArabic ? 'عنوان الرسالة' : 'Subject'">
     </div>
@@ -75,7 +75,7 @@
       </div>
     </div>
     <div class="mat-select-container">
-      <mat-select class="select-option" (change)="changeOption($event)"  [placeholder]="isArabic ? 'اختر' : 'Select an option'" formControlName="option">
+      <mat-select class="select-option" [(ngModel)]="option" (change)="changeOption($event)"  [placeholder]="isArabic ? 'اختر' : 'Select an option'" formControlName="option">
         <mat-option *ngFor="let item of options" [value]="isArabic ? item.nameAr :item.nameEn">
           {{isArabic ? item.nameAr :item.nameEn}}
         </mat-option>
@@ -87,7 +87,7 @@
       </div>
     </div>
     <div class="input-container">
-      <textarea matInput type="text" name="massage" formControlName="message"
+      <textarea matInput type="text" name="massage" formControlName="message"  [(ngModel)]="message"
                 [placeholder]="isArabic ? ' الرسالة' : 'Your Message'" rows="4" class="mb-0">
       </textarea>
       <div class="error-label">
@@ -100,7 +100,7 @@
     </div>
     <div class="radio-button-container">
       <p [translateLocal]="{EN: 'Do you require a response?', AR: 'هل تتوقع رد على الرسالة!'}"></p>
-      <mat-radio-group aria-label="Select an option" formControlName="response">
+      <mat-radio-group aria-label="Select an option" formControlName="response"  [(ngModel)]="response">
         <mat-radio-button value="true" name="responseMassage">
           <p [translateLocal]="{EN: 'Yes', AR: 'نعم'}"></p>
         </mat-radio-button>
@@ -116,7 +116,7 @@
     </div>
 
     <h5 [translateLocal]="{EN: '* All fields are required', AR: '* كل البيانات إجبارية'}"></h5>
-    <re-captcha id="recaptcha" formControlName="captchaToken" required></re-captcha>
+    <re-captcha id="recaptcha" formControlName="captchaToken"  [(ngModel)]="captchaToken" required></re-captcha>
     <button
       type="submit" [disabled]="!contactForm.valid"   [ngStyle]="{'background-color': !contactForm.valid ? 'darkgray' : '#5a3f99' }" (click)="submitContactForm()"
       [translateLocal]="{EN: 'Send Message', AR: 'ارسال'}">
