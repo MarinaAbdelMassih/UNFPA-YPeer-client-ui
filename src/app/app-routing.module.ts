@@ -5,7 +5,6 @@ import {WelcomeScreenPendingComponent} from "./shared/components/welcome-screen-
 import {AuthGuard} from "./core/guards/auth.guard";
 import {NoAuthGuard} from "./core/guards/no-auth.guard";
 import {AuthResolverService} from "./shared/resolvers/auth-resolver.service";
-import {IframeTestComponent} from './shared/components/iframe-test/iframe-test.component';
 
 
 const routes: Routes = [
@@ -223,9 +222,6 @@ const routes: Routes = [
     },
   },
   {
-    path: 'iframe-test', component: IframeTestComponent
-  },
-  {
     path: 'faqs',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/faqs/faqs.module').then(mod => mod.FaqsModule),
@@ -235,6 +231,16 @@ const routes: Routes = [
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/terms-of-use/terms-of-use.module').then(mod => mod.TermsOfUseModule),
   },
+  {
+    path: 'advanced-course',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/itworx-iframe/itworx-iframe.module').then(mod=> mod.ItworxIframeModule),
+    resolve: {
+      auth: AuthResolverService
+    },
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
