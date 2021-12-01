@@ -19,7 +19,6 @@ export class PrivacyPolicyResolverService {
         return new PrivacyPolicyModel(res.data.privacyPolicy);
       }).subscribe((privacyData: PrivacyPolicyContent) => {
         this.privacyData = privacyData;
-        console.log('service', this.privacyData);
         subscriber.next(this.privacyData);
       }, () => subscriber.next(null));
     });

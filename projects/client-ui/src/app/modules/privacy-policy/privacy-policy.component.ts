@@ -20,9 +20,7 @@ export class PrivacyPolicyComponent implements OnInit {
   getPrivacyPolicyData(): void {
     this.privacyPolicyResolverService.resolve().subscribe((termsData: any) => {
       this.title = termsData.title.title;
-      console.log('title', this.title);
       this.description = termsData.description.description;
-      console.log('description', this.description);
     });
   }
 
