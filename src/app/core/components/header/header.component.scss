@@ -47,6 +47,7 @@
   padding-left: 8px;
   @media(max-width: 768px) {
     border-left: 0;
+    border-right: 0;
     padding-left: 0;
   }
 
@@ -106,6 +107,7 @@
       border-left: 2px solid #2e2e2e;
       @media(max-width: 768px) {
         border-left: 0;
+        border-right: 0;
       }
     }
     }
@@ -121,6 +123,7 @@
       border-right: 2px solid #2e2e2e;
       @media(max-width: 768px) {
         border-left: 0;
+        border-right: 0;
       }
     }
   }
