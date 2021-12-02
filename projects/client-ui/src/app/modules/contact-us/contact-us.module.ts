@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactUsRoutingModule } from './contact-us-routing.module';
 import { ContactUsComponent } from './contact-us.component';
@@ -8,9 +8,14 @@ import {CoreModule} from '../../../../../../src/app/core/core.module';
 import {MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule} from '@angular/material';
 import {SharedModule} from '../../../../../../src/app/shared/shared.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
-import {environment} from "../../../../../../src/environments/environment";
-
+import {
+  RECAPTCHA_SETTINGS,
+  RecaptchaFormsModule,
+  RecaptchaModule,
+  RecaptchaSettings
+} from 'ng-recaptcha';
+import {environment} from '../../../environments/environment';
+import {LocaleProvider} from './providers/locale.provider';
 
 @NgModule({
   declarations: [ContactUsComponent, ContactUsBannerComponent, ContactUsFormComponent],
@@ -29,6 +34,7 @@ import {environment} from "../../../../../../src/environments/environment";
     RecaptchaFormsModule,
   ],
   providers: [
+    LocaleProvider,
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: {
