@@ -75,7 +75,7 @@
       <div class="form-field-container">
         <p class="occupation" [translateLocal]="{EN: 'occupation', AR: 'مهنة '}">Occupation</p>
         <mat-form-field appearance="outline">
-          <input matInput type="text" name="occupation" formControlName="occupation"
+          <input matInput type="text" name="occupation" formControlName="occupation" style="line-height: 0.9"
                  [placeholder]="isArabic ? 'اكتب في مهنتك ' : 'Type in your occupation'">
         </mat-form-field>
         <mat-error  [translateLocal]="{AR: 'هذا الحقل مطلوب', EN: 'This Field is required'}" *ngIf="userProfileForm.get('occupation').hasError('required')">
