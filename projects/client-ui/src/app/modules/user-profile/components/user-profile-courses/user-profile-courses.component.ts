@@ -35,11 +35,6 @@ export class UserProfileCoursesComponent implements OnInit {
   getMyCourses(userEnrolled?: boolean): void {
     this.myCoursesService.getMyCourses({userId: this.userInfo.id}).then((myCourses) => {
       this.myCourses = myCourses.courses;
-      // this.myCourses =
-      //   [
-      //     {id: 1, name: 'Introductory Course', progress: 100, score: 80, hasCertificate: true, courseStatus: null, courseType: 1},
-      //     {id: 2, name: 'Advanced Course', progress: null, score: null, hasCertificate: false, courseStatus: 1, courseType: 2}
-      //   ];
       this.introductoryCourse = this.myCourses.find(course => course.courseType === 1);
       this.advancedCourse = this.myCourses.find(course => course.courseType === 2);
       this.setAdvancedStatus(userEnrolled);
@@ -49,7 +44,7 @@ export class UserProfileCoursesComponent implements OnInit {
   setAdvancedStatus(userEnrolled: boolean): void {
     if (this.introductoryCourse.progress >= 90 && this.introductoryCourse.score >= 75 && !this.advancedCourse && !userEnrolled) {
       this.advancedStatusTitle = {EN: 'What Next?', AR: 'ماذا بعد؟'};
-      this.advancedStatusDescription = {EN: 'advanced courses is available for limited time (2 months) from the date of enrollment.', AR: ''};
+      this.advancedStatusDescription = {EN: 'advanced courses is available for limited time (2 months) from the date of enrollment.', AR: 'الكورس متاح فقط لمده محدوده (شهرين) من تاريخ التسجيل'};
       this.advancedStatusBtnText = {EN: 'Enroll Now', AR: 'سجل الان'};
     }
     // else if (this.advancedCourse.courseStatus === 1) {
@@ -107,7 +102,7 @@ export class UserProfileCoursesComponent implements OnInit {
       this.getMyCourses(true);
       if (!response.status) {
         this.advancedStatusTitle = {EN: 'Thank You!', AR: 'شكراً!'};
-        this.advancedStatusDescription = {EN: 'You did a great job. Now you are on our waiting list, be patient; you will join the advanced course shortly', AR: ''};
+        this.advancedStatusDescription = {EN: 'You did a great job. Now you are on our waiting list, be patient; you will join the advanced course shortly', AR: 'لقد قمت بعمل رائع. انت الاُن علي قائمة الإنتظار, سوف يتم إلحاقك بالكورس قريبا'};
         this.advancedStatusBtnText = null;
       }
     });
