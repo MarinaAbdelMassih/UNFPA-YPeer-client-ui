@@ -55,7 +55,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
       animationDuration: 300,
       backgroundPadding: -26,
       maxPercent: 100,
-      outerStrokeWidth: 3,
+      outerStrokeWidth: 2,
       innerStrokeWidth: 3,
       titleFontSize: '5',
       subtitleFontSize: '9',
