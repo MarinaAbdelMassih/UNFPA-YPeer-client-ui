@@ -1,4 +1,7 @@
-<app-page-top-banner [imageSrc]="'assets/images/stories-banner.png'"></app-page-top-banner>
+<!--<app-page-top-banner [imageSrc]="'assets/images/stories-banner.png'"></app-page-top-banner>-->
+<app-page-top-banner [imageSrc]="'assets/images/story-banner.png'"
+                     [title]="{EN: 'STORIES', AR: 'القصص'}">
+</app-page-top-banner>
 <div class="story-page-content">
   <div class="story-list">
     <app-story-list *ngIf="storiesData" [storyLists]="storiesList" [showLoadMoreButton]="showLoadMore" (loadMoreClicked)="getStoriesData()"></app-story-list>
