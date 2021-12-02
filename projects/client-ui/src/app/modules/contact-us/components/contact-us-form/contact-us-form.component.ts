@@ -40,12 +40,12 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.checkLanguage();
-  }
-
-  checkLanguage(): void {
-    this.subscription = this.languageService.isArabic.subscribe((isArabic: boolean) => {
-      this.isArabic = isArabic;
+    this.isArabic = this.languageService.isArabic.value;
+    const isCurrentArabic = window.localStorage.getItem('lang') === 'ar';
+    this.languageService.isArabic.subscribe((isArabic) => {
+      if (isCurrentArabic !== isArabic) {
+        window.location.reload();
+      }
     });
   }
 
@@ -61,13 +61,9 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
       response: this.contactForm.controls.response.value,
       captchaToken : this.contactForm.controls.captchaToken.value
     };
-    this.contactUsService.contactUs(this.contactUsUserData).then();
-  }
-
-  changeOption(e) {
-  }
-
-  changeResponse(e) {
+    this.contactUsService.contactUs(this.contactUsUserData).then(data => {
+      // console.log('contactus', data);
+    });
   }
 
   ngOnDestroy() {

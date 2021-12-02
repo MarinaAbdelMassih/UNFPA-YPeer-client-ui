@@ -65,7 +65,7 @@
       </div>
     </div>
     <div class="mat-select-container">
-      <mat-select class="select-option" (change)="changeOption($event)"  [placeholder]="isArabic ? 'اختر' : 'Select an option'" formControlName="option">
+      <mat-select class="select-option" [placeholder]="isArabic ? 'اختر' : 'Select an option'" formControlName="option">
         <mat-option *ngFor="let item of options" [value]="isArabic ? item.nameAr :item.nameEn">
           {{isArabic ? item.nameAr :item.nameEn}}
         </mat-option>
@@ -113,4 +113,3 @@
     </button>
   </form>
 </div>
-
