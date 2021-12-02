@@ -34,14 +34,18 @@
   }
 
   circle-progress {
-    width: 30px;
-    height: 30px;
+    width: 48px;
+    height: 48px;
+    ::ng-deep svg {
+      width: 48px;
+      height: 48px;
+    }
   }
 
   .progress {
     font-family: 'TradeGothic', sans-serif;
     font-size: 16px;
-    line-height: 1.25;
+    line-height: 0.7;
     color: #232323;
     margin-bottom: 0;
     padding-right: 8px;
