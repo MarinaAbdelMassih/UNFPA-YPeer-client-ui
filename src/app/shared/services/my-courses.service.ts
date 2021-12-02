@@ -19,16 +19,6 @@ export class MyCoursesService {
     });
   }
 
-  enrollIntroductory(enrollBody: {userId}): Promise<{status: boolean}> {
-    return this.customHttpClient.sendBackendRequest({
-      endpoint: 'user/enroll/introductory',
-      sender: 'enroll-introductory',
-      receiver: 'introductory',
-      body: enrollBody,
-      headers: true
-    });
-  }
-
   enrollAdvanced(enrollBody: {userId: number, email: string, firstName: string, lastName: string}): Promise<{status: boolean}> {
     return this.customHttpClient.sendBackendRequest({
       endpoint: 'user/enroll/advanced',

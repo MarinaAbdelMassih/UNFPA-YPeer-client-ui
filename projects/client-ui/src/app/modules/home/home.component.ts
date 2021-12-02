@@ -16,8 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   homeData: homeContent;
   isActive: boolean = false;
 
-  constructor(private homeResolver: HomeResolverService, private signInService: SignInService,
-              private myCoursesService: MyCoursesService) { }
+  constructor(private homeResolver: HomeResolverService, private signInService: SignInService) { }
 
   ngOnInit() {
     this.checkUserStatus();
@@ -36,13 +35,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.signInService.userInfo.subscribe((userData) => {
       if (userData && userData.status === 1) {
         this.isActive = true;
-        this.enrollIntroductory(userData.userId);
       }
     });
-  }
-
-  enrollIntroductory(userId: number): void {
-    this.myCoursesService.enrollIntroductory({userId: userId}).then();
   }
 
   ngOnDestroy(): void {
