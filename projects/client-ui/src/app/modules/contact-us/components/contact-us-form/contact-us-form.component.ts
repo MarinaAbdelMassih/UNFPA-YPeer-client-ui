@@ -86,8 +86,7 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
       setTimeout(() =>
         this.successMessageIsExist = false, 5000);
     });
-    window.location.reload();
-
+    this.contactForm.reset();
   }
 
   changeOption(e) {
