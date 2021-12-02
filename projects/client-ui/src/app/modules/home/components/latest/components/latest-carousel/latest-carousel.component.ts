@@ -58,9 +58,4 @@ export class LatestCarouselComponent implements OnInit, AfterViewInit {
       this.slickModal.initSlick();
     }
   }
-
-  openDetailsPage(): void {
-    this.router.navigate(['']);
-  }
-
 }
