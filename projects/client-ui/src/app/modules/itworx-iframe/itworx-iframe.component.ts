@@ -3,6 +3,8 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {SignInService} from '../../../../../../src/app/shared/services/sign-in.service';
 import {MyProfileService} from '../../../../../../src/app/shared/services/my-profile.service';
 import {MyCoursesService} from '../../../../../../src/app/shared/services/my-courses.service';
+import {ConfirmationPopUpComponent} from '../../../../../../src/app/shared/components/confirmation-pop-up/confirmation-pop-up.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-itworx-iframe',
@@ -12,7 +14,8 @@ import {MyCoursesService} from '../../../../../../src/app/shared/services/my-cou
 export class ItworxIframeComponent implements OnInit {
 
   constructor(private sanitizer: DomSanitizer, private signInService: SignInService,
-              private myProfileService: MyProfileService, private myCoursesService: MyCoursesService) { }
+              private myProfileService: MyProfileService, private myCoursesService: MyCoursesService,
+              public dialog: MatDialog) { }
 
   token: string;
 
@@ -26,7 +29,11 @@ export class ItworxIframeComponent implements OnInit {
           if(userInfo){
             this.myCoursesService.getIframeToken({firstName: userInfo.firstName, lastName: userInfo.lastName, email: userInfo.email, userId: userInfo.id}).then(response => {
               this.token = response.data;
-            })
+            }).catch(() => {
+              this.dialog.open(ConfirmationPopUpComponent, {
+                width: '740px',
+              });
+            });
           }
         });
     });
