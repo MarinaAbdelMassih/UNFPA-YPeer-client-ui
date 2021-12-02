@@ -2,6 +2,29 @@
   padding-left: 68px;
   padding-right: 68px;
 
+  .title-container {
+    width: 20%;
+    @media(max-width: 500px) {
+      width: 100%;
+      margin-bottom: 12px;
+    }
+  }
+  .firstName-container {
+    width: 37%;
+    @media(max-width: 500px) {
+      width: 100%;
+      margin-bottom: 12px;
+    }
+  }
+
+  .lastName-container {
+    width: 37%;
+    @media(max-width: 500px) {
+      width: 100%;
+      margin-bottom: 12px;
+    }
+  }
+
   h5 {
     font-size: 11px;
     color: #2e2e2e;
@@ -77,6 +100,9 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    @media (max-width: 500px) {
+      display: block;
+    }
   }
 
   .w-40 {
@@ -162,6 +188,7 @@
     }
   }
 }
+
 .alert-success {
   margin-top: 22px;
 }

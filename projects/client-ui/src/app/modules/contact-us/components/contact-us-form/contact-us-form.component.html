@@ -2,7 +2,7 @@
   <h3 [translateLocal]="{EN: 'LEAVE US A MESSAGE', AR: 'اترك لنا رسالة'}"></h3>
   <form class="contact-form" [formGroup]="contactForm">
     <div class="first-inputs-row ">
-      <div class="mat-select-container w-20">
+      <div class="mat-select-container title-container">
         <mat-select formControlName="title" [(ngModel)]="title" class="title-select" [placeholder]="isArabic ? 'الوظيفة' : 'Title'">
           <mat-option *ngFor="let title of titles" [value]="isArabic ? title.nameAr :title.nameEn">
             {{isArabic ? title.nameAr :title.nameEn}}
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <div class="input-container w-40">
+      <div class="input-container firstName-container">
         <input matInput class="input-fName" type="text" name="fName" formControlName="firstName" [(ngModel)]="firstName"
                [placeholder]="isArabic ? 'الاسم الأول ' : 'First Name'">
 
@@ -29,7 +29,7 @@
         </div>
       </div>
 
-      <div class="input-container w-40">
+      <div class="input-container lastName-container">
         <input matInput class="input-fName"  [(ngModel)]="lastName" type="text" name="lName" formControlName="lastName"
                [placeholder]="isArabic ? 'الاسم الأخير' : 'Last Name'">
 
