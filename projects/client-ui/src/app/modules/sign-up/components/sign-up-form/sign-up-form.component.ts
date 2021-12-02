@@ -110,9 +110,8 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
     this.signUpService.signUp(this.addUser).then((response: any) => {
         if (response.success) {
           this.signInService.userInfo.next(response.data);
-          localStorage.setItem('uuid', response.data.uuid);
-          localStorage.setItem('user-token', response.data.auth.accessToken);
-          this.router.navigate(['/welcome']).then(() => window.location.reload());
+          this.signInService.saveUserAuth(response.data);
+          this.router.navigate(['/welcome']).then();
         } else {
           this.errorMsg = response.error.message;
         }
