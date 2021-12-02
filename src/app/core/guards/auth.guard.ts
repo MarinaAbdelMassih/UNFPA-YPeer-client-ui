@@ -22,29 +22,20 @@ export class AuthGuard implements CanActivate, CanLoad {
 
   private auth(): Promise<boolean> {
     return new Promise<boolean>(resolve => {
-      this.signInService.userAuthorized().then((userData => {
-          if (userData && userData.valid) {
-            resolve(true);
-          } else {
-            this.router.navigate(['/signIn']);
-            resolve(false);
+      let userInfoExist = this.signInService.userInfo.getValue();
+      if (userInfoExist)
+        resolve(true);
+      else {
+        this.signInService.userAuthorized().then((userData => {
+            if (userData && userData.valid) {
+              resolve(true);
+            } else {
+              this.router.navigate(['/signIn']);
+              resolve(false);
+            }
           }
-        }
-      ));
-      // let userInfoExist = this.signInService.userInfo.getValue();
-      // if (userInfoExist)
-      //   resolve(true);
-      // else {
-      //   this.signInService.userAuthorized().then((userData => {
-      //       if (userData && userData.valid) {
-      //         resolve(true);
-      //       } else {
-      //         this.router.navigate(['/signIn']);
-      //         resolve(false);
-      //       }
-      //     }
-      //   ));
-      // }
+        ));
+      }
     });
   }
 
