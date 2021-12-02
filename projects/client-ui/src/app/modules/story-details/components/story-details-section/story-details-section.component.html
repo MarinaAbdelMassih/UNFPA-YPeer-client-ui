@@ -2,7 +2,7 @@
   <p class="story-date" [translateLocal]="detailsData.date"></p>
 
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe allowfullscreen="" [src]="detailsData.detailsVideo | safe"></iframe>
+    <iframe *ngIf="detailsData.detailsVideo" allowfullscreen="" [src]="detailsData.detailsVideo | safe"></iframe>
   </div>
 
   <p class="description-part-five" [translateLocal]="detailsData.videoDesc1"></p>
