@@ -23,6 +23,7 @@ export class ImageUploaderComponent implements OnInit, OnChanges {
   hasError = false;
   showInputError = false;
   uploading = false;
+  currentImage: any;
 
   constructor(private uploaderService: UploaderService) {
   }
@@ -56,9 +57,11 @@ export class ImageUploaderComponent implements OnInit, OnChanges {
     const file = $event.addedFiles[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = () => {
+    reader.onload = (e) => {
       this.validateImageDimensions(reader).then((isValid: boolean) => {
         if (isValid) {
+          // @ts-ignore
+          this.currentImage = e.target.result;
           this.file = file;
           this.onImageChange.emit(reader.result);
           this.hasError = false;
