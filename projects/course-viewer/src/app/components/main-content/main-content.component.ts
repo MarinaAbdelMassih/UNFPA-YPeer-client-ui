@@ -153,7 +153,8 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
       courseId: stuff.courseId,
       learningObjectiveChildId: stuff.id,
       videosCount: videosCount,
-    }).then(success => {
+    }).then((data) => {
+      this.userProgress.emit(data.totalProgress);
       stuff.setFinished(true);
     })
   }
