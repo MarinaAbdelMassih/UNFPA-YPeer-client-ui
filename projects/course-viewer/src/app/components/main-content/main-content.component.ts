@@ -87,7 +87,7 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
             else if (stuff.type == StuffType.INTERACTIVE) {
               this.createComponent(HtmlComponent);
               (<HtmlComponent>this.currentComponent.instance).html = stuff;
-              this.setUserProgress(stuff, this.userId);
+              this.setUserProgress(stuff, this.userId, this.videosCount);
             }
             // else if (stuff.type == StuffType.MATERIAL) {
             //   this.setUserProgress(stuff);
@@ -147,12 +147,12 @@ export class MainContentComponent implements AfterViewInit, OnDestroy {
       this.currentComponent.destroy();
   }
 
-  private setUserProgress(stuff: IStuff, userId: number) {
+  private setUserProgress(stuff: IStuff, userId: number, videosCount: number) {
     this.courseViewerDataService.setUserProgress({
       userId: userId,
       courseId: stuff.courseId,
       learningObjectiveChildId: stuff.id,
-      videosCount: 14,
+      videosCount: videosCount,
     }).then(success => {
       stuff.setFinished(true);
     })
