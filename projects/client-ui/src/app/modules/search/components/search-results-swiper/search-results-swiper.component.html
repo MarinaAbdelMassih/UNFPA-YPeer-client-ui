@@ -10,12 +10,14 @@
   </div>
   <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
     <div *ngFor="let cardDetail of cardDetails">
+      <a (click)="openDetailsPage(cardDetail.id)">
         <app-might-like-item ngxSlickItem
                              [title]="cardDetail.title"
                              [type]="cardDetail.label"
                              [description]="cardDetail.description "
                              [imageSrc]="cardDetail.imageId" (moreClicked)="openDetailsPage(cardDetail.id)">
         </app-might-like-item>
+      </a>
     </div>
   </ngx-slick-carousel>
 
