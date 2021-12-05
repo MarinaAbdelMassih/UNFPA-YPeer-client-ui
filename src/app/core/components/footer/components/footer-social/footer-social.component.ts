@@ -10,6 +10,7 @@ export class FooterSocialComponent implements OnInit {
   @Input() facebook: string;
   @Input() twitter: string;
   @Input() instagram: string;
+  @Input() youtype: string;
 
   constructor() {
   }
