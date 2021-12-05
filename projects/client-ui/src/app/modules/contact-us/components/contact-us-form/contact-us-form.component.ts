@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {Subscription} from 'rxjs';
 import {ContactUsService} from '../../../../../../../../src/app/shared/services/contact-us.service';
@@ -17,8 +17,9 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
     {nameAr: 'اوبشن2', nameEn: 'option2'}
   ];
   titles = [
-    {nameAr: 'دكتور', nameEn: 'Dr'},
-    {nameAr: 'مهندس', nameEn: 'mohnds'}
+    {nameAr: 'السيد', nameEn: 'Mr.'},
+    {nameAr: 'انسه', nameEn: 'Ms.'},
+    {nameAr: 'مدام', nameEn: 'Mrs.'}
   ];
   contactForm: FormGroup;
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
