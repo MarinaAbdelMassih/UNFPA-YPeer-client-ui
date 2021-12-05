@@ -1,4 +1,7 @@
-<app-page-top-banner [imageSrc]="'assets/images/resources-banner.png'"></app-page-top-banner>
+<!--<app-page-top-banner [imageSrc]="'assets/images/resources-banner.png'"></app-page-top-banner>-->
+<app-page-top-banner [imageSrc]="'assets/images/details-banner.png'"
+                     [title]="{EN: 'RESOURCES', AR: 'مصادر'}">
+</app-page-top-banner>
 <div class="resources-page-content">
   <div class="resources-list">
     <app-resources-list *ngIf="resourcesData" [latestResources]="resourcesList" [showLoadMoreButton]="showLoadMore" (loadMoreClicked)="getResourcesData()"></app-resources-list>

@@ -1,9 +1,21 @@
 <div class="story-details-story">
   <p class="story-date" [translateLocal]="detailsData.date"></p>
 
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe *ngIf="detailsData.detailsVideo" allowfullscreen="" [src]="detailsData.detailsVideo | safe"></iframe>
+  <div class="media-container">
+    <img src="assets/images/story-video.png" alt="video-image" class="media-image" *ngIf="!videoPlayed">
+    <div class="overlay" (click)="playTheVideo(true)">
+      <img [deploySrc]="'assets/images/icons/play-arrow.png'" alt="play-icon" class="play-icon">
+    </div>
+
+<!--    <div class="embed-responsive embed-responsive-16by9">-->
+<!--      <iframe *ngIf="detailsData.detailsVideo" allowfullscreen="" [src]="detailsData.detailsVideo | safe"></iframe>-->
+<!--    </div>-->
+    <div class="embed-responsive embed-responsive-16by9" *ngIf="videoPlayed">
+      <iframe allowfullscreen="" [src]="detailsData.detailsVideo | safe"></iframe>
+    </div>
   </div>
+
+
 
   <p class="description-part-five" [translateLocal]="detailsData.videoDesc1"></p>
 
