@@ -20,7 +20,7 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
   ];
   titles = [
     {nameAr: 'السيد', nameEn: 'Mr.'},
-    {nameAr: 'الانسه', nameEn: 'Ms.'},
+    {nameAr: 'الانسة', nameEn: 'Ms.'},
     {nameAr: 'السيدة', nameEn: 'Mrs.'}
   ];
   contactForm: FormGroup;
