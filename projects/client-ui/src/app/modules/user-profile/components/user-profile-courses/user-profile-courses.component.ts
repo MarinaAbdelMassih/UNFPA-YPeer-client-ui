@@ -80,7 +80,7 @@ export class UserProfileCoursesComponent implements OnInit {
 
   openDialog(course: IMyCourses): void {
     if ((course.courseType === 1 && !this.isActive) || (course.courseType === 2 && course.courseStatus === 2)) {
-      this.dialog.open(ConfirmationPopUpComponent, {width: '740px', data: {text: 'You are not eligible to access the advanced course right now.'}});
+      this.dialog.open(ConfirmationPopUpComponent, {width: '740px', data: {text: {EN: 'You are not eligible to access the advanced course right now.', AR: 'غير مصرح لك بمشاهده الدورة المتقدمة الاًن'}}});
     }  else if (course.courseType === 1) {
       //navigate to introductory course viewer
       this.router.navigate(['/viewer/111']);
