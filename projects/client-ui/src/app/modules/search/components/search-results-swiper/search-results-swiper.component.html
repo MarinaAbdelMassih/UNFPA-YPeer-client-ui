@@ -1,7 +1,7 @@
 <div class="search-results-section" *ngIf="cardDetails && cardDetails.length">
   <div class="d-flex justify-content-between align-items-center">
     <p [translateLocal]="title"></p>
-    <div class="buttons-container" *ngIf="cardDetails.length >= 4">
+    <div class="buttons-container" *ngIf="cardDetails.length >= 4 || (cardDetails.length > 1 && isMobile)">
       <button class="slider-button btn-prev" (click)="prev()"><img [deploySrc]="'assets/images/icons/arrow-left-gray.png'" alt="">
       </button>
       <button class="slider-button btn-next" (click)="next()"><img [deploySrc]="'assets/images/icons/arrow-right-gray.png'"
@@ -10,12 +10,14 @@
   </div>
   <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
     <div *ngFor="let cardDetail of cardDetails">
+      <a (click)="openDetailsPage(cardDetail.id)">
         <app-might-like-item ngxSlickItem
                              [title]="cardDetail.title"
                              [type]="cardDetail.label"
                              [description]="cardDetail.description "
                              [imageSrc]="cardDetail.imageId" (moreClicked)="openDetailsPage(cardDetail.id)">
         </app-might-like-item>
+      </a>
     </div>
   </ngx-slick-carousel>
 

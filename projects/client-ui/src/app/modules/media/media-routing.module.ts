@@ -4,7 +4,7 @@ import {MediaComponent} from './media.component';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', component: MediaComponent}
+  // {path: '', pathMatch: 'full', component: MediaComponent}
 ];
 
 @NgModule({

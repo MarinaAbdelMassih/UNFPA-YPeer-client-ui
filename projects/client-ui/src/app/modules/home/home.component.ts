@@ -3,7 +3,10 @@ import {Subscription} from "rxjs";
 import {homeContent} from "../../../../../../src/app/shared/models/home.model";
 import {HomeResolverService} from "../../../../../../src/app/shared/services/home-resolver.service";
 import {SignInService} from '../../../../../../src/app/shared/services/sign-in.service';
-import {MyCoursesService} from '../../../../../../src/app/shared/services/my-courses.service';
+import {Router} from '@angular/router';
+import {ConfirmationPopUpComponent} from '../../../../../../src/app/shared/components/confirmation-pop-up/confirmation-pop-up.component';
+import {MatDialog} from '@angular/material';
+import {User} from '../../../../../../src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -14,12 +17,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
   homeData: homeContent;
-  isActive: boolean = false;
+  userInfo: User;
 
-  constructor(private homeResolver: HomeResolverService, private signInService: SignInService) { }
+  constructor(private homeResolver: HomeResolverService, private signInService: SignInService,
+              private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.checkUserStatus();
+    this.getUserInfo();
     let homeSub = this.homeResolver.resolve().subscribe((homeData: homeContent) => {
       this.homeData = undefined;
       setTimeout(() => {
@@ -31,11 +35,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subscriptions.push(homeSub);
   }
 
-  checkUserStatus(): void {
-    this.signInService.userInfo.subscribe((userData) => {
-      if (userData && userData.status === 1) {
-        this.isActive = true;
-      }
+  getUserInfo(): void {
+    this.signInService.userInfo.subscribe((userInfo) => {
+        this.userInfo = userInfo;
     });
   }
 
@@ -43,6 +45,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subscriptions.map(subscription => {
       subscription.unsubscribe();
     });
+  }
+
+  joinTheProgram(): void {
+      if(!this.userInfo) {
+        this.router.navigate(['/signIn']);
+      } else if (this.userInfo && this.userInfo.status === 1) {
+        this.dialog.open(ConfirmationPopUpComponent, {width: '740px', data: {text: {EN: 'You are not eligible to access the courses right now', AR: 'غير مصرح لك بمشاهده الدورات الاًن.'}}});
+      } else if (this.userInfo && this.userInfo.status === 2) {
+        this.router.navigate(['/welcome']);
+      } else if (this.userInfo && this.userInfo.status === 3) {
+        this.dialog.open(ConfirmationPopUpComponent, {width: '740px', data: {text: {EN: 'You are not eligible to access the courses right now', AR: 'غير مصرح لك بمشاهده الدورات الاًن.'}}});
+      }
   }
 
 }
