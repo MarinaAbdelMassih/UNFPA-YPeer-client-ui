@@ -4,6 +4,40 @@
     color: #929292;
     margin-bottom: 27px;
   }
+  .media-container {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    .media-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      transition: .5s ease;
+      //background: rgba(0, 0, 0, 0.35);
+      opacity: 1;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .play-icon {
+        position: absolute;
+        display: flex;
+        width: 62px;
+        @media(max-width: 500px){
+          width: 30px;
+        }
+      }
+    }
+  }
 
   .description-part-five{
     margin-top: 30px;
