@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-what-next',
@@ -7,11 +7,15 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class WhatNextComponent implements OnInit {
 
-  @Input() isActive: boolean;
+  @Output() joinClicked: EventEmitter<boolean> = new EventEmitter<false>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  joinTheProgramClicked(): void {
+    this.joinClicked.emit(true);
   }
 
 }
