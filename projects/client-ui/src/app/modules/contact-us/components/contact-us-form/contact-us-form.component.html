@@ -3,7 +3,7 @@
   <form class="contact-form" [formGroup]="contactForm">
     <div class="first-inputs-row ">
       <div class="mat-select-container title-container">
-        <mat-select formControlName="title" [(ngModel)]="title" class="title-select" [placeholder]="isArabic ? 'الوظيفة' : 'Title'">
+        <mat-select formControlName="title" [(ngModel)]="title" class="title-select" [placeholder]="isArabic ? 'اللقب' : 'Title'">
           <mat-option *ngFor="let title of titles" [value]="isArabic ? title.nameAr :title.nameEn">
             {{isArabic ? title.nameAr :title.nameEn}}
           </mat-option>
