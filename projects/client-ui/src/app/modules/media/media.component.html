@@ -1,4 +1,6 @@
-<app-page-top-banner [imageSrc]="'assets/images/media-banner.png'"></app-page-top-banner>
+<app-page-top-banner [imageSrc]="'assets/images/story-banner.png'"
+                     [title]="{EN: 'MEDIA', AR: 'الميديا'}">
+</app-page-top-banner>
 <div class="media-page-content">
   <div class="media-list">
     <app-media-list *ngIf="mediaData" [latestSections]="mediaList" [showLoadMoreButton]="showLoadMore" (loadMoreClicked)="getMediaData()"></app-media-list>
