@@ -1,4 +1,7 @@
-<app-page-top-banner [imageSrc]="'assets/images/publications-banner.png'"></app-page-top-banner>
+<!--<app-page-top-banner [imageSrc]="'assets/images/publications-banner.png'"></app-page-top-banner>-->
+<app-page-top-banner [imageSrc]="'assets/images/publication-banner2.png'"
+                     [title]="{EN: 'PUBLICATIONS', AR: 'المنشورات'}">
+</app-page-top-banner>
 <div class="publications-page-content">
   <div class="publications-list">
     <app-publications-list *ngIf="publicationsData"  [showLoadMoreButton]="showLoadMore" (loadMoreClicked)="getPublicationsData()" [publicationsLists]="publicationsList"></app-publications-list>
