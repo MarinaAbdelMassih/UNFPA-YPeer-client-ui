@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {Subscription} from 'rxjs';
 import {ContactUsService} from '../../../../../../../../src/app/shared/services/contact-us.service';
@@ -13,12 +13,15 @@ import {NameValidator} from "../NameValidator";
 })
 export class ContactUsFormComponent implements OnInit, OnDestroy {
   options = [
-    {nameAr: 'اوبشن1', nameEn: 'option1'},
-    {nameAr: 'اوبشن2', nameEn: 'option2'}
+    {nameAr: 'General Inquiry', nameEn: 'General Inquiry'},
+    {nameAr: 'Y-Peer Website Inquiry', nameEn: 'Y-Peer Website Inquiry'},
+    {nameAr: 'Media Inquiry', nameEn: 'Media Inquiry'},
+    {nameAr: 'Resources Inquiry', nameEn: 'Resources Inquiry'}
   ];
   titles = [
-    {nameAr: 'دكتور', nameEn: 'Dr'},
-    {nameAr: 'مهندس', nameEn: 'mohnds'}
+    {nameAr: 'السيد', nameEn: 'Mr.'},
+    {nameAr: 'الانسه', nameEn: 'Ms.'},
+    {nameAr: 'السيدة', nameEn: 'Mrs.'}
   ];
   contactForm: FormGroup;
   emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';

@@ -9,7 +9,7 @@ export class MyCoursesService {
 
   constructor(private customHttpClient: CustomHttpClientService) { }
 
-  getMyCourses(myCoursesBody: {userId: number}): Promise<{ courses: IMyCourses[] }> {
+  getMyCourses(myCoursesBody: {userId: number}): Promise<{ courses: IMyCourses[], inWaitingList: boolean }> {
     return this.customHttpClient.sendBackendRequest({
       endpoint: 'user/myCourses',
       sender: 'my-courses',
