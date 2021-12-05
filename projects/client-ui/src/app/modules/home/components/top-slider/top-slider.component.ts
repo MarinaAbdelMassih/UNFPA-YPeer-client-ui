@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {LanguageService} from "../../../../../../../../src/app/shared/services/language.service";
 import {sliderItem} from "../../../../../../../../src/app/shared/models/home.model";
 
@@ -10,7 +10,7 @@ import {sliderItem} from "../../../../../../../../src/app/shared/models/home.mod
 export class TopSliderComponent implements OnInit, AfterViewInit {
 
   @Input() slides: sliderItem[];
-  @Input() isActive: boolean;
+  @Output() joinClicked: EventEmitter<boolean> = new EventEmitter<false>();
   isArabic: boolean = this.langService.getIsArabic();
   @ViewChild('bannersSlickModal', {static: false}) slickModal;
   bannerConfig: any = {"slidesToShow": 1, "rtl": this.isArabic, "slidesToScroll": 1,"arrows": false, "fade": true,
@@ -43,6 +43,10 @@ export class TopSliderComponent implements OnInit, AfterViewInit {
       this.bannerConfig.rtl = this.isArabic;
       this.slickModal.initSlick();
     }
+  }
+
+  joinTheProgramClicked(): void {
+    this.joinClicked.emit(true);
   }
 
 }

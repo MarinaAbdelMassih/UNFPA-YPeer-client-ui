@@ -4,12 +4,12 @@
       (change)="onSelect($event)"
       [multiple]="false"
       [accept]="'image/jpeg,image/jpg,image/png'">
-      <img *ngIf="imageSrc" [src]="imageSrc" alt="profile-picture">
+      <img *ngIf="imageSrc" [src]="currentImage ? currentImage : imageSrc" alt="profile-picture">
       <!--      <ngx-dropzone-label>drop your image here or click to browse</ngx-dropzone-label>-->
     </ngx-dropzone>
   </div>
   <div class="image-error-container" *ngIf="hasError">
-    <p class="alert-danger">Image dimensions should be ({{width}} x {{height}})px</p>
+    <p class="alert-danger" [translateLocal]="{EN: 'Image size should not be more than 28KB', AR: 'يجب ألا يزيد حجم الصورة عن 28 كيلو بايت'}"></p>
   </div>
   <div class="image-preview-container" *ngIf="file">
     <ngx-dropzone-preview  [file]="file"  [removable]="!uploading" (removed)="onRemove(file)">

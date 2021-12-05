@@ -21,7 +21,8 @@ const routes: Routes = [
   {
     path: 'media',
     pathMatch: 'full',
-    loadChildren: () => import('../../projects/client-ui/src/app/modules/media/media.module').then(mod => mod.MediaModule),
+    //loadChildren: () => import('../../projects/client-ui/src/app/modules/media/media.module').then(mod => mod.MediaModule),
+    redirectTo: '/home',
     resolve: {
       auth: AuthResolverService
     },
@@ -36,7 +37,8 @@ const routes: Routes = [
   {
     path: 'resources',
     pathMatch: 'full',
-    loadChildren: () => import('../../projects/client-ui/src/app/modules/resources/resources.module').then(mod => mod.ResourcesModule),
+    //loadChildren: () => import('../../projects/client-ui/src/app/modules/resources/resources.module').then(mod => mod.ResourcesModule),
+    redirectTo: '/home',
     resolve: {
       auth: AuthResolverService
     },

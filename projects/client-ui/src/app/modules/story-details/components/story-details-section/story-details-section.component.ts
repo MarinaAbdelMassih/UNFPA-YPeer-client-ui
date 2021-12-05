@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {storiesDetailsItem} from "../../../../../../../../src/app/shared/models/stories.model";
+import {illustrative} from "../../../../../../../../src/app/shared/models/course-catalog.model";
 
 @Component({
   selector: 'app-story-details-section',
@@ -9,9 +10,15 @@ import {storiesDetailsItem} from "../../../../../../../../src/app/shared/models/
 export class StoryDetailsSectionComponent implements OnInit {
 
   @Input() detailsData: storiesDetailsItem;
-  constructor() { }
+  videoPlayed = false;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  playTheVideo(videoPlayed: boolean): void {
+    this.videoPlayed = videoPlayed;
+  }
 }

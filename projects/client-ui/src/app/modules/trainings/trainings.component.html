@@ -1,4 +1,7 @@
-<app-page-top-banner [imageSrc]="'assets/images/training-banner.png'"></app-page-top-banner>
+<!--<app-page-top-banner [imageSrc]="'assets/images/training-banner.png'"></app-page-top-banner>-->
+<app-page-top-banner [imageSrc]="'assets/images/training-banner2.png'"
+                     [title]="{EN: 'TRAININGS', AR: 'التدريبات'}">
+</app-page-top-banner>
 <div class="trainings-page-content">
   <div class="trainings-list">
     <app-trainings-list *ngIf="trainingsData"  [showLoadMoreButton]="showLoadMore" (loadMoreClicked)="getTrainingsData()" [trainingsLists]="trainingsList"></app-trainings-list>

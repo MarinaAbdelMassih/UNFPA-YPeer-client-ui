@@ -1,4 +1,6 @@
-<app-page-top-banner [imageSrc]="'assets/images/events-banner.png'"></app-page-top-banner>
+<app-page-top-banner [imageSrc]="'assets/images/event-banner.png'"
+                     [title]="{EN: 'EVENTS', AR: 'الاحداث'}">
+</app-page-top-banner>
 <div class="events-page-content">
   <div class="events-list">
     <app-events-list *ngIf="eventsList" [eventsLists]="eventsList" (loadMoreClicked)="getEventsData()" [showLoadMoreButton]="showLoadMore" ></app-events-list>
