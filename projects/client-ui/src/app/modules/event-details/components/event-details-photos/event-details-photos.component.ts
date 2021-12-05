@@ -32,6 +32,7 @@ export class EventDetailsPhotosComponent implements OnInit {
     ]
   };
   isArabic: boolean = this.languageService.getIsArabic();
+  show: boolean;
 
   constructor(private router: Router, private languageService: LanguageService, public dialog: MatDialog,
               private eventsService: EventsResolverService) {

@@ -5,6 +5,7 @@
   .img-slider {
     cursor: pointer;
   }
+
   .buttons-container {
     position: relative;
 
@@ -26,6 +27,27 @@
     }
   }
 
+  .img-slider:hover {
+
+  }
+
+  .overlay {
+    position: relative;
+    top: -267px;
+    color: azure;
+    opacity: 0.76;
+    background-color: #3b3088;
+    height: 268px;
+    width: 267px;
+
+    p {
+      color: #FFFFFF;
+      display: flex;
+      padding-top: 200px;
+      padding-left: 21px;
+    }
+  }
+
   .might-like-container {
     display: flex;
     justify-content: space-between;
@@ -42,7 +64,7 @@
     margin-bottom: 0;
   }
 
-  .img-slider{
+  .img-slider {
     //margin-right: 15px;
     width: 267px;
     height: 267px;
@@ -98,8 +120,9 @@
   .slick-track {
     display: flex;
   }
+
   .mat-dialog-container {
-   box-shadow: none;
+    box-shadow: none;
     background: none;
   }
 }

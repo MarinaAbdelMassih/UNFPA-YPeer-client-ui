@@ -42,6 +42,7 @@ export class EventDetailsComponent implements OnInit {
   index;
   eventsDetailsData: eventsDetailsItem;
   eventsBasicData: eventsListItem;
+  changeText: boolean;
 
   constructor(private eventsResolverService: EventsResolverService,
               private newsResolverService: NewsResolverService,

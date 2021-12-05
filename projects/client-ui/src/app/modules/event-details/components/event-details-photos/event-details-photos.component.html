@@ -9,9 +9,14 @@
     </div>
   </div>
   <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
-    <div ngxSlickItem *ngFor="let photo of photos; let indexNow = index;">
-      <img (click)="openDialog(photos ,indexNow);" [src]="photo.image" alt="event-details-photo" class="img-slider">
+    <div  ngxSlickItem *ngFor="let photo of photos; let indexNow = index;">
+      <img (mouseenter)="show=true"  (mouseout)="show=false"  (click)="openDialog(photos ,indexNow);" [src]="photo.image" alt="event-details-photo" class="img-slider">
+
+    <div *ngIf="show" class="overlay">
+      <p >{{photo.title}}</p>
     </div>
+    </div>
+
   </ngx-slick-carousel>
 
 </div>
