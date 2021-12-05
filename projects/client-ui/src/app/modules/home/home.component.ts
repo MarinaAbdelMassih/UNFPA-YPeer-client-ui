@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       if(!this.userInfo) {
         this.router.navigate(['/signIn']);
       } else if (this.userInfo && this.userInfo.status === 1) {
-        this.dialog.open(ConfirmationPopUpComponent, {width: '740px', data: {text: {EN: 'You are not eligible to access the courses right now', AR: 'غير مصرح لك بمشاهده الدورات الاًن.'}}});
+        this.router.navigate(['/course-catalog']);
       } else if (this.userInfo && this.userInfo.status === 2) {
         this.router.navigate(['/welcome']);
       } else if (this.userInfo && this.userInfo.status === 3) {
