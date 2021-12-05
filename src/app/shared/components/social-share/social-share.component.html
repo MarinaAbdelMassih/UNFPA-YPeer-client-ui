@@ -9,24 +9,25 @@
       <img [deploySrc]="'assets/images/icons/twitter-icon-grey.png'" alt="twitter-icon">
     </a>
   </li>
+
+  <li *ngIf="instagram" class="list-inline-item" [shareButton]="'instagram'">
+    <a href="javascript:void(0);">
+      <img [deploySrc]="'assets/images/icons/instagram-icon-grey.png'" alt="instagram-icon">
+    </a>
+  </li>
+  <li *ngIf="messenger" class="list-inline-item" [shareButton]="'messenger'">
+    <a href="javascript:void(0);">
+      <img [deploySrc]="'assets/images/icons/messenger-icon-grey.png'" alt="messenger-icon">
+    </a>
+  </li>
+  <li *ngIf="youtube" class="list-inline-item" [shareButton]="'youtube'">
+    <a href="javascript:void(0);">
+      <img [deploySrc]="'assets/images/icons/youtube-icon-grey.png'" alt="youtube-icon">
+    </a>
+  </li>
   <li *ngIf="whatsapp" class="list-inline-item" [shareButton]="'whatsapp'">
     <a href="javascript:void(0);">
       <img [deploySrc]="'assets/images/icons/whatsapp-icon-grey.png'" alt="whatsapp-icon">
     </a>
   </li>
-<!--  <li *ngIf="instagram" class="list-inline-item" [shareButton]="'instagram'">-->
-<!--    <a href="javascript:void(0);">-->
-<!--      <img src="assets/images/icons/instagram-icon-grey.png" alt="instagram-icon">-->
-<!--    </a>-->
-<!--  </li>-->
-<!--  <li *ngIf="youtube" class="list-inline-item" [shareButton]="'youtube'">-->
-<!--    <a href="javascript:void(0);">-->
-<!--      <img src="assets/images/icons/youtube-icon-grey.png" alt="youtube-icon">-->
-<!--    </a>-->
-<!--  </li>-->
-<!--  <li *ngIf="messenger" class="list-inline-item" [shareButton]="'messenger'">-->
-<!--    <a href="javascript:void(0);">-->
-<!--      <img src="assets/images/icons/messenger-icon-grey.png" alt="messenger-icon">-->
-<!--    </a>-->
-<!--  </li>-->
 </ul>
