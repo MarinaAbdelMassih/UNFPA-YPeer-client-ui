@@ -15,6 +15,7 @@ export class CourseBarComponent implements OnInit {
   @Input() disabled: boolean;
   @Input() hasCertificate: boolean;
   @Output() btnClicked: EventEmitter<boolean> = new EventEmitter<false>();
+  @Output() courseClicked: EventEmitter<boolean> = new EventEmitter<false>();
 
   constructor() {
   }
@@ -24,5 +25,9 @@ export class CourseBarComponent implements OnInit {
 
   onClick(): void {
     this.btnClicked.emit(true);
+  }
+
+  onCourseClicked(): void {
+    this.courseClicked.emit(true);
   }
 }

@@ -6,7 +6,6 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
-  cursor: pointer;
   @media(max-width: 991px) {
     flex-direction: column;
     height: auto;
@@ -19,6 +18,7 @@
     line-height: 1.18;
     color: #2e2e2e;
     margin-bottom: 0;
+    cursor: pointer;
     @media(max-width: 991px) {
       margin-bottom: 15px;
       margin-top: 15px;

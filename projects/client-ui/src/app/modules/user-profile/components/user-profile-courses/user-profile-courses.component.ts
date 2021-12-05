@@ -83,6 +83,12 @@ export class UserProfileCoursesComponent implements OnInit {
       this.dialog.open(ConfirmationPopUpComponent, {
         width: '740px',
       });
+    }  else if (course.courseType === 1) {
+      //navigate to introductory course viewer
+      this.router.navigate(['/viewer/111']);
+    } else if (course.courseType === 2) {
+      //navigate to advanced course viewer
+      this.router.navigate(['/advanced-course']);
     }
   }
 

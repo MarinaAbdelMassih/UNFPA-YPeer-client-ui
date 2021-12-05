@@ -1,5 +1,5 @@
 <div class="course-bar">
-  <p *ngIf="name" class="name"> {{name}} <img *ngIf="disabled" [deploySrc]="'assets/images/icons/warning icon.png'" alt="warning-icon"></p>
+  <p *ngIf="name" class="name" (click)="onCourseClicked()"> {{name}} <img *ngIf="disabled" [deploySrc]="'assets/images/icons/warning icon.png'" alt="warning-icon"></p>
   <div class="d-flex align-items-center" *ngIf="progress">
     <circle-progress
       [percent]="progress"
