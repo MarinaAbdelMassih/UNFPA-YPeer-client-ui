@@ -7,7 +7,7 @@
      'ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت لوريم ايبسوم دولار' +
      ' أدايبا يسكينج أليايت لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت', EN: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.'}"></div>
     <div class="buttons-container">
-      <button *ngIf="isActive" class="ypeer-btn btn-full-color" [routerLink]="'/course-catalog'" [translateLocal]="{AR: 'اشترك ف البرنامج', EN: 'Join The Program'}"></button>
+      <button (click)="joinTheProgramClicked()" class="ypeer-btn btn-full-color" [translateLocal]="{AR: 'اشترك ف البرنامج', EN: 'Join The Program'}"></button>
       <button class="ypeer-btn btn-outlined" [routerLink]="'/about-us'" [translateLocal]="{AR: 'اكتشف اكثر', EN: 'Discover More'}"></button>
     </div>
   </div>

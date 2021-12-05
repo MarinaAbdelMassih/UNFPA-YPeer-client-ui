@@ -46,10 +46,10 @@
             <input matInput type="password" [(ngModel)]="password" name="password" class="password" formControlName="password"
                    placeholder="********">
           </mat-form-field>
-          <mat-error [translateLocal]="{EN:'Password must be at least 10 characters .',AR:'يجب أن تتكون كلمة المرور من 10 أحرف على الأقل.'}" *ngIf="signUpForm.get('password').errors?.minlength">
+          <mat-error [translateLocal]="{EN:'Password must be between 10 to 20 characters.',AR:'يجب أن تتكون كلمة المرور من 10 إلى 20 حرفًا.'}" *ngIf="signUpForm.get('password').errors?.minlength">
 
           </mat-error>
-          <mat-error [translateLocal]="{EN:' Password is weak , must contain capital , number ,special charachter.',AR:'كلمة المرور ضعيفة ، يجب أن تحتوي على حرف كبير ، رقم ، حرف خاص.'}" *ngIf="signUpForm.get('password').hasError('pattern')">
+          <mat-error [translateLocal]="{EN:' Password must be At least one capital letter, At least one special character and At least one number.',AR:'يجب أن تكون كلمة المرور حرفًا كبيرًا واحدًا على الأقل وحرفًا خاصًا واحدًا على الأقل ورقمًا واحدًا على الأقل'}" *ngIf="signUpForm.get('password').hasError('pattern')">
           </mat-error>
         </div>
         <div class="form-field-container">
