@@ -30,9 +30,7 @@ export class ItworxIframeComponent implements OnInit {
             this.myCoursesService.getIframeToken({firstName: userInfo.firstName, lastName: userInfo.lastName, email: userInfo.email, userId: userInfo.id}).then(response => {
               this.token = response.data;
             }).catch(() => {
-              this.dialog.open(ConfirmationPopUpComponent, {
-                width: '740px',
-              });
+              this.dialog.open(ConfirmationPopUpComponent, {width: '740px', data: {text: 'You are not eligible to access the advanced course right now.'}});
             });
           }
         });

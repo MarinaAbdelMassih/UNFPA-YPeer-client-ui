@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialog} from '@angular/material';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-confirmation-pop-up',
@@ -8,7 +8,10 @@ import {MatDialog} from '@angular/material';
 })
 export class ConfirmationPopUpComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {
+  text: string;
+
+  constructor(public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) data) {
+    this.text = data.text;
   }
 
   ngOnInit() {
