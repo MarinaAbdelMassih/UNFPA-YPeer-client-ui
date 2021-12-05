@@ -58,17 +58,27 @@ export class ImageUploaderComponent implements OnInit, OnChanges {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (e) => {
-      this.validateImageDimensions(reader).then((isValid: boolean) => {
-        if (isValid) {
-          // @ts-ignore
-          this.currentImage = e.target.result;
-          this.file = file;
-          this.onImageChange.emit(reader.result);
-          this.hasError = false;
-        } else {
-          this.hasError = true;
-        }
-      });
+      if (file.size <= 28000) {
+        // @ts-ignore
+        this.currentImage = e.target.result;
+        this.file = file;
+        this.onImageChange.emit(reader.result);
+        this.hasError = false;
+      }
+      else {
+        this.hasError = true;
+      }
+      // this.validateImageDimensions(reader).then((isValid: boolean) => {
+      //   if (isValid) {
+      //     // @ts-ignore
+      //     this.currentImage = e.target.result;
+      //     this.file = file;
+      //     this.onImageChange.emit(reader.result);
+      //     this.hasError = false;
+      //   } else {
+      //     this.hasError = true;
+      //   }
+      // });
     };
   }
 
