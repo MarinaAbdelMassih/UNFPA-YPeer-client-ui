@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 import {LanguageService} from '../../../../../../../../src/app/shared/services/language.service';
 import {Router} from '@angular/router';
 import {searchListItem} from '../../../../../../../../src/app/shared/models/search.model';
@@ -27,7 +27,7 @@ export class SearchResultsSwiperComponent implements OnInit, AfterViewInit {
         }
       },
       {
-        breakpoint: 992,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1
         }
@@ -35,11 +35,20 @@ export class SearchResultsSwiperComponent implements OnInit, AfterViewInit {
     ]
   };
   isArabic: boolean = this.languageService.getIsArabic();
+  isMobile: boolean = false;
+  size: number;
 
+  @HostListener("window:resize", ['$event'])
+  onResize(event) {
+    this.size = event.target.innerWidth;
+    this.isMobile = this.size <= 992;
+  }
   constructor(private router: Router, private languageService: LanguageService) {
   }
 
   ngOnInit() {
+    this.size = window.innerWidth;
+    this.isMobile = this.size <= 992;
   }
 
   reloadCurrentPage() {
