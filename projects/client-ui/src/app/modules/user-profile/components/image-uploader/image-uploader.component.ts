@@ -58,7 +58,7 @@ export class ImageUploaderComponent implements OnInit, OnChanges {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (e) => {
-      if (file.size <= 28000) {
+      if (file.size <= 5000000) {
         // @ts-ignore
         this.currentImage = e.target.result;
         this.file = file;
