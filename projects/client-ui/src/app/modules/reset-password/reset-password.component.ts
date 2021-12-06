@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {LanguageService} from '../../../../../../src/app/shared/services/language.service';
+import {SignInService} from "../../../../../../src/app/shared/services/sign-in.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-reset-password',
@@ -11,8 +13,12 @@ export class ResetPasswordComponent implements OnInit {
   resetPasswordForm: FormGroup;
   private passwordPattern = '^(?=.*[A-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#$%^&*_~+/.])\\S{8,20}$';
   isArabic: boolean;
+  token: string;
+  passwordIsSent: boolean;
 
-  constructor(private fb: FormBuilder, private languageService: LanguageService) {
+  constructor(private fb: FormBuilder, private languageService: LanguageService,
+              private signInService: SignInService, private route: ActivatedRoute,
+              private router: Router) {
     this.resetPasswordForm = this.fb.group({
         password: new FormControl('', [Validators.required, Validators.pattern(this.passwordPattern), Validators.minLength(10)]),
         rePassword: new FormControl('', Validators.required),
@@ -29,18 +35,19 @@ export class ResetPasswordComponent implements OnInit {
       const matchingControl = formGroup.controls[matchingControlName];
 
       if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-        return matchingControl.setErrors(null);
+        return matchingControl.errors.mustMatch == false;
       }
       if (control.value !== matchingControl.value) {
         matchingControl.setErrors({MustMatch: true});
       } else {
-        matchingControl.setErrors(null);
+        return matchingControl.errors ? matchingControl.errors.mustMatch == false: null;
       }
     };
   }
 
   ngOnInit() {
     this.checkLanguage();
+    this.token = this.route.snapshot.queryParams.token;
   }
 
   checkLanguage(): void {
@@ -50,6 +57,9 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   submitResetPasswordForm() {
-    console.log(this.resetPasswordForm.value);
+    this.signInService.changePassword(this.resetPasswordForm.controls.password.value, this.token).then(() => {
+      this.passwordIsSent = true;
+      setTimeout(() => {this.router.navigate(['/signIn'])})
+    });
   }
 }
