@@ -59,7 +59,7 @@ export class ResetPasswordComponent implements OnInit {
   submitResetPasswordForm() {
     this.signInService.changePassword(this.resetPasswordForm.controls.password.value, this.token).then(() => {
       this.passwordIsSent = true;
-      setTimeout(() => {this.router.navigate(['/signIn'])})
+      setTimeout(() => {this.router.navigate(['/signIn'])}, 3000)
     });
   }
 }

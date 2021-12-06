@@ -133,7 +133,7 @@ export class SignInService {
 
   changePassword(password: string, token: string): Promise<ISignIn> {
     return this.customHttpClient.sendBackendRequest({
-      endpoint: 'changePassword',
+      endpoint: 'auth/changePassword',
       sender: 'forgetPassword',
       receiver: 'changePassword',
       body: {password, token}
