@@ -42,6 +42,7 @@ export class EventDetailsComponent implements OnInit {
   index;
   eventsDetailsData: eventsDetailsItem;
   eventsBasicData: eventsListItem;
+  changeText: boolean;
 
   constructor(private eventsResolverService: EventsResolverService,
               private newsResolverService: NewsResolverService,
@@ -60,9 +61,9 @@ export class EventDetailsComponent implements OnInit {
     let eventsSub = this.eventsResolverService.resolve().subscribe((eventsData: eventsContent) => {
       this.tagsList = eventsData.tags;
       this.eventsBasicData = eventsData.eventsList.filter(item => item.id == this.index)[0];
-      this.relatedEvents = eventsData.eventsList.filter(item => (item.tagLabel == this.eventsBasicData.tagLabel
+      this.relatedEvents = eventsData.eventsList.filter(item =>
+        ((item.tagLabel ? (this.eventsBasicData.tagLabel).toLowerCase().includes(item.tagLabel.toLowerCase()): null)
         && item.id != this.index));
-
       eventsData.eventsList.map(item => item.eventDate = new Date(item.eventDate));
       this.latestEvents = eventsData.eventsList.sort((a, b) => (b.eventDate - a.eventDate));
     });

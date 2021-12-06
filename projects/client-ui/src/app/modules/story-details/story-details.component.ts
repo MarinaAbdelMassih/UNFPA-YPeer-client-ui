@@ -64,7 +64,8 @@ export class StoryDetailsComponent implements OnInit {
       this.tagsList = storiesData.tags;
       this.relatedStories = storiesData.storiesList.filter(item => item.id != this.index);
       this.storiesBasicData = storiesData.storiesList.filter(item => item.id == this.index)[0];
-      this.relatedStories = storiesData.storiesList.filter(item => (item.tagLabel == this.storiesBasicData.tagLabel
+      this.relatedStories = storiesData.storiesList.filter(item =>
+        ((item.tagLabel ? (this.storiesBasicData.tagLabel).toLowerCase().includes(item.tagLabel.toLowerCase()): null)
         && item.id != this.index));
 
       storiesData.storiesList.map(item => item.storyDate = new Date(item.storyDate));
