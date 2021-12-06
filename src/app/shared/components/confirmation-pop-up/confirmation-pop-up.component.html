@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-end">
     <img (click)="close()" [deploySrc]="'assets/images/close.png'" alt="close">
   </div>
-  <h3>Sorry!</h3>
-  <h6>{{text}}</h6>
-  <p><a [routerLink]="'/contact-us'" (click)="close()" >Contact us</a> for support.</p>
+  <h3 [translateLocal]="{EN: 'Sorry!',AR: 'عفواً!'}"></h3>
+  <h6 [translateLocal]="text"></h6>
+  <p><a [routerLink]="'/contact-us'" (click)="close()" [translateLocal]="{EN: 'Contact us ', AR: 'تواصل معنا '}"></a><span [translateLocal]="{EN: 'for support.', AR: 'للمساعدة.'}"></span></p>
 </div>

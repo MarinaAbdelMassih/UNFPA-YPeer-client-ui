@@ -1,6 +1,6 @@
 <div class="welcome-screen">
   <img [deploySrc]="'assets/images/user-welcome.png'" alt="user-img">
-  <h2> CONGRATULATIONS!</h2>
-  <p>Your account is approved now. You can start your learning journey and access the introductorycourse now.</p>
-  <button [routerLink]="'/signIn'">Start The Course</button>
+  <h2 [translateLocal]= "{EN: 'CONGRATULATIONS!', AR: 'تهانينا!'}"></h2>
+  <p [translateLocal]="{EN: 'Your account is approved now. You can start your learning journey and access the introductory course now.', AR: 'تم تفعيل حسابك. يمكنك البدء في رحلة التعلم والوصول الي الدورة التمهيدية'}"></p>
+  <button [translateLocal]="{EN: 'Start The Course', AR: 'ابدأ الدورة'}" [routerLink]="'/signIn'"></button>
 </div>

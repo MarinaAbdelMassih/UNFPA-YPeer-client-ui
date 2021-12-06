@@ -1,10 +1,18 @@
 .navbar {
   background-color: white !important;
-
+  height: 83px;
+@media (max-width: 500px) {
+  height: auto;
+}
   .navbar-brand {
     width: 255px;
     @media (max-width: 500px) {
       width: 75%;
+    }
+
+    .ybeer-logo {
+      width: 40%;
+      height: 4%;
     }
   }
 
@@ -15,6 +23,10 @@
       }
     }
   }
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .nav-link {
@@ -24,6 +36,7 @@
   border-bottom: 4px solid #FFFFFF;
   padding-right: 13px !important;
   padding-left: 13px !important;
+  padding-top: 11px;
 }
 
 .nav-link:hover, .active-link {
@@ -103,6 +116,7 @@
         margin-left: 15px;
       }
     }
+
     .language-button {
       border-left: 2px solid #2e2e2e;
       @media(max-width: 768px) {
@@ -110,8 +124,9 @@
         border-right: 0;
       }
     }
-    }
+  }
 }
+
 [dir = rtl] {
   .navbar {
     .navbar-brand {
@@ -119,6 +134,7 @@
         margin-right: 15px;
       }
     }
+
     .language-button {
       border-right: 2px solid #2e2e2e;
       @media(max-width: 768px) {
@@ -127,6 +143,7 @@
       }
     }
   }
+
   .nav-link {
     font-size: 14px;
     font-family: 'DroidKufiBold', sans-serif;

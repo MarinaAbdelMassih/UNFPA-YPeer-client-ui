@@ -2,11 +2,13 @@
   display: flex;
   list-style: none;
   padding: 0;
+
   li {
-    margin-right: 8px;
+    //margin-right: 20px;
     font-size: 13px;
     color: #2e2e2e;
     line-height: 1.15;
+
     a {
       cursor: pointer;
       text-decoration: none;
@@ -15,11 +17,32 @@
   }
 }
 
+[dir = ltr] {
+  .sub-footer-menu {
+    li {
+      margin-right: 20px;
+      margin-left: 0;
+      @media(max-width: 500px) {
+        margin-right: 8px;
+      }
+      @media(max-width: 320px) {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
 [dir = rtl] {
   .sub-footer-menu {
     li {
       margin-right: 0;
-      margin-left: 8px;
+      margin-left: 20px;
+      @media(max-width: 500px) {
+        margin-left: 8px;
+      }
+      @media(max-width: 320px) {
+        margin-left: 5px;
+      }
     }
   }
 }
