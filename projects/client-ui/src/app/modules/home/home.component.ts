@@ -7,6 +7,9 @@ import {Router} from '@angular/router';
 import {ConfirmationPopUpComponent} from '../../../../../../src/app/shared/components/confirmation-pop-up/confirmation-pop-up.component';
 import {MatDialog} from '@angular/material';
 import {User} from '../../../../../../src/app/shared/models/user.model';
+import {newsContent, newsDetailsItem, newsListItem, tag} from "../../../../../../src/app/shared/models/news.model";
+import {CategoryModel} from "../../../../../../src/app/shared/models/category.model";
+import {NewsResolverService} from "../../../../../../src/app/shared/services/news-resolver.service";
 
 @Component({
   selector: 'app-home',
@@ -18,9 +21,24 @@ export class HomeComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   homeData: homeContent;
   userInfo: User;
+  relatedNews: newsListItem[];
+  newsCount: number;
+  eventsCount: number;
+  storiesCount: number;
+  categoriesList: CategoryModel[] = [
+    {title: {EN: 'News', AR: 'الأخبار'}, count: this.newsCount, hideToggle: true, url: 'news'},
+    {title: {EN: 'Events', AR: 'الأحداث'}, count: this.eventsCount, hideToggle: true, url: 'events'},
+    {title: {EN: 'Stories', AR: 'القصص'}, count: this.storiesCount, hideToggle: true, url: 'stories'},
+  ];
+  tagsList: tag[];
+  latestNews: newsListItem[];
+  index;
+  newsDetailsData: newsDetailsItem;
+  newsBasicData: newsListItem;
 
   constructor(private homeResolver: HomeResolverService, private signInService: SignInService,
-              private router: Router, private dialog: MatDialog) { }
+              private router: Router, private dialog: MatDialog) {
+  }
 
   ngOnInit() {
     this.getUserInfo();
@@ -37,7 +55,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   getUserInfo(): void {
     this.signInService.userInfo.subscribe((userInfo) => {
-        this.userInfo = userInfo;
+      this.userInfo = userInfo;
     });
   }
 
@@ -48,15 +66,22 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   joinTheProgram(): void {
-      if(!this.userInfo) {
-        this.router.navigate(['/signIn']);
-      } else if (this.userInfo && this.userInfo.status === 1) {
-        this.dialog.open(ConfirmationPopUpComponent, {width: '740px', data: {text: {EN: 'You are not eligible to access the courses right now', AR: 'غير مصرح لك بمشاهده الدورات الاًن.'}}});
-      } else if (this.userInfo && this.userInfo.status === 2) {
-        this.router.navigate(['/welcome']);
-      } else if (this.userInfo && this.userInfo.status === 3) {
-        this.dialog.open(ConfirmationPopUpComponent, {width: '740px', data: {text: {EN: 'You are not eligible to access the courses right now', AR: 'غير مصرح لك بمشاهده الدورات الاًن.'}}});
-      }
+    if (!this.userInfo) {
+      this.router.navigate(['/signIn']);
+    } else if (this.userInfo && this.userInfo.status === 1) {
+      this.router.navigate(['/course-catalog']);
+    } else if (this.userInfo && this.userInfo.status === 2) {
+      this.router.navigate(['/welcome']);
+    } else if (this.userInfo && this.userInfo.status === 3) {
+      this.dialog.open(ConfirmationPopUpComponent, {width: '740px',
+        data: {
+          text: {
+            EN: 'You are not eligible to access the courses right now',
+            AR: 'غير مصرح لك بمشاهده الدورات الاًن.'
+          }
+        }
+      });
+    }
   }
 
 }

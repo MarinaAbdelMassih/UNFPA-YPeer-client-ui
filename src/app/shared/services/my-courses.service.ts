@@ -38,4 +38,14 @@ export class MyCoursesService {
       headers: true
     });
   }
+
+  getCertificate(certificateBody: {userId: number, courseId: number}): Promise<{certificateUrl: string}> {
+    return this.customHttpClient.sendBackendRequest({
+      endpoint: 'user/getCertificate',
+      sender: 'my-courses',
+      receiver: 'getCertificate',
+      body: certificateBody,
+      headers: true
+    });
+  }
 }

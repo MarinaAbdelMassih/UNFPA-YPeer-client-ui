@@ -1,6 +1,7 @@
 <app-top-slider *ngIf="homeData" [slides]="homeData.slides" (joinClicked)="joinTheProgram()"></app-top-slider>
 <app-our-story></app-our-story>
-<app-latest *ngIf="homeData" [latestSections]="homeData.latestCards"></app-latest>
+<!--<app-latest *ngIf="homeData" [latestSections]="homeData.latestCards"></app-latest>-->
+<app-latest></app-latest>
 <app-testimonials *ngIf="homeData" [testimonialsSlides]="homeData.testimonials"></app-testimonials>
 <app-discover-more></app-discover-more>
 <app-what-next (joinClicked)="joinTheProgram()"></app-what-next>
