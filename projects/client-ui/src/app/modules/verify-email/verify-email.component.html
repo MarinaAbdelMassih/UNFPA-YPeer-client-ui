@@ -1,0 +1,22 @@
+<div class="verify-email">
+  <p class="title" [translateLocal]="{EN:'Reset your password',AR:'اعد ضبط كلمه السر'}"></p>
+  <form [formGroup]="verifyEmailForm">
+    <div class="form-field-container">
+      <p [translateLocal]="{EN: 'Enter the email associated with your account', AR: 'أدخل البريد الإلكتروني المرتبط بحسابك '}"></p>
+      <mat-form-field appearance="outline">
+        <input matInput type="email" name="email" class="email" formControlName="email"
+               [placeholder]="isArabic ? 'اكتب بريدك الإلكتروني ' : 'Type in your email'">
+      </mat-form-field>
+      <mat-error [translateLocal]="{EN:'enter a valid email.',AR:'أدخل بريد إلكتروني صحيح.'}" *ngIf="verifyEmailForm.get('email').hasError('pattern')">
+      </mat-error>
+    </div>
+    <div class="d-flex justify-content-center ">
+      <button [disabled]="!verifyEmailForm.valid" [ngClass]="{'disabled':!verifyEmailForm.valid == true}"
+              (click)="submitVerifyEmailForm();" [translateLocal]="{EN: ' Submit', AR: 'إرسال '}"></button>
+    </div>
+    <div *ngIf="isEmailSent" class="d-flex justify-content-center">
+      <div class="alert alert-success" [translateLocal]="{EN: 'You will receive Email to change your password if you entered a valid email',
+       AR: 'سوف تتلقى بريد إلكترونى لتغيير كلمة السر اذا كان بريدك الإلكتروني صحيح '}"></div>
+    </div>
+  </form>
+</div>

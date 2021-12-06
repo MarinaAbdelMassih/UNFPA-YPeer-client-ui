@@ -121,6 +121,24 @@ export class SignInService {
     localStorage.removeItem('refresh-token');
     this.userInfo.next(null);
   }
+
+  verifyEmail(email: string): Promise<ISignIn> {
+    return this.customHttpClient.sendBackendRequest({
+      endpoint: 'forgetPassword',
+      sender: 'forgetPassword',
+      receiver: 'forgetPassword',
+      body: {email}
+    });
+  }
+
+  changePassword(password: string, token: string): Promise<ISignIn> {
+    return this.customHttpClient.sendBackendRequest({
+      endpoint: 'auth/changePassword',
+      sender: 'forgetPassword',
+      receiver: 'changePassword',
+      body: {password, token}
+    });
+  }
 }
 
 
