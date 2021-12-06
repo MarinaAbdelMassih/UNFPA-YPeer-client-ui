@@ -21,6 +21,7 @@ export class CourseBarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.score = Math.round(this.score);
   }
 
   onClick(): void {
