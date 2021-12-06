@@ -99,7 +99,6 @@ export class UserProfileCoursesComponent implements OnInit {
   getCertificate(course: IMyCourses): void {
     this.myCoursesService.getCertificate({userId: this.userInfo.id, courseId: course.id}).then(response => {
       if(response.certificateUrl) {
-        // window.location.href = response.certificateUrl;
         window.open(response.certificateUrl, "_blank");
       }
     });
