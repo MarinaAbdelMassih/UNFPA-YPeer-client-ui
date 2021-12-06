@@ -1,9 +1,18 @@
 .event-details-might-like {
   width: 100%;
   overflow: hidden;
+
+  .event-container {
+    width: 95%;
+    @media(max-width: 1500px) {
+      width: 100%;
+    }
+  }
+
   .buttons-container {
     position: relative;
     direction: initial;
+
     .slider-button {
       background: transparent;
       border: none;
@@ -12,6 +21,7 @@
       //bottom: 30px;
       padding: 31px 0 32px 0;
     }
+
     .btn-next {
       img {
         @media(max-width: 500px) {
@@ -25,7 +35,8 @@
         @media(max-width: 500px) {
           width: 23px;
         }
-      }    }
+      }
+    }
   }
 
   .might-like-container {
@@ -49,6 +60,7 @@
       font-size: 10px;
     }
   }
+
   a {
     cursor: pointer;
     text-decoration: none;
@@ -60,6 +72,7 @@
     left: 46px;
     right: auto;
   }
+
   .btn-next {
     left: 84px;
     right: auto;
@@ -71,9 +84,11 @@
     .slider-button {
       bottom: 570px;
     }
+
     .btn-next {
       right: 10%;
     }
+
     .btn-prev {
       right: 20%;
     }
