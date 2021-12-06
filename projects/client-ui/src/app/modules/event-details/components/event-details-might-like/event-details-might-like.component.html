@@ -1,7 +1,7 @@
 <div class="event-details-might-like" *ngIf="cardDetails && cardDetails.length">
   <div class="event-container d-flex justify-content-between align-items-center">
     <p [translateLocal]="{EN:'YOU MIGHT ALSO LIKE',AR:'قد يعجبك ايضا'}"></p>
-    <div class="buttons-container" *ngIf="cardDetails.length >= 3">
+    <div class="buttons-container" *ngIf="cardDetails.length > 3">
       <button class="slider-button btn-prev" (click)="prev()"><img [deploySrc]="'assets/images/icons/arrow-left-gray.png'" alt="">
       </button>
       <button class="slider-button btn-next" (click)="next()"><img [deploySrc]="'assets/images/icons/arrow-right-gray.png'"
