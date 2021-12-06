@@ -33,12 +33,19 @@
     }
   }
 
-  circle-progress {
-    width: 48px;
-    height: 48px;
-    ::ng-deep svg {
+  .progress-container {
+    @media (max-width: 500px) {
+      flex-direction: row-reverse;
+    }
+
+    circle-progress {
       width: 48px;
       height: 48px;
+
+      ::ng-deep svg {
+        width: 48px;
+        height: 48px;
+      }
     }
   }
 
@@ -61,6 +68,9 @@
     line-height: 1.25;
     color: #232323;
     margin-bottom: 0;
+    @media(max-width: 500px) {
+      display: flex;
+    }
 
     span {
       padding: 0 10px;
