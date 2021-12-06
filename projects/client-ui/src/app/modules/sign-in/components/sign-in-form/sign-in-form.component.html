@@ -37,7 +37,7 @@
       <button [disabled]="!signInForm.valid" [ngClass]="{'disabled':!signInForm.valid == true}"
               [translateLocal]="{EN: 'Sign In', AR: 'تسجيل الدخول'}"></button>
     </div>
-<!--    <a class="forgot-password-link" [translateLocal]="{EN: 'Forgot password!', AR: 'هل نسيت كلمة السر!'}"></a>-->
+    <a class="forgot-password-link" [routerLink]="'/verifyEmail'" [translateLocal]="{EN: 'Forgot password!', AR: 'هل نسيت كلمة السر!'}"></a>
     <div class="d-flex justify-content-center">
       <p class="no-account-text" [translateLocal]="{EN: 'Have no account?', AR: 'ليس لديك حساب؟'}"></p>
       <a [routerLink]="'/signUp'" class="sign-up-link" [translateLocal]="{EN: 'Join Us', AR: 'اشتراك'}"></a>
