@@ -27,10 +27,8 @@ export class LatestComponent implements OnInit {
     {title: {EN: 'Events', AR: 'الأحداث'}, count: this.eventsCount, hideToggle: true, url: 'events'},
     {title: {EN: 'Stories', AR: 'القصص'}, count: this.storiesCount, hideToggle: true, url: 'stories'},
   ];
-  tagsList: tag[];
   latestNews: newsListItem[];
   index;
-  newsDetailsData: newsDetailsItem;
   newsBasicData: newsListItem;
   private subscriptions: Subscription[] = [];
 
@@ -44,13 +42,8 @@ export class LatestComponent implements OnInit {
 
   getNewsData(): void {
     let newsSub = this.newsResolverService.resolve().subscribe((newsData: newsContent) => {
-      this.tagsList = newsData.tags;
       this.newsBasicData = newsData.newsList.filter(item => item.id == this.index)[0];
       this.relatedNews = newsData.newsList;
-      // this.relatedNews = newsData.newsList.filter(item =>
-      //   ((item.tagLabel ? (this.newsBasicData.tagLabel).toLowerCase().includes(item.tagLabel.toLowerCase()) : null)
-      //     && item.id != this.index));
-      console.log('related', this.relatedNews);
       newsData.newsList.map(item => item.newsDate = new Date(item.newsDate));
       this.latestNews = newsData.newsList.sort((a, b) => (b.newsDate - a.newsDate));
     });
