@@ -152,8 +152,8 @@ const routes: Routes = [
     resolve: {
       auth: AuthResolverService
     },
-  canLoad: [AuthGuard],
-  canActivate: [AuthGuard]
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile',
@@ -236,7 +236,7 @@ const routes: Routes = [
   {
     path: 'advanced-course',
     pathMatch: 'full',
-    loadChildren: () => import('../../projects/client-ui/src/app/modules/itworx-iframe/itworx-iframe.module').then(mod=> mod.ItworxIframeModule),
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/itworx-iframe/itworx-iframe.module').then(mod => mod.ItworxIframeModule),
     resolve: {
       auth: AuthResolverService
     },
@@ -247,6 +247,11 @@ const routes: Routes = [
     path: 'policy',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/privacy-policy/privacy-policy.module').then(mod => mod.PrivacyPolicyModule),
+  },
+  {
+    path: 'resetPassword',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/reset-password/reset-password.module').then(mod => mod.ResetPasswordModule),
   },
 ];
 
