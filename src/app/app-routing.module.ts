@@ -252,11 +252,21 @@ const routes: Routes = [
     path: 'resetPassword',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/reset-password/reset-password.module').then(mod => mod.ResetPasswordModule),
+    resolve: {
+      auth: AuthResolverService
+    },
+    canLoad: [NoAuthGuard],
+    canActivate: [NoAuthGuard]
   },
   {
     path: 'verifyEmail',
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/verify-email/verify-email.module').then(mod => mod.VerifyEmailModule),
+    resolve: {
+      auth: AuthResolverService
+    },
+    canLoad: [NoAuthGuard],
+    canActivate: [NoAuthGuard]
   },
 ];
 
