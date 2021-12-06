@@ -253,6 +253,11 @@ const routes: Routes = [
     pathMatch: 'full',
     loadChildren: () => import('../../projects/client-ui/src/app/modules/reset-password/reset-password.module').then(mod => mod.ResetPasswordModule),
   },
+  {
+    path: 'verifyEmail',
+    pathMatch: 'full',
+    loadChildren: () => import('../../projects/client-ui/src/app/modules/verify-email/verify-email.module').then(mod => mod.VerifyEmailModule),
+  },
 ];
 
 @NgModule({
