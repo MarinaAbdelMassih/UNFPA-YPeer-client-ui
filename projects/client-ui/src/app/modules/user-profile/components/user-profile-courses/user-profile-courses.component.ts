@@ -25,6 +25,8 @@ export class UserProfileCoursesComponent implements OnInit {
   advancedStatusDescription: TranslationModel;
   advancedStatusBtnText: TranslationModel;
   inWaitingList: boolean;
+  hasIntroCertificate: boolean = false;
+  hasAdvancedCertificate: boolean = false;
 
   constructor(public dialog: MatDialog, private myCoursesService: MyCoursesService, private router: Router) {
   }
@@ -62,19 +64,23 @@ export class UserProfileCoursesComponent implements OnInit {
   setButtonText(course: IMyCourses): TranslationModel {
     if (!course.progress) {
       this.btnText = {EN: 'watch course', AR: 'ابدأ المشاهده'};
-    } else if (course.progress >= 90 && course.score < 75){
+    } else if (course.courseType === 1 && course.progress >= 90 && course.score < 75){
       this.btnText = {EN: 'Rewatch course', AR: 'أعد المشاهده'};
-    } else if (course.progress < 90){
+    } else if (course.courseType === 1 && course.progress < 90){
       this.btnText = {EN: 'Resume Course', AR: 'اكمل الدورة'};
-    } else if (course.progress >= 90 && course.score >= 75){
+    } else if (course.courseType === 1 && course.progress >= 90 && course.score >= 75){
       this.btnText = {EN: 'View Certificate', AR: 'افتح الشهاده'};
+      this.hasIntroCertificate = true;
+    } else if (course.courseType === 2 && course.progress >= 100){
+      this.btnText = {EN: 'View Certificate', AR: 'افتح الشهاده'};
+      this.hasAdvancedCertificate = true;
     }
     return (this.btnText);
   }
 
   setDisableValue(course: IMyCourses): boolean {
-    if((course.courseType === 1 && !this.isActive) || (course.courseType === 2 && course.courseStatus === 2)) {
-      return false;
+    if((course.courseType === 1 && !this.isActive && !this.hasIntroCertificate) || (course.courseType === 2 && course.courseStatus === 2 && !this.hasAdvancedCertificate)) {
+      return true;
     }
   }
 
@@ -90,9 +96,19 @@ export class UserProfileCoursesComponent implements OnInit {
     }
   }
 
+  getCertificate(course: IMyCourses): void {
+    this.myCoursesService.getCertificate({userId: this.userInfo.id, courseId: course.id}).then(response => {
+      if(response.certificateUrl) {
+        // window.location.href = response.certificateUrl;
+        window.open(response.certificateUrl, "_blank");
+      }
+    });
+  }
+
   watchCourse(course: IMyCourses) : void {
-    if(course.hasCertificate) {
+    if((course.courseType === 1 && this.hasIntroCertificate) || (course.courseType === 2 && this.hasAdvancedCertificate)) {
       //view student certificate
+      this.getCertificate(course);
     } else if (course.courseType === 1) {
       //navigate to introductory course viewer
       this.router.navigate(['/viewer/111']);

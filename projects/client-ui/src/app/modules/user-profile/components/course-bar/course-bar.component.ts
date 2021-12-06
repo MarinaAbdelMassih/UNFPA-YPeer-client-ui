@@ -13,7 +13,6 @@ export class CourseBarComponent implements OnInit {
   @Input() progress: number;
   @Input() isArabic: boolean;
   @Input() disabled: boolean;
-  @Input() hasCertificate: boolean;
   @Output() btnClicked: EventEmitter<boolean> = new EventEmitter<false>();
   @Output() courseClicked: EventEmitter<boolean> = new EventEmitter<false>();
 

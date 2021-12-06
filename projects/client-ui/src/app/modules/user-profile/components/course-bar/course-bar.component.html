@@ -21,7 +21,7 @@
     <p class="progress" [translateLocal]="{EN: 'Your Progress', AR: 'مستوي التقدم'}"></p>
   </div>
   <p *ngIf="score" class="score">{{isArabic? 'درجاتك:' : 'Your Score:'}}<span> {{score}}% </span></p>
-  <button class="normal-btn" [disabled]="disabled && !hasCertificate" (click)="onClick()" [ngClass]="{'disabled': disabled && !hasCertificate}" [translateLocal]="btnText"></button>
+  <button class="normal-btn" [disabled]="disabled" (click)="onClick()" [ngClass]="{'disabled': disabled}" [translateLocal]="btnText"></button>
 </div>
 
 
