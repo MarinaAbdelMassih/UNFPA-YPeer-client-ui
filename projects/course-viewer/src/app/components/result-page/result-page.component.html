@@ -6,7 +6,7 @@
 'Your Score is',AR: ' لقد اكملت الدورة التدريبية بنجاح. نتيجتك هي '}"></span>
     <span class="score-text"> {{score}}%</span>
   </div>
-  <button class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'View Certificate',AR: 'اظهار الشهادة'}"></button>
+  <button (click)="getCertificate()" class="ypeer-btn ypeer-btn-purple" [translateLocal]="{EN: 'View Certificate',AR: 'اظهار الشهادة'}"></button>
 </div>
 
 <div class="page-container" *ngIf="score < 75 && numberOfTrials <= 2">
