@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {LanguageService} from '../../../../../../src/app/shared/services/language.service';
 import {SignInService} from "../../../../../../src/app/shared/services/sign-in.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-verify-email',
@@ -15,7 +16,8 @@ export class VerifyEmailComponent implements OnInit {
   isEmailSent: boolean;
 
 
-  constructor(private fb: FormBuilder, private languageService: LanguageService, private signInService: SignInService) {
+  constructor(private fb: FormBuilder, private languageService: LanguageService,
+              private signInService: SignInService, private router: Router) {
     this.verifyEmailForm = this.fb.group({
         email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
       },
@@ -34,6 +36,9 @@ export class VerifyEmailComponent implements OnInit {
 
   submitVerifyEmailForm() {
     this.signInService.verifyEmail(this.verifyEmailForm.controls.email.value)
-      .then(() => this.isEmailSent = true);
+      .then(() => {
+        this.isEmailSent = true;
+        setTimeout(() => this.router.navigate(['/home']), 3000);
+      });
   }
 }
