@@ -8,7 +8,7 @@
   <a [href]="instagram ? instagram: 'https://www.instagram.com/ypeeregypt/'" target="_blank">
   <img [deploySrc]="'assets/images/icons/instagram-icon-grey.png'" alt="instagram-icon">
   </a>
-  <a [href]=" youtype  ? youtype : 'https://www.youtube.com/c/YPEEREgypt'" target="_blank">
+  <a *ngIf="youtype" [href]=" youtype  ? youtype : 'https://www.youtube.com/c/YPEEREgypt'" target="_blank">
   <img src="assets/images/icons/youtube-icon-grey.png" alt="youtube-icon">
   </a>
   <a href="" target="_blank" *ngIf="show">
