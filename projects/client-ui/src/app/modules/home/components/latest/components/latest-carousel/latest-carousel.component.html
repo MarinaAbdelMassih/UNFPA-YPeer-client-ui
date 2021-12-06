@@ -1,12 +1,13 @@
 <ngx-slick-carousel #latestSlickModal="slick-carousel" [config]="latestConfig">
-  <app-image-description-card ngxSlickItem *ngFor="let latestSection of latestSections" [imageSrc]="latestSection.image" [type]="latestSection.label"
+  <app-image-description-card ngxSlickItem *ngFor="let latestSection of latestSections" [imageSrc]="latestSection.image"
+                              [type]="latestSection.label"
                               [title]="latestSection.title" [date]="latestSection.date"
                               [description]="latestSection.description">
   </app-image-description-card>
 </ngx-slick-carousel>
-<div class="buttons-container" >
-  <button class="slider-button btn-next" (click)="next()"><img [deploySrc]="'assets/images/icons/arrow-right-gray.png'" alt=""></button>
-  <button class="slider-button btn-prev" (click)="prev()"><img [deploySrc]="'assets/images/icons/arrow-left-gray.png'"></button>
+<div class="buttons-container" *ngIf="latestSections.length > 3">
+  <button class="slider-button btn-next" (click)="next()"><img [deploySrc]="'assets/images/icons/arrow-right-gray.png'"
+                                                               alt=""></button>
+  <button class="slider-button btn-prev" (click)="prev()"><img [deploySrc]="'assets/images/icons/arrow-left-gray.png'">
+  </button>
 </div>
-
-<!--*ngIf="latestSections.length > 3"-->
