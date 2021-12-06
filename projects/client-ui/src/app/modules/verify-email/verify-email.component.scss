@@ -56,7 +56,7 @@
 
     mat-form-field {
       background-color: #FFFFFF;
-      width: 402px;
+      width: 100%;
       height: 52px;
       @media(max-width: 991px) {
         width: 100%;
@@ -91,4 +91,7 @@
       background: #5a5a5a;
     }
   }
+}
+.alert-success {
+  margin-top: 30px;
 }
