@@ -2,6 +2,14 @@
   width: 100%;
   overflow: hidden;
 
+  .event-container {
+    width: 95%;
+    @media(max-width: 1500px)
+    {
+      width: 100%;
+    }
+  }
+
   .img-slider {
     cursor: pointer;
   }
@@ -27,8 +35,8 @@
     }
   }
 
-  .img-slider:hover {
-
+  .slick-initialized .slick-slide {
+    height: 267px;
   }
 
   .overlay {

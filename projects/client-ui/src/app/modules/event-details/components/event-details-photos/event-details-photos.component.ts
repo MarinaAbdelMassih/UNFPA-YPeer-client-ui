@@ -32,7 +32,7 @@ export class EventDetailsPhotosComponent implements OnInit {
     ]
   };
   isArabic: boolean = this.languageService.getIsArabic();
-  show: boolean;
+  show = -1;
 
   constructor(private router: Router, private languageService: LanguageService, public dialog: MatDialog,
               private eventsService: EventsResolverService) {
@@ -40,6 +40,11 @@ export class EventDetailsPhotosComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  onHover(i: number) {
+    this.show = i;
+  }
+
   openDialog(photos, index): void {
     this.eventsService.selectedGalleryImageIndex.next(index);
     const dialogRef = this.dialog.open(EventDetailsViewImageComponent, {

@@ -1,7 +1,13 @@
 .news-details-might-like {
   width: 100%;
   overflow: hidden;
-
+  .news-container {
+    width: 95%;
+    @media(max-width: 1500px)
+    {
+      width: 100%;
+    }
+  }
   .buttons-container {
     position: relative;
     direction: initial;
