@@ -14,7 +14,8 @@
   }
 
   .history-container {
-    padding: 79px 76px;
+    //padding: 79px 76px;
+    padding: 15px 76px;
     width: 50%;
 
     .history-title {
@@ -28,7 +29,8 @@
       font-size: 20px;
       font-weight: bold;
       color: #2e2e2e;
-      padding: 43.8px 0 15px;
+      //padding: 43.8px 0 15px;
+      padding: 0;
       margin-bottom: 0;
     }
 
@@ -36,15 +38,19 @@
       width: 45px;
       height: 6px;
       background-color: #ff7900;
-      margin-top: 23px;
-      margin-bottom: 30px;
+      //margin-top: 23px;
+      //margin-bottom: 30px;
+       margin-top: 10px;
+      margin-bottom: 12px;
     }
 
     .history-script, .history-script-two {
-      font-size: 16px;
+      //font-size: 16px;
+      font-size: 15px;
       color: #2e2e2e;
       line-height: 1.5;
-      margin-bottom: 0;
+      //margin-bottom: 0;
+      margin-bottom: 6px;
     }
 
     .ypeer-btn-purple {
