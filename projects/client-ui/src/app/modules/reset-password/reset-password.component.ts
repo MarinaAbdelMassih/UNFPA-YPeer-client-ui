@@ -34,13 +34,16 @@ export class ResetPasswordComponent implements OnInit {
       const control = formGroup.controls[controlName];
       const matchingControl = formGroup.controls[matchingControlName];
 
-      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-        return matchingControl.errors.mustMatch == false;
+      if (matchingControl.errors && !matchingControl.errors.mustMatch && matchingControl.value) {
+        return matchingControl.setErrors(null);
+      }
+      if (!matchingControl.value) {
+        matchingControl.setErrors({required: true});
       }
       if (control.value !== matchingControl.value) {
         matchingControl.setErrors({MustMatch: true});
       } else {
-        return matchingControl.errors ? matchingControl.errors.mustMatch == false: null;
+        return matchingControl.setErrors(null);
       }
     };
   }
