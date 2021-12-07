@@ -37,11 +37,6 @@ export class UserProfileCoursesComponent implements OnInit {
 
   getMyCourses(): void {
     this.myCoursesService.getMyCourses({userId: this.userInfo.id}).then((myCourses) => {
-      // this.myCourses = [
-      //   {courseStatus: null, courseType: 1, hasCertificate: null, id: 111, name: "Introductory Course", progress: 100, score: 100},
-      //   {courseStatus: 1, courseType: 2, hasCertificate: null, id: 2032, name: "Test Course Request To Join", progress: 100, score: 0, roundId: 101},
-      //   {courseStatus: 1, courseType: 2, hasCertificate: null, id: 2032, name: "Test Course Request To Join", progress: 100, score: 0, roundId: 102}
-      // ];
       this.myCourses = myCourses.courses;
       this.inWaitingList = myCourses.inWaitingList;
       this.introductoryCourse = this.myCourses.find(course => course.courseType === 1);

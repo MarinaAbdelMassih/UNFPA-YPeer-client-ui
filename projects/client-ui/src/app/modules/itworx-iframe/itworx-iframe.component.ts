@@ -49,7 +49,6 @@ export class ItworxIframeComponent implements OnInit, OnDestroy {
 
   safeURL() {
     const IframeUrl = 'https://learn.learningcurvecloud.com/CoursePlayer/WebRedirection';
-    // const courseRoundId = 3361;
     return this.sanitizer.bypassSecurityTrustResourceUrl(`${IframeUrl}?courseRoundId=${this.courseRoundId}&token=${this.token}`);
   }
 
