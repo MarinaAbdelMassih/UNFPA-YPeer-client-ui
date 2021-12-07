@@ -235,9 +235,15 @@ const routes: Routes = [
   },
   {
     path: 'advanced-course',
-    pathMatch: 'full',
-    loadChildren: () => import('../../projects/client-ui/src/app/modules/itworx-iframe/itworx-iframe.module').then(mod => mod.ItworxIframeModule),
-    resolve: {
+    children: [
+      {path: '', pathMatch: 'full', redirectTo: '/home'},
+      {
+        path: ':roundId',
+        pathMatch: 'full',
+        loadChildren: () => import('../../projects/client-ui/src/app/modules/itworx-iframe/itworx-iframe.module').then(mod => mod.ItworxIframeModule),
+      }
+    ],
+   resolve: {
       auth: AuthResolverService
     },
     canLoad: [AuthGuard],

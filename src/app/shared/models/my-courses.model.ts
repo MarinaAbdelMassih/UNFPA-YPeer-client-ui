@@ -6,6 +6,7 @@ export interface IMyCourses {
   hasCertificate: boolean,
   courseStatus: CourseStatus,
   courseType: CourseType
+  roundId?: number;
 }
 
 export enum CourseStatus {
