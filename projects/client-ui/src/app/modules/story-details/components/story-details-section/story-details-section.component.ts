@@ -19,6 +19,7 @@ export class StoryDetailsSectionComponent implements OnInit {
   }
 
   playTheVideo(videoPlayed: boolean): void {
-    this.videoPlayed = videoPlayed;
+    if (this.detailsData.detailsVideo)
+      this.videoPlayed = videoPlayed;
   }
 }
