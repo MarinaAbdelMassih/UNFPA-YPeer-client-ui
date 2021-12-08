@@ -22,6 +22,7 @@ export interface publicationsDetailsItem {
   date?: { AR: string, EN: string };
   detailsDescrption1?: { AR: string, EN: string };
   detailsDescrption2?: { AR: string, EN: string };
+  sectionTitle: {AR: string, EN: string};
   paragraph1?: { AR: string, EN: string };
   paragraph2?: { AR: string, EN: string };
   paragraph3?: { AR: string, EN: string };
@@ -57,6 +58,7 @@ export class PublicationsModel implements publicationsContent {
         date: {AR: publicationsItem.dateAr, EN: publicationsItem.dateEn},
         detailsDescrption1: {AR: publicationsItem.detailsDescrptionAr1, EN: publicationsItem.detailsDescrptionEn1},
         detailsDescrption2: {AR: publicationsItem.detailsDescrptionAr2, EN: publicationsItem.detailsDescrptionEn2},
+        sectionTitle: {AR: publicationsItem.sectionTitleAr, EN: publicationsItem.sectionTitleEn},
         paragraph1: {AR: publicationsItem.paragraphAr1, EN: publicationsItem.paragraphEn1},
         paragraph2: {AR: publicationsItem.paragraphAr2, EN: publicationsItem.paragraphEn2},
         paragraph3: {AR: publicationsItem.paragraphAr3, EN: publicationsItem.paragraphEn3},
