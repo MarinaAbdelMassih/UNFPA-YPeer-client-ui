@@ -174,7 +174,9 @@ export const TrainingsDetailsQuery = (id: number) => {
       detailsDescrptionEn1
       detailsDescrptionAr1
       detailsDescrptionEn2
-     detailsDescrptionAr2
+      detailsDescrptionAr2
+      sectionTitleEn
+      sectionTitleAr
       paragraphEn1
       paragraphAr1
       paragraphEn2

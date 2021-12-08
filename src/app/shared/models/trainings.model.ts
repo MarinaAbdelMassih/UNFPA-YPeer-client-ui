@@ -24,6 +24,7 @@ export interface trainingsDetailsItem {
   date?: { AR: string, EN: string };
   detailsDescrption1?: { AR: string, EN: string };
   detailsDescrption2?: { AR: string, EN: string };
+  sectionTitle: {AR: string, EN: string};
   paragraph1?: { AR: string, EN: string };
   paragraph2?: { AR: string, EN: string };
   paragraph3?: { AR: string, EN: string };
@@ -61,6 +62,7 @@ export class TrainingsModel implements trainingsContent{
         date: {AR: trainingsItem.dateAr, EN: trainingsItem.dateEn},
         detailsDescrption1: {AR: trainingsItem.detailsDescrptionAr1, EN: trainingsItem.detailsDescrptionEn1},
         detailsDescrption2: {AR: trainingsItem.detailsDescrptionAr2, EN: trainingsItem.detailsDescrptionEn2},
+        sectionTitle: {AR: trainingsItem.sectionTitleAr, EN: trainingsItem.sectionTitleEn},
         paragraph1: {AR: trainingsItem.paragraphAr1, EN: trainingsItem.paragraphEn1},
         paragraph2: {AR: trainingsItem.paragraphAr2, EN: trainingsItem.paragraphEn2},
         paragraph3: {AR: trainingsItem.paragraphAr3, EN: trainingsItem.paragraphEn3},
