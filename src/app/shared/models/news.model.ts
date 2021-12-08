@@ -22,6 +22,7 @@ export interface newsDetailsItem {
   date?: {AR: string, EN: string};
   detailsDesc1?: {AR: string, EN: string};
   detailsDesc2?: {AR: string, EN: string};
+  sectionTitle: {AR: string, EN: string};
   ourStory1?: {AR: string, EN: string};
   ourStory2?: {AR: string, EN: string};
   ourStory3?: {AR: string, EN: string};
@@ -72,6 +73,7 @@ export class NewsModel implements newsContent{
         date : {AR: newsItem.dateAr, EN: newsItem.dateEn},
         detailsDesc1 : {AR: newsItem.detailsDescriptionAr1, EN: newsItem.detailsDescriptionEn1},
         detailsDesc2 : {AR: newsItem.detailsDescriptionAr2, EN: newsItem.detailsDescriptionEn2},
+        sectionTitle: {AR: newsItem.sectionTitleAr, EN: newsItem.sectionTitleEn},
         ourStory1 : {AR: newsItem.ourStoryAr1, EN: newsItem.ourStoryEn1},
         ourStory2 : {AR: newsItem.ourStoryAr2, EN: newsItem.ourStoryEn2},
         ourStory3 : {AR: newsItem.ourStoryAr3, EN: newsItem.ourStoryEn3},
