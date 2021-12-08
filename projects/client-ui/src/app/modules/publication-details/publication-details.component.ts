@@ -68,7 +68,7 @@ export class PublicationDetailsComponent implements OnInit {
       this.tagsList = publicationsData.tags;
       this.publicationsBasicData = publicationsData.publicationsList.filter(item => item.id == this.index)[0];
       this.relatedPublications = publicationsData.publicationsList.filter(item =>
-        ((item.tagLabel ? (this.publicationsBasicData.tagLabel).toLowerCase().includes(item.tagLabel.toLowerCase()): null)
+        ((item.tagLabel ? (this.publicationsBasicData.tagLabel).toLowerCase().search(item.tagLabel.toLowerCase()): null)
         && item.id != this.index));
       publicationsData.publicationsList.map(item => item.publicationDate = new Date(item.publicationDate));
       this.latestPublication = publicationsData.publicationsList.sort((a, b) => (b.publicationDate - a.publicationDate));

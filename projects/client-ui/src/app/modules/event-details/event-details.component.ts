@@ -62,7 +62,7 @@ export class EventDetailsComponent implements OnInit {
       this.tagsList = eventsData.tags;
       this.eventsBasicData = eventsData.eventsList.filter(item => item.id == this.index)[0];
       this.relatedEvents = eventsData.eventsList.filter(item =>
-        ((item.tagLabel ? (this.eventsBasicData.tagLabel).toLowerCase().includes(item.tagLabel.toLowerCase()): null)
+        ((item.tagLabel ? (this.eventsBasicData.tagLabel).toLowerCase().search(item.tagLabel.toLowerCase()): null)
         && item.id != this.index));
       eventsData.eventsList.map(item => item.eventDate = new Date(item.eventDate));
       this.latestEvents = eventsData.eventsList.sort((a, b) => (b.eventDate - a.eventDate));

@@ -65,7 +65,7 @@ export class TrainingDetailsComponent implements OnInit {
       this.tagsList = trainingsData.tags;
       this.trainingsBasicData = trainingsData.trainingsList.filter(item => item.id == this.index)[0];
       this.relatedTrainings = trainingsData.trainingsList.filter(item =>
-        ((item.tagLabel ? (this.trainingsBasicData.tagLabel).toLowerCase().includes(item.tagLabel.toLowerCase()): null)
+        ((item.tagLabel ? (this.trainingsBasicData.tagLabel).toLowerCase().search(item.tagLabel.toLowerCase()): null)
         && item.id != this.index));
       trainingsData.trainingsList.map(item => item.trainingDate = new Date(item.trainingDate));
       this.latestTraining = trainingsData.trainingsList.sort((a, b) => (b.trainingDate - a.trainingDate));
