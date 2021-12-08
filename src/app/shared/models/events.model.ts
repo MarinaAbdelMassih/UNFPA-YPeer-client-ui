@@ -23,6 +23,7 @@ export interface eventsDetailsItem {
   date?: { AR: string, EN: string };
   detailsDesc1?: { AR: string, EN: string };
   detailsDesc2?: { AR: string, EN: string };
+  sectionTitle: {AR: string, EN: string};
   ourStory1?: { AR: string, EN: string };
   ourStory2?: { AR: string, EN: string };
   ourStory3?: { AR: string, EN: string };
@@ -75,6 +76,7 @@ export class EventsModel implements eventsContent {
         date: {AR: eventsItem.dateAr, EN: eventsItem.dateEn},
         detailsDesc1: {AR: eventsItem.detailsDescriptionAr1, EN: eventsItem.detailsDescriptionEn1},
         detailsDesc2: {AR: eventsItem.detailsDescriptionAr2, EN: eventsItem.detailsDescriptionEn2},
+        sectionTitle: {AR: eventsItem.sectionTitleAr, EN: eventsItem.sectionTitleEn},
         ourStory1: {AR: eventsItem.ourStoryAr1, EN: eventsItem.ourStoryEn1},
         ourStory2: {AR: eventsItem.ourStoryAr2, EN: eventsItem.ourStoryEn2},
         ourStory3: {AR: eventsItem.ourStoryAr3, EN: eventsItem.ourStoryEn3},

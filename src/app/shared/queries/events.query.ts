@@ -108,6 +108,8 @@ export const EventsDetailsQuery = (id: number) => {
       detailsDescriptionAr1
       detailsDescriptionEn2
       detailsDescriptionAr2
+      sectionTitleEn
+      sectionTitleAr
       ourStoryEn1
       ourStoryAr1
       ourStoryEn2
