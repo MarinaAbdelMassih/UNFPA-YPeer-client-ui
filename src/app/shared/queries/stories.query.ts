@@ -172,6 +172,8 @@ export const StoriesDetailsQuery = (id: number) => {
       videoDescAr1
       videoDescEn2
       videoDescAr2
+      sectionTitleEn
+      sectionTitleAr
       paragraphEn1
       paragraphAr1
       paragraphEn2

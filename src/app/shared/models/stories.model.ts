@@ -22,6 +22,7 @@ export interface storiesDetailsItem {
   date?: {AR: string, EN: string};
   videoDesc1?: {AR: string, EN: string};
   videoDesc2?: {AR: string, EN: string};
+  sectionTitle: {AR: string, EN: string};
   paragraph1?: {AR: string, EN: string};
   paragraph2?: {AR: string, EN: string};
   paragraph3?: {AR: string, EN: string};
@@ -72,6 +73,7 @@ export class StoriesModel implements storiesContent{
         date : {AR: storiesItem.dateAr, EN: storiesItem.dateEn},
         videoDesc1 : {AR: storiesItem.videoDescAr1, EN: storiesItem.videoDescEn1},
         videoDesc2 : {AR: storiesItem.videoDescAr2, EN: storiesItem.videoDescEn2},
+        sectionTitle: {AR: storiesItem.sectionTitleAr, EN: storiesItem.sectionTitleEn},
         paragraph1 : {AR: storiesItem.paragraphAr1, EN: storiesItem.paragraphEn1},
         paragraph2 : {AR: storiesItem.paragraphAr2, EN: storiesItem.paragraphEn2},
         paragraph3 : {AR: storiesItem.paragraphAr3, EN: storiesItem.paragraphEn3},

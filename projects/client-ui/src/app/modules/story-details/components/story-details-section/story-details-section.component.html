@@ -2,7 +2,7 @@
   <p class="story-date" [translateLocal]="detailsData.date"></p>
 
   <div class="media-container">
-    <img src="assets/images/story-video.png" alt="video-image" class="media-image" *ngIf="!videoPlayed">
+    <img [deploySrc]="'assets/images/story-video.png'" alt="video-image" class="media-image" *ngIf="!videoPlayed">
     <div class="overlay" (click)="playTheVideo(true)">
       <img [deploySrc]="'assets/images/icons/play-arrow.png'" alt="play-icon" class="play-icon">
     </div>
@@ -22,7 +22,7 @@
   <p class="description-part-six" [translateLocal]="detailsData.videoDesc2">
   </p>
 
-  <h3 [translateLocal]="{EN:'SECTION TITLE' , AR:''}"></h3>
+  <h3 [translateLocal]="detailsData.sectionTitle"></h3>
 
   <p class="description-part-one" [translateLocal]="detailsData.paragraph1"></p>
 
