@@ -73,13 +73,13 @@ export class UserProfileCoursesComponent implements OnInit {
       this.hasIntroCertificate = true;
     } else if (course.courseType === 2 && course.progress >= 100){
       this.btnText = {EN: 'View Certificate', AR: 'افتح الشهاده'};
-      this.hasAdvancedCertificate = true;
+      // this.hasAdvancedCertificate = true;
     }
     return (this.btnText);
   }
 
   setDisableValue(course: IMyCourses): boolean {
-    if((course.courseType === 1 && !this.isActive && !this.hasIntroCertificate) || (course.courseType === 2 && course.courseStatus === 2 && !this.hasAdvancedCertificate)) {
+    if((course.courseType === 1 && !this.isActive && !this.hasIntroCertificate) || (course.courseType === 2 && course.courseStatus === 2 && !(course.courseType === 2 && course.progress >= 100))) {
       return true;
     }
   }
@@ -105,7 +105,7 @@ export class UserProfileCoursesComponent implements OnInit {
   }
 
   watchCourse(course: IMyCourses) : void {
-    if((course.courseType === 1 && this.hasIntroCertificate) || (course.courseType === 2 && this.hasAdvancedCertificate)) {
+    if((course.courseType === 1 && this.hasIntroCertificate) || (course.courseType === 2 && (course.courseType === 2 && course.progress >= 100))) {
       //view student certificate
       this.getCertificate(course);
     } else if (course.courseType === 1) {
