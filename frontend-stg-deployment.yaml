@@ -30,12 +30,12 @@ spec:
               memory: 200Mi
           ports:
             - name: pod-port
-              containerPort: 80
+              containerPort: 443
 
           livenessProbe:
             httpGet:
               path: /index.html
-              port: pod-port
+              port: 80
             # initialDelaySeconds: 5
             periodSeconds: 5
             failureThreshold: 2
@@ -44,7 +44,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /index.html
-              port: pod-port
+              port: 80
             # initialDelaySeconds: 5
             periodSeconds: 5
             failureThreshold: 2
