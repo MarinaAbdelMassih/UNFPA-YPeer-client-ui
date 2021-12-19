@@ -1,12 +1,12 @@
 .banner {
   display: flex;
   position: relative;
-  filter: brightness(0.5);
 
 
   img {
     width: 100%;
     height: 485px;
+    filter: brightness(0.5);
     @media (max-width: 500px) {
       height: auto;
 
