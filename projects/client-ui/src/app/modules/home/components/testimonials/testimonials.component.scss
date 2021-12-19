@@ -1,8 +1,7 @@
 .slider-container {
   .slider-item {
     margin: 85px auto;
-    background-color: #000000;
-    opacity: 0.44;
+    filter: brightness(0.5);
 
     .banner-image {
       img {
