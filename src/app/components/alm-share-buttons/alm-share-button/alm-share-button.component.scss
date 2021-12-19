@@ -1,0 +1,25 @@
+.alm-share-button {
+  --alm-share-button-bg: #eeeeee;
+  --alm-share-button-btn: #252a2a;
+
+  width: 35px;
+  height: 35px;
+  line-height: normal;
+  margin: 5px 10px;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--alm-share-button-bg);
+  border-radius: 50%;
+
+  &__img {
+    width: 30px;
+  }
+
+  svg {
+    fill: var(--alm-share-button-btn);
+    width: 30px;
+    height: 28px;
+  }
+}

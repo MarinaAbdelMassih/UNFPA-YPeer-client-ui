@@ -21,8 +21,13 @@
     <p class="progress" [translateLocal]="{EN: 'Your Progress', AR: 'مستوي التقدم'}"></p>
   </div>
   <p *ngIf="score" class="score">{{isArabic? 'درجاتك:' : 'Your Score:'}}<span> {{score}}% </span></p>
-  <button class="normal-btn" [disabled]="disabled" (click)="onClick()" [ngClass]="{'disabled': disabled}" [translateLocal]="btnText"></button>
+  <div>
+    <button class="normal-btn" [disabled]="disabled" (click)="onClick()" [ngClass]="{'disabled': disabled}" [translateLocal]="btnText"></button>
+    <button mat-icon-button *ngIf="btnText.EN === 'View Certificate'"
+            [disabled]="disabled" (click)="onShareClick()" class="share-button"
+            [ngClass]="{'disabled': disabled}">
+      <mat-icon>share</mat-icon>
+    </button>
+  </div>
+
 </div>
-
-
-

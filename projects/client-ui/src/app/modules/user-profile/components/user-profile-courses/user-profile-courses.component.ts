@@ -6,6 +6,10 @@ import {IMyCourses} from '../../../../../../../../src/app/shared/models/my-cours
 import {TranslationModel} from '../../../../../../../../src/app/shared/models/translation.model';
 import {Router} from '@angular/router';
 import {IUserInfo} from '../../../../../../../../src/app/shared/models/my-profile.model';
+import {
+  AlmShareButtonsComponent
+} from '../../../../../../../../src/app/components/alm-share-buttons/alm-share-buttons.component';
+import {DialogService} from '../../../../../../../../src/app/shared/services/custom-dialogs/dialog.service';
 
 @Component({
   selector: 'app-user-profile-courses',
@@ -27,7 +31,11 @@ export class UserProfileCoursesComponent implements OnInit {
   inWaitingList: boolean;
   hasIntroCertificate: boolean = false;
 
-  constructor(public dialog: MatDialog, private myCoursesService: MyCoursesService, private router: Router) {
+  constructor(public dialog: MatDialog,
+              private myCoursesService: MyCoursesService,
+              private router: Router,
+              private dialogService: DialogService,
+  ) {
   }
 
   ngOnInit() {
@@ -119,6 +127,15 @@ export class UserProfileCoursesComponent implements OnInit {
     //enrollment in advanced course request and recall getMyCourses() again to update the data
     this.myCoursesService.enrollAdvanced({userId: this.userInfo.id, email: this.userInfo.email, firstName: this.userInfo.firstName, lastName: this.userInfo.lastName}).then(() => {
       this.getMyCourses();
+    });
+  }
+
+  shareCertificate(course: IMyCourses) {
+    this.myCoursesService.getCertificate({userId: this.userInfo.id, courseId: course.id}).then(response => {
+      if (response.certificateUrl) {
+          this.dialogService.openDialog(AlmShareButtonsComponent, 'alm-share',
+            {url: response.certificateUrl, courseName: course.name, sharingSource: 'profile-page'}, {});
+      }
     });
   }
 }

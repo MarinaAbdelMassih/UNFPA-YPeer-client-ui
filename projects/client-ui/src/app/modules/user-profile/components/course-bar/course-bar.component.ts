@@ -14,6 +14,7 @@ export class CourseBarComponent implements OnInit {
   @Input() isArabic: boolean;
   @Input() disabled: boolean;
   @Output() btnClicked: EventEmitter<boolean> = new EventEmitter<false>();
+  @Output() btnShareClicked: EventEmitter<boolean> = new EventEmitter<false>();
   @Output() courseClicked: EventEmitter<boolean> = new EventEmitter<false>();
 
   constructor() {
@@ -29,5 +30,9 @@ export class CourseBarComponent implements OnInit {
 
   onCourseClicked(): void {
     this.courseClicked.emit(true);
+  }
+
+  onShareClick() {
+    this.btnShareClicked.emit(true);
   }
 }

@@ -15,25 +15,31 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {ImageUploaderComponent} from './components/image-uploader/image-uploader.component';
 import {NgxDropzoneModule} from "ngx-dropzone";
+import {MatIconModule} from '@angular/material/icon';
+import {AlmShareButtonsModule} from '../../../../../../src/app/components/alm-share-buttons/alm-share-buttons.module';
+import {DialogService} from '../../../../../../src/app/shared/services/custom-dialogs/dialog.service';
 
 
 
 @NgModule({
   declarations: [UserProfileComponent, UserProfileInfoComponent, UserProfileCoursesComponent, CourseBarComponent, CourseStatusComponent, ImageUploaderComponent],
-  imports: [
-    CommonModule,
-    UserProfileRoutingModule,
-    MatTabsModule,
-    ReactiveFormsModule,
-    SharedModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    NgCircleProgressModule,
-    MatNativeDateModule,
-    MatDatepickerModule,
-    NgxDropzoneModule,
-    MatButtonModule,
-  ]
+    imports: [
+        CommonModule,
+        UserProfileRoutingModule,
+        MatTabsModule,
+        ReactiveFormsModule,
+        SharedModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        NgCircleProgressModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
+        NgxDropzoneModule,
+        MatButtonModule,
+        MatIconModule,
+        AlmShareButtonsModule,
+    ],
+     providers: [DialogService]
 })
 export class UserProfileModule { }

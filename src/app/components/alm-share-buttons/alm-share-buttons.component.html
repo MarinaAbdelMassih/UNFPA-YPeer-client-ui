@@ -1,0 +1,11 @@
+<div class="main-dialog-container" mat-dialog-content *ngIf="url">
+  <div class="dialog-share-buttons__header">
+    <p [translateLocal]="{AR: 'مشاركة الشهادة',EN: 'Share Certificate'}"></p>
+    <button mat-icon-button type="button" tabIndex="-1" class="dialog-close btn btn-icon" (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="dialog-share-buttons__content">
+    <app-share-button *ngFor="let icon of icons" [socialIcon]="icon" [url]="url" (onSharingCourse)="shareCourse($event)"></app-share-button>
+  </div>
+</div>

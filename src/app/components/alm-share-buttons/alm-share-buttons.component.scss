@@ -1,0 +1,80 @@
+::ng-deep {
+  .dialog-alm-share-container {
+    --modal-background-color: var(--dark-800);
+    --modal-close-icon-color: #252a2a;
+
+    width: 100%;
+    max-width: 302px !important;
+    max-height: 250px !important;
+    margin: 0 auto;
+
+    #dialog-alm-share {
+      border-radius: 10px;
+    }
+  }
+
+  .dialog-alm-share-backdrop {
+    backdrop-filter: blur(5px);
+  }
+
+  .mat-dialog-container {
+    margin: 0;
+    padding: 0;
+    background-color: var(--modal-background-color);
+
+    .mat-dialog-content {
+      padding: 0;
+      margin: 0;
+
+      .dialog-share-buttons {
+        &__header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 50px;
+          width: 100%;
+          padding: 30px 10px;
+          background: #eeeeee;
+
+          p {
+            font-size: 22px;
+            margin: 0;
+            color: var(--modal-close-icon-color);
+          }
+
+          .dialog-close {
+            width: 35px;
+            height: 35px;
+            padding: 0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+              width: 17px;
+              height: 17px;
+              fill: var(--modal-close-icon-color);
+              margin: 0;
+            }
+          }
+        }
+
+        &__content {
+          width: 100%;
+          padding: 15px 5px;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          flex-wrap: wrap;
+          background: #eeeeee;
+        }
+      }
+    }
+  }
+
+  .sb-button {
+    margin: 5px;
+  }
+}

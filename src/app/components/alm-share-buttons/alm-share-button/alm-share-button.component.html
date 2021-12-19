@@ -1,0 +1,12 @@
+<button mat-icon-button class="alm-share-button"
+        *ngIf="socialIcon && url" (click)="onSharingCourse.emit(socialIcon)">
+  <img *ngIf="socialIcon != 'email'" class="alm-share-button__img" [src]="'assets/images/social-icons/' + socialIcon + '-icon.png'"
+       [alt]="socialIcon"/>
+  <svg *ngIf="socialIcon == 'email'">
+    <use xlink:href="assets/images/social-icons/email-icon.svg#email-icon"></use>
+  </svg>
+</button>
+
+<!--
+[shareButton]="socialIcon" [url]="url" [description]="description ? description : ''"
+-->
