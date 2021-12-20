@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {DialogService} from '../../shared/services/custom-dialogs/dialog.service';
-import {UAParser} from "ua-parser-js";
+import {UAParser} from 'ua-parser-js';
 
 @Component({
   selector: 'app-share-buttons',
@@ -57,7 +57,9 @@ export class AlmShareButtonsComponent implements OnInit {
         break;
       case 'whatsapp' :
         let url = 'https://web.whatsapp.com/send?';
-        const os = new UAParser().getOS();
+        const up = new UAParser();
+        const os = up.getOS();
+        console.log(os);
         if (os.name && os.name.toLowerCase() === 'android') {
           url = 'whatsapp://send?';
         } else if (os.name && os.name.toLowerCase() === 'ios') {
