@@ -34,7 +34,7 @@ export class AlmShareButtonsComponent implements OnInit {
         this.openLink('https://www.linkedin.com/shareArticle?', [
           ['url', this.url],
           ['title', 'title'],
-          ['description', 'here is my certificate of completion at Y-Peer']
+          ['description', `Certificate of completion: ${this.courseName} at Y-Peer`]
         ]);
         break;
       case 'facebook' :
@@ -45,14 +45,13 @@ export class AlmShareButtonsComponent implements OnInit {
       case 'twitter' :
         this.openLink('https://twitter.com/intent/tweet?', [
           ['url', this.url],
-          ['description', 'here is my certificate of completion at Y-Peer'],
-          ['tags', 'My_Certificate'],
-          ['via', 'UnfpaEgypt']
+          ['description', `Certificate of completion: ${this.courseName} at Y-Peer`],
+          ['via', 'YPEER_EGYPT']
         ]);
         break;
       case 'messenger' :
         this.openLink('fb-messenger://share/?', [
-          ['url', this.url]
+          ['link', this.url]
         ]);
         break;
       case 'whatsapp' :
@@ -62,7 +61,7 @@ export class AlmShareButtonsComponent implements OnInit {
         break;
       case 'email' :
         this.openLink('mailto:?', [
-          ['subject', 'here is my certificate of completion at Y-Peer'],
+          ['subject', `Certificate of completion: ${this.courseName} at Y-Peer`],
           ['body', this.url]
         ]);
         break;
