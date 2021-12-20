@@ -13,10 +13,10 @@ import {NameValidator} from "../NameValidator";
 })
 export class ContactUsFormComponent implements OnInit, OnDestroy {
   options = [
-    {nameAr: 'General Inquiry', nameEn: 'General Inquiry'},
-    {nameAr: 'Y-Peer Website Inquiry', nameEn: 'Y-Peer Website Inquiry'},
-    {nameAr: 'Media Inquiry', nameEn: 'Media Inquiry'},
-    {nameAr: 'Resources Inquiry', nameEn: 'Resources Inquiry'}
+    {nameAr: ' توصيات أو تعليقات تقنية خاصة بالموقع', nameEn: 'Website technical recommendations/comments'},
+    {nameAr: 'توصيات أو تعليقات خاصة بالمحتوى', nameEn: 'Recommendations/Comments related to the content'},
+    {nameAr: 'التطوع مع واي بير', nameEn: 'Join Y-PEER'},
+    {nameAr: 'التواصل مع فريق تنسيق واي بير', nameEn: 'Contact Y-PEER core team'}
   ];
   titles = [
     {nameAr: 'السيد', nameEn: 'Mr.'},
