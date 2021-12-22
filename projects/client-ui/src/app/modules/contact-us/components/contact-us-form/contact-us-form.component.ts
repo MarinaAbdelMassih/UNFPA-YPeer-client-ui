@@ -16,7 +16,8 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
     {nameAr: ' توصيات أو تعليقات تقنية خاصة بالموقع', nameEn: 'Website technical recommendations/comments'},
     {nameAr: 'توصيات أو تعليقات خاصة بالمحتوى', nameEn: 'Recommendations/Comments related to the content'},
     {nameAr: 'التطوع مع واي بير', nameEn: 'Join Y-PEER'},
-    {nameAr: 'التواصل مع فريق تنسيق واي بير', nameEn: 'Contact Y-PEER core team'}
+    {nameAr: 'التواصل مع فريق تنسيق واي بير', nameEn: 'Contact Y-PEER core team'},
+    {nameAr: 'لتفعيل حسابي', nameEn: 'To Activate my account'}
   ];
   titles = [
     {nameAr: 'السيد', nameEn: 'Mr.'},
