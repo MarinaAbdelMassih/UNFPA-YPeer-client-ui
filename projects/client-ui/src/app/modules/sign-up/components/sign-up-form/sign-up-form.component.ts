@@ -44,7 +44,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   status: any;
   education: any;
   governorate: any;
-  emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
+  emailPattern = '^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   passwordPattern = '^(?=.*[A-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-!@#$%^&*_~+/.])\\S{6,20}$';
   phonePattern = '^[0-9]{11}$';
   addUser: any;

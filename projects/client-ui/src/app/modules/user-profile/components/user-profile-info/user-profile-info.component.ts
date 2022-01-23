@@ -37,7 +37,7 @@ export class UserProfileInfoComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   gender;
   education;
-  emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
+  emailPattern = '^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   phonePattern = '^[0-9]{11}$';
   updateDataInfo: any;
   userId: number;

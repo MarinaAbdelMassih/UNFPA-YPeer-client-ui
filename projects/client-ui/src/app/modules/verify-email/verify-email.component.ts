@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 export class VerifyEmailComponent implements OnInit {
   verifyEmailForm: FormGroup;
   isArabic: boolean;
-  emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
+  emailPattern = '^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   isEmailSent: boolean;
 
 

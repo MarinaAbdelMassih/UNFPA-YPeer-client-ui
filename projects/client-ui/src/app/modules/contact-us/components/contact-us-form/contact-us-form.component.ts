@@ -25,7 +25,7 @@ export class ContactUsFormComponent implements OnInit, OnDestroy {
     {nameAr: 'السيدة', nameEn: 'Mrs.'}
   ];
   contactForm: FormGroup;
-  emailPattern = '^([a-zA-Z0-9_\\.\\-\\+])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
+  emailPattern = '^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
   isArabic: boolean;
   subscription: Subscription;
   contactUsUserData: IContactUs;
