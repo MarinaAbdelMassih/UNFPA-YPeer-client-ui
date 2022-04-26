@@ -31,7 +31,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   pbThickness: 5,
   pbColor: '#07212f',
   overlayColor: 'rgba(255, 255, 255, 0.9)',
-  logoUrl: `${environment.deployUrl}/assets/images/Y-Peer-Logo.svg`,
+  logoUrl: `${environment.deployUrl}/assets/images/new-logo.png`,
 };
 
 @NgModule({

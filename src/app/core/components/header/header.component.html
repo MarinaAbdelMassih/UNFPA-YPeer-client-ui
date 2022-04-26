@@ -2,11 +2,11 @@
   <a *ngIf="!isArabic" class="navbar-brand" [routerLink]="'/home'">
 <!--    <img [deploySrc]="'assets/images/ypeer-logo-header.png'" alt="">-->
     <img [deploySrc]="'assets/images/UNFPA_logo.svg'" height="41px" alt="">
-    <img [deploySrc]="'assets/images/Y-Peer-Logo.svg'" height="41px" alt="" class="ybeer-logo">
+    <img [deploySrc]="'assets/images/new-logo.png'" height="41px" alt="" class="ybeer-logo">
   </a>
   <a *ngIf="isArabic" class="navbar-brand" [routerLink]="'/home'">
     <!--    <img [deploySrc]="'assets/images/ypeer-logo-header.png'" alt="">-->
-    <img style="margin-right: 0" [deploySrc]="'assets/images/Y-Peer-Logo.svg'" height="41px" alt="" class="ybeer-logo">
+    <img style="margin-right: 0" [deploySrc]="'assets/images/new-logo.png'" height="41px" alt="" class="ybeer-logo">
     <img [deploySrc]="'assets/images/UNFPA_logo.svg'" height="41px" alt="">
   </a>
   <button class="navbar-toggler"
@@ -37,7 +37,7 @@
            [routerLinkActiveOptions]="{exact: true}"
            aria-haspopup="true"
            aria-expanded="false"
-           [translateLocal]="{AR: 'وسائل اعلام', EN: 'media'}">
+           [translateLocal]="{AR: 'وسائل الإعلام', EN: 'media'}">
         </a>
         <div class="dropdown-menu" aria-labelledby="mediaDropdown">
           <a class="dropdown-item" [routerLink]="'/news'" [translateLocal]="{AR: 'الأخبار', EN: 'News'}"></a>
@@ -59,7 +59,7 @@
         <div class="dropdown-menu" aria-labelledby="resourcesDropdown">
           <a class="dropdown-item"
              [routerLink]="'/trainings'"
-             [translateLocal]="{AR: 'دليل التدريب', EN: 'Training manuals'}"></a>
+             [translateLocal]="{AR: 'التدريبات', EN: 'Training manuals'}"></a>
           <a class="dropdown-item"
              [routerLink]="'/publications'"
              [translateLocal]="{AR: 'المنشورات', EN: 'Publications'}"></a>
@@ -77,7 +77,7 @@
            [routerLink]="'/contact-us'"
            routerLinkActive="active-link"
            [routerLinkActiveOptions]="{exact: true}"
-           [translateLocal]="{AR: 'اتصل بنا', EN: 'contact'}"></a>
+           [translateLocal]="{AR: 'إتصل بنا', EN: 'contact'}"></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="'/search'"
@@ -93,7 +93,7 @@
       </li>
       <li class="nav-item">
         <a [routerLink]="'/signIn'" *ngIf="!userName">
-          <button class="ypeer-btn btn-full-color"  [translateLocal]="{AR: 'انضم الآن', EN: 'Join Us'}">
+          <button class="ypeer-btn btn-full-color"  [translateLocal]="{AR: ' إنضم الآن', EN: 'Join Us'}">
           </button>
         </a>
         <a [routerLink]="'/profile'" *ngIf="userName">

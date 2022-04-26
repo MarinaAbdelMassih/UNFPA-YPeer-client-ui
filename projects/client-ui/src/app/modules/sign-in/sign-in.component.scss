@@ -12,6 +12,8 @@
     justify-content: space-between;
 
     img {
+      width: 150px;
+      height: 128px;
       padding-top: 74px;
       @media(max-width: 1000px) and (min-width: 500px) {
         padding-top: 25px;
@@ -48,7 +50,8 @@
       flex-direction: column;
 
       img {
-        width: 75%;
+        width: 150px;
+        height: 80px;
         //padding-left: 33.7px;
       }
 
@@ -70,12 +73,18 @@
 ::ng-deep {
   [dir="ltr"] {
     .sign-in-container {
-      background-image: url("src/assets/images/bg-sign-in.png");
+      background-image: url("src/assets/images/join-us.jpg");
 
       .sign-in {
-        img {
+        .unfpa-img {
+          padding-left: 30px;
+        }
+        .ybeer-img {
           padding-left: 73.7px;
         }
+        //img {
+        //  padding-left: 73.7px;
+        //}
 
         .form-container {
           margin-right: 44px;
@@ -86,7 +95,7 @@
 
   [dir="rtl"] {
     .sign-in-container {
-      background-image: url("src/assets/images/signin-arbic.png");
+      background-image: url("src/assets/images/join-us.jpg");
 
       .rights-reserved-text {
         @media(max-width: 320px) {
@@ -96,9 +105,15 @@
       }
 
       .sign-in {
-        img {
+        .unfpa-img {
+          padding-right: 30px;
+        }
+        .ybeer-img {
           padding-right: 73.7px;
         }
+        //img {
+        //  padding-right: 73.7px;
+        //}
 
         .form-container {
           margin-left: 44px;
