@@ -15,7 +15,7 @@ export class DiscoverMoreComponent implements OnInit {
   },
     {
       img: `${environment.deployUrl}/assets/images/discover-more-events.png`,
-      title: {EN: 'Events', AR: 'الأحداث'},
+      title: {EN: 'Events', AR: 'الفعاليات'},
       link: 'events'
     },
     {

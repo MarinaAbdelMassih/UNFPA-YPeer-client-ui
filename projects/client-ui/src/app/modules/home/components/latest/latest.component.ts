@@ -24,7 +24,7 @@ export class LatestComponent implements OnInit {
   storiesCount: number;
   categoriesList: CategoryModel[] = [
     {title: {EN: 'News', AR: 'الأخبار'}, count: this.newsCount, hideToggle: true, url: 'news'},
-    {title: {EN: 'Events', AR: 'الأحداث'}, count: this.eventsCount, hideToggle: true, url: 'events'},
+    {title: {EN: 'Events', AR: 'الفعاليات'}, count: this.eventsCount, hideToggle: true, url: 'events'},
     {title: {EN: 'Stories', AR: 'القصص'}, count: this.storiesCount, hideToggle: true, url: 'stories'},
   ];
   latestNews: newsListItem[];

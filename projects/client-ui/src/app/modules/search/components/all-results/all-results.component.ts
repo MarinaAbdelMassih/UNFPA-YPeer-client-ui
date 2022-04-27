@@ -23,7 +23,7 @@ export class AllResultsComponent implements OnInit {
     eventsListItemCollection: {
       title: {
       EN: 'Events',
-      AR: 'الأحداث'
+      AR: 'الفعاليات'
     },
       searchType: 'eventsListItem',
     },

@@ -21,8 +21,8 @@ export class EventsComponent implements OnInit {
   previousEvents: eventsListItem[] = [];
 
   categoriesList: CategoryModel[] = [
-    {title: {EN: 'Previous Events', AR: 'الأحداث السابقه'}, count: 0, hideToggle: true, label: 'previous', selected: false},
-    {title: {EN: 'Upcoming Events', AR: 'الأحداث القادمه'}, count: 0, hideToggle: true, label: 'upcoming', selected: false},
+    {title: {EN: 'Previous Events', AR: 'الفعاليات السابقه'}, count: 0, hideToggle: true, label: 'previous', selected: false},
+    {title: {EN: 'Upcoming Events', AR: 'الفعاليات القادمه'}, count: 0, hideToggle: true, label: 'upcoming', selected: false},
   ];
 
   constructor(private eventsResolverService: EventsResolverService) {
